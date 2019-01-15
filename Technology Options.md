@@ -4,13 +4,13 @@
 
 ## Deployment
 * AWS
-** Lambda (Python)
-** S3
-** DynamoDB
-*SSC
-** Linux
-** Python
-** MongoDB
+  *  Lambda (Python)
+  * S3
+  * DynamoDB
+* SSC
+  * Linux
+  * Python
+  * MongoDB
 
 ## Translation
 * DeepL
