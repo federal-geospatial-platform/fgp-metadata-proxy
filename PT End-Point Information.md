@@ -42,7 +42,7 @@ For a complete list of available parameters, see https://wiki.apache.org/solr/Co
 https://catalogue.data.gov.bc.ca/api/3/action/package_search?q=roads&fq=type:Geographic&rows=1000000<br>
 The "rows=1000000" returns all the results in the JSON.
 
-The API can also be used to access individual datasets. Using the URL https://catalogue.data.gov.bc.ca/api/3/action/package_show and the parameter 'id' with the dataset's name.
+The API can also be used to access individual datasets using the URL https://catalogue.data.gov.bc.ca/api/3/action/package_show and the parameter 'id' with the dataset's name.
 
 **Example**: To view the dataset [Forest Road Segment Tenure](https://catalogue.data.gov.bc.ca/dataset/forest-road-segment-tenure) in JSON format, use https://catalogue.data.gov.bc.ca/api/3/action/package_show?id=forest-road-segment-tenure.
 
