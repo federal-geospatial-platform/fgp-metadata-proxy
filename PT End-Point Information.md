@@ -67,7 +67,11 @@ The FTP site can be accessed using any FTP application. Python's FTP protocol cl
 ---
 
 ### Interactive Maps
-
+The interactive maps for BC use different mapping applications, such as Google Maps or Geocortex. Here are a few examples of BC's interactive maps:
+* http://www.env.gov.bc.ca/bcparks/explore/map.html
+* http://www.env.gov.bc.ca/soe/indicators/water/groundwater-levels.html
+* http://www2.gov.bc.ca/gov/content/environment/air-land-water/water/water-science-data/water-data-tools/real-time-water-data-reporting
+		
 ---
 
 ### Map Services
