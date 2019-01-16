@@ -39,7 +39,7 @@ To get a list of search results in JSON format, use CKAN's Package Search (for B
 For a complete list of available parameters, see https://wiki.apache.org/solr/CommonQueryParameters.
 
 **Example**: To get a list results in JSON format using the API with dataset type 'Geographic' using the word 'roads', use the following URL:
-https://catalogue.data.gov.bc.ca/api/3/action/package_search?q=roads&fq=type:Geographic&rows=1000000<br>
+* https://catalogue.data.gov.bc.ca/api/3/action/package_search?q=roads&fq=type:Geographic&rows=1000000<br>
 The "rows=1000000" returns all the results in the JSON.
 
 The API can also be used to access individual datasets using the URL https://catalogue.data.gov.bc.ca/api/3/action/package_show and the parameter 'id' with the dataset's name.
