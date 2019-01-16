@@ -9,6 +9,8 @@
 [Map Services](#map-services)<br>
 [Web Pages](#web-pages)<br>
 
+---
+
 ### Data Catalogue
 
 #### Description
@@ -44,12 +46,16 @@ The API can also be used to access individual datasets. Using the URL https://ca
 
 **Example**: To view the dataset [Forest Road Segment Tenure](https://catalogue.data.gov.bc.ca/dataset/forest-road-segment-tenure) in JSON format, use https://catalogue.data.gov.bc.ca/api/3/action/package_show?id=forest-road-segment-tenure.
 
+---
+
 ### ArcGIS Online Maps
 An ArcGIS Online Map can be viewed online or can be accessed in JSON format. Every map has a unique ID which is used to view the map itself or access its metadata.
 
 The URL for the viewer can vary depending on the type of map (for example, the webmaps on BC's site are located at https://governmentofbc.maps.arcgis.com/home/webmap/viewer.html while BC's MapSeries are located at https://governmentofbc.maps.arcgis.com/apps/MapSeries/index.html). However, the base URL for the JSON metadata, without the ID, is the same (in BC's case, https://governmentofbc.maps.arcgis.com/sharing/rest/content/items).
 
 **Example**: The URL for the map of BC's Groundwater Level Data is https://governmentofbc.maps.arcgis.com/apps/webappviewer/index.html?id=b53cb0bf3f6848e79d66ffd09b74f00d. Using the ID from this URL and the metadata URL, the JSON content can be accessed using https://governmentofbc.maps.arcgis.com/sharing/rest/content/items/<ID\>?f=pjson or https://governmentofbc.maps.arcgis.com/sharing/rest/content/items/b53cb0bf3f6848e79d66ffd09b74f00d?f=pjson
+
+---
 
 ### FTP
 BC's FTP site contains a large collection of geospatial datasets.
@@ -58,7 +64,11 @@ ftp://ftp.geobc.gov.bc.ca
 #### Access
 The FTP site can be accessed using any FTP application. Python's FTP protocol client package, ftplib, is used to access the site automatically.
 
+---
+
 ### Interactive Maps
+
+---
 
 ### Map Services
 BC has two types of map services, ArcGIS REST and WMS.
@@ -80,6 +90,8 @@ There are three WMS sites for BC:
 * https://openmaps.gov.bc.ca/lzt/ows?service=wms&version=1.1.1&request=getcapabilities
 
 The XML metadata is accessed using the 'getcapabilities' request.
+
+---
 
 ### Web Pages
 Web pages are any sites that contain links to geospatial datasets that are not found in any of the above end-point categories. The layout of each web page varies from site to site. Some of the metadata information can be taken from the page's metadata tags.
