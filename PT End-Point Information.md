@@ -2,6 +2,8 @@
 
 ## BC End-Points
 
+[Data Catalogue](#data-catalogue)
+
 ### Data Catalogue
 
 #### Description
@@ -52,7 +54,6 @@ ftp://ftp.geobc.gov.bc.ca
 The FTP site can be accessed using any FTP application. Python's FTP protocol client package, ftplib, is used to access the site automatically.
 
 ### Interactive Maps
-
 
 ### Map Services
 BC has two types of map services, ArcGIS REST and WMS.
