@@ -3,6 +3,11 @@
 ## BC End-Points
 
 [Data Catalogue](#data-catalogue)
+[ArcGIS Online Maps](#arcgis-online-maps)
+[FTP](#ftp)
+[Interactive Maps](#interactive-maps)
+[Map Services](#map-services)
+[Web Pages](#web-pages)
 
 ### Data Catalogue
 
