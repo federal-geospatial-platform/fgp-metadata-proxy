@@ -1,0 +1,716 @@
+ERROR: Traceback (most recent call last):
+  File "C:\FGP\Development\Multiple_Dates\FGP_WebExtractor\scripts\BC_extractor.py", line 528, in extract_catalogue
+    wms = services.MyWMS(res_url)
+  File "C:\FGP\Development\Multiple_Dates\FGP_WebExtractor\scripts\common\services.py", line 604, in __init__
+    self.xml_dict = bsoup.xml_to_dict(self.root_url)
+  File "C:\FGP\Development\Multiple_Dates\FGP_WebExtractor\scripts\common\bsoup.py", line 761, in xml_to_dict
+    print "xml_text: '%s'" % xml_text
+AttributeError: 'str' object has no attribute 'read'
+
+
+{
+    "help": "Shows the package info with the given id. Param : id", 
+    "result": {
+        "author": "9b867c82-66b7-4ac8-b53e-5faa98759aa8", 
+        "author_email": null, 
+        "contacts": [
+            {
+                "branch": "d2e433a1-b785-4d03-8a2b-392069175eb4", 
+                "delete": "0", 
+                "email": "data@gov.bc.ca", 
+                "name": "DataBC Operations", 
+                "organization": "4f7ae636-4cdf-4273-b274-6608c615dba0", 
+                "private": "Display", 
+                "role": "pointOfContact"
+            }, 
+            {
+                "branch": "280a54e5-d9ff-48c6-a99d-296589379ffc", 
+                "delete": "0", 
+                "email": "Brian.Greening@landsure.ca", 
+                "name": "Brian Greening", 
+                "organization": "794c3d7f-c16d-4527-8929-16e2cd6e90df", 
+                "role": "businessExpert"
+            }, 
+            {
+                "branch": "280a54e5-d9ff-48c6-a99d-296589379ffc", 
+                "delete": "0", 
+                "email": "myLTSAtechsupport@ltsa.ca", 
+                "name": "LTSA Service Desk", 
+                "organization": "794c3d7f-c16d-4527-8929-16e2cd6e90df", 
+                "role": "pointOfContact"
+            }, 
+            {
+                "branch": "d2e433a1-b785-4d03-8a2b-392069175eb4", 
+                "delete": "0", 
+                "email": "Alexander.Ritchie@gov.bc.ca", 
+                "name": "Alex Ritchie", 
+                "organization": "4f7ae636-4cdf-4273-b274-6608c615dba0", 
+                "role": "custodian"
+            }, 
+            {
+                "branch": "d2e433a1-b785-4d03-8a2b-392069175eb4", 
+                "delete": "0", 
+                "email": "Colin.Newall@gov.bc.ca", 
+                "name": "Colin Newall", 
+                "organization": "4f7ae636-4cdf-4273-b274-6608c615dba0", 
+                "role": "pointOfContact"
+            }
+        ], 
+        "creator_user_id": "9b867c82-66b7-4ac8-b53e-5faa98759aa8", 
+        "data_quality": "ParcelMap BC is the single, complete, trusted and sustainable electronic map of active titled parcels and surveyed provincial Crown land parcels in British Columbia. The data is continually updated by the ParcelMap BC Operations Team at the Land Title and Survey Authority of BC in response to events which change the parcel fabric, including new survey plans accepted from land surveyors. Spatial adjustments are periodically applied to improve the parcel fabric alignment to provincial survey systems and georeferencing standards by using survey information provided on the survey plans and published control monuments.", 
+        "dates": [
+            {
+                "date": "2016-11-03", 
+                "type": "Published"
+            }
+        ], 
+        "details": [
+            {
+                "column_comments": "PARCEL_FABRIC_POLY_ID is a system generated unique identification number.", 
+                "column_name": "PARCEL_FABRIC_POLY_ID", 
+                "data_precision": "10", 
+                "data_type": "NUMBER", 
+                "short_name": "POLY_ID"
+            }, 
+            {
+                "column_comments": "PARCEL_NAME is the same as the PID, if there is one. If there is a PIN but no PID, then PARCEL_NAME is the PIN. If there is no PID nor PIN, then PARCEL_NAME is the parcel class value, e.g., COMMON OWNERSHIP, BUILDING STRATA, AIR SPACE, ROAD, PARK.", 
+                "column_name": "PARCEL_NAME", 
+                "data_precision": "50", 
+                "data_type": "VARCHAR2", 
+                "short_name": "PARCEL_NM"
+            }, 
+            {
+                "column_comments": "PLAN_NUMBER is the Land Act, Land Title Act, or Strata Property Act Plan Number for the land survey plan that corresponds to this parcel, e.g., VIP1632, NO_PLAN.", 
+                "column_name": "PLAN_NUMBER", 
+                "data_precision": "128", 
+                "data_type": "VARCHAR2", 
+                "short_name": "PLAN_NUM"
+            }, 
+            {
+                "column_comments": "PIN is the Crown Land Registry Parcel Identifier, if applicable.", 
+                "column_name": "PIN", 
+                "data_precision": "10", 
+                "data_type": "NUMBER", 
+                "short_name": "PIN"
+            }, 
+            {
+                "column_comments": "PID is the Land Title Register parcel identifier, an up-to nine-digit text number with leading zeros that uniquely identifies a parcel in the land title register of in British Columbia. The registrar assigns PID numbers to parcels for which a title is being entered as a registered title. The Land Title Act refers to the PID as the permanent parcel identifier.", 
+                "column_name": "PID", 
+                "data_precision": "9", 
+                "data_type": "VARCHAR2", 
+                "short_name": "PID"
+            }, 
+            {
+                "column_comments": "PID_NUMBER is the Land Title Register parcel identifier, an up-to nine-digit number without leading zeros that uniquely identifies a parcel in the land title register of in British Columbia. The registrar assigns PID numbers to parcels for which a title is being entered as a registered title. The Land Title Act refers to the PID as the permanent parcel identifier.", 
+                "column_name": "PID_NUMBER", 
+                "data_precision": "10", 
+                "data_type": "NUMBER", 
+                "short_name": "PID_NUMBER"
+            }, 
+            {
+                "column_comments": "PARCEL_STATUS is the status of the parcel, according to the Land Title Register or Crown Land Registry, as appropriate, i.e., ACTIVE, CANCELLED, INACTIVE, PENDING.", 
+                "column_name": "PARCEL_STATUS", 
+                "data_precision": "20", 
+                "data_type": "VARCHAR2", 
+                "short_name": "STATUS"
+            }, 
+            {
+                "column_comments": "PARCEL_CLASS is the Parcel classification for maintenance, mapping, publishing and analysis, i.e., PRIMARY, SUBDIVISION, PART OF PRIMARY, BUILDING STRATA, BARE LAND STRATA, AIR SPACE, ROAD, HIGHWAY, PARK, INTEREST, COMMON OWNERSHIP, ABSOLUTE FEE BOOK, CROWN SUBDIVISION, RETURN TO CROWN.", 
+                "column_name": "PARCEL_CLASS", 
+                "data_precision": "50", 
+                "data_type": "VARCHAR2", 
+                "short_name": "CLASS"
+            }, 
+            {
+                "column_comments": "OWNER_TYPE is the general ownership category, e.g., PRIVATE, CROWN PROVINCIAL, MUNICIPAL. For more information, see https://help.ltsa.ca/parcelmap-bc/owner-types-parcelmap-bc", 
+                "column_name": "OWNER_TYPE", 
+                "data_precision": "50", 
+                "data_type": "VARCHAR2", 
+                "short_name": "OWNER_TYPE"
+            }, 
+            {
+                "column_comments": "PARCEL_START_DATE is the date of the legal event that created the parcel, i.e., the date the plan was filed.", 
+                "column_name": "PARCEL_START_DATE", 
+                "data_precision": "7", 
+                "data_type": "DATE", 
+                "short_name": "START_DATE"
+            }, 
+            {
+                "column_comments": "MUNICIPALITY is the municipal area within which the parcel is located. The value is either RURAL (for parcels in unincorporated regions) or the name of a BC municipality.", 
+                "column_name": "MUNICIPALITY", 
+                "data_precision": "254", 
+                "data_type": "VARCHAR2", 
+                "short_name": "MUNI"
+            }, 
+            {
+                "column_comments": "REGIONAL_DISTRICT is the name of the regional district in which the parcel is located, e.g., CAPITAL REGIONAL DISTRICT.", 
+                "column_name": "REGIONAL_DISTRICT", 
+                "data_precision": "50", 
+                "data_type": "VARCHAR2", 
+                "short_name": "REG_DIST"
+            }, 
+            {
+                "column_comments": "WHEN_UPDATED is the date and time the record was last modified.", 
+                "column_name": "WHEN_UPDATED", 
+                "data_precision": "7", 
+                "data_type": "DATE", 
+                "short_name": "UPDATED"
+            }, 
+            {
+                "column_comments": "FEATURE_AREA_SQM is the system calculated area of a two-dimensional polygon in square meters.", 
+                "column_name": "FEATURE_AREA_SQM", 
+                "data_precision": "19", 
+                "data_type": "NUMBER", 
+                "short_name": "FT_AR_SQM"
+            }, 
+            {
+                "column_comments": "FEATURE_LENGTH_M is the system calculated length or perimeter of a geometry in meters.", 
+                "column_name": "FEATURE_LENGTH_M", 
+                "data_precision": "19", 
+                "data_type": "NUMBER", 
+                "short_name": "FT_LNGTH_M"
+            }, 
+            {
+                "column_comments": "SHAPE is the column used to reference the spatial coordinates defining the feature.", 
+                "column_name": "SHAPE", 
+                "data_precision": "64", 
+                "data_type": "SDO_GEOMETRY", 
+                "short_name": "SHAPE"
+            }, 
+            {
+                "column_comments": "OBJECTID is a column required by spatial layers that interact with ESRI ArcSDE. It is populated with unique values automatically by SDE.", 
+                "column_name": "OBJECTID", 
+                "data_precision": "38", 
+                "data_type": "NUMBER", 
+                "short_name": "OBJECTID"
+            }, 
+            {
+                "column_comments": "SE_ANNO_CAD_DATA is a binary column used by spatial tools to store annotation, curve features and CAD data when using the SDO_GEOMETRY storage data type.", 
+                "column_name": "SE_ANNO_CAD_DATA", 
+                "data_precision": "4000", 
+                "data_type": "BLOB", 
+                "short_name": "ANNO_CAD"
+            }
+        ], 
+        "download_audience": "Public", 
+        "east_bound_longitude": "-113.5", 
+        "edc_state": "PUBLISHED", 
+        "groups": [], 
+        "id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+        "image_display_url": "", 
+        "image_url": "", 
+        "iso_topic_string": "planningCadastre", 
+        "isopen": false, 
+        "layer_name": "WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW", 
+        "license_id": "2", 
+        "license_title": "Open Government License - British Columbia", 
+        "license_url": "http://www.data.gov.bc.ca/local/dbc/docs/license/OGL-vbc2.0.pdf", 
+        "lineage_statement": "ParcelMap BC data is continually updated by the ParcelMap BC Operations team at the Land Title and Survey Authority of BC. New plans and other parcel fabric updates enter the maintenance queue upon registration or confirmation with an update publication service target of approximately two business days. The B.C. Government currently refreshes this view of the ParcelMap BC data on a weekly cycle (Sundays).", 
+        "link_to_imap": "http://maps.gov.bc.ca/ess/hm/imap4m/?catalogLayers=5898,5899,5900,5901,5902,5903,5904,5905,5906", 
+        "maintainer": null, 
+        "maintainer_email": null, 
+        "metadata_created": "2016-09-15T19:51:33.502778", 
+        "metadata_modified": "2018-11-21T20:15:47.053704", 
+        "metadata_visibility": "Public", 
+        "more_info": [
+            {
+                "delete": "0", 
+                "link": "http://ltsa.ca/parcelmapbc"
+            }, 
+            {
+                "delete": "0", 
+                "link": "https://help.ltsa.ca/parcelmap-bc/owner-types-parcelmap-bc"
+            }, 
+            {
+                "delete": "0", 
+                "link": "https://ltsa.ca/online-services/spatial-improvements"
+            }
+        ], 
+        "name": "parcelmap-bc-parcel-fabric", 
+        "north_bound_latitude": "60.0", 
+        "notes": "ParcelMap BC is the single, complete, trusted and sustainable electronic map of active titled parcels and surveyed provincial Crown land parcels in British Columbia. This particular dataset is a subset of the complete ParcelMap BC data and is comprised of the parcel fabric and attributes for over two million parcels published under the Open Government License - British Columbia.\r\n\r\nNotes: \r\n\r\n1. Parcel title information is sourced from the BC Land Title Register.  Title questions should be directed to a local [Land Title Office](https://ltsa.ca/land-title-office-locations).\r\n\r\n3. The ParcelMap BC Parcel Fabric is expected to eventually replace the [Integrated Cadastral Fabric](https://catalogue.data.gov.bc.ca/dataset/7eb82072-8c74-4fce-9934-349b545fdc21).", 
+        "num_resources": 10, 
+        "num_tags": 12, 
+        "object_name": "WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW", 
+        "object_short_name": "PMBC_PF_O", 
+        "object_table_comments": "The ParcelMap BC (PMBC) parcel fabric contains all active titled parcels and surveyed provincial Crown land parcels in BC. This dataset is polygonal and contains all parcel attributes licensed under the BC Open Government Licence.", 
+        "org": "4f7ae636-4cdf-4273-b274-6608c615dba0", 
+        "organization": {
+            "approval_status": "approved", 
+            "created": "2014-12-10T15:05:57.849695", 
+            "description": "[DataBC](http://www.data.gov.bc.ca/) helps the Province manage data as an asset. It enables public servants and citizens to share and use data. DataBC delivers on this mandate by providing leadership in : data governance and custodianship; data licensing; literacy and outreach; data cataloging; data provisioning; geographic data integration and management; location based services and web mapping applications.\r\n\r\n", 
+            "full_title": "Ministry of Citizens Services, DataBC", 
+            "id": "d2e433a1-b785-4d03-8a2b-392069175eb4", 
+            "image_url": "2018-07-19-230622.091907bcanddatabcsmallwhite.png", 
+            "is_organization": true, 
+            "name": "databc", 
+            "revision_id": "f95b9f71-3089-4459-8f65-476189600c49", 
+            "state": "active", 
+            "title": "DataBC", 
+            "type": "organization"
+        }, 
+        "owner_org": "d2e433a1-b785-4d03-8a2b-392069175eb4", 
+        "preview_image_url": "", 
+        "preview_latitude": "48.4195894", 
+        "preview_longitude": "-123.3284145", 
+        "preview_map_service_url": "https://openmaps.gov.bc.ca/geo/pub/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW/ows?", 
+        "preview_zoom_level": "17", 
+        "private": false, 
+        "purpose": "ParcelMap BC provides a single-source, up to date representation of titled and surveyed Crown land parcels in British Columbia. This provides for improved speed and efficiency of land-related research province-wide, facilitating planning and business decisions through the current spatial representation of a given parcel and its relationship to adjacent parcels. ParcelMap BC helps support faster and more accurate real property transactions while minimizing possible data discrepancies and confusion by reducing the need to consult separate spatial systems in British Columbia.", 
+        "record_archive_date": "", 
+        "record_create_date": "2016-09-15", 
+        "record_last_modified": "2018-11-21", 
+        "record_publish_date": "2016-11-09", 
+        "relationships_as_object": [], 
+        "relationships_as_subject": [], 
+        "replacement_record": "", 
+        "resource_status": "onGoing", 
+        "resources": [
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2016-10-12T13:24:44.092411", 
+                "data_collection_end_date": "", 
+                "data_collection_start_date": "", 
+                "datastore_active": false, 
+                "description": "ParcelMap BC parcel fabric Esri File Geodatabase (10.2) containing all parcel records and formatted to BC Geographic Warehouse standards.  ", 
+                "edc_resource_type": "Data", 
+                "format": "fgdb", 
+                "hash": "", 
+                "id": "6dd5db5c-c080-474c-9a8d-631a42e5b1d1", 
+                "last_modified": null, 
+                "mimetype": "application/zip", 
+                "mimetype_inner": null, 
+                "name": "Parcel Fabric File Geodatabase (NAD83 / BC Albers)", 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 0, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Direct Access", 
+                "resource_storage_location": "pub.data.gov.bc.ca", 
+                "resource_type": null, 
+                "resource_update_cycle": "weekly", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "supplemental_info": "XY Resolution: 0.001 metres\r\nContains true curves.\r\n", 
+                "tracking_summary": {
+                    "recent": 40, 
+                    "total": 864
+                }, 
+                "url": "https://pub.data.gov.bc.ca/datasets/4cf233c2-f020-4f7a-9b87-1923252fbc24/pmbc_parcel_fabric_poly_svw.zip", 
+                "url_type": null
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2016-09-15T13:08:36.833881", 
+                "data_collection_end_date": "", 
+                "data_collection_start_date": "", 
+                "datastore_active": false, 
+                "description": "ParcelMap BC parcel fabric Esri File Geodatabase (10.2) containing all parcel records and formatted according to the Land Title and Survey Authority data export standard (e.g., attribute names, CSRS reference system and true curves geometry).", 
+                "edc_resource_type": "Data", 
+                "format": "fgdb", 
+                "hash": "", 
+                "id": "e9df0d1e-4b66-4a1b-b446-c5fb53dfaf67", 
+                "last_modified": null, 
+                "mimetype": "application/zip", 
+                "mimetype_inner": null, 
+                "name": "Parcel Fabric File Geodatabase (NAD83(CSRS) / BC Albers)", 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 1, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Direct Access", 
+                "resource_storage_location": "pub.data.gov.bc.ca", 
+                "resource_type": null, 
+                "resource_update_cycle": "weekly", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "supplemental_info": "XY Resolution: 0.0001 metres\r\nContains true curves.\r\nShape geometry: 3D polygon (with height values = 0)\r\n\r\nReference System Information: \r\nhttp://www.nrcan.gc.ca/earth-sciences/geomatics/geodetic-reference-systems/9052\r\nhttps://epsg.io/3153-1946\r\n", 
+                "tracking_summary": {
+                    "recent": 16, 
+                    "total": 297
+                }, 
+                "url": "https://pub.data.gov.bc.ca/datasets/4cf233c2-f020-4f7a-9b87-1923252fbc24/ParcelMapBCExtract.zip", 
+                "url_type": ""
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2016-11-15T14:30:54.272403", 
+                "data_collection_end_date": "", 
+                "data_collection_start_date": "", 
+                "datastore_active": false, 
+                "description": "ParcelMap BC parcel fabric formatted to BC Geographic Warehouse data standards and available with customizable download options, including map area of interest, file format and spatial reference system.\r\n\r\nNote: only a subset of the entire dataset can be downloaded in this manner. Choose one of the file geodatabase products if all parcel records are required.\r\n", 
+                "edc_resource_type": "Data", 
+                "format": "other", 
+                "hash": "", 
+                "id": "bf10eb29-52b9-4c5a-a27c-1db318a616d4", 
+                "last_modified": null, 
+                "mimetype": null, 
+                "mimetype_inner": null, 
+                "name": "Parcel Fabric - Custom Download", 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 2, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Indirect Access", 
+                "resource_storage_location": "BC Geographic Warehouse", 
+                "resource_type": null, 
+                "resource_update_cycle": "weekly", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "supplemental_info": "", 
+                "tracking_summary": {
+                    "recent": 20, 
+                    "total": 945
+                }, 
+                "url": "https://apps.gov.bc.ca/pub/dwds/addProductsFromExternalApplication.do?productTypeId=0&productId=17201", 
+                "url_type": null
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2016-11-07T13:54:21.103686", 
+                "datastore_active": false, 
+                "description": "For use in viewers such as ESRI tools use this truncated link: https://openmaps.gov.bc.ca/geo/pub/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW/ows? [Click here for information on how to connect](http://www2.gov.bc.ca/gov/content/governments/about-the-bc-government/databc/geographic-data-and-services/map-services)", 
+                "edc_resource_type": "Data", 
+                "format": "wms", 
+                "hash": "", 
+                "id": "959af382-fb31-4f57-b8ea-e6dcb6ce2e0b", 
+                "last_modified": null, 
+                "mimetype": null, 
+                "mimetype_inner": null, 
+                "name": "WMS getCapabilities request", 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 3, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Service", 
+                "resource_storage_location": "BC Geographic Warehouse", 
+                "resource_type": null, 
+                "resource_update_cycle": "weekly", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "tracking_summary": {
+                    "recent": 6, 
+                    "total": 281
+                }, 
+                "url": "https://openmaps.gov.bc.ca/geo/pub/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW/ows?service=WMS&request=GetCapabilities", 
+                "url_type": null
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2016-11-09T13:00:38.753436", 
+                "data_collection_end_date": "", 
+                "data_collection_start_date": "", 
+                "datastore_active": false, 
+                "description": "This resource represents ParcelMap BC Parcel Fabric in ArcGIS Online.  Users of ArcGIS Online and the BC Map Hub can use this resource to create online maps that include this data. ", 
+                "edc_resource_type": "Data", 
+                "format": "wms", 
+                "hash": "", 
+                "id": "04ae9a97-fd4d-497f-8c8f-8bc172516602", 
+                "last_modified": null, 
+                "mimetype": null, 
+                "mimetype_inner": null, 
+                "name": "BC Map Hub Layer (ArcGIS Online)", 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 4, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Service", 
+                "resource_storage_location": "BC Geographic Warehouse", 
+                "resource_type": null, 
+                "resource_update_cycle": "weekly", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "supplemental_info": "", 
+                "tracking_summary": {
+                    "recent": 6, 
+                    "total": 414
+                }, 
+                "url": "http://governmentofbc.maps.arcgis.com/home/item.html?id=f6c8dc07d8d9452689907b075382e3ff", 
+                "url_type": null
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2017-08-01T09:02:02.822871", 
+                "data_collection_end_date": "", 
+                "data_collection_start_date": "", 
+                "datastore_active": false, 
+                "description": "", 
+                "edc_resource_type": "Data", 
+                "format": "ArcView Shape", 
+                "hash": "", 
+                "id": "39aed591-a517-409d-b0e1-3b78e44dfb6b", 
+                "last_modified": null, 
+                "mimetype": null, 
+                "mimetype_inner": null, 
+                "name": "ArcView Shape", 
+                "ofi": true, 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 5, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Indirect Access", 
+                "resource_storage_location": "BC Geographic Warehouse", 
+                "resource_type": null, 
+                "resource_update_cycle": "asNeeded", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "supplemental_info": "", 
+                "tracking_summary": {
+                    "recent": 0, 
+                    "total": 0
+                }, 
+                "url": "https://catalogue.data.gov.bc.ca/api/ofi/ArcView%20Shape/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW", 
+                "url_type": null
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2017-08-01T09:02:04.344117", 
+                "data_collection_end_date": "", 
+                "data_collection_start_date": "", 
+                "datastore_active": false, 
+                "description": "", 
+                "edc_resource_type": "Data", 
+                "format": "CSV", 
+                "hash": "", 
+                "id": "deb0f588-32e5-4f6f-bdfe-c7080662b728", 
+                "last_modified": null, 
+                "mimetype": null, 
+                "mimetype_inner": null, 
+                "name": "CSV", 
+                "ofi": true, 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 6, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Indirect Access", 
+                "resource_storage_location": "BC Geographic Warehouse", 
+                "resource_type": null, 
+                "resource_update_cycle": "asNeeded", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "supplemental_info": "", 
+                "tracking_summary": {
+                    "recent": 0, 
+                    "total": 0
+                }, 
+                "url": "https://catalogue.data.gov.bc.ca/api/ofi/CSV/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW", 
+                "url_type": null
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2017-08-01T09:02:06.433866", 
+                "data_collection_end_date": "", 
+                "data_collection_start_date": "", 
+                "datastore_active": false, 
+                "description": "", 
+                "edc_resource_type": "Data", 
+                "format": "ESRI File Geodatabase", 
+                "hash": "", 
+                "id": "63fbff72-9f2e-462b-b931-cd79f7a83f98", 
+                "last_modified": null, 
+                "mimetype": null, 
+                "mimetype_inner": null, 
+                "name": "ESRI File Geodatabase", 
+                "ofi": true, 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 7, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Indirect Access", 
+                "resource_storage_location": "BC Geographic Warehouse", 
+                "resource_type": null, 
+                "resource_update_cycle": "asNeeded", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "supplemental_info": "", 
+                "tracking_summary": {
+                    "recent": 0, 
+                    "total": 0
+                }, 
+                "url": "https://catalogue.data.gov.bc.ca/api/ofi/ESRI%20File%20Geodatabase/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW", 
+                "url_type": null
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2017-08-01T09:02:07.997709", 
+                "data_collection_end_date": "", 
+                "data_collection_start_date": "", 
+                "datastore_active": false, 
+                "description": "", 
+                "edc_resource_type": "Data", 
+                "format": "GeoJSON", 
+                "hash": "", 
+                "id": "de16aa70-7a99-41a5-b54b-69154604b4ee", 
+                "last_modified": null, 
+                "mimetype": null, 
+                "mimetype_inner": null, 
+                "name": "GeoJSON", 
+                "ofi": true, 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 8, 
+                "projection_name": "EPSG_3005 - NAD83 BC Albers", 
+                "resource_storage_access_method": "Indirect Access", 
+                "resource_storage_location": "BC Geographic Warehouse", 
+                "resource_type": null, 
+                "resource_update_cycle": "asNeeded", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "supplemental_info": "", 
+                "tracking_summary": {
+                    "recent": 0, 
+                    "total": 0
+                }, 
+                "url": "https://catalogue.data.gov.bc.ca/api/ofi/GeoJSON/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW", 
+                "url_type": null
+            }, 
+            {
+                "cache_last_updated": null, 
+                "cache_url": null, 
+                "created": "2017-10-02T21:20:38.061985", 
+                "datastore_active": false, 
+                "description": "For use in viewers such as Google Earth <BR> [Click here for information on how to connect](http://www2.gov.bc.ca/gov/content/data/geographic-data-services/web-based-mapping/map-services)", 
+                "edc_resource_type": "Data", 
+                "format": "kml", 
+                "hash": "", 
+                "id": "89fe1919-f749-4571-9633-4fd678142745", 
+                "last_modified": null, 
+                "mimetype": null, 
+                "mimetype_inner": null, 
+                "name": "KML Network Link", 
+                "package_id": "4cf233c2-f020-4f7a-9b87-1923252fbc24", 
+                "position": 9, 
+                "projection_name": "EPSG_4326 - WGS84 - World Geodetic System 1984", 
+                "resource_storage_access_method": "Service", 
+                "resource_storage_location": "BC Geographic Warehouse", 
+                "resource_type": null, 
+                "resource_update_cycle": "weekly", 
+                "revision_id": "a27eeeaa-33db-4be5-82bb-c50e8f7bb1d6", 
+                "size": 0, 
+                "state": "active", 
+                "tracking_summary": {
+                    "recent": 15, 
+                    "total": 521
+                }, 
+                "url": "http://openmaps.gov.bc.ca/kml/geo/layers/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW_loader.kml", 
+                "url_type": null
+            }
+        ], 
+        "retention_expiry_date": "", 
+        "revision_id": "1c0b6277-de00-4c90-9b20-7fe6f45dc83f", 
+        "sector": "Service", 
+        "security_class": "LOW-PUBLIC", 
+        "source_data_path": "", 
+        "south_bound_latitude": "48.0", 
+        "spatial": "{\"type\": \"Polygon\", \"coordinates\": [[[-139.5, 48.0], [-139.5, 60.0], [-113.5, 60.0], [-113.5, 48.0], [-139.5, 48.0]]]}", 
+        "spatial_datatypes": "SDO_GEOMETRY", 
+        "state": "active", 
+        "sub_org": "d2e433a1-b785-4d03-8a2b-392069175eb4", 
+        "tags": [
+            {
+                "display_name": "Cadastre", 
+                "id": "c3f9c284-c237-4f8c-94ad-cd3bcc6af162", 
+                "name": "Cadastre", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Crown Land", 
+                "id": "f964efbf-8a9f-4201-b931-42d85a55b4bf", 
+                "name": "Crown Land", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "ICF", 
+                "id": "1c2558a7-bbff-40d0-8d20-bd3232693596", 
+                "name": "ICF", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Integrated Cadastral Fabric", 
+                "id": "19e426a8-08c2-41be-9cb6-f874b1fbc109", 
+                "name": "Integrated Cadastral Fabric", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Interest Parcels", 
+                "id": "0cd5894b-8712-41bc-948e-2ebb9abce843", 
+                "name": "Interest Parcels", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "LTSA", 
+                "id": "ddb5d223-2845-4983-afe3-d3bb613185da", 
+                "name": "LTSA", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Land Ownership", 
+                "id": "54d76323-f5b0-4097-8d64-7c1f72157922", 
+                "name": "Land Ownership", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Land Use", 
+                "id": "c5f953cf-a757-426b-a6d9-aa3b799340b1", 
+                "name": "Land Use", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Parcels", 
+                "id": "8a69278b-0451-4e20-b30e-e9f2a7a3091b", 
+                "name": "Parcels", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Private Land", 
+                "id": "ea33fe36-1315-4ade-a21b-4a152423a4b5", 
+                "name": "Private Land", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Survey Parcels", 
+                "id": "42b101f4-ce52-4d74-bdf9-c02c10d5f9ff", 
+                "name": "Survey Parcels", 
+                "state": "active", 
+                "vocabulary_id": null
+            }, 
+            {
+                "display_name": "Title", 
+                "id": "6bc67327-2eb8-45de-be09-5297a99a860f", 
+                "name": "Title", 
+                "state": "active", 
+                "vocabulary_id": null
+            }
+        ], 
+        "title": "ParcelMap BC Parcel Fabric", 
+        "tracking_summary": {
+            "recent": 170, 
+            "total": 9449
+        }, 
+        "type": "Geographic", 
+        "url": null, 
+        "version": null, 
+        "view_audience": "Public", 
+        "west_bound_longitude": "-139.5"
+    }, 
+    "success": true
+}
