@@ -60,3 +60,5 @@ For example, to run the Extractor using 'Alberta' as the province and 'GeoDiscov
 If no parameters are provided, the user will be prompted to enter the Province/Territory and Page Group Name before the extraction process.
 
 The remaining parameters prompted before processing will be based on the Page Group selected by the user. Extracting Alberta's GeoDiscover, for example, will prompt the user for the search word.
+
+To access the Help for the Extractor, enter either --help or -h into the command-line or type 'help' at any prompt in the Extractor.
