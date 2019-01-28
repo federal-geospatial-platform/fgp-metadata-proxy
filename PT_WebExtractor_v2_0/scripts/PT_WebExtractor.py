@@ -159,7 +159,7 @@ class Cmd:
 def main():
 
 	try:
-		parser = argparse.ArgumentParser()
+		parser = argparse.ArgumentParser(prog='PT_WebExtractor')
 		parser.add_argument("-j", "--juris", help="The province or " \
 							"territory to be extracted.", 
 							metavar="Province/Territory")
@@ -205,8 +205,6 @@ def main():
 
 		# Switch the args Namespace to a dictionary
 		args_dict = vars(args)
-		
-		#print "args_dict: %s" % args_dict
 
 		juris = args.juris
 		page_group = args.page_group
@@ -218,10 +216,6 @@ def main():
 		# status = args.status
 		# downloadable = args.downloadable
 		# silent = args.silent
-		
-		#print "juris: %s" % juris
-		
-		#answer = raw_input("Press enter...")
 		
 		debug = False
 		answer = ''
@@ -249,6 +243,7 @@ def main():
 				juris = None
 				continue
 			elif juris == 'help':
+				print
 				parser.print_help()
 				invalid = False
 				juris = None
@@ -264,7 +259,8 @@ def main():
 				
 			# Get the proper PT_Extractor object
 			pt_abbr = shared.get_pt_abbreviation(juris)
-			print '%s.PT_Extractor()' % pt_abbr
+			#print '%s.PT_Extractor()' % pt_abbr
+			print "\nProvince/Territory: %s" % juris
 			pt_ext = eval('%s.PT_Extractor()' % pt_abbr)
 
 			page_groups = pt_ext.get_pg_grps()
@@ -287,6 +283,7 @@ def main():
 					continue
 				pg_ans = cmd.determine_pg_grp(answer)
 			else:
+				print "\nPage Group: %s" % page_group
 				pg_ans = cmd.determine_pg_grp(page_group)
 
 			if len(pg_ans) == 0:
@@ -298,6 +295,7 @@ def main():
 				continue
 
 			if pg_ans[0] == 'help':
+				print
 				parser.print_help()
 				invalid = False
 				juris = None
@@ -378,6 +376,13 @@ def main():
 								if answer.lower() == 'quit' or answer.lower() == 'exit':
 									print "\nExiting P/T Web Extractor."
 									sys.exit(0)
+								elif answer.lower() == 'help':
+									print
+									parser.print_help()
+									invalid = False
+									juris = None
+									page_group = None
+									continue
 								elif answer.lower() == 'reset':
 									print "\nResetting P/T Web Extractor."
 									invalid = True
@@ -404,6 +409,13 @@ def main():
 						if answer.lower() == 'quit' or answer.lower() == 'exit':
 							print "\nExiting P/T Web Extractor."
 							sys.exit(0)
+						elif answer.lower() == 'help':
+							print
+							parser.print_help()
+							invalid = False
+							juris = None
+							page_group = None
+							continue
 						elif answer.lower() == 'reset':
 							print "\nResetting P/T Web Extractor."
 							invalid = True
@@ -439,6 +451,13 @@ def main():
 				if answer.lower() == 'quit' or answer.lower() == 'exit':
 					print "\nExiting P/T Web Extractor."
 					sys.exit(0)
+				elif answer.lower() == 'help':
+					print
+					parser.print_help()
+					invalid = False
+					juris = None
+					page_group = None
+					continue
 				elif answer.lower() == 'reset':
 					print "\nResetting P/T Web Extractor."
 					invalid = False
