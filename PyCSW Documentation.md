@@ -30,7 +30,7 @@
     * [GET Request Example](#get-request-example-3)
   * [Transaction](#transaction)
     * [POST Dublin Core Example](#post-dublin-core-example)
-    * [POST ISO 19139/19115 Example](#post-iso-19139-19115-example)
+    * [POST ISO 19139/19115 Example](#post-iso-1913919115-example)
 
 ## Installation & Setup
 
