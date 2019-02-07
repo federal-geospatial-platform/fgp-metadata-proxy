@@ -200,13 +200,13 @@ These are some useful optional parameters for the GetRecords request:
 | Constraint | Specifies the filter for the query. | A filter either in CQL language or a Filter XML, depending on the CONSTRAINTLANGUAGE parameter. |
 | outputSchema | Specifies the URI for the schema to return the record. | (see section on Output Schema below) |
 
-
 For a complete list of GetRecords parameters, visit http://reference1.mapinfo.com/software/spectrum/lim/8_0/services/Spatial/source/Services/csw/postget/postgetgetrecords.html
 
 #### Output Schema
 
 The outputSchema parameter uses a URI that specifies the schema to use for returning the results.
 The following schemas are available for pycsw servers:
+
 http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/
 http://www.interlis.ch/INTERLIS2.3
 http://www.isotc211.org/2005/gmd
@@ -215,6 +215,7 @@ http://www.opengis.net/cat/csw/csdgm
 http://www.w3.org/2005/Atom
 
 The following schemas are available for the FGP CSW server:
+
 http://www.opengis.net/cat/csw/2.0.2
 http://www.isotc211.org/2005/gmd
 http://www.ec.gc.ca/napec
@@ -223,17 +224,21 @@ http://www.ec.gc.ca/ECDMP/schemas/MonitoringSite/1-0-0
 #### GET Request Examples
 
 The following request retrieves the first 10 records in the service:
+
 http://localhost:8000/csw?service=CSW&version=2.0.2&request=GetRecords&CONSTRAINTLANGUAGE=CQL_TEXT&ElementSetName=full&outputFormat=application/xml&typeNames=gmd:MD_Metadata&resultType=results
+
 The following request returns any records containing the word ‘Lorem’ (using constraint with CQL csw:AnyText like ‘%Lorem%’):
+
 http://localhost:8000/csw?service=CSW&version=2.0.2&request=GetRecords&CONSTRAINTLANGUAGE=CQL_TEXT&ElementSetName=full&outputFormat=application/xml&typeNames=gmd:MD_Metadata&resultType=results&Constraint=csw:AnyText%20like%20%27%Lorem%%27&constraint_language_version=1.1.0
 
 #### POST Request Example
 
 This example sends a POST request to get any record containing ‘Lorem’:
-URL: http://localhost:8000/csw
-Content-type: application/xml
-POST Data:
-<?xml version="1.0" encoding="UTF-8"?>
+
+**URL**: ```http://localhost:8000/csw```<br>
+**Content-type**: ```application/xml```<br>
+**POST Data**:
+```<?xml version="1.0" encoding="UTF-8"?>
 <csw:GetRecords
     service="CSW"
     version="2.0.2"
@@ -250,8 +255,7 @@ POST Data:
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <csw:Query typeNames="csw:Record">
-        <csw:ElementSetName typeNames="gmd:MD_Metadata">
-full
+        <csw:ElementSetName typeNames="gmd:MD_Metadata">full
   </csw:ElementSetName>
         <csw:Constraint version="1.1.0">
             <Filter
@@ -265,6 +269,7 @@ full
         </csw:Constraint>
     </csw:Query>
 </csw:GetRecords>
+```
 
 For more Filter examples, visit http://reference1.mapinfo.com/software/spectrum/lim/8_0/services/Spatial/source/Services/csw/filters/filterexamples.html
 
@@ -275,22 +280,66 @@ The GetRecordById returns a record based on a given identifier.
 #### Required Parameters
 
 The following parameters are required for GetRecordById requests:
-Parameter	Parameter Description	Options
-id	URI identifier of one or more records to return.	Identifiers separated by commas.
+
+| Parameter | Parameter Description | Options |
+| --------- | --------------------- | ------- |
+| id | URI identifier of one or more records to return. | Identifiers separated by commas. |
 
 #### Optional Parameters
 
-These are some useful optional parameters for the GetRecordById request:
-Parameter	Parameter Description	Options	Description
-ElementSetName	Specifies a named, predefined set of metadata record elements from each source record that should be presented in the response to the operation.	brief	Returns the least amount of
-detail
-		full	Represents all the metadata record elements.
-		summary	
-outputFormat	Document format for output	application/atom+xml	
-		application/json	
-		application/xml	
-outputSchema	Specifies the URI for the schema to return the record.	(see Section 3.3.4)
 
+
+These are some useful optional parameters for the GetRecordById request:
+
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Parameter Description</th>
+            <th>Options</th>
+	    <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+	<!-- First row -->
+        <tr>
+            <td rowspan=3>ElementSetName</td>
+            <td rowspan=3>Specifies a named, predefined set of metadata record elements from each source record that should be presented in the response to the operation.</td>
+            <td>brief</td>
+	    <td>Returns the least amount of detail.</td>
+        </tr>
+        <tr>
+	    <td>full</td>
+            <td>Represents all the metadata record elements.</td>
+        </tr>
+	<tr>
+	    <td>summary</td>
+            <td></td>
+        </tr>
+	<!-- 2nd row -->
+	<tr>
+            <td rowspan=3>outputFormat</td>
+            <td rowspan=3>Document format for output.</td>
+            <td>application/atom+xml</td>
+	    <td></td>
+        </tr>
+        <tr>
+	    <td>application/json</td>
+            <td></td>
+        </tr>
+	<tr>
+	    <td>application/xml</td>
+            <td></td>
+        </tr>
+	<!-- 3rd row -->
+	<tr>
+            <td>outputSchema</td>
+            <td>Specifies the URI for the schema to return the record.</td>
+            <td>see section on Output Schema above</td>
+	    <td></td>
+        </tr>
+    </tbody>
+</table>
 
 #### GET Request Example
 
@@ -306,10 +355,11 @@ NOTE: To perform Transactions in pycsw, set the ‘transactions’ property unde
 #### POST Dublin Core Example
 
 This example adds a new record into the catalog using Dublin Core XML tags:
-URL: http://localhost:8000/csw
-Content-type: application/xml
-POST Data:
-<?xml version="1.0" encoding="UTF-8"?>
+
+**URL**: ```http://localhost:8000/csw```<br>
+**Content-type**: ```application/xml```<br>
+**POST Data**:
+```<?xml version="1.0" encoding="UTF-8"?>
 <csw:Transaction xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" version="2.0.2" service="CSW">
   <csw:Insert typeName="csw:Record">
     <csw:Record xmlns:ows="http://www.opengis.net/ows"
@@ -336,16 +386,18 @@ POST Data:
     </csw:Record>
   </csw:Insert>
 </csw:Transaction>
+```
 
 For more Transaction examples, visit http://reference1.mapinfo.com/software/spectrum/lim/8_0/services/Spatial/source/Services/csw/postget/postgettransaction.html
 
 #### POST ISO 19139/19115 Example
 
 The following example uses ISO 19139/19115 XML tags to insert a record into the pycsw (most sub-tags have been removed due to the number of elements in the ISO XML):
-URL: http://localhost:8000/csw
-Content-type: application/xml
-POST Data:
-<?xml version="1.0" encoding="UTF-8"?>
+
+**URL**: ```http://localhost:8000/csw```<br>
+**Content-type**: ```application/xml```<br>
+**POST Data**:
+```<?xml version="1.0" encoding="UTF-8"?>
 <csw:Transaction xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" version="2.0.2" service="CSW">
   <csw:Insert>
     <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd"
@@ -360,4 +412,4 @@ xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gco="http://www.isotc211.org/
     </gmd:MD_Metadata>
   </csw:Insert>
 </csw:Transaction>
-
+```
