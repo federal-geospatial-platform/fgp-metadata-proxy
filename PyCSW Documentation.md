@@ -335,7 +335,7 @@ These are some useful optional parameters for the GetRecordById request:
 	<tr>
             <td>outputSchema</td>
             <td>Specifies the URI for the schema to return the record.</td>
-            <td>see section on [Output Schema](#output-schema) above</td>
+	    <td>see section on <a href="#output-schema">Output Schema</a> above</td>
 	    <td></td>
         </tr>
     </tbody>
