@@ -198,7 +198,7 @@ These are some useful optional parameters for the GetRecords request:
 | startPosition | Specifies the record position the search results should start. | Any integer above 0 |
 | maxRecords | Specifies the maximum number of records should be returned. | Any integer above 0 |
 | Constraint | Specifies the filter for the query. | A filter either in CQL language or a Filter XML, depending on the CONSTRAINTLANGUAGE parameter. |
-| outputSchema | Specifies the URI for the schema to return the record. | (see section on Output Schema below) |
+| outputSchema | Specifies the URI for the schema to return the record. | (see section on [Output Schema](#output-schema) below) |
 
 For a complete list of GetRecords parameters, visit http://reference1.mapinfo.com/software/spectrum/lim/8_0/services/Spatial/source/Services/csw/postget/postgetgetrecords.html
 
@@ -335,7 +335,7 @@ These are some useful optional parameters for the GetRecordById request:
 	<tr>
             <td>outputSchema</td>
             <td>Specifies the URI for the schema to return the record.</td>
-            <td>see section on Output Schema above</td>
+            <td>see section on [Output Schema](#output-schema) above</td>
 	    <td></td>
         </tr>
     </tbody>
