@@ -1,6 +1,6 @@
 # pycsw 2.2.0 Documentation
 
-## Index
+## Table of Contents
 
 * [Installation & Setup](#installation--setup)
   * [Download and Unzip](#download-and-unzip)
