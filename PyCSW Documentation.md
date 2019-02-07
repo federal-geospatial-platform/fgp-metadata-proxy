@@ -90,31 +90,115 @@ The GetRecords request allows the user to query the catalogue metadata records u
 
 The following parameters are required for GetRecords requests:
 
-Parameter	Parameter Description	Options	Description
-CONSTRAINTLANGUAGE	The CONSTRAINTLANGUAGE is used to specify the predicate language being used.	CQL_TEXT	CQL (Common Query Language) is a query language created by the OGC for the Catalogue Web Services specification. Unlike the XML-based Filter Encoding language, CQL is written using a familiar text-based syntax. It is thus more readable and better-suited for manual authoring.
-		FILTER	Filter is (usually) an OGC filter which is expressed in XML and is more suited for machines to write.
-ElementSetName	Specifies a named, predefined set of metadata record elements from each source record that should be presented in the response to the operation.	brief	Returns the least amount of
-detail
-		full	Represents all the metadata record elements.
-		summary	
-outputFormat	Document format for output	application/atom+xml	
-		application/json	
-		application/xml	
-typeNames	The typeNames parameter is a list of one or more names of queryable entities in the catalogue's information model that may be constrained in the predicate of the query.	csw30:Record	
-		csw:Record	
-		gmd:MD_Metadata	
-resultType		hits	
-		results	
-		validate	
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Parameter Description</th>
+            <th>Options</th>
+	    <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+	<!-- First row -->
+        <tr>
+            <td rowspan=2>CONSTRAINTLANGUAGE</td>
+            <td rowspan=2>The CONSTRAINTLANGUAGE is used to specify the predicate language being used.</td>
+            <td>CQL_TEXT</td>
+	    <td>CQL (Common Query Language) is a query language created by the OGC for the Catalogue Web Services specification. Unlike the XML-based Filter Encoding language, CQL is written using a familiar text-based syntax. It is thus more readable and better-suited for manual authoring.</td>
+        </tr>
+        <tr>
+	    <td>FILTER</td>
+            <td>Filter is (usually) an OGC filter which is expressed in XML and is more suited for machines to write.</td>
+        </tr>
+	<!-- 2nd row -->
+        <tr>
+            <td rowspan=3>ElementSetName</td>
+            <td rowspan=3>Specifies a named, predefined set of metadata record elements from each source record that should be presented in the response to the operation.</td>
+            <td>brief</td>
+	    <td>Returns the least amount of detail.</td>
+        </tr>
+        <tr>
+	    <td>full</td>
+            <td>Represents all the metadata record elements.</td>
+        </tr>
+	<tr>
+	    <td>summary</td>
+            <td></td>
+        </tr>
+	<!-- 3rd row -->
+	<tr>
+            <td rowspan=3>ElementSetName</td>
+            <td rowspan=3>Specifies a named, predefined set of metadata record elements from each source record that should be presented in the response to the operation.</td>
+            <td>brief</td>
+	    <td>Returns the least amount of detail.</td>
+        </tr>
+        <tr>
+	    <td>full</td>
+            <td>Represents all the metadata record elements.</td>
+        </tr>
+	<tr>
+	    <td>summary</td>
+            <td></td>
+        </tr>
+	<!-- 4th row -->
+	<tr>
+            <td rowspan=3>outputFormat</td>
+            <td rowspan=3>Document format for output.</td>
+            <td>application/atom+xml</td>
+	    <td></td>
+        </tr>
+        <tr>
+	    <td>application/json</td>
+            <td></td>
+        </tr>
+	<tr>
+	    <td>application/xml</td>
+            <td></td>
+        </tr>
+	<!-- 5th row -->
+	<tr>
+            <td rowspan=3>typeNames</td>
+            <td rowspan=3>The typeNames parameter is a list of one or more names of queryable entities in the catalogue's information model that may be constrained in the predicate of the query.</td>
+            <td>csw30:Record</td>
+	    <td></td>
+        </tr>
+        <tr>
+	    <td>csw:Record</td>
+            <td></td>
+        </tr>
+	<tr>
+	    <td>gmd:MD_Metadata</td>
+            <td></td>
+        </tr>
+	<!-- 6th row -->
+	<tr>
+            <td rowspan=3>resultType</td>
+            <td rowspan=3></td>
+            <td>hits</td>
+	    <td></td>
+        </tr>
+        <tr>
+	    <td>results</td>
+            <td></td>
+        </tr>
+	<tr>
+	    <td>validate</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>	
     
 #### Optional Parameters
 
 These are some useful optional parameters for the GetRecords request:
-Parameter	Parameter Description	Options
-startPosition	Specifies the record position the search results should start.	Any integer above 0
-maxRecords	Specifies the maximum number of records should be returned.	Any integer above 0
-Constraint	Specifies the filter for the query.	A filter either in CQL language or a Filter XML, depending on the CONSTRAINTLANGUAGE parameter.
-outputSchema	Specifies the URI for the schema to return the record.	(see Section 3.3.4)
+
+| Parameter | Parameter Description | Options |
+| --------- | --------------------- | ------- | 
+| startPosition | Specifies the record position the search results should start. | Any integer above 0 |
+| maxRecords | Specifies the maximum number of records should be returned. | Any integer above 0 |
+| Constraint | Specifies the filter for the query. | A filter either in CQL language or a Filter XML, depending on the CONSTRAINTLANGUAGE parameter. |
+| outputSchema | Specifies the URI for the schema to return the record. | (see section on Output Schema below) |
 
 
 For a complete list of GetRecords parameters, visit http://reference1.mapinfo.com/software/spectrum/lim/8_0/services/Spatial/source/Services/csw/postget/postgetgetrecords.html
