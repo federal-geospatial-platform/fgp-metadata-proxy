@@ -72,16 +72,9 @@ The following parameters are required for DescribeRecord requests:
 
 | Parameter | Description | Valid Options |
 | --------- | ----------- | ------------- |
-| outputFormat | | application/json |
-| ^ | ^ |	application/xml |
-schemaLanguage		http://www.w3.org/2001/XMLSchema
-
-		http://www.w3.org/TR/xmlschema-1/
-
-		http://www.w3.org/XML/Schema
-
-typeName		csw:Record
-		gmd:MD_Metadata
+| outputFormat | | application/json<br>application/xml |
+| schemaLanguage | | http://www.w3.org/2001/XMLSchema<br>http://www.w3.org/TR/xmlschema-1/<br>http://www.w3.org/XML/Schema |
+| typeName | | csw:Record<br>gmd:MD_Metadata |
 
 #### GET Request Example
 
