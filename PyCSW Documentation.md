@@ -9,7 +9,7 @@
     * [Setup pycsw for Python](#setup-pycsw-for-python)
 * [Running The Server](#running-the-server)
   * [Using WSGI](#using-wsgi)
-* [Requests](#request)
+* [Requests](#requests)
   * [GetCapabilities](#getcapabilities)
     * [Description](#description)
     * [GET Request Example](#get-request-example)
@@ -43,7 +43,7 @@
 
 NOTE: Make sure Python is installed before going through the next steps. To check if Python is installed, type ```python``` in a command prompt. If the error ```'python' is not recognized as an internal or external command, operable program or batch file.``` occurs, either Python is not installed or the Python installation location is not in the PATH Environment Variable.
 
-### Dependencies
+#### Dependencies
 
 pycsw 2.2.0 requires the following Python package:
 *	lxml v3.6.2
@@ -59,7 +59,7 @@ pycsw 2.2.0 only works with these specific versions. Any early or later packages
 
 Each package can be installed using pip. In a command prompt, enter ```pip install <package>==<version>``` (lxml example: ```pip install lxml==3.6.2```)
 
-### Setup pycsw for Python
+#### Setup pycsw for Python
 
 1.	Open a Command Prompt window.
 2.	Change the drive to C by typing ```C:```
