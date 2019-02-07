@@ -4,6 +4,12 @@
 
 The Metadata Proxy facilitates the ingestion of external 3rd party metadata into the Federal Geospatial Platform (FGP) catalogue. Currenty, the FGP catalogue is used to manage internal stakeholder metadata and is purpose built to support platform specfic requirements and standards. These requirements and standards impose unecessary constraints on external metadata resources and makes automated ingestion practically impossible.
 
+### Principles
+* Scalable
+* Easy to maintain
+* Flexible
+* Loosely coupled
+
 ### Known Constraints
 
 #### FGP
@@ -30,5 +36,8 @@ The Metadata Proxy facilitates the ingestion of external 3rd party metadata into
 
 ![alt text](diagram_context.png "Context Diagram")
 
-### Resources
+### Deployment
 
+![alt text](diagram_deployment.png "Deployment Diagram")
+
+### Resources
