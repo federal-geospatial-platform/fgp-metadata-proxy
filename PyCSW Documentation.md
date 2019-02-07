@@ -2,7 +2,43 @@
 
 ## Index
 
-* [Installation & Setup]
+* [Installation & Setup](#installation--setup)
+  * [Download and Unzip](#download-and-unzip)
+  * [Setup Python](#setup-python)
+  * [Dependencies](#dependencies)
+  * [Setup pycsw for Python](#setup-pycsw-for-python)
+* [Running The Server](#running-the-server)
+
+* [Installation & Setup](#installation--setup)
+  * [Download and Unzip](#download-and-unzip)
+  * [Setup Python](#setup-python)
+    * [Dependencies](#dependencies)
+    * [Setup pycsw for Python](#setup-pycsw-for-python)
+* [Running The Server](#running-the-server)
+  * [Using WSGI](#using-wsgi)
+* [Requests](#request)
+  * [GetCapabilities](#getcapabilities)
+    * [Description](#description)
+    * [GET Request Example](#get-request-example)
+  * [DescribeRecord](#describerecord)
+    * [Description](#description)
+    * [Required Parameters](required-parameters)
+    * [GET Request Example](#get-request-example)
+  * [GetRecords](#setup-python)
+    * [Description](#setup-python)
+    * [Required Parameters](#setup-python)
+    * [Optional Parameters](#setup-python)
+    * [Output Schema](#setup-python)
+    * [GET Request Examples](#setup-python)
+    * [POST Request Example](#setup-python)
+  * [GetRecordById](#setup-python)
+    * [Required Parameters](#setup-python)
+    * [Optional Parameters](#setup-python)
+    * [GET Request Example](#setup-python)
+  * [Transaction](#setup-python)
+    * [POST Dublin Core Example](#setup-python)
+    * [POST ISO 19139/19115 Example](#setup-python)
+
 
 ## Installation & Setup
 
