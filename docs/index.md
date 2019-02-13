@@ -1,4 +1,5 @@
 
+# Architecture
 
 ## Solution Concept
 
@@ -26,7 +27,7 @@ The Metadata Proxy will provide a suite of software and services designed to fac
 * Heterogenous API's (e.g. REST, CSW, other, etc..)
 * Varying degrees of support for geospatial standards
 
-### Design Decisions
+## Design Decisions
 
 * Cloud deployment (i.e. FGP GeoCommunity Cloud on AWS)
   * Scalable technology stack (e.g. serverless, cloud native)
@@ -35,12 +36,16 @@ The Metadata Proxy will provide a suite of software and services designed to fac
   * Simplify metadata schema (e.g. adopt DCAT/GeoDCAT)
   * In situ harvesting
 
-### Context
+## Context
 
 ![alt text](diagram_context.png "Context Diagram")
 
-### Deployment
+## Deployment
 
 ![alt text](diagram_deployment.png "Deployment Diagram")
 
-### Resources
+## Resources
+
+[Requirements](https://federal-geospatial-platform.github.io/fgp-metadata-proxy/requirements)
+
+[Data Sources](https://federal-geospatial-platform.github.io/fgp-metadata-proxy/data-sources)
