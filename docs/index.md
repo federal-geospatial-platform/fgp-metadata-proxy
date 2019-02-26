@@ -38,11 +38,13 @@ The Metadata Proxy will provide a suite of software and services designed to fac
 
 ## Context
 
-The FGP will be the clearinghouse for geospatial data in the Government of Canada. Any P/T metadata that is harvested into the FGP will published to the Open Data Portal via Open Maps.
+The FGP is the clearinghouse for geospatial data in the Government of Canada. Any P/T metadata that is harvested into the FGP is published to the Open Data Portal via Open Maps.
 
 _Note that non-geospatial P/T data are currently harvested by the Open Data Portal._
 
 ![alt text](diagram_context.png "Context Diagram")
+
+## Application Process
 
 ![alt text](diagram_flow.png "Deployment Diagram")
 
