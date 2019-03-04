@@ -23,6 +23,11 @@ https://www.eodms-sgdot.nrcan-rncan.gc.ca/index_en.jsp
 * Access to only open data
 * Metadata assessment for conformance with HNAP
 
+Collective expectation should be that RADARSAT-1 will be listed in the anonymous open call to https://www.eodms-sgdot.nrcan-rncan.gc.ca/wes/rapi/collections?format=json by March 31, 2019.
+
+Specifically, it ought to look like the other listed collections:
+{"title":"RADARSAT-1","collectionId":"Radarsat1","description":"Developed and operated by the Canadian Space Agency, it is Canada's first commercial Earth observation satellite.","url":"https://www.eodms-sgdot.nrcan-rncan.gc.ca/wes/rapi/collections/Radarsat1"}
+
 ## FGP Catalogue 
 https://gcgeo.gc.ca/geonetwork/login/eng
 * Release approval process for non-fed data will be bypassed or automated
