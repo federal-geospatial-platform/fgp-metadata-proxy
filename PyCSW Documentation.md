@@ -67,6 +67,35 @@ Each package can be installed using pip. In a command prompt, enter ```pip insta
 4.	To build the setup, type ```python setup.py build```
 5.	To install, type ```python setup.py install```
 
+## CONFIGURATION
+
+PyCSW is configured using “pycsw-2.2.0\default.cfg”. Here are a select few parameters for the config file (for a full list, visit the PyCSW Configuration page at http://docs.pycsw.org/en/2.2.0/configuration.html).
+
+### Server
+| Parameter | Description | FGP PyCSW Setting |
+| --------- | ----------- | ----------------- |
+| home | The full filesystem path to pycsw | C:\\pycsw-2.2.0 |
+| url | The URL of the resulting service | http://localhost:8000/pycsw/csw.py |
+| maxrecords | The maximum number of records to return by default. This value is enforced if a CSW’s client’s maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
+| logfile | The full file path to the logfile. | C:\\pycsw-2.2.0\\log\\pycsw.log |
+
+### Manager
+| Parameter | Description | FGP PyCSW Setting |
+| --------- | ----------- | ----------------- |
+| transactions | Whether to enable transactions (true or false). Default is false. | true |
+| allowed_ips | Comma delimited list of IP addresses (e.g. 192.168.0.103), wildcards (e.g. 192.168.0.\*) or CIDR notations (e.g. 192.168.100.0/24) allowed to perform transactions. | 127.0.0.1,132.156.0.0/16,10.0.1.62 |
+
+### Metadata:Main
+
+This section contains information on the PyCSW and its author.
+
+### Repository
+
+| Parameter | Description | FGP PyCSW Setting |
+| --------- | ----------- | ----------------- |
+| database | The full file path to the metadata database, in database URL format. | sqlite:///var/lib/sqlite/pycsw.db
+| table | The table name for metadata records (default is records). If you are using PostgreSQL with a DB schema other than public, qualify the table like myschema.table. | records |
+
 ## RUNNING THE SERVER
 
 ### Using WSGI
