@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Administration &mdash; pycsw 2.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pycsw 2.2.0 documentation" href="index.html" />
+    <link rel="next" title="CSW Support" href="csw-support.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" />
+ 
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32855587-1']);
+  _gaq.push(['_setDomainName', 'pycsw.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+<style type="text/css">
+  .header a:link{color: white;}
+  .header a:visited{color: white;}
+  .padded{padding: 10px 10px;}
+</style>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="csw-support.html" title="CSW Support"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pycsw 2.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="administration">
+<span id="id1"></span><h1>Administration<a class="headerlink" href="#administration" title="Permalink to this headline">¶</a></h1>
+<p>pycsw administration is handled by the <code class="docutils literal"><span class="pre">pycsw-admin.py</span></code> utility.  <code class="docutils literal"><span class="pre">pycsw-admin.py</span></code>
+is installed as part of the pycsw install process and should be available in your
+PATH.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Run <code class="docutils literal"><span class="pre">pycsw-admin.py</span> <span class="pre">-h</span></code> to see all administration operations and parameters</p>
+</div>
+<div class="section" id="metadata-repository-setup">
+<h2>Metadata Repository Setup<a class="headerlink" href="#metadata-repository-setup" title="Permalink to this headline">¶</a></h2>
+<p>pycsw supports the following databases:</p>
+<ul class="simple">
+<li>SQLite3</li>
+<li>PostgreSQL</li>
+<li>PostgreSQL with PostGIS enabled</li>
+<li>MySQL</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The easiest and fastest way to deploy pycsw is to use SQLite3 as the backend.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PostgreSQL support includes support for PostGIS functions if enabled</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If PostGIS (1.x or 2.x) is activated before setting up the pycsw/PostgreSQL database, then native PostGIS geometries will be enabled.</p>
+</div>
+<p>To expose your geospatial metadata via pycsw, perform the following actions:</p>
+<ul class="simple">
+<li>setup the database</li>
+<li>import metadata</li>
+<li>publish the repository</li>
+</ul>
+</div>
+<div class="section" id="supported-information-models">
+<h2>Supported Information Models<a class="headerlink" href="#supported-information-models" title="Permalink to this headline">¶</a></h2>
+<p>By default, pycsw supports the <code class="docutils literal"><span class="pre">csw:Record</span></code> information model.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">See <a class="reference internal" href="profiles.html#profiles"><span>Profile Plugins</span></a> for information on enabling profiles</p>
+</div>
+</div>
+<div class="section" id="setting-up-the-database">
+<h2>Setting up the Database<a class="headerlink" href="#setting-up-the-database" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pycsw-admin.py -c setup_db -f default.cfg
+</pre></div>
+</div>
+<p>This will create the necessary tables and values for the repository.</p>
+<p>The database created is an <a class="reference external" href="http://www.opengeospatial.org/standards/sfs">OGC SFSQL</a> compliant database, and can be used with any implementing software.  For example, to use with <a class="reference external" href="http://www.gdal.org/ogr">OGR</a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ogrinfo /path/to/records.db
+INFO: Open of <span class="s1">&#39;records.db&#39;</span>
+using driver <span class="s1">&#39;SQLite&#39;</span> successful.
+1: records <span class="o">(</span>Polygon<span class="o">)</span>
+$ ogrinfo -al /path/to/records.db
+<span class="c1"># lots of output</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If PostGIS is detected, the pycsw-admin.py script does not create the SFSQL tables as they are already in the database.</p>
+</div>
+</div>
+<div class="section" id="loading-records">
+<h2>Loading Records<a class="headerlink" href="#loading-records" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pycsw-admin.py -c load_records -f default.cfg -p /path/to/records
+</pre></div>
+</div>
+<p>This will import all <code class="docutils literal"><span class="pre">*.xml</span></code> records from <code class="docutils literal"><span class="pre">/path/to/records</span></code> into the database specified in <code class="docutils literal"><span class="pre">default.cfg</span></code> (<code class="docutils literal"><span class="pre">repository.database</span></code>).  Passing <code class="docutils literal"><span class="pre">-r</span></code> to the script will process <code class="docutils literal"><span class="pre">/path/to/records</span></code> recursively.  Passing <code class="docutils literal"><span class="pre">-y</span></code> to the script will force overwrite existing metadata with the same identifier.  Note that <code class="docutils literal"><span class="pre">-p</span></code> accepts either a directory path or single file.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Records can also be imported using CSW-T (see <a class="reference internal" href="transactions.html#transactions"><span>Transactions</span></a>).</p>
+</div>
+</div>
+<div class="section" id="exporting-the-repository">
+<h2>Exporting the Repository<a class="headerlink" href="#exporting-the-repository" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pycsw-admin.py -c export_records -f default.cfg -p /path/to/output_dir
+</pre></div>
+</div>
+<p>This will write each record in the database specified in <code class="docutils literal"><span class="pre">default.cfg</span></code> (<code class="docutils literal"><span class="pre">repository.database</span></code>) to an XML document on disk, in directory <code class="docutils literal"><span class="pre">/path/to/output_dir</span></code>.</p>
+</div>
+<div class="section" id="optimizing-the-database">
+<h2>Optimizing the Database<a class="headerlink" href="#optimizing-the-database" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pycsw-admin.py -c optimize_db -f default.cfg
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This feature is relevant only for PostgreSQL and MySQL</p>
+</div>
+</div>
+<div class="section" id="deleting-records-from-the-repository">
+<h2>Deleting Records from the Repository<a class="headerlink" href="#deleting-records-from-the-repository" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pycsw-admin.py -c delete_records -f default.cfg
+</pre></div>
+</div>
+<p>This will empty the repository of all records.</p>
+</div>
+<div class="section" id="database-specific-notes">
+<h2>Database Specific Notes<a class="headerlink" href="#database-specific-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="postgresql">
+<h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>if PostGIS is not enabled, pycsw makes uses of PL/Python functions.  To enable PostgreSQL support, the database user must be able to create functions within the database. In case of recent PostgreSQL versions (9.x), the PL/Python extension must be enabled prior to pycsw setup</li>
+<li><a class="reference external" href="http://www.postgresql.org/docs/9.2/static/textsearch.html">PostgreSQL Full Text Search</a> is supported for <code class="docutils literal"><span class="pre">csw:AnyText</span></code> based queries.  pycsw creates a tsvector column based on the text from anytext column. Then pycsw creates a GIN index against the anytext_tsvector column.  This is created automatically in <code class="docutils literal"><span class="pre">pycsw.admin.setup_db</span></code>.  Any query against <cite>csw:AnyText</cite> or <cite>apiso:AnyText</cite> will process using PostgreSQL FTS handling</li>
+</ul>
+</div>
+<div class="section" id="postgis">
+<h3>PostGIS<a class="headerlink" href="#postgis" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>pycsw makes use of PostGIS spatial functions and native geometry data type.</li>
+<li>It is advised to install the PostGIS extension before setting up the pycsw database</li>
+<li>If PostGIS is detected, the pycsw-admin.py script will create both a native geometry column and a WKT column, as well as a trigger to keep both synchronized.</li>
+<li>In case PostGIS gets disabled, pycsw will continue to work with the <a class="reference external" href="http://en.wikipedia.org/wiki/Well-known_text">WKT</a> column</li>
+<li>In case of migration from plain PostgreSQL database to PostGIS, the spatial functions of PostGIS will be used automatically</li>
+<li>When migrating from plain PostgreSQL database to PostGIS, in order to enable native geometry support, a &#8220;GEOMETRY&#8221; column named &#8220;wkb_geometry&#8221; needs to be created manually (along with the update trigger in <code class="docutils literal"><span class="pre">pycsw.admin.setup_db</span></code>). Also the native geometries must be filled manually from the <a class="reference external" href="http://en.wikipedia.org/wiki/Well-known_text">WKT</a> field. Next versions of pycsw will automate this process</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mapping-to-an-existing-repository">
+<span id="custom-repository"></span><h2>Mapping to an Existing Repository<a class="headerlink" href="#mapping-to-an-existing-repository" title="Permalink to this headline">¶</a></h2>
+<p>pycsw supports publishing metadata from an existing repository.  To enable this functionality, the default database mappings must be modified to represent the existing database columns mapping to the abstract core model (the default mappings are in <code class="docutils literal"><span class="pre">pycsw/config.py:MD_CORE_MODEL</span></code>).</p>
+<p>To override the default settings:</p>
+<ul class="simple">
+<li>define a custom database mapping based on <code class="docutils literal"><span class="pre">etc/mappings.py</span></code></li>
+<li>in <code class="docutils literal"><span class="pre">default.cfg</span></code>, set <code class="docutils literal"><span class="pre">repository.mappings</span></code> to the location of the mappings.py file:</li>
+</ul>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[repository]
+...
+mappings=path/to/mappings.py
+</pre></div>
+</div>
+<p>Note you can also reference mappings as a Python object as a dotted path:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[repository]
+...
+mappings=&#39;path.to.pycsw_mappings&#39;
+</pre></div>
+</div>
+<p>See the <a class="reference internal" href="geonode.html#geonode"><span>GeoNode Configuration</span></a>, <a class="reference internal" href="hhypermap.html#hhypermap"><span>HHypermap Configuration</span></a>, and <a class="reference internal" href="odc.html#odc"><span>Open Data Catalog Configuration</span></a> for further examples.</p>
+<div class="section" id="existing-repository-requirements">
+<h3>Existing Repository Requirements<a class="headerlink" href="#existing-repository-requirements" title="Permalink to this headline">¶</a></h3>
+<p>pycsw requires certain repository attributes and semantics to exist in any repository to operate as follows:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">pycsw:Identifier</span></code>: unique identifier</li>
+<li><code class="docutils literal"><span class="pre">pycsw:Typename</span></code>: typename for the metadata; typically the value of the root element tag (e.g. <code class="docutils literal"><span class="pre">csw:Record</span></code>, <code class="docutils literal"><span class="pre">gmd:MD_Metadata</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">pycsw:Schema</span></code>: schema for the metadata; typically the target namespace (e.g. <code class="docutils literal"><span class="pre">http://www.opengis.net/cat/csw/2.0.2</span></code>, <code class="docutils literal"><span class="pre">http://www.isotc211.org/2005/gmd</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">pycsw:InsertDate</span></code>: date of insertion</li>
+<li><code class="docutils literal"><span class="pre">pycsw:XML</span></code>: full XML representation</li>
+<li><code class="docutils literal"><span class="pre">pycsw:AnyText</span></code>: bag of XML element text values, used for full text search.  Realized with the following design pattern:<ul>
+<li>capture all XML element and attribute values</li>
+<li>store in repository</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">pycsw:BoundingBox</span></code>: string of <a class="reference external" href="http://en.wikipedia.org/wiki/Well-known_text">WKT</a> or <a class="reference external" href="http://en.wikipedia.org/wiki/Well-known_text#Variations">EWKT</a> geometry</li>
+</ul>
+<p>The following repository semantics exist if the attributes are specified:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">pycsw:Keywords</span></code>: comma delimited list of keywords</li>
+<li><code class="docutils literal"><span class="pre">pycsw:Links</span></code>: structure of links in the format &#8220;name,description,protocol,url[^,,,[^,,,]]&#8221;</li>
+</ul>
+<p>Values of mappings can be derived from the following mechanisms:</p>
+<ul class="simple">
+<li>text fields</li>
+<li>Python datetime.datetime or datetime.date objects</li>
+<li>Python functions</li>
+</ul>
+<p>Further information is provided in <code class="docutils literal"><span class="pre">pycsw/config.py:MD_CORE_MODEL</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Administration</a><ul>
+<li><a class="reference internal" href="#metadata-repository-setup">Metadata Repository Setup</a></li>
+<li><a class="reference internal" href="#supported-information-models">Supported Information Models</a></li>
+<li><a class="reference internal" href="#setting-up-the-database">Setting up the Database</a></li>
+<li><a class="reference internal" href="#loading-records">Loading Records</a></li>
+<li><a class="reference internal" href="#exporting-the-repository">Exporting the Repository</a></li>
+<li><a class="reference internal" href="#optimizing-the-database">Optimizing the Database</a></li>
+<li><a class="reference internal" href="#deleting-records-from-the-repository">Deleting Records from the Repository</a></li>
+<li><a class="reference internal" href="#database-specific-notes">Database Specific Notes</a><ul>
+<li><a class="reference internal" href="#postgresql">PostgreSQL</a></li>
+<li><a class="reference internal" href="#postgis">PostGIS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mapping-to-an-existing-repository">Mapping to an Existing Repository</a><ul>
+<li><a class="reference internal" href="#existing-repository-requirements">Existing Repository Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="configuration.html"
+                        title="previous chapter">Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="csw-support.html"
+                        title="next chapter">CSW Support</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/administration.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/Certified_OGC_Compliant_Logo_Web.gif" height="74"/></a>
+</p>
+
+<p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/badge.php?s=CAT%20CSW%203.0.0&r=1" height="38"/></a>
+</p>
+
+<p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 2.0.2. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 2.0.2. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/badge.php?s=CAT%20CSW%202.0.2&r=1" height="38"/></a>
+</p>
+
+<p>
+    <img alt="OSGeo Project" src="https://raw.githubusercontent.com/OSGeo/osgeo/master/incubation/project/OSGeo_project.png" height="64"/>
+</p>
+
+<p>
+    <script type="text/javascript" src="https://www.openhub.net/p/488022/widgets/project_thin_badge.js"></script> 
+</p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="csw-support.html" title="CSW Support"
+             >next</a></li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pycsw 2.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+<div class="footer">
+    <p>&copy; Copyright 2010-2015, Tom Kralidis This work is licensed under a Creative Commons Attribution 4.0 International License<br/>Last updated on 2018-03-20T12:16:33Z</p>
+    <p>
+        <a href="http://pycsw.org">Website</a> &mdash;
+        <a href="http://pycsw.org/community">Community</a> &mdash;
+        <a href="http://pycsw.org/blog">Blog</a> &mdash;
+        <a href="https://plus.google.com/communities/104084873011085696113">Google+</a> &mdash;
+        <a href="http://pycsw.org/download">Download</a> &mdash;
+        <a href="https://github.com/geopython/pycsw">Source</a> &mdash;
+        <a href="https://github.com/geopython/pycsw/issues">Issues</a> &mdash;
+        <a href="http://lists.osgeo.org/mailman/listinfo/pycsw-devel">Mailing List</a>
+    </p>
+</div>
+
+  </body>
+</html>
