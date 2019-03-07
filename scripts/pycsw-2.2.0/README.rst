@@ -8,4 +8,4 @@ This version of pycsw has been modified for use in the P/T Extraction of geospat
 pycsw is Open Source, released under an MIT license, and runs on all major 
 platforms (Windows, Linux, Mac OS X).
 
-For more information on pycsw, please read the docs at http://pycsw.org/docs for more information. For information on this version of pycsw, please read its document file.
+For more information on pycsw, please read the docs at http://pycsw.org/docs. For information on this version of pycsw, please read its document file.
