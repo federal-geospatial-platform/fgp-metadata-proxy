@@ -1,5 +1,4 @@
-PyCSW for P/T Extraction README
-============
+# PyCSW for P/T Extraction README
 
 pycsw is an OGC CSW server implementation written in Python.
 
