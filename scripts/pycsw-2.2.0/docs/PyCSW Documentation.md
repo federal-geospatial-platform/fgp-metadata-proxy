@@ -39,7 +39,7 @@
 1.	Download the pycsw zip file from https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/pycsw-2.2.0.zip
 2.	Unzip the file to a preferred location (in this case C:\pycsw-2.2.0)
 
-### Setup PyCSW For Python 3.7
+### Setup PyCSW For Python 3.7.x
 
 #### Version Check
 
