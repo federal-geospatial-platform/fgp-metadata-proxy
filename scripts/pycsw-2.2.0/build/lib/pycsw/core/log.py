@@ -28,7 +28,9 @@
 #
 # =================================================================
 
+import os
 import logging
+import logging.handlers
 
 LOGGER = logging.getLogger(__name__)
 
@@ -38,63 +40,75 @@ line=%(lineno)s module=%(module)s function=%(funcName)s %(message)s'
 TIME_FORMAT = '%a, %d %b %Y %H:%M:%S'
 
 LOGLEVELS = {
-    'CRITICAL': logging.CRITICAL,
-    'ERROR': logging.ERROR,
-    'WARNING': logging.WARNING,
-    'INFO': logging.INFO,
-    'DEBUG': logging.DEBUG,
-    'NOTSET': logging.NOTSET,
+	'CRITICAL': logging.CRITICAL,
+	'ERROR': logging.ERROR,
+	'WARNING': logging.WARNING,
+	'INFO': logging.INFO,
+	'DEBUG': logging.DEBUG,
+	'NOTSET': logging.NOTSET,
 }
 
 
 def setup_logger(config=None):
-    """Initialize logging facility"""
-    if config is None:
-        return None
+	"""Initialize logging facility"""
+	if config is None:
+		return None
 
-    # Do not proceed if logging has not been set up.
-    if not (config.has_option('server', 'loglevel') or
-            config.has_option('server', 'logfile')):
-        return None
+	# Do not proceed if logging has not been set up.
+	if not (config.has_option('server', 'loglevel') or
+			config.has_option('server', 'logfile')):
+		return None
 
-    logfile = None
-    loglevel = 'NOTSET'
+	logfile = None
+	loglevel = 'NOTSET'
 
-    if config.has_option('server', 'loglevel'):
-        loglevel = config.get('server', 'loglevel')
+	if config.has_option('server', 'loglevel'):
+		loglevel = config.get('server', 'loglevel')
 
-        if loglevel not in LOGLEVELS.keys():
-            raise RuntimeError(
-                'Invalid server configuration (server.loglevel).')
+		if loglevel not in LOGLEVELS.keys():
+			raise RuntimeError(
+				'Invalid server configuration (server.loglevel).')
 
-        if not config.has_option('server', 'logfile'):
-            raise RuntimeError(
-                'Invalid server configuration (server.loglevel set,\
-                but server.logfile missing).')
+		if not config.has_option('server', 'logfile'):
+			raise RuntimeError(
+				'Invalid server configuration (server.loglevel set,\
+				but server.logfile missing).')
 
-    if config.has_option('server', 'logfile'):
-        if not config.has_option('server', 'loglevel'):
-            raise RuntimeError(
-                'Invalid server configuration (server.logfile set,\
-                but server.loglevel missing).')
+	if config.has_option('server', 'logfile'):
+		if not config.has_option('server', 'loglevel'):
+			raise RuntimeError(
+				'Invalid server configuration (server.logfile set,\
+				but server.loglevel missing).')
 
-        logfile = config.get('server', 'logfile')
+		logfile = config.get('server', 'logfile')
 
-    if loglevel != 'NOTSET' and logfile is None:
-        raise RuntimeError(
-            'Invalid server configuration \
-            (server.loglevel set, but server.logfile is not).')
+	if loglevel != 'NOTSET' and logfile is None:
+		raise RuntimeError(
+			'Invalid server configuration \
+			(server.loglevel set, but server.logfile is not).')
 
-    # Setup logging globally (not only for the pycsw module)
-    # based on the parameters passed.
-    logging.basicConfig(level=LOGLEVELS[loglevel],
-                        filename=logfile,
-                        datefmt=TIME_FORMAT,
-                        format=MSG_FORMAT)
+	# Setup logging globally (not only for the pycsw module)
+	# based on the parameters passed.
+	logging.basicConfig(level=LOGLEVELS[loglevel],
+						filename=logfile,
+						datefmt=TIME_FORMAT,
+						format=MSG_FORMAT)
+						
+	# Added by Kevin Ballantyne, 2019-03-08
+	# if config.has_option('server', 'logsize'):
+		# logsize = config.get('server', 'logsize')
+		# print("logsize: %s" % logsize)
+		# if logfile is not None:
+			# log_fn = os.path.basename(logfile)
+			# print("log_fn: %s" % log_fn)
+			# rotate_handler = logging.handlers.RotatingFileHandler(log_fn, 
+												# maxBytes=logsize, 
+												# backupCount=5)
+			# LOGGER.addHandler(rotate_handler)
 
-    LOGGER.info('Logging initialized (level: %s).', loglevel)
+	LOGGER.info('Logging initialized (level: %s).', loglevel)
 
-    if loglevel == 'DEBUG':  # turn on CGI debugging
-        LOGGER.info('CGI debugging enabled.')
-        import cgitb
-        cgitb.enable()
+	if loglevel == 'DEBUG':  # turn on CGI debugging
+		LOGGER.info('CGI debugging enabled.')
+		import cgitb
+		cgitb.enable()
