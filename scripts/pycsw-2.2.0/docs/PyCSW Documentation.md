@@ -1,4 +1,4 @@
-# pycsw 2.2.0 Documentation
+# PyCSW For P/T Extraction Documentation
 
 ## Table of Contents
 
