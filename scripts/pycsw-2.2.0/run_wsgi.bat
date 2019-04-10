@@ -1,7 +1,8 @@
-SET "PATH=%PATH%;C:\Python27\ArcGIS10.4;C:\Python27\ArcGIS10.4\Scripts;C:\gdal_232;C:\gdal_232\bin;C:\gdal_232\bin\gdal\apps"
+set GEOS_LIBRARY_PATH=C:\pycsw-2.2.0\geos-3.3.3\src\geos.dll
+set GEOS_CONFIG=C:\pycsw-2.2.0\geos-3.3.3\src
 
 cd C:\pycsw-2.2.0
 
-python pycsw/wsgi.py 8000
+C:\Python37-32\python pycsw/wsgi.py 8000
 
 pause

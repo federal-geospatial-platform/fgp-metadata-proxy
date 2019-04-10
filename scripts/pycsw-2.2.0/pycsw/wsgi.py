@@ -218,8 +218,6 @@ def get_configuration_path(process_environment, request_environment,
 if __name__ == '__main__':  # run inline using WSGI reference implementation
 	from wsgiref.simple_server import make_server
 	
-	port = 8080
-	
 	if len(sys.argv) > 1:
 		port = int(sys.argv[1])
 	httpd = make_server('', port, application)

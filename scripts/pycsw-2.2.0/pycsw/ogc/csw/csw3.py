@@ -2010,7 +2010,7 @@ class Csw3(object):
 
             node2.text = self.parent.request
 
-        if self.parent.async:
+        if self.parent.asyncron:
             etree.SubElement(node, util.nspath_eval('csw30:RequestId',
             self.parent.context.namespaces)).text = self.parent.kvp['requestid']
 
