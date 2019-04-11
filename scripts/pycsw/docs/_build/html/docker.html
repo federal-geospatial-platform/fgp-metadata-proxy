@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Docker &mdash; pycsw 2.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pycsw 2.2.0 documentation" href="index.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+ 
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32855587-1']);
+  _gaq.push(['_setDomainName', 'pycsw.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+<style type="text/css">
+  .header a:link{color: white;}
+  .header a:visited{color: white;}
+  .padded{padding: 10px 10px;}
+</style>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="configuration.html" title="Configuration"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pycsw 2.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="docker">
+<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<p>pycsw is available as a Docker image. The image is hosted on the <a class="reference external" href="https://hub.docker.com/r/geopython/pycsw/">Docker Hub</a>.</p>
+<p>Assuming you already have docker installed, you can get a pycsw instance up
+and running by issuing the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>docker run -p 8000:8000 geopython/pycsw
+</pre></div>
+</div>
+<p>Docker will retrieve the pycsw image from Docker Hub (if needed) and then
+start a new container listening on port 8000.</p>
+<p>The default configuration will run pycsw with an sqlite repository backend
+loaded with some test data from the CITE test suite. You can use this to take
+pycsw for a test drive.</p>
+<div class="section" id="inspect-logs">
+<h2>Inspect logs<a class="headerlink" href="#inspect-logs" title="Permalink to this headline">¶</a></h2>
+<p>The default configuration for the docker image outputs logs to stdout. This is
+common practice with docker containers and enables the inspection of logs
+with the <code class="docutils literal"><span class="pre">docker</span> <span class="pre">logs</span></code> command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># run a pycsw container in the background
+docker run \
+    --name pycsw-test \
+    --publish 8000:8000 \
+    --detach \
+    geopython/pycsw
+
+# inspect logs
+docker logs pycsw-test
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to have pycsw logs being sent to standard output you must set
+<code class="docutils literal"><span class="pre">server.logfile=</span></code> in the pycsw configuration file.</p>
+</div>
+</div>
+<div class="section" id="using-pycsw-admin">
+<h2>Using pycsw-admin<a class="headerlink" href="#using-pycsw-admin" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">pycsw-admin</span></code> can be executed on a running container by
+using <code class="docutils literal"><span class="pre">docker</span> <span class="pre">exec</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>docker exec -ti &lt;running-container-id&gt; pycsw-admin.py -h
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-custom-pycsw-containers">
+<h2>Running custom pycsw containers<a class="headerlink" href="#running-custom-pycsw-containers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pycsw-configuration">
+<h3>pycsw configuration<a class="headerlink" href="#pycsw-configuration" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to supply a custom configuration file for pycsw as a bind
+mount or as a docker secret (in the case of docker swarm). The configuration
+file is searched at the value of the <code class="docutils literal"><span class="pre">PYCSW_CONFIG</span></code> environmental variable,
+which defaults to <code class="docutils literal"><span class="pre">/etc/pycsw/pycsw.cfg</span></code>.</p>
+<p>Supplying the configuration file via bind mount:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>docker run \
+    --name pycsw \
+    --detach \
+    --volume &lt;path-to-local-pycsw.cfg&gt;:/etc/pycsw/pycsw.cfg \
+    --publish 8000:8000 \
+    geopython/pycsw
+</pre></div>
+</div>
+<p>Supplying the configuration file via docker secrets:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># first create a docker secret with the pycsw config file
+docker secret create pycsw-config &lt;path-to-local-pycsw.cfg&gt;
+docker service create \
+    --name pycsw \
+    --secret src=pycsw-config,target=/etc/pycsw/pycsw.cfg \
+    --publish 8000:8000
+    geopython/pycsw
+</pre></div>
+</div>
+</div>
+<div class="section" id="sqlite-repositories">
+<h3>sqlite repositories<a class="headerlink" href="#sqlite-repositories" title="Permalink to this headline">¶</a></h3>
+<p>The default database repository is the CITE database that is used for running
+pycsw&#8217;s test suites. Docker volumes may be used to specify a custom sqlite
+database path. It should be mounted under <code class="docutils literal"><span class="pre">/var/lib/pycsw</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># first create a docker volume for persisting the database when
+# destroying containers
+docker volume create pycsw-db-data
+docker run \
+    --volume db-data:/var/lib/pycsw \
+    --detach \
+    --publish 8000:8000
+    geopython/pycsw
+</pre></div>
+</div>
+</div>
+<div class="section" id="postgresql-repositories">
+<h3>PostgreSQL repositories<a class="headerlink" href="#postgresql-repositories" title="Permalink to this headline">¶</a></h3>
+<p>Specifying a PostgreSQL repository is just a matter of configuring a custom
+pycsw.cfg file with the correct specification.</p>
+<p>Check <a class="reference external" href="https://github.com/geopython/pycsw/tree/master/docker">pycsw&#8217;s github repository</a> for an example of a docker-compose/stack
+file that spins up a postgis database together with a pycsw instance.</p>
+</div>
+</div>
+<div class="section" id="setting-up-a-development-environment-with-docker">
+<h2>Setting up a development environment with docker<a class="headerlink" href="#setting-up-a-development-environment-with-docker" title="Permalink to this headline">¶</a></h2>
+<p>Working on pycsw&#8217;s code using docker enables an isolated environment that
+helps ensuring reproducibility while at the same time keeping your base
+system free from pycsw related dependencies. This can be achieved by:</p>
+<ul class="simple">
+<li>Cloning pycsw&#8217;s repository locally;</li>
+<li>Starting up a docker container with appropriately set up bind mounts. In
+addition, the pycsw docker image supports a <code class="docutils literal"><span class="pre">reload</span></code> flag that turns on
+automatic reloading of the gunicorn web server whenever the code changes;</li>
+<li>Installing the development dependencies by using <code class="docutils literal"><span class="pre">docker</span> <span class="pre">exec</span></code> with the
+root user;</li>
+</ul>
+<p>The following instructions set up a fully working development environment:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># clone pycsw&#39;s repo
+git clone https://github.com/geopython/pycsw.git
+
+# start a container for development
+cd pycsw
+docker run \
+    --name pycsw-dev \
+    --detach \
+    --volume ${PWD}/pycsw:/usr/lib/python3.5/site-packages/pycsw \
+    --volume ${PWD}/docs:/home/pycsw/docs \
+    --volume ${PWD}/VERSION.txt:/home/pycsw/VERSION.txt \
+    --volume ${PWD}/LICENSE.txt:/home/pycsw/LICENSE.txt \
+    --volume ${PWD}/COMMITTERS.txt:/home/pycsw/COMMITTERS.txt \
+    --volume ${PWD}/CONTRIBUTING.rst:/home/pycsw/CONTRIBUTING.rst \
+    --volume ${PWD}/pycsw/plugins:/home/pycsw/pycsw/plugins \
+    --publish 8000:8000 \
+    geopython/pycsw --reload
+
+# install additional dependencies used in tests and docs
+docker exec \
+    -ti \
+    --user root \
+    pycsw-dev pip3 install -r requirements-dev.txt
+
+# run tests (for example unit tests)
+docker exec -ti pycsw-dev py.test -m unit
+
+# build docs
+docker exec -ti pycsw-dev sh -c &quot;cd docs &amp;&amp; make html&quot;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note that the pycsw image only uses python 3.5 and that it also does
+not install pycsw in editable mode. As such it is not possible to
+use <code class="docutils literal"><span class="pre">tox</span></code>.</p>
+</div>
+<p>Since the docs directory is bind mounted from your host machine into the
+container, after building the docs you may inspect their content visually, for
+example by running:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>firefox docs/_build/html/index.html
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Docker</a><ul>
+<li><a class="reference internal" href="#inspect-logs">Inspect logs</a></li>
+<li><a class="reference internal" href="#using-pycsw-admin">Using pycsw-admin</a></li>
+<li><a class="reference internal" href="#running-custom-pycsw-containers">Running custom pycsw containers</a><ul>
+<li><a class="reference internal" href="#pycsw-configuration">pycsw configuration</a></li>
+<li><a class="reference internal" href="#sqlite-repositories">sqlite repositories</a></li>
+<li><a class="reference internal" href="#postgresql-repositories">PostgreSQL repositories</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setting-up-a-development-environment-with-docker">Setting up a development environment with docker</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="configuration.html"
+                        title="next chapter">Configuration</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/docker.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/Certified_OGC_Compliant_Logo_Web.gif" height="74"/></a>
+</p>
+
+<p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/badge.php?s=CAT%20CSW%203.0.0&r=1" height="38"/></a>
+</p>
+
+<p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 2.0.2. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 2.0.2. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/badge.php?s=CAT%20CSW%202.0.2&r=1" height="38"/></a>
+</p>
+
+<p>
+    <img alt="OSGeo Project" src="https://raw.githubusercontent.com/OSGeo/osgeo/master/incubation/project/OSGeo_project.png" height="64"/>
+</p>
+
+<p>
+    <script type="text/javascript" src="https://www.openhub.net/p/488022/widgets/project_thin_badge.js"></script> 
+</p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="configuration.html" title="Configuration"
+             >next</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pycsw 2.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+<div class="footer">
+    <p>&copy; Copyright 2010-2015, Tom Kralidis This work is licensed under a Creative Commons Attribution 4.0 International License<br/>Last updated on 2018-03-20T12:16:33Z</p>
+    <p>
+        <a href="http://pycsw.org">Website</a> &mdash;
+        <a href="http://pycsw.org/community">Community</a> &mdash;
+        <a href="http://pycsw.org/blog">Blog</a> &mdash;
+        <a href="https://plus.google.com/communities/104084873011085696113">Google+</a> &mdash;
+        <a href="http://pycsw.org/download">Download</a> &mdash;
+        <a href="https://github.com/geopython/pycsw">Source</a> &mdash;
+        <a href="https://github.com/geopython/pycsw/issues">Issues</a> &mdash;
+        <a href="http://lists.osgeo.org/mailman/listinfo/pycsw-devel">Mailing List</a>
+    </p>
+</div>
+
+  </body>
+</html>

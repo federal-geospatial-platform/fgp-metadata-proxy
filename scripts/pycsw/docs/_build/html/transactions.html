@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Transactions &mdash; pycsw 2.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pycsw 2.2.0 documentation" href="index.html" />
+    <link rel="next" title="Repository Filters" href="repofilters.html" />
+    <link rel="prev" title="XML Sitemaps" href="sitemaps.html" />
+ 
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32855587-1']);
+  _gaq.push(['_setDomainName', 'pycsw.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+<style type="text/css">
+  .header a:link{color: white;}
+  .header a:visited{color: white;}
+  .padded{padding: 10px 10px;}
+</style>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="repofilters.html" title="Repository Filters"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="sitemaps.html" title="XML Sitemaps"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pycsw 2.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="transactions">
+<span id="id1"></span><h1>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h1>
+<p>pycsw has the ability to process CSW Harvest and Transaction requests (CSW-T).  Transactions are disabled by default; to enable, <code class="docutils literal"><span class="pre">manager.transactions</span></code> must be set to <code class="docutils literal"><span class="pre">true</span></code>.  Access to transactional functionality is limited to IP addresses which must be set in <code class="docutils literal"><span class="pre">manager.allowed_ips</span></code>.</p>
+<div class="section" id="supported-resource-types">
+<h2>Supported Resource Types<a class="headerlink" href="#supported-resource-types" title="Permalink to this headline">¶</a></h2>
+<p>For transactions and harvesting, pycsw supports the following metadata resource types by default:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Resource Type</th>
+<th class="head">Namespace</th>
+<th class="head">Transaction</th>
+<th class="head">Harvest</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Dublin Core</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/cat/csw/2.0.2</span></code></td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td>FGDC</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/cat/csw/csdgm</span></code></td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td>GM03</td>
+<td><code class="docutils literal"><span class="pre">http://www.interlis.ch/INTERLIS2.3</span></code></td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td>ISO 19139</td>
+<td><code class="docutils literal"><span class="pre">http://www.isotc211.org/2005/gmd</span></code></td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td>ISO GMI</td>
+<td><code class="docutils literal"><span class="pre">http://www.isotc211.org/2005/gmi</span></code></td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td>OGC:CSW 2.0.2</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/cat/csw/2.0.2</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td>OGC:WMS 1.1.1/1.3.0</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/wms</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td>OGC:WMTS 1.0.0</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/wmts/1.0</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td>OGC:WFS 1.0.0/1.1.0/2.0.0</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/wfs</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td>OGC:WCS 1.0.0</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/wcs</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td>OGC:WPS 1.0.0</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/wps/1.0.0</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td>OGC:SOS 1.0.0</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/sos/1.0</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td>OGC:SOS 2.0.0</td>
+<td><code class="docutils literal"><span class="pre">http://www.opengis.net/sos/2.0</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://seabass.ieee.org/groups/geoss/index.php?option=com_sir_200&amp;Itemid=157&amp;ID=183">WAF</a></td>
+<td><code class="docutils literal"><span class="pre">urn:geoss:urn</span></code></td>
+<td>&nbsp;</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>Additional metadata models are supported by enabling the appropriate <a class="reference internal" href="profiles.html#profiles"><span>Profile Plugins</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For transactions to be functional when using SQLite3, the SQLite3 database file (<strong>and its parent directory</strong>) must be fully writable.  For example:</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir /path/data
+$ chmod <span class="m">777</span> /path/data
+$ chmod <span class="m">666</span> test.db
+$ mv test.db /path/data
+</pre></div>
+</div>
+<p>For CSW-T deployments, it is strongly advised that this directory reside in an area that is not accessible by HTTP.</p>
+</div>
+<div class="section" id="harvesting">
+<h2>Harvesting<a class="headerlink" href="#harvesting" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Your server must be able to make outgoing HTTP requests for this functionality.</p>
+</div>
+<p>pycsw supports the CSW-T <code class="docutils literal"><span class="pre">Harvest</span></code> operation.  Records which are harvested require to setup a cronjob to periodically refresh records in the local repository.  A sample cronjob is available in <code class="docutils literal"><span class="pre">etc/harvest-all.cron</span></code> which points to <code class="docutils literal"><span class="pre">pycsw-admin.py</span></code> (you must specify the correct path to your configuration).  Harvest operation results can be sent by email (via <code class="docutils literal"><span class="pre">mailto:</span></code>) or ftp (via <code class="docutils literal"><span class="pre">ftp://</span></code>) if the Harvest request specifies <code class="docutils literal"><span class="pre">csw:ResponseHandler</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For <code class="docutils literal"><span class="pre">csw:ResponseHandler</span></code> values using the <code class="docutils literal"><span class="pre">mailto:</span></code> protocol, you must have <code class="docutils literal"><span class="pre">server.smtp_host</span></code> set in your <a class="reference internal" href="configuration.html#configuration"><span>configuration</span></a>.</p>
+</div>
+<div class="section" id="ogc-web-services">
+<h3>OGC Web Services<a class="headerlink" href="#ogc-web-services" title="Permalink to this headline">¶</a></h3>
+<p>When harvesting OGC web services, requests can provide the base URL of the service as part of the Harvest request.  pycsw will construct a <code class="docutils literal"><span class="pre">GetCapabilities</span></code> request dynamically.</p>
+<p>When harvesting other CSW servers, pycsw pages through the entire CSW in default increments of 10.  This value can be modified via the <code class="docutils literal"><span class="pre">manager.csw_harvest_pagesize</span></code> <a class="reference internal" href="configuration.html#configuration"><span>configuration</span></a> option.  It is strongly advised to use the <code class="docutils literal"><span class="pre">csw:ResponseHandler</span></code> parameter for harvesting large CSW catalogues to prevent HTTP timeouts.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Transactions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>pycsw supports 3 modes of the <code class="docutils literal"><span class="pre">Transaction</span></code> operation (<code class="docutils literal"><span class="pre">Insert</span></code>, <code class="docutils literal"><span class="pre">Update</span></code>, <code class="docutils literal"><span class="pre">Delete</span></code>):</p>
+<ul class="simple">
+<li><strong>Insert</strong>: full XML documents can be inserted as per CSW-T</li>
+<li><strong>Update</strong>: updates can be made as full record updates or record properties against a <code class="docutils literal"><span class="pre">csw:Constraint</span></code></li>
+<li><strong>Delete</strong>: deletes can be made against a <code class="docutils literal"><span class="pre">csw:Constraint</span></code></li>
+</ul>
+<p>Transaction operation results can be sent by email (via <code class="docutils literal"><span class="pre">mailto:</span></code>) or ftp (via <code class="docutils literal"><span class="pre">ftp://</span></code>) if the Transaction request specifies <code class="docutils literal"><span class="pre">csw:ResponseHandler</span></code>.</p>
+<p>The <a class="reference internal" href="testing.html#tests"><span>Testing</span></a> contain CSW-T request examples.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Transactions</a><ul>
+<li><a class="reference internal" href="#supported-resource-types">Supported Resource Types</a></li>
+<li><a class="reference internal" href="#harvesting">Harvesting</a><ul>
+<li><a class="reference internal" href="#ogc-web-services">OGC Web Services</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">Transactions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sitemaps.html"
+                        title="previous chapter">XML Sitemaps</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="repofilters.html"
+                        title="next chapter">Repository Filters</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/transactions.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/Certified_OGC_Compliant_Logo_Web.gif" height="74"/></a>
+</p>
+
+<p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/badge.php?s=CAT%20CSW%203.0.0&r=1" height="38"/></a>
+</p>
+
+<p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 2.0.2. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 2.0.2. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/badge.php?s=CAT%20CSW%202.0.2&r=1" height="38"/></a>
+</p>
+
+<p>
+    <img alt="OSGeo Project" src="https://raw.githubusercontent.com/OSGeo/osgeo/master/incubation/project/OSGeo_project.png" height="64"/>
+</p>
+
+<p>
+    <script type="text/javascript" src="https://www.openhub.net/p/488022/widgets/project_thin_badge.js"></script> 
+</p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="repofilters.html" title="Repository Filters"
+             >next</a></li>
+        <li class="right" >
+          <a href="sitemaps.html" title="XML Sitemaps"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pycsw 2.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+<div class="footer">
+    <p>&copy; Copyright 2010-2015, Tom Kralidis This work is licensed under a Creative Commons Attribution 4.0 International License<br/>Last updated on 2018-03-20T12:16:33Z</p>
+    <p>
+        <a href="http://pycsw.org">Website</a> &mdash;
+        <a href="http://pycsw.org/community">Community</a> &mdash;
+        <a href="http://pycsw.org/blog">Blog</a> &mdash;
+        <a href="https://plus.google.com/communities/104084873011085696113">Google+</a> &mdash;
+        <a href="http://pycsw.org/download">Download</a> &mdash;
+        <a href="https://github.com/geopython/pycsw">Source</a> &mdash;
+        <a href="https://github.com/geopython/pycsw/issues">Issues</a> &mdash;
+        <a href="http://lists.osgeo.org/mailman/listinfo/pycsw-devel">Mailing List</a>
+    </p>
+</div>
+
+  </body>
+</html>

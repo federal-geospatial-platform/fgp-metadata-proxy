@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycsw Migration Guide &mdash; pycsw 2.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pycsw 2.2.0 documentation" href="index.html" />
+    <link rel="next" title="Cataloguing and Metadata Tools" href="tools.html" />
+    <link rel="prev" title="Testing" href="testing.html" />
+ 
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32855587-1']);
+  _gaq.push(['_setDomainName', 'pycsw.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+<style type="text/css">
+  .header a:link{color: white;}
+  .header a:visited{color: white;}
+  .padded{padding: 10px 10px;}
+</style>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tools.html" title="Cataloguing and Metadata Tools"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="testing.html" title="Testing"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pycsw 2.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pycsw-migration-guide">
+<span id="migration-guide"></span><h1>pycsw Migration Guide<a class="headerlink" href="#pycsw-migration-guide" title="Permalink to this headline">¶</a></h1>
+<p>This page provides migration support across pycsw versions
+over time to help with pycsw change management.</p>
+<div class="section" id="pycsw-1-x-to-2-0-migration">
+<h2>pycsw 1.x to 2.0 Migration<a class="headerlink" href="#pycsw-1-x-to-2-0-migration" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>the default CSW version is now 3.0.0.  CSW clients need to explicitly specify
+<code class="docutils literal"><span class="pre">version=2.0.2</span></code> for CSW 2 behaviour.  Also, pycsw administrators can use a
+WSGI wrapper to the pycsw API to force <code class="docutils literal"><span class="pre">version=2.0.2</span></code> on init of
+<code class="docutils literal"><span class="pre">pycsw.server.Csw</span></code> from the server.  See <a class="reference internal" href="csw-support.html#csw-support"><span>CSW Support</span></a> for more information.</li>
+<li><code class="docutils literal"><span class="pre">pycsw.server.Csw.dispatch_wsgi()</span></code> previously returned the response
+content as a string.  2.0.0 introduces a compatability break to
+additionally return the HTTP status code along with the response as a list</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycsw.server</span> <span class="kn">import</span> <span class="n">Csw</span>
+<span class="n">my_csw</span> <span class="o">=</span> <span class="n">Csw</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>  <span class="c1"># add: env=some_environ_dict,  version=&#39;2.0.2&#39; if preferred</span>
+
+<span class="c1"># using pycsw 1.x</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">my_csw</span><span class="o">.</span><span class="n">dispatch_wsgi</span><span class="p">()</span>
+
+<span class="c1"># using pycsw 2.0</span>
+<span class="n">http_status_code</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">my_csw</span><span class="o">.</span><span class="n">dispatch_wsgi</span><span class="p">()</span>
+
+<span class="c1"># covering either pycsw version</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">csw</span><span class="o">.</span><span class="n">dispatch_wsgi</span><span class="p">()</span>
+
+<span class="c1"># pycsw 2.0 has an API break:</span>
+<span class="c1"># pycsw &lt; 2.0: content = xml_response</span>
+<span class="c1"># pycsw &gt;= 2.0: content = [http_status_code, content]</span>
+<span class="c1"># deal with the API break</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># pycsw 2.0+</span>
+    <span class="n">http_response_code</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">content</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="api.html#api"><span>API</span></a> for more information.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pycsw Migration Guide</a><ul>
+<li><a class="reference internal" href="#pycsw-1-x-to-2-0-migration">pycsw 1.x to 2.0 Migration</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="testing.html"
+                        title="previous chapter">Testing</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tools.html"
+                        title="next chapter">Cataloguing and Metadata Tools</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/migration-guide.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div><p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/Certified_OGC_Compliant_Logo_Web.gif" height="74"/></a>
+</p>
+
+<p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 3.0.0. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/badge.php?s=CAT%20CSW%203.0.0&r=1" height="38"/></a>
+</p>
+
+<p>
+    <a title="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 2.0.2. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." href="http://www.opengeospatial.org/resource/products/details/?pid=1374"><img alt="This product conforms to the OpenGIS Catalogue Service Implementation Specification [Catalogue Service for the Web], Revision 2.0.2. OGC, OGC®, and CERTIFIED OGC COMPLIANT are trademarks or registered trademarks of the Open Geospatial Consortium, Inc. in the United States and other countries." src="https://portal.opengeospatial.org/public_ogc/compliance/badge.php?s=CAT%20CSW%202.0.2&r=1" height="38"/></a>
+</p>
+
+<p>
+    <img alt="OSGeo Project" src="https://raw.githubusercontent.com/OSGeo/osgeo/master/incubation/project/OSGeo_project.png" height="64"/>
+</p>
+
+<p>
+    <script type="text/javascript" src="https://www.openhub.net/p/488022/widgets/project_thin_badge.js"></script> 
+</p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tools.html" title="Cataloguing and Metadata Tools"
+             >next</a></li>
+        <li class="right" >
+          <a href="testing.html" title="Testing"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pycsw 2.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+<div class="footer">
+    <p>&copy; Copyright 2010-2015, Tom Kralidis This work is licensed under a Creative Commons Attribution 4.0 International License<br/>Last updated on 2018-03-20T12:16:33Z</p>
+    <p>
+        <a href="http://pycsw.org">Website</a> &mdash;
+        <a href="http://pycsw.org/community">Community</a> &mdash;
+        <a href="http://pycsw.org/blog">Blog</a> &mdash;
+        <a href="https://plus.google.com/communities/104084873011085696113">Google+</a> &mdash;
+        <a href="http://pycsw.org/download">Download</a> &mdash;
+        <a href="https://github.com/geopython/pycsw">Source</a> &mdash;
+        <a href="https://github.com/geopython/pycsw/issues">Issues</a> &mdash;
+        <a href="http://lists.osgeo.org/mailman/listinfo/pycsw-devel">Mailing List</a>
+    </p>
+</div>
+
+  </body>
+</html>
