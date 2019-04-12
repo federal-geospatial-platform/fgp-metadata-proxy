@@ -206,194 +206,45 @@ This URL returns all datasets in Alberta's GeoDiscover containing the word "road
 
 <https://geodiscover.alberta.ca/geoportal/rest/find/document?searchText=roads&f=pjson>
 
-+-----------------------+-----------------------+-----------------------+
-| **Package\_Show       |                       |                       |
-| Parameters**          |                       |                       |
-|                       |                       |                       |
-| **(source:            |                       |                       |
-| <https://github.com/E |                       |                       |
-| sri/geoportal-server/ |                       |                       |
-| wiki/REST-API-Syntax> |                       |                       |
-| )**                   |                       |                       |
-+=======================+=======================+=======================+
+##### Package_Show Parameters
+source: <https://github.com/Esri/geoportal-server/wiki/REST-API-Syntax>
+
 | **requestParameter**  | **Function**          | **Accepted Values**   |
-+-----------------------+-----------------------+-----------------------+
-| bbox                  | Query by extent       | Comma-delimited       |
-|                       | specified as two      | string of integers    |
-|                       | pairs of coordinates  | between -180,180 and  |
-|                       | (west-south and       | -90, 90.              |
-|                       | east-north).          |                       |
-+-----------------------+-----------------------+-----------------------+
-| spatialRel            | Query by spatial      | String value. One of  |
-|                       | relationship. Used in | esriSpatialRelWithin  |
-|                       | conjunction with bbox | (default),            |
-|                       | parameter.            | esriSpatialRelOverlap |
-|                       |                       | s.                    |
-+-----------------------+-----------------------+-----------------------+
-| searchText            | Query by keyword.     | String value          |
-|                       |                       | representing a        |
-|                       |                       | keyword. Note, as of  |
-|                       |                       | version 1.1.1, you    |
-|                       |                       | can                   |
-|                       |                       | use searchText=sys.sc |
-|                       |                       | hema.key to           |
-|                       |                       | query for documents   |
-|                       |                       | that correspond to a  |
-|                       |                       | specific metadata     |
-|                       |                       | schema. See [How to   |
-|                       |                       | find all documents of |
-|                       |                       | a particular metadata |
-|                       |                       | standard](https://git |
-|                       |                       | hub.com/Esri/geoporta |
-|                       |                       | l-server/wiki/How-to- |
-|                       |                       | find-all-documents-of |
-|                       |                       | -a-particular-metadat |
-|                       |                       | a-standard)for        |
-|                       |                       | more details.         |
-+-----------------------+-----------------------+-----------------------+
-| contains              | Keyword concatenation | For an exact match    |
-|                       | options. This         | use double quotes.    |
-|                       | parameter is obsolete | For example, see the  |
-|                       | with the Lucene       | syntax for two terms, |
-|                       | syntax (see [Using    | Hawaii and quads:     |
-|                       | Lucene Search Text    |                       |
-|                       | Queries](https://gith | -   Exact: \"Hawaii   |
-|                       | ub.com/Esri/geoportal |     quads\"           |
-|                       | -server/wiki/Using-Lu |                       |
-|                       | cene-Search-Text-Quer | -   Any: Hawaii quads |
-|                       | ies)).                |                       |
-|                       |                       | -   All:              |
-|                       |                       |     +Hawaii+quads     |
-|                       |                       |                       |
-|                       |                       | //serverName/geoporta |
-|                       |                       | l/rest/find/document? |
-|                       |                       | searchText=\"Hawaii   |
-|                       |                       | quads\"&f=georss      |
-+-----------------------+-----------------------+-----------------------+
-| contentType           | Query by content      | String value          |
-|                       | type.                 | representing an Esri  |
-|                       |                       | content type. See     |
-|                       |                       | Javadoc for complete  |
-|                       |                       | list.                 |
-+-----------------------+-----------------------+-----------------------+
-| dataCategory          | Query by data         | Comma-delimited list  |
-|                       | category (ISO 19115   | of strings. Keywords  |
-|                       | themes).              | identified by the ISO |
-|                       |                       | 19115 specification.  |
-|                       |                       | See JavaDoc for       |
-|                       |                       | complete list.        |
-+-----------------------+-----------------------+-----------------------+
-| after, before         | Query by date.        | Date string in the    |
-|                       |                       | format yyyy-mm-dd.    |
-+-----------------------+-----------------------+-----------------------+
-| orderBy               | Result sort options.  | String value. One of  |
-|                       |                       | areaAscending,        |
-|                       |                       | areaDescending,       |
-|                       |                       | dateAscending,        |
-|                       |                       | dateDescending        |
-|                       |                       | (default), format,    |
-|                       |                       | relevance, title.     |
-+-----------------------+-----------------------+-----------------------+
-| start                 | Specify which item to | Integer. When used    |
-|                       | start the response    | with the max          |
-|                       | with out of the       | parameter, this       |
-|                       | entire resultset.     | provides for          |
-|                       |                       | pagination of the     |
-|                       |                       | search results.       |
-+-----------------------+-----------------------+-----------------------+
-| max                   | Specify max number of | Integer. There is a   |
-|                       | records to retrieve.  | limit of max=100 on   |
-|                       |                       | unqualified queries.  |
-|                       |                       | An \'unqualified      |
-|                       |                       | query\' is when there |
-|                       |                       | are no search         |
-|                       |                       | parameters set. The   |
-|                       |                       | limit on qualified    |
-|                       |                       | queries is max=5000.  |
-|                       |                       | Default: 10. When     |
-|                       |                       | used with the start   |
-|                       |                       | parameter, this       |
-|                       |                       | provides for          |
-|                       |                       | pagination of the     |
-|                       |                       | search results.       |
-+-----------------------+-----------------------+-----------------------+
-| geometryType          | Defines how spatial   | String value. One of  |
-|                       | data will be          | esriGeometryPoint,    |
-|                       | represented.          | esriGeometryPolygon   |
-|                       |                       | (default),            |
-|                       |                       | esriGeometryBox.      |
-+-----------------------+-----------------------+-----------------------+
-| f                     | the response format.  | String value. One of  |
-|                       |                       | georss (default),     |
-|                       |                       | atom, json, pjson,    |
-|                       |                       | xjson, dcat (1.2.4),  |
-|                       |                       | kml, html,            |
-|                       |                       | htmlfragment,         |
-|                       |                       | searchpage (as of     |
-|                       |                       | 1.1.1), CSV (as of    |
-|                       |                       | 1.2), xjson output    |
-|                       |                       | compliants with       |
-|                       |                       | geojson 1.0 and       |
-|                       |                       | contains more         |
-|                       |                       | detailed              |
-|                       |                       | information(1.2.4).   |
-+-----------------------+-----------------------+-----------------------+
-| style                 | CSS stylesheet for    | String value          |
-|                       | HTML results.         | representing a URL to |
-|                       |                       | a stylesheet.         |
-+-----------------------+-----------------------+-----------------------+
-| target                | Behavior of links     | String value. One of  |
-|                       | (open in same or new  | blank (default),      |
-|                       | window).              | parent, self, top.    |
-+-----------------------+-----------------------+-----------------------+
-| rid                   | Id associated with    | String value.         |
-|                       | the repository.       |                       |
-|                       | Multiple ridparameter |                       |
-|                       | s                     |                       |
-|                       | are allowed for       |                       |
-|                       | comparing results     |                       |
-|                       | between different     |                       |
-|                       | repositories.         |                       |
-+-----------------------+-----------------------+-----------------------+
-| rids                  | Comma Delimited rid.  | String values.        |
-|                       | Can be used instead   |                       |
-|                       | of the                |                       |
-|                       | multiple ridparameter |                       |
-|                       | s.                    |                       |
-+-----------------------+-----------------------+-----------------------+
-| maxSearchTimeMilliSec | Maximum amount of     | Integer. Default is   |
-|                       | time allowed to       | 5000 milliseconds.    |
-|                       | retrieve results.     |                       |
-+-----------------------+-----------------------+-----------------------+
-| filter                | Can apply a           | lucene-based query    |
-|                       | persistent filter to  | syntax                |
-|                       | the search interface. |                       |
-|                       | See [URL Filter       |                       |
-|                       | Customization](https: |                       |
-|                       | //github.com/Esri/geo |                       |
-|                       | portal-server/wiki/Ur |                       |
-|                       | l-filter-customizatio |                       |
-|                       | n)                    |                       |
-+-----------------------+-----------------------+-----------------------+
+| --------------------- | --------------------- | --------------------- |
+| bbox                  | Query by extent specified as two pairs of coordinates (west-south and east-north). | Comma-delimited string of integers between -180,180 and -90, 90. |
+| spatialRel            | Query by spatial relationship. Used in conjunction with bbox parameter.            | String value. One of esriSpatialRelWithin (default), esriSpatialRelOverlaps. |
+| searchText            | Query by keyword.     | String value representing a keyword. Note, as of version 1.1.1, you can use searchText=sys.schema.key to query for documents that correspond to a specific metadata schema. See [How to find all documents of a particular metadata standard](https://github.com/Esri/geoportal-server/wiki/How-to-find-all-documents-of-a-particular-metadata-standard) for more details. |
+| contains              | Keyword concatenation options. This parameter is obsolete with the Lucene syntax (see [Using Lucene Search Text Queries](https://github.com/Esri/geoportal-server/wiki/Using-Lucene-Search-Text-Queries)). | For an exact match use double quotes. For example, see the syntax for two terms, Hawaii and quads:<br>-   Exact: "Hawaii quads"<br>-   Any: Hawaii quads<br>-   All: +Hawaii+quads<br>//<serverName>/geoportal/rest/find/document?searchText="Hawaii quads"&f=georss |
+| contentType           | Query by content type. | String value representing an Esri content type. See Javadoc for complete list. |
+| dataCategory          | Query by data category (ISO 19115 themes). | Comma-delimited list of strings. Keywords identified by the ISO 19115 specification. See JavaDoc for complete list. |
+| after, before         | Query by date.        | Date string in the format yyyy-mm-dd. |
+| orderBy               | Result sort options.  | String value. One of areaAscending, areaDescending, dateAscending, dateDescending (default), format, relevance, title. |
+| start                 | Specify which item to start the response with out of the entire resultset. | Integer. When used with the max parameter, this provides for pagination of the search results. |
+| max                   | Specify max number of records to retrieve. | Integer. There is a limit of max=100 on unqualified queries. An 'unqualified query' is when there are no search parameters set. The limit on qualified queries is max=5000. Default: 10. When used with the start parameter, this provides for pagination of the search results. |
+| geometryType          | Defines how spatial data will be represented. | String value. One of esriGeometryPoint, esriGeometryPolygon (default), esriGeometryBox. |
+| f                     | The response format.  | String value. One of georss (default), atom, json, pjson, xjson, dcat (1.2.4), kml, html, htmlfragment, searchpage (as of 1.1.1), CSV (as of 1.2), xjson output compliants with geojson 1.0 and contains more detailed information (1.2.4). |
+| style                 | CSS stylesheet for HTML results. | String value representing a URL to a stylesheet. |
+| target                | Behavior of links (open in same or new window). | String value. One of blank (default), parent, self, top. |
+| rid                   | Id associated with the repository. Multiple ridparameters are allowed for comparing results between different repositories. | String value.                      |
+| rids                  | Comma Delimited rid. Can be used instead of the multiple ridparameters. | String values. |
+| maxSearchTimeMilliSec | Maximum amount of time allowed to retrieve results. | Integer. Default is 5000 milliseconds.                      |
+| filter                | Can apply a persistent filter to the search interface. See [URL Filter Customization](https://github.com/Esri/geoportal-server/wiki/Url-filter-customization) | lucene-based query syntax                      |
 
 #### Dataset
 
 ##### ISO XML Data
 
-> For the full metadata of a dataset in ISO 19115, use:
+For the full metadata of a dataset in ISO 19115, use:
 
-\<domain\>/geoportal/rest/document?id=\<uuid\>
+```<domain>/geoportal/rest/document?id=<uuid>```
 
-> If the parameter "f=pjson" is used, a brief metadata page in JSON
-> format will be returned.
->
-> For example, this URL returns the full ISO metadata for Alberta's
-> "Castle Region Linear Footprint" in XML:
+If the parameter "f=pjson" is used, a brief metadata page in JSON format will be returned.
+
+For example, this URL returns the full ISO metadata for Alberta's "Castle Region Linear Footprint" in XML:
 
 [https://geodiscover.alberta.ca/geoportal/rest/document?id={0F933555-8715-4E1B-8C43-409591957ECE}](https://geodiscover.alberta.ca/geoportal/rest/document?id=%7b0F933555-8715-4E1B-8C43-409591957ECE%7d)
 
-> While the following example returns only a brief metadata of same
-> dataset in JSON format:
+While the following example returns only a brief metadata of same dataset in JSON format:
 
 [https://geodiscover.alberta.ca/geoportal/rest/document?id={0F933555-8715-4E1B-8C43-409591957ECE}&f=pjson](https://geodiscover.alberta.ca/geoportal/rest/document?id=%7b0F933555-8715-4E1B-8C43-409591957ECE%7d&f=pjson)
 
@@ -402,27 +253,25 @@ Socrata
 
 ### P/T Usage
 
-> As of 28 March 2019, the following provincial sites use Socrata:
+As of 28 March 2019, the following provincial sites use Socrata:
 
--   [Nova Scotia's Open Data
-    Catalogue](https://data.novascotia.ca/browse)
+-   [Nova Scotia's Open Data Catalogue](https://data.novascotia.ca/browse)
 
--   [Prince Edward Island's Open Data
-    Catalogue](https://data.princeedwardisland.ca/browse)
+-   [Prince Edward Island's Open Data Catalogue](https://data.princeedwardisland.ca/browse)
 
 ### Webpage Access
 
 #### Search Engine
 
-> Socrata search engine is accessed using:
+Socrata search engine is accessed using:
 
-\<domain\>/browse
+```<domain>/browse```
 
 #### Dataset Page
 
-> Any Socrata dataset's webpage can be accessed using the following URL:
+Any Socrata dataset's webpage can be accessed using the following URL:
 
-\<domain\>/d/\<ds\_id\>
+```<domain>\d\<ds_id>```
 
 For example, the URL to access the "Crown Land" dataset in Nova Scotia's
 catalogue is:
@@ -433,17 +282,13 @@ catalogue is:
 
 #### JSON Search (Global Catalogue)
 
-> The global catalogue includes all data in the Socrata open data
-> portal. To narrow searches to datasets in a particular
-> province/territory, add domains=\<domain\_without\_http\> to the query
-> url:
+The global catalogue includes all data in the Socrata open data portal. To narrow searches to datasets in a particular province/territory, add domains=\<domain\_without\_http\> to the query url:
 
-\<domain\>/api/catalog/v1?domains=\<domain\_without\_http\>&\<parameters\>
+```<domain>/api/catalog/v1?domains=<domain_without_http>&<parameters>```
 
-> Queries can only be done using the global catalogue.
->
-> For example, the following URL returns all datasets in the Nova Scotia
-> data catalogue containing the word "roads":
+Queries can only be done using the global catalogue.
+
+For example, the following URL returns all datasets in the Nova Scotia data catalogue containing the word "roads":
 
 <https://data.novascotia.ca/api/catalog/v1?domains=data.novascotia.ca&q=roads>
 
@@ -452,36 +297,31 @@ For information on the available parameters, visit
 
 #### JSON Views
 
-> The "views" URL returns all the data in a particular Socrata
-> catalogue. However, queries cannot be done using this URL:
+The "views" URL returns all the data in a particular Socrata catalogue. However, queries cannot be done using this URL:
 
-\<domain\>/api/views/
+```<domain>/api/views/```
 
-> For example, the URL for Nova Scotia's view is:
+For example, the URL for Nova Scotia's view is:
 
 <https://data.novascotia.ca/api/views/>
 
 #### JSON Dataset
 
-> To view a dataset in JSON format, use the following URL:
+To view a dataset in JSON format, use the following URL:
 
-\<domain\>/api/views/\<ds\_id\>
+```<domain>/api/views/<ds_id>```
 
-> For example, the following URL retrieves the "Crown Land" dataset in
-> JSON format:
+For example, the following URL retrieves the "Crown Land" dataset in JSON format:
 
 <https://data.novascotia.ca/api/views/3nka-59nz>
 
 #### Download
 
-> The geospatial link is used to download the dataset in a specified
-> format:
+The geospatial link is used to download the dataset in a specified format:
 
-\<domain\>/api/geospatial/\<id\>?method=export&format=\<format\>
+```<domain>/api/geospatial/<id>?method=export&format=<format>```
 
-> For example, the following URL will download the "Crown Land" dataset
-> in its original format (in this case a Shapefile in a zip file) from
-> Nova Scotia's data catalogue:
+For example, the following URL will download the "Crown Land" dataset in its original format (in this case a Shapefile in a zip file) from Nova Scotia's data catalogue:
 
 <https://data.novascotia.ca/api/geospatial/3nka-59nz?method=export&format=Original>
 
