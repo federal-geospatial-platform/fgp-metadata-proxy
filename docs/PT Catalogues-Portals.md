@@ -1,3 +1,4 @@
+
 PT Catalogues/Portals Sources
 ==========
 
@@ -61,193 +62,113 @@ For Alberta, the following URL returns the results for all open data in JSON for
 | maxrecords | The maximum number of records to return by default. This value is enforced if a CSW’s client’s maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
 | logfile | The full file path to the logfile. | C:\\pycsw-2.2.0\\log\\pycsw.log |
 
-| **Package_Search Parameters**     |                                   |
-|                                   |                                   |
-| **(source:                        |                                   |
-| <https://docs.ckan.org/en/ckan-2. |                                   |
-| 7.3/api/#ckan.logic.action.get.pa |                                   |
-| ckage_search>)**                  |                                   |
-| --------------------------------- | --------------------------------- |
+##### Package_Search Parameters
+source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_search>
+
 | **Parameter**                     | **Description**                   |
 | --------------------------------- | --------------------------------- |
-| q                                 | The                               |
-|                                   | [solr](http://www.solrtutorial.co |
-|                                   | m/solr-query-syntax.html)         |
-|                                   | query. Optional. Default:         |
-|                                   | \"\*:\*\"                         |
-+-----------------------------------+-----------------------------------+
+| q                                 | The [solr](http://www.solrtutorial.com/solr-query-syntax.html) query. Optional. Default: \"\*:\*\"                        |
 | fq                                | Any filter queries to apply.      |
-+-----------------------------------+-----------------------------------+
-| sort                              | Sorting of the search results.    |
-|                                   | Optional. Default: \'relevance    |
-|                                   | asc, metadata\_modified desc\'.   |
-|                                   | As per the solr documentation,    |
-|                                   | this is a comma-separated string  |
-|                                   | of field names and                |
-|                                   | sort-orderings.                   |
-+-----------------------------------+-----------------------------------+
-| rows                              | The number of matching rows to    |
-|                                   | return. There is a hard limit of  |
-|                                   | 1000 datasets per query.          |
-+-----------------------------------+-----------------------------------+
-| start                             | The offset in the complete result |
-|                                   | for where the set of returned     |
-|                                   | datasets should begin.            |
-+-----------------------------------+-----------------------------------+
-| facet                             | Whether to enable faceted         |
-|                                   | results. Default: True.           |
-+-----------------------------------+-----------------------------------+
-| facet.mincount                    | The minimum counts for facet      |
-|                                   | fields should be included in the  |
-|                                   | results.                          |
-+-----------------------------------+-----------------------------------+
-| facet.limit                       | The maximum number of values the  |
-|                                   | facet fields return. A negative   |
-|                                   | value means unlimited. This can   |
-|                                   | be set instance-wide with the     |
-|                                   | search.facets.limit config        |
-|                                   | option. Default is 50.            |
-+-----------------------------------+-----------------------------------+
-| facet.field                       | The fields to facet upon. Default |
-|                                   | empty. If empty, then the         |
-|                                   | returned facet information is     |
-|                                   | empty.                            |
-+-----------------------------------+-----------------------------------+
-| include\_drafts                   | If True, draft datasets will be   |
-|                                   | included in the results. A user   |
-|                                   | will only be returned their own   |
-|                                   | draft datasets, and a sysadmin    |
-|                                   | will be returned all draft        |
-|                                   | datasets. Optional, the default   |
-|                                   | is False.                         |
-+-----------------------------------+-----------------------------------+
-| include\_private                  | If True, private datasets will be |
-|                                   | included in the results. Only     |
-|                                   | private datasets from the user's  |
-|                                   | organizations will be returned    |
-|                                   | and sysadmins will be returned    |
-|                                   | all private datasets. Optional,   |
-|                                   | the default is False.             |
-+-----------------------------------+-----------------------------------+
-| use\_default\_schema              | Use default package schema        |
-|                                   | instead of a custom schema        |
-|                                   | defined with an IDatasetForm      |
-|                                   | plugin (default: False)           |
-+-----------------------------------+-----------------------------------+
+| sort                              | Sorting of the search results. Optional. Default: \'relevance asc, metadata\_modified desc\'. As per the solr documentation, this is a comma-separated string of field names and sort-orderings.                     |
+| rows                              | The number of matching rows to return. There is a hard limit of 1000 datasets per query.          |
+| start                             | The offset in the complete result for where the set of returned datasets should begin.            |
+| facet                             | Whether to enable faceted results. Default: True. |
+| facet.mincount                    | The minimum counts for facet fields should be included in the results.                          |
+| facet.limit                       | The maximum number of values the facet fields return. A negative value means unlimited. This can be set instance-wide with the search.facets.limit config        option. Default is 50.            |
+| facet.field                       | The fields to facet upon. Default empty. If empty, then the         returned facet information is empty.                            |
+| include\_drafts                   | If True, draft datasets will be included in the results. A user will only be returned their own draft datasets, and a sysadmin will be returned all draft        datasets. Optional, the default is False.                         |
+| include\_private                  | If True, private datasets will be included in the results. Only private datasets from the user's organizations will be returned and sysadmins will be returned all private datasets. Optional, the default is False.             |
+| use\_default\_schema              | Use default package schema instead of a custom schema        defined with an IDatasetForm plugin (default: False)           |
 
 #### JSON Dataset
 
-> To view a dataset in JSON format, enter:
+To view a dataset in JSON format, enter:
 
-\<domain\>/api/3/action/package\_show?id=\<id\_name\>
+```<domain>/api/3/action/package_show?id=<id_name>```
 
-> The following URL contains the JSON results for the Preliminary Total
-> Housing Starts in Alberta\'s Major Urban Centres dataset:
+The following URL contains the JSON results for the Preliminary Total Housing Starts in Alberta\'s Major Urban Centres dataset:
 
 <https://open.alberta.ca/api/3/action/package_show?id=a4b99aad-3f33-45ea-a5c7-e34a4733d336>
 
-+-----------------------------------+-----------------------------------+
-| **Package\_Show Parameters**      |                                   |
-|                                   |                                   |
-| **(source:                        |                                   |
-| <https://docs.ckan.org/en/ckan-2. |                                   |
-| 7.3/api/#ckan.logic.action.get.pa |                                   |
-| ckage_show>)**                    |                                   |
-+===================================+===================================+
+##### Package_Show Parameters
+source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_show>
+
 | **Parameter**                     | **Description**                   |
-+-----------------------------------+-----------------------------------+
+| --------------------------------- | --------------------------------- |
 | id                                | The id or name of the dataset.    |
-+-----------------------------------+-----------------------------------+
-| use\_default\_schema              | Use default package schema        |
-|                                   | instead of a custom schema        |
-|                                   | defined with an IDatasetForm      |
-|                                   | plugin (default: False)           |
-+-----------------------------------+-----------------------------------+
-| include\_tracking                 | Add tracking information to       |
-|                                   | dataset and resources (default:   |
-|                                   | False)                            |
-+-----------------------------------+-----------------------------------+
+| use\_default\_schema              | Use default package schema instead of a custom schema        defined with an IDatasetForm plugin (default: False)           |
+| include\_tracking                 | Add tracking information to dataset and resources (default:   False)                            |
 
 Drupal
 ------
 
 ### P/T Usage
 
-> As of 28 March 2019, the following provincial sites use Drupal API
+As of 28 March 2019, the following provincial sites use Drupal API
 
--   [Ontario's Data
-    Catalogue](https://www.ontario.ca/search/data-catalogue)
+-   [Ontario's Data Catalogue](https://www.ontario.ca/search/data-catalogue)
 
 ### API Access
 
 #### Search
 
-> The only way to search using the Drupal API is by sending a POST
-> request to:
->
-> \<domain\>/es/onesite/\_search/template
->
-> The POST request should contain a list of parameters and the template
-> ID in JSON format:
->
-> {\"params\": {\<parameters\>}, \"template\": {\"id\": \"dataset\"}}
->
-> For example, to search for datasets containing the word "roads" in the
-> Ontario Data Catalogue, the following POST request is sent:
->
-> {\"params\": {\"lang\": \"en\", \"from\": 0, \"query\": \"roads\",
-> \"fileType?\": {\"list\": \[\"zip\"\]}, \"status?\": {\"list\":
-> \[None\]}, \"size\": 0}, \"template\": {\"id\": \"dataset\"}}
->
-> To:
->
-> <https://api.ontario.ca/es/onesite/_search/template>
+The only way to search using the Drupal API is by sending a POST request to:
+
+```<domain>/es/onesite/_search/template```
+
+The POST request should contain a list of parameters and the template ID in JSON format:
+
+```{"params": {<parameters>}, "template": {"id": "dataset"}}```
+
+For example, to search for datasets containing the word "roads" in the Ontario Data Catalogue, the following POST request is sent:
+
+```{"params": {"lang": "en", "from": 0, "query": "roads", "fileType?": {"list": ["zip"]}, "status?": {"list": [None]}, "size": 0}, "template": {"id": "dataset"}}```
+
+To:
+
+<https://api.ontario.ca/es/onesite/_search/template>
 
 #### Dataset
 
-> A specific dataset is accessed in the Drupal API using this URL:
->
-> \<domain\>/api/drupal/data%2F\<id\_name\>
->
-> For example, to access the "Weather Camera Data" dataset from
-> Ontario's Data Catalogue, enter:
->
-> <https://api.ontario.ca/api/drupal/data%2Fweather-camera-data>
+A specific dataset is accessed in the Drupal API using this URL:
+
+```<domain>/api/drupal/data%2F<id_name>```
+
+For example, to access the "Weather Camera Data" dataset from
+Ontario's Data Catalogue, enter:
+
+<https://api.ontario.ca/api/drupal/data%2Fweather-camera-data>
 
 ESRI Geoportal Server
 ---------------------
 
 ### P/T Usage
 
-> As of 28 March 2019, the following provincial/territorial sites use
-> ESRI Geoportal Server API:
+As of 28 March 2019, the following provincial/territorial sites use ESRI Geoportal Server API:
 
--   [Alberta's GeoDiscover
-    Catalogue](https://geodiscover.alberta.ca/geoportal/catalog/search/search.page)
+-   [Alberta's GeoDiscover Catalogue](https://geodiscover.alberta.ca/geoportal/catalog/search/search.page)
 
--   [Northwest Territories' Discovery
-    Portal](http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/main/home.page)
+-   [Northwest Territories' Discovery Portal](http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/main/home.page)
 
--   [Yukon's GeoYukon
-    GeoPortal](http://geoweb.gov.yk.ca/geoportal/catalog/main/home.page)
+-   [Yukon's GeoYukon GeoPortal](http://geoweb.gov.yk.ca/geoportal/catalog/main/home.page)
 
 ### Webpage Access
 
 #### Search Engine
 
-> The search engine URL for an ESRI Geoportal Server is:
+The search engine URL for an ESRI Geoportal Server is:
 
-\<domain\>/geoportal/catalog/search/search.page
+```<domain>/geoportal/catalog/search/search.page```
 
-> The URL for Alberta's GeoDiscover search engine is:
+The URL for Alberta's GeoDiscover search engine is:
 
 <https://geodiscover.alberta.ca/geoportal/catalog/search/search.page>
 
 #### Browser Page
 
-> The browser URL for the Server is:
+The browser URL for the Server is:
 
-\<domain\>/geoportal/catalog/search/browse/browse.page
+```<domain>/geoportal/catalog/search/browse/browse.page```
 
 For Alberta's GeoDiscover browser, the URL is:
 
@@ -255,23 +176,21 @@ For Alberta's GeoDiscover browser, the URL is:
 
 #### Details Page
 
-> The URL for the Details page of a dataset is:
+The URL for the Details page of a dataset is:
 
-\<domain\>/geoportal/catalog/search/resource/details.page?uuid=\<uuid\>
+```<domain>/geoportal/catalog/search/resource/details.page?uuid=<uuid>```
 
-> For example, the URL for the Details page of Alberta's "Greater
-> Short-horned Lizard Habitat" is:
+For example, the URL for the Details page of Alberta's "Greater Short-horned Lizard Habitat" is:
 
 <https://geodiscover.alberta.ca/geoportal/catalog/search/resource/details.page?uuid=%7BD4D78EF6-27C9-4E5B-9A8E-F10466421CF3%7D>
 
 #### Full Metadata
 
-> The URL for the Full Metadata page of a dataset is:
+The URL for the Full Metadata page of a dataset is:
 
-\<domain\>/geoportal/catalog/search/resource/fullMetadata.page?uuid=\<uuid\>
+```<domain>/geoportal/catalog/search/resource/fullMetadata.page?uuid=<uuid>```
 
-> For Alberta's "Greater Short-horned Lizard Habitat" dataset, the Full
-> Metadata page URL is:
+For Alberta's "Greater Short-horned Lizard Habitat" dataset, the Full Metadata page URL is:
 
 <https://geodiscover.alberta.ca/geoportal/catalog/search/resource/fullMetadata.page?uuid=%7BD4D78EF6-27C9-4E5B-9A8E-F10466421CF3%7D>
 
@@ -279,13 +198,11 @@ For Alberta's GeoDiscover browser, the URL is:
 
 #### Search
 
-> The following URL is used to search the datasets using the API; unless
-> specified, the data is returned as an XML:
+The following URL is used to search the datasets using the API; unless specified, the data is returned as an XML:
 
-\<domain\>/geoportal/rest/find/document?\<parameters\>
+```<domain>/geoportal/rest/find/document?<parameters>```
 
-> This URL returns all datasets in Alberta's GeoDiscover containing the
-> word "roads" in JSON format:
+This URL returns all datasets in Alberta's GeoDiscover containing the word "roads" in JSON format:
 
 <https://geodiscover.alberta.ca/geoportal/rest/find/document?searchText=roads&f=pjson>
 
@@ -318,12 +235,12 @@ For Alberta's GeoDiscover browser, the URL is:
 |                       |                       | keyword. Note, as of  |
 |                       |                       | version 1.1.1, you    |
 |                       |                       | can                   |
-|                       |                       | use searchText=sys.sc |
-|                       |                       | hema.key to           |
+|                       |                       | use searchText=sys.sc |
+|                       |                       | hema.key to           |
 |                       |                       | query for documents   |
 |                       |                       | that correspond to a  |
 |                       |                       | specific metadata     |
-|                       |                       | schema. See [How to   |
+|                       |                       | schema. See [How to   |
 |                       |                       | find all documents of |
 |                       |                       | a particular metadata |
 |                       |                       | standard](https://git |
@@ -338,7 +255,7 @@ For Alberta's GeoDiscover browser, the URL is:
 |                       | options. This         | use double quotes.    |
 |                       | parameter is obsolete | For example, see the  |
 |                       | with the Lucene       | syntax for two terms, |
-|                       | syntax (see [Using    | Hawaii and quads:     |
+|                       | syntax (see [Using    | Hawaii and quads:     |
 |                       | Lucene Search Text    |                       |
 |                       | Queries](https://gith | -   Exact: \"Hawaii   |
 |                       | ub.com/Esri/geoportal |     quads\"           |
@@ -431,17 +348,17 @@ For Alberta's GeoDiscover browser, the URL is:
 +-----------------------+-----------------------+-----------------------+
 | rid                   | Id associated with    | String value.         |
 |                       | the repository.       |                       |
-|                       | Multiple ridparameter |                       |
+|                       | Multiple ridparameter |                       |
 |                       | s                     |                       |
 |                       | are allowed for       |                       |
 |                       | comparing results     |                       |
 |                       | between different     |                       |
 |                       | repositories.         |                       |
 +-----------------------+-----------------------+-----------------------+
-| rids                  | Comma Delimited rid.  | String values.        |
+| rids                  | Comma Delimited rid.  | String values.        |
 |                       | Can be used instead   |                       |
 |                       | of the                |                       |
-|                       | multiple ridparameter |                       |
+|                       | multiple ridparameter |                       |
 |                       | s.                    |                       |
 +-----------------------+-----------------------+-----------------------+
 | maxSearchTimeMilliSec | Maximum amount of     | Integer. Default is   |
@@ -451,7 +368,7 @@ For Alberta's GeoDiscover browser, the URL is:
 | filter                | Can apply a           | lucene-based query    |
 |                       | persistent filter to  | syntax                |
 |                       | the search interface. |                       |
-|                       | See [URL Filter       |                       |
+|                       | See [URL Filter       |                       |
 |                       | Customization](https: |                       |
 |                       | //github.com/Esri/geo |                       |
 |                       | portal-server/wiki/Ur |                       |
@@ -608,7 +525,7 @@ Alberta
 
 -   Dataset Page: <https://open.alberta.ca/dataset/>\<uuid\>
 
--   API JSON Search :
+-   API JSON Search :
     <https://open.alberta.ca/api/3/action/package_search>?\<parameters\>
 
 -   API JSON Dataset:
@@ -626,7 +543,7 @@ British Columbia
 
 -   Dataset Page: <https://catalogue.data.gov.bc.ca/dataset/>\<uuid\>
 
--   API JSON Search :
+-   API JSON Search :
     <https://catalogue.data.gov.bc.ca/api/3/action/package_search>?\<parameters\>
 
 -   API JSON Dataset:
