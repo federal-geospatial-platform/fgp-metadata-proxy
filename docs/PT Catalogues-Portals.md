@@ -1,8 +1,7 @@
-Catalogues
+PT Catalogues/Portals Sources
 ==========
 
-CKAN
-----
+## CATALOGUES
 
 ### P/T Usage
 
@@ -23,7 +22,7 @@ All webpage access is through the "dataset" URL:
 
 The CKAN search engine and any of its dataset's webpages are accessed using these URLs:
 
-```<domain>/dataset?\<parameters>```
+```<domain>/dataset?<parameters>```
 
 For example, the following URL will return all datasets in Alberta's data catalogue containing the word "roads":
 
@@ -31,26 +30,23 @@ For example, the following URL will return all datasets in Alberta's data catalo
 
 #### Dataset Page
 
-> A dataset's page can be accessed using the following URL:
+A dataset's page can be accessed using the following URL:
 
-\<domain\>/dataset/\<dataset\_id\>
+```<domain>/dataset/<dataset_id>```
 
-> The following example loads the "Alberta Non-Profit Listing" dataset:
+The following example loads the "Alberta Non-Profit Listing" dataset:
 
 <https://open.alberta.ca/dataset/bcc15e72-fe46-4215-8de0-33951662465e>
 
 ### API Access
 
-> The CKAN API is accessed using:
+The CKAN API is accessed using:
 
-\<domain\>/api/3/action
+```<domain>/api/3/action```
 
 #### JSON Search
 
-> The API can be used to search for datasets in the same way as the
-> dataset search engine, except the results are listed in JSON format
-> instead of in a search engine. To perform a search on the CKAN
-> catalogue, enter:
+The API can be used to search for datasets in the same way as the dataset search engine, except the results are listed in JSON format instead of in a search engine. To perform a search on the CKAN catalogue, enter:
 
 \<domain\>/api/3/action/package\_search?\<parameters\>
 
