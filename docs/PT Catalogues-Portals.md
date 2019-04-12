@@ -54,16 +54,22 @@ For Alberta, the following URL returns the results for all open data in JSON for
 
 <https://open.alberta.ca/api/3/action/package_search?fq=dataset_type:opendata>
 
-+-----------------------------------+-----------------------------------+
-| **Package\_Search Parameters**    |                                   |
+| Parameter | Description | FGP PyCSW Setting |
+| --------- | ----------- | ----------------- |
+| home | The full filesystem path to pycsw | C:\\pycsw-2.2.0 |
+| url | The URL of the resulting service | http://localhost:8000/pycsw/csw.py |
+| maxrecords | The maximum number of records to return by default. This value is enforced if a CSW’s client’s maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
+| logfile | The full file path to the logfile. | C:\\pycsw-2.2.0\\log\\pycsw.log |
+
+| **Package_Search Parameters**     |                                   |
 |                                   |                                   |
 | **(source:                        |                                   |
 | <https://docs.ckan.org/en/ckan-2. |                                   |
 | 7.3/api/#ckan.logic.action.get.pa |                                   |
 | ckage_search>)**                  |                                   |
-+===================================+===================================+
+| --------------------------------- | --------------------------------- |
 | **Parameter**                     | **Description**                   |
-+-----------------------------------+-----------------------------------+
+| --------------------------------- | --------------------------------- |
 | q                                 | The                               |
 |                                   | [solr](http://www.solrtutorial.co |
 |                                   | m/solr-query-syntax.html)         |
