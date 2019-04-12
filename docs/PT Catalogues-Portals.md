@@ -17,17 +17,15 @@ As of 28 March 2019, the following provincial sites use CKAN API:
 
 All webpage access is through the "dataset" URL:
 
-```<domain\>/dataset/```
+```<domain>/dataset/```
 
 #### Search Engine
 
-> The CKAN search engine and any of its dataset's webpages are accessed
-> using these URLs:
+The CKAN search engine and any of its dataset's webpages are accessed using these URLs:
 
-\<domain\>/dataset?\<parameters\>
+```<domain>/dataset?\<parameters>```
 
-> For example, the following URL will return all datasets in Alberta's
-> data catalogue containing the word "roads":
+For example, the following URL will return all datasets in Alberta's data catalogue containing the word "roads":
 
 [https://open.alberta.ca/dataset?q=roads]{.underline}
 
