@@ -1,8 +1,14 @@
 
 PT Catalogues/Portals Sources
 ==========
+# Table of Contents
+* Services
+	* P/T Usage
+	* Webpage Access
 
-## CATALOGUES
+# Services
+
+## CKAN
 
 ### P/T Usage
 
@@ -10,8 +16,7 @@ As of 28 March 2019, the following provincial sites use CKAN API:
 
 -   [Alberta's Open Government](https://open.alberta.ca/opendata)
 
--   [British Columbia's Open Data
-    Catalogue](https://catalogue.data.gov.bc.ca/dataset)
+-   [British Columbia's Open Data Catalogue](https://catalogue.data.gov.bc.ca/dataset)
 
 ### Webpage Access
 
@@ -62,8 +67,7 @@ For Alberta, the following URL returns the results for all open data in JSON for
 | maxrecords | The maximum number of records to return by default. This value is enforced if a CSW’s client’s maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
 | logfile | The full file path to the logfile. | C:\\pycsw-2.2.0\\log\\pycsw.log |
 
-##### Package_Search Parameters
-source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_search>
+The following table contains the parameters for **package_search** query (source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_search>)
 
 | **Parameter**                     | **Description**                   |
 | --------------------------------- | --------------------------------- |
@@ -90,8 +94,7 @@ The following URL contains the JSON results for the Preliminary Total Housing St
 
 <https://open.alberta.ca/api/3/action/package_show?id=a4b99aad-3f33-45ea-a5c7-e34a4733d336>
 
-##### Package_Show Parameters
-source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_show>
+The following table contains the parameters for **package_show** query (source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_show>)
 
 | **Parameter**                     | **Description**                   |
 | --------------------------------- | --------------------------------- |
@@ -99,8 +102,7 @@ source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_
 | use\_default\_schema              | Use default package schema instead of a custom schema        defined with an IDatasetForm plugin (default: False)           |
 | include\_tracking                 | Add tracking information to dataset and resources (default:   False)                            |
 
-Drupal
-------
+## Drupal
 
 ### P/T Usage
 
@@ -139,8 +141,7 @@ Ontario's Data Catalogue, enter:
 
 <https://api.ontario.ca/api/drupal/data%2Fweather-camera-data>
 
-ESRI Geoportal Server
----------------------
+## ESRI Geoportal Server
 
 ### P/T Usage
 
@@ -206,8 +207,7 @@ This URL returns all datasets in Alberta's GeoDiscover containing the word "road
 
 <https://geodiscover.alberta.ca/geoportal/rest/find/document?searchText=roads&f=pjson>
 
-##### Package_Show Parameters
-source: <https://github.com/Esri/geoportal-server/wiki/REST-API-Syntax>
+The following table contains the parameters for the REST query (source: <https://github.com/Esri/geoportal-server/wiki/REST-API-Syntax>)
 
 | **requestParameter**  | **Function**          | **Accepted Values**   |
 | --------------------- | --------------------- | --------------------- |
@@ -248,8 +248,7 @@ While the following example returns only a brief metadata of same dataset in JSO
 
 [https://geodiscover.alberta.ca/geoportal/rest/document?id={0F933555-8715-4E1B-8C43-409591957ECE}&f=pjson](https://geodiscover.alberta.ca/geoportal/rest/document?id=%7b0F933555-8715-4E1B-8C43-409591957ECE%7d&f=pjson)
 
-Socrata
--------
+## Socrata
 
 ### P/T Usage
 
@@ -329,11 +328,9 @@ The next URL will download a KML version of the same dataset:
 
 <https://data.novascotia.ca/api/geospatial/3nka-59nz?method=export&format=KML>
 
-Provinces
-=========
+# Provinces
 
-Alberta
--------
+## Alberta
 
 ### [GeoDiscover Catalogue](https://geodiscover.alberta.ca/geoportal/catalog/search/browse/browse.page)
 
@@ -371,8 +368,7 @@ Alberta
 -   API JSON Dataset:
     <https://open.alberta.ca/api/3/action/package_show>?id=\<uuid\>
 
-British Columbia
-----------------
+## British Columbia
 
 ### [Open Data Catalogue](https://catalogue.data.gov.bc.ca/dataset)
 
@@ -389,22 +385,17 @@ British Columbia
 -   API JSON Dataset:
     <https://catalogue.data.gov.bc.ca/api/3/action/package_show>?id=\<uuid\>
 
-Manitoba
---------
+## Manitoba
 
-New Brunswick
--------------
+## New Brunswick
 
-Newfoundland & Labrador
------------------------
+## Newfoundland & Labrador
 
-Northwest Territories
----------------------
+## Northwest Territories
 
 ### [Discovery Portal](http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/browse/browse.page)
 
--   Powered by [ESRI Geoportal
-    Server](https://www.esri.com/en-us/arcgis/products/geoportal-server/overview)
+-   Powered by [ESRI Geoportal Server](https://www.esri.com/en-us/arcgis/products/geoportal-server/overview)
 
 -   Search Engine:
     <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/search.page>
@@ -424,8 +415,7 @@ Northwest Territories
 -   API Dataset:
     <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/rest/document>?id={\<uuid\>}
 
-Nova Scotia
------------
+## Nova Scotia
 
 ### [Open Data](https://data.novascotia.ca/browse)
 
@@ -446,11 +436,9 @@ Nova Scotia
 -   API Download:
     <https://data.novascotia.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
 
-Nunavut
--------
+## Nunavut
 
-Ontario
--------
+## Ontario
 
 ### [Data Catalogue](https://www.ontario.ca/search/data-catalogue)
 
@@ -461,8 +449,7 @@ Ontario
 -   Powered by [GeoNetwork
     opensource](https://geonetwork-opensource.org/)
 
-Prince Edward Island
---------------------
+## Prince Edward Island
 
 ### [Open Catalogue](https://data.princeedwardisland.ca/browse)
 
@@ -484,14 +471,11 @@ Prince Edward Island
 -   API Download:
     <https://data.princeedwardisland.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
 
-Quebec
-------
+## Quebec
 
-Saskatchewan
-------------
+## Saskatchewan
 
-Yukon
------
+## Yukon
 
 ### [GeoYukon](http://geoweb.gov.yk.ca/geoportal/catalog/search/browse/browse.page)
 
