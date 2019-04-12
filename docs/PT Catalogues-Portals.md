@@ -48,10 +48,9 @@ The CKAN API is accessed using:
 
 The API can be used to search for datasets in the same way as the dataset search engine, except the results are listed in JSON format instead of in a search engine. To perform a search on the CKAN catalogue, enter:
 
-\<domain\>/api/3/action/package\_search?\<parameters\>
+```<domain>/api/3/action/package_search?<parameters>```
 
-> For Alberta, the following URL returns the results for all open data
-> in JSON format:
+For Alberta, the following URL returns the results for all open data in JSON format:
 
 <https://open.alberta.ca/api/3/action/package_search?fq=dataset_type:opendata>
 
