@@ -6,7 +6,7 @@ CKAN
 
 ### P/T Usage
 
-> As of 28 March 2019, the following provincial sites use CKAN API:
+As of 28 March 2019, the following provincial sites use CKAN API:
 
 -   [Alberta's Open Government](https://open.alberta.ca/opendata)
 
@@ -15,9 +15,9 @@ CKAN
 
 ### Webpage Access
 
-> All webpage access is through the "dataset" URL:
+All webpage access is through the "dataset" URL:
 
-\<domain\>/dataset/
+```<domain\>/dataset/```
 
 #### Search Engine
 
