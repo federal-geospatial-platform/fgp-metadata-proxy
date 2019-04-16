@@ -1,4 +1,4 @@
-# pycsw 2.2.0 Documentation
+# PyCSW For P/T Extraction Documentation
 
 ## Table of Contents
 
@@ -36,48 +36,64 @@
 
 ### Download and Unzip
 
-1.	Download the pycsw zip file from https://download.osgeo.org/pycsw/pycsw-2.2.0.zip
-2.	Unzip the file to a preferred location (in this case C:\pycsw-2.2.0)
+1.	Download the pycsw zip file from https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PT_pycsw.zip
+2.	Unzip the file to a preferred location (in this case C:\pycsw)
 
-### Setup Python
+### Setup PyCSW For Python 3.7.x
 
-NOTE: Make sure Python is installed before going through the next steps. To check if Python is installed, type ```python``` in a command prompt. If the error ```'python' is not recognized as an internal or external command, operable program or batch file.``` occurs, either Python is not installed or the Python installation location is not in the PATH Environment Variable.
+#### Version Check
+
+The first step is to make sure Python is installed before going through the setup. To check if Python is installed:
+1.	Type ```python``` in a command prompt. 
+2.	If the error ```'python' is not recognized as an internal or external command, operable program or batch file.``` occurs, either Python is not installed or the Python installation location is not in the PATH Environment Variable.
+3.	If Python is not installed, get the latest Python 32-bit download from https://www.python.org/downloads/ and install it to C:\Python37 or C:\Python37-32 (choose the Custom install to specify the installation folder). Once the installation is complete, go to step 5.
+4.	If Python is installed, add the Python installation (ex: C:\Python37) to the PATH environment variable.
+5.	If no error occurs when typing ```python```, enter ```python --version``` into the command prompt. If ```Python 3.7.x``` is returned, proceed to the next step.
+
 
 #### Dependencies
 
 pycsw 2.2.0 requires the following Python package:
-*	lxml v3.6.2
-*	SQLAlchemy v1.2.16
-*	pyproj v1.9.5.1
-*	Shapely v1.5.17
-*	OWSLib v0.16.0
-*	six v1.10.0
-*	xmltodict v0.10.2
-*	geolinks v0.2.0
+*	lxml 3.6.2 or higher
+*	SQLAlchemy 1.2.16 or higher
+*	pyproj 1.9.5.1 or higher
+*	Shapely 1.5.17 or higher
+*	OWSLib 0.16.0
+*	six 1.10.0
+*	xmltodict 0.10.2
+*	geolinks 0.2.0
 
-pycsw 2.2.0 only works with these specific versions. Any early or later packages will cause an error when running pycsw.
+These packages are installed with the setup.py installation except for Shapely and SQLAlchemy.
 
-Each package can be installed using pip. In a command prompt, enter ```pip install <package>==<version>``` (lxml example: ```pip install lxml==3.6.2```)
+#### Setup PyCSW for Python
 
-#### Setup pycsw for Python
+##### Install Shapely Wheel
+
+The Shapely package uses C libraries when running in Python. The Shapely wheel file needs to be run to setup these libraries properly. In a Command Prompt, type ```pip install "C:\pycsw\var\lib\Shapely-1.6.4.post1-cp37-cp37m-win32.whl"```.
+
+##### Install SQLAlchemy
+
+In a Command Prompt, enter ```pip install sqlalchemy```.
+
+##### PyCSW Setup.py Install
 
 1.	Open a Command Prompt window.
 2.	Change the drive to C by typing ```C:```
-3.	Navigate to C:\pycsw-2.2.0 by typing ```cd pycsw-2.2.0```
+3.	Navigate to C:\pycsw by typing ```cd pycsw```
 4.	To build the setup, type ```python setup.py build```
 5.	To install, type ```python setup.py install```
 
 ## CONFIGURATION
 
-PyCSW is configured using “pycsw-2.2.0\default.cfg”. Here are a select few parameters for the config file (for a full list, visit the PyCSW Configuration page at http://docs.pycsw.org/en/2.2.0/configuration.html).
+PyCSW is configured using “pycsw\default.cfg”. Here are a select few parameters for the config file (for a full list, visit the PyCSW Configuration page at http://docs.pycsw.org/en/2.2.0/configuration.html).
 
 ### Server
 | Parameter | Description | FGP PyCSW Setting |
 | --------- | ----------- | ----------------- |
-| home | The full filesystem path to pycsw | C:\\pycsw-2.2.0 |
+| home | The full filesystem path to pycsw | C:\\pycsw |
 | url | The URL of the resulting service | http://localhost:8000/pycsw/csw.py |
 | maxrecords | The maximum number of records to return by default. This value is enforced if a CSW’s client’s maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
-| logfile | The full file path to the logfile. | C:\\pycsw-2.2.0\\log\\pycsw.log |
+| logfile | The full file path to the logfile. | C:\\pycsw\\log\\pycsw.log |
 
 ### Manager
 | Parameter | Description | FGP PyCSW Setting |
@@ -100,7 +116,7 @@ This section contains information on the PyCSW and its author.
 
 ### Using WSGI
 
-Web Server Gateway Interface (WSGI) can be used to run the pycsw server. In a command prompt, enter ```python pycsw/wsgi.py``` in the pycsw-2.2.0 folder.
+Web Server Gateway Interface (WSGI) can be used to run the pycsw server. In a command prompt, enter ```python pycsw/wsgi.py``` in the pycsw folder.
 
 ## REQUESTS
 
