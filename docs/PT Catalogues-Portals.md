@@ -465,7 +465,7 @@ For more information on Socrata, visit https://socrata.com/.
 
 -   API JSON Views (all records): <https://data.novascotia.ca/api/views>
 
--   API JSON Dataset: [https://data.novascotia.ca/api/views/<ds_id>](https://data.novascotia.ca/api/views/%3cds_id)\>
+-   API JSON Dataset: <https://data.novascotia.ca/api/views/><ds_id>
 
 -   API Download: <https://data.novascotia.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
 
