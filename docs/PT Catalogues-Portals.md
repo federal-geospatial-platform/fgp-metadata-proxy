@@ -139,6 +139,10 @@ The following table contains the parameters for **package_show** query (source: 
 | use\_default\_schema              | Use default package schema instead of a custom schema        defined with an IDatasetForm plugin (default: False)           |
 | include\_tracking                 | Add tracking information to dataset and resources (default:   False)                            |
 
+### More Information
+
+For more information on CKAN, visit https://ckan.org/.
+
 ## Drupal
 
 ### P/T Usage
