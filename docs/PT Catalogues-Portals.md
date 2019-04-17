@@ -38,6 +38,7 @@ PT Catalogues/Portals Sources
     - [Prince Edward Island](#prince-edward-island)
       - [Open Catalogue](#open-cataloguehttpsdataprinceedwardislandcabrowse)
     - [Quebec](#quebec)
+      - [Données Québec](#donnees-quebec)
     - [Saskatchewan](#saskatchewan)
     - [Yukon](#yukon)
       - [GeoYukon](#geoyukonhttpgeowebgovykcageoportalcatalogsearchbrowsebrowsepage)
@@ -508,6 +509,15 @@ The next URL will download a KML version of the same dataset:
     <https://data.princeedwardisland.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
 
 ## Quebec
+
+### [Données Québec](https://www.donneesquebec.ca/fr/)
+-	Powered by CKAN
+-	Domain: https://www.donneesquebec.ca/recherche/fr (in the [CKAN instructions](#ckan) above, replace “domain” with this URL)
+-	Search Engine: https://www.donneesquebec.ca/recherche/fr/dataset?<parameters>
+-	Dataset Page: https://www.donneesquebec.ca/recherche/fr/dataset/<uuid>
+-	API JSON Search :  https://www.donneesquebec.ca/recherche/fr/api/3/action/package_search?<parameters>
+-	API JSON Dataset:  https://www.donneesquebec.ca/recherche/fr/api/3/action/package_show?id=<uuid>
+
 
 ## Saskatchewan
 
