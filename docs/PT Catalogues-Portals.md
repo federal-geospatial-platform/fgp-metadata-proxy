@@ -7,40 +7,45 @@ PT Catalogues/Portals Sources
     - [P/T Usage](#pt-usage)
     - [Webpage Access](#webpage-access)
     - [API Access](#api-access)
+    - [More Information](#more-information)
   - [Drupal](#drupal)
     - [P/T Usage](#pt-usage-1)
     - [API Access](#api-access-1)
+    - [More Information](#more-information-1)
   - [ESRI Geoportal Server](#esri-geoportal-server)
     - [P/T Usage](#pt-usage-2)
     - [Webpage Access](#webpage-access-1)
     - [API Access](#api-access-2)
+    - [More Information](#more-information-2)
   - [Socrata](#socrata)
     - [P/T Usage](#pt-usage-3)
     - [Webpage Access](#webpage-access-2)
     - [API Access](#api-access-3)
-- [Provinces](#provinces)
+    - [More Information](#more-information-3)
+  - [Provinces](#provinces)
     - [Alberta](#alberta)
-      - [GeoDiscover Catalogue](#geodiscover-cataloguehttpsgeodiscoveralbertacageoportalcatalogsearchbrowsebrowsepage)
-      - [Open Government](#open-governmenthttpsopenalbertacaopendata)
+      - [GeoDiscover Catalogue](#geodiscover-catalogue)
+      - [Open Government](#open-government)
     - [British Columbia](#british-columbia)
-      - [Open Data Catalogue](#open-data-cataloguehttpscataloguedatagovbccadataset)
+      - [Open Data Catalogue](#open-data-catalogue)
     - [Manitoba](#manitoba)
     - [New Brunswick](#new-brunswick)
     - [Newfoundland & Labrador](#newfoundland--labrador)
     - [Northwest Territories](#northwest-territories)
-      - [Discovery Portal](#discovery-portalhttpnwtdiscoveryportalenrgovntcageoportalcatalogsearchbrowsebrowsepage)
+      - [Discovery Portal](#discovery-portal)
     - [Nova Scotia](#nova-scotia)
-      - [Open Data](#open-datahttpsdatanovascotiacabrowse)
+      - [Open Data](#open-data)
     - [Nunavut](#nunavut)
     - [Ontario](#ontario)
-      - [Data Catalogue](#data-cataloguehttpswwwontariocasearchdata-catalogue)
-      - [Discovering Ontario](#discovering-ontariohttpswwwjavacoeapplrcgovoncageonetworksrvenmainhome)
+      - [Data Catalogue](#data-catalogue)
+      - [Discovering Ontario](#discovering-ontario)
     - [Prince Edward Island](#prince-edward-island)
-      - [Open Catalogue](#open-cataloguehttpsdataprinceedwardislandcabrowse)
+      - [Open Catalogue](#open-catalogue)
     - [Quebec](#quebec)
+      - [Données Québec](#données-québec)
     - [Saskatchewan](#saskatchewan)
     - [Yukon](#yukon)
-      - [GeoYukon](#geoyukonhttpgeowebgovykcageoportalcatalogsearchbrowsebrowsepage)
+      - [GeoYukon](#geoyukon)
    
 # Services
 
@@ -100,7 +105,7 @@ For Alberta, the following URL returns the results for all open data in JSON for
 | --------- | ----------- | ----------------- |
 | home | The full filesystem path to pycsw | C:\\pycsw-2.2.0 |
 | url | The URL of the resulting service | http://localhost:8000/pycsw/csw.py |
-| maxrecords | The maximum number of records to return by default. This value is enforced if a CSW’s client’s maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
+| maxrecords | The maximum number of records to return by default. This value is enforced if a CSW's client's maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
 | logfile | The full file path to the logfile. | C:\\pycsw-2.2.0\\log\\pycsw.log |
 
 The following table contains the parameters for **package_search** query (source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_search>)
@@ -137,6 +142,10 @@ The following table contains the parameters for **package_show** query (source: 
 | id                                | The id or name of the dataset.    |
 | use\_default\_schema              | Use default package schema instead of a custom schema        defined with an IDatasetForm plugin (default: False)           |
 | include\_tracking                 | Add tracking information to dataset and resources (default:   False)                            |
+
+### More Information
+
+For more information on CKAN, visit https://ckan.org/.
 
 ## Drupal
 
@@ -176,6 +185,10 @@ For example, to access the "Weather Camera Data" dataset from
 Ontario's Data Catalogue, enter:
 
 <https://api.ontario.ca/api/drupal/data%2Fweather-camera-data>
+
+### More Information
+
+For more information on Drupal, visit https://api.drupal.org/.
 
 ## ESRI Geoportal Server
 
@@ -284,6 +297,10 @@ While the following example returns only a brief metadata of same dataset in JSO
 
 [https://geodiscover.alberta.ca/geoportal/rest/document?id={0F933555-8715-4E1B-8C43-409591957ECE}&f=pjson](https://geodiscover.alberta.ca/geoportal/rest/document?id=%7b0F933555-8715-4E1B-8C43-409591957ECE%7d&f=pjson)
 
+### More Information
+
+For more information on ESRI Geoportal Server, visit https://www.esri.com/en-us/arcgis/products/geoportal-server/overview.
+
 ## Socrata
 
 ### P/T Usage
@@ -364,62 +381,41 @@ The next URL will download a KML version of the same dataset:
 
 <https://data.novascotia.ca/api/geospatial/3nka-59nz?method=export&format=KML>
 
+### More Information
+
+For more information on Socrata, visit https://socrata.com/.
+
 # Provinces
 
 ## Alberta
 
-### [GeoDiscover Catalogue](https://geodiscover.alberta.ca/geoportal/catalog/search/browse/browse.page)
+### GeoDiscover Catalogue
 
--   Powered by ESRI Geoportal Server CSW
+-   Powered by [ESRI Geoportal Server CSW](#esri-geoportal-server)
+-   Search Engine: <https://geodiscover.alberta.ca/geoportal/catalog/search/search.page>
+-   Browser Page: <https://geodiscover.alberta.ca/geoportal/catalog/search/browse/browse.page>
+-   Details Page: <https://geodiscover.alberta.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
+-   Full Metadata Page: <https://geodiscover.alberta.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
+-   API Search: <https://geodiscover.alberta.ca/geoportal/rest/find/document>?\<parameters\>
+-   API Dataset: <https://geodiscover.alberta.ca/geoportal/rest/document>?id={\<uuid\>}
 
--   Search Engine:
-    <https://geodiscover.alberta.ca/geoportal/catalog/search/search.page>
+### Open Government
 
--   Browser Page:
-    <https://geodiscover.alberta.ca/geoportal/catalog/search/browse/browse.page>
-
--   Details Page:
-    <https://geodiscover.alberta.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
-
--   Full Metadata Page:
-    <https://geodiscover.alberta.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
-
--   API Search:
-    <https://geodiscover.alberta.ca/geoportal/rest/find/document>?\<parameters\>
-
--   API Dataset:
-    <https://geodiscover.alberta.ca/geoportal/rest/document>?id={\<uuid\>}
-
-### [Open Government](https://open.alberta.ca/opendata)
-
--   Powered by [CKAN](https://ckan.org/)
-
+-   Powered by [CKAN](#ckan)
 -   Search Engine: <https://open.alberta.ca/dataset>?\<parameters\>
-
 -   Dataset Page: <https://open.alberta.ca/dataset/>\<uuid\>
-
--   API JSON Search :
-    <https://open.alberta.ca/api/3/action/package_search>?\<parameters\>
-
--   API JSON Dataset:
-    <https://open.alberta.ca/api/3/action/package_show>?id=\<uuid\>
+-   API JSON Search: <https://open.alberta.ca/api/3/action/package_search>?\<parameters\>
+-   API JSON Dataset: <https://open.alberta.ca/api/3/action/package_show>?id=\<uuid\>
 
 ## British Columbia
 
-### [Open Data Catalogue](https://catalogue.data.gov.bc.ca/dataset)
+### Open Data Catalogue
 
--   Powered by [CKAN](https://ckan.org/)
-
--   Search Engine:
-    <https://catalogue.data.gov.bc.ca/dataset>?\<parameters\>
-
+-   Powered by [CKAN](#ckan)
+-   Search Engine: <https://catalogue.data.gov.bc.ca/dataset>?\<parameters\>
 -   Dataset Page: <https://catalogue.data.gov.bc.ca/dataset/>\<uuid\>
-
--   API JSON Search :
-    <https://catalogue.data.gov.bc.ca/api/3/action/package_search>?\<parameters\>
-
--   API JSON Dataset:
-    <https://catalogue.data.gov.bc.ca/api/3/action/package_show>?id=\<uuid\>
+-   API JSON Search: <https://catalogue.data.gov.bc.ca/api/3/action/package_search>?\<parameters\>
+-   API JSON Dataset: <https://catalogue.data.gov.bc.ca/api/3/action/package_show>?id=\<uuid\>
 
 ## Manitoba
 
@@ -429,109 +425,78 @@ The next URL will download a KML version of the same dataset:
 
 ## Northwest Territories
 
-### [Discovery Portal](http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/browse/browse.page)
+### Discovery Portal
 
--   Powered by [ESRI Geoportal Server](https://www.esri.com/en-us/arcgis/products/geoportal-server/overview)
-
--   Search Engine:
-    <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/search.page>
-
--   Browser Page:
-    <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/browse/browse.page>
-
--   Details Page:
-    <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
-
--   Full Metadata Page:
-    <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
-
--   API Search:
-    <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/rest/find/document>?\<parameters\>
-
--   API Dataset:
-    <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/rest/document>?id={\<uuid\>}
+-   Powered by [ESRI Geoportal Server](#esri-geoportal-server)
+-   Search Engine: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/search.page>
+-   Browser Page: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/browse/browse.page>
+-   Details Page: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
+-   Full Metadata Page: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
+-   API Search: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/rest/find/document>?\<parameters\>
+-   API Dataset: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/rest/document>?id={\<uuid\>}
 
 ## Nova Scotia
 
-### [Open Data](https://data.novascotia.ca/browse)
+### Open Data
 
--   Powered by [Socrata](https://socrata.com/)
-
+-   Powered by [Socrata](#socrata)
 -   Search Engine: <https://data.novascotia.ca/browse>
-
 -   Dataset Page: <https://data.novascotia.ca/d/>\<ds\_id\>
-
--   API JSON Search (Global Catalogue):
-    <https://data.novascotia.ca/api/catalog/v1>?domains=\<domain\_without\_http\>&\<parameters\>
-
+-   API JSON Search (Global Catalogue): <https://data.novascotia.ca/api/catalog/v1>?domains=\<domain\_without\_http\>&\<parameters\>
 -   API JSON Views (all records): <https://data.novascotia.ca/api/views>
-
--   API JSON Dataset:
-    [https://data.novascotia.ca/api/views/\<ds\_id](https://data.novascotia.ca/api/views/%3cds_id)\>
-
--   API Download:
-    <https://data.novascotia.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
+-   API JSON Dataset: <https://data.novascotia.ca/api/views/><ds_id>
+-   API Download: <https://data.novascotia.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
 
 ## Nunavut
 
 ## Ontario
 
-### [Data Catalogue](https://www.ontario.ca/search/data-catalogue)
+### Data Catalogue
 
--   Powered by [Drupal](https://api.drupal.org)
+-   Powered by [Drupal](#drupal)
+-	Domain: https://www.ontario.ca
+-	Search Engine: https://www.ontario.ca/search/data-catalogue
 
-### [Discovering Ontario](https://www.javacoeapp.lrc.gov.on.ca/geonetwork/srv/en/main.home)
+### Discovering Ontario
 
--   Powered by [GeoNetwork
-    opensource](https://geonetwork-opensource.org/)
+-   Powered by [GeoNetwork opensource](https://geonetwork-opensource.org/)
+-	Domain: https://www.javacoeapp.lrc.gov.on.ca
+-	Search Engine: https://www.javacoeapp.lrc.gov.on.ca/geonetwork/srv/en/main.home
 
 ## Prince Edward Island
 
-### [Open Catalogue](https://data.princeedwardisland.ca/browse)
+### Open Catalogue
 
--   Powered by [Socrata](https://socrata.com/)
-
+-   Powered by [Socrata](#socrata)
 -   Search Engine: <https://data.princeedwardisland.ca/browse>
-
 -   Dataset Page: <https://data.princeedwardisland.ca/d/>\<ds\_id\>
-
 -   API JSON Search (Global Catalogue):
     <https://data.princeedwardisland.ca/api/catalog/v1>?domains=\<domain\_without\_http\>&\<parameters\>
-
 -   API JSON Views (all records):
     <https://data.princeedwardisland.ca/api/views>
-
--   API JSON Dataset:
-    <https://data.princeedwardisland.ca/api/views/>\<ds\_id\>
-
--   API Download:
-    <https://data.princeedwardisland.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
+-   API JSON Dataset: <https://data.princeedwardisland.ca/api/views/><ds_id>
+-   API Download: <https://data.princeedwardisland.ca/api/geospatial/><id>?method=export&format=\<format\>
 
 ## Quebec
+
+### Données Québec
+-	Powered by [CKAN](#ckan)
+-	Domain: <https://www.donneesquebec.ca/recherche/fr> (in the [CKAN instructions](#ckan) above, replace "domain" with this URL)
+-	Search Engine: <https://www.donneesquebec.ca/recherche/fr/dataset>?\<parameters\>
+-	Dataset Page: <https://www.donneesquebec.ca/recherche/fr/dataset/>\<uuid\>
+-	API JSON Search : <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_search>?\<parameters\>
+-	API JSON Dataset: <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_show>?id=\<uuid\>
 
 ## Saskatchewan
 
 ## Yukon
 
-### [GeoYukon](http://geoweb.gov.yk.ca/geoportal/catalog/search/browse/browse.page)
+### GeoYukon
 
--   Powered by [ESRI Geoportal
-    Server](https://www.esri.com/en-us/arcgis/products/geoportal-server/overview)
-
--   Search Engine:
-    <http://geoweb.gov.yk.ca/geoportal/catalog/search/search.page>
-
--   Browser Page:
-    <http://geoweb.gov.yk.ca/geoportal/catalog/search/browse/browse.page>
-
--   Details Page:
-    <http://geoweb.gov.yk.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
-
--   Full Metadata Page:
-    <http://geoweb.gov.yk.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
-
--   API Search:
-    <http://geoweb.gov.yk.ca/geoportal/rest/find/document>?\<parameters\>
-
--   API Dataset:
-    <http://geoweb.gov.yk.ca/geoportal/rest/document>?id={\<uuid\>}
+-   Powered by [ESRI Geoportal Server](#esri-geoportal-server)
+-   Search Engine: <http://geoweb.gov.yk.ca/geoportal/catalog/search/search.page>
+-   Browser Page: <http://geoweb.gov.yk.ca/geoportal/catalog/search/browse/browse.page>
+-   Details Page: <http://geoweb.gov.yk.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
+-   Full Metadata Page: <http://geoweb.gov.yk.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
+-   API Search:	<http://geoweb.gov.yk.ca/geoportal/rest/find/document>?\<parameters\>
+-   API Dataset: <http://geoweb.gov.yk.ca/geoportal/rest/document>?id={\<uuid\>}
