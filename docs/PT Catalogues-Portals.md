@@ -388,29 +388,19 @@ For more information on Socrata, visit https://socrata.com/.
 ### GeoDiscover Catalogue
 
 -   Powered by [ESRI Geoportal Server CSW](#esri-geoportal-server)
-
 -   Search Engine: <https://geodiscover.alberta.ca/geoportal/catalog/search/search.page>
-
 -   Browser Page: <https://geodiscover.alberta.ca/geoportal/catalog/search/browse/browse.page>
-
 -   Details Page: <https://geodiscover.alberta.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
-
 -   Full Metadata Page: <https://geodiscover.alberta.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
-
 -   API Search: <https://geodiscover.alberta.ca/geoportal/rest/find/document>?\<parameters\>
-
 -   API Dataset: <https://geodiscover.alberta.ca/geoportal/rest/document>?id={\<uuid\>}
 
 ### Open Government
 
 -   Powered by [CKAN](#ckan)
-
 -   Search Engine: <https://open.alberta.ca/dataset>?\<parameters\>
-
 -   Dataset Page: <https://open.alberta.ca/dataset/>\<uuid\>
-
 -   API JSON Search: <https://open.alberta.ca/api/3/action/package_search>?\<parameters\>
-
 -   API JSON Dataset: <https://open.alberta.ca/api/3/action/package_show>?id=\<uuid\>
 
 ## British Columbia
@@ -418,13 +408,9 @@ For more information on Socrata, visit https://socrata.com/.
 ### Open Data Catalogue
 
 -   Powered by [CKAN](#ckan)
-
 -   Search Engine: <https://catalogue.data.gov.bc.ca/dataset>?\<parameters\>
-
 -   Dataset Page: <https://catalogue.data.gov.bc.ca/dataset/>\<uuid\>
-
 -   API JSON Search: <https://catalogue.data.gov.bc.ca/api/3/action/package_search>?\<parameters\>
-
 -   API JSON Dataset: <https://catalogue.data.gov.bc.ca/api/3/action/package_show>?id=\<uuid\>
 
 ## Manitoba
@@ -438,17 +424,11 @@ For more information on Socrata, visit https://socrata.com/.
 ### Discovery Portal
 
 -   Powered by [ESRI Geoportal Server](#esri-geoportal-server)
-
 -   Search Engine: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/search.page>
-
 -   Browser Page: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/browse/browse.page>
-
 -   Details Page: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
-
 -   Full Metadata Page: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
-
 -   API Search: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/rest/find/document>?\<parameters\>
-
 -   API Dataset: <http://nwtdiscoveryportal.enr.gov.nt.ca/geoportal/rest/document>?id={\<uuid\>}
 
 ## Nova Scotia
@@ -456,17 +436,11 @@ For more information on Socrata, visit https://socrata.com/.
 ### Open Data
 
 -   Powered by [Socrata](#socrata)
-
 -   Search Engine: <https://data.novascotia.ca/browse>
-
 -   Dataset Page: <https://data.novascotia.ca/d/>\<ds\_id\>
-
 -   API JSON Search (Global Catalogue): <https://data.novascotia.ca/api/catalog/v1>?domains=\<domain\_without\_http\>&\<parameters\>
-
 -   API JSON Views (all records): <https://data.novascotia.ca/api/views>
-
 -   API JSON Dataset: <https://data.novascotia.ca/api/views/><ds_id>
-
 -   API Download: <https://data.novascotia.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
 
 ## Nunavut
@@ -476,18 +450,13 @@ For more information on Socrata, visit https://socrata.com/.
 ### Data Catalogue
 
 -   Powered by [Drupal](#drupal)
-
 -	Domain: https://www.ontario.ca
-
 -	Search Engine: https://www.ontario.ca/search/data-catalogue
 
 ### Discovering Ontario
 
--   Powered by [GeoNetwork
-    opensource](https://geonetwork-opensource.org/)
-	
+-   Powered by [GeoNetwork opensource](https://geonetwork-opensource.org/)
 -	Domain: https://www.javacoeapp.lrc.gov.on.ca
-
 -	Search Engine: https://www.javacoeapp.lrc.gov.on.ca/geonetwork/srv/en/main.home
 
 ## Prince Edward Island
@@ -495,33 +464,24 @@ For more information on Socrata, visit https://socrata.com/.
 ### Open Catalogue
 
 -   Powered by [Socrata](#socrata)
-
 -   Search Engine: <https://data.princeedwardisland.ca/browse>
-
 -   Dataset Page: <https://data.princeedwardisland.ca/d/>\<ds\_id\>
-
 -   API JSON Search (Global Catalogue):
     <https://data.princeedwardisland.ca/api/catalog/v1>?domains=\<domain\_without\_http\>&\<parameters\>
-
 -   API JSON Views (all records):
     <https://data.princeedwardisland.ca/api/views>
-
--   API JSON Dataset:
-    <https://data.princeedwardisland.ca/api/views/>\<ds\_id\>
-
--   API Download:
-    <https://data.princeedwardisland.ca/api/geospatial/>\<id\>?method=export&format=\<format\>
+-   API JSON Dataset: <https://data.princeedwardisland.ca/api/views/><ds_id>
+-   API Download: <https://data.princeedwardisland.ca/api/geospatial/><id>?method=export&format=\<format\>
 
 ## Quebec
 
 ### Données Québec
 -	Powered by [CKAN](#ckan)
--	Domain: https://www.donneesquebec.ca/recherche/fr (in the [CKAN instructions](#ckan) above, replace “domain” with this URL)
--	Search Engine: https://www.donneesquebec.ca/recherche/fr/dataset?<parameters>
--	Dataset Page: https://www.donneesquebec.ca/recherche/fr/dataset/<uuid>
--	API JSON Search :  https://www.donneesquebec.ca/recherche/fr/api/3/action/package_search?<parameters>
--	API JSON Dataset:  https://www.donneesquebec.ca/recherche/fr/api/3/action/package_show?id=<uuid>
-
+-	Domain: <https://www.donneesquebec.ca/recherche/fr> (in the [CKAN instructions](#ckan) above, replace “domain” with this URL)
+-	Search Engine: <https://www.donneesquebec.ca/recherche/fr/dataset?><parameters>
+-	Dataset Page: <https://www.donneesquebec.ca/recherche/fr/dataset/><uuid>
+-	API JSON Search : <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_search?><parameters>
+-	API JSON Dataset: <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_show?>id=<uuid>
 
 ## Saskatchewan
 
@@ -530,21 +490,9 @@ For more information on Socrata, visit https://socrata.com/.
 ### GeoYukon
 
 -   Powered by [ESRI Geoportal Server](#esri-geoportal-server)
-
--   Search Engine:
-    <http://geoweb.gov.yk.ca/geoportal/catalog/search/search.page>
-
--   Browser Page:
-    <http://geoweb.gov.yk.ca/geoportal/catalog/search/browse/browse.page>
-
--   Details Page:
-    <http://geoweb.gov.yk.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
-
--   Full Metadata Page:
-    <http://geoweb.gov.yk.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
-
--   API Search:
-    <http://geoweb.gov.yk.ca/geoportal/rest/find/document>?\<parameters\>
-
--   API Dataset:
-    <http://geoweb.gov.yk.ca/geoportal/rest/document>?id={\<uuid\>}
+-   Search Engine: <http://geoweb.gov.yk.ca/geoportal/catalog/search/search.page>
+-   Browser Page: <http://geoweb.gov.yk.ca/geoportal/catalog/search/browse/browse.page>
+-   Details Page: <http://geoweb.gov.yk.ca/geoportal/catalog/search/resource/details.page>?uuid={\<uuid\>}
+-   Full Metadata Page: <http://geoweb.gov.yk.ca/geoportal/catalog/search/resource/fullMetadata.page>?uuid={\<uuid\>}
+-   API Search:	<http://geoweb.gov.yk.ca/geoportal/rest/find/document>?\<parameters\>
+-   API Dataset: <http://geoweb.gov.yk.ca/geoportal/rest/document>?id={\<uuid\>}
