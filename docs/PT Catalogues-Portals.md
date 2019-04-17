@@ -38,7 +38,7 @@ PT Catalogues/Portals Sources
     - [Prince Edward Island](#prince-edward-island)
       - [Open Catalogue](#open-cataloguehttpsdataprinceedwardislandcabrowse)
     - [Quebec](#quebec)
-      - [Données Québec](#donnees-quebec)
+      - [Données Québec](#données-québec)
     - [Saskatchewan](#saskatchewan)
     - [Yukon](#yukon)
       - [GeoYukon](#geoyukonhttpgeowebgovykcageoportalcatalogsearchbrowsebrowsepage)
