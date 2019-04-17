@@ -182,6 +182,10 @@ Ontario's Data Catalogue, enter:
 
 <https://api.ontario.ca/api/drupal/data%2Fweather-camera-data>
 
+### More Information
+
+For more information on Drupal, visit https://api.drupal.org/.
+
 ## ESRI Geoportal Server
 
 ### P/T Usage
@@ -289,6 +293,10 @@ While the following example returns only a brief metadata of same dataset in JSO
 
 [https://geodiscover.alberta.ca/geoportal/rest/document?id={0F933555-8715-4E1B-8C43-409591957ECE}&f=pjson](https://geodiscover.alberta.ca/geoportal/rest/document?id=%7b0F933555-8715-4E1B-8C43-409591957ECE%7d&f=pjson)
 
+### More Information
+
+For more information on ESRI Geoportal Server, visit https://www.esri.com/en-us/arcgis/products/geoportal-server/overview.
+
 ## Socrata
 
 ### P/T Usage
@@ -368,6 +376,10 @@ For example, the following URL will download the "Crown Land" dataset in its ori
 The next URL will download a KML version of the same dataset:
 
 <https://data.novascotia.ca/api/geospatial/3nka-59nz?method=export&format=KML>
+
+### More Information
+
+For more information on Socrata, visit https://socrata.com/.
 
 # Provinces
 
