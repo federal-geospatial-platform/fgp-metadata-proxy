@@ -478,10 +478,10 @@ For more information on Socrata, visit https://socrata.com/.
 ### Données Québec
 -	Powered by [CKAN](#ckan)
 -	Domain: <https://www.donneesquebec.ca/recherche/fr> (in the [CKAN instructions](#ckan) above, replace “domain” with this URL)
--	Search Engine: <https://www.donneesquebec.ca/recherche/fr/dataset?><parameters>
--	Dataset Page: <https://www.donneesquebec.ca/recherche/fr/dataset/><uuid>
--	API JSON Search : <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_search>?/<parameters/>
--	API JSON Dataset: <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_show>?id=/<uuid/>
+-	Search Engine: <https://www.donneesquebec.ca/recherche/fr/dataset>?\<parameters\>
+-	Dataset Page: <https://www.donneesquebec.ca/recherche/fr/dataset/>\<uuid\>
+-	API JSON Search : <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_search>?\<parameters\>
+-	API JSON Dataset: <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_show>?id=\<uuid\>
 
 ## Saskatchewan
 
