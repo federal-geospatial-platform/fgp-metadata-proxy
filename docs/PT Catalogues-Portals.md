@@ -7,41 +7,45 @@ PT Catalogues/Portals Sources
     - [P/T Usage](#pt-usage)
     - [Webpage Access](#webpage-access)
     - [API Access](#api-access)
+    - [More Information](#more-information)
   - [Drupal](#drupal)
     - [P/T Usage](#pt-usage-1)
     - [API Access](#api-access-1)
+    - [More Information](#more-information-1)
   - [ESRI Geoportal Server](#esri-geoportal-server)
     - [P/T Usage](#pt-usage-2)
     - [Webpage Access](#webpage-access-1)
     - [API Access](#api-access-2)
+    - [More Information](#more-information-2)
   - [Socrata](#socrata)
     - [P/T Usage](#pt-usage-3)
     - [Webpage Access](#webpage-access-2)
     - [API Access](#api-access-3)
-- [Provinces](#provinces)
+    - [More Information](#more-information-3)
+  - [Provinces](#provinces)
     - [Alberta](#alberta)
-      - [GeoDiscover Catalogue](#geodiscover-cataloguehttpsgeodiscoveralbertacageoportalcatalogsearchbrowsebrowsepage)
-      - [Open Government](#open-governmenthttpsopenalbertacaopendata)
+      - [GeoDiscover Catalogue](#geodiscover-catalogue)
+      - [Open Government](#open-government)
     - [British Columbia](#british-columbia)
-      - [Open Data Catalogue](#open-data-cataloguehttpscataloguedatagovbccadataset)
+      - [Open Data Catalogue](#open-data-catalogue)
     - [Manitoba](#manitoba)
     - [New Brunswick](#new-brunswick)
     - [Newfoundland & Labrador](#newfoundland--labrador)
     - [Northwest Territories](#northwest-territories)
-      - [Discovery Portal](#discovery-portalhttpnwtdiscoveryportalenrgovntcageoportalcatalogsearchbrowsebrowsepage)
+      - [Discovery Portal](#discovery-portal)
     - [Nova Scotia](#nova-scotia)
-      - [Open Data](#open-datahttpsdatanovascotiacabrowse)
+      - [Open Data](#open-data)
     - [Nunavut](#nunavut)
     - [Ontario](#ontario)
-      - [Data Catalogue](#data-cataloguehttpswwwontariocasearchdata-catalogue)
-      - [Discovering Ontario](#discovering-ontariohttpswwwjavacoeapplrcgovoncageonetworksrvenmainhome)
+      - [Data Catalogue](#data-catalogue)
+      - [Discovering Ontario](#discovering-ontario)
     - [Prince Edward Island](#prince-edward-island)
-      - [Open Catalogue](#open-cataloguehttpsdataprinceedwardislandcabrowse)
+      - [Open Catalogue](#open-catalogue)
     - [Quebec](#quebec)
       - [Données Québec](#données-québec)
     - [Saskatchewan](#saskatchewan)
     - [Yukon](#yukon)
-      - [GeoYukon](#geoyukonhttpgeowebgovykcageoportalcatalogsearchbrowsebrowsepage)
+      - [GeoYukon](#geoyukon)
    
 # Services
 
@@ -101,7 +105,7 @@ For Alberta, the following URL returns the results for all open data in JSON for
 | --------- | ----------- | ----------------- |
 | home | The full filesystem path to pycsw | C:\\pycsw-2.2.0 |
 | url | The URL of the resulting service | http://localhost:8000/pycsw/csw.py |
-| maxrecords | The maximum number of records to return by default. This value is enforced if a CSW’s client’s maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
+| maxrecords | The maximum number of records to return by default. This value is enforced if a CSW's client's maxRecords parameter is greater than server.maxrecords to limit capacity. | 10 |
 | logfile | The full file path to the logfile. | C:\\pycsw-2.2.0\\log\\pycsw.log |
 
 The following table contains the parameters for **package_search** query (source: <https://docs.ckan.org/en/ckan-2.7.3/api/#ckan.logic.action.get.package_search>)
@@ -477,7 +481,7 @@ For more information on Socrata, visit https://socrata.com/.
 
 ### Données Québec
 -	Powered by [CKAN](#ckan)
--	Domain: <https://www.donneesquebec.ca/recherche/fr> (in the [CKAN instructions](#ckan) above, replace “domain” with this URL)
+-	Domain: <https://www.donneesquebec.ca/recherche/fr> (in the [CKAN instructions](#ckan) above, replace "domain" with this URL)
 -	Search Engine: <https://www.donneesquebec.ca/recherche/fr/dataset>?\<parameters\>
 -	Dataset Page: <https://www.donneesquebec.ca/recherche/fr/dataset/>\<uuid\>
 -	API JSON Search : <https://www.donneesquebec.ca/recherche/fr/api/3/action/package_search>?\<parameters\>
