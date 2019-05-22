@@ -2,8 +2,8 @@
 Provincial and Territorial Extraction, Transformation and Loading Processes
 ==========
 # Table of Contents
-- [Provincial and Territorial Extraction, Transformation and Loading Processes](#pt-etl)
-  - [British Columbia](#bc-etl)
+- [Provincial and Territorial Extraction, Transformation and Loading Processes](#provincial-and-territorial-extraction-transformation-and-loading-processes-1)
+  - [British Columbia](#british-columbia)
     - [P/T Usage](#pt-usage)
     - [Webpage Access](#webpage-access)
     - [API Access](#api-access)
