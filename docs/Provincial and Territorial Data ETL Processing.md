@@ -14,7 +14,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
   - [Nunavut] (#nunavut)
   - [Ontario] (#ontario)
   - [Prince Edward Island] (#prince-edward-island)
-  - [Québec] (#quebec)
+  - [Québec] (#québec)
   - [Saskatchewan] (#saskatchewan)
   - [Yukon] (#yukon)
    
