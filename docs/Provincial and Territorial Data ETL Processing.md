@@ -3,20 +3,20 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 ==========
 # Table of Contents
 - [Provincial and Territorial Extraction, Transformation and Loading Processes](#provincial-and-territorial-extraction-transformation-and-loading-processes-1)
-  - [Alberta] (#alberta)
+  - [Alberta](#alberta)
   - [British Columbia](#british-columbia)
     - [Overview](#overview)
-  - [Manitoba] (#manitoba)
-  - [New Brunswick] (#new-brunswick)
-  - [Newfoundland and Labrador] (#newfoundland-and-labrador)
-  - [Northwest Territories] (#northwest-territories)
-  - [Nova Scotia] (#nova-scotia)
-  - [Nunavut] (#nunavut)
-  - [Ontario] (#ontario)
-  - [Prince Edward Island] (#prince-edward-island)
-  - [Québec] (#québec)
-  - [Saskatchewan] (#saskatchewan)
-  - [Yukon] (#yukon)
+  - [Manitoba](#manitoba)
+  - [New Brunswick](#new-brunswick)
+  - [Newfoundland and Labrador](#newfoundland-and-labrador)
+  - [Northwest Territories](#northwest-territories)
+  - [Nova Scotia](#nova-scotia)
+  - [Nunavut](#nunavut)
+  - [Ontario](#ontario)
+  - [Prince Edward Island](#prince-edward-island)
+  - [Québec](#québec)
+  - [Saskatchewan](#saskatchewan)
+  - [Yukon](#yukon)
    
 # Provincial and Territorial Extraction, Transformation and Loading Processes
 
