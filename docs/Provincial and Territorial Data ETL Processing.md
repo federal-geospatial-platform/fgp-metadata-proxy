@@ -50,6 +50,10 @@ can proceed any further.  This separation of workspaces is required to prevent l
 -  **BC_Data_NewAndUpdatedRecords_(revision_number).fmw:**: This FME workspace uses the same data extraction and transformation methods as BC_Data_AllRecords workspace, but is for daily 
 extraction of new or updated data from the BC Data API, and inserting to the CSW.  It is intended to run on FME Server on a once daily schedule.
 
+The BC Metadata FME Workspaces can be found here:
+
+-   [BC FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/BC/BC_FME_Workspaces)
+
 ### BC_Data_AllRecords Detail
 
 
