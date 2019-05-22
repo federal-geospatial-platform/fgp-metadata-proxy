@@ -84,8 +84,13 @@ failed to publish to the CSW.  Used primarily in development and could be disabl
 #### Query Loop Creation
 
 This section uses FME transformers to create a repetitive query loop for the BC Data API as the API will only return 1000 records per query, less than that of the BC database.  It is set
-at default to perform 10 query loops.  These loop attributes are concatenated to a query string that updates to a new query starting point following the completion of each loop.  The current
-default settings will return a total of 10000 records, and, at the time of writing, there are less than 3000 open data records in BC open data.
+at default to perform 10 query loops.  
+These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
+- https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
+  (NOTE: 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME)
+The current default settings will return a total of 10000 records, and, at the time of writing, there are less than 3000 open data records in BC open data.
+
+The q
 
 #### Data Query
 
@@ -98,6 +103,7 @@ This section performs the following functions:
 
 - Exposes specific attributes returned from the JSON query.  See [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key.xlsx) file for details.
 - Filters out records that are not Geographic.
+- Filters out records that are not Open Data.
 - Renames attributes that have index array to attribute name format that can be read by the XML templater.
 - Filters out duplicate datasets that BC has already republished from NRCan.
 
@@ -106,12 +112,33 @@ This section performs the following functions:
 This section exists primarily for debugging purposes and can test for records that were created backdated to a specific number of days or months.  It's default setting for normal 
 operation is 0, which nullifies the test.
 
+#### DeepL Translation
 
+This section translates the following attributes from English to French using the DeepL language translation API:
 
+- title
+- notes
+- sector
+- all exposed tags attributes (maximum 9)
+- all exposed resource_name attributes (maximum 10)
 
+This section operates using the following steps:
 
+- Removes failure causing excess whitespace from all attribute values to be translated.
+- Concatenates query string to send to the DeepL API:
+  -https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
+  (NOTE: 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated)
+- Sends query string to the DeepL API.
+- Substitutes the attribute value with hard coded error message in French in the event of translation failure.
+- Parses the JSON string returned from the query to expose translated value.
+- Creates French version of the attribute from translated value.
+- Removes UTF8 Character code returned from translated results.
 
+#### Temporal Extents Creator
 
+This section tests for required temporal extents (data collection start and end dates) and creates default extents where missing.  The default temporal extents are set as follows:
+- **data_collection_start_date:** 20 years prior to date data was processed by FME workspace.
+- **data_collection_end_date:** the date data was processed by FME workspace.
 
 ## Manitoba
 
