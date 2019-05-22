@@ -4,60 +4,26 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 # Table of Contents
 - [Provincial and Territorial Extraction, Transformation and Loading Processes](#provincial-and-territorial-extraction-transformation-and-loading-processes-1)
   - [British Columbia](#british-columbia)
-    - [P/T Usage](#pt-usage)
-    - [Webpage Access](#webpage-access)
-    - [API Access](#api-access)
-    - [More Information](#more-information)
-  - [Drupal](#drupal)
-    - [P/T Usage](#pt-usage-1)
-    - [API Access](#api-access-1)
-    - [More Information](#more-information-1)
-  - [ESRI Geoportal Server](#esri-geoportal-server)
-    - [P/T Usage](#pt-usage-2)
-    - [Webpage Access](#webpage-access-1)
-    - [API Access](#api-access-2)
-    - [More Information](#more-information-2)
-  - [Socrata](#socrata)
-    - [P/T Usage](#pt-usage-3)
-    - [Webpage Access](#webpage-access-2)
-    - [API Access](#api-access-3)
-    - [More Information](#more-information-3)
-  - [Provinces](#provinces)
-    - [Alberta](#alberta)
-      - [GeoDiscover Catalogue](#geodiscover-catalogue)
-      - [Open Government](#open-government)
-    - [British Columbia](#british-columbia)
-      - [Open Data Catalogue](#open-data-catalogue)
-    - [Manitoba](#manitoba)
-    - [New Brunswick](#new-brunswick)
-    - [Newfoundland & Labrador](#newfoundland--labrador)
-    - [Northwest Territories](#northwest-territories)
-      - [Discovery Portal](#discovery-portal)
-    - [Nova Scotia](#nova-scotia)
-      - [Open Data](#open-data)
-    - [Nunavut](#nunavut)
-    - [Ontario](#ontario)
-      - [Data Catalogue](#data-catalogue)
-      - [Discovering Ontario](#discovering-ontario)
-    - [Prince Edward Island](#prince-edward-island)
-      - [Open Catalogue](#open-catalogue)
-    - [Quebec](#quebec)
-      - [Données Québec](#données-québec)
-    - [Saskatchewan](#saskatchewan)
-    - [Yukon](#yukon)
-      - [GeoYukon](#geoyukon)
+    - [Overview](#pt-usage)
    
 # Provincial and Territorial Extraction, Transformation and Loading Processes
 
 ## British Columbia
 
-### P/T Usage
+### Overview
 
-As of 28 March 2019, the following provincial sites use CKAN API:
-
--   [Alberta's Open Government](https://open.alberta.ca/opendata)
+British Columbia open data is exposed through a CKAN API:
 
 -   [British Columbia's Open Data Catalogue](https://catalogue.data.gov.bc.ca/dataset)
+
+An ETL (extract, transformation and loading) tool created in Safe Software's Feature Manipulation Engine (FME) is used to extract and parse specific attributes from a JSON (Javascript Object Notation)
+file that are required to meet mandatory requirements for individual XML (Extensible Markup Language) files, each representing and defining a unique dataset, that are published to a CSW 
+(Catalogue Service for the Web) and subsequently harvested from the CSW by the Federal Geospatial Platform (FGP).  The ETL tool has handlers appropriately placed to address attribute 
+deficiencies that are either missing or have formats incompatible to FGP requirements.  
+
+A detailed list of all attributes processed by FME for insertion to the XML files can be found here:
+
+-   [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key.xlsx)
 
 ### Webpage Access
 
