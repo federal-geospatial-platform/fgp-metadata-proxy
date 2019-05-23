@@ -1,0 +1,82 @@
+declare namespace gmd="http://www.isotc211.org/2005/gmd";
+declare namespace gco="http://www.isotc211.org/2005/gco";
+
+
+let $bb := //gmd:identificationInfo//gmd:MD_DataIdentification//gmd:extent[1]//gmd:EX_Extent//gmd:geographicElement//gmd:EX_GeographicBoundingBox
+let $west := $bb/gmd:westBoundLongitude/gco:Decimal
+let $east := $bb/gmd:eastBoundLongitude/gco:Decimal
+let $north := $bb/gmd:northBoundLatitude/gco:Decimal
+let $south := $bb/gmd:southBoundLatitude/gco:Decimal
+let $contactName_0 := //gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:positionName/gco:CharacterString
+let $organisationName := //gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString
+let $contactRole_0 := //gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode
+let $contactEmail_0 := //gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString
+let $recordLastModified := //gmd:MD_Metadata/gmd:dateStamp/gco:Date
+let $metadataStandardName := //gmd:MD_Metadata/gmd:metadataStandardName/gco:CharacterString
+let $metadataStandardVersion := //gmd:MD_Metadata/gmd:metadataStandardVersion/gco:CharacterString
+let $title := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString
+let $notes := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString
+let $contactName_1 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:positionName/gco:CharacterString
+let $contactEmail_1 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress
+let $contactRole_1 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode
+let $progressCode := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:status/gmd:MD_ProgressCode
+let $resourceUpdateCycle := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode
+let $keyword_0 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[1]/gmd:MD_Keywords/gmd:keyword[1]/gco:CharacterString
+let $keyword_1 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[1]/gmd:MD_Keywords/gmd:keyword[2]/gco:CharacterString
+let $keyword_2 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[1]/gmd:MD_Keywords/gmd:keyword[3]/gco:CharacterString
+let $keyword_3 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[1]/gmd:MD_Keywords/gmd:keyword[4]/gco:CharacterString
+let $keyword_4 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[2]/gmd:MD_Keywords/gmd:keyword[1]/gco:CharacterString
+let $keyword_5 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[2]/gmd:MD_Keywords/gmd:keyword[2]/gco:CharacterString
+let $keyword_6 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[2]/gmd:MD_Keywords/gmd:keyword[3]/gco:CharacterString
+let $keyword_7 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[2]/gmd:MD_Keywords/gmd:keyword[4]/gco:CharacterString
+let $keyword_8 := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[3]/gmd:MD_Keywords/gmd:keyword[1]/gco:CharacterString
+let $spatialRepresentationType := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialRepresentationType/gmd:MD_SpatialRepresentationTypeCode
+let $isoTopicString := //gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:topicCategory[1]/gmd:MD_TopicCategoryCode
+let $resourceURL_2 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine[1]/gmd:CI_OnlineResource/gmd:linkage/gmd:URL
+let $resourceURL_3 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine[2]/gmd:CI_OnlineResource/gmd:linkage/gmd:URL
+let $resourceURL_4 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine[3]/gmd:CI_OnlineResource/gmd:linkage/gmd:URL
+let $resourceURL_5 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine[4]/gmd:CI_OnlineResource/gmd:linkage/gmd:URL
+let $resourceFormat_2 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine[1]/gmd:CI_OnlineResource/gmd:name/gco:CharacterString
+let $resourceFormat_3 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine[2]/gmd:CI_OnlineResource/gmd:name/gco:CharacterString
+let $resourceFormat_4 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine[3]/gmd:CI_OnlineResource/gmd:name/gco:CharacterString
+let $resourceFormat_5 := //gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[1]/gmd:MD_DigitalTransferOptions/gmd:onLine[4]/gmd:CI_OnlineResource/gmd:name/gco:CharacterString
+
+
+
+return (fme:set-attribute("east_bound_longitude",              string($east)), 
+        fme:set-attribute("west_bound_longitude",              string($west)), 
+        fme:set-attribute("south_bound_latitude",              string($south)), 
+        fme:set-attribute("north_bound_latitude",              string($north)),
+        fme:set-attribute("contact_name_0",                    string($contactName_0)),
+        fme:set-attribute("sector",                            string($organisationName)),
+        fme:set-attribute("contact_role_0",                    string($contactRole_0)),
+        fme:set-attribute("contact_email_0",                   string($contactEmail_0)),
+        fme:set-attribute("record_last_modified",              string($recordLastModified)),
+        fme:set-attribute("metadata_standard_name",            string($metadataStandardName)),
+        fme:set-attribute("metadata_standard_version",         string($metadataStandardVersion)),
+        fme:set-attribute("title",                             string($title)),
+        fme:set-attribute("notes",                             string($notes)),
+        fme:set-attribute("contact_name_1",                    string($contactName_1)),
+        fme:set-attribute("contact_email_1",                   string($contactEmail_1)),
+        fme:set-attribute("contact_role_1",                    string($contactRole_1)),
+        fme:set-attribute("progress_code",                     string($progressCode)),
+        fme:set-attribute("resource_update_cycle_0",           string($resourceUpdateCycle)),
+        fme:set-attribute("tags_0",                            string($keyword_0)),
+        fme:set-attribute("tags_1",                            string($keyword_1)),
+        fme:set-attribute("tags_2",                            string($keyword_2)),
+        fme:set-attribute("tags_3",                            string($keyword_3)),
+        fme:set-attribute("tags_4",                            string($keyword_4)),
+        fme:set-attribute("tags_5",                            string($keyword_5)),
+        fme:set-attribute("tags_6",                            string($keyword_6)),
+        fme:set-attribute("tags_7",                            string($keyword_7)),
+        fme:set-attribute("tags_8",                            string($keyword_8)),
+        fme:set-attribute("spatial_representation_type",       string($spatialRepresentationType)),
+        fme:set-attribute("iso_topic_string",                  string($isoTopicString)),
+        fme:set-attribute("resource_url_2",                    string($resourceURL_2)),
+        fme:set-attribute("resource_url_3",                    string($resourceURL_3)),
+        fme:set-attribute("resource_url_4",                    string($resourceURL_4)),
+        fme:set-attribute("resource_url_5",                    string($resourceURL_5)),
+        fme:set-attribute("resource_format_2",                 string($resourceFormat_2)),
+        fme:set-attribute("resource_format_3",                 string($resourceFormat_3)),
+        fme:set-attribute("resource_format_4",                 string($resourceFormat_4)),
+        fme:set-attribute("resource_format_5",                 string($resourceFormat_5)))   
