@@ -140,6 +140,124 @@ This section tests for required temporal extents (data collection start and end 
 - **data_collection_start_date:** 20 years prior to date data was processed by FME workspace.
 - **data_collection_end_date:** the date data was processed by FME workspace.
 
+#### Role Refiner
+
+This section tests that extracted role names are conforming to HNAP role code requirements.  Nonconforming or missing role names are set to pointOfContact as default.  
+All role names have their corresponding French role names with their appropriate role code (IE: RI_414) applied to the dataset.  
+A list of all RI Codes, including RI Role Codes, can be found here:
+-   [RI Code Master List](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/RI_List.xlsx)
+
+#### Second Contact Testing
+
+Contact fields in XML templates cannot be incomplete.  Every data record has at least one contact.  The XML template allows for two.  This section tests if second contact exists 
+in data record, then substitutes all second contact associated values with first contact values if second contact is missing.
+Substituted values:
+-contact name
+-conatact email
+-contact role
+-contact role french
+-RI role code
+
+#### Update Cycle Refiner
+
+This section tests that Maintenance Frequency values conform to HNAP requirements, and where nonconforming or missing, revises them to default 'asNeeded'.  The corresponding RI_Code 
+is then applied to all values.
+
+#### File Format Refiner
+
+There are up to ten transfer options (data links) available in BC datasets.  The file format of each transfer option has a specific validation requirement in the FGP.  Data analysis of all BC data
+has identified all the potential incorrect variations of required file format names (i.e.: 'kmz' should be 'KMZ', 'Esri File Geodatabase' should be 'FGDB/GDB').  This section tests for all
+the variations found in BC datasets and corrects them to conforming values where required.
+List of validated file formats can be found here:
+-   [Validated File Formats](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/VALIDATED_FILE_FORMATS.xlsx)
+
+#### Keyword attributor
+
+Some BC datasets have been found to have over one hundred keyword values (or tags as they are named when returned by the JSON query).  In order to make this portion of the data more 
+manageable, the XML templates have been formatted to allow for nine keywords only, which is aligned with the maximum of nine keywords that are returned with Alberta datasets.  The FGP 
+harvester will reject the XML file if any of the keyword values are NULL.  This section tests each tag attribute, English and French, for NULL values, and substitutes a 
+generic value accordingly.   
+
+**English Generic Keyword Values:**
+-Geomatics
+-Open Data
+-Open Government
+-BC Data
+-Open Source
+-Public Data
+-Government Data
+-British Columbia Data
+-Government of British Columbia
+
+**French Generic Keyword Values:**
+-Géomatique
+-Données ouvertes
+-Gouvernement ouvert
+-Données de la C.-B.
+-Source ourverte
+-Données publiques
+-Données gouvernementales
+-Données de la Colombie-Britannique
+-Gouvernement de la Colombie-Britannique
+
+#### SSL Protocol Test - Online Resource
+
+This section tests the SSL protocol on the 'more_info.link_0' URL in CI_OnlineResource that are not contained in transferOptions and assigns 'HTTPS' or 'HTTP' to the protocol value.
+
+#### SSL Protocol Test - Transfer Options
+
+This section tests the SSL protocol in all 'resource_url' attributes (there are up to ten in BC datasets) in CI_OnlineResource that are contained in transferOptions and assigns 
+'HTTPS' or 'HTTP' to the protocol value.
+
+#### WMS Formatter
+
+This section tests resource_format attributes (there are up to ten in BC datasets) in transferOptions for 'WMS' value, that require an additional French WMS format for each English format 
+as a transferOption to facilitate links to the web mapping service.  This section will insert a French WMS formatted transferOption immediately following the English WMS transferOption, 
+and move subsequent transferOptions down the sequence accordingly by reassiging the attribute index numbers.  
+
+This section assigns all WMS requirements to each English and French transferOption: 
+-xlink:role 
+-protocol
+-locale
+-language
+-name
+-URL
+-format
+
+**NOTE:** The FGP harvester will only accept one WMS transfer option each for English and French.  If the source data contains more than one WMS transfer option prior to the 
+addition of the French transfer option, it will exceed the maximum and the record will be rejected.  As of the time of this writing, three BC datasets exceed the maximum WMS transfer 
+options allowed.
+
+#### PyCSW Record Insert
+
+BC datasets contain a maximum of ten transfer options.  The WMS Formatter in this workspace will add an additional transfer option, so there are potentially eleven transfer options in
+each dataset, requiring eleven templates.  
+This section performs the following tasks:
+-Tests for the number of transfer options and filters the datasets according to their number.
+-Places the extracted attributes for each dataset in the XML template.
+-Cleans up the XML document with the XML format tool.
+-Validates the XML syntax.
+-Posts each XML document to the PyCSW using the following Python script:
+ -[PyCSW Insert](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Insert.py)
+-Tests each record for successful load or failure to the PyCSW
+
+#### Local Directory Writers
+
+This section outputs each XML file to a local directory, sorted by succesful load or failure.  It is disable by default but can be enabled if debugging of errors is required.
+
+#### Insert Records Notification
+
+This section performs the following tasks:
+- Gets count of records that successfully loaded or failed to load to the PyCSW.
+- Creates a message string with the overall results of the data translation.
+
+#### Notification Compliler and eMailer
+
+This section performs the following tasks:
+- Gets the current data and time.
+- Concatenates insert records notifcation string plus date and time into one message string
+- Emails the message string to an adminstrator.
+
 ## Manitoba
 
 ## New Brunswick
