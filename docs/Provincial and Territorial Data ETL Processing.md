@@ -610,7 +610,7 @@ This section performs the following tasks:
 - Cleans up the XML document with the XML format tool.
 - Validates the XML syntax.
 - Posts each XML document to the PyCSW using the following Python script:
- - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
 - Tests each record for successful load or failure to the PyCSW
 
 #### PyCSW Record Update
@@ -629,7 +629,7 @@ This section performs the following tasks:
 - Cleans up the XML document with the XML format tool.
 - Validates the XML syntax.
 - Posts each XML document to the PyCSW using the following Python script:
- - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
 - Tests each record for successful load or failure to the PyCSW
 
 #### Local Directory Writers
