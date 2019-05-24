@@ -175,7 +175,8 @@ It is set at default to perform 20 query loops.
 These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
 
 - https://open.alberta.ca/api/3/action/package_search?start=@Value(start_feature)&rows=$(QUERY_ITERATIONS)   
-  **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME
+
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME
   
 The current default settings will return a total of 20000 records, and, at the time of writing, there are approximately 17,000 open data records in Alberta open data.
 
@@ -199,7 +200,7 @@ This section performs the following functions:
 - Filters out second resource URL that are not links to Alberta geospatial by testing for absence of 'csw' in URL string.
 - Gets XML file from edited second resource URL.
 - Breaksdown attribute fields in retreived XML document.
-- Extracts attribute keys/values from XML document using XQuery expression.
+- Extracts attribute keys/values from XML document using the following XQuery expression:
   - [Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
 - Exposes required extracted attributes from X-Query and earlier JSON query.
 - Copies selected attributes to act as proxies for other required values in XML output template.
@@ -230,7 +231,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-    **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
+    - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -368,7 +369,7 @@ This section performs the following tasks:
 - Cleans up the XML document with the XML format tool.
 - Validates the XML syntax.
 - Posts each XML document to the PyCSW using the following Python script:
- - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
 - Tests each record for successful load or failure to the PyCSW
 
 #### Local Directory Writers
@@ -398,8 +399,9 @@ This section uses FME transformers to create a repetitive query loop for the Alb
 It is set at default to perform 20 query loops.  
 These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
 
-- https://open.alberta.ca/api/3/action/package_search?start=@Value(start_feature)&rows=$(QUERY_ITERATIONS)   
-  - **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME.
+- https://open.alberta.ca/api/3/action/package_search?start=@Value(start_feature)&rows=$(QUERY_ITERATIONS) 
+  
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME.
   
 The current default settings will return a total of 20000 records, and, at the time of writing, there are approximately 17,000 open data records in Alberta open data.
 
@@ -423,8 +425,8 @@ This section performs the following functions:
 - Filters out second resource URL that are not links to Alberta geospatial by testing for absence of 'csw' in URL string.
 - Gets XML file from edited second resource URL.
 - Breaksdown attribute fields in retreived XML document.
-- Extracts attribute keys/values from XML document using XQuery expression.
- - [Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
+- Extracts attribute keys/values from XML document using the following XQuery expression:
+  - [Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
 - Exposes required extracted attributes from X-Query and earlier JSON query.
 - Copies selected attributes to act as proxies for other required values in XML output template.
 - Renames indexed and other specific attributes to match XML template
@@ -714,7 +716,8 @@ at default to perform 10 query loops.
 These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
 
 - https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
-  **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME
+
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME
   
 The current default settings will return a total of 10000 records, and, at the time of writing, there are less than 3000 open data records in BC open data.
 
@@ -884,7 +887,7 @@ This section performs the following tasks:
 - Cleans up the XML document with the XML format tool.
 - Validates the XML syntax.
 - Posts each XML document to the PyCSW using the following Python script:
- - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
 - Tests each record for successful load or failure to the PyCSW
 
 #### Local Directory Writers
@@ -916,7 +919,8 @@ at default to perform 10 query loops.
 These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
 
 - https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
-  (NOTE: 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME)
+
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME.
   
 The current default settings will return a total of 10000 records, and, at the time of writing, there are less than 3000 open data records in BC open data.
 
@@ -971,7 +975,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-   **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
+    - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -1098,7 +1102,7 @@ This section performs the following tasks:
 - Cleans up the XML document with the XML format tool.
 - Validates the XML syntax.
 - Posts each XML document to the PyCSW using the following Python script:
- - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
 - Tests each record for successful load or failure to the PyCSW
 
 #### PyCSW Record UPDATE
@@ -1117,7 +1121,7 @@ This section performs the following tasks:
 - Cleans up the XML document with the XML format tool.
 - Validates the XML syntax.
 - Posts each XML document to the PyCSW using the following Python script:
- - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
 - Tests each record for successful load or failure to the PyCSW
 
 #### Local Directory Writers
