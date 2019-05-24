@@ -47,7 +47,7 @@ The first step is to make sure Python is installed before going through the setu
 1.	Type ```python``` in a command prompt. 
 2.	If the error ```'python' is not recognized as an internal or external command, operable program or batch file.``` occurs, either Python is not installed or the Python installation location is not in the PATH Environment Variable.
 3.	If Python is not installed, get the latest Python 32-bit download from https://www.python.org/downloads/ and install it to C:\Python37 or C:\Python37-32 (choose the Custom install to specify the installation folder). Once the installation is complete, go to step 5.
-4.	If Python is installed, add the Python installation (ex: C:\Python37) to the PATH environment variable.
+4.	If Python is installed, add the Python installation (ex: C:\Python37) and the Python scripts folder (ex:C:\Python37\scripts) to the PATH environment variable.
 5.	If no error occurs when typing ```python```, enter ```python --version``` into the command prompt. If ```Python 3.7.x``` is returned, proceed to the next step.
 
 
