@@ -146,7 +146,7 @@ The Alberta Metadata FME Workspaces can be found here:
 
 -   [Alberta FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/AB/AB_FME_Workspaces)
 
-**NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
+- **NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
 
 ### AB_Data_AllRecords Workspace/AB_Data_ClearCSW Detail
 
@@ -200,7 +200,7 @@ This section performs the following functions:
 - Gets XML file from edited second resource URL.
 - Breaksdown attribute fields in retreived XML document.
 - Extracts attribute keys/values from XML document using XQuery expression.
- - [Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
+  - [Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
 - Exposes required extracted attributes from X-Query and earlier JSON query.
 - Copies selected attributes to act as proxies for other required values in XML output template.
 - Renames indexed and other specific attributes to match XML template
