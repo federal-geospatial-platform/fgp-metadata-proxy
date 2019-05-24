@@ -146,7 +146,7 @@ The Alberta Metadata FME Workspaces can be found here:
 
 -   [Alberta FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/AB/AB_FME_Workspaces)
 
-Note: The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
+**NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
 
 ### AB_Data_AllRecords Workspace/AB_Data_ClearCSW Detail
 
@@ -200,7 +200,7 @@ This section performs the following functions:
 - Gets XML file from edited second resource URL.
 - Breaksdown attribute fields in retreived XML document.
 - Extracts attribute keys/values from XML document using XQuery expression.
- -[Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
+ - [Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
 - Exposes required extracted attributes from X-Query and earlier JSON query.
 - Copies selected attributes to act as proxies for other required values in XML output template.
 - Renames indexed and other specific attributes to match XML template
@@ -229,8 +229,8 @@ This section operates using the following steps:
 
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
-  -https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-  (NOTE: 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated)
+  - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
+    **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -257,13 +257,13 @@ A list of all RI Codes, including RI Role Codes, can be found here:
 Contact fields in XML templates cannot be incomplete.  Every data record has at least one contact.  The XML template allows for two.  This section tests if second contact exists 
 in data record, then substitutes all second contact associated values with first contact values if second contact is missing.
 
-**Substituted values:**
+  **Substituted values:**
 
--contact name
--contact email
--contact role
--contact role french
--RI role code
+  - contact name
+  - contact email
+  - contact role
+  - contact role french
+  - RI role code
 
 #### Update Cycle Refiner
 
@@ -303,29 +303,29 @@ Alberta datasets have a maximum of nine keyword values, and XML templates are fo
 FGP harvester will reject the XML file if any of the keyword values are NULL.  This section tests each keyword attribute, English and French, for NULL values, and substitutes a 
 generic value accordingly.   
 
-**English Generic Keyword Values:**
+  **English Generic Keyword Values:**
 
--Geomatics
--Open Data
--Open Government
--AB Data
--Open Source
--Public Data
--Government Data
--Alberta Data
--Government of Alberta
+  - Geomatics
+  - Open Data
+  - Open Government
+  - AB Data
+  - Open Source
+  - Public Data
+  - Government Data
+  - Alberta Data
+  - Government of Alberta
 
-**French Generic Keyword Values:**
+  **French Generic Keyword Values:**
 
--Géomatique
--Données ouvertes
--Gouvernement ouvert
--Données AB
--Source ourverte
--Données publiques
--Données gouvernementales
--Données de l'Alberta
--Gouvernement de l'Alberta
+  - Géomatique
+  - Données ouvertes
+  - Gouvernement ouvert
+  - Données AB
+  - Source ourverte
+  - Données publiques
+  - Données gouvernementales
+  - Données de l'Alberta
+  - Gouvernement de l'Alberta
 
 #### SSL Protocol Test - Online Resource
 
@@ -344,13 +344,13 @@ WMS transferOption, and move subsequent transferOptions down the sequence accord
 
 This section assigns all WMS requirements to each English and French transferOption: 
 
--xlink:role 
--protocol
--locale
--language
--name
--URL
--format 
+- xlink:role 
+- protocol
+- locale
+- language
+- name
+- URL
+- format 
 
 #### PyCSW Record Insert
 
@@ -363,13 +363,13 @@ The XML insert templates can be found here:
 
 This section performs the following tasks:
 
--Tests for the number of transfer options and filters the datasets according to their number.
--Places the extracted attributes for each dataset in the XML template.
--Cleans up the XML document with the XML format tool.
--Validates the XML syntax.
--Posts each XML document to the PyCSW using the following Python script:
- -[PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
--Tests each record for successful load or failure to the PyCSW
+- Tests for the number of transfer options and filters the datasets according to their number.
+- Places the extracted attributes for each dataset in the XML template.
+- Cleans up the XML document with the XML format tool.
+- Validates the XML syntax.
+- Posts each XML document to the PyCSW using the following Python script:
+ - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+- Tests each record for successful load or failure to the PyCSW
 
 #### Local Directory Writers
 
@@ -399,7 +399,7 @@ It is set at default to perform 20 query loops.
 These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
 
 - https://open.alberta.ca/api/3/action/package_search?start=@Value(start_feature)&rows=$(QUERY_ITERATIONS)   
-  **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME
+  - **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME.
   
 The current default settings will return a total of 20000 records, and, at the time of writing, there are approximately 17,000 open data records in Alberta open data.
 
@@ -424,7 +424,7 @@ This section performs the following functions:
 - Gets XML file from edited second resource URL.
 - Breaksdown attribute fields in retreived XML document.
 - Extracts attribute keys/values from XML document using XQuery expression.
- -[Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
+ - [Alberta X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
 - Exposes required extracted attributes from X-Query and earlier JSON query.
 - Copies selected attributes to act as proxies for other required values in XML output template.
 - Renames indexed and other specific attributes to match XML template
@@ -464,8 +464,8 @@ This section operates using the following steps:
 
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
-  -https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-  (NOTE: 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated)
+  - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
+    **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -492,13 +492,13 @@ A list of all RI Codes, including RI Role Codes, can be found here:
 Contact fields in XML templates cannot be incomplete.  Every data record has at least one contact.  The XML template allows for two.  This section tests if second contact exists 
 in data record, then substitutes all second contact associated values with first contact values if second contact is missing.
 
-**Substituted values:**
+  **Substituted values:**
 
--contact name
--contact email
--contact role
--contact role french
--RI role code
+  - contact name
+  - contact email
+  - contact role
+  - contact role french
+  - RI role code
 
 #### Update Cycle Refiner
 
@@ -538,29 +538,29 @@ Alberta datasets have a maximum of nine keyword values, and XML templates are fo
 FGP harvester will reject the XML file if any of the keyword values are NULL.  This section tests each keyword attribute, English and French, for NULL values, and substitutes a 
 generic value accordingly.   
 
-**English Generic Keyword Values:**
+  **English Generic Keyword Values:**
 
--Geomatics
--Open Data
--Open Government
--AB Data
--Open Source
--Public Data
--Government Data
--Alberta Data
--Government of Alberta
+  - Geomatics
+  - Open Data
+  - Open Government
+  - AB Data
+  - Open Source
+  - Public Data
+  - Government Data
+  - Alberta Data
+  - Government of Alberta
 
-**French Generic Keyword Values:**
+  **French Generic Keyword Values:**
 
--Géomatique
--Données ouvertes
--Gouvernement ouvert
--Données AB
--Source ourverte
--Données publiques
--Données gouvernementales
--Données de l'Alberta
--Gouvernement de l'Alberta
+  - Géomatique
+  - Données ouvertes
+  - Gouvernement ouvert
+  - Données AB
+  - Source ourverte
+  - Données publiques
+  - Données gouvernementales
+  - Données de l'Alberta
+  - Gouvernement de l'Alberta
 
 #### SSL Protocol Test - Online Resource
 
@@ -579,13 +579,13 @@ WMS transferOption, and move subsequent transferOptions down the sequence accord
 
 This section assigns all WMS requirements to each English and French transferOption: 
 
--xlink:role 
--protocol
--locale
--language
--name
--URL
--format 
+- xlink:role 
+- protocol
+- locale
+- language
+- name
+- URL
+- format 
 
 #### Insert/Update Filter
 
@@ -603,13 +603,13 @@ The XML insert templates can be found here:
 
 This section performs the following tasks:
 
--Tests for the number of transfer options and filters the datasets according to their number.
--Places the extracted attributes for each dataset in the XML template.
--Cleans up the XML document with the XML format tool.
--Validates the XML syntax.
--Posts each XML document to the PyCSW using the following Python script:
- -[PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
--Tests each record for successful load or failure to the PyCSW
+- Tests for the number of transfer options and filters the datasets according to their number.
+- Places the extracted attributes for each dataset in the XML template.
+- Cleans up the XML document with the XML format tool.
+- Validates the XML syntax.
+- Posts each XML document to the PyCSW using the following Python script:
+ - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+- Tests each record for successful load or failure to the PyCSW
 
 #### PyCSW Record Update
 
@@ -622,13 +622,13 @@ The XML update templates can be found here:
 
 This section performs the following tasks:
 
--Tests for the number of transfer options and filters the datasets according to their number.
--Places the extracted attributes for each dataset in the XML template.
--Cleans up the XML document with the XML format tool.
--Validates the XML syntax.
--Posts each XML document to the PyCSW using the following Python script:
- -[PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
--Tests each record for successful load or failure to the PyCSW
+- Tests for the number of transfer options and filters the datasets according to their number.
+- laces the extracted attributes for each dataset in the XML template.
+- Cleans up the XML document with the XML format tool.
+- Validates the XML syntax.
+- Posts each XML document to the PyCSW using the following Python script:
+ - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+- Tests each record for successful load or failure to the PyCSW
 
 #### Local Directory Writers
 
@@ -685,7 +685,7 @@ The BC Metadata FME Workspaces can be found here:
 
 -   [BC FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/BC/BC_FME_Workspaces)
 
-Note: The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
+**NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
 
 ### BC_Data_AllRecords Workspace/BC_Data_ClearCSW Detail
 
@@ -757,8 +757,8 @@ This section operates using the following steps:
 
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
-  -https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-  (NOTE: 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated)
+  - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
+   **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -785,13 +785,13 @@ A list of all RI Codes, including RI Role Codes, can be found here:
 Contact fields in XML templates cannot be incomplete.  Every data record has at least one contact.  The XML template allows for two.  This section tests if second contact exists 
 in data record, then substitutes all second contact associated values with first contact values if second contact is missing.
 
-**Substituted values:**
+  **Substituted values:**
 
--contact name
--contact email
--contact role
--contact role french
--RI role code
+  - contact name
+  - contact email
+  - contact role
+  - contact role french
+  - RI role code
 
 #### Update Cycle Refiner
 
@@ -815,29 +815,29 @@ manageable, the XML templates have been formatted to allow for nine keywords onl
 harvester will reject the XML file if any of the keyword values are NULL.  This section tests each tag attribute, English and French, for NULL values, and substitutes a 
 generic value accordingly.   
 
-**English Generic Keyword Values:**
+  **English Generic Keyword Values:**
 
--Geomatics
--Open Data
--Open Government
--BC Data
--Open Source
--Public Data
--Government Data
--British Columbia Data
--Government of British Columbia
+  - Geomatics
+  - Open Data
+  - Open Government
+  - BC Data
+  - Open Source
+  - Public Data
+  - Government Data
+  - British Columbia Data
+  - Government of British Columbia
 
-**French Generic Keyword Values:**
+  **French Generic Keyword Values:**
 
--Géomatique
--Données ouvertes
--Gouvernement ouvert
--Données de la C.-B.
--Source ourverte
--Données publiques
--Données gouvernementales
--Données de la Colombie-Britannique
--Gouvernement de la Colombie-Britannique
+  - Géomatique
+  - Données ouvertes
+  - Gouvernement ouvert
+  - Données de la C.-B.
+  - Source ourverte
+  - Données publiques
+  - Données gouvernementales
+  - Données de la Colombie-Britannique
+  - Gouvernement de la Colombie-Britannique
 
 #### SSL Protocol Test - Online Resource
 
@@ -856,13 +856,13 @@ and move subsequent transferOptions down the sequence accordingly by reassiging 
 
 This section assigns all WMS requirements to each English and French transferOption: 
 
--xlink:role 
--protocol
--locale
--language
--name
--URL
--format
+- xlink:role 
+- protocol
+- locale
+- language
+- name
+- URL
+- format
 
 **NOTE:** The FGP harvester will only accept one WMS transfer option each for English and French.  If the source data contains more than one WMS transfer option prior to the 
 addition of the French transfer option, it will exceed the maximum and the record will be rejected.  As of the time of this writing, three BC datasets exceed the maximum WMS transfer 
@@ -879,13 +879,13 @@ The XML insert templates can be found here:
 
 This section performs the following tasks:
 
--Tests for the number of transfer options and filters the datasets according to their number.
--Places the extracted attributes for each dataset in the XML template.
--Cleans up the XML document with the XML format tool.
--Validates the XML syntax.
--Posts each XML document to the PyCSW using the following Python script:
- -[PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
--Tests each record for successful load or failure to the PyCSW
+- Tests for the number of transfer options and filters the datasets according to their number.
+- Places the extracted attributes for each dataset in the XML template.
+- Cleans up the XML document with the XML format tool.
+- Validates the XML syntax.
+- Posts each XML document to the PyCSW using the following Python script:
+ - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+- Tests each record for successful load or failure to the PyCSW
 
 #### Local Directory Writers
 
@@ -970,8 +970,8 @@ This section operates using the following steps:
 
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
-  -https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-  (NOTE: 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated)
+  - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
+   **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -995,12 +995,14 @@ A list of all RI Codes, including RI Role Codes, can be found here:
 
 Contact fields in XML templates cannot be incomplete.  Every data record has at least one contact.  The XML template allows for two.  This section tests if second contact exists 
 in data record, then substitutes all second contact associated values with first contact values if second contact is missing.
-Substituted values:
--contact name
--contact email
--contact role
--contact role french
--RI role code
+
+  **Substituted values:**
+
+  - contact name
+  - contact email
+  - contact role
+  - contact role french
+  - RI role code
 
 #### Update Cycle Refiner
 
@@ -1022,27 +1024,29 @@ manageable, the XML templates have been formatted to allow for nine keywords onl
 harvester will reject the XML file if any of the keyword values are NULL.  This section tests each tag attribute, English and French, for NULL values, and substitutes a 
 generic value accordingly.   
 
-**English Generic Keyword Values:**
--Geomatics
--Open Data
--Open Government
--BC Data
--Open Source
--Public Data
--Government Data
--British Columbia Data
--Government of British Columbia
+  **English Generic Keyword Values:**
 
-**French Generic Keyword Values:**
--Géomatique
--Données ouvertes
--Gouvernement ouvert
--Données de la C.-B.
--Source ourverte
--Données publiques
--Données gouvernementales
--Données de la Colombie-Britannique
--Gouvernement de la Colombie-Britannique
+  - Geomatics
+  - Open Data
+  - Open Government
+  - BC Data
+  - Open Source
+  - Public Data
+  - Government Data
+  - British Columbia Data
+  - Government of British Columbia
+
+  **French Generic Keyword Values:**
+
+  - Géomatique
+  - Données ouvertes
+  - Gouvernement ouvert
+  - Données de la C.-B.
+  - Source ourverte
+  - Données publiques
+  - Données gouvernementales
+  - Données de la Colombie-Britannique
+  - Gouvernement de la Colombie-Britannique
 
 #### SSL Protocol Test - Online Resource
 
@@ -1060,13 +1064,14 @@ as a transferOption to facilitate links to the web mapping service.  This sectio
 and move subsequent transferOptions down the sequence accordingly by reassiging the attribute index numbers.  
 
 This section assigns all WMS requirements to each English and French transferOption: 
--xlink:role 
--protocol
--locale
--language
--name
--URL
--format
+
+- xlink:role 
+- protocol
+- locale
+- language
+- name
+- URL
+- format
 
 **NOTE:** The FGP harvester will only accept one WMS transfer option each for English and French.  If the source data contains more than one WMS transfer option prior to the 
 addition of the French transfer option, it will exceed the maximum and the record will be rejected.  As of the time of this writing, three BC datasets exceed the maximum WMS transfer 
@@ -1088,13 +1093,13 @@ The XML insert templates can be found here:
 
 This section performs the following tasks:
 
--Tests for the number of transfer options and filters the datasets according to their number.
--Places the extracted attributes for each dataset in the XML template.
--Cleans up the XML document with the XML format tool.
--Validates the XML syntax.
--Posts each XML document to the PyCSW using the following Python script:
- -[PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
--Tests each record for successful load or failure to the PyCSW
+- Tests for the number of transfer options and filters the datasets according to their number.
+- Places the extracted attributes for each dataset in the XML template.
+- Cleans up the XML document with the XML format tool.
+- Validates the XML syntax.
+- Posts each XML document to the PyCSW using the following Python script:
+ - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+- Tests each record for successful load or failure to the PyCSW
 
 #### PyCSW Record UPDATE
 
@@ -1107,13 +1112,13 @@ The XML update templates can be found here:
 
 This section performs the following tasks:
 
--Tests for the number of transfer options and filters the datasets according to their number.
--Places the extracted attributes for each dataset in the XML template.
--Cleans up the XML document with the XML format tool.
--Validates the XML syntax.
--Posts each XML document to the PyCSW using the following Python script:
- -[PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
--Tests each record for successful load or failure to the PyCSW
+- Tests for the number of transfer options and filters the datasets according to their number.
+- Places the extracted attributes for each dataset in the XML template.
+- Cleans up the XML document with the XML format tool.
+- Validates the XML syntax.
+- Posts each XML document to the PyCSW using the following Python script:
+ - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+- Tests each record for successful load or failure to the PyCSW
 
 #### Local Directory Writers
 
