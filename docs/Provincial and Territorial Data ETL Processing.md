@@ -176,7 +176,7 @@ These loop attributes are concatenated to a query string that updates to a new q
 
 - https://open.alberta.ca/api/3/action/package_search?start=@Value(start_feature)&rows=$(QUERY_ITERATIONS)   
 
-- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as a published parameter in FME
   
 The current default settings will return a total of 20000 records, and, at the time of writing, there are approximately 17,000 open data records in Alberta open data.
 
@@ -231,7 +231,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-    - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
+    - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -401,7 +401,7 @@ These loop attributes are concatenated to a query string that updates to a new q
 
 - https://open.alberta.ca/api/3/action/package_search?start=@Value(start_feature)&rows=$(QUERY_ITERATIONS) 
   
-- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME.
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as a published parameter in FME.
   
 The current default settings will return a total of 20000 records, and, at the time of writing, there are approximately 17,000 open data records in Alberta open data.
 
@@ -467,7 +467,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-    **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
+    **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -717,7 +717,7 @@ These loop attributes are concatenated to a query string that updates to a new q
 
 - https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
 
-- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as a published parameter in FME
   
 The current default settings will return a total of 10000 records, and, at the time of writing, there are less than 3000 open data records in BC open data.
 
@@ -761,7 +761,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-   **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
+   **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -920,7 +920,7 @@ These loop attributes are concatenated to a query string that updates to a new q
 
 - https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
 
-- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as published parameter in FME.
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as a published parameter in FME.
   
 The current default settings will return a total of 10000 records, and, at the time of writing, there are less than 3000 open data records in BC open data.
 
@@ -975,7 +975,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-    - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as published parameter in FME, 'title' is the variable to be translated.
+    - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
