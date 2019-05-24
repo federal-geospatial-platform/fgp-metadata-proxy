@@ -115,7 +115,7 @@ This section contains information on the PyCSW and its author.
 
 ### Using WSGI
 
-Web Server Gateway Interface (WSGI) can be used to run the pycsw server. In a command prompt, enter ```python pycsw/wsgi.py``` in the pycsw folder.
+Web Server Gateway Interface (WSGI) can be used to run the pycsw server. In a command prompt, enter ```python pycsw/wsgi.py 8000``` in the pycsw folder.
 
 ## REQUESTS
 
