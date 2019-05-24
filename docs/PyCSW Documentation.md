@@ -78,10 +78,9 @@ In a Command Prompt, enter ```pip install sqlalchemy```.
 ##### PyCSW Setup.py Install
 
 1.	Open a Command Prompt window.
-2.	Change the drive to C by typing ```C:```
-3.	Navigate to C:\pycsw by typing ```cd pycsw```
-4.	To build the setup, type ```python setup.py build```
-5.	To install, type ```python setup.py install```
+2.	Navigate to C:\pycsw by typing ```cd C:\pycsw```
+3.	To build the setup, type ```python setup.py build```
+4.	To install, type ```python setup.py install```
 
 ## CONFIGURATION
 
