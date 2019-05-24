@@ -231,7 +231,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-    - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
+  - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -467,7 +467,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-    **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
+  - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -761,7 +761,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-   **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
+  - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
@@ -975,7 +975,7 @@ This section operates using the following steps:
 - Removes failure causing excess whitespace from all attribute values to be translated.
 - Concatenates query string to send to the DeepL API:
   - https://api.deepl.com/v2/translate?auth_key=$(DEEPL_KEY)&text=@Value(title)&source_lang=EN&target_lang=FR&split_sentences=1&preserve_formatting=1
-    - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
+  - **NOTE:** 'DEEPL_KEY' variable in concatenated value is the authorization key for DeepL API and is stored as a published parameter in FME, 'title' is the variable to be translated.
 - Sends query string to the DeepL API.
 - Substitutes the attribute value with hard coded error message in French in the event of translation failure.
 - Parses the JSON string returned from the query to expose translated value.
