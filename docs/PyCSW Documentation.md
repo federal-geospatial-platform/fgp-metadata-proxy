@@ -468,6 +468,8 @@ For more Transaction examples, visit http://reference1.mapinfo.com/software/spec
 
 #### POST ISO 19139/19115 Example
 
+##### Insert Record
+
 The following example uses ISO 19139/19115 XML tags to insert a record into the pycsw (most sub-tags have been removed due to the number of elements in the ISO XML):
 
 **URL**: ```http://localhost:8000/csw```<br>
@@ -487,5 +489,27 @@ xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gco="http://www.isotc211.org/
 	…
     </gmd:MD_Metadata>
   </csw:Insert>
+</csw:Transaction>
+```
+
+##### Delete Record
+
+In this example, the record with Identifier c87886cd-d37e-459c-945f-ca35f8055e85 is deleted:
+
+**URL**: ```http://localhost:8000/csw```<br>
+**Content-type**: ```application/xml```<br>
+**POST Data**:
+```<?xml version="1.0" encoding="UTF-8"?>
+<csw:Transaction xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:ogc="http://www.opengis.net/ogc" xmlns:apiso="http://www.opengis.net/cat/csw/apiso/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" service="CSW" version="2.0.2" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-publication.xsd">
+    <csw:Delete>
+        <csw:Constraint version="1.1.0">
+            <ogc:Filter>
+                <ogc:PropertyIsLike escapeChar="\" singleChar="?" wildCard="*">
+                    <ogc:PropertyName>apiso:Identifier</ogc:PropertyName>
+                    <ogc:Literal>c87886cd-d37e-459c-945f-ca35f8055e85</ogc:Literal>
+                </ogc:PropertyIsLike>
+            </ogc:Filter>
+        </csw:Constraint>
+    </csw:Delete>
 </csw:Transaction>
 ```
