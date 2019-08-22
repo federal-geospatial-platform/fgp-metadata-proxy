@@ -19,6 +19,16 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [AB_POSTRANSLATE_4](#ab_posttranslate_4)
 	  - [CSW_INSERT](#csw_insert)
 	  - [NOTIFY_CREATE](#notify_create)
+	- [AB_UPDATE Workspace Detail](#ab_update-workspace-detail)
+	  -[AB_UPDATE_PRETRANSLATE](#ab_update_pretranslate)
+	  - [AWS_TRANSLATE](#aws_translate-1)
+	  - [AB_POSTRANSLATE_1](#ab_posttranslate_1-1)
+	  - [AB_POSTRANSLATE_2](#ab_posttranslate_2-1)
+	  - [POSTTRANSLATE_3](#posttranslate_3-1)
+	  - [AB_POSTRANSLATE_4](#ab_posttranslate_4-1)
+	  - [CSW_INSERT](#csw_insert-1)
+	  - [CSW_UPDATE](#csw_update)
+	  - [NOTIFY_UPDATE](#notify_update)
 	  - [Data Clear](#data-clear)
 	  - [Query Loop Creation](#query-loop-creation)
 	  - [Data Query](#data-query)
@@ -204,6 +214,46 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 Selects appropriate XML insert template and posts XML to the CSW.
 
 ##### NOTIFY_CREATE
+
+E-mails processing results to administrator.
+
+#### AB_UPDATE Workspace Detail
+
+The AB_UPDATE workspace utilizes the following sequence of custom transformers:
+
+##### AB_UPDATE_PRETRANSLATE
+
+queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against Alberta API's for obsolete data.  Deletes records from CSW that are no longer found in Alberta open data.  
+
+##### AWS_TRANSLATE
+
+Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
+
+##### AB_POSTTRANSLATE_1
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### AB_POSTTRANSLATE_2
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### POSTTRANSLATE_3
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### AB_POSTTRANSLATE_4
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### CSW_INSERT
+
+Selects appropriate XML insert template for all new datasets and posts XML to the CSW.
+
+##### CSW_UPDATE
+
+Selects appropriate XML update template for all updated datasets and posts XML to the CSW.
+
+##### NOTIFY_UPDATE
 
 E-mails processing results to administrator.
 
