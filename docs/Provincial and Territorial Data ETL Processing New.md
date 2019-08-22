@@ -10,7 +10,15 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	- [Other PyCSW Tools](#other-pycsw-tools)
   - [Alberta](#alberta)
     - [Overview](#overview-1)
-    - [AB_Data_AllRecords Workspace/AB_Data_ClearCSW Detail](#ab_data_allrecords-workspaceab_data_clearcsw-detail)
+    - [AB_CREATE Workspace Detail](#ab_create-workspace-detail)
+	  - [AB_CREATE_PRETRANSLATE](#ab-create-pretranslate)
+	  - [AWS_TRANSLATE](#aws-translate)
+	  - [AB_POSTRANSLATE_1](ab-posttranslate-1)
+	  - [AB_POSTRANSLATE_2](ab-posttranslate-2)
+	  - [POSTTRANSLATE_3](ab-posttranslate-3)
+	  - [AB_POSTRANSLATE_4](ab-posttranslate-4)
+	  - [CSW_INSERT](csw-insert)
+	  - [NOTIFY_CREATE](notify-create)
 	  - [Data Clear](#data-clear)
 	  - [Query Loop Creation](#query-loop-creation)
 	  - [Data Query](#data-query)
@@ -145,7 +153,6 @@ The extensive transformers required for metadata ETL have been aggregated into a
 
 #### Overview
 
-
 ETL (extract, transformation and loading) workspaces created in Safe Software's Feature Manipulation Engine (FME) are used to extract and parse specific attributes using two approaches:
 
 --   **Alberta Open Data Catalogue**: Alberta ISO 19115 compliant data is extracted by exposing data from CKAN API [Alberta's Open Data Catalogue](https://open.alberta.ca/opendata), extracting a JSON (Javascript Object Notation) file, and subsequently, via the JSON file, an XML file in Geospatial Catalog. The approach going through the Open Data Catalog first is required as the unique ID's from the Open Data are required due to inconsistencies in the unique ID's used in the subsequently exposed XML files.
@@ -164,7 +171,41 @@ The Alberta Metadata FME Workspaces can be found here:
 
 - **NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
 
-### AB_Data_AllRecords Workspace/AB_Data_ClearCSW Detail
+#### AB_CREATE Workspace Detail
+
+The AB_CREATE workspace utilizes the following sequence of custom transformers:
+
+##### AB_CREATE_PRETRANSLATE
+
+Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
+
+##### AWS_TRANSLATE
+
+Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
+
+##### AB_POSTTRANSLATE_1
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### AB_POSTTRANSLATE_2
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### POSTTRANSLATE_3
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### AB_POSTTRANSLATE_4
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### CSW_INSERT
+
+Selects appropriate XML insert template and posts XML to the CSW.
+
+##### NOTIFY_CREATE
+
+E-mails processing results to administrator.
 
 #### Data Clear
 
