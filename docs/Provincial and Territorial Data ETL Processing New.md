@@ -11,7 +11,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
   - [Alberta](#alberta)
     - [Overview](#overview-1)
     - [AB_CREATE Workspace Detail](#ab_create-workspace-detail)
-	  - [AB_CREATE_PRETRANSLATE](#ab-create-pretranslate)
+	  - [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate)
 	  - [AWS_TRANSLATE](#aws-translate)
 	  - [AB_POSTRANSLATE_1](#ab-posttranslate-1)
 	  - [AB_POSTRANSLATE_2](#ab-posttranslate-2)
