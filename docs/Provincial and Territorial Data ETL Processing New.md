@@ -29,6 +29,27 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [CSW_INSERT](#csw_insert-1)
 	  - [CSW_UPDATE](#csw_update)
 	  - [NOTIFY_UPDATE](#notify_update)
+  - [British Columbia](#british-columbia)
+    - Overview(#overview-2) 
+	- [BC_CREATE Workspace Detail](#bc_create-workspace-detail)
+	  - [BC_CREATE_PRETRANSLATE](#ab_create_pretranslate)
+	  - [AWS_TRANSLATE](#aws_translate-2)
+	  - [BC_POSTRANSLATE_1](#bc_posttranslate_1)
+	  - [BC_POSTRANSLATE_2](#bc_posttranslate_2)
+	  - [POSTTRANSLATE_3](#posttranslate_3-2)
+	  - [BC_POSTRANSLATE_4](#ab_posttranslate_4)
+	  - [CSW_INSERT](#csw_insert-2)
+	  - [NOTIFY_CREATE](#notify_create-1)
+	- [BC_UPDATE Workspace Detail](#bc_update-workspace-detail)
+	  -[BC_UPDATE_PRETRANSLATE](#bc_update_pretranslate)
+	  - [AWS_TRANSLATE](#aws_translate-3)
+	  - [BC_POSTRANSLATE_1](#bc_posttranslate_1-1)
+	  - [BC_POSTRANSLATE_2](#bc_posttranslate_2-1)
+	  - [POSTTRANSLATE_3](#posttranslate_3-1)
+	  - [BC_POSTRANSLATE_4](#bc_posttranslate_4-1)
+	  - [CSW_INSERT](#csw_insert-3)
+	  - [CSW_UPDATE](#csw_update-2)
+	  - [NOTIFY_UPDATE](#notify_update)
 	  - [Data Clear](#data-clear)
 	  - [Query Loop Creation](#query-loop-creation)
 	  - [Data Query](#data-query)
@@ -77,8 +98,8 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [Insert Records Notification](#insert-records-notification-1)
 	  - [Update Records Notification](#update-records-notification)
 	  - [Notification Compiler and eMailer](#notification-compiler-and-emailer-1)
-  - [British Columbia](#british-columbia)
-    - [Overview](#overview-2)
+  - [British Columbia](#british-columbia-1)
+    - [Overview](#overview-3)
     - [BC_Data_AllRecords Workspace/BC_Data_ClearCSW Detail](#bc_data_allrecords-workspacebc_data_clearcsw-detail)
 	  - [Data Clear](#data-clear-1)
 	  - [Query Loop Creation](#query-loop-creation-2)
@@ -223,7 +244,7 @@ The AB_UPDATE workspace utilizes the following sequence of custom transformers:
 
 ##### AB_UPDATE_PRETRANSLATE
 
-queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against Alberta API's for obsolete data.  Deletes records from CSW that are no longer found in Alberta open data.  
+Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against Alberta API's for obsolete data.  Deletes records from CSW that are no longer found in Alberta open data.  
 
 ##### AWS_TRANSLATE
 
@@ -242,6 +263,102 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
 ##### AB_POSTTRANSLATE_4
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### CSW_INSERT
+
+Selects appropriate XML insert template for all new datasets and posts XML to the CSW.
+
+##### CSW_UPDATE
+
+Selects appropriate XML update template for all updated datasets and posts XML to the CSW.
+
+##### NOTIFY_UPDATE
+
+E-mails processing results to administrator.
+
+### British Columbia
+
+#### Overview
+
+British Columbia open data is exposed through a CKAN API:
+
+-   [British Columbia's Open Data Catalogue](https://catalogue.data.gov.bc.ca/dataset)
+
+ETL (extract, transformation and loading) workspaces created in Safe Software's Feature Manipulation Engine (FME) are used to extract and parse specific attributes from a JSON (Javascript Object Notation) file that are required to meet mandatory requirements for individual XML (Extensible Markup Language) files, each representing and defining a unique dataset, that are published to a CSW (Catalogue Service for the Web) and subsequently harvested from the CSW by the Federal Geospatial Platform (FGP).  The FME workspaces have handlers appropriately placed to address attribute deficiencies that are either missing or have formats incompatible to FGP requirements.  
+
+A detailed list of all attributes processed by FME for insertion to the XML files can be found here:
+
+-   [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key.xlsx)
+
+The British Columbia Metadata FME Workspaces can be found here:
+
+-   [British Columbia FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/FME_Workspaces/BC)
+
+- **NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
+
+#### BC_CREATE Workspace Detail
+
+The BC_CREATE workspace utilizes the following sequence of custom transformers:
+
+##### BC_CREATE_PRETRANSLATE
+
+Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
+
+##### AWS_TRANSLATE
+
+Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
+
+##### BC_POSTTRANSLATE_1
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### BC_POSTTRANSLATE_2
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### POSTTRANSLATE_3
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### BC_POSTTRANSLATE_4
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### CSW_INSERT
+
+Selects appropriate XML insert template and posts XML to the CSW.
+
+##### NOTIFY_CREATE
+
+E-mails processing results to administrator.
+
+#### BC_UPDATE Workspace Detail
+
+The BC_UPDATE workspace utilizes the following sequence of custom transformers:
+
+##### BC_UPDATE_PRETRANSLATE
+
+Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against British Columbia's API for obsolete data.  Deletes records from CSW that are no longer found in British Columbia open data.  
+
+##### AWS_TRANSLATE
+
+Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
+
+##### BC_POSTTRANSLATE_1
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### BC_POSTTRANSLATE_2
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### POSTTRANSLATE_3
+
+Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+
+##### BC_POSTTRANSLATE_4
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
