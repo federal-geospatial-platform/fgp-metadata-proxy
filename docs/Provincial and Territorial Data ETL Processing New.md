@@ -206,6 +206,8 @@ All XML templates can be found [here](https://github.com/federal-geospatial-plat
 
 -   **EMPTY CSW Python Scripts:** These are intended for admin purposes only in the event a CSW has to be cleared of all data.  These scripts run manually and must be executed prior to running a CREATE workspace.  It will clear 1000 records at a time from the CSW and will have to be run multiple times if the CSW count exceeds 1000.
 
+All EMPTY CSW Python scripts can be found [here](C:\Users\robennet\Documents\GitHub\fgp-metadata-proxy\scripts\Empty_PyCSW_Scripts)
+
 ## Workspaces
 
 ### Alberta
