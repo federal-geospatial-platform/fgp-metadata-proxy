@@ -1,6 +1,6 @@
 import fme
 import fmeobjects
-import urllib2
+import urllib3
 import requests
 
 # Template Function interface:
