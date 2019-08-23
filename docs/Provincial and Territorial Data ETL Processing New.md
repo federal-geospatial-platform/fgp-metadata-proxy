@@ -176,6 +176,8 @@ Open data extraction, transformation and loading processes utilize two different
 -   **(p-t_abbreviation)_CREATE_(version_number).fmw:** The CREATE workspaces are for extracting, tranforming and loading a complete dataset to an empty Catalogue Service for the Web (CSW).  Its intended use is for initial creation of a CSW, or in the event an entire CSW needs to be reloaded.  This can be run manually from FME Server.
 -  **(p-t_abbreviation)_UPDATE_(version_number).fmw:**  The UPDATE workspaces filter, extract, transform and load new or updated data records to the CSW.  It also reads all existing data records already in the CSW and deletes any records no longer found in the source data.  Theses workspaces run on a daily schedule on the FME Server.
 
+All FME Workspaces can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/FME_Workspaces)
+
 ### Custom Transformers
 
 The extensive transformers required for metadata ETL have been aggregated into a series of custom transformers, each defining a key step in the ETL process.  These transformers can be broken down into three types:
@@ -183,6 +185,8 @@ The extensive transformers required for metadata ETL have been aggregated into a
 -   **Workspace Exclusive Transformers:** These are exclusive to either a single provincial/territorial CREATE or UPDATE workspace.
 -  **Provincial/Territorial Exclusive Transformers:** These are exclusive to a provincial or territorial ETL process, but can be used in that province/territory's CREATE or UPDATE transformers.
 -  **Universal Transformers:** These contain processes that are universal to any workspace.
+
+All FME custom transformers can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/FME_Custom_Transformers)
 
 ### XML Templates
 
@@ -195,6 +199,8 @@ The workspaces utilize 104 XML templates to retreive, load and delete data from 
 -  **FGP_XML_Insert_Template_(number).xml:**  There are 51 'insert' XML document templates that are denoted by 'Insert' tags at the beginning and end of the document, the number of distribution formats and the number of transfer options.  Data analysis has shown that there are no more than six distribution formats and no more than eleven transfer options in any given dataset.  The number at the end of the file name is indicative of the number of transfer options, followed by number of distribution formats.  The numbering is indexed, beginning at '0', where 0 indicates a count of 1.  For example, FGP_XML_Insert_Template_1-0.xml indicates the template can accommodate 2 transfer options and 1 distribution format, and FGP_XML_Insert_Template_10-3.xml indicates the template can accommodate 11 transfer options and 4 distribution formats.
 
 -  **FGP_XML_Update_Template_(number).xml:**  There are 51 'update' XML document templates that are denoted by 'Update' tags at the beginning and end of the document, the number of distribution formats and the number of transfer options.  Data analysis has shown that there are no more than six distribution formats and no more than eleven transfer options in any given dataset.  The number at the end of the file name is indicative of the number of transfer options, followed by number of distribution formats.  The numbering is indexed, beginning at '0', where 0 indicates a count of 1.  For example, FGP_XML_Update_Template_1-0.xml indicates the template can accommodate 2 transfer options and 1 distribution format, and FGP_XML_Update_Template_10-3.xml indicates the template can accommodate 11 transfer options and 4 distribution formats.
+
+All XML templates can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/XML_Templates)
 
 ### Other PyCSW Tools
 
@@ -232,7 +238,7 @@ The AB_CREATE workspace utilizes the following sequence of custom transformers:
 
 Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
 
-##### AWS_TRANSLATE
+##### [AWS_TRANSLATE](aws_translate.fmx)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -268,7 +274,7 @@ The AB_UPDATE workspace utilizes the following sequence of custom transformers:
 
 Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against Alberta API's for obsolete data.  Deletes records from CSW that are no longer found in Alberta open data.  
 
-##### AWS_TRANSLATE
+##### [AWS_TRANSLATE](aws_translate.fmx)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -328,7 +334,7 @@ The BC_CREATE workspace utilizes the following sequence of custom transformers:
 
 Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
 
-##### AWS_TRANSLATE
+##### [AWS_TRANSLATE](aws_translate.fmx)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -364,7 +370,7 @@ The BC_UPDATE workspace utilizes the following sequence of custom transformers:
 
 Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against British Columbia's API for obsolete data.  Deletes records from CSW that are no longer found in British Columbia open data.  
 
-##### AWS_TRANSLATE
+##### [AWS_TRANSLATE](aws_translate.fmx)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
