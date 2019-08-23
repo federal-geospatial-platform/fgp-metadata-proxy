@@ -54,11 +54,12 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [NOTIFY_UPDATE](#notify_update)
   - [Custom Transformers](custom-transformers-1)
     - [Universal Transformers](universal-transformers)
-	  - [AWS_TRANSLATE.fmx](aws_translate.fmx)
-	  - [CSW_INSERT.fmx](csw_insert.fmx)
-	  - [CSW_UPDATE.fmx](csw_update.fmx)
-      - [NOTIFY_CREATE.fmx](notify_create.fmx)
-      - [NOTIFY_UPDATE.fmx](notify_update.fmx)	  
+	  - [AWS_TRANSLATE.fmx](#aws_translate.fmx)
+	  - [CSW_INSERT.fmx](#csw_insert.fmx)
+	  - [CSW_UPDATE.fmx](#csw_update.fmx)
+      - [NOTIFY_CREATE.fmx](#notify_create.fmx)
+      - [NOTIFY_UPDATE.fmx](#notify_update.fmx)	
+      - [POSTTRANSLATE_3.fmx](#posttranslate_3.fmx)	  
 	  - [Data Clear](#data-clear)
 	  - [Query Loop Creation](#query-loop-creation)
 	  - [Data Query](#data-query)
@@ -240,7 +241,7 @@ The AB_CREATE workspace utilizes the following sequence of custom transformers:
 
 Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
 
-##### [AWS_TRANSLATE](aws_translate.fmx)
+##### [AWS_TRANSLATE](#aws_translate.fmx)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -260,7 +261,7 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
-##### CSW_INSERT
+##### [CSW_INSERT](#csw_insert.fmx)
 
 Selects appropriate XML insert template and posts XML to the CSW.
 
@@ -276,7 +277,7 @@ The AB_UPDATE workspace utilizes the following sequence of custom transformers:
 
 Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against Alberta API's for obsolete data.  Deletes records from CSW that are no longer found in Alberta open data.  
 
-##### [AWS_TRANSLATE](aws_translate.fmx)
+##### [AWS_TRANSLATE](#aws_translate.fmx)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -296,11 +297,11 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
-##### CSW_INSERT
+##### [CSW_INSERT](#csw_insert.fmx)
 
 Selects appropriate XML insert template for all new datasets and posts XML to the CSW.
 
-##### CSW_UPDATE
+##### [CSW_UPDATE](#csw_update.fmx)
 
 Selects appropriate XML update template for all updated datasets and posts XML to the CSW.
 
@@ -336,7 +337,7 @@ The BC_CREATE workspace utilizes the following sequence of custom transformers:
 
 Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
 
-##### [AWS_TRANSLATE](aws_translate.fmx)
+##### [AWS_TRANSLATE](#aws_translate.fmx)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -356,7 +357,7 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
-##### CSW_INSERT
+##### [CSW_INSERT](#csw_insert.fmx)
 
 Selects appropriate XML insert template and posts XML to the CSW.
 
@@ -372,7 +373,7 @@ The BC_UPDATE workspace utilizes the following sequence of custom transformers:
 
 Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against British Columbia's API for obsolete data.  Deletes records from CSW that are no longer found in British Columbia open data.  
 
-##### [AWS_TRANSLATE](aws_translate.fmx)
+##### [AWS_TRANSLATE](#aws_translate.fmx)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -392,11 +393,11 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
-##### CSW_INSERT
+##### [CSW_INSERT](#csw_insert.fmx)
 
 Selects appropriate XML insert template for all new datasets and posts XML to the CSW.
 
-##### CSW_UPDATE
+##### [CSW_UPDATE](#csw_update.fmx)
 
 Selects appropriate XML update template for all updated datasets and posts XML to the CSW.
 
@@ -450,6 +451,10 @@ This transformer is designed to function in all data ETL activities for all new 
 - Posts each XML document to the PyCSW using the following Python script:
   - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
 - Tests each record for successful load or failure to the PyCSW
+
+#### NOTIFY_CREATE.fmx
+
+#### NOTIFY_UPDATE.fmx
 
 #### Data Clear
 
