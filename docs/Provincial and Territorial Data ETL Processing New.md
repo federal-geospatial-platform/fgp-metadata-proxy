@@ -9,6 +9,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	- [Custom Transformers](#custom-transformers)
 	- [XML Templates](#xml-templates)
 	- [Other PyCSW Tools](#other-pycsw-tools)
+  - [Workspaces](#workspaces-1)
   - [Alberta](#alberta)
     - [Overview](#overview-1)
     - [AB_CREATE Workspace Detail](#ab_create-workspace-detail)
@@ -51,6 +52,9 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [CSW_INSERT](#csw_insert-3)
 	  - [CSW_UPDATE](#csw_update-1)
 	  - [NOTIFY_UPDATE](#notify_update)
+  - [Custom Transformers](custom-transformers-1)
+    - [Universal Transformers](universal-transformers)
+	  - [AWS_TRANSLATE](aws_translate)
 	  - [Data Clear](#data-clear)
 	  - [Query Loop Creation](#query-loop-creation)
 	  - [Data Query](#data-query)
@@ -145,6 +149,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [Insert Records Notification](#insert-records-notification-3)
 	  - [Update Records Notification](#update-records-notification-1)
 	  - [Notification Compiler and eMailer](#notification-compiler-and-emailer-1)
+	  
   - [Manitoba](#manitoba)
   - [New Brunswick](#new-brunswick)
   - [Newfoundland and Labrador](#newfoundland-and-labrador)
@@ -386,6 +391,12 @@ Selects appropriate XML update template for all updated datasets and posts XML t
 ##### NOTIFY_UPDATE
 
 E-mails processing results to administrator.
+
+## Custom Transformers
+
+### Universal Transformers
+
+#### AWS_TRANSLATE
 
 #### Data Clear
 
