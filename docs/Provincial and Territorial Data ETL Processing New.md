@@ -7,6 +7,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
   - [Oveview](#overview)
     - [Workspaces](#workspaces)
 	- [Custom Transformers](#custom-transformers)
+	- [XML Templates](#xml-templates)
 	- [Other PyCSW Tools](#other-pycsw-tools)
   - [Alberta](#alberta)
     - [Overview](#overview-1)
@@ -173,6 +174,18 @@ The extensive transformers required for metadata ETL have been aggregated into a
 -   **Workspace Exclusive Transformers:** These are exclusive to either a single provincial/territorial CREATE or UPDATE workspace.
 -  **Provincial/Territorial Exclusive Transformers:** These are exclusive to a provincial or territorial ETL process, but can be used in that province/territory's CREATE or UPDATE transformers.
 -  **Universal Transformers:** These contain processes that are universal to any workspace.
+
+### XML Templates
+
+The workspaces utilize 104 XML templates to retreive, load and delete data from the PyCSW.
+
+-   **FGP_GetRecords.xml:** This XML file posts a request to the PyCSW and retrieves the unique ID from every data records contained therein.
+
+-  **FGP_DeleteById.xml:** Following the extraction of unique ID"s from the PyCSW and validation of the unique ID's against unique ID's retreived from an agency's API, this XML file removes obsolete records by their unique ID by posting to the PyCSW.  
+
+-  **FGP_XML_Insert_Template_(number).xml:**  There are 51 'insert' XML document templates that are denoted by 'Insert' tags at the beginning and end of the document, the number of distribution formats and the number of transfer options.  Data analysis has shown that there are no more than six distribution formats and no more than eleven transfer options in any given dataset.  The number at the end of the file name is indicative of the number of transfer options, followed by number of distribtion formats.  The numbering is indexed, beginning at '0', where 0 indicates a count of 1.  For example, FGP_XML_Insert_Template_1-0.xml indicates the template can accommodate 2 transfer options and 1 distribtion format, and FGP_XML_Insert_Template_10-3.xml indicates the template can accommodate 11 transfer options and 4 distribution formats.
+
+-  **FGP_XML_Update_Template_(number).xml:**  There are 51 'update' XML document templates that are denoted by 'Update' tags at the beginning and end of the document, the number of distribution formats and the number of transfer options.  Data analysis has shown that there are no more than six distribution formats and no more than eleven transfer options in any given dataset.  The number at the end of the file name is indicative of the number of transfer options, followed by number of distribtion formats.  The numbering is indexed, beginning at '0', where 0 indicates a count of 1.  For example, FGP_XML_Insert_Template_1-0.xml indicates the template can accommodate 2 transfer options and 1 distribtion format, and FGP_XML_Insert_Template_10-3.xml indicates the template can accommodate 11 transfer options and 4 distribution formats.
 
 ### Other PyCSW Tools
 
