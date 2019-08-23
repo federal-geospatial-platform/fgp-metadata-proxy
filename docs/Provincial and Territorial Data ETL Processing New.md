@@ -372,15 +372,58 @@ This transformer is designed to function in all data ETL activities for all new 
 
 #### NOTIFY_CREATE
 
+This transformer is designed to function in all CREATE workspaces and creates an email message of ETL results for system administrators.
+
+##### Insert Records Notification
+
+This section performs the following tasks:
+- Gets count of inserted records that successfully loaded or failed to load to the PyCSW.
+- Creates a message string with the overall results of the data translation.
+
+##### Notification Compliler and eMailer
+
+This section performs the following tasks:
+- Gets the current data and time.
+- Concatenates insert records or no records to insert notifcation strings, update records or no records to update notification strings, plus date and time into one message string
+- Emails the message string to an adminstrator.
+
 #### NOTIFY_UPDATE
 
+This transformer is designed to function in all UPDATE workspaces and creates an email message of ETL results for system administrators.
+
+##### Insert Records Notification
+
+This section performs the following tasks:
+- Gets count of inserted records that successfully loaded or failed to load to the PyCSW.
+- Creates a message string with the overall results of the data translation.
+
+##### Update Records Notification
+
+This section performs the following tasks:
+- Gets count of updated records that successfully loaded or failed to load to the PyCSW.
+- Creates a message string with the overall results of the data translation.
+
+##### Notification Compliler and eMailer
+
+This section performs the following tasks:
+- Gets the current data and time.
+- Concatenates insert records or no records to insert notifcation strings, update records or no records to update notification strings, plus date and time into one message string
+- Emails the message string to an adminstrator.
+
 #### POSTTRANSLATE_3
+
+This transformer is designed to function in all workspaces and removes duplicates of distribution format items by performing the following tasks:
+- Copies all resource_format attributes into list attributes.
+- Removes all list attribute duplicates.
+- Renames remaining list attributes to distribution_format attributes
 
 ### Provincial/Territorial Specific Transformers
 
 #### Alberta
 
 ##### AB_CREATE_PRETRANSLATE
+
+
 
 ##### AB_POSTTRANSLATE_1
 
