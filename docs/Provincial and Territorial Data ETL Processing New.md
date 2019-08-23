@@ -47,19 +47,19 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [AWS_TRANSLATE](#aws_translate-3)
 	  - [BC_POSTRANSLATE_1](#bc_posttranslate_1-1)
 	  - [BC_POSTRANSLATE_2](#bc_posttranslate_2-1)
-	  - [POSTTRANSLATE_3](#posttranslate_3-1)
+	  - [POSTTRANSLATE_3](#posttranslate_3-3)
 	  - [BC_POSTRANSLATE_4](#bc_posttranslate_4-1)
 	  - [CSW_INSERT](#csw_insert-3)
 	  - [CSW_UPDATE](#csw_update-1)
-	  - [NOTIFY_UPDATE](#notify_update)
+	  - [NOTIFY_UPDATE](#notify_update-1)
   - [Custom Transformers Detail](#custom-transformers-detail)
     - [Universal Transformers](#universal-transformers)
 	  - [AWS_TRANSLATE](#aws_translate-4)
 	  - [CSW_INSERT](#csw_insert-4)
-	  - [CSW_UPDATE](#csw_update)
-      - [NOTIFY_CREATE](#notify_create)
-      - [NOTIFY_UPDATE](#notify_update)	
-      - [POSTTRANSLATE_3](#posttranslate_3)	  
+	  - [CSW_UPDATE](#csw_update-2)
+      - [NOTIFY_CREATE](#notify_create-2)
+      - [NOTIFY_UPDATE](#notify_update-2)	
+      - [POSTTRANSLATE_3](#posttranslate_3-4)	  
 	  - [Data Clear](#data-clear)
 	  - [Query Loop Creation](#query-loop-creation)
 	  - [Data Query](#data-query)
@@ -261,7 +261,7 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
-##### [CSW_INSERT](#csw_insert.fmx)
+##### [CSW_INSERT](#csw_insert-4)
 
 Selects appropriate XML insert template and posts XML to the CSW.
 
@@ -297,7 +297,7 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
-##### [CSW_INSERT](#csw_insert.fmx)
+##### [CSW_INSERT](#csw_insert-4)
 
 Selects appropriate XML insert template for all new datasets and posts XML to the CSW.
 
@@ -357,7 +357,7 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
-##### [CSW_INSERT](#csw_insert.fmx)
+##### [CSW_INSERT](#csw_insert-4)
 
 Selects appropriate XML insert template and posts XML to the CSW.
 
@@ -393,7 +393,7 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
 
-##### [CSW_INSERT](#csw_insert.fmx)
+##### [CSW_INSERT](#csw_insert-4)
 
 Selects appropriate XML insert template for all new datasets and posts XML to the CSW.
 
