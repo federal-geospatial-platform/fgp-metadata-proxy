@@ -398,6 +398,23 @@ E-mails processing results to administrator.
 
 #### AWS_TRANSLATE
 
+This transformer is designed to function in all data ETL activities and translates the following attributes from English to French using the Amazon Web Services language translation API:
+
+- title
+- notes
+- sector
+- all exposed tags attributes (maximum 9)
+- all exposed resource_name attributes (maximum 6)
+
+This section operates using the following steps:
+
+- Removes failure causing excess whitespace from all attribute values to be translated.
+- Posts attribute to be translated to the AWS API using Python script.
+- Creates French version of the attribute from the returned translated value.
+- Removes UTF8 Character code returned from translated results.
+
+
+
 #### Data Clear
 
 This section clears the CSW completely, and if utilizing the option to write all XML output to a local directory, clears the directory.  It utilizes the following steps:
