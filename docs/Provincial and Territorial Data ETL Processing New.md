@@ -52,14 +52,14 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [CSW_INSERT](#csw_insert-3)
 	  - [CSW_UPDATE](#csw_update-1)
 	  - [NOTIFY_UPDATE](#notify_update)
-  - [Custom Transformers](#custom-transformers-1)
+  - [Custom Transformers Detail](#custom-transformers-detail)
     - [Universal Transformers](#universal-transformers)
-	  - [AWS_TRANSLATE.fmx](#aws_translate.fmx)
-	  - [CSW_INSERT.fmx](#csw_insert.fmx)
-	  - [CSW_UPDATE.fmx](#csw_update.fmx)
-      - [NOTIFY_CREATE.fmx](#notify_create.fmx)
-      - [NOTIFY_UPDATE.fmx](#notify_update.fmx)	
-      - [POSTTRANSLATE_3.fmx](#posttranslate_3.fmx)	  
+	  - [AWS_TRANSLATE](#aws_translate-4)
+	  - [CSW_INSERT](#csw_insert-4)
+	  - [CSW_UPDATE](#csw_update)
+      - [NOTIFY_CREATE](#notify_create)
+      - [NOTIFY_UPDATE](#notify_update)	
+      - [POSTTRANSLATE_3](#posttranslate_3)	  
 	  - [Data Clear](#data-clear)
 	  - [Query Loop Creation](#query-loop-creation)
 	  - [Data Query](#data-query)
@@ -241,7 +241,7 @@ The AB_CREATE workspace utilizes the following sequence of custom transformers:
 
 Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
 
-##### [AWS_TRANSLATE]
+##### [AWS_TRANSLATE](#aws_translate-4)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -277,7 +277,7 @@ The AB_UPDATE workspace utilizes the following sequence of custom transformers:
 
 Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against Alberta API's for obsolete data.  Deletes records from CSW that are no longer found in Alberta open data.  
 
-##### [AWS_TRANSLATE]
+##### [AWS_TRANSLATE](#aws_translate-4)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -337,7 +337,7 @@ The BC_CREATE workspace utilizes the following sequence of custom transformers:
 
 Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
 
-##### [AWS_TRANSLATE]
+##### [AWS_TRANSLATE](#aws_translate-4)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -373,7 +373,7 @@ The BC_UPDATE workspace utilizes the following sequence of custom transformers:
 
 Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against British Columbia's API for obsolete data.  Deletes records from CSW that are no longer found in British Columbia open data.  
 
-##### [AWS_TRANSLATE]
+##### [AWS_TRANSLATE](#aws_translate-4)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
@@ -405,11 +405,11 @@ Selects appropriate XML update template for all updated datasets and posts XML t
 
 E-mails processing results to administrator.
 
-## Custom Transformers
+## Custom Transformers Detail
 
 ### Universal Transformers
 
-#### AWS_TRANSLATE.fmx
+#### AWS_TRANSLATE
 
 This transformer is designed to function in all data ETL activities and translates the following attributes from English to French using the Amazon Web Services language translation API:
 
