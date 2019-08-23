@@ -54,7 +54,10 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [NOTIFY_UPDATE](#notify_update)
   - [Custom Transformers](custom-transformers-1)
     - [Universal Transformers](universal-transformers)
-	  - [AWS_TRANSLATE](aws_translate)
+	  - [AWS_TRANSLATE.fmx](aws_translate.fmx)
+	  - [CSW_INSERT.fmx](csw_insert.fmx)
+	  - [CSW_UPDATE.fmx](csw_update.fmx)
+	  
 	  - [Data Clear](#data-clear)
 	  - [Query Loop Creation](#query-loop-creation)
 	  - [Data Query](#data-query)
@@ -396,7 +399,7 @@ E-mails processing results to administrator.
 
 ### Universal Transformers
 
-#### AWS_TRANSLATE
+#### AWS_TRANSLATE.fmx
 
 This transformer is designed to function in all data ETL activities and translates the following attributes from English to French using the Amazon Web Services language translation API:
 
@@ -413,7 +416,31 @@ This section operates using the following steps:
 - Creates French version of the attribute from the returned translated value.
 - Removes UTF8 Character code returned from translated results.
 
+#### CSW_INSERT.fmx
 
+This transformer is designed to function in all data ETL activities for all new data records and performs the following tasks:
+
+- Tests for the number of transfer options and distribution formats, and filters the datasets according to their number.
+- Selects the appropriate XML insert template based on the results of the previous test.
+- Places the extracted attributes for each dataset in the XML template.
+- Cleans up the XML document with the XML format tool.
+- Validates the XML syntax.
+- Posts each XML document to the PyCSW using the following Python script:
+  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+- Tests each record for successful load or failure to the PyCSW
+
+#### CSW_UPDATE.fmx
+
+This transformer is designed to function in all data ETL activities for all new data records and performs the following tasks:
+
+- Tests for the number of transfer options and distribution formats, and filters the datasets according to their number.
+- Selects the appropriate XML update template based on the results of the previous test.
+- Places the extracted attributes for each dataset in the XML template.
+- Cleans up the XML document with the XML format tool.
+- Validates the XML syntax.
+- Posts each XML document to the PyCSW using the following Python script:
+  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
+- Tests each record for successful load or failure to the PyCSW
 
 #### Data Clear
 
