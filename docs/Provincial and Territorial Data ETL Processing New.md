@@ -265,7 +265,7 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Selects appropriate XML insert template and posts XML to the CSW.
 
-##### NOTIFY_CREATE
+##### [NOTIFY_CREATE](#notify_create.fmx)
 
 E-mails processing results to administrator.
 
@@ -305,7 +305,7 @@ Selects appropriate XML insert template for all new datasets and posts XML to th
 
 Selects appropriate XML update template for all updated datasets and posts XML to the CSW.
 
-##### NOTIFY_UPDATE
+##### [NOTIFY_UPDATE](#notify_update.fmx)
 
 E-mails processing results to administrator.
 
@@ -361,7 +361,7 @@ Performs post translation transformations to ensure conformity to ISO 19115 HNAP
 
 Selects appropriate XML insert template and posts XML to the CSW.
 
-##### NOTIFY_CREATE
+##### [NOTIFY_CREATE](#notify_create.fmx)
 
 E-mails processing results to administrator.
 
@@ -401,7 +401,7 @@ Selects appropriate XML insert template for all new datasets and posts XML to th
 
 Selects appropriate XML update template for all updated datasets and posts XML to the CSW.
 
-##### NOTIFY_UPDATE
+##### [NOTIFY_UPDATE](#notify_update.fmx)
 
 E-mails processing results to administrator.
 
