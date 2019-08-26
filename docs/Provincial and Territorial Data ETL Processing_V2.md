@@ -92,8 +92,8 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 
 Open data extraction, transformation and loading processes utilize two different FME Workspaces for each Canadian province or territory:
 
--   **(p-t_abbreviation)_CREATE_(version_number).fmw:** The CREATE workspaces are for extracting, tranforming and loading a complete dataset to an empty Catalogue Service for the Web (CSW).  Its intended use is for initial creation of a CSW, or in the event an entire CSW needs to be reloaded.  This can be run manually from FME Server.
--  **(p-t_abbreviation)_UPDATE_(version_number).fmw:**  The UPDATE workspaces filter, extract, transform and load new or updated data records to the CSW.  It also reads all existing data records already in the CSW and deletes any records no longer found in the source data.  Theses workspaces run on a daily schedule on the FME Server.
+-   **(p-t_abbreviation)__CREATE__(version_number).fmw:** The CREATE workspaces are for extracting, tranforming and loading a complete dataset to an empty Catalogue Service for the Web (CSW).  Its intended use is for initial creation of a CSW, or in the event an entire CSW needs to be reloaded.  This can be run manually from FME Server.
+-  **(p-t_abbreviation)__UPDATE__(version_number).fmw:**  The UPDATE workspaces filter, extract, transform and load new or updated data records to the CSW.  It also reads all existing data records already in the CSW and deletes any records no longer found in the source data.  Theses workspaces run on a daily schedule on the FME Server.
 
 All FME Workspaces can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/FME_Workspaces)
 
