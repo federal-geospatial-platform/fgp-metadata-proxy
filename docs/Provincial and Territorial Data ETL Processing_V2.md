@@ -153,7 +153,7 @@ The Alberta Metadata FME Workspaces can be found here:
 
 #### AB_CREATE Workspace Detail
 
-The AB_CREATE workspace utilizes the following sequence of custom transformers:
+The AB_CREATE workspace utilizes the following sequence of custom transformers.  Note that transformer names are hyperlinked to view detail:
 
 ##### [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate-1)
 
@@ -189,7 +189,7 @@ E-mails processing results to administrator.
 
 #### AB_UPDATE Workspace Detail
 
-The AB_UPDATE workspace utilizes the following sequence of custom transformers:
+The AB_UPDATE workspace utilizes the following sequence of custom transformers.  Note that transformer names are hyperlinked to view detail:
 
 ##### [AB_UPDATE_PRETRANSLATE](#ab_update_pretranslate-1)
 
@@ -249,7 +249,7 @@ The British Columbia Metadata FME Workspaces can be found here:
 
 #### BC_CREATE Workspace Detail
 
-The BC_CREATE workspace utilizes the following sequence of custom transformers:
+The BC_CREATE workspace utilizes the following sequence of custom transformers.  Note that transformer names are hyperlinked to view detail:
 
 ##### [BC_CREATE_PRETRANSLATE](#bc_create_pretranslate-1)
 
@@ -285,7 +285,7 @@ E-mails processing results to administrator.
 
 #### BC_UPDATE Workspace Detail
 
-The BC_UPDATE workspace utilizes the following sequence of custom transformers:
+The BC_UPDATE workspace utilizes the following sequence of custom transformers.  Note that transformer names are hyperlinked to view detail:
 
 ##### [BC_UPDATE_PRETRANSLATE](#bc_update_pretranslate-1)
 
