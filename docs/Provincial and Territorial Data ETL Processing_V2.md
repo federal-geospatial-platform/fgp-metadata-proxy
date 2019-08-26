@@ -525,7 +525,7 @@ This section performs the following functions:
 
 ###### Date/Time Testing
 
-This section exists primarily for debugging purposes and can test for records that were created backdated to a specific number of days or months.  It's default setting for normal 
+This section exists primarily for debugging purposes and can test creation date for records that backdated to a specific number of days or months.  Its default setting for normal 
 operation is 0, which nullifies the test.  All data extracted from the Alberta Open Data API stream and the Alberta Geospatial Data API stream converges here.
 
 ###### Resource Name Tester
@@ -641,7 +641,7 @@ This section tests the SSL protocol in all 'resource_url' attributes (there are 
 
 Most datasets from Alberta have an HTML link as the first resource_url.  There are a small number that have ESRI REST as the first resource_url.  This tests for the ESRI REST as the first resource_url.
 
-For ESRI REST formatted URL, this transformer creates the  second url and associated attributes required by the FGP for ESRI REST distribution formats.
+For ESRI REST formatted URL's, this transformer creates the  second url and associated attributes required by the FGP for ESRI REST distribution formats.
 
 Features not processed in this section are directed to the WMS Formatter.  Processed features bypass the WMS Formatter and are directed to the Distribution Formatter.
 
@@ -663,7 +663,7 @@ This section assigns all WMS requirements to each English and French transferOpt
 
 ###### Distribution Version Formatter
 
-This section creates distribution format versions for all WMS formats as this is the default for Alberta WMS.  Other distribution format versions are not provided.  Data from the WMS Formatter and the ESRI REST Formtter converge here.
+This section creates distribution format versions for all WMS formats as this is the default for Alberta WMS.  Other distribution format versions are not provided.  Data from the WMS Formatter and the ESRI REST Formatter converge here.
 
 ###### INSERT/UPDATE Test
 
@@ -704,8 +704,7 @@ The current default settings will return a total of 20000 records, and, at the t
 
 ###### Alberta Open Data Query
 
-This section sends each concatentated query instance using a GET http method to the Alberta Opend Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes 
-and values from the JSON string based on a JSON query
+This section sends each concatentated query instance using a GET http method to the Alberta Opend Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query
 
 ###### Alberta Open Data Attribute Management
 
@@ -777,7 +776,7 @@ This section performs the following functions:
 - Converts data collection start date from yyyymmdd format to yyyy-mm-dd format.
 - Tests that data collection end date has a value.
 - Calculates string length of data collection end dates that have a value.  **NOTE:** Data collection end dates with no value are left blank. 
-- Tests data collection end dates for string length = 4, which is indicative of the year only **NOTE: Data collection end dates with no value are left blank. 
+- Tests data collection end dates for string length = 4, which is indicative of the year only.
 - Adds '0101' to complete date strings that have year only.
 - Converts data collection end date from yyyymmdd format to yyyy-mm-dd format.
 - Adds additional global attributes not available in extracted data.
@@ -832,8 +831,7 @@ This transformer is designed to function exclusively in the BC_CREATE workspace.
 
 ###### Query Loop Creation
 
-This section uses FME transformers to create a repetitive query loop for the BC Data API as the API will only return 1000 records per query, less than that of the BC database.  It is set
-at default to perform 10 query loops.  
+This section uses FME transformers to create a repetitive query loop for the BC Data API as the API will only return 1000 records per query, less than that of the BC database.  It is set at default to perform 10 query loops.  
 These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
 
 - https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
@@ -844,8 +842,7 @@ The current default settings will return a total of 10000 records, and, at the t
 
 ###### Data Query
 
-This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes 
-and values from the JSON string based on a JSON query
+This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query
 
 ###### Attribute Management
 
@@ -861,7 +858,7 @@ This section performs the following functions:
 
 ###### Date/Time Testing
 
-This section exists primarily for debugging purposes and can test for records that were created backdated to a specific number of days or months.  It's default setting for normal 
+This section exists primarily for debugging purposes and can test creation dates for records backdated to a specific number of days or months.  Its default setting for normal 
 operation is 0, which nullifies the test.
 
 ###### Resource Name Tester
@@ -878,7 +875,7 @@ This section performs the following tasks:
 
 ##### BC_POSTTRANSLATE_1
 
-This custom transformer is the first stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_Create' and 'BC_Update' workspaces.
+This custom transformer is the first stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_CREATE' and 'BC_UPDATE' workspaces.
 
 This transformer performs the following functions:
 
@@ -923,13 +920,11 @@ This transformer outputs to the BC_POSTTRANSLATE_2 transformer.
 
 ##### BC_POSTTRANSLATE_2
 
-This custom transformer is the second stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_Create' and 'BC_Update' workspaces.
+This custom transformer is the second stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_CREATE' and 'BC_UPDATE' workspaces.
 
 ###### File Format Refiner
 
-There are up to ten transfer options (data links) available in BC datasets.  The file format of each transfer option has a specific validation requirement in the FGP.  Data analysis of all BC data
-has identified all the potential incorrect variations of required file format names (i.e.: 'kmz' should be 'KMZ', 'Esri File Geodatabase' should be 'FGDB/GDB').  This section tests for all
-the variations found in BC datasets and corrects them to conforming values where required.
+There are up to ten transfer options (data links) available in BC datasets.  The file format of each transfer option has a specific validation requirement in the FGP.  Data analysis of all BC data has identified all the potential incorrect variations of required file format names (i.e.: 'kmz' should be 'KMZ', 'Esri File Geodatabase' should be 'FGDB/GDB').  This section tests for all the variations found in BC datasets and corrects them to conforming values where required.
 
 List of validated file formats can be found here:
 
@@ -939,7 +934,7 @@ This transformer outputs to the POSTTRANSLATE_3 transformer.
 
 ##### BC_POSTTRANSLATE_4
 
-This custom transformer is the fourth stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_Create' and 'BC_Update' workspaces.
+This custom transformer is the fourth stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_CREATE' and 'BC_UPDATE' workspaces.
 
 This transformer performs the following tasks:
 
@@ -1005,7 +1000,7 @@ options allowed.
 
 ###### Distribution Version Formatter
 
-This section creates distribution format versions for all WMS formats as this is the default for Alberta WMS.  Other distribution format versions are not provided.  Data from the WMS Formatter and the ESRI REST Formtter converge here.
+This section creates distribution format versions for all WMS formats as this is the default for the British Columbia WMS.  Other distribution format versions are not provided.  Data from the WMS Formatter and the ESRI REST Formatter converge here.
 
 ###### INSERT/UPDATE Test
 
@@ -1015,7 +1010,7 @@ Transformer output is then directed to the CSW_INSERT transformer for all INSERT
 
 ##### BC_UPDATE_PRETRANSLATE
 
-This custom transformer is the first stage of daily extraction of new or updated data from the BC Data API, and inserting to the CSW.  It also identifies obsolete records for removal from the CSW.  It is intended to run as a component of the 'BC_Update' workspace.
+This custom transformer is the first stage of daily extraction of new or updated data from the BC Data API, and inserting to the CSW.  It also identifies obsolete records for removal from the CSW.  It is intended to run as a component of the 'BC_UPDATE' workspace.
 
 This transformer performs the following tasks:
 
@@ -1034,8 +1029,7 @@ This section extracts the unique ID's from all data records currently loaded to 
 
 ###### Query Loop Creation
 
-This section uses FME transformers to create a repetitive query loop for the BC Data API as the API will only return 1000 records per query, less than that of the BC database.  It is set
-at default to perform 10 query loops.  
+This section uses FME transformers to create a repetitive query loop for the BC Data API as the API will only return 1000 records per query, less than that of the BC database.  It is set at default to perform 10 query loops.  
 These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
 
 - https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
@@ -1046,8 +1040,7 @@ The current default settings will return a total of 10000 records, and, at the t
 
 ###### Data Query
 
-This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes 
-and values from the JSON string based on a JSON query.
+This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query.
 
 ###### Obsolete Records Removal
 
