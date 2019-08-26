@@ -359,7 +359,7 @@ This transformer is designed to function in all data ETL activities for all new 
 
 #### CSW_UPDATE
 
-This transformer is designed to function in all data ETL activities for all new data records and performs the following tasks:
+This transformer is designed to function in all data ETL activities for all updated data records and performs the following tasks:
 
 - Tests for the number of transfer options and distribution formats, and filters the datasets according to their number.
 - Selects the appropriate XML update template based on the results of the previous test.
