@@ -446,8 +446,7 @@ The current default settings will return a total of 20000 records, and, at the t
 
 ###### Alberta Open Data Query
 
-This section sends each concatentated query instance using a GET http method to the Alberta Opend Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes 
-and values from the JSON string based on a JSON query
+This section sends each concatentated query instance using a GET http method to the Alberta Open Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query
 
 ###### Alberta Open Data Attribute Management
 
@@ -491,7 +490,7 @@ This section performs the following functions:
 
 ##### Alberta Geospatial Attribute Management 
 
-Currently, only ESRI REST services are extracted from the ISO 19139 accessed in this process data.  Other datasets in this format have inadequate information to complete an HNAP compliant dataset
+Currently, only ESRI REST services are extracted from the ISO 19139 formatted files accessed in this process.  Other datasets in this format have inadequate information to complete an HNAP compliant dataset
 
 This section performs the following functions:
 
@@ -517,7 +516,7 @@ This section performs the following functions:
 - Converts data collection start date from yyyymmdd format to yyyy-mm-dd format.
 - Tests that data collection end date has a value.
 - Calculates string length of data collection end dates that have a value.  **NOTE:** Data collection end dates with no value are left blank. 
-- Tests data collection end dates for string length = 4, which is indicative of the year only **NOTE: Data collection end dates with no value are left blank. 
+- Tests data collection end dates for string length = 4, which is indicative of the year only.
 - Adds '0101' to complete date strings that have year only.
 - Converts data collection end date from yyyymmdd format to yyyy-mm-dd format.
 - Adds additional global attributes not available in extracted data.
@@ -543,7 +542,7 @@ This section performs the following tasks:
 
 ##### AB_POSTTRANSLATE_1
 
-This custom transformer is the first stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_Create' and 'AB_Update' workspaces.  Input is received from the AWS_TRANSLATE transformer.
+This custom transformer is the first stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_CREATE' and 'AB_UPDATE' workspaces.  Input is received from the AWS_TRANSLATE transformer.
 
 This transformer performs the following tasks:
 
@@ -561,11 +560,11 @@ This section tests for a second contact as required by the XML template.  If the
 
 ###### Update Cycle Refiner
 
-This section tests that Maintenance Frequency values conform to HNAP requirements, and where nonconforming or missing, revise them to default 'asNeeded'.  The corresponding RI_Code is then applied.
+This section tests that Maintenance Frequency values conform to HNAP requirements, and where nonconforming or missing, revises them to default 'asNeeded'.  The corresponding RI_Code is then applied.
 
 ###### Spatial Representation Type Refiner
 
-This section tests that Spatial Representation Type values conform to HNAP requirements, and where nonconforming or missing, revise them to default 'vector'.  The corresponding RI_Code and French language translation is then applied.
+This section tests that Spatial Representation Type values conform to HNAP requirements, and where nonconforming or missing, revises them to default 'vector'.  The corresponding RI_Code and French language translation is then applied.
 
 ###### Progress Code Refiner
 
@@ -575,16 +574,13 @@ The transformer outputs to AB_POSTTRANSLATE_2 transformer.
 
 ##### AB_POSTTRANSLATE_2
 
-This custom transformer is the second stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_Create' and 'AB_Update' workspaces.
+This custom transformer is the second stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_CREATE' and 'AB_UPDATE' workspaces.
 
 This transformer performs the following functions:
 
 ###### File Format Refiner
 
-There are up to six transfer options (data links) available in Alberta datasets.  The file format of each transfer option has a specific validation requirement in the FGP.  Data analysis 
-of all Alberta data has identified all the potential incorrect variations of required file format names (i.e.: 'uri' should be 'HTML', 'REST' should be 'ESRI REST').  There are a number 
-of data formats that are not a variation of any valid data type.  This section tests for these valid formats found in Alberta datasets and renames them to the valid option 
-'other' accordingly.
+There are up to six transfer options (data links) available in Alberta datasets.  The file format of each transfer option has a specific validation requirement in the FGP.  Data analysis of all Alberta data has identified all the potential incorrect variations of required file format names (i.e.: 'uri' should be 'HTML', 'REST' should be 'ESRI REST').  There are a number of data formats that are not a variation of any valid data type.  This section tests for these valid formats found in Alberta datasets and renames them to the valid option 'other' accordingly.
 
 List of validated file formats can be found here:
 
@@ -598,7 +594,7 @@ The transfomer outputs to POSTTRANSLATE_3 transfomer.
 
 ##### AB_POSTTRANSLATE_4
 
-This custom transformer is the fourth stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_Create' and 'AB_Update' workspaces.
+This custom transformer is the fourth stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_CREATE' and 'AB_UPDATE' workspaces.
 
 This transformer performs the following functions:
 
