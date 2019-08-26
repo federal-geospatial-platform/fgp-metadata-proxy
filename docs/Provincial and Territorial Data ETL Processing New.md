@@ -403,11 +403,18 @@ This section performs the following tasks:
 - Gets count of updated records that successfully loaded or failed to load to the PyCSW.
 - Creates a message string with the overall results of the data translation.
 
+##### Records Deleted Notification
+
+This section performs the following tasks:
+
+- Gets count of records that were deleted from the PyCSW
+- Creates a message string with the overall results of the data deletion.
+
 ##### Notification Compliler and eMailer
 
 This section performs the following tasks:
 - Gets the current data and time.
-- Concatenates insert records or no records to insert notifcation strings, update records or no records to update notification strings, plus date and time into one message string
+- Concatenates insert records or no records to insert notifcation strings, update records or no records to update notification strings, number of obsolete records deleted, plus date and time into one message string.
 - Emails the message string to an adminstrator.
 
 #### POSTTRANSLATE_3
@@ -423,7 +430,83 @@ This transformer is designed to function in all workspaces and removes duplicate
 
 ##### AB_CREATE_PRETRANSLATE
 
+This transformer is designed to function exclusively in the AB_CREATE workspace.  It queries the Alberta open data API and the Alberta geospatial API, and filters the returned data by performing the following tasks:
 
+###### Alberta Open Data Query Loop Creation 
+
+This section uses FME transformers to create a repetitive query loop for the Alberta Data API as the API will only return 1000 records per query, less than that of the BC database.  
+It is set at default to perform 20 query loops.  
+These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
+
+- https://open.alberta.ca/api/3/action/package_search?start=@Value(start_feature)&rows=$(QUERY_ITERATIONS)   
+
+- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as a published parameter in FME
+  
+The current default settings will return a total of 20000 records, and, at the time of writing, there are approximately 17,000 open data records in Alberta open data.
+
+###### Alberta Open Data Query
+
+This section sends each concatentated query instance using a GET http method to the Alberta Opend Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes 
+and values from the JSON string based on a JSON query
+
+###### Alberta Open Data Attribute Management
+
+Specific resource URL's exposed in the Alberta API link to a geospatial CSW, where the second resource URL in each data record is an XML file defining a catalog service record.
+
+This section performs the following functions:
+
+- Exposes specific attributes returned from the JSON query.  See [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key.xlsx) file for details.
+- Tests resource URL domains exposed by the JSON query that contain 'geospatial' in their value, and filters out other records.
+- Filters out duplicate datasets that Alberta has already republished from NRCan.
+- Tests second resource URL for internal Alberta CSW domain (oxpgdaws01.env.gov.ab.ca:8080) in URL string.  This second resource URL is always an XML file that defines CSW record.
+- Tests second resource URL for public domain string used for XML CSW queries.
+- Replaces internal Alberta CSW domain string snippet in second resource URL with publicly accessible domain string snippet (https://geodiscover.alberta.ca)
+- Filters out second resource URL that are not links to Alberta geospatial by testing for absence of 'csw' in URL string.
+- Gets XML file from edited second resource URL.
+- Breaksdown attribute fields in retreived XML document.
+- Extracts attribute keys/values from XML document using the following XQuery expression:
+  - [Alberta Open Data X-Query](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/Alberta-XQuery.xml)
+- Exposes required extracted attributes from X-Query and earlier JSON query.
+- Adds additional required attributes not available in extracted data
+- Creates shell values of attributes required for universal CSW Insert transformer
+- Formats all date fields to ISO yyyy-mm-dd
+- Copies selected attributes to act as proxies for other required values in XML output template.
+- Renames indexed and other specific attributes to match XML template.
+- Outputs to Date/Time Testing.
+
+##### Query Creation for Alberta Geospatial API
+
+All ISO 19139 formatted geospatial data is extracted through the Alberta Geospatial Portal.  The query is created in this section.
+
+This section performs the following functions:
+
+- Concatenates API query URL and number of rows to query.  Number of rows is set in published parameter ISO_19139_QUERY_ITERATIONS and has a default value of 2000.
+  - Default Query: https://geodiscover.alberta.ca/geoportal/rest/find/document?max=2000
+- Sends query string to API and returns list of unique ID's.
+- Exposes the unique ID query string from the returned XML file.
+- Extracts unique ID query string.
+- Extracts unique ID.
+- Call to API to extract XML using unique ID query string.
+- Tests for ISO 19139 formatted XML files by eliminating files with MD_Metadata tag.
+
+##### Alberta Geospatial Attribute Management 
+
+Currently, only ESRI REST services are extracted from the ISO 19139 accessed in this process data.  Other datasets in this format have inadequate information to complete an HNAP compliant dataset
+
+This section performs the following functions:
+
+- Extracts required attributes from XML strings returned in the previous process through the following XQuery Expression:
+  - [Alberta Geospatial Data X-Query] 
+
+###### Date/Time Testing
+
+This section exists primarily for debugging purposes and can test for records that were created backdated to a specific number of days or months.  It's default setting for normal 
+operation is 0, which nullifies the test.
+
+###### Resource Name Tester
+
+This section tests for a resource URL and verifies that each resource URL has a corresponding resource name.  If a corresponding resource name is not find, a generic name, 
+'AB Data Link' is inserted to the resource name attribute.
 
 ##### AB_POSTTRANSLATE_1
 
