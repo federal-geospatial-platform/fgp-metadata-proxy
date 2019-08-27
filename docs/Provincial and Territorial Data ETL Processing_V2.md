@@ -446,7 +446,9 @@ The current default settings will return a total of 20000 records, and, at the t
 
 ###### Alberta Open Data Query
 
-This section sends each concatentated query instance using a GET http method to the Alberta Open Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query
+This section sends each concatentated query instance using a GET http method to the Alberta Open Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query.
+
+In the event of a connection failure to the API, the process is terminated and an email is generated and sent to the system admin.
 
 ###### Alberta Open Data Attribute Management
 
@@ -481,6 +483,7 @@ This section performs the following functions:
 
 - Concatenates API query URL and number of rows to query.  Number of rows is set in published parameter ISO_19139_QUERY_ITERATIONS and has a default value of 2000.
   - Default Query: https://geodiscover.alberta.ca/geoportal/rest/find/document?max=2000
+- In the event of a connection failure to the API, the process is terminated and an email is generated and sent to the system admin.
 - Sends query string to API and returns list of unique ID's.
 - Exposes the unique ID query string from the returned XML file.
 - Extracts unique ID query string.
@@ -704,7 +707,9 @@ The current default settings will return a total of 20000 records, and, at the t
 
 ###### Alberta Open Data Query
 
-This section sends each concatentated query instance using a GET http method to the Alberta Opend Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query
+This section sends each concatentated query instance using a GET http method to the Alberta Opend Data API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query.
+
+In the event of a connection failure to the API, the process is terminated and an email is generated and sent to the system admin.
 
 ###### Alberta Open Data Attribute Management
 
@@ -741,6 +746,7 @@ This section performs the following functions:
 
 - Concatenates API query URL and number of rows to query.  Number of rows is set in published parameter ISO_19139_QUERY_ITERATIONS and has a default value of 2000.
   - Default Query: https://geodiscover.alberta.ca/geoportal/rest/find/document?max=2000
+- In the event of a connection failure to the API, the process is terminated and an email is generated and sent to the system admin.
 - Sends query string to API and returns list of unique ID's.
 - Exposes the unique ID query string from the returned XML file.
 - Extracts unique ID query string.
@@ -842,7 +848,9 @@ The current default settings will return a total of 10000 records, and, at the t
 
 ###### Data Query
 
-This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query
+This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query.
+
+In the event of a connection failure to the API, the process is terminated and an email is generated and sent to the system admin.
 
 ###### Attribute Management
 
@@ -1041,6 +1049,8 @@ The current default settings will return a total of 10000 records, and, at the t
 ###### Data Query
 
 This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query.
+
+In the event of a connection failure to the API, the process is terminated and an email is generated and sent to the system admin.
 
 ###### Obsolete Records Removal
 
