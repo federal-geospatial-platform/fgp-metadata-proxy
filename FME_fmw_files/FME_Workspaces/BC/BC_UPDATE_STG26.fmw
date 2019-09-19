@@ -1,14 +1,14 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <WORKSPACE
 #    Command-line to run this workspace:
-#        C:\apps\FME2018.1.1.2\fme.exe Z:\FME\FME_fmw_files\FME_Workspaces\BC\BC_UPDATE_STG26.fmw
+#        C:\apps\FME2018.1.1.2\fme.exe Z:\FME\FME_Workspaces\BC\BC_UPDATE_STG26.fmw
 #              --CSW_URL "http://ec2-35-182-113-175.ca-central-1.compute.amazonaws.com:80/csw"
 #              --CSW_URL_AWS_SELECT_BC "http://ec2-35-182-113-175.ca-central-1.compute.amazonaws.com:80/csw"
 #              --LOOP_ITERATIONS "10"
 #              --P-T_ABBR "BC"
 #              --QUERY_ITERATIONS "1000"
-#              --TIME_FILTER_DAYS "0"
-#              --TIME_FILTER_MONTHS "1"
+#              --TIME_FILTER_DAYS "1"
+#              --TIME_FILTER_MONTHS "0"
 #    
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BEGIN_PYTHON=""
@@ -23,8 +23,8 @@
 #!   END_TCL=""
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="18586"
-#!   FME_DOCUMENT_GUID="c52e37d6-2dfa-46a3-822f-8f104a7ed97a"
-#!   FME_DOCUMENT_PRIORGUID="a3771e13-280b-4181-9bfc-8b25b97ddaf4,c6f4b59d-5f8a-4f22-94bc-f55c68750a6a,2b146ad7-6f2c-4d7d-bb5f-1ae7598cd2b3"
+#!   FME_DOCUMENT_GUID="8ef0911b-0c89-41a4-8d14-6013183e3678"
+#!   FME_DOCUMENT_PRIORGUID="a3771e13-280b-4181-9bfc-8b25b97ddaf4,c6f4b59d-5f8a-4f22-94bc-f55c68750a6a,2b146ad7-6f2c-4d7d-bb5f-1ae7598cd2b3,c52e37d6-2dfa-46a3-822f-8f104a7ed97a,b4940c68-475a-4066-852f-a268f03cdead"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_REPROJECTION_ENGINE="FME"
@@ -33,7 +33,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2018.1.1.2 (20190121 - Build 18586 - WIN32)"
-#!   LAST_SAVE_DATE="2019-09-17T13:14:10"
+#!   LAST_SAVE_DATE="2019-09-19T14:38:52"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -51,7 +51,7 @@
 #!   TITLE=""
 #!   USAGE=""
 #!   USE_MARKDOWN=""
-#!   VIEW_POSITION="-4635.46 1244.8"
+#!   VIEW_POSITION="-4635.46 2890.65"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   ZOOM_SCALE="60"
@@ -73,7 +73,7 @@
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
-#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CSW_URL_AWS_SELECT_BC CSW URL AWS:"
+#!   GUI_LINE="GUI OPTIONAL TEXT CSW_URL_AWS_SELECT_BC CSW URL AWS:"
 #!   DEFAULT_VALUE="http://ec2-35-182-113-175.ca-central-1.compute.amazonaws.com:80/csw"
 #!   IS_STAND_ALONE="true"
 #! />
@@ -94,12 +94,12 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL RANGE_SLIDER TIME_FILTER_DAYS &quot;RANGE:[,]&quot; Enter preceding number of days to filter:"
-#!   DEFAULT_VALUE="0"
+#!   DEFAULT_VALUE="1"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL RANGE_SLIDER TIME_FILTER_MONTHS &quot;RANGE:[,]&quot; Enter preceding number of months to filter:"
-#!   DEFAULT_VALUE="1"
+#!   DEFAULT_VALUE="0"
 #!   IS_STAND_ALONE="true"
 #! />
 #! </GLOBAL_PARAMETERS>
@@ -274,9 +274,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -303,7 +300,6 @@
 #!     <XFORM_ATTR ATTR_NAME="method" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_email_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -317,16 +313,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_url_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_url_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_url_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -337,6 +323,30 @@
 #!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -367,6 +377,8 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -428,9 +440,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -457,7 +466,6 @@
 #!     <XFORM_ATTR ATTR_NAME="method" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_email_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -481,6 +489,20 @@
 #!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -511,6 +533,8 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -564,12 +588,42 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_version_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_10" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10a" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10b" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -703,24 +757,26 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_language_0b" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_locale_10a" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="online_resource_protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -732,9 +788,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource{7}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource{8}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource{9}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -754,7 +807,20 @@
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -785,31 +851,23 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="organization_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="organization_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="organization" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="title_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_9_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -825,16 +883,26 @@
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="CSW_URL_AWS_SELECT_BC" PARM_VALUE="$(CSW_URL)"/>
 #!     <XFORM_PARM PARM_NAME="DISTRIBUTION_FORMAT_0" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;distribution_format_0&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="DISTRIBUTION_FORMAT_1" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;distribution_format_1&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="DISTRIBUTION_FORMAT_2" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;distribution_format_2&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="DISTRIBUTION_FORMAT_3" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;distribution_format_3&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="DISTRIBUTION_FORMAT_4" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;distribution_format_4&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="DISTRIBUTION_FORMAT_5" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;distribution_format_5&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="METHOD" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;method&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ID" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MORE_INFO.LINK_0" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;more_info.link_0&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NAME" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;name&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="OBJECT_NAME" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;object_name&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_0" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_0&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_1" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_1&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_2" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_2&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_3" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_3&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_4" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_4&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_5" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_5&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_6" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_6&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_7" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_7&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_8" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_8&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_9" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;reference_9&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_FORMAT_0" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_format_0&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_FORMAT_1" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_format_1&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_FORMAT_2" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_format_2&lt;closeparen&gt;"/>
@@ -845,6 +913,10 @@
 #!     <XFORM_PARM PARM_NAME="RESOURCE_FORMAT_7" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_format_7&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_FORMAT_8" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_format_8&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_FORMAT_9" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_format_9&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESOURCE_ID_0" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_id_0&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESOURCE_ID_2" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_id_2&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESOURCE_ID_3" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_id_3&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESOURCE_ID_4" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_id_4&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_NAME_1" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_name_1&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_NAME_1_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_name_1_fr&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_NAME_2" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_name_2&lt;closeparen&gt;"/>
@@ -873,24 +945,6 @@
 #!     <XFORM_PARM PARM_NAME="RESOURCE_URL_7" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_url_7&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_URL_8" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_url_8&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESOURCE_URL_9" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;resource_url_9&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_0" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_0&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_0_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_0_fr&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_1" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_1&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_1_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_1_fr&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_2" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_2&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_2_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_2_fr&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_3" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_3&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_3_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_3_fr&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_4" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_4&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_4_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_4_fr&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_5" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_5&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_5_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_5_fr&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_6" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_6&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_6_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_6_fr&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_7" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_7&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_7_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_7_fr&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_8" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_8&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TAGS_8_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;tags_8_fr&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TITLE" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;title&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TITLE_FR" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;title_fr&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
@@ -946,7 +1000,6 @@
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -971,16 +1024,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_name_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource_name_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource_name_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -991,6 +1034,30 @@
 #!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -1029,6 +1096,8 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_timestamp" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_result_datetime" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <OUTPUT_FEAT NAME="UPDATED_RECORDS_COUNT"/>
@@ -1039,7 +1108,6 @@
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -1064,16 +1132,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_name_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource_name_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource_name_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -1084,6 +1142,30 @@
 #!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -1122,6 +1204,8 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="_timestamp" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="_result_datetime" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <OUTPUT_FEAT NAME="TOTAL_RECORDS_COUNT"/>
@@ -1132,7 +1216,6 @@
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -1157,16 +1240,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_name_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource_name_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource_name_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -1177,6 +1250,30 @@
 #!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -1215,6 +1312,8 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="_timestamp" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="_result_datetime" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
@@ -1236,7 +1335,6 @@
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_1" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
@@ -1251,16 +1349,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_url_8" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="resource_url_9" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="5" />
@@ -1271,6 +1359,30 @@
 #!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="5" />
@@ -1302,6 +1414,8 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_PARM PARM_NAME="LOOP_ITERATIONS" PARM_VALUE="$(LOOP_ITERATIONS)"/>
 #!     <XFORM_PARM PARM_NAME="QUERY_ITERATIONS" PARM_VALUE="$(QUERY_ITERATIONS)"/>
 #!     <XFORM_PARM PARM_NAME="TIME_FILTER_DAYS" PARM_VALUE="$(TIME_FILTER_DAYS)"/>
@@ -1323,6 +1437,26 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="reference_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1343,9 +1477,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource{8}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource{9}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1372,7 +1503,6 @@
 #!     <XFORM_ATTR ATTR_NAME="method" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_email_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1396,6 +1526,10 @@
 #!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1426,6 +1560,8 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1453,6 +1589,7 @@
 #!     <XFORM_ATTR ATTR_NAME="organization" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="CSW_URL_AWS_SELECT_BC" PARM_VALUE="http://ec2-35-182-113-175.ca-central-1.compute.amazonaws.com:80/csw"/>
 #!     <XFORM_PARM PARM_NAME="SRC_LIST" PARM_VALUE="resource{}.format"/>
+#!     <XFORM_PARM PARM_NAME="SRC_LIST_2" PARM_VALUE="resource{}.projection"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="POSTTRANSLATE_3"/>
 #!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
@@ -1489,7 +1626,6 @@
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_role_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1504,16 +1640,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_url_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_url_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1524,6 +1650,30 @@
 #!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_format_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1554,6 +1704,8 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1617,12 +1769,43 @@
 #! >
 #!     <OUTPUT_FEAT NAME="INSERTED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_version_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_10" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10a" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10b" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1756,24 +1939,26 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_language_0b" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_locale_10a" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="online_resource_protocol" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="reference_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1785,9 +1970,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource{7}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource{8}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource{9}.format" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1807,7 +1989,20 @@
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1838,31 +2033,23 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="organization_en" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="organization_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="organization" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="title_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_9_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_0" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_1" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1879,16 +2066,49 @@
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_3" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_2" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_header" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_final" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="insert_response" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="delete_response" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <OUTPUT_FEAT NAME="INSERT_REJECTED"/>
+#!     <OUTPUT_FEAT NAME="UPDATED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_9" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_9" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_9" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_8" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_8" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_8" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_7" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_7" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_7" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_6" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_6" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_6" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_version_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_10" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10a" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10b" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2022,24 +2242,26 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_language_0b" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="resource_locale_10a" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="online_resource_protocol" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_6" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_7" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_8" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="reference_9" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2051,9 +2273,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource{7}.format" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="resource{8}.format" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="resource{9}.format" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2073,7 +2292,20 @@
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2104,31 +2336,23 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="organization_en" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="organization_fr" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="organization" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="title_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_9_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_0" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_1" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2145,16 +2369,49 @@
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_3" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_2" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_header" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_final" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="insert_response" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="delete_response" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <OUTPUT_FEAT NAME="UPDATED"/>
+#!     <OUTPUT_FEAT NAME="INSERT_FAILED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="2"/>
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_version_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_10" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10a" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10b" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2288,24 +2545,26 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_language_0b" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource_locale_10a" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="online_resource_protocol" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="reference_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2317,9 +2576,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource{7}.format" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource{8}.format" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource{9}.format" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2339,7 +2595,20 @@
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2370,31 +2639,23 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="organization_en" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="organization_fr" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="organization" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="title_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_9_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_0" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_1" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2411,16 +2672,49 @@
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_3" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_2" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_header" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_final" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="insert_response" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="delete_response" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <OUTPUT_FEAT NAME="UPDATE_REJECTED"/>
+#!     <OUTPUT_FEAT NAME="UPDATE_FAILED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="3"/>
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_version_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_10" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10a" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10b" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -2554,24 +2848,26 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_language_0b" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource_locale_10a" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="online_resource_protocol" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="reference_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -2583,9 +2879,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource{7}.format" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource{8}.format" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource{9}.format" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -2605,7 +2898,20 @@
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -2636,31 +2942,23 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="organization_en" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="organization_fr" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="organization" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="title_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_9_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_0" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_1" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -2677,16 +2975,49 @@
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_3" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_2" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_header" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_final" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="insert_response" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="delete_response" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <OUTPUT_FEAT NAME="LOCAL_WRITER"/>
 #!     <FEAT_COLLAPSED COLLAPSED="4"/>
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_code_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_codespace_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_system_version_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_version_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="distribution_format_version_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource_format_10" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10a" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource_language_10b" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2820,24 +3151,26 @@
 #!     <XFORM_ATTR ATTR_NAME="resource_language_0b" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource_locale_10a" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="online_resource_protocol" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="reference_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="projection_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="distribution_format_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2849,9 +3182,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resource{7}.format" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource{8}.format" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource{9}.format" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="projection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="projection_codespace" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="projection_version" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="RI_code_update" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="resource_update_cycle_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="contact_name_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2871,7 +3201,20 @@
 #!     <XFORM_ATTR ATTR_NAME="more_info.link_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resource_id_4" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="p-t_entity_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="graphic_link" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2902,31 +3245,23 @@
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="west_bound_longitude" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_0_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_1_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_2_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_3_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_4_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_5_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_6_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_7_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="tags_8_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="tags_9_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="organization_en" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="organization_fr" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="organization" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_0_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_6_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_7_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="title_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_5_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_3_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_4_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_8_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="tags_2_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_9_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="resource_name_1_frFinal" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_0" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_1" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="wms_resource_url_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2943,8 +3278,8 @@
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_3" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="iso_topic_string_2" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_PARM PARM_NAME="CSW_URL" PARM_VALUE="$(CSW_URL_AWS_SELECT_BC)"/>
-#!     <XFORM_PARM PARM_NAME="CSW_URL_AWS_SELECT_BC" PARM_VALUE="http://ec2-35-182-113-175.ca-central-1.compute.amazonaws.com:80/csw"/>
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_header" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_xml_data_final" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_PARM PARM_NAME="ID" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="METHOD" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;method&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
@@ -3075,17 +3410,6 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="42"
-#!   SOURCE_NODE="41"
-#!   TARGET_NODE="8"
-#!   SOURCE_PORT_DESC="fo 1 INSERT_REJECTED"
-#!   TARGET_PORT_DESC="fi 6 INSERT_REJECTED"
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
 #!   IDENTIFIER="27"
 #!   SOURCE_NODE="9"
 #!   TARGET_NODE="8"
@@ -3100,10 +3424,21 @@
 #!   IDENTIFIER="43"
 #!   SOURCE_NODE="41"
 #!   TARGET_NODE="8"
-#!   SOURCE_PORT_DESC="fo 2 UPDATED"
+#!   SOURCE_PORT_DESC="fo 1 UPDATED"
 #!   TARGET_PORT_DESC="fi 7 UPDATED"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="41"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 1 UPDATED"
+#!   TARGET_PORT_DESC="fi 6 INSERT_REJECTED"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
 #!   HIDDEN="false"
 #!   EXTRA_POINTS=""
 #! />
@@ -3122,7 +3457,7 @@
 #!   IDENTIFIER="44"
 #!   SOURCE_NODE="41"
 #!   TARGET_NODE="8"
-#!   SOURCE_PORT_DESC="fo 3 UPDATE_REJECTED"
+#!   SOURCE_PORT_DESC="fo 3 UPDATE_FAILED"
 #!   TARGET_PORT_DESC="fi 8 UPDATE_REJECTED"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
@@ -3162,9 +3497,9 @@ DEFAULT_MACRO P-T_ABBR BC
 GUI OPTIONAL CHOICE P-T_ABBR AB%BC%MB%NL%NS%NT%NU%ON%PE%QC%SK%YT Province-Territory Abbreviation:
 DEFAULT_MACRO QUERY_ITERATIONS 1000
 GUI OPTIONAL RANGE_SLIDER QUERY_ITERATIONS "RANGE:[,]" Enter number of rows per iteration to query source data:
-DEFAULT_MACRO TIME_FILTER_DAYS 0
+DEFAULT_MACRO TIME_FILTER_DAYS 1
 GUI OPTIONAL RANGE_SLIDER TIME_FILTER_DAYS "RANGE:[,]" Enter preceding number of days to filter:
-DEFAULT_MACRO TIME_FILTER_MONTHS 1
+DEFAULT_MACRO TIME_FILTER_MONTHS 0
 GUI OPTIONAL RANGE_SLIDER TIME_FILTER_MONTHS "RANGE:[,]" Enter preceding number of months to filter:
 #! START_HEADER
 #! START_WB_HEADER
@@ -3306,6 +3641,7 @@ MACRO $(POSTTRANSLATE_3_WORKSPACE_NAME)_TRANSFORMER_GROUP
 MACRO $(POSTTRANSLATE_3_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
 MACRO $(POSTTRANSLATE_3_WORKSPACE_NAME)_CSW_URL_AWS_SELECT_BC http://ec2-35-182-113-175.ca-central-1.compute.amazonaws.com:80/csw
 MACRO $(POSTTRANSLATE_3_WORKSPACE_NAME)_SRC_LIST resource{}.format
+MACRO $(POSTTRANSLATE_3_WORKSPACE_NAME)_SRC_LIST_2 resource{}.projection
 INCLUDE_CUSTOM_TRANSFORMER_VER POSTTRANSLATE_3:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "POSTTRANSLATE_3 OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE POSTTRANSLATE_3_OUTPUT   OUTPUT FEATURE_TYPE POSTTRANSLATE_3_OUTPUT
 # -------------------------------------------------------------------------
@@ -3314,74 +3650,70 @@ MACRO BC_POSTTRANSLATE_4_WORKSPACE_NAME BC_POSTTRANSLATE_4
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_XFORMER_NAME BC_POSTTRANSLATE_4
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_CSW_URL_AWS_SELECT_BC $(CSW_URL)
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_4_FR <at>Value<openparen>tags_4_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_2 <at>Value<openparen>tags_2<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_0 <at>Value<openparen>tags_0<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_8_FR <at>Value<openparen>tags_8_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_7 <at>Value<openparen>resource_name_7<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_6_FR <at>Value<openparen>tags_6_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_1 <at>Value<openparen>distribution_format_1<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_0_FR <at>Value<openparen>tags_0_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_3_FR <at>Value<openparen>tags_3_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_4 <at>Value<openparen>tags_4<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_2 <at>Value<openparen>resource_format_2<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_6 <at>Value<openparen>resource_url_6<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_7 <at>Value<openparen>resource_url_7<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_3 <at>Value<openparen>reference_3<closeparen>
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_1 <at>Value<openparen>resource_name_1<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_5 <at>Value<openparen>resource_name_5<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_7_FR <at>Value<openparen>resource_name_7_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_METHOD <at>Value<openparen>method<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_8 <at>Value<openparen>resource_format_8<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_5 <at>Value<openparen>resource_url_5<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_4 <at>Value<openparen>resource_name_4<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_6_FR <at>Value<openparen>resource_name_6_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_6 <at>Value<openparen>resource_name_6<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_5_FR <at>Value<openparen>tags_5_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_8 <at>Value<openparen>resource_name_8<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_0 <at>Value<openparen>resource_url_0<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_7_FR <at>Value<openparen>tags_7_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_8 <at>Value<openparen>resource_url_8<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_3 <at>Value<openparen>distribution_format_3<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TITLE_FR <at>Value<openparen>title_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_1 <at>Value<openparen>tags_1<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TITLE <at>Value<openparen>title<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_4 <at>Value<openparen>distribution_format_4<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_5_FR <at>Value<openparen>resource_name_5_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_3_FR <at>Value<openparen>resource_name_3_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_1_FR <at>Value<openparen>tags_1_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_4_FR <at>Value<openparen>resource_name_4_fr<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_ID_2 <at>Value<openparen>resource_id_2<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_NAME <at>Value<openparen>name<closeparen>
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_9 <at>Value<openparen>resource_url_9<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_OBJECT_NAME <at>Value<openparen>object_name<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_0 <at>Value<openparen>resource_format_0<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_2_FR <at>Value<openparen>resource_name_2_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_7 <at>Value<openparen>resource_format_7<closeparen>
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_5 <at>Value<openparen>resource_format_5<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_2 <at>Value<openparen>distribution_format_2<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TITLE <at>Value<openparen>title<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_0 <at>Value<openparen>resource_url_0<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_2_FR <at>Value<openparen>resource_name_2_fr<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_2 <at>Value<openparen>resource_format_2<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_3 <at>Value<openparen>resource_name_3<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_8 <at>Value<openparen>resource_name_8<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_6 <at>Value<openparen>resource_url_6<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_8 <at>Value<openparen>resource_format_8<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_4 <at>Value<openparen>reference_4<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_6_FR <at>Value<openparen>resource_name_6_fr<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_3 <at>Value<openparen>resource_url_3<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_1 <at>Value<openparen>resource_url_1<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_6 <at>Value<openparen>reference_6<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_1 <at>Value<openparen>resource_format_1<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_4_FR <at>Value<openparen>resource_name_4_fr<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_4 <at>Value<openparen>distribution_format_4<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_ID <at>Value<openparen>id<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_5 <at>Value<openparen>resource_name_5<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TITLE_FR <at>Value<openparen>title_fr<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_7 <at>Value<openparen>reference_7<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_2 <at>Value<openparen>resource_name_2<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_9 <at>Value<openparen>reference_9<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_2 <at>Value<openparen>resource_url_2<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_2 <at>Value<openparen>reference_2<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_8 <at>Value<openparen>resource_url_8<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_0 <at>Value<openparen>distribution_format_0<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_MORE_INFO.LINK_0 <at>Value<openparen>more_info.link_0<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_9 <at>Value<openparen>resource_format_9<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_1 <at>Value<openparen>distribution_format_1<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_8 <at>Value<openparen>reference_8<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_0 <at>Value<openparen>resource_format_0<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_3 <at>Value<openparen>distribution_format_3<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_5 <at>Value<openparen>reference_5<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_5 <at>Value<openparen>resource_url_5<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_ID_0 <at>Value<openparen>resource_id_0<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_3_FR <at>Value<openparen>resource_name_3_fr<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_7 <at>Value<openparen>resource_format_7<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_7_FR <at>Value<openparen>resource_name_7_fr<closeparen>
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_8_FR <at>Value<openparen>resource_name_8_fr<closeparen>
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_9 <at>Value<openparen>resource_name_9<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_8 <at>Value<openparen>tags_8<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_7 <at>Value<openparen>tags_7<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_3 <at>Value<openparen>resource_name_3<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_2_FR <at>Value<openparen>tags_2_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_9 <at>Value<openparen>resource_format_9<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_0 <at>Value<openparen>distribution_format_0<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_3 <at>Value<openparen>resource_format_3<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_5_FR <at>Value<openparen>resource_name_5_fr<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_ID_3 <at>Value<openparen>resource_id_3<closeparen>
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_9_FR <at>Value<openparen>resource_name_9_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_6 <at>Value<openparen>resource_format_6<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_4 <at>Value<openparen>resource_url_4<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_3 <at>Value<openparen>resource_url_3<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_2 <at>Value<openparen>resource_name_2<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_5 <at>Value<openparen>tags_5<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_2 <at>Value<openparen>resource_url_2<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_1 <at>Value<openparen>resource_format_1<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_3 <at>Value<openparen>tags_3<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_7 <at>Value<openparen>resource_url_7<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_1_FR <at>Value<openparen>resource_name_1_fr<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_1 <at>Value<openparen>resource_url_1<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_TAGS_6 <at>Value<openparen>tags_6<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_4 <at>Value<openparen>resource_name_4<closeparen>
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_4 <at>Value<openparen>resource_format_4<closeparen>
-MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_MORE_INFO.LINK_0 <at>Value<openparen>more_info.link_0<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_URL_4 <at>Value<openparen>resource_url_4<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_6 <at>Value<openparen>resource_name_6<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_0 <at>Value<openparen>reference_0<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_7 <at>Value<openparen>resource_name_7<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_REFERENCE_1 <at>Value<openparen>reference_1<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_OBJECT_NAME <at>Value<openparen>object_name<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_ID_4 <at>Value<openparen>resource_id_4<closeparen>
 MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_5 <at>Value<openparen>distribution_format_5<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_NAME_1_FR <at>Value<openparen>resource_name_1_fr<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_3 <at>Value<openparen>resource_format_3<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_RESOURCE_FORMAT_6 <at>Value<openparen>resource_format_6<closeparen>
+MACRO $(BC_POSTTRANSLATE_4_WORKSPACE_NAME)_DISTRIBUTION_FORMAT_2 <at>Value<openparen>distribution_format_2<closeparen>
 INCLUDE_CUSTOM_TRANSFORMER_VER BC_POSTTRANSLATE_4:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "BC_POSTTRANSLATE_4 OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE BC_POSTTRANSLATE_4_OUTPUT   OUTPUT FEATURE_TYPE BC_POSTTRANSLATE_4_OUTPUT
 # -------------------------------------------------------------------------
@@ -3390,26 +3722,25 @@ MACRO XML_PUBLISHER_WORKSPACE_NAME XML_PUBLISHER
 MACRO $(XML_PUBLISHER_WORKSPACE_NAME)_XFORMER_NAME XML_PUBLISHER
 MACRO $(XML_PUBLISHER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 MACRO $(XML_PUBLISHER_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
-MACRO $(XML_PUBLISHER_WORKSPACE_NAME)_METHOD <at>Value<openparen>method<closeparen>
 MACRO $(XML_PUBLISHER_WORKSPACE_NAME)_ID <at>Value<openparen>id<closeparen>
-MACRO $(XML_PUBLISHER_WORKSPACE_NAME)_CSW_URL_AWS_SELECT_BC http://ec2-35-182-113-175.ca-central-1.compute.amazonaws.com:80/csw
-MACRO $(XML_PUBLISHER_WORKSPACE_NAME)_CSW_URL $(CSW_URL_AWS_SELECT_BC)
+MACRO $(XML_PUBLISHER_WORKSPACE_NAME)_METHOD <at>Value<openparen>method<closeparen>
 INCLUDE_CUSTOM_TRANSFORMER_VER XML_PUBLISHER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER LOCAL_WRITER Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_LOCAL_WRITER
 FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER INSERTED Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_INSERTED   OUTPUT FEATURE_TYPE XML_PUBLISHER_INSERTED
-FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER INSERT_REJECTED Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_INSERT_REJECTED   OUTPUT FEATURE_TYPE XML_PUBLISHER_INSERT_REJECTED
+FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER INSERT_FAILED Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_INSERT_FAILED
 FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER UPDATED Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATED   OUTPUT FEATURE_TYPE XML_PUBLISHER_UPDATED
-FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER UPDATE_REJECTED Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATE_REJECTED   OUTPUT FEATURE_TYPE XML_PUBLISHER_UPDATE_REJECTED
+FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER UPDATE_FAILED Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATE_FAILED   OUTPUT FEATURE_TYPE XML_PUBLISHER_UPDATE_FAILED
+FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER UPDATED Splitter"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATED   OUTPUT FEATURE_TYPE XML_PUBLISHER_UPDATED_0_ei4fxNnPIJk=   OUTPUT FEATURE_TYPE XML_PUBLISHER_UPDATED_1_JBFAu4v3i5M=
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE INSERTED Input Collector"   INPUT FEATURE_TYPE XML_PUBLISHER_INSERTED   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_INSERTED
 FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE RECORDS_DELETED_COUNT Input Collector"   INPUT FEATURE_TYPE BC_UPDATE_PRETRANSLATE_DELETED_RECORDS_COUNT   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_RECORDS_DELETED_COUNT
-FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE INSERT_REJECTED Input Collector"   INPUT FEATURE_TYPE XML_PUBLISHER_INSERT_REJECTED   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_INSERT_REJECTED
+FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE INSERT_REJECTED Input Collector"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATED_1_JBFAu4v3i5M=   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_INSERT_REJECTED
 FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE NO_RECORDS_DELETED_COUNT Input Collector"   INPUT FEATURE_TYPE BC_UPDATE_PRETRANSLATE_NO_DELETED_RECORDS_COUNT   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_NO_RECORDS_DELETED_COUNT
 FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE UPDATED_RECORDS_COUNT Input Collector"   INPUT FEATURE_TYPE BC_UPDATE_PRETRANSLATE_UPDATED_RECORDS_COUNT   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_UPDATED_RECORDS_COUNT
 FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE TOTAL_RECORDS_COUNT Input Collector"   INPUT FEATURE_TYPE BC_UPDATE_PRETRANSLATE_TOTAL_RECORDS_COUNT   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_TOTAL_RECORDS_COUNT
 FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE NEW_RECORDS_COUNT Input Collector"   INPUT FEATURE_TYPE BC_UPDATE_PRETRANSLATE_NEW_RECORDS_COUNT   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_NEW_RECORDS_COUNT
-FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE UPDATED Input Collector"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATED   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_UPDATED
-FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE UPDATE_REJECTED Input Collector"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATE_REJECTED   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_UPDATE_REJECTED
+FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE UPDATED Input Collector"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATED_0_ei4fxNnPIJk=   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_UPDATED
+FACTORY_DEF * TeeFactory   FACTORY_NAME "NOTIFY_UPDATE UPDATE_REJECTED Input Collector"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATE_FAILED   OUTPUT FEATURE_TYPE NOTIFY_UPDATE_UPDATE_REJECTED
 MACRO NOTIFY_UPDATE_WORKSPACE_NAME NOTIFY_UPDATE
 MACRO $(NOTIFY_UPDATE_WORKSPACE_NAME)_XFORMER_NAME NOTIFY_UPDATE
 MACRO $(NOTIFY_UPDATE_WORKSPACE_NAME)_TRANSFORMER_GROUP 
