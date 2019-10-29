@@ -1,18 +1,18 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN BC_GEOWAREHOUSE_URL_BUILDER,1,"Federal Geo Platform",46b2671b-f271-4fd2-9a4f-a920f755de4a,"Linked by Default",No,NO_PARALLELISM,,No,18586,YES,No,35
+# TRANSFORMER_BEGIN BC_GEOWAREHOUSE_URL_BUILDER,1,"Federal Geo Platform",c79f5dca-eefe-46a1-921a-392f3f80d6ac,"Linked by Default",No,NO_PARALLELISM,,No,18586,YES,No,35
 # 
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="Federal Geo Platform"
 #!   DESCRIPTION=""
-#!   DOC_EXTENTS="7176.33 2181.23"
-#!   DOC_TOP_LEFT="-3482.54 -1090.61"
+#!   DOC_EXTENTS="11131.2 3632.85"
+#!   DOC_TOP_LEFT="-5621.81 -1882.83"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="18586"
-#!   FME_DOCUMENT_GUID="46b2671b-f271-4fd2-9a4f-a920f755de4a"
-#!   FME_DOCUMENT_PRIORGUID="bc7212ac-519b-4524-88f5-28fe3c06256a,2f8c06f1-6bfb-458c-af65-4c698a17ca21"
+#!   FME_DOCUMENT_GUID="c79f5dca-eefe-46a1-921a-392f3f80d6ac"
+#!   FME_DOCUMENT_PRIORGUID="bc7212ac-519b-4524-88f5-28fe3c06256a,2f8c06f1-6bfb-458c-af65-4c698a17ca21,46b2671b-f271-4fd2-9a4f-a920f755de4a,d749a32a-4026-492b-a0d2-c947db97715e"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -23,7 +23,7 @@
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2018.1.1.2 (20190121 - Build 18586 - WIN32)"
-#!   LAST_SAVE_DATE="2019-10-21T10:01:19"
+#!   LAST_SAVE_DATE="2019-10-29T10:24:28"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -34,11 +34,11 @@
 #!   TITLE="BC_GEOWAREHOUSE_URL_BUILDER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="843.758 1337.51"
+#!   VIEW_POSITION="-5000.05 1578.14"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="100"
+#!   ZOOM_SCALE="80"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -51,8 +51,262 @@
 #! <FMESERVER>
 #! </FMESERVER>
 #! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ADMIN_EMAIL Enter Admin eMail:"
+#!   DEFAULT_VALUE="robert.bennett@canada.ca"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT EMAIL_HOST EMAIL_HOST:"
+#!   DEFAULT_VALUE="smtp.mail.yahoo.com"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT EMAIL_PORT EMAIL_PORT:"
+#!   DEFAULT_VALUE="465"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT EMAIL_ENCRYPTION EMAIL_ENCRYPTION:"
+#!   DEFAULT_VALUE="SSL"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT EMAIL_SENDER EMAIL_SENDER:"
+#!   DEFAULT_VALUE="robbennett@rocketmail.com"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL PASSWORD EMAIL_SENDER_PASSWORD EMAIL_SENDER_PASSWORD:"
+#!   DEFAULT_VALUE="fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMsz+v4YB1OSK/Y5cOBloJQ6MBtZTGZTXmONiXW3sBNm6yIlaAsWxQSN+dqaBL9rOEMZAhFwg1WywWXFmobpH3Cygjjov+QUcuUec41dUQmlnp+bb+c9cvEP2BlILddEgLfPWWzmXul7ulVxsNDFsO4z/8z8x7zTxtLKwhC7jKt6NfwXx9Jlf+48znyO85/nM8mK+ohI3pgi7hn22TTyJJkSAYUXKZP9zppjYPtP2I3yjJd+KsyWEofyPQzzODvf1EXw4YnuLevACHewgQ/L9MP4xzgoP+sAk86a1z6afeCm4Uof5qiUMtZhQ8Fdb91foMhN8MxCA4sN0ApcySPF+tw38nT/2U0CZB+w)"
+#!   IS_STAND_ALONE="true"
+#! />
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="41"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;eMail notification to admin in event of invalid or null value&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3518.1491648163815 -1417.3749350123576"
+#!   TOP_LEFT="3518.1491648163815 -1417.3749350123576"
+#!   BOTTOM_RIGHT="4495.9864039431286 -1591.1263725267327"
+#!   BOUNDING_RECT="3518.1491648163815 -1417.3749350123576 977.83723912674759 173.75143751437514"
+#!   ORDER="500000000000576"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="35"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="42"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Terminates program&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4603.0631377767986 -1417.3749350123576"
+#!   TOP_LEFT="4603.0631377767986 -1417.3749350123576"
+#!   BOTTOM_RIGHT="5167.0921817520257 -1531.7507787707953"
+#!   BOUNDING_RECT="4603.0631377767986 -1417.3749350123576 564.02904397522684 114.37584375843758"
+#!   ORDER="500000000000952"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="39"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="48"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;eMail notification to admin in event of a missing list&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-440.31044550936201 -1408.4222719544723"
+#!   TOP_LEFT="-440.31044550936201 -1408.4222719544723"
+#!   BOTTOM_RIGHT="537.52679361738558 -1582.1737094688474"
+#!   BOUNDING_RECT="-440.31044550936201 -1408.4222719544723 977.83723912674759 173.75143751437514"
+#!   ORDER="500000000000576"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="44"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="49"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Terminates program&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="611.26866537336798 -1408.4222719544723"
+#!   TOP_LEFT="611.26866537336798 -1408.4222719544723"
+#!   BOTTOM_RIGHT="1159.0708936936417 -1522.79811571291"
+#!   BOUNDING_RECT="611.26866537336798 -1408.4222719544723 547.80222832027357 114.37584375843758"
+#!   ORDER="500000000000953"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="45"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="52"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Rename &apos;id&apos; attribute to &apos;_uuid&apos; to avoid being overwritten by resources{}.id after this list attribute is exploded.  Dataset is split after this transformer to separate resources{} list attributes from all other attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-4351.3870238702384 -462.96590190666927"
+#!   TOP_LEFT="-4351.3870238702384 -462.96590190666927"
+#!   BOTTOM_RIGHT="-3002.3737737377378 -755.46852693291953"
+#!   BOUNDING_RECT="-4351.3870238702384 -462.96590190666927 1349.0132501325006 292.50262502625026"
+#!   ORDER="500000000000955"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="26"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="53"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Expose attributes required by this transformer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-4677.1715317153166 255.79128566520646"
+#!   TOP_LEFT="-4677.1715317153166 255.79128566520646"
+#!   BOTTOM_RIGHT="-4165.6666566665663 22.66425439489376"
+#!   BOUNDING_RECT="-4677.1715317153166 255.79128566520646 511.50487504875036 233.1270312703127"
+#!   ORDER="500000000000956"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="27"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="56"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Rename &apos;name&apos; attribute to &apos;service_name&apos; to avoid being overwritten by resources{}.name after this list attribute is exploded.  &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2868.7784829649513 1231.7559064225225"
+#!   TOP_LEFT="-2868.7784829649513 1231.7559064225225"
+#!   BOTTOM_RIGHT="-1046.8854688546883 998.62887515220973"
+#!   BOUNDING_RECT="-2868.7784829649513 1231.7559064225225 1821.893014110263 233.1270312703127"
+#!   ORDER="500000000000959"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="57"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Retains &apos;service_name&apos; &apos;_uuid&apos; and &apos;resources{}&apos; attributes and discards all others.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1911.0949442545643 716.12575012096033"
+#!   TOP_LEFT="-1911.0949442545643 716.12575012096033"
+#!   BOTTOM_RIGHT="-796.88296882968825 542.37431260658514"
+#!   BOUNDING_RECT="-1911.0949442545643 716.12575012096033 1114.2119754248761 173.75143751437514"
+#!   ORDER="500000000000960"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="3"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="58"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Explodes resources{} list attributes to non-list attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-983.13722744198822 1231.7559064225225"
+#!   TOP_LEFT="-983.13722744198822 1231.7559064225225"
+#!   BOTTOM_RIGHT="-234.37734377343781 1058.0044689081474"
+#!   BOUNDING_RECT="-983.13722744198822 1231.7559064225225 748.7598836685504 173.75143751437514"
+#!   ORDER="500000000000961"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="2"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="59"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Exposes required exploded attributes &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-327.9092890928909 747.37606262408542"
+#!   TOP_LEFT="-327.9092890928909 747.37606262408542"
+#!   BOTTOM_RIGHT="292.97167971679715 573.62462510971022"
+#!   BOUNDING_RECT="-327.9092890928909 747.37606262408542 620.88096880968806 173.75143751437514"
+#!   ORDER="500000000000962"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="29"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="60"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Tests name for BC Geowarehouse Custom Download&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="260.027229314171 1291.1315001784601"
+#!   TOP_LEFT="260.027229314171 1291.1315001784601"
+#!   BOTTOM_RIGHT="1058.60433604336 1058.0044689081474"
+#!   BOUNDING_RECT="260.027229314171 1291.1315001784601 798.57710672918915 233.1270312703127"
+#!   ORDER="500000000000963"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="61"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Recreates resources{}.url attribute at extracted _element_index position from concatenated values.  &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="750.04949064790389 713.00071887064792"
+#!   TOP_LEFT="750.04949064790389 713.00071887064792"
+#!   BOTTOM_RIGHT="2031.270312703127 479.87368760033519"
+#!   BOUNDING_RECT="750.04949064790389 713.00071887064792 1281.2208220552232 233.1270312703127"
+#!   ORDER="500000000000964"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="62"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Removes out of scope attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2059.6639752649694 1291.1315001784601"
+#!   TOP_LEFT="2059.6639752649694 1291.1315001784601"
+#!   BOTTOM_RIGHT="2498.6639752649694 1292.1315001784601"
+#!   BOUNDING_RECT="2059.6639752649694 1291.1315001784601 439 -1"
+#!   ORDER="500000000000965"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="63"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Merges new resources{}.url attribute and overwrites existing attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2977.0653567577001 146.71213745705037"
+#!   TOP_LEFT="2977.0653567577001 146.71213745705037"
+#!   BOTTOM_RIGHT="3871.1324613246129 -27.039300057324766"
+#!   BOUNDING_RECT="2977.0653567577001 146.71213745705037 894.0671045669128 173.75143751437514"
+#!   ORDER="500000000000966"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="64"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Renames &apos;_uuid&apos; attribute back to &apos;id&apos;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4332.2935629356307 146.71213745705037"
+#!   TOP_LEFT="4332.2935629356307 146.71213745705037"
+#!   BOTTOM_RIGHT="4851.6110161101624 -27.039300057324766"
+#!   BOUNDING_RECT="4332.2935629356307 146.71213745705037 519.31745317453169 173.75143751437514"
+#!   ORDER="500000000000967"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="36"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="65"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;The URL links for BC Data located in the BC Geowarehouse are not readily available from the BC API.  The URL is recreated here in the BC Geowarehouse URL format by concatenting several available attributes with hardcoded values.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-4046.9154691546914 -1058.6043360433605"
+#!   TOP_LEFT="-4046.9154691546914 -1058.6043360433605"
+#!   BOTTOM_RIGHT="-2441.4306643066429 -1504.2334923349235"
+#!   BOUNDING_RECT="-4046.9154691546914 -1058.6043360433605 1605.4848048480485 445.62915629156294"
+#!   ORDER="500000000000968"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
 #! </COMMENTS>
 #! <CONSTANTS>
 #! </CONSTANTS>
@@ -61,13 +315,52 @@
 #!   IDENTIFIER="21"
 #!   NAME="BC GEOWAREHOUSE URL BUILDER"
 #!   DESCRIPTION="&lt;html&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   TOP_LEFT="-3482.5398535345257 1090.6139987071515"
+#!   TOP_LEFT="-4937.5493754937552 1750.0175001750017"
 #!   ORDER="500000000000051"
-#!   BOTTOM_RIGHT="3482.5402854310623 -1090.6117317040666"
-#!   BOUNDING_RECT="-3482.5398535345257 1090.6139987071515 6965.080138965588 2181.2257304112181"
+#!   BOTTOM_RIGHT="5362.5536255362522 -1882.8313283132829"
+#!   BOUNDING_RECT="-4937.5493754937552 1750.0175001750017 10300.103001030007 3632.8488284882847"
 #!   STICKY="true"
 #!   COLOUR="0.64313725490196083,0.84705882352941175,0.84705882352941175"
-#!   CONTENTS="18 4 19 2 23 7 14 13 8 15 17 6 5 12 20 22 9 16 11 10 3 "
+#!   CONTENTS="45 51 59 40 28 60 55 61 29 36 57 49 7 41 64 43 5 27 58 47 26 3 31 33 16 19 44 37 42 54 10 4 46 32 62 2 39 18 14 34 52 35 50 13 8 12 53 65 48 56 63 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="51"
+#!   NAME="BC GEOWAREHOUSE URL CREATOR"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-3019.5614456144558 1409.389093890939"
+#!   ORDER="500000000000954"
+#!   BOTTOM_RIGHT="2800.0280002799991 500.00500005000049"
+#!   BOUNDING_RECT="-3019.5614456144558 1409.389093890939 5819.5894458944549 909.38409384093848"
+#!   STICKY="true"
+#!   COLOUR="0.27450980392156865,0.6705882352941176,0.062745098039215685"
+#!   CONTENTS="58 19 4 60 29 18 33 8 2 32 57 59 56 3 13 7 12 10 62 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="54"
+#!   NAME="REJECTED FEATURES HANDLING"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-684.38184381843814 -887.50887508875087"
+#!   ORDER="500000000000957"
+#!   BOTTOM_RIGHT="5315.678156781566 -1643.7664376643766"
+#!   BOUNDING_RECT="-684.38184381843814 -887.50887508875087 6000.0600006000041 756.25756257562568"
+#!   STICKY="true"
+#!   COLOUR="0.13725490196078433,0.67843137254901964,0.72156862745098038"
+#!   CONTENTS="47 42 39 46 41 40 45 44 48 35 49 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="55"
+#!   NAME="MAIN DATASET FLOW"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-4856.2985629856294 443.75443754437561"
+#!   ORDER="500000000000958"
+#!   BOTTOM_RIGHT="5175.0517505175058 -831.25831258312587"
+#!   BOUNDING_RECT="-4856.2985629856294 443.75443754437561 10031.350313503135 1275.0127501275015"
+#!   STICKY="false"
+#!   COLOUR="0.19607843137254902,0.61176470588235299,0.41176470588235292"
+#!   CONTENTS=""
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -76,20 +369,24 @@
 #!   IDENTIFIER="2"
 #!   TYPE="ListExploder"
 #!   VERSION="6"
-#!   POSITION="-905.2304383740975 448.77997666322631"
-#!   BOUNDING_RECT="-905.2304383740975 448.77997666322631 -1 -1"
+#!   POSITION="-888.82402430995683 980.03528921635188"
+#!   BOUNDING_RECT="-888.82402430995683 980.03528921635188 -1 -1"
 #!   ORDER="500000000000040"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="18586"
 #! >
 #!     <OUTPUT_FEAT NAME="ELEMENTS"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge List Attributes"/>
@@ -99,24 +396,26 @@
 #!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="resources{}"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder_2"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LIST_EXPLODER"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="3"
 #!   TYPE="AttributeKeeper"
 #!   VERSION="3"
-#!   POSITION="-1680.8428817339391 448.77997666322631"
-#!   BOUNDING_RECT="-1680.8428817339391 448.77997666322631 -1 -1"
+#!   POSITION="-1558.9666629717515 980.03528921635188"
+#!   BOUNDING_RECT="-1558.9666629717515 980.03528921635188 -1 -1"
 #!   ORDER="500000000000041"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="18586"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="service_name,_uuid"/>
-#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;.id resources&lt;opencurly&gt;&lt;closecurly&gt;.name"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_2"/>
@@ -125,19 +424,20 @@
 #!   IDENTIFIER="4"
 #!   TYPE="AttributeRemover"
 #!   VERSION="1"
-#!   POSITION="1462.3766461416781 448.77997666322631"
-#!   BOUNDING_RECT="1462.3766461416781 448.77997666322631 -1 -1"
+#!   POSITION="2068.6327087023037 980.03528921635188"
+#!   BOUNDING_RECT="2068.6327087023037 980.03528921635188 -1 -1"
 #!   ORDER="500000000000843"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="18586"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="name_fr,service_name,id,name,_element_index"/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="service_name,name,_element_index,id"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
 #! </TRANSFORMER>
@@ -145,29 +445,39 @@
 #!   IDENTIFIER="5"
 #!   TYPE="FeatureMerger"
 #!   VERSION="17"
-#!   POSITION="2076.2750988551215 -151.88394850380928"
-#!   BOUNDING_RECT="2076.2750988551215 -151.88394850380928 -1 -1"
+#!   POSITION="3172.379809902231 -155.79023756669989"
+#!   BOUNDING_RECT="3172.379809902231 -155.79023756669989 -1 -1"
 #!   ORDER="500000000000002"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="18586"
 #! >
 #!     <OUTPUT_FEAT NAME="MERGED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
 #!     <FEAT_COLLAPSED COLLAPSED="2"/>
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
 #!     <FEAT_COLLAPSED COLLAPSED="3"/>
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="4"/>
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
@@ -191,46 +501,35 @@
 #!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger_2"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="6"
-#!   TYPE="AttributeRemover"
-#!   VERSION="1"
-#!   POSITION="2848.274683515785 -348.68787209860193"
-#!   BOUNDING_RECT="2848.274683515785 -348.68787209860193 -1 -1"
-#!   ORDER="500000000000862"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="18586"
-#! >
-#!     <OUTPUT_FEAT NAME="OUTPUT"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_third_match,_uuid"/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FEATURE_MERGER"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="7"
 #!   TYPE="Tester"
 #!   VERSION="2"
-#!   POSITION="-190.97752073332958 448.77997666322631"
-#!   BOUNDING_RECT="-190.97752073332958 448.77997666322631 -1 -1"
+#!   POSITION="455.90394808135875 980.03528921635188"
+#!   BOUNDING_RECT="455.90394808135875 980.03528921635188 -1 -1"
 #!   ORDER="500000000000870"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="18586"
 #! >
 #!     <OUTPUT_FEAT NAME="PASSED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="FAILED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;name&lt;closeparen&gt; LIKE BC&lt;space&gt;Geographic&lt;space&gt;Warehouse&lt;space&gt;Custom&lt;space&gt;Download"/>
@@ -242,17 +541,21 @@
 #!   IDENTIFIER="8"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="513.89063905938747 448.77997666322631"
-#!   BOUNDING_RECT="513.89063905938747 448.77997666322631 -1 -1"
+#!   POSITION="1192.0224203772009 980.03528921635188"
+#!   BOUNDING_RECT="1192.0224203772009 980.03528921635188 -1 -1"
 #!   ORDER="500000000000871"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="18586"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_index&lt;closeparen&gt;&lt;closecurly&gt;.url SET_TO https:&lt;solidus&gt;&lt;solidus&gt;catalogue.data.gov.bc.ca&lt;solidus&gt;dataset&lt;solidus&gt;&lt;at&gt;Value&lt;openparen&gt;service_name&lt;closeparen&gt;&lt;solidus&gt;resource&lt;solidus&gt;&lt;at&gt;Value&lt;openparen&gt;id&lt;closeparen&gt;"/>
@@ -265,50 +568,231 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="9"
-#!   TYPE="UUIDGenerator"
-#!   VERSION="0"
-#!   POSITION="-2787.5367691428901 -162.33724562010639"
-#!   BOUNDING_RECT="-2787.5367691428901 -162.33724562010639 -1 -1"
-#!   ORDER="500000000000872"
-#!   PARMS_EDITED="false"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="18586"
-#! >
-#!     <OUTPUT_FEAT NAME="OUTPUT"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="UUID_ATTR" PARM_VALUE="_uuid"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UUIDGenerator"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
 #!   IDENTIFIER="10"
 #!   TYPE="AttributeRenamer"
 #!   VERSION="4"
-#!   POSITION="-2236.1368612156202 448.77997666322631"
-#!   BOUNDING_RECT="-2236.1368612156202 448.77997666322631 -1 -1"
+#!   POSITION="-2223.6367362143701 980.03528921635188"
+#!   BOUNDING_RECT="-2223.6367362143701 980.03528921635188 -1 -1"
 #!   ORDER="500000000000874"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="18586"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="name service_name RENAME_SET_DEFAULT "/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="-3887.5388753887532 -137.33699561760636"
+#!   BOUNDING_RECT="-3887.5388753887532 -137.33699561760636 -1 -1"
+#!   ORDER="500000000000875"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id _uuid RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="27"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-4634.4213442134424 -137.33699561760636"
+#!   BOUNDING_RECT="-4634.4213442134424 -137.33699561760636 -1 -1"
+#!   ORDER="500000000000876"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id,name,resources{}"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="29"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-214.06464064640642 980.03528921635188"
+#!   BOUNDING_RECT="-214.06464064640642 980.03528921635188 -1 -1"
+#!   ORDER="500000000000877"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="name,id"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="36"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="4387.5438754387542 -371.87871878718772"
+#!   BOUNDING_RECT="4387.5438754387542 -371.87871878718772 -1 -1"
+#!   ORDER="500000000000878"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="_uuid id RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="35"
+#!   TYPE="Emailer"
+#!   VERSION="1"
+#!   POSITION="3861.6803196629103 -1147.3363583333262"
+#!   BOUNDING_RECT="3861.6803196629103 -1147.3363583333262 -1 -1"
+#!   ORDER="500000000000127"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="Sent"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADDRESSING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTACHGROUP" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="ATTACHMENTTABLE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BCC" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BODY" PARM_VALUE="The&lt;space&gt;BC_GEOWAREHOUSE_URL_BUILDER&lt;space&gt;custom&lt;space&gt;transformer&lt;space&gt;encountered&lt;space&gt;a&lt;space&gt;null&lt;space&gt;value&lt;space&gt;in&lt;space&gt;the&lt;space&gt;FEATURE_MERGER&lt;space&gt;transformer.&lt;lf&gt;The&lt;space&gt;task&lt;space&gt;was&lt;space&gt;terminated.&lt;lf&gt;Please&lt;space&gt;consult&lt;space&gt;the&lt;space&gt;logs&lt;space&gt;on&lt;space&gt;FME&lt;space&gt;Server.&lt;lf&gt;&lt;lf&gt;Le&lt;space&gt;transformateur&lt;space&gt;personnalis&lt;u00e9&gt;&lt;space&gt;BC_GEOWAREHOUSE_URL_BUILDER&lt;space&gt;a&lt;space&gt;rencontr&lt;u00e9&gt;&lt;space&gt;une&lt;space&gt;valeur&lt;space&gt;nulle&lt;space&gt;dans&lt;space&gt;le&lt;space&gt;transformateur&lt;space&gt;FEATURE_MERGER.&lt;lf&gt;La&lt;space&gt;t&lt;u00e2&gt;che&lt;space&gt;a&lt;space&gt;&lt;u00e9&gt;t&lt;u00e9&gt;&lt;space&gt;termin&lt;u00e9&gt;e.&lt;lf&gt;Veuillez&lt;space&gt;consulter&lt;space&gt;les&lt;space&gt;logs&lt;space&gt;sur&lt;space&gt;FME&lt;space&gt;Server."/>
+#!     <XFORM_PARM PARM_NAME="CC" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CONTENT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FROM" PARM_VALUE="robbennett&lt;at&gt;rocketmail.com"/>
+#!     <XFORM_PARM PARM_NAME="SERVICE" PARM_VALUE="Generic SMTP"/>
+#!     <XFORM_PARM PARM_NAME="SERVICEGROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SMTP_CONNECTION" PARM_VALUE="HOST;$(EMAIL_HOST);PORT;$(EMAIL_PORT);ENCRYPTION;$(EMAIL_ENCRYPTION);TIMEOUT;60;AUTHENTICATION;YES;USERNAME;$(EMAIL_SENDER);PASSWORD;$(EMAIL_SENDER_PASSWORD);FME_CONTROLLER_QUERY_FILE;transformers&lt;backslash&gt;dependencies&lt;backslash&gt;emailer&lt;backslash&gt;Generic&lt;space&gt;SMTP.fme"/>
+#!     <XFORM_PARM PARM_NAME="SUBJECT" PARM_VALUE="FME&lt;space&gt;Workspace&lt;space&gt;Failure&lt;space&gt;&lt;solidus&gt;&lt;space&gt;D&lt;u00e9&gt;faillance&lt;space&gt;de&lt;space&gt;l&lt;apos&gt;espace&lt;space&gt;de&lt;space&gt;travail&lt;space&gt;FME"/>
+#!     <XFORM_PARM PARM_NAME="TO" PARM_VALUE="$(ADMIN_EMAIL)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Emailer_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="39"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="4635.545365456218 -1147.3363583333262"
+#!   BOUNDING_RECT="4635.545365456218 -1147.3363583333262 -1 -1"
+#!   ORDER="500000000000917"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="44"
+#!   TYPE="Emailer"
+#!   VERSION="1"
+#!   POSITION="-101.2436210204238 -1142.8480256330304"
+#!   BOUNDING_RECT="-101.2436210204238 -1142.8480256330304 -1 -1"
+#!   ORDER="500000000000127"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="Sent"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="service_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADDRESSING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTACHGROUP" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="ATTACHMENTTABLE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BCC" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BODY" PARM_VALUE="The&lt;space&gt;BC_GEOWAREHOUSE_URL_BUILDER&lt;space&gt;custom&lt;space&gt;transformer&lt;space&gt;could&lt;space&gt;not&lt;space&gt;find&lt;space&gt;the&lt;space&gt;specified&lt;space&gt;list&lt;space&gt;in&lt;space&gt;the&lt;space&gt;LIST_EXPLODER&lt;space&gt;transformer.&lt;lf&gt;The&lt;space&gt;task&lt;space&gt;was&lt;space&gt;terminated.&lt;lf&gt;Please&lt;space&gt;consult&lt;space&gt;the&lt;space&gt;logs&lt;space&gt;on&lt;space&gt;FME&lt;space&gt;Server.&lt;lf&gt;&lt;lf&gt;Le&lt;space&gt;transformateur&lt;space&gt;personnalis&lt;u00e9&gt;&lt;space&gt;BC_GEOWAREHOUSE_URL_BUILDER&lt;space&gt;n&lt;apos&gt;a&lt;space&gt;pas&lt;space&gt;pu&lt;space&gt;trouver&lt;space&gt;la&lt;space&gt;liste&lt;space&gt;sp&lt;u00e9&gt;cifi&lt;u00e9&gt;e&lt;space&gt;dans&lt;space&gt;le&lt;space&gt;transformateur&lt;space&gt;LIST_EXPLODER.&lt;lf&gt;La&lt;space&gt;t&lt;u00e2&gt;che&lt;space&gt;a&lt;space&gt;&lt;u00e9&gt;t&lt;u00e9&gt;&lt;space&gt;termin&lt;u00e9&gt;e.&lt;lf&gt;Veuillez&lt;space&gt;consulter&lt;space&gt;les&lt;space&gt;logs&lt;space&gt;sur&lt;space&gt;FME&lt;space&gt;Server."/>
+#!     <XFORM_PARM PARM_NAME="CC" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CONTENT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FROM" PARM_VALUE="robbennett&lt;at&gt;rocketmail.com"/>
+#!     <XFORM_PARM PARM_NAME="SERVICE" PARM_VALUE="Generic SMTP"/>
+#!     <XFORM_PARM PARM_NAME="SERVICEGROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SMTP_CONNECTION" PARM_VALUE="HOST;$(EMAIL_HOST);PORT;$(EMAIL_PORT);ENCRYPTION;$(EMAIL_ENCRYPTION);TIMEOUT;60;AUTHENTICATION;YES;USERNAME;$(EMAIL_SENDER);PASSWORD;$(EMAIL_SENDER_PASSWORD);FME_CONTROLLER_QUERY_FILE;transformers&lt;backslash&gt;dependencies&lt;backslash&gt;emailer&lt;backslash&gt;Generic&lt;space&gt;SMTP.fme"/>
+#!     <XFORM_PARM PARM_NAME="SUBJECT" PARM_VALUE="FME&lt;space&gt;Workspace&lt;space&gt;Failure&lt;space&gt;&lt;solidus&gt;&lt;space&gt;D&lt;u00e9&gt;faillance&lt;space&gt;de&lt;space&gt;l&lt;apos&gt;espace&lt;space&gt;de&lt;space&gt;travail&lt;space&gt;FME"/>
+#!     <XFORM_PARM PARM_NAME="TO" PARM_VALUE="$(ADMIN_EMAIL)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Emailer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="45"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="648.66165644613727 -1142.8480256330304"
+#!   BOUNDING_RECT="648.66165644613727 -1142.8480256330304 -1 -1"
+#!   ORDER="500000000000917"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_2"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <SUBDOCUMENT_IOS>
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="22"
 #!   NAME="INPUT"
-#!   POSITION="-3368.6618003932026 -162.33724562010639"
-#!   BOUNDING_RECT="-3368.6618003932026 -162.33724562010639 -1 -1"
+#!   POSITION="-5621.809331868516 -137.33699561760636"
+#!   BOUNDING_RECT="-5621.809331868516 -137.33699561760636 -1 -1"
 #!   COLLAPSED="true"
 #!   PUBLISHED="true"
 #!   IS_SOURCE="true"
@@ -318,8 +802,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="24"
 #!   NAME="OUTPUT"
-#!   POSITION="3693.7869378693781 -408.68787209860193"
-#!   BOUNDING_RECT="3693.7869378693781 -408.68787209860193 -1 -1"
+#!   POSITION="5509.4300943009421 -408.68787209860193"
+#!   BOUNDING_RECT="5509.4300943009421 -408.68787209860193 -1 -1"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -328,9 +812,9 @@
 #! </SUBDOCUMENT_IOS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="23"
+#!   IDENTIFIER="30"
 #!   SOURCE_NODE="22"
-#!   TARGET_NODE="9"
+#!   TARGET_NODE="27"
 #!   SOURCE_PORT_DESC="0"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -339,9 +823,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="11"
+#!   IDENTIFIER="32"
 #!   SOURCE_NODE="2"
-#!   TARGET_NODE="7"
+#!   TARGET_NODE="29"
 #!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -372,22 +856,11 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="17"
+#!   IDENTIFIER="37"
 #!   SOURCE_NODE="5"
-#!   TARGET_NODE="6"
+#!   TARGET_NODE="36"
 #!   SOURCE_PORT_DESC="fo 0 MERGED"
 #!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="25"
-#!   SOURCE_NODE="6"
-#!   TARGET_NODE="24"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -416,28 +889,6 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="14"
-#!   SOURCE_NODE="9"
-#!   TARGET_NODE="10"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="15"
-#!   SOURCE_NODE="9"
-#!   TARGET_NODE="5"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
-#!   ENABLED="true"
-#!   EXECUTION_IDX="1"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
 #!   IDENTIFIER="19"
 #!   SOURCE_NODE="10"
 #!   TARGET_NODE="3"
@@ -449,10 +900,120 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="20"
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="27"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="29"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="36"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="46"
+#!   SOURCE_NODE="44"
+#!   TARGET_NODE="45"
+#!   SOURCE_PORT_DESC="fo 0 Sent"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="50"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="44"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
 #!   SOURCE_NODE="5"
-#!   TARGET_NODE="6"
+#!   TARGET_NODE="36"
 #!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="35"
+#!   TARGET_NODE="39"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="47"
+#!   SOURCE_NODE="44"
+#!   TARGET_NODE="45"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="35"
+#!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
@@ -470,35 +1031,76 @@
 #! </LOOKUP_TABLES>
 #! </TRANSFORMER>
 
+DEFAULT_MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_ADMIN_EMAIL robert.bennett@canada.ca
+DEFAULT_MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_HOST smtp.mail.yahoo.com
+DEFAULT_MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_PORT 465
+DEFAULT_MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_ENCRYPTION SSL
+DEFAULT_MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_SENDER robbennett@rocketmail.com
+DEFAULT_MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_SENDER_PASSWORD fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMsz+v4YB1OSK/Y5cOBloJQ6MBtZTGZTXmONiXW3sBNm6yIlaAsWxQSN+dqaBL9rOEMZAhFwg1WywWXFmobpH3Cygjjov+QUcuUec41dUQmlnp+bb+c9cvEP2BlILddEgLfPWWzmXul7ulVxsNDFsO4z/8z8x7zTxtLKwhC7jKt6NfwXx9Jlf+48znyO85/nM8mK+ohI3pgi7hn22TTyJJkSAYUXKZP9zppjYPtP2I3yjJd+KsyWEofyPQzzODvf1EXw4YnuLevACHewgQ/L9MP4xzgoP+sAk86a1z6afeCm4Uof5qiUMtZhQ8Fdb91foMhN8MxCA4sN0ApcySPF+tw38nT/2U0CZB+w)
 #! START_HEADER
 #! END_HEADER
 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_INPUT1571666479 Input Splitter"   INPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_INPUT1572359068 Input Splitter"   INPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_UUIDGenerator    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"         "_uuid" @UUID()
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_UUIDGenerator OUTPUT Splitter"   INPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"   OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_wy7UBJcSd2Q="   OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_VFs0ArfKAiI="
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_wy7UBJcSd2Q=" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "name" "service_name" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_2    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeExposer_OUTPUT" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "id" "_uuid" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_2 OUTPUT Splitter"   INPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT_0_+AVMz9qp1Uo="   OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT_1_7hJAtFcQfuE="
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2_b57273ba_f062_4e16_9671_d8627e80146f0_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>.id resources<opencurly><closecurly>.name"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,service_name,_uuid,fme_pcre_match,"^fme_$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2_b57273ba_f062_4e16_9671_d8627e80146f0_LIST_EXP)")         }
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT_1_7hJAtFcQfuE=" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "name" "service_name" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF * ElementFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_ListExploder_2    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    LIST_NAME "resources{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_ListExploder_2_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)
+INCLUDE [    set macroLine "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2_0f8c9737_ec85_427b_b54f_6d57685624720_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,service_name,_uuid,fme_pcre_match,"^fme_$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2_0f8c9737_ec85_427b_b54f_6d57685624720_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_ListExploder_2_ELEMENTS"    CASE_INSENSITIVE_TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>name<closeparen>,$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Tester) LIKE BC<space>Geographic<space>Warehouse<space>Custom<space>Download ENCODED    BOOLEAN_OPERATOR OR    OUTPUT PASSED FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Tester_PASSED"
+FACTORY_DEF * ElementFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_LIST_EXPLODER    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    LIST_NAME "resources{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_LIST_EXPLODER_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_LIST_EXPLODER_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
+# -------------------------------------------------------------------------
+# Note -- the AttachmentTable has to have a SPACE as the first character so that we don't get the *bad*
+# FME Parser to start parsing a @ function call -- if @ is the first character, it will, and then we lose
+# our table elements :-(
+# The python later expects the first character to be a space so all is well.
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_CATCHER    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_LIST_EXPLODER_<REJECTED>"    OUTPUT FEATURE_TYPE $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_READY       ___fme_emailer_service           "Generic SMTP"       ___fme_emailer_connection        "HOST;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_HOST$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2);PORT;@EvaluateExpression(FDIV,FLOAT,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_PORT$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2);ENCRYPTION;@EvaluateExpression(FDIV,STRING,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_ENCRYPTION$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2);TIMEOUT;60;AUTHENTICATION;YES;USERNAME;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_SENDER$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2);PASSWORD;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_SENDER_PASSWORD$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2)"       ___fme_emailer_from              "@EvaluateExpression(FDIV,STRING_ENCODED,robbennett<at>rocketmail.com,$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2)"       ___fme_emailer_to                "@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_ADMIN_EMAIL$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2)"       ___fme_emailer_cc                ""       ___fme_emailer_bcc               ""       ___fme_emailer_subject           "FME<space>Workspace<space>Failure<space><solidus><space>D<u00e9>faillance<space>de<space>l<apos>espace<space>de<space>travail<space>FME"       ___fme_emailer_body              "The<space>BC_GEOWAREHOUSE_URL_BUILDER<space>custom<space>transformer<space>could<space>not<space>find<space>the<space>specified<space>list<space>in<space>the<space>LIST_EXPLODER<space>transformer.<lf>The<space>task<space>was<space>terminated.<lf>Please<space>consult<space>the<space>logs<space>on<space>FME<space>Server.<lf><lf>Le<space>transformateur<space>personnalis<u00e9><space>BC_GEOWAREHOUSE_URL_BUILDER<space>n<apos>a<space>pas<space>pu<space>trouver<space>la<space>liste<space>sp<u00e9>cifi<u00e9>e<space>dans<space>le<space>transformateur<space>LIST_EXPLODER.<lf>La<space>t<u00e2>che<space>a<space><u00e9>t<u00e9><space>termin<u00e9>e.<lf>Veuillez<space>consulter<space>les<space>logs<space>sur<space>FME<space>Server."       ___fme_emailer_attachments       " "       ___fme_emailer_xformerName       "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_CALLER    INPUT FEATURE_TYPE $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_READY    PYTHON_NAMESPACE FMEOBJECTS    SYMBOL_NAME Emailer.Emailer    OUTPUT PYOUTPUT FEATURE_TYPE $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_PROCESSED
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_ROUTER    INPUT FEATURE_TYPE $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_PROCESSED    TEST &fme_rejection_code == ""    OUTPUT PASSED FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_Sent"    OUTPUT FAILED FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Terminator_2    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_Sent"    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_2_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Terminator_2")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated")
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_LIST_EXPLODER_ELEMENTS"    OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    CASE_INSENSITIVE_TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>name<closeparen>,$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Tester) LIKE BC<space>Geographic<space>Warehouse<space>Custom<space>Download ENCODED    BOOLEAN_OPERATOR OR    OUTPUT PASSED FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Tester_PASSED"
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Tester_PASSED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_index<closeparen><closecurly>.url" "SET_TO" "https:<solidus><solidus>catalogue.data.gov.bc.ca<solidus>dataset<solidus><at>Value<openparen>service_name<closeparen><solidus>resource<solidus><at>Value<openparen>id<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    OUTPUT { FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,name_fr,service_name,id,name,_element_index)        @RemoveAttributes(fme_pcre_match"$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    OUTPUT { FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,service_name,name,_element_index,id)        @RemoveAttributes(fme_pcre_match"$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
-FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2    INPUT REFERENCER FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_VFs0ArfKAiI="    INPUT REFERENCEE FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"    CONNECT_Z_MODE FIRST_WINS    REFERENCE_INFO $($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "SUPPLIER_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES YES    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE NONE    OUTPUT COMPLETE FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER    INPUT REFERENCER FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT_0_+AVMz9qp1Uo="    INPUT REFERENCEE FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"    CONNECT_Z_MODE FIRST_WINS    REFERENCE_INFO $($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "SUPPLIER_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES YES    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE NONE    OUTPUT COMPLETE FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_UNMERGED_REQUESTOR"    OUTPUT REJECTED FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_<REJECTED>"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FeatureMerger_2_UNMERGED_REQUESTOR"    OUTPUT { FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_third_match,_uuid)        @RemoveAttributes(fme_pcre_match"$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_OUTPUT1571666479 Output Collector"   INPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_OUTPUT"
+# Note -- the AttachmentTable has to have a SPACE as the first character so that we don't get the *bad*
+# FME Parser to start parsing a @ function call -- if @ is the first character, it will, and then we lose
+# our table elements :-(
+# The python later expects the first character to be a space so all is well.
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_CATCHER    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_<REJECTED>"    OUTPUT FEATURE_TYPE $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_READY       ___fme_emailer_service           "Generic SMTP"       ___fme_emailer_connection        "HOST;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_HOST$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4);PORT;@EvaluateExpression(FDIV,FLOAT,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_PORT$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4);ENCRYPTION;@EvaluateExpression(FDIV,STRING,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_ENCRYPTION$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4);TIMEOUT;60;AUTHENTICATION;YES;USERNAME;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_SENDER$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4);PASSWORD;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_EMAIL_SENDER_PASSWORD$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4)"       ___fme_emailer_from              "@EvaluateExpression(FDIV,STRING_ENCODED,robbennett<at>rocketmail.com,$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4)"       ___fme_emailer_to                "@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_ADMIN_EMAIL$encode),$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4)"       ___fme_emailer_cc                ""       ___fme_emailer_bcc               ""       ___fme_emailer_subject           "FME<space>Workspace<space>Failure<space><solidus><space>D<u00e9>faillance<space>de<space>l<apos>espace<space>de<space>travail<space>FME"       ___fme_emailer_body              "The<space>BC_GEOWAREHOUSE_URL_BUILDER<space>custom<space>transformer<space>encountered<space>a<space>null<space>value<space>in<space>the<space>FEATURE_MERGER<space>transformer.<lf>The<space>task<space>was<space>terminated.<lf>Please<space>consult<space>the<space>logs<space>on<space>FME<space>Server.<lf><lf>Le<space>transformateur<space>personnalis<u00e9><space>BC_GEOWAREHOUSE_URL_BUILDER<space>a<space>rencontr<u00e9><space>une<space>valeur<space>nulle<space>dans<space>le<space>transformateur<space>FEATURE_MERGER.<lf>La<space>t<u00e2>che<space>a<space><u00e9>t<u00e9><space>termin<u00e9>e.<lf>Veuillez<space>consulter<space>les<space>logs<space>sur<space>FME<space>Server."       ___fme_emailer_attachments       " "       ___fme_emailer_xformerName       "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_CALLER    INPUT FEATURE_TYPE $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_READY    PYTHON_NAMESPACE FMEOBJECTS    SYMBOL_NAME Emailer.Emailer    OUTPUT PYOUTPUT FEATURE_TYPE $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_PROCESSED
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_ROUTER    INPUT FEATURE_TYPE $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_PROCESSED    TEST &fme_rejection_code == ""    OUTPUT FAILED FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Terminator_3    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Emailer_4_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_Terminator_3")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated")
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_3    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_MERGED"    INPUT  FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_FEATURE_MERGER_UNMERGED_REQUESTOR" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "_uuid" "id" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_3_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_OUTPUT1572359068 Output Collector"   INPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_AttributeRenamer_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME)_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(BC_GEOWAREHOUSE_URL_BUILDER_WORKSPACE_NAME))}]
