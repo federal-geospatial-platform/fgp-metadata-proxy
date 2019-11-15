@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN TOPIC_PARSER,1,"Federal Geo Platform",87d41651-a639-4856-8d65-7bd7213df048,"Linked by Default",No,NO_PARALLELISM,,No,18586,YES,No,35
+# TRANSFORMER_BEGIN TOPIC_PARSER,1,"Federal Geo Platform",7202ee4d-202b-4de6-ae1a-8ac8b0ba5806,"Linked by Default",No,NO_PARALLELISM,,No,18586,YES,No,35
 # 
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
@@ -11,8 +11,8 @@
 #!   DOC_TOP_LEFT="-22330 15947.3"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="18586"
-#!   FME_DOCUMENT_GUID="87d41651-a639-4856-8d65-7bd7213df048"
-#!   FME_DOCUMENT_PRIORGUID="aa38a820-754d-4bf0-8edd-420d74f4340e,0dace161-1d73-4cac-ba65-ce98f204359a,97cf1db5-0aac-4791-a500-8e3544a23f63,a8b73f8e-3c85-4a5c-ad31-2708bbb03692,8caa4176-b539-41aa-be35-35d4b6adc8a0,38c8dbdc-6f30-4728-9d36-97d7c0789d0a,342263da-de6e-426a-b49d-736dac77d94b,7ca808c2-12b2-4860-8150-a964f87f5863,8f2a003b-b49b-4f89-bf36-48e27c345b20"
+#!   FME_DOCUMENT_GUID="7202ee4d-202b-4de6-ae1a-8ac8b0ba5806"
+#!   FME_DOCUMENT_PRIORGUID="aa38a820-754d-4bf0-8edd-420d74f4340e,0dace161-1d73-4cac-ba65-ce98f204359a,97cf1db5-0aac-4791-a500-8e3544a23f63,a8b73f8e-3c85-4a5c-ad31-2708bbb03692,8caa4176-b539-41aa-be35-35d4b6adc8a0,38c8dbdc-6f30-4728-9d36-97d7c0789d0a,342263da-de6e-426a-b49d-736dac77d94b,7ca808c2-12b2-4860-8150-a964f87f5863,8f2a003b-b49b-4f89-bf36-48e27c345b20,87d41651-a639-4856-8d65-7bd7213df048"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -23,7 +23,7 @@
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2018.1.1.2 (20190121 - Build 18586 - WIN32)"
-#!   LAST_SAVE_DATE="2019-10-30T12:26:41"
+#!   LAST_SAVE_DATE="2019-11-14T08:03:35"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -34,7 +34,7 @@
 #!   TITLE="TOPIC_PARSER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-22490.3 18472.4"
+#!   VIEW_POSITION="-22907 18869.2"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -187,8 +187,8 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_delimiter" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic_string" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
@@ -240,7 +240,7 @@
 #! </SUBDOCUMENT_IO>
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="7"
-#!   NAME="Output"
+#!   NAME="OUTPUT"
 #!   POSITION="-18178.2650479193 16359.43129381892"
 #!   BOUNDING_RECT="-18178.2650479193 16359.43129381892 -1 -1"
 #!   COLLAPSED="true"
@@ -346,7 +346,7 @@ DEFAULT_MACRO $(TOPIC_PARSER_WORKSPACE_NAME)_DELIMITER
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO TOPIC_PARSER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(TOPIC_PARSER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(TOPIC_PARSER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TOPIC_PARSER_WORKSPACE_NAME)_INPUT1572452801 Input Splitter"   INPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TOPIC_PARSER_WORKSPACE_NAME)_INPUT1573736615 Input Splitter"   INPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(TOPIC_PARSER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
 # -------------------------------------------------------------------------
@@ -358,5 +358,5 @@ FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(TOPIC_PARSER_WORKSPACE_NAME)_At
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
 FACTORY_DEF * PythonFactory    FACTORY_NAME $(TOPIC_PARSER_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_Tester_3_PASSED"    INPUT  FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT"    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>index=0<lf><space><space><space><space>for<space>topic<space>in<space>feature.getAttribute<openparen><apos>iso_topic_string<apos><closeparen>.split<openparen>feature.getAttribute<openparen><apos>_delimiter<apos><closeparen><closeparen>:<lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>iso_topic<opencurly>%s<closecurly>.topic_value<apos>%<openparen>str<openparen>index<closeparen><closeparen><comma>topic<closeparen><lf><space><space><space><space><space><space><space><space>index=index+1<lf><space><space><space><space><lf><lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_PythonCaller_OUTPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TOPIC_PARSER_WORKSPACE_NAME)_Output1572452801 Output Collector"   INPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TOPIC_PARSER_WORKSPACE_NAME)_OUTPUT1573736615 Output Collector"   INPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(TOPIC_PARSER_WORKSPACE_NAME)_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(TOPIC_PARSER_WORKSPACE_NAME))}]
