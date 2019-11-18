@@ -40,21 +40,32 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction)
 	  - [AWS_TRANSLATE](#aws_translate-2)
 	  - [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-2)
-	  - [BC_POSTRANSLATE_1](#bc_posttranslate_1)
-	  - [BC_POSTRANSLATE_2](#bc_posttranslate_2)
-	  - [POSTTRANSLATE_3](#posttranslate_3-2)
-	  - [BC_POSTRANSLATE_4](#bc_posttranslate_4)
-	  - [CSW_INSERT](#csw_insert-2)
+	  - [TOPIC_PARSER](#topic_parser)
+	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper-2)
+	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper-2)
+	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-2)
+	  - [MORE_INFO_MANAGER](#more_info_manager-2)
+	  - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-2)
+	  - [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-2)
+	  - [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-2)
+	  - [XML_PUBLISHER](#xml_publisher-2)
 	  - [NOTIFY_CREATE](#notify_create-1)
 	- [BC_UPDATE Workspace Detail](#bc_update-workspace-detail)
-	  -[BC_UPDATE_PRETRANSLATE](#bc_update_pretranslate)
+	  - [BC_UPDATE_PRETRANSLATE](#bc_update_pretranslate)
+	  - [BC_GEOWAREHOUSE_URL_BUILDER](#bc_geowarehouse_url_builder-1)
+	  - [BC_WMS_FORMATTER](#bc_wms_formatter-1)
+	  - [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction-1)
 	  - [AWS_TRANSLATE](#aws_translate-3)
-	  - [BC_POSTRANSLATE_1](#bc_posttranslate_1-1)
-	  - [BC_POSTRANSLATE_2](#bc_posttranslate_2-1)
-	  - [POSTTRANSLATE_3](#posttranslate_3-3)
-	  - [BC_POSTRANSLATE_4](#bc_posttranslate_4-1)
-	  - [CSW_INSERT](#csw_insert-3)
-	  - [CSW_UPDATE](#csw_update-1)
+	  - [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-3)
+	  - [TOPIC_PARSER](#topic_parser-1)
+	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper-3)
+	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper-3)
+	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-3)
+	  - [MORE_INFO_MANAGER](#more_info_manager-3)
+	  - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-3)
+	  - [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-3)
+	  - [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-3)
+	  - [XML_PUBLISHER](#xml_publisher-3)
 	  - [NOTIFY_UPDATE](#notify_update-1)
   - [Custom Transformers Detail](#custom-transformers-detail)
     - [Universal Transformers](#universal-transformers)
@@ -333,7 +344,11 @@ Builds URL for WMS links that are not readily available in the required French/E
 
 ##### [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction-1)
 
-Inserts the title of the dataset where resource names are missing.
+Substitutes resource name with dataset title when resource name is missing.
+
+##### [AWS_TRANSLATE](#aws_translate-4)
+
+Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
 ##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
 
@@ -341,29 +356,50 @@ Sets default attibute values specific to BC data that are universal to every dat
 
 ##### [TEMPORAL_EXTENTS_MAPPER](temporal_extents_mapper_4)
 
-##### [AWS_TRANSLATE](#aws_translate-4)
+Formats and maps data collection start and end dates.  Sets start dates to 0001-01-01 and end dates to no value where missing.
 
-Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
+##### [TOPIC_PARSER](#topic-parser-2)
 
-##### [BC_POSTTRANSLATE_1](#bc_posttranslate_1-2)
+Parses topics into individual attributes when multiple topics appear as comma separated values.
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
-##### [BC_POSTTRANSLATE_2](#bc_posttranslate_2-2)
+There are mulitple instances of the METADATA_VALUE_MAPPER in the workspace to correct values to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for mulitple metadata items by accessing custom look up tables applicable to specific items.  The mulitple instances of the tool are mapped to the following individual look-up tables:
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+  - Keyword
+  - ProgressStatusAttributeMapper
+  - RoleAttributeMapper
+  - SpatialReferenceMapper
+  - SpatialRepresentationAttributeMapper
+  - UpdateCycleAttributeMapper
+  
+##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
 
-##### [POSTTRANSLATE_3](#posttranslate_3-4)
+The METADATA_FORMAT_MAPPER corrects known incorrection variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
-##### [BC_POSTTRANSLATE_4](#bc_posttranslate_4-2)
+Creates lists and removes duplicates for distribution formats, projections, update cycles and more_info.
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [MORE_INFO_MANAGER}(#more_info_manager-4)
 
-##### [CSW_INSERT](#csw_insert-4)
+Tests the more_info{}.link list for valid attribute values and filters them out where missing.
 
-Selects appropriate XML insert template and posts XML to the CSW.
+##### [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
+
+Tests WMS/ESRI_REST resource URL's and removes them where broken.
+
+##### [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-4)
+
+Formats WMS and ESRI REST resources to add French versions and formats French and English versions with valid supporting attributes.
+
+##### [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-4)
+
+Removes duplicate WMS or ESRI REST resources where they exist, that would otherwise invalidate the dataset.
+
+##### [XML_PUBLISHER](#xml_publisher-4)
+
+Extracts and maps attributes to values required by the XML root template or sub-templates, compliles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.
 
 ##### [NOTIFY_CREATE](#notify_create-2)
 
@@ -377,33 +413,72 @@ The BC_UPDATE workspace utilizes the following sequence of custom transformers. 
 
 Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against British Columbia's API for obsolete data.  Deletes records from CSW that are no longer found in British Columbia open data.  
 
+##### [BC_GEOWAREHOUSE_URL_BUILDER](#bc_geowarehouse_url_builder-2)
+
+Builds URL for BC Geowarehouse download links that are not readily available in the BC API but can be concatenated from other existing data.
+
+##### [BC_WMS_FORMATTER](#bc_wms_formatter-2)
+
+Builds URL for WMS links that are not readily available in the required French/English formats in the BC API but can be concatenated from other existing data.
+
+##### [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction-1)
+
+Substitutes resource name with dataset title when resource name is missing.
+
 ##### [AWS_TRANSLATE](#aws_translate-4)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
-##### [BC_POSTTRANSLATE_1](#bc_posttranslate_1-2)
+##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+Sets default attibute values specific to BC data that are universal to every data record.
 
-##### [BC_POSTTRANSLATE_2](#bc_posttranslate_2-2)
+##### [TEMPORAL_EXTENTS_MAPPER](temporal_extents_mapper_4)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+Formats and maps data collection start and end dates.  Sets start dates to 0001-01-01 and end dates to no value where missing.
 
-##### [POSTTRANSLATE_3](#posttranslate_3-4)
+##### [TOPIC_PARSER](#topic-parser-2)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+Parses topics into individual attributes when multiple topics appear as comma separated values.
 
-##### [BC_POSTTRANSLATE_4](#bc_posttranslate_4-2)
+##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+There are mulitple instances of the METADATA_VALUE_MAPPER in the workspace to correct values to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for mulitple metadata items by accessing custom look up tables applicable to specific items.  The mulitple instances of the tool are mapped to the following individual look-up tables:
 
-##### [CSW_INSERT](#csw_insert-4)
+  - Keyword
+  - ProgressStatusAttributeMapper
+  - RoleAttributeMapper
+  - SpatialReferenceMapper
+  - SpatialRepresentationAttributeMapper
+  - UpdateCycleAttributeMapper
+  
+##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
 
-Selects appropriate XML insert template for all new datasets and posts XML to the CSW.
+The METADATA_FORMAT_MAPPER corrects known incorrection variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
 
-##### [CSW_UPDATE](#csw_update-2)
+##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
-Selects appropriate XML update template for all updated datasets and posts XML to the CSW.
+Creates lists and removes duplicates for distribution formats, projections, update cycles and more_info.
+
+##### [MORE_INFO_MANAGER}(#more_info_manager-4)
+
+Tests the more_info{}.link list for valid attribute values and filters them out where missing.
+
+##### [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
+
+Tests WMS/ESRI_REST resource URL's and removes them where broken.
+
+##### [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-4)
+
+Formats WMS and ESRI REST resources to add French versions and formats French and English versions with valid supporting attributes.
+
+##### [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-4)
+
+Removes duplicate WMS or ESRI REST resources where they exist, that would otherwise invalidate the dataset.
+
+##### [XML_PUBLISHER](#xml_publisher-4)
+
+Extracts and maps attributes to values required by the XML root template or sub-templates, compliles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.
 
 ##### [NOTIFY_UPDATE](#notify_update-2)
 
@@ -420,41 +495,47 @@ This transformer is designed to function in all data ETL activities and translat
 - title
 - notes
 - sector
-- all exposed tags attributes (maximum 9)
-- all exposed resource_name attributes (maximum 6)
+- tags{}.display_name (list attribute)
+- resources{}.name (list attribute)
 
 This section operates using the following steps:
 
-- Removes failure causing excess whitespace from all attribute values to be translated.
-- Posts attribute to be translated to the AWS API using Python script.
-- Creates French version of the attribute from the returned translated value.
+- Removes failure causing excess whitespace from all attribute values to be translated via Python script.
+- Tests for strings over 5000 bytes and reduces strings in excess to under 5000 bytes (5000 bytes is maximum permitted per attribute by AWS Translate)
+- Posts attributes and list attributes to be translated to the AWS API using Python script.
+- Creates French version of the attributes and list attributes from the returned translated value.
 - Removes UTF8 Character code returned from translated results.
+- Removes out of scope attributes.
 
-#### CSW_INSERT
+#### DEFAULT_ATTRIBUTE_MAPPER
 
-This transformer is designed to function in all data ETL activities for all new data records and performs the following tasks:
+This custom transformer merges an Excel file containing default attribute values common to each dataset by performing the following tasks:
 
-- Tests for the number of transfer options and distribution formats, and filters the datasets according to their number.
-- Selects the appropriate XML insert template based on the results of the previous test.
-- Places the extracted attributes for each dataset in the XML template.
-- Cleans up the XML document with the XML format tool.
-- Validates the XML syntax.
-- Posts each XML document to the PyCSW using the following Python script:
-  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
-- Tests each record for successful load or failure to the PyCSW
+- Each default_key attribute is turned into an individual attribute.
+- Default attributes are then merged with each dataset.
 
-#### CSW_UPDATE
+#### TEMPORAL_EXTENTS_MAPPER
 
-This transformer is designed to function in all data ETL activities for all updated data records and performs the following tasks:
+The temporal extents and date format refiner tests and inserts required values where missing, and formats date by performing the following tasks:
 
-- Tests for the number of transfer options and distribution formats, and filters the datasets according to their number.
-- Selects the appropriate XML update template based on the results of the previous test.
-- Places the extracted attributes for each dataset in the XML template.
-- Cleans up the XML document with the XML format tool.
-- Validates the XML syntax.
-- Posts each XML document to the PyCSW using the following Python script:
-  - [PyCSW Post](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/scripts/PyCSW_Post.py)
-- Tests each record for successful load or failure to the PyCSW
+- Extracts the resources{}.data_collection_start_date list attribute.
+- Sorts the resources{}.data_collection_start_date list attributes in ascending order to find the earliest date.
+- If no start date exists in the data set, a data_collection_start_date attribute is created with the default value 0001-01-01.
+- Keeps the earliest start date if available and removes all other dates using a list indexer and bulk attribute remover.
+- Creates a single non-list data_collection_start_date attribute to represent the dataset.
+- Sorts the resources{}.data_collection_end_date list attributes in descending order to find the latest date.
+- If no end date exists in the data set, a data_collection_end_date attribute is created with no value (this field can be empty).
+- Keeps the latest end date if available and removes all other dates using a list indexer and bulk attribute remover.
+- Creates a single non-list data_collection_end_date attribute to represent the dataset.
+- Converts dates to ISO yyyy-mm-dd format.
+
+#### TOPIC_PARSER
+
+Parses topics into individual attributes when multiple topics appear as comma separated values and adds a default value where missing, by performing the following tasks:
+
+- Tests all iso_topic attributes for valid topic values.
+- Creates iso_topic_string with default value of 'geoscientificInformation' where missing.
+- 
 
 #### NOTIFY_CREATE
 
