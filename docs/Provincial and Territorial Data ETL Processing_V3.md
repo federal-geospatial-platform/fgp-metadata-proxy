@@ -35,7 +35,11 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
     - [Overview](#overview-2) 
 	- [BC_CREATE Workspace Detail](#bc_create-workspace-detail)
 	  - [BC_CREATE_PRETRANSLATE](#bc_create_pretranslate)
+	  - [BC_GEOWAREHOUSE_URL_BUILDER](#bc_geowarehouse_url_builder)
+	  - [BC_WMS_FORMATTER](#bc_wms_formatter)
+	  - [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction)
 	  - [AWS_TRANSLATE](#aws_translate-2)
+	  - [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-2)
 	  - [BC_POSTRANSLATE_1](#bc_posttranslate_1)
 	  - [BC_POSTRANSLATE_2](#bc_posttranslate_2)
 	  - [POSTTRANSLATE_3](#posttranslate_3-2)
@@ -95,7 +99,7 @@ Open data extraction, transformation and loading processes utilize two different
 -   **(p-t_abbreviation_)__CREATE__(_version_number).fmw:** The CREATE workspaces are for extracting, transforming and loading a complete dataset to an empty Catalogue Service for the Web (CSW).  Its intended use is for initial creation of a CSW, or in the event an entire CSW needs to be reloaded.  This can be run manually from FME Server.
 -  **(p-t_abbreviation_)__UPDATE__(_version_number).fmw:**  The UPDATE workspaces filter, extract, transform and load new or updated data records to the CSW.  It also reads all existing data records already in the CSW and deletes any records no longer found in the source data.  These workspaces run on a daily schedule on the FME Server.
 
-All FME Workspaces can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/FME_Workspaces)
+All FME Workspaces can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_files/FME_Workspaces)
 
 ### Custom Transformers
 
@@ -105,21 +109,85 @@ The extensive transformers required for metadata ETL have been aggregated into a
 -  **Provincial/Territorial Exclusive Transformers:** These are exclusive to a provincial or territorial ETL process, but can be used in that province/territory's CREATE or UPDATE transformers.
 -  **Universal Transformers:** These contain processes that are universal to any workspace.
 
-All FME custom transformers can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/FME_Custom_Transformers)
+All FME custom transformers can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_files/FME_Custom_Transformers)
 
 ### XML Templates
 
-The workspaces utilize 104 XML templates to retreive, load and delete data from the PyCSW.
+The workspaces utilize eleven individual XML templates representing specific sections of an HNAP compliant document, that are bracketed by closing and ending tags,  that ultimately compile extracted data into a single document.  Ten of these are sub-templates that are inserted into specific locations of the main, or root, document.  Multiple instances of sub-templates can be inserted into the root document or other sub-templates to accommodate multiple instances of a metadata item. 
 
--   **FGP_GetRecords.xml:** This XML file posts a request to the PyCSW and retrieves the unique ID from every data records contained therein.
+-   **GMD_CITEDRESPONSIBLEPARTY.xml:** This XML file is a sub-template and is framed by the **gmd:citedResponsibleParty** tags.  Extracted data populates the following metadata items:
+  - gmd:individualName
+  - gmd:organisationName
+  - gmd:positionName
+  - gmd:contactInfo
+  - gmd:role
+  - GMD_ONLINE_RESOURCES.xml sub-template
 
--  **FGP_DeleteById.xml:** Following the extraction of unique ID"s from the PyCSW and validation of the unique ID's against unique ID's retreived from an agency's API, this XML file removes obsolete records by their unique ID by posting to the PyCSW.  
+-   **GMD_CONTACT.xml:** This XML file is is a sub-template and is framed by the **gmd:contact** tags.  Extracted data populates the following metadata items:
+  - gmd:individualName
+  - gmd:organisationName
+  - gmd:positionName
+  - gmd:contactInfo
+  - gmd:role
+  - GMD_ONLINE_RESOURCES.xml sub-template
 
--  **FGP_XML_Insert_Template_(number).xml:**  There are 51 'insert' XML document templates that are denoted by 'Insert' tags at the beginning and end of the document, the number of distribution formats and the number of transfer options.  Data analysis has shown that there are no more than six distribution formats and no more than eleven transfer options in any given dataset.  The number at the end of the file name is indicative of the number of transfer options, followed by number of distribution formats.  The numbering is indexed, beginning at '0', where 0 indicates a count of 1.  For example, FGP_XML_Insert_Template_1-0.xml indicates the template can accommodate 2 transfer options and 1 distribution format, and FGP_XML_Insert_Template_10-3.xml indicates the template can accommodate 11 transfer options and 4 distribution formats.
-
--  **FGP_XML_Update_Template_(number).xml:**  There are 51 'update' XML document templates that are denoted by 'Update' tags at the beginning and end of the document, the number of distribution formats and the number of transfer options.  Data analysis has shown that there are no more than six distribution formats and no more than eleven transfer options in any given dataset.  The number at the end of the file name is indicative of the number of transfer options, followed by number of distribution formats.  The numbering is indexed, beginning at '0', where 0 indicates a count of 1.  For example, FGP_XML_Update_Template_1-0.xml indicates the template can accommodate 2 transfer options and 1 distribution format, and FGP_XML_Update_Template_10-3.xml indicates the template can accommodate 11 transfer options and 4 distribution formats.
-
-All XML templates can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/XML_Templates)
+-   **GMD_DISTRIBUTIONFORMAT.xml:** This XML file is is a sub-template and is framed by the **gmd:distributionFormat** tags.  Extracted data populates the following metadata item:
+  - gmd:MD_Format
+  
+-   **GMD_DISTRIBUTOR.xml:** This XML file is is a sub-template and is framed by the **gmd:distributor** tags.  Extracted data populates the following metadata items:
+  - gmd:individualName
+  - gmd:organisationName
+  - gmd:positionName
+  - gmd:contactInfo
+  - gmd:role
+  - GMD_ONLINE_RESOURCES.xml sub-template
+  
+-    **GMD_KEYWORDS.xml:** This XML file is is a sub-template and is framed by the **gmd:keyword** tags.  Extracted data populates the following metadata item:
+  - gmd:keyword
+  
+-   **GMD_MDMETADATA.xml:** This XML file is is the root template and is framed by the **gmd:MD_Metadata** tags.  Extracted data populates the following metadata items:
+  - gmd:fileIdentifier
+  - GMD_CONTACT.xml sub-template
+  - gmd:timeStamp
+  - gmd:metadataStandardVersion
+  - GMD_REFERENCESYSTEMINFO.xml sub-template
+  - gmd:title
+  - gmd:date (publication date)
+  - gmd:date (creation date)
+  - GMD_CITEDRESPONSIBLEPARTY.xml sub-template
+  - gmd:abstract
+  - gmd:status
+  - GMD_RESOURCEMAINTENANCE.xml sub-template
+  - gmd:graphicOverview
+  - GMD_KEYWORDS.xml sub-template
+  - gmd:spatialRepresentationType
+  - GMD_TOPICCATEGORY.xml sub-template
+  - gmd:extent
+    - gmd:temporalElement
+	- gmd:geographicElement
+  - GMD_DISTRIBUTIONFORMAT.xml sub-template
+  - GMD_DISTRIBUTOR.xml sub-template
+  - GMD_TRANSFEROPTIONS.xml sub-template
+  
+-   **GMD_ONLINERESOURCE.xml:** This XML file is a sub-template and is framed by the **gmd:onlineResource** tags.  Extracted data populates the following metadata item:
+  - gmd:onlineResource
+  
+-   **GMD_REFERENCESYSTEMINFO.xml:** This XML file is a sub-template and is framed by the **gmd:referenceSystemInfo** tags.  Extracted data populates the following metadata item:
+  - gmd:referenceSystemInfo
+  
+-   **GMD_RESOURCEMAINTENANCE.xml:** This XML file is a sub-template and is framed by the **gmd:resourceMaintenance** tags.  Extracted data populates the following metadata item:
+  - gmd:resourceMaintenance
+  
+-   **GMD_TOPICCATEGORY.xml:** This XML file is a sub-template and is framed by the **gmd:topicCategory** tags.  Extracted data populates the following metadata item:
+  - gmd:topicCategory**
+  
+-   **GMD_TRANSFEROPTIONS.xml:** This XML file is a sub-template and is framed by the **gmd:transferOptions** tags.  Extracted data populates the following metadata item:
+  - gmd:linkage
+  - gmd:protocol
+  - gmd:name
+  - gmd:description
+  
+All XML templates can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_files/XML_TEMPLATES)
 
 ### Other PyCSW Tools
 
@@ -143,11 +211,11 @@ Attributes required to meet mandatory requirements for individual XML (Extensibl
 
 A detailed list of all attributes processed by FME for insertion to the XML files can be found here:
 
--   [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key.xlsx)
+-   [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key-v2.xlsx)
 
 The Alberta Metadata FME Workspaces can be found here:
 
--   [Alberta FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/FME_Workspaces/AB)
+-   [Alberta FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_files/FME_Workspaces)
 
 - **NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
 
@@ -239,11 +307,11 @@ ETL (extract, transformation and loading) workspaces created in Safe Software's 
 
 A detailed list of all attributes processed by FME for insertion to the XML files can be found here:
 
--   [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key.xlsx)
+-   [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key-v2.xlsx)
 
 The British Columbia Metadata FME Workspaces can be found here:
 
--   [British Columbia FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_fmw_files_and_templates/FME_Workspaces/BC)
+-   [British Columbia FME Workspaces](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_files/FME_Workspaces)
 
 - **NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
 
@@ -254,6 +322,24 @@ The BC_CREATE workspace utilizes the following sequence of custom transformers. 
 ##### [BC_CREATE_PRETRANSLATE](#bc_create_pretranslate-1)
 
 Queries the British Columbia open government portal API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
+
+##### [BC_GEOWAREHOUSE_URL_BUILDER](#bc_geowarehouse_url_builder-2)
+
+Builds URL for BC Geowarehouse download links that are not readily available in the BC API but can be concatenated from other existing data.
+
+##### [BC_WMS_FORMATTER](#bc_wms_formatter-2)
+
+Builds URL for WMS links that are not readily available in the required French/English formats in the BC API but can be concatenated from other existing data.
+
+##### [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction-1)
+
+Inserts the title of the dataset where resource names are missing.
+
+##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
+
+Sets default attibute values specific to BC data that are universal to every data record.
+
+##### [TEMPORAL_EXTENTS_MAPPER](temporal_extents_mapper_4)
 
 ##### [AWS_TRANSLATE](#aws_translate-4)
 
