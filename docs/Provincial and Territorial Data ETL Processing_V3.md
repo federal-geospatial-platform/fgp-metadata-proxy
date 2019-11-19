@@ -533,9 +533,40 @@ The temporal extents and date format refiner tests and inserts required values w
 
 Parses topics into individual attributes when multiple topics appear as comma separated values and adds a default value where missing, by performing the following tasks:
 
-- Tests all iso_topic attributes for valid topic values.
+- Sets delimiter type (ie: comma) for delimiter separated values.
+- Tests all iso_topic_string attributes for valid topic values.
 - Creates iso_topic_string with default value of 'geoscientificInformation' where missing.
-- 
+- Python script parses delimiter (ie: comma) separated iso_topic attributes (ie: iso_topic_string = economy,society,geoscientificInformation) into individual list attributes (ie: iso_topic{0}.topic_string = economy, iso_topic{1}.topic_string = society, iso_topic{2}.topic_string = geoscientificInformation) and converts non comma separated attributes (ie: iso_topic_string = geoscientificInformation) to individual list attributes (ie: iso_topic{0}.topic_string = geoscientificInformation).
+
+#### METADATA_VALUE_MAPPER
+
+Corrects values of to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for mulitple metadata items by accessing custom look up tables specific to the data item by performing the following tasks:
+
+- When loaded to the workspace, the user can select the following data conversion functions to be on or off by selecting yes/no options in the following published parameters:
+  - ERROR_NOT_MAPPED: enables mapping of data item values that cannot be found in the lookup tables.
+  - ENGLISH_REFRESH: enables updating of English attribute values.
+  - FRENCH_REFRESH: enables updating of French attribute values.
+  - CODE_REFRESH: enables updating of RI_CODE values.
+- Tests for 'original_value' attribute in look-up tables and terminates translation if missing.
+- Tests for ENGLISH_REFRESH, FRENCH_REFRESH and CODE_REFRESH options.
+- Sets look-up table attributes as priority over incoming dataset attributes.
+- Assigns look-up table attributes to list attributes via python scripting.
+
+#### METADATA_FORMAT_MAPPER
+
+Corrects data format values of to valid data format values and to add associated Resource Type attributes in French and English.  It is by performing the following tasks:
+
+- When loaded to the workspace, the user can select the following data conversion functions to be on or off by selecting yes/no options in the following published parameters:
+  - ERROR_NOT_MAPPED: enables mapping of data item values that cannot be found in the lookup tables.
+  - REAL_VALUE_REFRESH: enables updating of data format values.
+  - RES_TYPE_FR_REFRESH: enables updating of French Resource Type values.
+  - RES_TYPE_EN_REFRESH: enables updating of English Resource Type values.
+- Tests for 'original_value' attribute in look-up tables and terminates translation if missing.
+- Tests for REAL_VALUE_REFRESH, RES_TYPE_FR_REFRESH and RES_TYPE_EN_REFRESH options.
+- Sets look-up table attributes as priority over incoming dataset attributes.
+- Assigns look-up table attributes to list attributes via python scripting.
+
+#### MAPPING_ERROR_LIST_CREATOR
 
 #### NOTIFY_CREATE
 
