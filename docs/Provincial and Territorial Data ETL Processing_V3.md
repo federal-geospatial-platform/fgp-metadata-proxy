@@ -568,6 +568,72 @@ Corrects data format values of to valid data format values and to add associated
 
 #### MAPPING_ERROR_LIST_CREATOR
 
+Creates an FFS file of data item values that cannot be mapped to a valid value due to the value missing from the look-up table of known data entry errors.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are acheived by performing the following tasks:
+
+- Counts the number of mapping errors found following processing of METADATA_VALUE _MAPPER or METADATA_FORMAT_MAPPER.
+- Tests for error count > 0.
+- Removes all attributes except mapping_errors{}.error.
+- Explodes mapping_errors{} list to write individual attributes to FFS file.
+
+#### GMD_SECTION_DATA_EXTRACTION
+
+Creates lists of data items and removes duplicates for the GMD templates by performing the following tasks: 
+
+- Copies resources{}.format list to new list distributionList{}.format.
+- Removes duplicates from distributionList{}.format for inclusion in the GMD_DISTRIBUTIONFORMAT sub-template.
+- Copies resources{}.projection_name to new list projectionList{}.projection_name.
+- Removes duplicates from projectionList{}.projection_name for inclusion in the GMD_REFERENCESYSTEMINFO sub-template.
+- Copies resources{}.resource_update_cycle to new list updateList{}.resource_update_cycle.
+- Removes duplicates from updateList{}.resource_update_cycle for inclusion in the GMD_RESOURCEMAINTENANCE sub-template.
+- Removes duplicates from more_info{}.link list for inclusion in the GMD_ONLINERESOURCE sub-template.
+
+#### MORE_INFO_MANAGER
+
+This transformer tests the more_info{}.link list for valid attribute values and filters them out where missing by performing the following tasks:
+
+- Creates a _uuid attribute using the UUIDGenerator.
+- Splits the data stream into two:
+  - Stream 1 retains only the _uuid and more_info{} list.
+    - more_info{}.link list is exploded into individual 'link' attributes.  
+	- link attributes with no value are filtered out.
+	- 'protocol' attribute is created with hard coded value 'https'
+	- data stream sent to 'Supplier' input of FeatureMerger transformer.
+  - Stream 2 retains all other data except the more_info{} list.
+    - Stream 2 is sent to the 'Requestor' port of the FeatureMerger transformer.
+- Feature Merger transformer merges stream 1 and 2 using the _uuid as the join attribute, then recreates the more_info{} list adding the link and protocol attributes.
+- Out of scope attributes are removed.
+
+#### REMOVE_BROKEN_URL_WMS_ESRI_REST
+
+This transformer tests all WMS and ESRI REST url's for connectivity and removes them where the URL is broken.  These results are acheived by performing the following tasks:
+
+- Creates unique ID '_uuid' for each dataset using the UUIDGenerator.
+- Splits the data stream into two:
+  - Stream 1 retains only the _uuid and resources{} list.
+    - Resources{} list are exploded into individual attributes.
+	- 'format' attribute is tested for WMS or ESRI REST services.
+	- Stream 1 is split into two:
+	  - Stream 1a sends 'format' attributes with WMS or ESRI REST values to the HTTP Caller
+	    - HTTP Caller performs a 'GET' function on each WMS or ESRI REST url.  Functioning URLs will receive a response and be sent to the output port.  Nonfunctioning URL's will be filtered out.  
+		- Out of scope attributes are removed.
+		- Stream 1a is sent to ListBuilder transformer.
+	  - Stream 1b sends 'format' attributes that do not have WMS or ESRI REST values to the List Builder transformer
+	- Stream 1a and 1b are remerged at the ListBuilder transformer, and the resources{} list is rebuilt from the exploded attributes.
+	- Stream 1 is sent to the FeatureMerger transformer.
+  - Stream 2 removes the resources{} attribute list.
+  - Stream 2 is sent to the FeatureMerger.
+- Stream 1 and 2 are joined on the _uuid attribute.
+- Out of scope attributes are removed.
+- Datasets are tested to ensure at least one URL remains after testing or they are filtered out.
+
+#### WMS_REST_LANGUAGE_FORMATTER
+
+This transformer creates default values in the resources{} list required for the GMD_TRANSFEROPTIONS XML sub-template, and creates an additional list entry that is required for French WMS and ESRI REST format types.  These results are acheived by performing the following tasks:
+
+- 
+	
+  
+
 #### NOTIFY_CREATE
 
 This transformer is designed to function in all CREATE workspaces and creates an email message of ETL results for system administrators.
