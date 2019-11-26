@@ -70,8 +70,6 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
   - [Custom Transformers Detail](#custom-transformers-detail)
     - [Universal Transformers](#universal-transformers)
 	  - [AWS_TRANSLATE](#aws_translate-4)
-	  - [CSW_INSERT](#csw_insert-4)
-	  - [CSW_UPDATE](#csw_update-2)
       - [NOTIFY_CREATE](#notify_create-2)
       - [NOTIFY_UPDATE](#notify_update-2)	
       - [POSTTRANSLATE_3](#posttranslate_3-4)	
@@ -622,7 +620,7 @@ This transformer tests all WMS and ESRI REST url's for connectivity and removes 
 	- Stream 1 is sent to the FeatureMerger transformer.
   - Stream 2 removes the resources{} attribute list.
   - Stream 2 is sent to the FeatureMerger.
-- Stream 1 and 2 are joined on the _uuid attribute.
+- Streams 1 & 2 are joined on the _uuid attribute.
 - Out of scope attributes are removed.
 - Datasets are tested to ensure at least one URL remains after testing or they are filtered out.
 
@@ -630,10 +628,164 @@ This transformer tests all WMS and ESRI REST url's for connectivity and removes 
 
 This transformer creates default values in the resources{} list required for the GMD_TRANSFEROPTIONS XML sub-template, and creates an additional list entry that is required for French WMS and ESRI REST format types.  These results are acheived by performing the following tasks:
 
-- 
+- Creates unique ID '_uuid' for each dataset using the UUIDGenerator.
+- Splits the data stream into two:
+  - Stream 1 retains only the _uuid and resources{} list.
+    - resources{} list is exploded into individual attributes.
+	- The SSL protocol for each URL attribute are tested for 'http' or 'https'.  'protocol' attribute is created with the value 'HTTP' or 'HTTPS' for insertion into the GMD_TRANSFEROPTIONS sub-template.
+	- 'xlink_role' attribute is created for insertion into the GMD_TRANSFEROPTIONS sub-template.
+	- Attributes 'transfert_option_description_language' with value 'eng' and 'transfert_option_description_language_other_lang' with value 'fra' are created.
+	- '_element_index' attribute is removed.
+	- Exposes 'id' attribute from exploded resources{} list.
+	- ListBuilder transformer recreates resources{} list containing stream 1 attributes that were previously exploded and new attributes.
+	- Stream 1 is sent to FEATURE_MERGER_1 transformer.
+  - Stream 2 retains all attributes except resources{} list attribute.
+    -  Stream 2 sent to FEATURE_MERGER_1 transformer.
+- Streams 1 & 2 are joined on the _uuid attribute.
+- The data stream is again split into two:
+  - Stream 3 retains only the _uuid and resources{} list.
+    - resources{} list is exploded into individual attributes.
+	- The AttributeFilter transformer splits Stream 3 into three data streams:
+	  - Stream 3a includes all resource data with 'WMS' as the format value and splits them to two AttributeCreator transformers.
+	    - AttributeCreator_3 creates French attribute values, overriding previously created definitions:
+		  - 'xlink_role' with the value of 'urn:xml:lang:fra-CAN'
+		  - 'transfert_option_description_language_other_lang' with the value of 'fra'
+		  - 'transfert_option_description_language' with the value of 'fra'
+		- AttributeCreator_2 creates English attribute values:
+		  - 'xlink_role' with the value of 'urn:xml:lang:eng-CAN'
+		  - 'transfert_option_description_language_other_lang' with the value of 'eng'
+		  - 'transfert_option_description_language' with the value of 'eng'
+		- AttributeCreator_3 and AttributeCreator_4 are both sent to Attribute_Creator_8 transformer.
+	    - AttributeCreator_8 creates 'protocol' with value of 'OGC:WMS'
+		- Stream 3a sent to AttributeExposer_4 transformer.
+	  - Stream 3b includes all resources data with 'ESRI REST' as the format value and splits them to two AttributeCreator transformers.
+	    - AttributeCreator_7 creates French attribute values, overriding previously created definitions:
+		  - 'xlink_role' with the value of 'urn:xml:lang:fra-CAN'
+		  - 'transfert_option_description_language_other_lang' with the value of 'fra'
+		  - 'transfert_option_description_language' with the value of 'fra' 
+		- AttributeCreator_6 creates English attribute values:
+		  - 'xlink_role' with the value of 'urn:xml:lang:eng-CAN'
+		  - 'transfert_option_description_language_other_lang' with the value of 'eng'
+		  - 'transfert_option_description_language' with the value of 'eng'
+	    - AttributeCreator_6 and AttributeCreator_7 are both sent to Attribute_Creator_9 transformer.
+	    - AttributeCreator_9 creates 'protocol' with value of 'ESRI REST: Map Service'
+		- Stream 3b sent to AttributeExposer_4 transformer.
+      - Stream 3c includes all resource data with neither 'WMS' nor 'ESRI REST' as the format value.
+	    - Stream 3c sent to AttributeExposer_4 transformer.
+	- Streams 3a, 3b and 3c are merged as Stream 3 at the AttributeExposer_4 transformer, where 'id' attribute is exposed.
+    - ListBuilder transformer recreates resources{} list containing stream 3 attributes that were previously exploded.
+	- Stream 3 sent to FEATURE_MERGER_2 transformer.
+  - Stream 4 retains all attributes except resources{} list attribute.
+    - Stream 4 sent to FEATURE_MERGER_2 transformer.
+- Streams 3 & 4 are joined on the _uuid attribute.
+- Out of scope attributes are removed.
+- New attributes created in this transformer are exposed.
+- ListSorter sorts resources{} list alphabetically by resources{}.format items.
+		
+#### DUPLICATE_SERVICE_REMOVER		
 	
-  
+Manages duplicate WMS or ESRI REST resources where they exist, that would prevent validation of the dataset when loaded to the FGP.  Duplicate services are given the resources{}.format value of 'other'.  The results are acheived through the following tasks:
 
+- Create histogram{} list from resources{}.protocol list to extract attribute value counts from each data set.  
+- Searches histogram{}.value list for OGC:WMS
+- Searches histogram{}.value list for ESRI REST: Map Service
+- ListIndexer obtains number of OGC:WMS services
+- List indexer obtains number of ESRI REST services
+- Tests for OGC:WMS or ESRI REST services in excess of two.
+- The data stream is split into two.
+  - Data stream 1 contains OGC:WMS or ESRI REST services.
+    - Data stream 1 generates unique id '_uuid' for later FeatureMerger
+	- Data stream 1 is split into two.
+	  - Data stream 1a retains only the resources{} list and _uuid attribute.
+	    - resources{} list is exploded to its individual attributes.
+	    - xlink_role attribute is tested for a value.
+	    - xlink_role attributes with values have a DuplicateFilter applied with consideration to _uuid, protocol and xlink_role attribute duplicates.
+		  - The first value found is output via the unique port to the ListBuilder transformer.
+		  - Any duplicates found are output the duplicate port and have their format attribute updated to 'other' and are sent to the ListBuilder transformer.
+	    - xlink_role attributes without a value are sent to directly to the ListBuilder transformer.  
+        - Data stream 1a is sent to the Supplier port of the FeatureMerger transformer.
+	  - Data stream 1b retains all attributes except resources{} list attribute.
+	    - Date stream 1b is sent to the Requestor port of the FeatureMerger transformer.
+	- Data streams 1a and 1b are rejoined in the FeatureMerger on the _uuid attribute.
+	- Out of scope attributes are removed from data stream 1.
+	- Data stream 1 is sent to the transformer output.
+  - Data stream 2 does not contain OGC:WMS nor ESRI REST Services.
+    - Data stream 2 is sent directly to the transformer output.
+	
+#### XML_PUBLISHER
+
+Extracts and maps attributes to values required by the XML root template or sub-templates, compliles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.  
+
+##### ATTRIBUTE LOOKUP TABLE PROCESSING
+
+An .xls config file maps the extracted metadata values to the HNAP attributes required by the root template and sub-templates.  The lookup table contains the following attributes:
+
+- **HNAP_ATTRIBUTES:** This is a list of attribute keys that are used by the root template and sub-templates.  All metadata attribute keys are converted to these attributes.  This data row does not allow duplicate keys.
+- **FEATURE_ATTRIBUTES:** This is a list of all attributes extracted from the metadata.  It allows for stand-alone attributes and list attributes, and can be varied from workspace to workspace.  This data row does not allow duplicate keys.
+- **METADATA_SECTION:** This is a list of the metadata sections, that reflect the root template and sub-templates, to which each HNAP_ATTRIBUTE is directed.  Some attributes may apply to multiple metadata sections and in these cases the METADATA_SECTION fields can contain multiple values and are separated by a semi-colon.  This list can also contain duplicate values as more than one attribute can be mapped to a metadata section.
+
+The attribute config file is processed through the following tasks:
+
+- From the lookup table, the METADATA_SECTION attribute  for HNAP_ATTRIBUTES found in mulitple metadata sections is split into one attribute per METADATA_SECTION creating METADATA_SECTION{} list, using the AttributeSplitter transformer.
+- METADATA_SECTION{} list is exploded to its individual parts using a ListExploder transformer.
+- A StringSearcher transformer searches the lookup table for FEATURE_ATTRIBUTES that are list attributes.
+- AttributeSplitter tranformer plits list attributes using {} delimiter and creates _list{} list attribute from results.
+- AttributeCreator extracts _list{0} attribute creating list_name attribute which is original FEATURE_ATTRIBUTE list name.
+  - These lists are tested for duplication in METADATA_SECTIONS and an error is thrown in the transformer when found.
+- List attributes and non-list attributes have out of scope attributes removed.
+- ListBuilder builds _list{} list attributes from FEATURE_ATTRIBUTES, HNAP_ATTRIBUTES and list_name, grouped by METADATA_SECTION attributes.
+- An '_order' attribute with value of 1 is created.
+- ListElementCounter retreives _list{} element count for each METADATA_SECTION.
+- ListSearcher searches for _list{}.listname attribute in each METADATA_SECTION.
+- _list_index from all _list{}.listname attributes is extracted.
+- The results are sent to the XML CREATION section.
+
+##### METADATA PREPROCESSING
+
+- Exposes all metadata attributes.
+- Python script removes all whitespace.
+- An '_order' attribute with value of 2 is created.
+- The results are sent to the XML CREATION section.
+
+##### XML CREATION
+
+- Sorter transformer receieves data from the ATTRIBUTE LOOKUP TABLE PROCESSING and METADATA PREPROCESSING section.  The data is sorted by the '_order' attribute, so giving priority to the lookup table.
+- The data stream is split so all attributes, except 'method', enter a PythonCaller.
+  - In the PythonCaller, the Python script utilizes attribute names and list attribute names created by the config file to convert metadata attribute keys to the HNAP_ATTRIBUTE Keys created from the config file.  The HNAP_ATTRIBUTE keys are consumed by the XML Templates used to build the metadata XML file.
+  - HNAP_ATTRIBUTE keys are exposed.
+  - AttributeFilter filters metadata according to METADATA_SECTION attribute and throws error if METADATA_SECTION is missing.
+  - XMLTemplater compiles metadata root template with sub-templates to output single XML metadata file as '_xml_raw' attribute.
+  - Results are sent to FeatureMerger.
+- 'method' attribute stream is not part of the metadata, but is preserved to be used to set the XML creation method.
+  - All data is removed from this stream, except 'method' and 'id'
+  - Results are sent to FeatureMerger.
+- FeatureMerger merges metadata attribute stream with method attribute stream.
+- 'master_id' attribute is renamed to 'id'.
+- Creates methodSelect attribute from selection in METHOD_SELECT published parameter.
+- Tests if methodSelect is 'Auto'.  Note: If 'Auto' is selected then no changes is made to the value of the method attribute.  This would be utilized in an 'UPDATE' workspace as the 'Insert' or 'Update' method values are previously created in 'UPDATE' transformers based on new data (Insert) or updated data (Update).
+- If methodSelect is not set to 'Auto', then method attribute assumes other methodSelect values; 'Insert', 'Update' or 'Local'.
+- AttributeFilter filters datasets according to their 'method' value.
+  - 'Local': Creates '_xml_data' attribute by copying '_xml_raw' attribute.  
+  - 'Insert': Creates '_xml_data' attribute by concatenating PyCSW Insert headers and footers with '_xml_raw' attribute.
+  - 'Update': Creates '_xml_data' attribute by concatenating PyCSW Update headers and footers with '_xml_raw' attribute.
+- A second XMLTemplater receives all datasets, adds header for '_xml_data' attribute and outputs as '_xml_data_header'
+- XMLFormatter cleans up XML '_xml_data_header' and outputs XML as 'text_line_data' attribute.
+- XMLValidator validates the syntax of 'text_line_data' attribute.
+- AttributeFilter filters datasets according to method attribute.
+  - 'Local': Writes 'text_line_data' attribute for each data set to individual XML files directly to LOCAL transformer output.
+  - 'Insert': Sends 'text_line_data' attribute for each new data set to PyCSW_POST transformer.
+    - PyCSW_POST transformer uses Python script to insert each new data record to the Catalog Service for the Web.  Each insertion attempt receives a response as to the success or failure of the post in the form of 'insert_response' attribute.
+	- 'insert_response' attribute is exposed.
+	- Tester transformer evaluates the 'insert_response' attribute for success or failure.
+	  - Succesful insertions are output via the PASSED port and sent to the INSERT_PASSED transformer output port.
+	  - Failed insertions are output via the FAILED port and sent to the INSERT_FAILED transformer output port.
+  - 'Update': Sends 'text_line_data' attribute for each updated data set to PyCSW_POST transformer.
+    - PyCSW_POST transformer uses Python script to insert each updated data record to the Catalog Service for the Web.  Each update attempt receives a response as to the success or failure of the post in the form of 'insert_response' attribute.
+	- 'insert_response' attribute is exposed.
+	- Tester transformer evaluates the 'insert_response' attribute for success or failure.
+	  - Succesful updates are output via the PASSED port and sent to the UPDATE_PASSED transformer output port.
+	  - Failed updates are output via the FAILED port and sent to the UPDATE_FAILED transformer output port.
+	
 #### NOTIFY_CREATE
 
 This transformer is designed to function in all CREATE workspaces and creates an email message of ETL results for system administrators.
@@ -680,13 +832,6 @@ This section performs the following tasks:
 - Gets the current data and time.
 - Concatenates insert records or no records to insert notifcation strings, update records or no records to update notification strings, number of obsolete records deleted, plus date and time into one message string.
 - Emails the message string to an adminstrator.
-
-#### POSTTRANSLATE_3
-
-This transformer is designed to function in all workspaces and removes duplicates of distribution format items by performing the following tasks:
-- Copies all resource_format attributes into list attributes.
-- Removes all list attribute duplicates.
-- Renames remaining list attributes to distribution_format attributes
 
 ### Provincial/Territorial Specific Transformers
 
@@ -1144,141 +1289,6 @@ This section performs the following tasks:
 
 - Removes out of scope attributes.
 - Output is directed to the AWS_TRANSLATE transformer.
-
-##### BC_POSTTRANSLATE_1
-
-This custom transformer is the first stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_CREATE' and 'BC_UPDATE' workspaces.
-
-This transformer performs the following functions:
-
-###### Temporal Extents Creator
-
-This section tests for required temporal extents (data collection start and end dates) and corrects if necessary by performing the following tasks:
-
-- Tests if data_collection_start_date is present
-- Sets data collection start date to 0001-01-01 if missing
-- Formats data_collection_start_date to ISO yyyy-mm-dd format if present.
-- Tests if data_collection_end_date is present.
-- Formats data_collection_end_date to ISO yyyy-mm-dd format if present.
-- **NOTE**: data_collection_end_date is not a mandatory value and no action is taken if data is absent.
-
-###### Role Refiner
-
-This section tests that extracted role names are conforming to HNAP role code requirements.  Nonconforming or missing role names are set to pointOfContact as default.  
-All role names have their corresponding French role names with their appropriate role code (IE: RI_414) applied to the dataset.  
-A list of all RI Codes, including RI Role Codes, can be found here:
-
--   [RI Code Master List](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/RI_List.xlsx)
-
-###### Second Contact Testing
-
-Contact fields in XML templates cannot be incomplete.  Every data record has at least one contact.  The XML template allows for two.  This section tests if second contact exists 
-in data record, then substitutes all second contact associated values with first contact values if second contact is missing.
-
-  **Substituted values:**
-
-  - contact name
-  - contact email
-  - contact role
-  - contact role french
-  - RI role code
-  
-###### Update Cycle Refiner
-
-This section tests that Maintenance Frequency values conform to HNAP requirements, and where nonconforming or missing, revises them to default 'asNeeded'.  The corresponding RI_Code 
-is then applied to all values.
-
-This transformer outputs to the BC_POSTTRANSLATE_2 transformer.
-
-##### BC_POSTTRANSLATE_2
-
-This custom transformer is the second stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_CREATE' and 'BC_UPDATE' workspaces.
-
-###### File Format Refiner
-
-There are up to ten transfer options (data links) available in BC datasets.  The file format of each transfer option has a specific validation requirement in the FGP.  Data analysis of all BC data has identified all the potential incorrect variations of required file format names (i.e.: 'kmz' should be 'KMZ', 'Esri File Geodatabase' should be 'FGDB/GDB').  This section tests for all the variations found in BC datasets and corrects them to conforming values where required.
-
-List of validated file formats can be found here:
-
--   [Validated File Formats](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/VALIDATED_FILE_FORMATS.xlsx)
-
-This transformer outputs to the POSTTRANSLATE_3 transformer.
-
-##### BC_POSTTRANSLATE_4
-
-This custom transformer is the fourth stage following the AWS Translate custom transformer.  It enhances British Columbia datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'BC_CREATE' and 'BC_UPDATE' workspaces.
-
-This transformer performs the following tasks:
-
-###### Keyword Attributor
-
-Some BC datasets have been found to have over one hundred keyword values (or tags as they are named when returned by the JSON query).  In order to make this portion of the data more 
-manageable, the XML templates have been formatted to allow for nine keywords only, which is aligned with the maximum of nine keywords that are returned with Alberta datasets.  The FGP 
-harvester will reject the XML file if any of the keyword values are NULL.  This section tests each tag attribute, English and French, for NULL values, and substitutes a 
-generic value accordingly.   
-
-  **English Generic Keyword Values:**
-
-  - Geomatics
-  - Open Data
-  - Open Government
-  - BC Data
-  - Open Source
-  - Public Data
-  - Government Data
-  - British Columbia Data
-  - Government of British Columbia
-
-  **French Generic Keyword Values:**
-
-  - Géomatique
-  - Données ouvertes
-  - Gouvernement ouvert
-  - Données de la C.-B.
-  - Source ourverte
-  - Données publiques
-  - Données gouvernementales
-  - Données de la Colombie-Britannique
-  - Gouvernement de la Colombie-Britannique
-
-###### SSL Protocol Test - Online Resource
-
-This section tests the SSL protocol on the 'more_info.link_0' URL in CI_OnlineResource that are not contained in transferOptions and assigns 'HTTPS' or 'HTTP' to the protocol value.
-
-###### SSL Protocol Test - Transfer Options
-
-This section tests the SSL protocol in all 'resource_url' attributes (there are up to ten in BC datasets) in CI_OnlineResource that are contained in transferOptions and assigns 
-'HTTPS' or 'HTTP' to the protocol value.
-
-###### WMS Formatter
-
-This section tests resource_format attributes (there are up to ten in BC datasets) in transferOptions for 'WMS' value, that require an additional French WMS format for each English format 
-as a transferOption to facilitate links to the web mapping service.  This section will insert a French WMS formatted transferOption immediately following the English WMS transferOption, 
-and move subsequent transferOptions down the sequence accordingly by reassiging the attribute index numbers.  
-
-This section assigns all WMS requirements to each English and French transferOption: 
-
-- xlink:role 
-- protocol
-- locale
-- language
-- name
-- URL
-- format
-
-**NOTE:** The FGP harvester will only accept one WMS transfer option each for English and French.  If the source data contains more than one WMS transfer option prior to the 
-addition of the French transfer option, it will exceed the maximum and the record will be rejected.  As of the time of this writing, three BC datasets exceed the maximum WMS transfer 
-options allowed.
-
-###### Distribution Version Formatter
-
-This section creates distribution format versions for all WMS formats as this is the default for the British Columbia WMS.  Other distribution format versions are not provided.  Data from the WMS Formatter and the ESRI REST Formatter converge here.
-
-###### INSERT/UPDATE Test
-
-This section tests if the POST method has been determined to be 'INSERT' or 'UPDATE'
-
-Transformer output is then directed to the CSW_INSERT transformer for all INSERT workspaces, and for all UPDATE workspaces, directed to either the CSW_INSERT or CSW_UPDATE transformers.
 
 ##### BC_UPDATE_PRETRANSLATE
 
