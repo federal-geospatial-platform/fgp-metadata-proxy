@@ -4,7 +4,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 
 - [Table of Contents](#table-of-contents)
 - [Provincial and Territorial Extraction, Transformation and Loading Processes](#provincial-and-territorial-extraction-transformation-and-loading-processes)
-  - [Oveview](#overview)
+  - [Overview](#overview)
     - [Workspaces](#workspaces)
 	- [Custom Transformers](#custom-transformers)
 	- [XML Templates](#xml-templates)
@@ -140,10 +140,10 @@ The workspaces utilize eleven individual XML templates representing specific sec
   - gmd:role
   - GMD_ONLINE_RESOURCES.xml sub-template
 
--   **GMD_DISTRIBUTIONFORMAT.xml:** This XML file is is a sub-template and is framed by the **gmd:distributionFormat** tags.  Extracted data populates the following metadata item:
+-   **GMD_DISTRIBUTIONFORMAT.xml:** This XML file is a sub-template and is framed by the **gmd:distributionFormat** tags.  Extracted data populates the following metadata item:
   - gmd:MD_Format
   
--   **GMD_DISTRIBUTOR.xml:** This XML file is is a sub-template and is framed by the **gmd:distributor** tags.  Extracted data populates the following metadata items:
+-   **GMD_DISTRIBUTOR.xml:** This XML file is a sub-template and is framed by the **gmd:distributor** tags.  Extracted data populates the following metadata items:
   - gmd:individualName
   - gmd:organisationName
   - gmd:positionName
@@ -151,10 +151,10 @@ The workspaces utilize eleven individual XML templates representing specific sec
   - gmd:role
   - GMD_ONLINE_RESOURCES.xml sub-template
   
--    **GMD_KEYWORDS.xml:** This XML file is is a sub-template and is framed by the **gmd:keyword** tags.  Extracted data populates the following metadata item:
+-    **GMD_KEYWORDS.xml:** This XML file is a sub-template and is framed by the **gmd:keyword** tags.  Extracted data populates the following metadata item:
   - gmd:keyword
   
--   **GMD_MDMETADATA.xml:** This XML file is is the root template and is framed by the **gmd:MD_Metadata** tags.  Extracted data populates the following metadata items:
+-   **GMD_MDMETADATA.xml:** This XML file is the root template and is framed by the **gmd:MD_Metadata** tags.  Extracted data populates the following metadata items:
   - gmd:fileIdentifier
   - GMD_CONTACT.xml sub-template
   - gmd:timeStamp
@@ -214,7 +214,7 @@ ETL (extract, transformation and loading) workspaces created in Safe Software's 
 
 -   **Alberta Open Data Catalogue**: Alberta ISO 19115 compliant data is extracted by exposing data from CKAN API [Alberta's Open Data Catalogue](https://open.alberta.ca/opendata), extracting a JSON (Javascript Object Notation) file, and subsequently, via the JSON file, an XML file in Geospatial Catalog. The approach going through the Open Data Catalog first is required as the unique ID's from the Open Data are required due to inconsistencies in the unique ID's used in the subsequently exposed XML files.
 
--  **Alberta Geospatial Catalog**:  A small amount of ISO 19139 compliant data using exclusively ESRI REST services is unavailable in the Alberta Open Data Catalog and is exposed directly from [Alberta Geospatial Catalogue](https://geodiscover.alberta.ca/geoportal).  The unique ID naming conventions are accurate with this data subset which allows for direct extraction.  The remainder of ISO 19139 data not exposing ESRI REST services that is found in the Alberta geospatial catalogue has been found to be largely incomplete and unusable.  
+-  **Alberta Geospatial Catalog**:  A small amount of ISO 19139 compliant data using exclusively ESRI REST services is unavailable in the Alberta Open Data Catalog and is exposed directly from [Alberta Geospatial Catalogue](https://geodiscover.alberta.ca/geoportal).  The unique ID naming conventions are accurate with this data subset that allows for direct extraction.  The remainder of ISO 19139 data not exposing ESRI REST services that is found in the Alberta geospatial catalogue has been found to be largely incomplete and unusable.  
 
 Attributes required to meet mandatory requirements for individual XML (Extensible Markup Language) files are extracted from both the exposed JSON file and XML files, each representing and defining a unique dataset, that are published to a CSW (Catalogue Service for the Web) and subsequently harvested from the CSW by the Federal Geospatial Platform (FGP).  The FME workspaces use a series of custom transformers appropriately placed to address attribute deficiencies that are either missing or have formats incompatible to FGP requirements.  
 
@@ -362,7 +362,7 @@ Parses topics into individual attributes when multiple topics appear as comma se
 
 ##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
-There are mulitple instances of the METADATA_VALUE_MAPPER in the workspace to correct values to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for mulitple metadata items by accessing custom look up tables applicable to specific items.  The mulitple instances of the tool are mapped to the following individual look-up tables:
+There are multiple instances of the METADATA_VALUE_MAPPER in the workspace to correct values to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for multiple metadata items by accessing custom look up tables applicable to specific items.  The multiple instances of the tool are mapped to the following individual look-up tables:
 
   - Keyword
   - ProgressStatusAttributeMapper
@@ -373,7 +373,7 @@ There are mulitple instances of the METADATA_VALUE_MAPPER in the workspace to co
   
 ##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
 
-The METADATA_FORMAT_MAPPER corrects known incorrection variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
+The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -397,7 +397,7 @@ Removes duplicate WMS or ESRI REST resources where they exist, that would otherw
 
 ##### [XML_PUBLISHER](#xml_publisher-4)
 
-Extracts and maps attributes to values required by the XML root template or sub-templates, compliles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.
+Extracts and maps attributes to values required by the XML root template or sub-templates, compiles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.
 
 ##### [NOTIFY_CREATE](#notify_create-2)
 
@@ -429,7 +429,7 @@ Sends extracted English text attributes, that require French equivalents, to Ama
 
 ##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
 
-Sets default attibute values specific to BC data that are universal to every data record.
+Sets default attribute values specific to BC data that are universal to every data record.
 
 ##### [TEMPORAL_EXTENTS_MAPPER](temporal_extents_mapper_4)
 
@@ -441,7 +441,7 @@ Parses topics into individual attributes when multiple topics appear as comma se
 
 ##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
-There are mulitple instances of the METADATA_VALUE_MAPPER in the workspace to correct values to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for mulitple metadata items by accessing custom look up tables applicable to specific items.  The mulitple instances of the tool are mapped to the following individual look-up tables:
+There are multiple instances of the METADATA_VALUE_MAPPER in the workspace to correct values to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for multiple metadata items by accessing custom look up tables applicable to specific items.  The multiple instances of the tool are mapped to the following individual look-up tables:
 
   - Keyword
   - ProgressStatusAttributeMapper
@@ -452,7 +452,7 @@ There are mulitple instances of the METADATA_VALUE_MAPPER in the workspace to co
   
 ##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
 
-The METADATA_FORMAT_MAPPER corrects known incorrection variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
+The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -476,7 +476,7 @@ Removes duplicate WMS or ESRI REST resources where they exist, that would otherw
 
 ##### [XML_PUBLISHER](#xml_publisher-4)
 
-Extracts and maps attributes to values required by the XML root template or sub-templates, compliles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.
+Extracts and maps attributes to values required by the XML root template or sub-templates, compiles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.
 
 ##### [NOTIFY_UPDATE](#notify_update-2)
 
@@ -538,7 +538,7 @@ Parses topics into individual attributes when multiple topics appear as comma se
 
 #### METADATA_VALUE_MAPPER
 
-Corrects values of to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for mulitple metadata items by accessing custom look up tables specific to the data item by performing the following tasks:
+Corrects values to valid English values and adds the valid French equivalents and RI_CODES where applicable.  It can be utilized for multiple metadata items by accessing custom look up tables specific to the data item by performing the following tasks:
 
 - When loaded to the workspace, the user can select the following data conversion functions to be on or off by selecting yes/no options in the following published parameters:
   - ERROR_NOT_MAPPED: enables mapping of data item values that cannot be found in the lookup tables.
@@ -566,7 +566,7 @@ Corrects data format values of to valid data format values and to add associated
 
 #### MAPPING_ERROR_LIST_CREATOR
 
-Creates an FFS file of data item values that cannot be mapped to a valid value due to the value missing from the look-up table of known data entry errors.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are acheived by performing the following tasks:
+Creates an FFS file of data item values that cannot be mapped to a valid value due to the value missing from the look-up table of known data entry errors.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are achieved by performing the following tasks:
 
 - Counts the number of mapping errors found following processing of METADATA_VALUE _MAPPER or METADATA_FORMAT_MAPPER.
 - Tests for error count > 0.
@@ -603,7 +603,7 @@ This transformer tests the more_info{}.link list for valid attribute values and 
 
 #### REMOVE_BROKEN_URL_WMS_ESRI_REST
 
-This transformer tests all WMS and ESRI REST url's for connectivity and removes them where the URL is broken.  These results are acheived by performing the following tasks:
+This transformer tests all WMS and ESRI REST url's for connectivity and removes them where the URL is broken.  These results are achieved by performing the following tasks:
 
 - Creates unique ID '_uuid' for each dataset using the UUIDGenerator.
 - Splits the data stream into two:
@@ -612,7 +612,7 @@ This transformer tests all WMS and ESRI REST url's for connectivity and removes 
 	- 'format' attribute is tested for WMS or ESRI REST services.
 	- Stream 1 is split into two:
 	  - Stream 1a sends 'format' attributes with WMS or ESRI REST values to the HTTP Caller
-	    - HTTP Caller performs a 'GET' function on each WMS or ESRI REST url.  Functioning URLs will receive a response and be sent to the output port.  Nonfunctioning URL's will be filtered out.  
+	    - HTTP Caller performs a 'GET' function on each WMS or ESRI REST url.  Functioning URLs will receive a response and be sent to the output port.  Non-functioning URL's will be filtered out.  
 		- Out of scope attributes are removed.
 		- Stream 1a is sent to ListBuilder transformer.
 	  - Stream 1b sends 'format' attributes that do not have WMS or ESRI REST values to the List Builder transformer
@@ -626,7 +626,7 @@ This transformer tests all WMS and ESRI REST url's for connectivity and removes 
 
 #### WMS_REST_LANGUAGE_FORMATTER
 
-This transformer creates default values in the resources{} list required for the GMD_TRANSFEROPTIONS XML sub-template, and creates an additional list entry that is required for French WMS and ESRI REST format types.  These results are acheived by performing the following tasks:
+This transformer creates default values in the resources{} list required for the GMD_TRANSFEROPTIONS XML sub-template, and creates an additional list entry that is required for French WMS and ESRI REST format types.  These results are achieved by performing the following tasks:
 
 - Creates unique ID '_uuid' for each dataset using the UUIDGenerator.
 - Splits the data stream into two:
@@ -634,7 +634,7 @@ This transformer creates default values in the resources{} list required for the
     - resources{} list is exploded into individual attributes.
 	- The SSL protocol for each URL attribute are tested for 'http' or 'https'.  'protocol' attribute is created with the value 'HTTP' or 'HTTPS' for insertion into the GMD_TRANSFEROPTIONS sub-template.
 	- 'xlink_role' attribute is created for insertion into the GMD_TRANSFEROPTIONS sub-template.
-	- Attributes 'transfert_option_description_language' with value 'eng' and 'transfert_option_description_language_other_lang' with value 'fra' are created.
+	- Attributes 'transfer_option_description_language' with value 'eng' and 'transfer_option_description_language_other_lang' with value 'fra' are created.
 	- '_element_index' attribute is removed.
 	- Exposes 'id' attribute from exploded resources{} list.
 	- ListBuilder transformer recreates resources{} list containing stream 1 attributes that were previously exploded and new attributes.
@@ -649,24 +649,24 @@ This transformer creates default values in the resources{} list required for the
 	  - Stream 3a includes all resource data with 'WMS' as the format value and splits them to two AttributeCreator transformers.
 	    - AttributeCreator_3 creates French attribute values, overriding previously created definitions:
 		  - 'xlink_role' with the value of 'urn:xml:lang:fra-CAN'
-		  - 'transfert_option_description_language_other_lang' with the value of 'fra'
-		  - 'transfert_option_description_language' with the value of 'fra'
+		  - 'transfer_option_description_language_other_lang' with the value of 'fra'
+		  - 'transfer_option_description_language' with the value of 'fra'
 		- AttributeCreator_2 creates English attribute values:
 		  - 'xlink_role' with the value of 'urn:xml:lang:eng-CAN'
-		  - 'transfert_option_description_language_other_lang' with the value of 'eng'
-		  - 'transfert_option_description_language' with the value of 'eng'
+		  - 'transfer_option_description_language_other_lang' with the value of 'eng'
+		  - 'transfer_option_description_language' with the value of 'eng'
 		- AttributeCreator_3 and AttributeCreator_4 are both sent to Attribute_Creator_8 transformer.
 	    - AttributeCreator_8 creates 'protocol' with value of 'OGC:WMS'
 		- Stream 3a sent to AttributeExposer_4 transformer.
 	  - Stream 3b includes all resources data with 'ESRI REST' as the format value and splits them to two AttributeCreator transformers.
 	    - AttributeCreator_7 creates French attribute values, overriding previously created definitions:
 		  - 'xlink_role' with the value of 'urn:xml:lang:fra-CAN'
-		  - 'transfert_option_description_language_other_lang' with the value of 'fra'
-		  - 'transfert_option_description_language' with the value of 'fra' 
+		  - 'transfer_option_description_language_other_lang' with the value of 'fra'
+		  - 'transfer_option_description_language' with the value of 'fra' 
 		- AttributeCreator_6 creates English attribute values:
 		  - 'xlink_role' with the value of 'urn:xml:lang:eng-CAN'
-		  - 'transfert_option_description_language_other_lang' with the value of 'eng'
-		  - 'transfert_option_description_language' with the value of 'eng'
+		  - 'transfer_option_description_language_other_lang' with the value of 'eng'
+		  - 'transfer_option_description_language' with the value of 'eng'
 	    - AttributeCreator_6 and AttributeCreator_7 are both sent to Attribute_Creator_9 transformer.
 	    - AttributeCreator_9 creates 'protocol' with value of 'ESRI REST: Map Service'
 		- Stream 3b sent to AttributeExposer_4 transformer.
@@ -684,7 +684,7 @@ This transformer creates default values in the resources{} list required for the
 		
 #### DUPLICATE_SERVICE_REMOVER		
 	
-Manages duplicate WMS or ESRI REST resources where they exist, that would prevent validation of the dataset when loaded to the FGP.  Duplicate services are given the resources{}.format value of 'other'.  The results are acheived through the following tasks:
+Manages duplicate WMS or ESRI REST resources where they exist, that would prevent validation of the dataset when loaded to the FGP.  Duplicate services are given the resources{}.format value of 'other'.  The results are achieved through the following tasks:
 
 - Create histogram{} list from resources{}.protocol list to extract attribute value counts from each data set.  
 - Searches histogram{}.value list for OGC:WMS
@@ -714,7 +714,7 @@ Manages duplicate WMS or ESRI REST resources where they exist, that would preven
 	
 #### XML_PUBLISHER
 
-Extracts and maps attributes to values required by the XML root template or sub-templates, compliles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.  
+Extracts and maps attributes to values required by the XML root template or sub-templates, compiles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.  
 
 ##### ATTRIBUTE LOOKUP TABLE PROCESSING
 
@@ -726,16 +726,16 @@ An .xls config file maps the extracted metadata values to the HNAP attributes re
 
 The attribute config file is processed through the following tasks:
 
-- From the lookup table, the METADATA_SECTION attribute  for HNAP_ATTRIBUTES found in mulitple metadata sections is split into one attribute per METADATA_SECTION creating METADATA_SECTION{} list, using the AttributeSplitter transformer.
+- From the lookup table, the METADATA_SECTION attribute  for HNAP_ATTRIBUTES found in multiple metadata sections is split into one attribute per METADATA_SECTION creating METADATA_SECTION{} list, using the AttributeSplitter transformer.
 - METADATA_SECTION{} list is exploded to its individual parts using a ListExploder transformer.
 - A StringSearcher transformer searches the lookup table for FEATURE_ATTRIBUTES that are list attributes.
-- AttributeSplitter tranformer plits list attributes using {} delimiter and creates _list{} list attribute from results.
-- AttributeCreator extracts _list{0} attribute creating list_name attribute which is original FEATURE_ATTRIBUTE list name.
+- AttributeSplitter transformer splits list attributes using {} delimiter and creates _list{} list attribute from results.
+- AttributeCreator extracts _list{0} attribute creating list_name attribute that is original FEATURE_ATTRIBUTE list name.
   - These lists are tested for duplication in METADATA_SECTIONS and an error is thrown in the transformer when found.
 - List attributes and non-list attributes have out of scope attributes removed.
 - ListBuilder builds _list{} list attributes from FEATURE_ATTRIBUTES, HNAP_ATTRIBUTES and list_name, grouped by METADATA_SECTION attributes.
-- An '_order' attribute with value of 1 is created.
-- ListElementCounter retreives _list{} element count for each METADATA_SECTION.
+-  '_order' attribute with value of 1 is created.
+- ListElementCounter retrieves _list{} element count for each METADATA_SECTION.
 - ListSearcher searches for _list{}.listname attribute in each METADATA_SECTION.
 - _list_index from all _list{}.listname attributes is extracted.
 - The results are sent to the XML CREATION section.
@@ -744,12 +744,12 @@ The attribute config file is processed through the following tasks:
 
 - Exposes all metadata attributes.
 - Python script removes all whitespace.
-- An '_order' attribute with value of 2 is created.
+-  '_order' attribute with value of 2 is created.
 - The results are sent to the XML CREATION section.
 
 ##### XML CREATION
 
-- Sorter transformer receieves data from the ATTRIBUTE LOOKUP TABLE PROCESSING and METADATA PREPROCESSING section.  The data is sorted by the '_order' attribute, so giving priority to the lookup table.
+- Sorter transformer receives data from the ATTRIBUTE LOOKUP TABLE PROCESSING and METADATA PREPROCESSING section.  The data is sorted by the '_order' attribute, so giving priority to the lookup table.
 - The data stream is split so all attributes, except 'method', enter a PythonCaller.
   - In the PythonCaller, the Python script utilizes attribute names and list attribute names created by the config file to convert metadata attribute keys to the HNAP_ATTRIBUTE Keys created from the config file.  The HNAP_ATTRIBUTE keys are consumed by the XML Templates used to build the metadata XML file.
   - HNAP_ATTRIBUTE keys are exposed.
@@ -777,13 +777,13 @@ The attribute config file is processed through the following tasks:
     - PyCSW_POST transformer uses Python script to insert each new data record to the Catalog Service for the Web.  Each insertion attempt receives a response as to the success or failure of the post in the form of 'insert_response' attribute.
 	- 'insert_response' attribute is exposed.
 	- Tester transformer evaluates the 'insert_response' attribute for success or failure.
-	  - Succesful insertions are output via the PASSED port and sent to the INSERT_PASSED transformer output port.
+	  - Successful insertions are output via the PASSED port and sent to the INSERT_PASSED transformer output port.
 	  - Failed insertions are output via the FAILED port and sent to the INSERT_FAILED transformer output port.
   - 'Update': Sends 'text_line_data' attribute for each updated data set to PyCSW_POST transformer.
     - PyCSW_POST transformer uses Python script to insert each updated data record to the Catalog Service for the Web.  Each update attempt receives a response as to the success or failure of the post in the form of 'insert_response' attribute.
 	- 'insert_response' attribute is exposed.
 	- Tester transformer evaluates the 'insert_response' attribute for success or failure.
-	  - Succesful updates are output via the PASSED port and sent to the UPDATE_PASSED transformer output port.
+	  - Successful updates are output via the PASSED port and sent to the UPDATE_PASSED transformer output port.
 	  - Failed updates are output via the FAILED port and sent to the UPDATE_FAILED transformer output port.
 	
 #### NOTIFY_CREATE
@@ -796,12 +796,12 @@ This section performs the following tasks:
 - Gets count of inserted records that successfully loaded or failed to load to the PyCSW.
 - Creates a message string with the overall results of the data translation.
 
-##### Notification Compliler and eMailer
+##### Notification Compiler and eMailer
 
 This section performs the following tasks:
 - Gets the current data and time.
-- Concatenates insert records or no records to insert notifcation strings, update records or no records to update notification strings, plus date and time into one message string
-- Emails the message string to an adminstrator.
+- Concatenates insert records or no records to insert notification strings, update records or no records to update notification strings, plus date and time into one message string
+- Emails the message string to an administrator.
 
 #### NOTIFY_UPDATE
 
@@ -826,12 +826,12 @@ This section performs the following tasks:
 - Gets count of records that were deleted from the PyCSW
 - Creates a message string with the overall results of the data deletion.
 
-##### Notification Compliler and eMailer
+##### Notification Compiler and eMailer
 
 This section performs the following tasks:
 - Gets the current data and time.
-- Concatenates insert records or no records to insert notifcation strings, update records or no records to update notification strings, number of obsolete records deleted, plus date and time into one message string.
-- Emails the message string to an adminstrator.
+- Concatenates insert records or no records to insert notification strings, update records or no records to update notification strings, number of obsolete records deleted, plus date and time into one message string.
+- Emails the message string to an administrator.
 
 ### Provincial/Territorial Specific Transformers
 
