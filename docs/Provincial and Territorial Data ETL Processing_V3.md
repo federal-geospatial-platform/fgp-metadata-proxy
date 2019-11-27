@@ -106,7 +106,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
     - [Provincial/Territorial Specific Transformers](#provincial/territorial-specific-transformers)
 	  - [Alberta](#alberta-1)
 	    - [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate-1)
-        - [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2
+        - [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2)
         - [AB_TRANSLATION_CORRECTION](#ab_translation_correction-2)
 		- [AB_UPDATE_PRETRANSLATE](#ab_update_pretranslate-1)
 		- [AB_WMS_FORMATTER](#ab_wms_formatter-2)
