@@ -427,7 +427,7 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 
 Creates lists and removes duplicates for distribution formats, projections, update cycles and more_info.
 
-##### [MORE_INFO_MANAGER}(#more_info_manager-4)
+##### [MORE_INFO_MANAGER](#more_info_manager-4)
 
 Tests the more_info{}.link list for valid attribute values and filters them out where missing.
 
@@ -508,7 +508,7 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 
 Creates lists and removes duplicates for distribution formats, projections, update cycles and more_info.
 
-##### [MORE_INFO_MANAGER}(#more_info_manager-4)
+##### [MORE_INFO_MANAGER](#more_info_manager-4)
 
 Tests the more_info{}.link list for valid attribute values and filters them out where missing.
 
