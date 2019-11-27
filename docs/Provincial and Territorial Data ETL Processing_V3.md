@@ -100,7 +100,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
       - [NOTIFY_UPDATE](#notify_update-2)	
       - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
 	  - [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4)
-	  - [TOPIC_PARSER](#topic_parser-4)
+	  - [TOPIC_PARSER](#topic_parser-2)
 	  - [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-4)
 	  - [XML_PUBLISHER](#xml_publisher-4)
     - [Provincial/Territorial Specific Transformers](#provincial/territorial-specific-transformers)
