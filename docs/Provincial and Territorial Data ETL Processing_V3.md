@@ -70,9 +70,20 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
   - [Custom Transformers Detail](#custom-transformers-detail)
     - [Universal Transformers](#universal-transformers)
 	  - [AWS_TRANSLATE](#aws_translate-4)
+	  - [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
+	  - [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-4)
+	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
+	  - [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
+	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
+	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
+	  - [MORE_INFO_MANAGER](#more_info_manager-4)
       - [NOTIFY_CREATE](#notify_create-2)
       - [NOTIFY_UPDATE](#notify_update-2)	
-      - [POSTTRANSLATE_3](#posttranslate_3-4)	
+      - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
+	  - [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4]
+	  - [TOPIC_PARSER](topic_parser-4)
+	  - [WMS_REST_LANGUAGE_FORMATTER](wms_rest_language_formatter-4)
+	  - [XML_PUBLISHER](xml_publisher-4)
     - [Provincial/Territorial Specific Transformers](#provincial/territorial-specific-transformers)
 	  - [Alberta](#alberta-1)
 	    - [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate-1)
@@ -512,43 +523,56 @@ This custom transformer merges an Excel file containing default attribute values
 - Each default_key attribute is turned into an individual attribute.
 - Default attributes are then merged with each dataset.
 
-#### TEMPORAL_EXTENTS_MAPPER
+#### DUPLICATE_SERVICE_REMOVER		
+	
+Manages duplicate WMS or ESRI REST resources where they exist, that would prevent validation of the dataset when loaded to the FGP.  Duplicate services are given the resources{}.format value of 'other'.  The results are achieved through the following tasks:
 
-The temporal extents and date format refiner tests and inserts required values where missing, and formats date by performing the following tasks:
+- Create histogram{} list from resources{}.protocol list to extract attribute value counts from each data set.  
+- Searches histogram{}.value list for OGC:WMS
+- Searches histogram{}.value list for ESRI REST: Map Service
+- ListIndexer obtains number of OGC:WMS services
+- List indexer obtains number of ESRI REST services
+- Tests for OGC:WMS or ESRI REST services in excess of two.
+- The data stream is split into two.
+  - Data stream 1 contains OGC:WMS or ESRI REST services.
+    - Data stream 1 generates unique id '_uuid' for later FeatureMerger
+	- Data stream 1 is split into two.
+	  - Data stream 1a retains only the resources{} list and _uuid attribute.
+	    - resources{} list is exploded to its individual attributes.
+	    - xlink_role attribute is tested for a value.
+	    - xlink_role attributes with values have a DuplicateFilter applied with consideration to _uuid, protocol and xlink_role attribute duplicates.
+		  - The first value found is output via the unique port to the ListBuilder transformer.
+		  - Any duplicates found are output the duplicate port and have their format attribute updated to 'other' and are sent to the ListBuilder transformer.
+	    - xlink_role attributes without a value are sent to directly to the ListBuilder transformer.  
+        - Data stream 1a is sent to the Supplier port of the FeatureMerger transformer.
+	  - Data stream 1b retains all attributes except resources{} list attribute.
+	    - Date stream 1b is sent to the Requestor port of the FeatureMerger transformer.
+	- Data streams 1a and 1b are rejoined in the FeatureMerger on the _uuid attribute.
+	- Out of scope attributes are removed from data stream 1.
+	- Data stream 1 is sent to the transformer output.
+  - Data stream 2 does not contain OGC:WMS nor ESRI REST Services.
+    - Data stream 2 is sent directly to the transformer output.
 
-- Extracts the resources{}.data_collection_start_date list attribute.
-- Sorts the resources{}.data_collection_start_date list attributes in ascending order to find the earliest date.
-- If no start date exists in the data set, a data_collection_start_date attribute is created with the default value 0001-01-01.
-- Keeps the earliest start date if available and removes all other dates using a list indexer and bulk attribute remover.
-- Creates a single non-list data_collection_start_date attribute to represent the dataset.
-- Sorts the resources{}.data_collection_end_date list attributes in descending order to find the latest date.
-- If no end date exists in the data set, a data_collection_end_date attribute is created with no value (this field can be empty).
-- Keeps the latest end date if available and removes all other dates using a list indexer and bulk attribute remover.
-- Creates a single non-list data_collection_end_date attribute to represent the dataset.
-- Converts dates to ISO yyyy-mm-dd format.
+#### GMD_SECTION_DATA_EXTRACTION
 
-#### TOPIC_PARSER
+Creates lists of data items and removes duplicates for the GMD templates by performing the following tasks: 
 
-Parses topics into individual attributes when multiple topics appear as comma separated values and adds a default value where missing, by performing the following tasks:
+- Copies resources{}.format list to new list distributionList{}.format.
+- Removes duplicates from distributionList{}.format for inclusion in the GMD_DISTRIBUTIONFORMAT sub-template.
+- Copies resources{}.projection_name to new list projectionList{}.projection_name.
+- Removes duplicates from projectionList{}.projection_name for inclusion in the GMD_REFERENCESYSTEMINFO sub-template.
+- Copies resources{}.resource_update_cycle to new list updateList{}.resource_update_cycle.
+- Removes duplicates from updateList{}.resource_update_cycle for inclusion in the GMD_RESOURCEMAINTENANCE sub-template.
+- Removes duplicates from more_info{}.link list for inclusion in the GMD_ONLINERESOURCE sub-template.
 
-- Sets delimiter type (ie: comma) for delimiter separated values.
-- Tests all iso_topic_string attributes for valid topic values.
-- Creates iso_topic_string with default value of 'geoscientificInformation' where missing.
-- Python script parses delimiter (ie: comma) separated iso_topic attributes (ie: iso_topic_string = economy,society,geoscientificInformation) into individual list attributes (ie: iso_topic{0}.topic_string = economy, iso_topic{1}.topic_string = society, iso_topic{2}.topic_string = geoscientificInformation) and converts non comma separated attributes (ie: iso_topic_string = geoscientificInformation) to individual list attributes (ie: iso_topic{0}.topic_string = geoscientificInformation).
+#### MAPPING_ERROR_LIST_CREATOR
 
-#### METADATA_VALUE_MAPPER
+Creates an FFS file of data item values that cannot be mapped to a valid value due to the value missing from the look-up table of known data entry errors.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are achieved by performing the following tasks:
 
-Corrects values to valid English values and adds the valid French equivalents and RI_CODES where applicable.  It can be utilized for multiple metadata items by accessing custom look up tables specific to the data item by performing the following tasks:
-
-- When loaded to the workspace, the user can select the following data conversion functions to be on or off by selecting yes/no options in the following published parameters:
-  - ERROR_NOT_MAPPED: enables mapping of data item values that cannot be found in the lookup tables.
-  - ENGLISH_REFRESH: enables updating of English attribute values.
-  - FRENCH_REFRESH: enables updating of French attribute values.
-  - CODE_REFRESH: enables updating of RI_CODE values.
-- Tests for 'original_value' attribute in look-up tables and terminates translation if missing.
-- Tests for ENGLISH_REFRESH, FRENCH_REFRESH and CODE_REFRESH options.
-- Sets look-up table attributes as priority over incoming dataset attributes.
-- Assigns look-up table attributes to list attributes via python scripting.
+- Counts the number of mapping errors found following processing of METADATA_VALUE _MAPPER or METADATA_FORMAT_MAPPER.
+- Tests for error count > 0.
+- Removes all attributes except mapping_errors{}.error.
+- Explodes mapping_errors{} list to write individual attributes to FFS file.
 
 #### METADATA_FORMAT_MAPPER
 
@@ -564,26 +588,19 @@ Corrects data format values of to valid data format values and to add associated
 - Sets look-up table attributes as priority over incoming dataset attributes.
 - Assigns look-up table attributes to list attributes via python scripting.
 
-#### MAPPING_ERROR_LIST_CREATOR
+#### METADATA_VALUE_MAPPER
 
-Creates an FFS file of data item values that cannot be mapped to a valid value due to the value missing from the look-up table of known data entry errors.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are achieved by performing the following tasks:
+Corrects values to valid English values and adds the valid French equivalents and RI_CODES where applicable.  It can be utilized for multiple metadata items by accessing custom look up tables specific to the data item by performing the following tasks:
 
-- Counts the number of mapping errors found following processing of METADATA_VALUE _MAPPER or METADATA_FORMAT_MAPPER.
-- Tests for error count > 0.
-- Removes all attributes except mapping_errors{}.error.
-- Explodes mapping_errors{} list to write individual attributes to FFS file.
-
-#### GMD_SECTION_DATA_EXTRACTION
-
-Creates lists of data items and removes duplicates for the GMD templates by performing the following tasks: 
-
-- Copies resources{}.format list to new list distributionList{}.format.
-- Removes duplicates from distributionList{}.format for inclusion in the GMD_DISTRIBUTIONFORMAT sub-template.
-- Copies resources{}.projection_name to new list projectionList{}.projection_name.
-- Removes duplicates from projectionList{}.projection_name for inclusion in the GMD_REFERENCESYSTEMINFO sub-template.
-- Copies resources{}.resource_update_cycle to new list updateList{}.resource_update_cycle.
-- Removes duplicates from updateList{}.resource_update_cycle for inclusion in the GMD_RESOURCEMAINTENANCE sub-template.
-- Removes duplicates from more_info{}.link list for inclusion in the GMD_ONLINERESOURCE sub-template.
+- When loaded to the workspace, the user can select the following data conversion functions to be on or off by selecting yes/no options in the following published parameters:
+  - ERROR_NOT_MAPPED: enables mapping of data item values that cannot be found in the lookup tables.
+  - ENGLISH_REFRESH: enables updating of English attribute values.
+  - FRENCH_REFRESH: enables updating of French attribute values.
+  - CODE_REFRESH: enables updating of RI_CODE values.
+- Tests for 'original_value' attribute in look-up tables and terminates translation if missing.
+- Tests for ENGLISH_REFRESH, FRENCH_REFRESH and CODE_REFRESH options.
+- Sets look-up table attributes as priority over incoming dataset attributes.
+- Assigns look-up table attributes to list attributes via python scripting.
 
 #### MORE_INFO_MANAGER
 
@@ -600,6 +617,53 @@ This transformer tests the more_info{}.link list for valid attribute values and 
     - Stream 2 is sent to the 'Requestor' port of the FeatureMerger transformer.
 - Feature Merger transformer merges stream 1 and 2 using the _uuid as the join attribute, then recreates the more_info{} list adding the link and protocol attributes.
 - Out of scope attributes are removed.
+
+#### NOTIFY_CREATE
+
+This transformer is designed to function in all CREATE workspaces and creates an email message of ETL results for system administrators.
+
+##### Insert Records Notification
+
+This section performs the following tasks:
+- Gets count of inserted records that successfully loaded or failed to load to the PyCSW.
+- Creates a message string with the overall results of the data translation.
+
+#### NOTIFY_UPDATE
+
+This transformer is designed to function in all UPDATE workspaces and creates an email message of ETL results for system administrators.
+
+##### Insert Records Notification
+
+This section performs the following tasks:
+- Gets count of inserted records that successfully loaded or failed to load to the PyCSW.
+- Creates a message string with the overall results of the data translation.
+
+##### Update Records Notification
+
+This section performs the following tasks:
+- Gets count of updated records that successfully loaded or failed to load to the PyCSW.
+- Creates a message string with the overall results of the data translation.
+
+##### Records Deleted Notification
+
+This section performs the following tasks:
+
+- Gets count of records that were deleted from the PyCSW
+- Creates a message string with the overall results of the data deletion.
+
+##### Notification Compiler and eMailer
+
+This section performs the following tasks:
+- Gets the current data and time.
+- Concatenates insert records or no records to insert notification strings, update records or no records to update notification strings, number of obsolete records deleted, plus date and time into one message string.
+- Emails the message string to an administrator.
+
+##### Notification Compiler and eMailer
+
+This section performs the following tasks:
+- Gets the current data and time.
+- Concatenates insert records or no records to insert notification strings, update records or no records to update notification strings, plus date and time into one message string
+- Emails the message string to an administrator.
 
 #### REMOVE_BROKEN_URL_WMS_ESRI_REST
 
@@ -623,6 +687,30 @@ This transformer tests all WMS and ESRI REST url's for connectivity and removes 
 - Streams 1 & 2 are joined on the _uuid attribute.
 - Out of scope attributes are removed.
 - Datasets are tested to ensure at least one URL remains after testing or they are filtered out.
+
+#### TEMPORAL_EXTENTS_MAPPER
+
+The temporal extents and date format refiner tests and inserts required values where missing, and formats date by performing the following tasks:
+
+- Extracts the resources{}.data_collection_start_date list attribute.
+- Sorts the resources{}.data_collection_start_date list attributes in ascending order to find the earliest date.
+- If no start date exists in the data set, a data_collection_start_date attribute is created with the default value 0001-01-01.
+- Keeps the earliest start date if available and removes all other dates using a list indexer and bulk attribute remover.
+- Creates a single non-list data_collection_start_date attribute to represent the dataset.
+- Sorts the resources{}.data_collection_end_date list attributes in descending order to find the latest date.
+- If no end date exists in the data set, a data_collection_end_date attribute is created with no value (this field can be empty).
+- Keeps the latest end date if available and removes all other dates using a list indexer and bulk attribute remover.
+- Creates a single non-list data_collection_end_date attribute to represent the dataset.
+- Converts dates to ISO yyyy-mm-dd format.
+
+#### TOPIC_PARSER
+
+Parses topics into individual attributes when multiple topics appear as comma separated values and adds a default value where missing, by performing the following tasks:
+
+- Sets delimiter type (ie: comma) for delimiter separated values.
+- Tests all iso_topic_string attributes for valid topic values.
+- Creates iso_topic_string with default value of 'geoscientificInformation' where missing.
+- Python script parses delimiter (ie: comma) separated iso_topic attributes (ie: iso_topic_string = economy,society,geoscientificInformation) into individual list attributes (ie: iso_topic{0}.topic_string = economy, iso_topic{1}.topic_string = society, iso_topic{2}.topic_string = geoscientificInformation) and converts non comma separated attributes (ie: iso_topic_string = geoscientificInformation) to individual list attributes (ie: iso_topic{0}.topic_string = geoscientificInformation).
 
 #### WMS_REST_LANGUAGE_FORMATTER
 
@@ -681,37 +769,7 @@ This transformer creates default values in the resources{} list required for the
 - Out of scope attributes are removed.
 - New attributes created in this transformer are exposed.
 - ListSorter sorts resources{} list alphabetically by resources{}.format items.
-		
-#### DUPLICATE_SERVICE_REMOVER		
-	
-Manages duplicate WMS or ESRI REST resources where they exist, that would prevent validation of the dataset when loaded to the FGP.  Duplicate services are given the resources{}.format value of 'other'.  The results are achieved through the following tasks:
 
-- Create histogram{} list from resources{}.protocol list to extract attribute value counts from each data set.  
-- Searches histogram{}.value list for OGC:WMS
-- Searches histogram{}.value list for ESRI REST: Map Service
-- ListIndexer obtains number of OGC:WMS services
-- List indexer obtains number of ESRI REST services
-- Tests for OGC:WMS or ESRI REST services in excess of two.
-- The data stream is split into two.
-  - Data stream 1 contains OGC:WMS or ESRI REST services.
-    - Data stream 1 generates unique id '_uuid' for later FeatureMerger
-	- Data stream 1 is split into two.
-	  - Data stream 1a retains only the resources{} list and _uuid attribute.
-	    - resources{} list is exploded to its individual attributes.
-	    - xlink_role attribute is tested for a value.
-	    - xlink_role attributes with values have a DuplicateFilter applied with consideration to _uuid, protocol and xlink_role attribute duplicates.
-		  - The first value found is output via the unique port to the ListBuilder transformer.
-		  - Any duplicates found are output the duplicate port and have their format attribute updated to 'other' and are sent to the ListBuilder transformer.
-	    - xlink_role attributes without a value are sent to directly to the ListBuilder transformer.  
-        - Data stream 1a is sent to the Supplier port of the FeatureMerger transformer.
-	  - Data stream 1b retains all attributes except resources{} list attribute.
-	    - Date stream 1b is sent to the Requestor port of the FeatureMerger transformer.
-	- Data streams 1a and 1b are rejoined in the FeatureMerger on the _uuid attribute.
-	- Out of scope attributes are removed from data stream 1.
-	- Data stream 1 is sent to the transformer output.
-  - Data stream 2 does not contain OGC:WMS nor ESRI REST Services.
-    - Data stream 2 is sent directly to the transformer output.
-	
 #### XML_PUBLISHER
 
 Extracts and maps attributes to values required by the XML root template or sub-templates, compiles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.  
@@ -786,53 +844,6 @@ The attribute config file is processed through the following tasks:
 	  - Successful updates are output via the PASSED port and sent to the UPDATE_PASSED transformer output port.
 	  - Failed updates are output via the FAILED port and sent to the UPDATE_FAILED transformer output port.
 	
-#### NOTIFY_CREATE
-
-This transformer is designed to function in all CREATE workspaces and creates an email message of ETL results for system administrators.
-
-##### Insert Records Notification
-
-This section performs the following tasks:
-- Gets count of inserted records that successfully loaded or failed to load to the PyCSW.
-- Creates a message string with the overall results of the data translation.
-
-##### Notification Compiler and eMailer
-
-This section performs the following tasks:
-- Gets the current data and time.
-- Concatenates insert records or no records to insert notification strings, update records or no records to update notification strings, plus date and time into one message string
-- Emails the message string to an administrator.
-
-#### NOTIFY_UPDATE
-
-This transformer is designed to function in all UPDATE workspaces and creates an email message of ETL results for system administrators.
-
-##### Insert Records Notification
-
-This section performs the following tasks:
-- Gets count of inserted records that successfully loaded or failed to load to the PyCSW.
-- Creates a message string with the overall results of the data translation.
-
-##### Update Records Notification
-
-This section performs the following tasks:
-- Gets count of updated records that successfully loaded or failed to load to the PyCSW.
-- Creates a message string with the overall results of the data translation.
-
-##### Records Deleted Notification
-
-This section performs the following tasks:
-
-- Gets count of records that were deleted from the PyCSW
-- Creates a message string with the overall results of the data deletion.
-
-##### Notification Compiler and eMailer
-
-This section performs the following tasks:
-- Gets the current data and time.
-- Concatenates insert records or no records to insert notification strings, update records or no records to update notification strings, number of obsolete records deleted, plus date and time into one message string.
-- Emails the message string to an administrator.
-
 ### Provincial/Territorial Specific Transformers
 
 #### Alberta
