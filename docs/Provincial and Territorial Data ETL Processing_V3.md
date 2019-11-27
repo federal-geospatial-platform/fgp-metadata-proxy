@@ -14,22 +14,41 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
     - [Overview](#overview-1)
     - [AB_CREATE Workspace Detail](#ab_create-workspace-detail)
 	  - [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate)
+	  - [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper)
+      - [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper)
+	  - [AB_WMS_FORMATTER](#ab_wms_formatter)
 	  - [AWS_TRANSLATE](#aws_translate)
-	  - [AB_POSTTRANSLATE_1](#ab_posttranslate_1)
-	  - [AB_POSTTRANSLATE_2](#ab_posttranslate_2)
-	  - [POSTTRANSLATE_3](#posttranslate_3)
-	  - [AB_POSTTRANSLATE_4](#ab_posttranslate_4)
-	  - [CSW_INSERT](#csw_insert)
+	  - [AB_TRANSLATION_CORRECTION](#ab_translation_correction)
+      - [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper)
+	  - [AB_RESOURCE_LIST_MANAGER](#ab_resource_list_manager)
+	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper)
+	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper)
+      - [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator)
+	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction)
+	  - [MORE_INFO_MAPPER](#more_info_mapper)
+	  - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest)
+      - [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter)
+      - [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover)
+      - [XML_PUBLISHER](#xml_publisher)
 	  - [NOTIFY_CREATE](#notify_create)
 	- [AB_UPDATE Workspace Detail](#ab_update-workspace-detail)
-	  -[AB_UPDATE_PRETRANSLATE](#ab_update_pretranslate)
+	  - [AB_UPDATE_PRETRANSLATE](#ab_update_pretranslate)
+	  - [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-1)
+      - [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-1)
+	  - [AB_WMS_FORMATTER](#ab_wms_formatter-1)
 	  - [AWS_TRANSLATE](#aws_translate-1)
-	  - [AB_POSTTRANSLATE_1](#ab_posttranslate_1-1)
-	  - [AB_POSTTRANSLATE_2](#ab_posttranslate_2-1)
-	  - [POSTTRANSLATE_3](#posttranslate_3-1)
-	  - [AB_POSTTRANSLATE_4](#ab_posttranslate_4-1)
-	  - [CSW_INSERT](#csw_insert-1)
-	  - [CSW_UPDATE](#csw_update)
+	  - [AB_TRANSLATION_CORRECTION](#ab_translation_correction-1)
+      - [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-1)
+	  - [AB_RESOURCE_LIST_MANAGER](#ab_resource_list_manager-1)
+	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper-1)
+	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper-1)
+      - [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-1)
+	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-1)
+	  - [MORE_INFO_MAPPER](#more_info_mapper-1)
+	  - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-1)
+      - [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-1)
+      - [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-1)
+      - [XML_PUBLISHER](#xml_publisher-1)
 	  - [NOTIFY_UPDATE](#notify_update)
   - [British Columbia](#british-columbia)
     - [Overview](#overview-2) 
@@ -87,16 +106,16 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
     - [Provincial/Territorial Specific Transformers](#provincial/territorial-specific-transformers)
 	  - [Alberta](#alberta-1)
 	    - [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate-1)
-		- [AB_POSTTRANSLATE_1](#ab_posttranslate_1-2)
-		- [AB_POSTTRANSLATE_2](#ab_posttranslate_2-2)
-		- [AB_POSTTRANSLATE_4](#ab_posttranslate_4-2)
+        - [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2
+        - [AB_TRANSLATION_CORRECTION](#ab_translation_correction-2)
 		- [AB_UPDATE_PRETRANSLATE](#ab_update_pretranslate-1)
+		- [AB_WMS_FORMATTER](#ab_wms_formatter-2)
 	  - [British Columbia](#british-columbia-1)
 	    - [BC_CREATE_PRETRANSLATE](#bc_create_pretranslate-1)
-		- [BC_POSTTRANSLATE_1](#bc_posttranslate_1-2)
-		- [BC_POSTTRANSLATE_2](#bc_posttranslate_2-2)
-		- [BC_POSTTRANSLATE_4](#bc_posttranslate_4-2)
-		- [BC_UPDATE_PRETRANSLATE](#bc_update_pretranslate-1)	  
+        - [BC_GEOWAREHOUSE_URL_BUILDER](#bc_geowarehouse_url_builder-2)
+        - [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction-2)
+		- [BC_UPDATE_PRETRANSLATE](#bc_update_pretranslate-1)
+        - [BC_WMS_FORMATTER](#bc_wms_formatter-2)		
   - [Manitoba](#manitoba)
   - [New Brunswick](#new-brunswick)
   - [Newfoundland and Labrador](#newfoundland-and-labrador)
@@ -247,29 +266,39 @@ The AB_CREATE workspace utilizes the following sequence of custom transformers. 
 
 Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
 
+##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
+
+##### [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2)
+
+##### [AB_WMS_FORMATTER](#ab_wms_formatter-2)
+
 ##### [AWS_TRANSLATE](#aws_translate-4)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
-##### [AB_POSTTRANSLATE_1](#ab_posttranslate_1-2)
+##### [AB_TRANSLATION_CORRECTION](#ab_translation_correction-2)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4)
 
-##### [AB_POSTTRANSLATE_2](#ab_posttranslate_2-2)
+##### [AB_RESOURCE_LIST_MANAGER](#ab_resource_list_manager-2)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
-##### [POSTTRANSLATE_3](#posttranslate_3-4)
+##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
-##### [AB_POSTTRANSLATE_4](#ab_posttranslate_4-2)
+##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [MORE_INFO_MAPPER](#more_info_mapper-4)
 
-##### [CSW_INSERT](#csw_insert-4)
+##### [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
 
-Selects appropriate XML insert template and posts XML to the CSW.
+##### [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-4)
+
+##### [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-4)
+
+##### [XML_PUBLISHER](#xml_publisher-4)
 
 ##### [NOTIFY_CREATE](#notify_create-2)
 
@@ -283,33 +312,39 @@ The AB_UPDATE workspace utilizes the following sequence of custom transformers. 
 
 Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data and date.  Tests for revised data and new data records.  Reads unique ID's from the existing CSW dataset and tests against Alberta API's for obsolete data.  Deletes records from CSW that are no longer found in Alberta open data.  
 
+##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
+
+##### [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2)
+
+##### [AB_WMS_FORMATTER](#ab_wms_formatter-2)
+
 ##### [AWS_TRANSLATE](#aws_translate-4)
 
 Sends extracted English text attributes, that require French equivalents, to Amazon Web Service Translate, returns French translation and creates new attributes from the translation. 
 
-##### [AB_POSTTRANSLATE_1](#ab_posttranslate_1-2)
+##### [AB_TRANSLATION_CORRECTION](#ab_translation_correction-2)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4)
 
-##### [AB_POSTTRANSLATE_2](#ab_posttranslate_2-2)
+##### [AB_RESOURCE_LIST_MANAGER](#ab_resource_list_manager-2)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
-##### [POSTTRANSLATE_3](#posttranslate_3-4)
+##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
-##### [AB_POSTTRANSLATE_4](#ab_posttranslate_4-2)
+##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
-Performs post translation transformations to ensure conformity to ISO 19115 HNAP requirements.
+##### [MORE_INFO_MAPPER](#more_info_mapper-4)
 
-##### [CSW_INSERT](#csw_insert-4)
+##### [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
 
-Selects appropriate XML insert template for all new datasets and posts XML to the CSW.
+##### [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-4)
 
-##### [CSW_UPDATE](#csw_update-2)
+##### [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-4)
 
-Selects appropriate XML update template for all updated datasets and posts XML to the CSW.
+##### [XML_PUBLISHER](#xml_publisher-4)
 
 ##### [NOTIFY_UPDATE](#notify_update-2)
 
@@ -351,7 +386,7 @@ Builds URL for BC Geowarehouse download links that are not readily available in 
 
 Builds URL for WMS links that are not readily available in the required French/English formats in the BC API but can be concatenated from other existing data.
 
-##### [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction-1)
+##### [BC_RESOURCE_NAME_CORRECTION](#bc_resource_name_correction-2)
 
 Substitutes resource name with dataset title when resource name is missing.
 
@@ -385,6 +420,8 @@ There are multiple instances of the METADATA_VALUE_MAPPER in the workspace to co
 ##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
 
 The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
+
+##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -464,6 +501,8 @@ There are multiple instances of the METADATA_VALUE_MAPPER in the workspace to co
 ##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
 
 The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
+
+##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -963,136 +1002,9 @@ This section performs the following tasks:
 - Removes out of scope attributes.
 - Output is directed to the AWS_TRANSLATE transformer.
 
-##### AB_POSTTRANSLATE_1
+##### AB_MISSING_ATTRIBUTE_MAPPER
 
-This custom transformer is the first stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_CREATE' and 'AB_UPDATE' workspaces.  Input is received from the AWS_TRANSLATE transformer.
-
-This transformer performs the following tasks:
-
-###### Temporal Extents Refiner
-
-Tests and inserts required values where missing, and formats date.
-
-###### Role Refiner
-
-This section tests that extracted role names are conforming to HNAP role code requirements.  Nonconforming or missing role names are set to pointOfContact as default.  All role names have their corresponding French role names with their appropriate role code (IE: RI_414) applied to the dataset.  
-
-###### Second Contact Test
-
-This section tests for a second contact as required by the XML template.  If the second contact is missing, it is replaced with the first contact.
-
-###### Update Cycle Refiner
-
-This section tests that Maintenance Frequency values conform to HNAP requirements, and where nonconforming or missing, revises them to default 'asNeeded'.  The corresponding RI_Code is then applied.
-
-###### Spatial Representation Type Refiner
-
-This section tests that Spatial Representation Type values conform to HNAP requirements, and where nonconforming or missing, revises them to default 'vector'.  The corresponding RI_Code and French language translation is then applied.
-
-###### Progress Code Refiner
-
-This section tests that Progress code values conform to HNAP requirements, and where nonconforming or missing, revise them to default 'onGoing'.  The corresponding RI_Code and French language translation is then applied.  
-
-The transformer outputs to AB_POSTTRANSLATE_2 transformer.
-
-##### AB_POSTTRANSLATE_2
-
-This custom transformer is the second stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_CREATE' and 'AB_UPDATE' workspaces.
-
-This transformer performs the following functions:
-
-###### File Format Refiner
-
-There are up to six transfer options (data links) available in Alberta datasets.  The file format of each transfer option has a specific validation requirement in the FGP.  Data analysis of all Alberta data has identified all the potential incorrect variations of required file format names (i.e.: 'uri' should be 'HTML', 'REST' should be 'ESRI REST').  There are a number of data formats that are not a variation of any valid data type.  This section tests for these valid formats found in Alberta datasets and renames them to the valid option 'other' accordingly.
-
-List of validated file formats can be found here:
-
--   [Validated File Formats](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/VALIDATED_FILE_FORMATS.xlsx)
-
-###### ZIP Link Creator
-
-This section creates a zip file download link where conditions where the third URL has no value and the first URL is not an ESRI REST link
-
-The transfomer outputs to POSTTRANSLATE_3 transfomer.
-
-##### AB_POSTTRANSLATE_4
-
-This custom transformer is the fourth stage following the AWS Translate custom transformer.  It enhances Alberta datasets post translation to ensure conformity to ISO 19115 HNAP standards.  It can run in both the 'AB_CREATE' and 'AB_UPDATE' workspaces.
-
-This transformer performs the following functions:
-
-###### Keyword Attributor
-
-Alberta datasets have a maximum of nine keyword values, and XML templates are formatted to accommodate nine keyword values.  Not all datasets utilize nine keyword values and the 
-FGP harvester will reject the XML file if any of the keyword values are NULL.  This section tests each keyword attribute, English and French, for NULL values, and substitutes a 
-generic value accordingly.   
-
-  **English Generic Keyword Values:**
-
-  - Geomatics
-  - Open Data
-  - Open Government
-  - AB Data
-  - Open Source
-  - Public Data
-  - Government Data
-  - Alberta Data
-  - Government of Alberta
-
-  **French Generic Keyword Values:**
-
-  - Géomatique
-  - Données ouvertes
-  - Gouvernement ouvert
-  - Données AB
-  - Source ourverte
-  - Données publiques
-  - Données gouvernementales
-  - Données de l'Alberta
-  - Gouvernement de l'Alberta
-  
-###### SSL Protocol Test - Online Resource
-
-This section tests the SSL protocol on the 'more_info.link_0' URL in CI_OnlineResource that are not contained in transferOptions and assigns 'HTTPS' or 'HTTP' to the protocol value.
-
-###### SSL Protocol Test - Transfer Options
-
-This section tests the SSL protocol in all 'resource_url' attributes (there are up to six in Alberta datasets) in CI_OnlineResource that are contained in transferOptions and assigns 
-'HTTPS' or 'HTTP' to the protocol value.
-
-###### ESRI REST Formatter
-
-Most datasets from Alberta have an HTML link as the first resource_url.  There are a small number that have ESRI REST as the first resource_url.  This tests for the ESRI REST as the first resource_url.
-
-For ESRI REST formatted URL's, this transformer creates the  second url and associated attributes required by the FGP for ESRI REST distribution formats.
-
-Features not processed in this section are directed to the WMS Formatter.  Processed features bypass the WMS Formatter and are directed to the Distribution Formatter.
-
-###### WMS Formatter
-
-This section tests resource_format attributes (there are up to six in Alberta datasets) in transferOptions for 'WMS' value, that require an additional French WMS format for each 
-English format as a transferOption to facilitate links to the web mapping service.  This section will insert a French WMS formatted transferOption immediately following the English 
-WMS transferOption, and move subsequent transferOptions down the sequence accordingly by reassiging the attribute index numbers.  
-
-This section assigns all WMS requirements to each English and French transferOption: 
-
-- xlink:role 
-- protocol
-- locale
-- language
-- name
-- URL
-- format 
-
-###### Distribution Version Formatter
-
-This section creates distribution format versions for all WMS formats as this is the default for Alberta WMS.  Other distribution format versions are not provided.  Data from the WMS Formatter and the ESRI REST Formatter converge here.
-
-###### INSERT/UPDATE Test
-
-This section tests if the POST method has been determined to be 'INSERT' or 'UPDATE'
-
-Transformer output is then directed to the CSW_INSERT transformer for all INSERT workspaces, and for all UPDATE workspaces, directed to either the CSW_INSERT or CSW_UPDATE transformers.
+##### AB_TRANSLATION_CORRECTION
 
 ##### AB_UPDATE_PRETRANSLATE
 
@@ -1249,6 +1161,8 @@ This section performs the following tasks:
 - Removes out of scope attributes.
 - Output is directed to the AWS_TRANSLATE transformer.
 
+##### AB_WMS_FORMATTER
+
 #### British Columbia
 
 ##### BC_CREATE_PRETRANSLATE
@@ -1257,53 +1171,57 @@ This transformer is designed to function exclusively in the BC_CREATE workspace.
 
 ###### Query Loop Creation
 
-This section uses FME transformers to create a repetitive query loop for the BC Data API as the API will only return 1000 records per query, less than that of the BC database.  It is set at default to perform 10 query loops.  
-These loop attributes are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
+This section uses FME transformers to create a repetitive query loop for the BC Data API as the API will only return 1000 records per query, less than that of the BC database.   The results are achieved through the following tasks:
 
-- https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
-
-- **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as a published parameter in FME
-  
-The current default settings will return a total of 10000 records, and, at the time of writing, there are less than 3000 open data records in BC open data.
+- AttributeCreator sets the number of loops required to query BC Data.  Default setting is 10 and is accessed in published parameter LOOP_ITERATIONS.
+- CLONER repeats the number of loops required to query BC Data until the default setting in LOOP_ITERATIONS published parameter is reached.
+- StringConcatenator concatenates each query string sent to the BC Data API.  The number of loop attributes set in the CLONER are concatenated to a query string that updates to a new query starting point ('start_feature' variable) following the completion of each loop:
+  - https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=@Value(**start_feature**)&rows=$(QUERY_ITERATIONS)   
+  - **NOTE:** 'QUERY_ITERATIONS' variable in concatenated value is the number of query loops and is stored as a published parameter in FME.
+The current default settings will return a total of 10000 records, and, as of November 2019, there are less than 3000 open data records in BC open data.
 
 ###### Data Query
 
-This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query.
+This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  The results are achieved through the following tasks:
 
-In the event of a connection failure to the API, the process is terminated and an email is generated and sent to the system admin.
+- HTTPCaller sends the query string to BC Data API and returns response as a JSON string.
+  - In the event of a connection failure to the BC Data API, an email is sent to the administrator and the program is terminated.
+- JSON_FRAGMENTER extracts attributes and values from the JSON string.
 
 ###### Attribute Management
 
 This section performs the following functions:
 
 - Exposes specific attributes returned from the JSON query.  See [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key.xlsx) file for details.
+- Filters out records that are not geographic.
 - Filters out records that are not Open Government License - British Columbia.
-- Filters out data records that are password access only.
-- Adds additional required attributes not available in extracted data
-- Renames attributes that have index array to attribute name format that can be read by the XML templater.
-- Formats all date fields to ISO yyyy-mm-dd
+- ISO_DATE_FORMATTER formats all date fields to ISO yyyy-mm-dd.
 - Filters out duplicate datasets that BC has already republished from NRCan.
 
 ###### Date/Time Testing
 
-This section exists primarily for debugging purposes and can test creation dates for records backdated to a specific number of days or months.  Its default setting for normal 
-operation is 0, which nullifies the test.
+This section exists primarily for debugging purposes and can test creation dates for records backdated to a specific number of days or months.  Its default setting for normal operation is 0, which nullifies the test.  The results are achieved through the following tasks:
 
-###### Resource Name Tester
+- DateTimeStamper extracts current date.
+- PAST_DATE_CALCULATOR calculates past dates. Default setting for normal operation is 0 days/0 months and can be reset in published parameters TIME_FILTER_DAYS and TIME_FILTER_MONTHS.
+- FME_DATE_FORMATTER converts record_publish_date attribute to FME format for testing.
+- Tests for new records by comparing record_publish_date attribute against time calculated in PAST_DATE_CALCULATOR.  
+- ISO_DATE_FORMATTER converts record_publish_date back to ISO yyyy-mm-dd format for publishing.
 
-This section tests for a resource URL and verifies that each resource URL has a corresponding resource name.  If a corresponding resource name is not found, a generic name, 
-'BC Data Link' is inserted to the resource name attribute.
+###### Attribute Cleanup
 
-###### Excess Attribute Removal
+- Python script places resource{}.description in resource{}.name where resource{}.name is missing.
+- 'method' attribute with value 'Insert' is created to facilitate correct XML Formatting for later PyCSW insertion.
+- Removes out-of-scope attributes from datasets.
+- Sets all null or empty attributes as 'missing'.
 
-This section performs the following tasks:
+##### BC_GEOWAREHOUSE_URL_BUILDER
 
-- Removes out of scope attributes.
-- Output is directed to the AWS_TRANSLATE transformer.
+##### BC_RESOURCE_NAME_CORRECTION
 
 ##### BC_UPDATE_PRETRANSLATE
 
-This custom transformer is the first stage of daily extraction of new or updated data from the BC Data API, and inserting to the CSW.  It also identifies obsolete records for removal from the CSW.  It is intended to run as a component of the 'BC_UPDATE' workspace.
+This custom transformer is the first stage of scheduled extraction of new or updated data from the BC Data API, and inserting to the CSW.  It also identifies obsolete records for removal from the CSW.  It is intended to run as a component of the 'BC_UPDATE' workspace.
 
 This transformer performs the following tasks:
 
@@ -1311,13 +1229,13 @@ This transformer performs the following tasks:
 
 This section extracts the unique ID's from all data records currently loaded to the CSW by performing the following tasks:
 
-- Creates attribute required to perform CSW search with XML file (Columbia)
-- Loads the Get Records XML template.
-- Formats Get Records XML template.
-- Validates the Get Records XML template.
-- Posts XML to PyCSW using Python script and returns XML with dataset summary.
-- Exposes the unique ID elements from the returned XML file,
-- Extracts string snippet from the unique ID element.
+- AttributeCreator creates attribute required to perform CSW search with XML file (Columbia).
+- XMLTemplater loads the Get Records XML template.
+- XMLFormatter formats Get Records XML template.
+- XMLValidator validates the Get Records XML template.
+- PyCSW_POST posts XML to PyCSW using Python script and returns XML with dataset summary.
+- XMLFragmenter exposes the unique ID elements from the returned XML file,
+- StringSearcher extracts string snippet from the unique ID element.
 - Outputs to the Obsolete Records Removal section.
 
 ###### Query Loop Creation
@@ -1333,21 +1251,23 @@ The current default settings will return a total of 10000 records, and, at the t
 
 ###### Data Query
 
-This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  A JSON fragmenter is used to extracts attributes and values from the JSON string based on a JSON query.
+This section sends each concatentated query instance using a GET http method to the BC API, and returns the response as a JSON string.  The results are achieved through the following tasks:
 
-In the event of a connection failure to the API, the process is terminated and an email is generated and sent to the system admin.
+- HTTPCaller sends the query string to BC Data API and returns response as a JSON string.
+  - In the event of a connection failure to the BC Data API, an email is sent to the administrator and the program is terminated.
+- JSON_FRAGMENTER extracts attributes and values from the JSON string.
 
 ###### Obsolete Records Removal
 
 This section removes obsolete data records by performing the following tasks:
 
-- Inputs all data output from CSW UUID Reader and data query.
-- Retains only the UUID from each data input and removes all other attributes.
-- Merges unique ID's from the CSW with unique ID's from the current data search.
-- Loads the Delete Records XML template for each CSW Data Record not found in the current data search.
-- Formats Delete Records XML's.
-- Validates Delete Records XML's.
-- Posts Delete Records XML for each UUID in the CSW not found in the current data search, removing the obsolete record.
+- AttributeExposer exposes unique ID from the current data search.  Data stream is split into two.
+- One data stream is sent to AttributeKeeper retains only the UUID from each data input and removes all other attributes, the other data stream retains all attributes and is sent to the Attribute Management section.
+- FEATURE_MERGER merges unique ID's from the CSW with unique ID's from the current data search.
+- XMLTemplater Loads the Delete Records XML template for each CSW Data Record not found in the current data search.
+- XMLFormatter formats Delete Records XML's.
+- XMLValidator validates Delete Records XML's.
+- PyCSW_POST posts Delete Records XML for each UUID in the CSW not found in the current data search, removing the obsolete record.
 - Outputs the the NO_DELETED_RECORDS_COUNT and DELETED_RECORDS_COUNT to NOTIFY_UPDATE transformer.
 
 ###### Attribute Management
@@ -1355,12 +1275,9 @@ This section removes obsolete data records by performing the following tasks:
 This section performs the following functions:
 
 - Exposes specific attributes returned from the JSON query.  See [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key.xlsx) file for details.
+- Filters out records that are not geographic.
 - Filters out records that are not Open Government License - British Columbia.
-- Filter out records that are not Geographic.
-- Filters out data records that are password access only.
-- Creates global attributes specific to British Columbia data.
-- Renames attributes that have index array to attribute name format that can be read by the XML templater.
-- Formats all date fields to ISO yyyy-mm-dd
+- ISO_DATE_FORMATTER formats all date fields to ISO yyyy-mm-dd.
 - Filters out duplicate datasets that BC has already republished from NRCan.
 
 ###### New/Updated Records Filter
@@ -1370,23 +1287,22 @@ This section performs the following tasks:
 - Extracts current date.
 - Calculates time since last time tool processed.  Default setting is 1 day and is accessed in published parameter TIME_FILTER_DAYS.
 - Tests for new records by comparing record_publish_date attribute against time calculated in DateTimeCalculator.
-- Creates 'Method' attribute with value 'Insert' for all new records.
+- Creates 'method' attribute with value 'Insert' is created for all new records to facilitate correct XML Formatting for later PyCSW insertion.
 - After new records are filtered, tests remainder for updated records by comparing record_last_modified attribute against time calculated in DateTimeCalculator.
-- Creates 'Method' attribute 'Update' for all updated records.
+- Creates 'method' attribute 'Update' for all updated records to facilitate correct XML Formatting for later PyCSW insertion.
 - Outputs the TOTAL_RECORDS_COUNT, NEW_RECORDS_COUNT and UPDATED_RECORDS_COUNT to the NOTIFY_UPDATE transformer.
-- Data is output to the Resource Name Tester section.
+- Data is output to the Attribute Cleanup section.
 
-###### Resource Name Tester
-
-This section tests for a resource URL and verifies that each resource URL has a corresponding resource name.  If a corresponding resource name is not found, a generic name, 
-'BC Data Link' is inserted to the resource name attribute.
-
-###### Excess Attribute Removal
+###### Attribute Cleanup
 
 This section performs the following tasks:
 
-- Removes out of scope attributes.
-- Output is directed to the AWS_TRANSLATE transformer.
+- Python script places resource{}.description in resource{}.name where resource{}.name is missing.
+- Removes out-of-scope attributes from datasets.
+- Sets all null or empty attributes as 'missing'.
+- Data is direceted to the transformer OUTPUT port.
+
+##### BC_WMS_FORMATTER
 
 ## Manitoba
 
