@@ -626,14 +626,14 @@ This transformer is designed to function in all data ETL activities and translat
 - tags{}.display_name (list attribute)
 - resources{}.name (list attribute)
 
-This section operates using the following steps:
+The results are achieved by performing the following tasks:
 
 - Removes failure causing excess whitespace from all attribute values to be translated via Python script.
 - Tests for strings over 5000 bytes and reduces strings in excess to under 5000 bytes (5000 bytes is maximum permitted per attribute by AWS Translate)
 - Posts attributes and list attributes to be translated to the AWS API using Python script.
 - Creates French version of the attributes and list attributes from the returned translated value.
 - Removes UTF8 Character code returned from translated results.
-- Removes out of scope attributes.
+- Removes out-of-scope attributes.
 
 #### DEFAULT_ATTRIBUTE_MAPPER
 
@@ -644,7 +644,7 @@ This custom transformer merges an Excel file containing default attribute values
 
 #### DUPLICATE_SERVICE_REMOVER		
 	
-Manages duplicate WMS or ESRI REST resources where they exist, that would prevent validation of the dataset when loaded to the FGP.  Duplicate services are given the resources{}.format value of 'other'.  The results are achieved through the following tasks:
+Manages duplicate WMS or ESRI REST resources where they exist, that would otherwise prevent validation of the dataset when loaded to the FGP.  Duplicate services are given the resources{}.format value of 'other'.  The results are achieved through the following tasks:
 
 - Create histogram{} list from resources{}.protocol list to extract attribute value counts from each data set.  
 - Searches histogram{}.value list for OGC:WMS
