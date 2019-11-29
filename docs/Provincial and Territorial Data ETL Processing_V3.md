@@ -612,6 +612,26 @@ Extracts and maps attributes to values required by the XML root template or sub-
 
 E-mails processing results to administrator.
 
+## Manitoba
+
+## New Brunswick
+
+## Newfoundland and Labrador
+
+## Nova Scotia
+
+## Nunavut
+
+## Ontario
+
+## Prince Edward Island
+
+## Québec
+
+## Saskatchewan
+
+## Yukon
+
 ## Custom Transformers Detail
 
 ### Universal Transformers
@@ -1577,22 +1597,3 @@ This transformer concatenates the url for all wms format URL's to a valid URL st
 				       + Hardcoded value: &legend_format=image/png&feature_info_type=text/plain
 					              RESULT: https://openmaps.gov.bc.ca/geo/pub/WHSE_ADMIN_BOUNDARIES.ADM_NR_AREAS_SPG/ows?service=WMS&request=GetCapabilities&layers=pub:WHSE_ADMIN_BOUNDARIES.ADM_NR_AREAS_SP&legend_format=image/png&feature_info_type=text/plain
 				
-## Manitoba
-
-## New Brunswick
-
-## Newfoundland and Labrador
-
-## Nova Scotia
-
-## Nunavut
-
-## Ontario
-
-## Prince Edward Island
-
-## Québec
-
-## Saskatchewan
-
-## Yukon
