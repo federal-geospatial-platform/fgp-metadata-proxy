@@ -779,7 +779,7 @@ This section performs the following tasks:
 
 #### REMOVE_BROKEN_URL_WMS_ESRI_REST
 
-This transformer tests all WMS and ESRI REST url's for connectivity and removes them where the URL is broken.  These results are achieved by performing the following tasks:
+This transformer tests all WMS and ESRI REST URL's for connectivity and removes them where the URL is broken.  These results are achieved by performing the following tasks:
 
 - Creates unique ID '_uuid' for each dataset using the UUIDGenerator.
 - Splits the data stream into two:
@@ -788,10 +788,10 @@ This transformer tests all WMS and ESRI REST url's for connectivity and removes 
 	- 'format' attribute is tested for WMS or ESRI REST services.
 	- Stream 1 is split into two:
 	  - Stream 1a sends 'format' attributes with WMS or ESRI REST values to the HTTP Caller
-	    - HTTP Caller performs a 'GET' function on each WMS or ESRI REST url.  Functioning URLs will receive a response and be sent to the output port.  Non-functioning URL's will be filtered out.  
+	    - HTTP Caller performs a 'GET' function on each WMS or ESRI REST URL.  Functioning URL's will receive a response and be sent to the output port.  Non-functioning URL's will be filtered out.  
 		- Out of scope attributes are removed.
 		- Stream 1a is sent to ListBuilder transformer.
-	  - Stream 1b sends 'format' attributes that do not have WMS or ESRI REST values to the List Builder transformer
+	  - Stream 1b sends format attributes that do not have WMS or ESRI REST values to the List Builder transformer
 	- Stream 1a and 1b are remerged at the ListBuilder transformer, and the resources{} list is rebuilt from the exploded attributes.
 	- Stream 1 is sent to the FeatureMerger transformer.
   - Stream 2 removes the resources{} attribute list.
@@ -838,15 +838,15 @@ This transformer creates default values in the resources{} list required for the
 	- '_element_index' attribute is removed.
 	- Exposes 'id' attribute from exploded resources{} list.
 	- ListBuilder transformer recreates resources{} list containing stream 1 attributes that were previously exploded and new attributes.
-	- Stream 1 is sent to FEATURE_MERGER_1 transformer.
-  - Stream 2 retains all attributes except resources{} list attribute.
-    -  Stream 2 sent to FEATURE_MERGER_1 transformer.
-- Streams 1 & 2 are joined on the _uuid attribute.
+	- Data stream 1 is sent to FEATURE_MERGER_1 transformer.
+  - Data stream 2 retains all attributes except resources{} list attribute.
+    -  Data stream 2 sent to FEATURE_MERGER_1 transformer.
+- Data streams 1 & 2 are joined on the _uuid attribute.
 - The data stream is again split into two:
-  - Stream 3 retains only the _uuid and resources{} list.
+  - Data stream 3 retains only the _uuid and resources{} list.
     - resources{} list is exploded into individual attributes.
 	- The AttributeFilter transformer splits Stream 3 into three data streams:
-	  - Stream 3a includes all resource data with 'WMS' as the format value and splits them to two AttributeCreator transformers.
+	  - Data stream 3a includes all resource data with 'WMS' as the format value and splits them to two AttributeCreator transformers.
 	    - AttributeCreator_3 creates French attribute values, overriding previously created definitions:
 		  - 'xlink_role' with the value of 'urn:xml:lang:fra-CAN'
 		  - 'transfer_option_description_language_other_lang' with the value of 'fra'
@@ -857,8 +857,8 @@ This transformer creates default values in the resources{} list required for the
 		  - 'transfer_option_description_language' with the value of 'eng'
 		- AttributeCreator_3 and AttributeCreator_4 are both sent to Attribute_Creator_8 transformer.
 	    - AttributeCreator_8 creates 'protocol' with value of 'OGC:WMS'
-		- Stream 3a sent to AttributeExposer_4 transformer.
-	  - Stream 3b includes all resources data with 'ESRI REST' as the format value and splits them to two AttributeCreator transformers.
+		- Data stream 3a sent to AttributeExposer_4 transformer.
+	  - Data stream 3b includes all resources data with 'ESRI REST' as the format value and splits them to two AttributeCreator transformers.
 	    - AttributeCreator_7 creates French attribute values, overriding previously created definitions:
 		  - 'xlink_role' with the value of 'urn:xml:lang:fra-CAN'
 		  - 'transfer_option_description_language_other_lang' with the value of 'fra'
@@ -869,15 +869,15 @@ This transformer creates default values in the resources{} list required for the
 		  - 'transfer_option_description_language' with the value of 'eng'
 	    - AttributeCreator_6 and AttributeCreator_7 are both sent to Attribute_Creator_9 transformer.
 	    - AttributeCreator_9 creates 'protocol' with value of 'ESRI REST: Map Service'
-		- Stream 3b sent to AttributeExposer_4 transformer.
-      - Stream 3c includes all resource data with neither 'WMS' nor 'ESRI REST' as the format value.
-	    - Stream 3c sent to AttributeExposer_4 transformer.
-	- Streams 3a, 3b and 3c are merged as Stream 3 at the AttributeExposer_4 transformer, where 'id' attribute is exposed.
+		- Data stream 3b sent to AttributeExposer_4 transformer.
+      - Data stream 3c includes all resource data with neither 'WMS' nor 'ESRI REST' as the format value.
+	    - Data stream 3c sent to AttributeExposer_4 transformer.
+	- Data streams 3a, 3b and 3c are merged as Stream 3 at the AttributeExposer_4 transformer, where 'id' attribute is exposed.
     - ListBuilder transformer recreates resources{} list containing stream 3 attributes that were previously exploded.
-	- Stream 3 sent to FEATURE_MERGER_2 transformer.
-  - Stream 4 retains all attributes except resources{} list attribute.
-    - Stream 4 sent to FEATURE_MERGER_2 transformer.
-- Streams 3 & 4 are joined on the _uuid attribute.
+	- Data stream 3 sent to FEATURE_MERGER_2 transformer.
+  - Data stream 4 retains all attributes except resources{} list attribute.
+    - Data stream 4 sent to FEATURE_MERGER_2 transformer.
+- Data streams 3 & 4 are joined on the _uuid attribute.
 - Out of scope attributes are removed.
 - New attributes created in this transformer are exposed.
 - ListSorter sorts resources{} list alphabetically by resources{}.format items.
@@ -1176,7 +1176,7 @@ All resources{}.format attributes in Alberta data have the value of HTML for ind
 On Alberta's open data site, ISO 19115 data with only two resources{} items per dataset (HTML and XML) also has access to a ZIP file download resource.  This section creates a zip file download link in conditions where the third URL has no value and the first URL is not an ESRI REST link.
 
 - Tester creates a zip file download link in conditions where the third URL has no value and the first URL is not an ESRI REST link.
-- For items meeting this criteria, AttributeCreator sets resources{2}.url = zip_link (attribute created in the CREATE/UPDATE extraction processes.
+- For items meeting this criteria, AttributeCreator sets resources{2}.url = zip_link (zip_link attribute extracted in the CREATE/UPDATE extraction processes).
 
 ###### Tag Creator 
 
@@ -1355,23 +1355,22 @@ This section performs the following tasks:
 
 ##### AB_WMS_FORMATTER
 
-There have been two categories of WMS found in Alberta datasets.  One individual WMS maintained by the Ministry of Energy and over twenty maintained by the Ministry of Agriculture.  This transformer edits the URL's utilized for the WMS to support compliancy to the FGP Map Viewer.
+There are two categories of WMS found in Alberta datasets.  One individual WMS maintained by the Ministry of Energy and over twenty maintained by the Ministry of Agriculture.  This transformer edits the utilized URL's for the WMS to support compliancy to the FGP Map Viewer.
 
 ######  Ministry of Energy WMS
 
 This section manages one unique WMS and compiles the URL string to HNAP requirements through the following steps:
 
-- Tester Tests resources{2}.format and resources{2}.url for the unique WMS.
-- Found results
-- StringSearcher uses RegEx to extract object_name from resources{2}.url
-- object_name not matched is output to another StringSearcher another to extract object_name attribute via RegEx query.
-- A final StringSeracher uses RegEx to refines URL for resources{2}.url.
+- Tester tests resources{2}.format and resources{2}.url for the unique WMS.
+- Found results enter StringSearcher that uses RegEx to extract object_name from resources{2}.url
+- object_name not matched is output to another StringSearcher to extract object_name attribute via RegEx query.
+- A final StringSeracher uses RegEx to refine URL for resources{2}.url.
 - AttributeExposer exposes object_name attribute for WMS url concatenation.
 - Data sent to PythonCaller.
 
 ###### Ministry of Agriculture WMS
 
-- Results not found in previous Tester are split in two datastreams.
+- Results not found in previous Tester are split in two data streams.
   - Data stream 1 sent to AttributeKeeper
     - AttributeKeeper retains resources{}.format and resources{}.url.
 	- Tester tests resources{3}.url for WMS services.
@@ -1449,7 +1448,7 @@ This section exists primarily for debugging purposes and can test creation dates
 The URL links for BC Data located in the BC Geowarehouse are not readily available from the BC API.  This transformer recreates the BC Geowarehouse URL format by concatenting several available attributes with hardcoded values.  The results are achieved by performing the following tasks:
 
 - AttributeExposer exposes the attributes required by this transformer.
-- AttributeRenamer renames  'id' attribute to '_uuid' to avoid being overwritten by resources{}.id after this list attribute is exploded.  Dataset is split into two datastreams at the output port.
+- AttributeRenamer renames  'id' attribute to '_uuid' to avoid being overwritten by resources{}.id after this list attribute is exploded.  Dataset is split into two data streams at the output port.
   - Data stream 1 separates resources{} list attributes from all other attributes.
     - Renames 'name' attribute to 'service_name' to avoid being overwritten by resources{}.name after this list attribute is exploded.  
 	- AttributeKeeper retains 'service_name' '_uuid' and 'resources{}' attributes and discards all others.
@@ -1461,7 +1460,7 @@ The URL links for BC Data located in the BC Geowarehouse are not readily availab
 	- Data stream is sent to the Supplier port of the FeatureMerger.
   - Data stream 2 is sent to the Requestor port of the FeatureMerger.
 - FeatureMerger merges data streams on _uuid attribute.
-- AttributeRenamer renames '_uuid' attribute back to 'id'.
+- AttributeRenamer reverts '_uuid' attribute to 'id'.
 
 ##### BC_RESOURCE_NAME_CORRECTION
 
@@ -1564,11 +1563,11 @@ This section performs the following tasks:
 - Python script places resources{}.description in resources{}.name where resources{}.name is missing.
 - Removes out-of-scope attributes from datasets.
 - Sets all null or empty attributes as 'missing'.
-- Data is direceted to the transformer OUTPUT port.
+- Data is directed to the transformer OUTPUT port.
 
 ##### BC_WMS_FORMATTER
 
-This transformer concatenates the url for all wms format url's to a valid url string for the map viewer.  The results are achieved by performing the following tasks:
+This transformer concatenates the url for all wms format URL's to a valid URL string for the map viewer.  The results are achieved by performing the following tasks:
 
 - AttributeExposer exposes the required attributes for concatenation.
 - PythonCaller executes a Python script to overwrite WMS url with concactenated attribute and hardcoded values:
