@@ -272,7 +272,11 @@ Sets default attribute values specific to AB data that are universal to every da
 
 ##### [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2)
 
+Adds default values to missing values.  
+
 ##### [AB_WMS_FORMATTER](#ab_wms_formatter-2)
+
+Creates MapViewer compliant WMS url's.
 
 ##### [AWS_TRANSLATE](#aws_translate-4)
 
@@ -280,11 +284,15 @@ Sends extracted English text attributes, that require French equivalents, to Ama
 
 ##### [AB_TRANSLATION_CORRECTION](#ab_translation_correction-2)
 
+Corrects common GIS terms found in resources{}.name attributes that have been literally translated to incorrect French values in the AWS Translate tool and reverts them back to their correct GIS terms.
+
 ##### [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4)
 
 Formats and maps data collection start and end dates.  Sets start dates to 0001-01-01 and end dates to no value where missing.
 
 ##### [AB_RESOURCE_LIST_MANAGER](#ab_resource_list_manager-2)
+
+Tests if the dataset resources{} list items have values for name, url and format and if not, the item is filtered out due to insufficient information for publishing. 
 
 ##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
@@ -348,7 +356,11 @@ Sets default attribute values specific to AB data that are universal to every da
 
 ##### [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2)
 
+Adds default values to missing values.  
+
 ##### [AB_WMS_FORMATTER](#ab_wms_formatter-2)
+
+Creates MapViewer compliant WMS url's.
 
 ##### [AWS_TRANSLATE](#aws_translate-4)
 
@@ -356,11 +368,15 @@ Sends extracted English text attributes, that require French equivalents, to Ama
 
 ##### [AB_TRANSLATION_CORRECTION](#ab_translation_correction-2)
 
+Corrects common GIS terms found in resources{}.name attributes that have been literally translated to incorrect French values in the AWS Translate tool and reverts them back to their correct GIS terms.
+
 ##### [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4)
 
 Formats and maps data collection start and end dates.  Sets start dates to 0001-01-01 and end dates to no value where missing.
 
 ##### [AB_RESOURCE_LIST_MANAGER](#ab_resource_list_manager-2)
+
+Tests if the dataset resources{} list items have values for name, url and format and if not, the item is filtered out due to insufficient information for publishing. 
 
 ##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
