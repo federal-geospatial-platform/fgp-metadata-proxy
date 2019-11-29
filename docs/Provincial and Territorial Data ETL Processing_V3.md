@@ -155,12 +155,12 @@ All FME custom transformers can be found [here](https://github.com/federal-geosp
 The workspaces utilize eleven individual XML templates representing specific sections of an HNAP compliant document, that are bracketed by closing and ending tags,  that ultimately compile extracted data into a single document.  Ten of these are sub-templates that are inserted into specific locations of the main, or root, document.  Multiple instances of sub-templates can be inserted into the root document or other sub-templates to accommodate multiple instances of a metadata item. 
 
 -   **GMD_CITEDRESPONSIBLEPARTY.xml:** This XML file is a sub-template and is framed by the **gmd:citedResponsibleParty** tags.  Extracted data populates the following metadata items:
-  - gmd:individualName
-  - gmd:organisationName
-  - gmd:positionName
-  - gmd:contactInfo
-  - gmd:role
-  - GMD_ONLINE_RESOURCES.xml sub-template
+    - gmd:individualName
+    - gmd:organisationName
+    - gmd:positionName
+    - gmd:contactInfo
+    - gmd:role
+    - GMD_ONLINE_RESOURCES.xml sub-template
 
 -   **GMD_CONTACT.xml:** This XML file is is a sub-template and is framed by the **gmd:contact** tags.  Extracted data populates the following metadata items:
   - gmd:individualName
@@ -1333,7 +1333,7 @@ This section removes obsolete data records by performing the following tasks:
 - Formats Delete Records XML's.
 - Validates Delete Records XML's.
 - Posts Delete Records XML for each UUID in the CSW not found in the current data search, removing the obsolete record.
-- Outputs the the NO_DELETED_RECORDS_COUNT and DELETED_RECORDS_COUNT to NOTIFY_UPDATE transformer.
+- Outputs the NO_DELETED_RECORDS_COUNT and DELETED_RECORDS_COUNT to NOTIFY_UPDATE transformer.
 
 ###### New/Updated Records Filter
 
