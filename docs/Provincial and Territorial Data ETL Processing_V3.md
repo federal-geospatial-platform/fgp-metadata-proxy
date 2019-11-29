@@ -1220,7 +1220,7 @@ This section extracts the unique ID's from all data records currently loaded to 
 - Formats Get Records XML template.
 - Validates the Get Records XML template.
 - Posts XML to PyCSW using Python script and returns XML with dataset summary.
-- Exposes the unique ID elements from the returned XML file,
+- Exposes the unique ID elements from the returned XML file.
 - Extracts string snippet from the unique ID element.
 - Outputs to the Obsolete Records Removal section.
 
@@ -1505,7 +1505,7 @@ This section extracts the unique ID's from all data records currently loaded to 
 - XMLFormatter formats Get Records XML template.
 - XMLValidator validates the Get Records XML template.
 - PyCSW_POST posts XML to PyCSW using Python script and returns XML with dataset summary.
-- XMLFragmenter exposes the unique ID elements from the returned XML file,
+- XMLFragmenter exposes the unique ID elements from the returned XML file.
 - StringSearcher extracts string snippet from the unique ID element.
 - Outputs to the Obsolete Records Removal section.
 
@@ -1568,7 +1568,7 @@ This section performs the following tasks:
 
 This section performs the following tasks:
 
-- Python script places resource{}.description in resource{}.name where resource{}.name is missing.
+- Python script places resources{}.description in resources{}.name where resources{}.name is missing.
 - Removes out-of-scope attributes from datasets.
 - Sets all null or empty attributes as 'missing'.
 - Data is direceted to the transformer OUTPUT port.
