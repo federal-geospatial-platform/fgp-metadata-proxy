@@ -268,6 +268,8 @@ Queries both the Alberta open government portal API and the Alberta geospatial A
 
 ##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
 
+Sets default attribute values specific to AB data that are universal to every data record.
+
 ##### [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2)
 
 ##### [AB_WMS_FORMATTER](#ab_wms_formatter-2)
@@ -280,25 +282,53 @@ Sends extracted English text attributes, that require French equivalents, to Ama
 
 ##### [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4)
 
+Formats and maps data collection start and end dates.  Sets start dates to 0001-01-01 and end dates to no value where missing.
+
 ##### [AB_RESOURCE_LIST_MANAGER](#ab_resource_list_manager-2)
 
 ##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
+There are multiple instances of the METADATA_VALUE_MAPPER in the workspace to correct values to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for multiple metadata items by accessing custom look up tables applicable to specific items.  The multiple instances of the tool are mapped to the following individual look-up tables:
+
+  - Codespace
+  - Keyword
+  - ProgressStatusAttributeMapper
+  - RoleAttributeMapper
+  - SpatialReferenceMapper
+  - SpatialRepresentationAttributeMapper
+  - UpdateCycleAttributeMapper
+
 ##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
+
+The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
 
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
+Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to known data entry errors missing from the look-up table. 
+
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
+
+Creates lists and removes duplicates for distribution formats, projections, update cycles and more_info.
 
 ##### [MORE_INFO_MAPPER](#more_info_mapper-4)
 
+Tests the more_info{}.link list for valid attribute values and filters them out where missing.
+
 ##### [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
+
+Tests WMS/ESRI_REST resource URL's and removes them where broken.
 
 ##### [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-4)
 
+Formats WMS and ESRI REST resources to add French versions and formats French and English versions with valid supporting attributes.
+
 ##### [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-4)
 
+Removes duplicate WMS or ESRI REST resources where they exist, that would otherwise invalidate the dataset.
+
 ##### [XML_PUBLISHER](#xml_publisher-4)
+
+Extracts and maps attributes to values required by the XML root template or sub-templates, compiles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.
 
 ##### [NOTIFY_CREATE](#notify_create-2)
 
@@ -314,6 +344,8 @@ Queries both the Alberta open government portal API and the Alberta geospatial A
 
 ##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
 
+Sets default attribute values specific to AB data that are universal to every data record.
+
 ##### [AB_MISSING_ATTRIBUTE_MAPPER](#ab_missing_attribute_mapper-2)
 
 ##### [AB_WMS_FORMATTER](#ab_wms_formatter-2)
@@ -326,25 +358,53 @@ Sends extracted English text attributes, that require French equivalents, to Ama
 
 ##### [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4)
 
+Formats and maps data collection start and end dates.  Sets start dates to 0001-01-01 and end dates to no value where missing.
+
 ##### [AB_RESOURCE_LIST_MANAGER](#ab_resource_list_manager-2)
 
 ##### [METADATA_VALUE_MAPPER](#metadata_value_mapper-4)
 
+There are multiple instances of the METADATA_VALUE_MAPPER in the workspace to correct values to valid English values and to add the valid French equivalents and RI_CODES where applicable.  It can be utilized for multiple metadata items by accessing custom look up tables applicable to specific items.  The multiple instances of the tool are mapped to the following individual look-up tables:
+
+  - Codespace
+  - Keyword
+  - ProgressStatusAttributeMapper
+  - RoleAttributeMapper
+  - SpatialReferenceMapper
+  - SpatialRepresentationAttributeMapper
+  - UpdateCycleAttributeMapper
+
 ##### [METADATA_FORMAT_MAPPER](#metadata_format_mapper-4)
+
+The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
 
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
+Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to known data entry errors missing from the look-up table. 
+
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
+
+Creates lists and removes duplicates for distribution formats, projections, update cycles and more_info.
 
 ##### [MORE_INFO_MAPPER](#more_info_mapper-4)
 
+Tests the more_info{}.link list for valid attribute values and filters them out where missing.
+
 ##### [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
+
+Tests WMS/ESRI_REST resource URL's and removes them where broken.
 
 ##### [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-4)
 
+Formats WMS and ESRI REST resources to add French versions and formats French and English versions with valid supporting attributes.
+
 ##### [DUPLICATE_SERVICE_REMOVER](#duplicate_service_remover-4)
 
+Removes duplicate WMS or ESRI REST resources where they exist, that would otherwise invalidate the dataset.
+
 ##### [XML_PUBLISHER](#xml_publisher-4)
+
+Extracts and maps attributes to values required by the XML root template or sub-templates, compiles the templates to a single XML file, and publishes the XML to the PyCSW, or to a local folder.
 
 ##### [NOTIFY_UPDATE](#notify_update-2)
 
@@ -422,6 +482,8 @@ There are multiple instances of the METADATA_VALUE_MAPPER in the workspace to co
 The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
 
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
+
+Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to known data entry errors missing from the look-up table. 
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -503,6 +565,8 @@ There are multiple instances of the METADATA_VALUE_MAPPER in the workspace to co
 The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format values to HNAP compliant format values, and adds the correct English and French Resource Type values by accessing the FormatAttributeMapper lookup table.
 
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
+
+Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to known data entry errors missing from the look-up table. 
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -606,7 +670,7 @@ Creates lists of data items and removes duplicates for the GMD templates by perf
 
 #### MAPPING_ERROR_LIST_CREATOR
 
-Creates an FFS file of data item values that cannot be mapped to a valid value due to the value missing from the look-up table of known data entry errors.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are achieved by performing the following tasks:
+Creates an FFS file of data item values that cannot be mapped to a valid value due to known data entry errors missing from the look-up table.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are achieved by performing the following tasks:
 
 - Counts the number of mapping errors found following processing of METADATA_VALUE _MAPPER or METADATA_FORMAT_MAPPER.
 - Tests for error count > 0.
@@ -1004,6 +1068,10 @@ This section performs the following tasks:
 
 ##### AB_MISSING_ATTRIBUTE_MAPPER
 
+This transformer adds default values to attribute values with known data gaps.  The results are achieved through the following tasks:
+
+
+
 ##### AB_TRANSLATION_CORRECTION
 
 ##### AB_UPDATE_PRETRANSLATE
@@ -1217,8 +1285,43 @@ This section exists primarily for debugging purposes and can test creation dates
 
 ##### BC_GEOWAREHOUSE_URL_BUILDER
 
+The URL links for BC Data located in the BC Geowarehouse are not readily available from the BC API.  This transformer recreates the BC Geowarehouse URL format by concatenting several available attributes with hardcoded values.  The results are achieved by performing the following tasks:
+
+- AttributeExposer exposes the attributes required by this transformer.
+- AttributeRenamer renames  'id' attribute to '_uuid' to avoid being overwritten by resources{}.id after this list attribute is exploded.  Dataset is split into two datastreams at the output port.
+  - Data stream 1 separates resources{} list attributes from all other attributes.
+    - Renames 'name' attribute to 'service_name' to avoid being overwritten by resources{}.name after this list attribute is exploded.  
+	- AttributeKeeper retains 'service_name' '_uuid' and 'resources{}' attributes and discards all others.
+	- LIST_EXPLODER explodes resources{} list attributes to non-list attributes.
+	- AttributeExposer exposes required exploded attributes.
+	- Tester tests 'name' attribute for BC Geowarehouse Custom Download.
+	- AttributeCreator recreates resources{}.url attribute at extracted _element_index position from concatenated values.  
+	- AttributeRemover removes out-of-scope attributes.
+	- Data stream is sent to the Supplier port of the FeatureMerger.
+  - Data stream 2 is sent to the Requestor port of the FeatureMerger.
+- FeatureMerger merges data streams on _uuid attribute.
+- AttributeRenamer renames '_uuid' attribute back to 'id'.
+
 ##### BC_RESOURCE_NAME_CORRECTION
 
+This transformer sets the value of the resources{}.name attribute with the resources{}.description value when missing.  For all WMS services, it performs a getCapabilities to extract the Layer.Title and overwrites the resources{}.name value with Layer.Title.  The results are achieved by performing the following tasks:
+
+- AttributeExposer exposes all attributes required by the transformer.
+- PythonCaller executes a Python script that sets the value of the resources{}.name attribute with the resources{}.description value when missing.
+- UUIDGenerator creates a temporary unique ID to rejoin data streams after processing.  The data stream is split into two at the Output port.
+  - Data stream 1 ListExploder explodes the resources{} list.
+    - The exploded format attribute tests for 'wms' value.
+	- HTTPCaller uses the url attribute to perform GetCapabilities request on the data set.
+	- XMLFlattener extracts Layer.Title attribute from the XML response.
+	- Layer.Title attribute is exposed by AttributeExposer.
+	- AttributeKeeper retains required attributes only.
+	- AttributeCreator overwrites resources{}.name attribute with wms layer name retrieved from getCapabilities query.
+	- AttributeRemove removes out-of-scope attributes, retaining only resources{}.name and the unique id.
+	- Data stream 1 sent to Supplier port of FeatureMerger.
+  - Data stream 2 sent to Requestor port of FeatureMerger.
+- FeatureMerger merges resources{}.name attribute with datasets joined on unique id.
+- Unique id is removed.
+	
 ##### BC_UPDATE_PRETRANSLATE
 
 This custom transformer is the first stage of scheduled extraction of new or updated data from the BC Data API, and inserting to the CSW.  It also identifies obsolete records for removal from the CSW.  It is intended to run as a component of the 'BC_UPDATE' workspace.
@@ -1304,6 +1407,16 @@ This section performs the following tasks:
 
 ##### BC_WMS_FORMATTER
 
+This transformer concatenates the url for all wms format url's to a valid url string for the map viewer.  The results are achieved by performing the following tasks:
+
+- AttributeExposer exposes the required attributes for concatenation.
+- PythonCaller executes a Python script to overwrite WMS url with concactenated attribute and hardcoded values:
+  - Example: Attribute: resources{0}.url: https://openmaps.gov.bc.ca/geo/pub/WHSE_ADMIN_BOUNDARIES.ADM_NR_AREAS_SPG/ows?service=WMS&request=GetCapabilities
+                       + Hardcoded value: &layers=pub:
+				+ Attribute: object_name: WHSE_ADMIN_BOUNDARIES.ADM_NR_AREAS_SP
+				       + Hardcoded value: &legend_format=image/png&feature_info_type=text/plain
+					              RESULT: https://openmaps.gov.bc.ca/geo/pub/WHSE_ADMIN_BOUNDARIES.ADM_NR_AREAS_SPG/ows?service=WMS&request=GetCapabilities&layers=pub:WHSE_ADMIN_BOUNDARIES.ADM_NR_AREAS_SP&legend_format=image/png&feature_info_type=text/plain
+				
 ## Manitoba
 
 ## New Brunswick
