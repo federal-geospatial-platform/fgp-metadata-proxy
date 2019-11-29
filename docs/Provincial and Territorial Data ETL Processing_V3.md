@@ -163,68 +163,68 @@ The workspaces utilize eleven individual XML templates representing specific sec
     - GMD_ONLINE_RESOURCES.xml sub-template
 
 -   **GMD_CONTACT.xml:** This XML file is is a sub-template and is framed by the **gmd:contact** tags.  Extracted data populates the following metadata items:
-  - gmd:individualName
-  - gmd:organisationName
-  - gmd:positionName
-  - gmd:contactInfo
-  - gmd:role
-  - GMD_ONLINE_RESOURCES.xml sub-template
+    - gmd:individualName
+    - gmd:organisationName
+    - gmd:positionName
+    - gmd:contactInfo
+    - gmd:role
+    - GMD_ONLINE_RESOURCES.xml sub-template
 
 -   **GMD_DISTRIBUTIONFORMAT.xml:** This XML file is a sub-template and is framed by the **gmd:distributionFormat** tags.  Extracted data populates the following metadata item:
-  - gmd:MD_Format
+    - gmd:MD_Format
   
 -   **GMD_DISTRIBUTOR.xml:** This XML file is a sub-template and is framed by the **gmd:distributor** tags.  Extracted data populates the following metadata items:
-  - gmd:individualName
-  - gmd:organisationName
-  - gmd:positionName
-  - gmd:contactInfo
-  - gmd:role
-  - GMD_ONLINE_RESOURCES.xml sub-template
+    - gmd:individualName
+    - gmd:organisationName
+    - gmd:positionName
+    - gmd:contactInfo
+    - gmd:role
+    - GMD_ONLINE_RESOURCES.xml sub-template
   
 -    **GMD_KEYWORDS.xml:** This XML file is a sub-template and is framed by the **gmd:keyword** tags.  Extracted data populates the following metadata item:
-  - gmd:keyword
+    - gmd:keyword
   
 -   **GMD_MDMETADATA.xml:** This XML file is the root template and is framed by the **gmd:MD_Metadata** tags.  Extracted data populates the following metadata items:
-  - gmd:fileIdentifier
-  - GMD_CONTACT.xml sub-template
-  - gmd:timeStamp
-  - gmd:metadataStandardVersion
-  - GMD_REFERENCESYSTEMINFO.xml sub-template
-  - gmd:title
-  - gmd:date (publication date)
-  - gmd:date (creation date)
-  - GMD_CITEDRESPONSIBLEPARTY.xml sub-template
-  - gmd:abstract
-  - gmd:status
-  - GMD_RESOURCEMAINTENANCE.xml sub-template
-  - gmd:graphicOverview
-  - GMD_KEYWORDS.xml sub-template
-  - gmd:spatialRepresentationType
-  - GMD_TOPICCATEGORY.xml sub-template
-  - gmd:extent
-    - gmd:temporalElement
-	- gmd:geographicElement
-  - GMD_DISTRIBUTIONFORMAT.xml sub-template
-  - GMD_DISTRIBUTOR.xml sub-template
-  - GMD_TRANSFEROPTIONS.xml sub-template
+    - gmd:fileIdentifier
+    - GMD_CONTACT.xml sub-template
+    - gmd:timeStamp
+    - gmd:metadataStandardVersion
+    - GMD_REFERENCESYSTEMINFO.xml sub-template
+    - gmd:title
+    - gmd:date (publication date)
+    - gmd:date (creation date)
+    - GMD_CITEDRESPONSIBLEPARTY.xml sub-template
+    - gmd:abstract
+    - gmd:status
+    - GMD_RESOURCEMAINTENANCE.xml sub-template
+    - gmd:graphicOverview
+    - GMD_KEYWORDS.xml sub-template
+    - gmd:spatialRepresentationType
+    - GMD_TOPICCATEGORY.xml sub-template
+    - gmd:extent
+      - gmd:temporalElement
+	  - gmd:geographicElement
+    - GMD_DISTRIBUTIONFORMAT.xml sub-template
+    - GMD_DISTRIBUTOR.xml sub-template
+    - GMD_TRANSFEROPTIONS.xml sub-template
   
 -   **GMD_ONLINERESOURCE.xml:** This XML file is a sub-template and is framed by the **gmd:onlineResource** tags.  Extracted data populates the following metadata item:
-  - gmd:onlineResource
+    - gmd:onlineResource
   
 -   **GMD_REFERENCESYSTEMINFO.xml:** This XML file is a sub-template and is framed by the **gmd:referenceSystemInfo** tags.  Extracted data populates the following metadata item:
-  - gmd:referenceSystemInfo
+    - gmd:referenceSystemInfo
   
 -   **GMD_RESOURCEMAINTENANCE.xml:** This XML file is a sub-template and is framed by the **gmd:resourceMaintenance** tags.  Extracted data populates the following metadata item:
-  - gmd:resourceMaintenance
+    - gmd:resourceMaintenance
   
 -   **GMD_TOPICCATEGORY.xml:** This XML file is a sub-template and is framed by the **gmd:topicCategory** tags.  Extracted data populates the following metadata item:
-  - gmd:topicCategory**
+    - gmd:topicCategory**
   
 -   **GMD_TRANSFEROPTIONS.xml:** This XML file is a sub-template and is framed by the **gmd:transferOptions** tags.  Extracted data populates the following metadata item:
-  - gmd:linkage
-  - gmd:protocol
-  - gmd:name
-  - gmd:description
+    - gmd:linkage
+    - gmd:protocol
+    - gmd:name
+    - gmd:description
   
 All XML templates can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_files/XML_TEMPLATES)
 
