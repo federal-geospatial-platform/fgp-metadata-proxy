@@ -695,7 +695,7 @@ Creates an FFS file of data item values that cannot be mapped to a valid value d
 
 #### METADATA_FORMAT_MAPPER
 
-Corrects data format values of to valid data format values and to add associated Resource Type attributes in French and English.  It is by performing the following tasks:
+Corrects data format values of to valid data format values and to add associated Resource Type attributes in French and English.  Results are achieved by performing the following tasks:
 
 - When loaded to the workspace, the user can select the following data conversion functions to be on or off by selecting yes/no options in the following published parameters:
   - ERROR_NOT_MAPPED: enables mapping of data item values that cannot be found in the lookup tables.
