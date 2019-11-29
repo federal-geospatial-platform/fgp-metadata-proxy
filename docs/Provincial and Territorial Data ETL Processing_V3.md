@@ -705,7 +705,7 @@ Corrects data format values of to valid data format values and to add associated
 - Tests for 'original_value' attribute in look-up tables and terminates translation if missing.
 - Tests for REAL_VALUE_REFRESH, RES_TYPE_FR_REFRESH and RES_TYPE_EN_REFRESH options.
 - Sets look-up table attributes as priority over incoming dataset attributes.
-- Assigns look-up table attributes to list attributes via python scripting.
+- Assigns look-up table attributes to list attributes via Python scripting.
 
 #### METADATA_VALUE_MAPPER
 
@@ -716,10 +716,10 @@ Corrects values to valid English values and adds the valid French equivalents an
   - ENGLISH_REFRESH: enables updating of English attribute values.
   - FRENCH_REFRESH: enables updating of French attribute values.
   - CODE_REFRESH: enables updating of RI_CODE values.
-- Tests for 'original_value' attribute in look-up tables and terminates translation if missing.
+- Tests for 'original_value' attribute in look-up tables and terminates data translation if missing.
 - Tests for ENGLISH_REFRESH, FRENCH_REFRESH and CODE_REFRESH options.
 - Sets look-up table attributes as priority over incoming dataset attributes.
-- Assigns look-up table attributes to list attributes via python scripting.
+- Assigns look-up table attributes to list attributes via Python scripting.
 
 #### MORE_INFO_MANAGER
 
@@ -735,7 +735,7 @@ This transformer tests the more_info{}.link list for valid attribute values and 
   - Stream 2 retains all other data except the more_info{} list.
     - Stream 2 is sent to the 'Requestor' port of the FeatureMerger transformer.
 - Feature Merger transformer merges stream 1 and 2 using the _uuid as the join attribute, then recreates the more_info{} list adding the link and protocol attributes.
-- Out of scope attributes are removed.
+- Out-of-scope attributes are removed.
 
 #### NOTIFY_CREATE
 
@@ -773,15 +773,8 @@ This section performs the following tasks:
 ##### Notification Compiler and eMailer
 
 This section performs the following tasks:
-- Gets the current data and time.
+- Gets the current date and time.
 - Concatenates insert records or no records to insert notification strings, update records or no records to update notification strings, number of obsolete records deleted, plus date and time into one message string.
-- Emails the message string to an administrator.
-
-##### Notification Compiler and eMailer
-
-This section performs the following tasks:
-- Gets the current data and time.
-- Concatenates insert records or no records to insert notification strings, update records or no records to update notification strings, plus date and time into one message string
 - Emails the message string to an administrator.
 
 #### REMOVE_BROKEN_URL_WMS_ESRI_REST
