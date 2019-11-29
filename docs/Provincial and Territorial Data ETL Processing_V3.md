@@ -181,7 +181,7 @@ The workspaces utilize eleven individual XML templates representing specific sec
     - gmd:role
     - GMD_ONLINE_RESOURCES.xml sub-template
   
--    **GMD_KEYWORDS.xml:** This XML file is a sub-template and is framed by the **gmd:keyword** tags.  Extracted data populates the following metadata item:
+-   **GMD_KEYWORDS.xml:** This XML file is a sub-template and is framed by the **gmd:keyword** tags.  Extracted data populates the following metadata item:
     - gmd:keyword
   
 -   **GMD_MDMETADATA.xml:** This XML file is the root template and is framed by the **gmd:MD_Metadata** tags.  Extracted data populates the following metadata items:
