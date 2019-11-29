@@ -218,7 +218,7 @@ The workspaces utilize eleven individual XML templates representing specific sec
     - gmd:resourceMaintenance
   
 -   **GMD_TOPICCATEGORY.xml:** This XML file is a sub-template and is framed by the **gmd:topicCategory** tags.  Extracted data populates the following metadata item:
-    - gmd:topicCategory**
+    - gmd:topicCategory
   
 -   **GMD_TRANSFEROPTIONS.xml:** This XML file is a sub-template and is framed by the **gmd:transferOptions** tags.  Extracted data populates the following metadata item:
     - gmd:linkage
@@ -312,7 +312,7 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
-Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to known data entry errors missing from the look-up table. 
+Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to unknown data entry errors missing from the look-up table. 
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -396,7 +396,7 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
-Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to known data entry errors missing from the look-up table. 
+Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to unknown data entry errors missing from the look-up table. 
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -499,7 +499,7 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
-Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to known data entry errors missing from the look-up table. 
+Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to unknown data entry errors missing from the look-up table. 
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -582,7 +582,7 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
-Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to known data entry errors missing from the look-up table. 
+Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to unknown data entry errors missing from the look-up table. 
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -686,7 +686,7 @@ Creates lists of data items and removes duplicates for the GMD templates by perf
 
 #### MAPPING_ERROR_LIST_CREATOR
 
-Creates an FFS file of data item values that cannot be mapped to a valid value due to known data entry errors missing from the look-up table.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are achieved by performing the following tasks:
+Creates an FFS file of data item values that cannot be mapped to a valid value due to unknown data entry errors missing from the look-up table.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  These results are achieved by performing the following tasks:
 
 - Counts the number of mapping errors found following processing of METADATA_VALUE _MAPPER or METADATA_FORMAT_MAPPER.
 - Tests for error count > 0.
