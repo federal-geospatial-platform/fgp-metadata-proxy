@@ -976,7 +976,7 @@ The attribute config file is processed through the following tasks:
 	  - Successful updates are output via the PASSED port and sent to the UPDATE_PASSED transformer output port.
 	  - Failed updates are output via the FAILED port and sent to the UPDATE_FAILED transformer output port.
 	
-### Provincial/Territorial Specific Transformers
+### Provincial and Territorial Specific Transformers
 
 #### Alberta
 
