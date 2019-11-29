@@ -1086,9 +1086,124 @@ This section performs the following tasks:
 
 This transformer adds default values to attribute values with known data gaps.  The results are achieved through the following tasks:
 
+- AttributeExposer exposes all attributes utilized by this transformer.
+- AttributeRenamer renames 'id' attribute to '_uuid' to avoid conflict with 'id' value in exploded lists.
+- Data stream is split and sent to the Role Refiner section.
 
+###### Role Refiner
+
+This section tests that extracted role names are conforming to HNAP role code requirements.  Nonconforming or missing role names are set to pointOfContact as default.  
+
+- Data stream 1 processes role attributes.
+  - AttributeKeeper retains only _uuid, default_role_value and contacts{} attributes.
+  - ListExploder explodes contacts{} list.
+  - Tester tests 'role' attribute is an HNAP conforming value.
+  - For non-conforming values, AttributeCreator sets role to default_role_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+  - Results are sent to Supplier port of FeatureMerger.
+- Data stream 2 carries all metadata
+  - AttributeRemover removes contacts[] list attribute.
+-  FeatureMerger merges attributes from refined role attributes to the metadata, and recreates contacts{} list attributes.
+
+###### Update Cycle Refiner
+
+This section tests that Maintenance Frequency values conform to HNAP requirements, and where nonconforming or missing, revise them to default 'asNeeded'.  
+
+- Data stream 1 processes update cycle attributes.
+  - AttributeKeeper retains only _uuid, default_update_value and resources{} attributes.
+  - ListExploder explodes resources{} list.
+  - Tester tests 'resource_update_cycle' attribute is an HNAP conforming value.
+  - For non-conforming values, AttributeCreator sets role to default_update_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+  - Results are sent to Supplier port of FeatureMerger.
+- Data stream 2 carries all metadata
+  - AttributeRemover removes results[] list attribute.
+-  FeatureMerger merges attributes from refined update cycle attributes to the metadata, and recreates resources{} list attributes.
+
+###### Spatial Representation Type Refiner
+
+This section tests that Spatial Representation Type values conform to HNAP requirements, and where nonconforming or missing, revise them to default 'vector'.  
+
+- Tester tests spatial_representation_type attribute is an HNAP conforming value
+- For non-conforming values, AttributeCreator sets spatial_representation_type to default_spatial_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+
+###### Progress Code Refiner
+
+This section tests that Progress code values conform to HNAP requirements, and where nonconforming or missing, revise them to default 'onGoing'.  
+
+- Tester tests progress_code attribute is an HNAP conforming value.
+- For non-conforming values, AttributeCreator sets progress_code to default_progress_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+  
+###### Projection Code Refiner
+
+This section tests for projection name value and sets default value where missing.
+
+- Tester tests projectionList{0}.projection_name attribute is an HNAP conforming value.
+- For non-conforming values, AttributeCreator sets projectionList{0}.projection_name to default_reference_code_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+
+###### Reference System Codespace Refiner
+
+This section tests for reference system codespace value and sets default value where missing.
+
+- Tester tests reference_system attribute has a value.
+- For non-conforming values, AttributeCreator sets reference_system to default_reference_space_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+
+###### Reference System Version Refiner
+
+This section tests for reference system codespace value and sets default value where missing.
+
+- Tester tests reference_system_version attribute has a value.
+- For non-conforming values, AttributeCreator sets reference_system_version to default_reference_version_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+
+###### Topic Category Refiner
+
+This section substitutes a default value where items in iso_topic{}.topic_value list are nonconforming or missing.  List duplicates are removed.
+
+- Data stream 1 processes iso_topic{}.topic_value attributes.
+  - AttributeKeeper retains only _uuid, default_topic_value and iso_topic{}.topic_value attributes.
+  - ListExploder explodes iso_topic{}.topic_value list.
+  - Tester tests topic_value attribute is an HNAP conforming value.
+  - For non-conforming values, AttributeCreator sets role to default_topic_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+  - Results are sent to ListBuilder to rebuild iso_topic{} list.
+  - DuplicateRemover removes duplicates from iso_topic{} list.
+- Data stream 2 carries all metadata
+  - AttributeRemover removes iso_topic[] list attribute.
+-  FeatureMerger merges attributes from refined update cycle attributes to the metadata, and recreates resources{} list attributes.
+- AttributeRemover removes out-of-scope attributes.
+
+###### HTML/XML Refiner
+
+All resources{}.format attributes in Alberta data have the value of HTML for index 0, and XML for index 1, with the exception of ESRI REST formats that are extracted from ISO 19139 data, that are at index 0, and are followed by no successive indices.  This section tests resources{0}.format = HTML and resources{1}.format = XML, and assigns those values where not found, except where resources{0}.format = ESRI REST.
+
+- Tester tests resources{0}.format is not HTML nor ESRI REST
+- For non-conforming values, AttributeCreator sets resources{0}.format = HTML.
+- Tester tests resources{0}.format is not ESRI REST and resources{1}.format is not XML.
+- For non-conforming values, AttributeCreator sets resources{1}.format = XML.
+
+###### ZIP Link Creator
+
+On Alberta's open data site, ISO 19115 data with only two resources{} items per dataset (HTML and XML) also has access to a ZIP file download resource.  This section creates a zip file download link in conditions where the third URL has no value and the first URL is not an ESRI REST link.
+
+- Tester creates a zip file download link in conditions where the third URL has no value and the first URL is not an ESRI REST link.
+- For items meeting this criteria, AttributeCreator sets resources{2}.url = zip_link (attribute created in the CREATE/UPDATE extraction processes.
+
+###### Tag Creator 
+
+This section tests at least one tag value exists, and creates a default tag where missing.
+
+- Tester tests tags{0}.display_name has a value.
+- For missing values, AttributeCreator sets tags{0}.display_name to default_tag_value attribute, extracted from lookup table in the DEFAULT_ATTRIBUTE_MAPPER transformer.
+
+###### Attribute Cleanup
+
+- AttributeRenamer reverts '_uuid' attribute back to 'id'.
+- AttributeRemover removes out-of-scope attributes.
 
 ##### AB_TRANSLATION_CORRECTION
+
+This transformer corrects common GIS terms found in resources{}.name attributes that have been literally translated to incorrect French values in the AWS Translate tool and reverts them back to their correct GIS terms.
+
+- For each identified error, a PythonCaller executes a Python script to revert the incorrect value to its original value.  The following errors are addressed:
+  - 'REPOSE-TOI' is reverted to 'REST'.
+  - 'CHUT' is reverted to 'SHP'.
 
 ##### AB_UPDATE_PRETRANSLATE
 
@@ -1246,6 +1361,43 @@ This section performs the following tasks:
 - Output is directed to the AWS_TRANSLATE transformer.
 
 ##### AB_WMS_FORMATTER
+
+There have been two categories of WMS found in Alberta datasets.  One individual WMS maintained by the Ministry of Energy and over twenty maintained by the Ministry of Agriculture.  This transformer edits the URL's utilized for the WMS to support compliancy to the FGP Map Viewer.
+
+######  Ministry of Energy WMS
+
+This section manages one unique WMS and compiles the URL string to HNAP requirements through the following steps:
+
+- Tester Tests resources{2}.format and resources{2}.url for the unique WMS.
+- Found results
+- StringSearcher uses RegEx to extract object_name from resources{2}.url
+- object_name not matched is output to another StringSearcher another to extract object_name attribute via RegEx query.
+- A final StringSeracher uses RegEx to refines URL for resources{2}.url.
+- AttributeExposer exposes object_name attribute for WMS url concatenation.
+- Data sent to PythonCaller.
+
+###### Ministry of Agriculture WMS
+
+- Results not found in previous Tester are split in two datastreams.
+  - Data stream 1 sent to AttributeKeeper
+    - AttributeKeeper retains resources{}.format and resources{}.url.
+	- Tester tests resources{3}.url for WMS services.
+	- StringConcatenator concatenates resources{3}.url with GetCapabilities query:
+	  - Example: resources{3}.url?service=WMS&request=GetCapabilities
+	- HTTPCaller uses concatenated URL to extract capabilities from the WMS.
+	- Extract_Results extracts attribute keys/values from XML document using XQuery, pairing titles and layer numbers by creating list attributes wms{}.xtitle and wms{}.object_name.
+	- AttributeExposer exposes extracted attributes.
+	- AttributeKeeper retains wms{} list only.
+	- ListExploder explodes wms{} list.
+	- AttributeExposer exposes values from exploded list.
+	- Data sent to Supplier port on FeatureMerger.
+  - Data stream 2 sent to Requestor port on FeatureMerger.
+- FeatureMerger merges extracted wms{} list values with datasets using title and xtitle attributes.
+- Data sent to PythonCaller.
+
+###### PythonCaller
+
+Contains Python script to concatenate URL string for WMS services.
 
 #### British Columbia
 
