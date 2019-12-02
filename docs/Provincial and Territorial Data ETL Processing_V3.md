@@ -24,6 +24,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper)
 	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper)
       - [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator)
+	  - [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover)
 	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction)
 	  - [MORE_INFO_MAPPER](#more_info_mapper)
 	  - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest)
@@ -43,6 +44,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper-1)
 	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper-1)
       - [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-1)
+	  - [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover-1)
 	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-1)
 	  - [MORE_INFO_MAPPER](#more_info_mapper-1)
 	  - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-1)
@@ -62,6 +64,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [TOPIC_PARSER](#topic_parser)
 	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper-2)
 	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper-2)
+	  - [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover-2)
 	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-2)
 	  - [MORE_INFO_MANAGER](#more_info_manager-2)
 	  - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-2)
@@ -79,6 +82,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	  - [TOPIC_PARSER](#topic_parser-1)
 	  - [METADATA_VALUE_MAPPER](#metadata_value_mapper-3)
 	  - [METADATA_FORMAT_MAPPER](#metadata_format_mapper-3)
+	  - [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover-3)
 	  - [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-3)
 	  - [MORE_INFO_MANAGER](#more_info_manager-3)
 	  - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-3)
@@ -109,6 +113,7 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
       - [NOTIFY_CREATE](#notify_create-2)
       - [NOTIFY_UPDATE](#notify_update-2)	
       - [REMOVE_BROKEN_URL_WMS_ESRI_REST](#remove_broken_url_wms_esri_rest-4)
+	  - [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover-4)
 	  - [TEMPORAL_EXTENTS_MAPPER](#temporal_extents_mapper-4)
 	  - [TOPIC_PARSER](#topic_parser-2)
 	  - [WMS_REST_LANGUAGE_FORMATTER](#wms_rest_language_formatter-4)
@@ -314,6 +319,10 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 
 Creates an FFS file of data item values that cannot be mapped to a valid value due to undocumented data entry errors missing from the look-up table.  
 
+##### [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover-4)
+
+Removes all underscores from resources{}.name attributes.  Long compounded names joined by underscores in this field can cause display formatting issues when published to the FGP.
+
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
 Creates lists and removes duplicates for distribution formats, projections, update cycles and more_info.
@@ -397,6 +406,10 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
 Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to undocumented data entry errors missing from the look-up table. 
+
+##### [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover-4)
+
+Removes all underscores from resources{}.name attributes.  Long compounded names joined by underscores in this field can cause display formatting issues when published to the FGP.
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -501,6 +514,10 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 
 Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to undocumented data entry errors missing from the look-up table. 
 
+##### [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover-4)
+
+Removes all underscores from resources{}.name attributes.  Long compounded names joined by underscores in this field can cause display formatting issues when published to the FGP.
+
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
 Creates lists and removes duplicates for distribution formats, projections, update cycles and more_info.
@@ -583,6 +600,10 @@ The METADATA_FORMAT_MAPPER corrects known incorrect variations of data format va
 ##### [MAPPING_ERROR_LIST_CREATOR](#mapping_error_list_creator-4)
 
 Creates an FFS file of data item values that cannot be mapped in the METADATA_FORMAT_MAPPER or METADATA_VALUE_MAPPER to a valid value due to undocumented data entry errors missing from the look-up table. 
+
+##### [RESOURCE_NAME_UNDERSCORE_REMOVER](#resource_name_underscore_remover-4)
+
+Removes all underscores from resources{}.name attributes.  Long compounded names joined by underscores in this field can cause display formatting issues when published to the FGP.
 
 ##### [GMD_SECTION_DATA_EXTRACTION](#gmd_section_data_extraction-4)
 
@@ -819,6 +840,22 @@ This transformer tests all WMS and ESRI REST URL's for connectivity and removes 
 - Streams 1 & 2 are joined on the _uuid attribute.
 - Out of scope attributes are removed.
 - Datasets are tested to ensure at least one URL remains after testing or they are filtered out.
+
+#### RESOURCE_NAME_UNDERSCORE_REMOVER
+
+Removes all underscores from resources{}.name attributes.  Long compounded names joined by underscores in this field can cause display formatting issues when published to the FGP.  These results are achieved by performing the following tasks:
+
+- AttributeExposer exposes all attributes required by the transformer.
+- - Creates unique ID '_uuid' for each dataset using the UUIDGenerator.
+- Splits the data stream into two:
+  - Stream 1 retains only the _uuid and resources{} list.
+    - Resources{} list are exploded into individual attributes.
+	- StringReplacer replaces underscores in name attribute with a space.
+	- Stream 1 is sent to the Supplier port of the FeatureMerger transformer.
+  - Stream 2 removes the resources{} attribute list.
+  - Stream 2 is sent to the Requestor port of the FeatureMerger.
+- FeatureMerger joins data streams 1 & 2 on the _uuid attribute.
+- Out of scope attributes are removed.
 
 #### TEMPORAL_EXTENTS_MAPPER
 
