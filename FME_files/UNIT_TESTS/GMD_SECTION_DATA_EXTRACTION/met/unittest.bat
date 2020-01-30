@@ -60,8 +60,6 @@ IF EXIST met\resultat.ffs DEL met\resultat.ffs
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-PAUSE
-
 REM Comparison with the standard
 IF EXIST %log_comp% del %log_comp%
 %fme% met\Comparateur.fmw ^
