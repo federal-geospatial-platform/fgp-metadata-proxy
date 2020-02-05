@@ -1,0 +1,986 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN BC_GEOPORTAL_WEBLINK_ADDER,1,"Federal Geo Platform",6a6bfe53-92b1-4fe0-8799-6680355006bd,"Linked by Default",No,NO_PARALLELISM,,No,18586,YES,No,35
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="Federal Geo Platform"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="8326.87 3241.38"
+#!   DOC_TOP_LEFT="-121.876 -2710.74"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="18586"
+#!   FME_DOCUMENT_GUID="6a6bfe53-92b1-4fe0-8799-6680355006bd"
+#!   FME_DOCUMENT_PRIORGUID="e86a9c30-6560-4157-8c0f-2b01829b8fd7,4178419e-0cfb-4762-a6ff-bdd5a2213f96,9365d0b7-99e6-48d7-ab64-67d22d2a1d36,ea1d7b04-a6a7-46f4-9c1f-dce29c500430,7ff02982-2bb2-4de0-900a-7ee62c302657"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2018.1.1.2 (20190121 - Build 18586 - WIN32)"
+#!   LAST_SAVE_DATE="2020-01-23T14:37:07"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="35"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="BC_GEOPORTAL_WEBLINK_ADDER"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-165.18 888.402"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="70"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR EMAIL_ADMIN Enter Admin eMail:"
+#!   DEFAULT_VALUE="robert.bennett@canada.ca"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT EMAIL_HOST EMAIL_HOST:"
+#!   DEFAULT_VALUE="smtp.mail.yahoo.com"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT EMAIL_PORT EMAIL_PORT:"
+#!   DEFAULT_VALUE="465"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT EMAIL_ENCRYPTION EMAIL_ENCRYPTION:"
+#!   DEFAULT_VALUE="SSL"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT EMAIL_SENDER EMAIL_SENDER:"
+#!   DEFAULT_VALUE="robbennett@rocketmail.com"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL PASSWORD EMAIL_SENDER_PASSWORD EMAIL_SENDER_PASSWORD:"
+#!   DEFAULT_VALUE="fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMszWROnaYb8EXJaOQrLpRXJp7UsEYg7eIARdFFTPnJlOjnkGK27qJ7JPfKtgCl1n/A8ftak9c31N9OpM/FIf3QLcJY/4+OO0FcBcpQ+aeZbT6VATy1XZUFpovdnyYApd5yROeyfUui/InlYraKl8h1TkUVtwBz+LadO+xKl9EEF5hOEy96fM8KwcSg5360wiUWkh67+2bTBc/GfRAb4h4lHcv3bDXta6bWFNceY3A9iF2Mmr16+HsNUHQp4q8ZL+CdXkc1ubQdZlx4UwKSmUYSUfW3gUQQVq6RUcpvATzxy8NgXHkkrSkdmt3bg6DUicH/ApcKibXe61PyGY9bsRdKiCvg/+LguP2Dz)"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL URL_OR_ATTR TEST_URL http%https%ftp test url:"
+#!   DEFAULT_VALUE="@Value(test_url)"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="34"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="582.78523097731022 30.624656246562495"
+#!   TOP_LEFT="582.78523097731022 30.624656246562495"
+#!   BOTTOM_RIGHT="1048.7852309773102 31.624656246562495"
+#!   BOUNDING_RECT="582.78523097731022 30.624656246562495 466 -1"
+#!   ORDER="500000000001246"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Counts number of elements in dataset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1229.1350403401545 30.624656246562495"
+#!   TOP_LEFT="1229.1350403401545 30.624656246562495"
+#!   BOTTOM_RIGHT="1756.1350403401545 31.624656246562495"
+#!   BOUNDING_RECT="1229.1350403401545 30.624656246562495 527 -1"
+#!   ORDER="500000000001247"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="36"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates additional entry in resources{} list based upon element count and adds required elements.  Concatenate URL to BC Geoportal Weblink&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2085.4418605397059 530.63460300125394"
+#!   TOP_LEFT="2085.4418605397059 530.63460300125394"
+#!   BOTTOM_RIGHT="2593.4418605397059 531.63460300125394"
+#!   BOUNDING_RECT="2085.4418605397059 530.63460300125394 508 -1"
+#!   ORDER="500000000001248"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="37"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test URL connectivity.  Only successful connections will proceed through the output port&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2766.5341305399706 23.750187501875018"
+#!   TOP_LEFT="2766.5341305399706 23.750187501875018"
+#!   BOTTOM_RIGHT="3673.621772775929 -209.37684376843768"
+#!   BOUNDING_RECT="2766.5341305399706 23.750187501875018 907.08764223595836 233.1270312703127"
+#!   ORDER="500000000000958"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="38"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests for error code 400&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2441.2148703294806 -1278.2256429707159"
+#!   TOP_LEFT="2441.2148703294806 -1278.2256429707159"
+#!   BOTTOM_RIGHT="2871.2148703294806 -1277.2256429707159"
+#!   BOUNDING_RECT="2441.2148703294806 -1278.2256429707159 430 -1"
+#!   ORDER="500000000001271"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="39"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests for other 4xx error codes.  Failed port outputs 5xx error codes by default&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2284.9633078138563 -1579.4800805150912"
+#!   TOP_LEFT="2284.9633078138563 -1579.4800805150912"
+#!   BOTTOM_RIGHT="2714.9633078138563 -1578.4800805150912"
+#!   BOUNDING_RECT="2284.9633078138563 -1579.4800805150912 430 -1"
+#!   ORDER="500000000001272"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="40"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Logs 400 error code&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3822.3596521679506 -986.59998671415326"
+#!   TOP_LEFT="3822.3596521679506 -986.59998671415326"
+#!   BOTTOM_RIGHT="4294.3596521679501 -985.59998671415326"
+#!   BOUNDING_RECT="3822.3596521679506 -986.59998671415326 472 -1"
+#!   ORDER="500000000001273"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="41"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;eMail notification of 5xx server error&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3112.0963391441683 -2112.4819555338418"
+#!   TOP_LEFT="3112.0963391441683 -2112.4819555338418"
+#!   BOTTOM_RIGHT="3584.0963391441683 -2111.4819555338418"
+#!   BOUNDING_RECT="3112.0963391441683 -2112.4819555338418 472 -1"
+#!   ORDER="500000000001274"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="15"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="42"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Terminates program&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5354.6704813973429 -2171.8575492897799"
+#!   TOP_LEFT="5354.6704813973429 -2171.8575492897799"
+#!   BOTTOM_RIGHT="5826.6704813973429 -2170.8575492897799"
+#!   BOUNDING_RECT="5354.6704813973429 -2171.8575492897799 472 -1"
+#!   ORDER="500000000001275"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="43"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Defective URL resets all BC Geoportal webwink attributes to null &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4551.5374500670296 -1098.855370923219"
+#!   TOP_LEFT="4551.5374500670296 -1098.855370923219"
+#!   BOTTOM_RIGHT="5059.5374500670296 -1097.855370923219"
+#!   BOUNDING_RECT="4551.5374500670296 -1098.855370923219 508 -1"
+#!   ORDER="500000000001276"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="44"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Sets all null attribute values to missing&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5195.248621057639 -1136.3557459269691"
+#!   TOP_LEFT="5195.248621057639 -1136.3557459269691"
+#!   BOTTOM_RIGHT="5735.248621057639 -1135.3557459269691"
+#!   BOUNDING_RECT="5195.248621057639 -1136.3557459269691 540 -1"
+#!   ORDER="500000000001277"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="14"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="45"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Logs 4xx error code&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3805.38302615169 -1917.8592993072789"
+#!   TOP_LEFT="3805.38302615169 -1917.8592993072789"
+#!   BOTTOM_RIGHT="4277.3830261516905 -1916.8592993072789"
+#!   BOUNDING_RECT="3805.38302615169 -1917.8592993072789 472 -1"
+#!   ORDER="500000000001278"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   COLOUR="1,1,0.78431372549019607,0.19607843137254902"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="46"
+#!   NAME="Error code handling"
+#!   DESCRIPTION="&lt;html&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   TOP_LEFT="2150.4679332507603 -845.0977366916527"
+#!   ORDER="500000000001280"
+#!   BOTTOM_RIGHT="6191.1333399048272 -2710.7413931282172"
+#!   BOUNDING_RECT="2150.4679332507603 -845.0977366916527 4040.6654066540673 1865.6436564365645"
+#!   STICKY="true"
+#!   COLOUR="0.47843137254901963,0.32156862745098042,0.90588235294117647"
+#!   CONTENTS="22 33 10 32 31 13 41 12 24 9 28 40 14 11 15 39 38 23 43 8 44 26 25 42 45 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="ListElementCounter"
+#!   VERSION="1"
+#!   POSITION="1278.1352903426546 -431.25431254312542"
+#!   BOUNDING_RECT="1278.1352903426546 -431.25431254312542 -1 -1"
+#!   ORDER="500000000001062"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CNT_ATTR" PARM_VALUE="_element_count_res"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListElementCounter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="618.756187561876 -431.25431254312542"
+#!   BOUNDING_RECT="618.756187561876 -431.25431254312542 -1 -1"
+#!   ORDER="500000000001065"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="resources{},name,test_url"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="2115.6919230403309 -431.25431254312548"
+#!   BOUNDING_RECT="2115.6919230403309 -431.25431254312548 -1 -1"
+#!   ORDER="500000000001245"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.format SET_TO HTML  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.name SET_TO &lt;space&gt;British&lt;space&gt;Columbia&lt;space&gt;Geoportal  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.protocol SET_TO HTTPS  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.url SET_TO https:&lt;solidus&gt;&lt;solidus&gt;catalogue.data.gov.bc.ca&lt;solidus&gt;dataset&lt;solidus&gt;&lt;at&gt;Value&lt;openparen&gt;name&lt;closeparen&gt;  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.name_fr SET_TO G&lt;u00e9&gt;oportail&lt;space&gt;de&lt;space&gt;la&lt;space&gt;Colombie-Britannique  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.format_resourceType_en SET_TO Dataset  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.format_resourceType_fr SET_TO Donn&lt;u00e9&gt;es  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.transfer_option_description_language SET_TO eng  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.transfer_option_description_language_other_lang SET_TO fra  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.xlink_role SET_TO   test_url SET_TO https:&lt;solidus&gt;&lt;solidus&gt;catalogue.data.gov.bc.ca&lt;solidus&gt;dataset&lt;solidus&gt;&lt;at&gt;Value&lt;openparen&gt;name&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="HTTPCaller"
+#!   VERSION="1"
+#!   POSITION="3036.6491561009093 -431.25431254312542"
+#!   BOUNDING_RECT="3036.6491561009093 -431.25431254312542 -1 -1"
+#!   ORDER="500000000000940"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADDITIONAL_PARAMETERS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ADDITIONAL_URL_PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_REQUEST_PARAMETERS" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_RESPONSE_PARAMETERS" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_METHOD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_NAMED_CONNECTION" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_USERNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECTION_TIMEOUT_LENGTH" PARM_VALUE="60"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="ERROR_ATTR" PARM_VALUE="_error"/>
+#!     <XFORM_PARM PARM_NAME="FILE_PATH_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FOLLOW_REDIRECTS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="HTTPURL_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HTTP_AUTH_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HTTP_METHOD" PARM_VALUE="OPTIONS"/>
+#!     <XFORM_PARM PARM_NAME="HTTP_RESPONSE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTIPARTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_DIRNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FILENAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_FILE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_HEADER_LIST_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SAVE_FILE" PARM_VALUE="Attribute"/>
+#!     <XFORM_PARM PARM_NAME="SAVE_MULTI" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="STATUS_CODE_ATTR" PARM_VALUE="_http_status_code"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_ATTR" PARM_VALUE="_response_body"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_ATTR_ENCODING" PARM_VALUE="auto-detect"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_URL" PARM_VALUE="$(TEST_URL)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFER_TIMEOUT_LENGTH" PARM_VALUE="90"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_BODY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_CONTENT_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="USE_COOKIES" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="VERIFY_SSL_CERTIFICATES" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTTPCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="3112.0963391441683 -1260.9770804850907"
+#!   BOUNDING_RECT="3112.0963391441683 -1260.9770804850907 -1 -1"
+#!   ORDER="500000000001262"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_http_status_code&lt;closeparen&gt; = 400"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="3822.3596521679506 -1288.8521742360283"
+#!   BOUNDING_RECT="3822.3596521679506 -1288.8521742360283 -1 -1"
+#!   ORDER="500000000001263"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_ONLY"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Error&lt;space&gt;Code&lt;space&gt;400:&lt;space&gt;Bad&lt;space&gt;request&lt;space&gt;by&lt;space&gt;client.&lt;space&gt;&lt;space&gt;Verify&lt;space&gt;URL&lt;space&gt;syntax.&lt;space&gt;&lt;space&gt;BC&lt;space&gt;Geoportal&lt;space&gt;Weblink&lt;space&gt;not&lt;space&gt;created."/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="WARN"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="3112.0963391441683 -1691.9812055263415"
+#!   BOUNDING_RECT="3112.0963391441683 -1691.9812055263415 -1 -1"
+#!   ORDER="500000000001264"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="AND"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_http_status_code&lt;closeparen&gt; &gt; 400&#10;TEST &lt;at&gt;Value&lt;openparen&gt;_http_status_code&lt;closeparen&gt; &lt; 500"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="3822.3596521679506 -1688.8561742760289"
+#!   BOUNDING_RECT="3822.3596521679506 -1688.8561742760289 -1 -1"
+#!   ORDER="500000000001265"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_ONLY"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Client&lt;space&gt;side&lt;space&gt;error.&lt;space&gt;&lt;space&gt;Status&lt;space&gt;code&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_http_status_code&lt;closeparen&gt;.&lt;space&gt;&lt;space&gt;&lt;space&gt;BC&lt;space&gt;Geoportal&lt;space&gt;Weblink&lt;space&gt;not&lt;space&gt;created."/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="WARN"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="4551.5374500670296 -2238.9848305625928"
+#!   BOUNDING_RECT="4551.5374500670296 -2238.9848305625928 -1 -1"
+#!   ORDER="500000000001266"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Status&lt;space&gt;code&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_http_status_code&lt;closeparen&gt;.&lt;space&gt;&lt;space&gt;Cannot&lt;space&gt;reach&lt;space&gt;server.&lt;space&gt;&lt;space&gt;Please&lt;space&gt;try&lt;space&gt;again&lt;space&gt;later.&lt;space&gt;&lt;space&gt;Translation&lt;space&gt;terminated."/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="4594.2876375689066 -1535.7340897104068"
+#!   BOUNDING_RECT="4594.2876375689066 -1535.7340897104068 -1 -1"
+#!   ORDER="500000000001245"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.format SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.name SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.protocol SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.url SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.name_fr SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.format_resourceType_en SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.format_resourceType_fr SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.transfer_option_description_language SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.transfer_option_description_language_other_lang SET_TO FME_NULL_VALUE  resources&lt;opencurly&gt;&lt;at&gt;Value&lt;openparen&gt;_element_count_res&lt;closeparen&gt;&lt;closecurly&gt;.xlink_role SET_TO FME_NULL_VALUE"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="NullAttributeMapper"
+#!   VERSION="2"
+#!   POSITION="5253.6239648110768 -1535.7340897104068"
+#!   BOUNDING_RECT="5253.6239648110768 -1535.7340897104068 -1 -1"
+#!   ORDER="500000000001269"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRCHOICE" PARM_VALUE="All Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTRLIST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NEW_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NULL_TREATMENT" PARM_VALUE="Missing"/>
+#!     <XFORM_PARM PARM_NAME="OTHER_VALUE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP2" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REG_EXP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SOURCE_ATTR_VAL" PARM_VALUE="Null"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="NullAttributeMapper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="Emailer"
+#!   VERSION="1"
+#!   POSITION="3847.3599021704499 -2154.6089868041545"
+#!   BOUNDING_RECT="3847.3599021704499 -2154.6089868041545 -1 -1"
+#!   ORDER="500000000001270"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="Sent"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="test_url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_count_res" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADDRESSING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTACHGROUP" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="ATTACHMENTTABLE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BCC" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BODY" PARM_VALUE="Cannot&lt;space&gt;connect&lt;space&gt;to&lt;space&gt;BC&lt;space&gt;Geoportal&lt;space&gt;to&lt;space&gt;verify&lt;space&gt;weblink.&lt;space&gt;&lt;space&gt;Translation&lt;space&gt;stopped&lt;space&gt;at&lt;space&gt;BC_GEOPORTAL_WEBLINK_ADDER.&lt;space&gt;&lt;space&gt;Please&lt;space&gt;try&lt;space&gt;again&lt;space&gt;later."/>
+#!     <XFORM_PARM PARM_NAME="CC" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CONTENT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FROM" PARM_VALUE="$(EMAIL_SENDER)"/>
+#!     <XFORM_PARM PARM_NAME="SERVICE" PARM_VALUE="Generic SMTP"/>
+#!     <XFORM_PARM PARM_NAME="SERVICEGROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SMTP_CONNECTION" PARM_VALUE="HOST;$(EMAIL_HOST);PORT;$(EMAIL_PORT);ENCRYPTION;None;TIMEOUT;60;AUTHENTICATION;YES;USERNAME;$(EMAIL_SENDER);PASSWORD;$(EMAIL_SENDER_PASSWORD);FME_CONTROLLER_QUERY_FILE;transformers&lt;backslash&gt;dependencies&lt;backslash&gt;emailer&lt;backslash&gt;Generic&lt;space&gt;SMTP.fme"/>
+#!     <XFORM_PARM PARM_NAME="SUBJECT" PARM_VALUE="BC&lt;space&gt;Translation&lt;space&gt;failed.&lt;space&gt;&lt;space&gt;Cannot&lt;space&gt;verify&lt;space&gt;BC&lt;space&gt;Geoportal&lt;space&gt;URL."/>
+#!     <XFORM_PARM PARM_NAME="TO" PARM_VALUE="$(EMAIL_ADMIN)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Emailer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="7049.1776346334918 -523.67089764991476"
+#!   BOUNDING_RECT="7049.1776346334918 -523.67089764991476 -1 -1"
+#!   ORDER="500000000001281"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_response_body,_element_count_res,fme_rejection_code,_error,_http_status_code,test_url,name"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-121.87621876218776 -406.25406254062534"
+#!   BOUNDING_RECT="-121.87621876218776 -406.25406254062534 -1 -1"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="8204.9927642133516 -523.67089764991476"
+#!   BOUNDING_RECT="8204.9927642133516 -523.67089764991476 -1 -1"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 Sent"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="32"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+DEFAULT_MACRO $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_ADMIN robert.bennett@canada.ca
+DEFAULT_MACRO $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_HOST smtp.mail.yahoo.com
+DEFAULT_MACRO $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_PORT 465
+DEFAULT_MACRO $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_ENCRYPTION SSL
+DEFAULT_MACRO $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_SENDER robbennett@rocketmail.com
+DEFAULT_MACRO $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_SENDER_PASSWORD fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMszWROnaYb8EXJaOQrLpRXJp7UsEYg7eIARdFFTPnJlOjnkGK27qJ7JPfKtgCl1n/A8ftak9c31N9OpM/FIf3QLcJY/4+OO0FcBcpQ+aeZbT6VATy1XZUFpovdnyYApd5yROeyfUui/InlYraKl8h1TkUVtwBz+LadO+xKl9EEF5hOEy96fM8KwcSg5360wiUWkh67+2bTBc/GfRAb4h4lHcv3bDXta6bWFNceY3A9iF2Mmr16+HsNUHQp4q8ZL+CdXkc1ubQdZlx4UwKSmUYSUfW3gUQQVq6RUcpvATzxy8NgXHkkrSkdmt3bg6DUicH/ApcKibXe61PyGY9bsRdKiCvg/+LguP2Dz)
+DEFAULT_MACRO $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_TEST_URL @Value(test_url)
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Input1579808227 Input Splitter"   INPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Input"    OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_ListElementCounter    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"         "_element_count_res" @NumElements("resources<opencurly><closecurly>",ENCODED)
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format" "SET_TO" "HTML" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.name" "SET_TO" "<space>British<space>Columbia<space>Geoportal" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.protocol" "SET_TO" "HTTPS" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.url" "SET_TO" "https:<solidus><solidus>catalogue.data.gov.bc.ca<solidus>dataset<solidus><at>Value<openparen>name<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.name_fr" "SET_TO" "G<u00e9>oportail<space>de<space>la<space>Colombie-Britannique" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format_resourceType_en" "SET_TO" "Dataset" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format_resourceType_fr" "SET_TO" "Donn<u00e9>es" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.transfer_option_description_language" "SET_TO" "eng" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.transfer_option_description_language_other_lang" "SET_TO" "fra" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.xlink_role" "SET_TO" "" }      ATTR_ACTION { "" "test_url" "SET_TO" "https:<solidus><solidus>catalogue.data.gov.bc.ca<solidus>dataset<solidus><at>Value<openparen>name<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * HTTPFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_TEST_URL$encode),$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller)"    HTTP_METHOD OPTIONS    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS Yes    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester) = 400 ENCODED    BOOLEAN_OPERATOR OR    OUTPUT PASSED FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_FAILED"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2) > 400 ENCODED TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2) < 500 ENCODED    BOOLEAN_OPERATOR AND    OUTPUT PASSED FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_FAILED"
+# -------------------------------------------------------------------------
+# Note -- the AttachmentTable has to have a SPACE as the first character so that we don't get the *bad*
+# FME Parser to start parsing a @ function call -- if @ is the first character, it will, and then we lose
+# our table elements :-(
+# The python later expects the first character to be a space so all is well.
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_CATCHER    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_FAILED"    OUTPUT FEATURE_TYPE $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_READY       ___fme_emailer_service           "Generic SMTP"       ___fme_emailer_connection        "HOST;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_HOST$encode),$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer);PORT;@EvaluateExpression(FDIV,FLOAT,$($(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_PORT$encode),$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer);ENCRYPTION;None;TIMEOUT;60;AUTHENTICATION;YES;USERNAME;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_SENDER$encode),$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer);PASSWORD;@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_SENDER_PASSWORD$encode),$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer)"       ___fme_emailer_from              "@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_SENDER$encode),$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer)"       ___fme_emailer_to                "@EvaluateExpression(FDIV,STRING_ENCODED,$($(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_EMAIL_ADMIN$encode),$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer)"       ___fme_emailer_cc                ""       ___fme_emailer_bcc               ""       ___fme_emailer_subject           "BC<space>Translation<space>failed.<space><space>Cannot<space>verify<space>BC<space>Geoportal<space>URL."       ___fme_emailer_body              "Cannot<space>connect<space>to<space>BC<space>Geoportal<space>to<space>verify<space>weblink.<space><space>Translation<space>stopped<space>at<space>BC_GEOPORTAL_WEBLINK_ADDER.<space><space>Please<space>try<space>again<space>later."       ___fme_emailer_attachments       " "       ___fme_emailer_xformerName       "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_CALLER    INPUT FEATURE_TYPE $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_READY    PYTHON_NAMESPACE FMEOBJECTS    SYMBOL_NAME Emailer.Emailer    OUTPUT PYOUTPUT FEATURE_TYPE $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_PROCESSED
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_ROUTER    INPUT FEATURE_TYPE $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_PROCESSED    TEST &fme_rejection_code == ""    OUTPUT PASSED FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_Sent"    OUTPUT FAILED FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_<REJECTED>"
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_Sent"    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Emailer_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.<space><space>Cannot<space>reach<space>server.<space><space>Please<space>try<space>again<space>later.<space><space>Translation<space>terminated.,$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Terminator)")       @SupplyAttributes(_wb_termination_xformer,"$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.<space><space>Cannot<space>reach<space>server.<space><space>Please<space>try<space>again<space>later.<space><space>Translation<space>terminated.,$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Terminator)")
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_Logger    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_LOGGED"                  @Log(ENCODED, "<dollar><openparen>BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME<closeparen>_Logger_2:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Client<space>side<space>error.<space><space>Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.<space><space><space>BC<space>Geoportal<space>Weblink<space>not<space>created.,$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2)","20","20","",WARN,LOG_ONLY,$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_fc044fec_700f_4c81_b812_393b598d9b8a0)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME<closeparen>_Logger:<space>Error<space>Code<space>400:<space>Bad<space>request<space>by<space>client.<space><space>Verify<space>URL<space>syntax.<space><space>BC<space>Geoportal<space>Weblink<space>not<space>created.","20","20","",WARN,LOG_ONLY,$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_db14fa25_bf6a_415e_9916_3a422cbff5240)
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_LOGGED"    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_LOGGED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.name" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.protocol" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.url" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.name_fr" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format_resourceType_en" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format_resourceType_fr" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.transfer_option_description_language" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.transfer_option_description_language_other_lang" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.xlink_role" "SET_TO" "FME_NULL_VALUE" }    OUTPUT OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+Tcl2 proc $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_NullAttributeMapper_eb942561_dfc7_45d2_bbf7_a936803ee7370_null_replacer { otherValue newValue regExp } {    set attrs [split {<Unused>} { }];    set decode true;    if { {ALL} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {SETNULL}] != -1} {                 set act {DELETEATTR};             };          }          elseif { [string first {EMPTY} {SETNULL}] != -1 && $attrVal == {}} {             set act {DELETEATTR};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {DELETEATTR};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {DELETEATTR};             }          };      }      elseif {[string first {MISSINGATTR} {SETNULL}] != -1} {             set act {DELETEATTR};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_NullAttributeMapper    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_NullAttributeMapper_OUTPUT"         @Tcl2("$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_NullAttributeMapper_eb942561_dfc7_45d2_bbf7_a936803ee7370_null_replacer {} {<Unused>} {}")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_Output"    INPUT  FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_NullAttributeMapper_OUTPUT"    OUTPUT { FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_response_body,_element_count_res,fme_rejection_code,_error,_http_status_code,test_url,name)        @RemoveAttributes(fme_pcre_match"$($(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Output1579808227 Output Collector"   INPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(BC_GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME))}]
