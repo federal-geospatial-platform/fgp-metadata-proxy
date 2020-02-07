@@ -16,8 +16,6 @@ REM ===========================================================================
 SET Repertoire=%~dp0
 PUSHD %Repertoire%\..
 
-
-
 REM Define FME transformer path
 SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 
@@ -25,8 +23,7 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=REMOVE_BROKEN_URL_WMS_ESRI_REST
-SET fme=C:\apps\FME2018.1.1.2\fme.exe
-
+SET fme=C:\apps\FME2019.0\fme.exe
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
 
@@ -69,14 +66,6 @@ IF EXIST %log_comp% del %log_comp%
 --IN_RESULTAT_FILE %resultat% ^
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison error output with the standard
-REM IF EXIST %log_comp_2% del %log_comp_2%
-REM %fme% met\Comparateur.fmw ^
-REM --IN_ETALON_FILE %etalon_2% ^
-REM --IN_RESULTAT_FILE %resultat_2% ^
-REM --LOG_FILE %log_comp_2% 
-REM SET Statut=%Statut%%ERRORLEVEL%
 
 REM Second FME call,Testing for client side error management
 set test_number=2

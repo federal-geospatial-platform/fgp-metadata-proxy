@@ -25,7 +25,7 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=XML_PUBLISHER
-SET fme=C:\apps\FME2018.1.1.2\fme.exe
+SET fme=C:\apps\FME2019.0\fme.exe
 
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
@@ -61,7 +61,7 @@ IF EXIST met\resultat.xml DEL met\resultat.xml
 --LOOKUP_TABLE %lookup% ^
 --OUT_XML_DIR met ^
 --METHOD_SELECT Local ^
---TEMPLATE_GMD_CITED_RESPONSIBLE_PARTY met\GMD_CITEDRESPONSIBLEPARTY.xml ^
+--TEMPLATE_GMD_CITEDRESPONSIBLEPARTY met\GMD_CITEDRESPONSIBLEPARTY.xml ^
 --TEMPLATE_GMD_CONTACT met\GMD_CONTACT.xml ^
 --TEMPLATE_GMD_DISTRIBUTIONFORMAT met\GMD_DISTRIBUTIONFORMAT.xml ^
 --TEMPLATE_GMD_DISTRIBUTOR met\GMD_DISTRIBUTOR.xml ^
@@ -91,7 +91,6 @@ set etalon=met\etalon%test_number%.xml
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
-
 IF EXIST %log% del %log%
 IF EXIST met\resultat.xml DEL met\resultat.xml
 %fme% met\metrique_xml_publisher.fmw ^
@@ -99,7 +98,7 @@ IF EXIST met\resultat.xml DEL met\resultat.xml
 --LOOKUP_TABLE %lookup% ^
 --OUT_XML_DIR met ^
 --METHOD_SELECT Local ^
---TEMPLATE_GMD_CITED_RESPONSIBLE_PARTY met\GMD_CITEDRESPONSIBLEPARTY.xml ^
+--TEMPLATE_GMD_CITEDRESPONSIBLEPARTY met\GMD_CITEDRESPONSIBLEPARTY.xml ^
 --TEMPLATE_GMD_CONTACT met\GMD_CONTACT.xml ^
 --TEMPLATE_GMD_DISTRIBUTIONFORMAT met\GMD_DISTRIBUTIONFORMAT.xml ^
 --TEMPLATE_GMD_DISTRIBUTOR met\GMD_DISTRIBUTOR.xml ^
@@ -129,7 +128,6 @@ set etalon=met\etalon%test_number%.xml
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
-
 IF EXIST %log% del %log%
 IF EXIST met\resultat.xml DEL met\resultat.xml
 %fme% met\metrique_xml_publisher.fmw ^
@@ -137,7 +135,7 @@ IF EXIST met\resultat.xml DEL met\resultat.xml
 --LOOKUP_TABLE %lookup% ^
 --OUT_XML_DIR met ^
 --METHOD_SELECT Local ^
---TEMPLATE_GMD_CITED_RESPONSIBLE_PARTY met\GMD_CITEDRESPONSIBLEPARTY.xml ^
+--TEMPLATE_GMD_CITEDRESPONSIBLEPARTY met\GMD_CITEDRESPONSIBLEPARTY.xml ^
 --TEMPLATE_GMD_CONTACT met\GMD_CONTACT.xml ^
 --TEMPLATE_GMD_DISTRIBUTIONFORMAT met\GMD_DISTRIBUTIONFORMAT.xml ^
 --TEMPLATE_GMD_DISTRIBUTOR met\GMD_DISTRIBUTOR.xml ^
@@ -172,7 +170,7 @@ IF EXIST met\resultat.xml DEL met\resultat.xml
 --LOOKUP_TABLE %lookup% ^
 --OUT_XML_DIR met ^
 --METHOD_SELECT TOTO ^
---TEMPLATE_GMD_CITED_RESPONSIBLE_PARTY met\GMD_CITEDRESPONSIBLEPARTY.xml ^
+--TEMPLATE_GMD_CITEDRESPONSIBLEPARTY met\GMD_CITEDRESPONSIBLEPARTY.xml ^
 --TEMPLATE_GMD_CONTACT met\GMD_CONTACT.xml ^
 --TEMPLATE_GMD_DISTRIBUTIONFORMAT met\GMD_DISTRIBUTIONFORMAT.xml ^
 --TEMPLATE_GMD_DISTRIBUTOR met\GMD_DISTRIBUTOR.xml ^
