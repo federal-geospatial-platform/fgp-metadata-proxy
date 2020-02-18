@@ -23,10 +23,12 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=METADATA_FORMAT_MAPPER
+SET NomApp_2=MAPPING_ERROR_LIST_CREATOR
 SET fme=C:\apps\FME2019.0\fme.exe
 
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
+SET UserProfileFmx_2="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp_2%.fmx"
 
 REM ===========================================================================
 REM Initialization of the variable that contains the result of the execution
@@ -37,6 +39,8 @@ REM ===========================================================================
 REM Copy FMX to Documents
 REM ===========================================================================
 COPY/Y fme\%NomApp%.fmx %UserProfileFmx%
+SET Statut=%Statut%%ERRORLEVEL%
+COPY/Y fme\%NomApp_2%.fmx %UserProfileFmx_2%
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM Define sources
@@ -120,7 +124,7 @@ IF EXIST %log_comp_2% del %log_comp_2%
 --LOG_FILE %log_comp_2% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [00000000] (
+@IF [%Statut%] EQU [000000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
