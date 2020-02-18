@@ -25,7 +25,7 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=MORE_INFO_MANAGER
-SET fme=C:\apps\FME2019.0\fme.exe
+SET fme=%FME2019%
 
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
