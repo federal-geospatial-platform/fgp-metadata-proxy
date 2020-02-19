@@ -50,7 +50,7 @@ set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
 set etalon_2=met\etalon%test_number%_2.ffs
-set lookup=met\FormatLookupUnitTest.xlsx
+set lookup=met\FormatLookupUnitTest.csv
 set resultat=met\resultat.ffs
 set resultat_2=met\resultat_2.ffs
 set log=met\log_%test_number%.log
@@ -67,6 +67,8 @@ IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 --LOOKUP_TABLE %lookup% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
+
+PAUSE
 
 REM Comparison data output with the standard
 IF EXIST %log_comp% del %log_comp%
@@ -89,7 +91,7 @@ set test_number=2
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
 set etalon_2=met\etalon%test_number%_2.ffs
-set lookup=met\FormatLookupUnitTest.xlsx
+set lookup=met\FormatLookupUnitTest.csv
 set resultat=met\resultat.ffs
 set resultat_2=met\resultat_2.ffs
 set log=met\log_%test_number%.log
@@ -114,6 +116,7 @@ IF EXIST %log_comp% del %log_comp%
 --IN_ETALON_FILE %etalon% ^
 --IN_RESULTAT_FILE %resultat% ^
 --LOG_FILE %log_comp% 
+
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM Comparison error output with the standard
