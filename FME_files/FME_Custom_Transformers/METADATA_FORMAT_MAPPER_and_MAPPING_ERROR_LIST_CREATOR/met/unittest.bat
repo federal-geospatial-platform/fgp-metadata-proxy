@@ -56,11 +56,21 @@ set resultat_2=met\resultat_2.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 set log_comp_2=met\log_comp_%test_number%_2.log
+SET att_to_map=resources{}.format
+SET code_refresh=Yes
+SET english_refresh=Yes
+SET error_not_mapped=Yes
+SET french_refresh=Yes
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
 IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 %fme% met\metrique_metadata_format_mapper.fmw ^
+--ATT_TO_MAP %att_to_map% ^
+--CODE_REFRESH %code_refresh% ^
+--ENGLISH_REFRESH %english_refresh% ^
+--ERROR_NOT_MAPPED %error_not_mapped% ^
+--FRENCH_REFRESH %french_refresh% ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
@@ -97,12 +107,22 @@ set resultat_2=met\resultat_2.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 set log_comp_2=met\log_comp_%test_number%_2.log
+SET att_to_map=resources{}.format
+SET code_refresh=Yes
+SET english_refresh=Yes
+SET error_not_mapped=Yes
+SET french_refresh=Yes
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
 IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 
 %fme% met\metrique_metadata_format_mapper.fmw ^
+--ATT_TO_MAP %att_to_map% ^
+--CODE_REFRESH %code_refresh% ^
+--ENGLISH_REFRESH %english_refresh% ^
+--ERROR_NOT_MAPPED %error_not_mapped% ^
+--FRENCH_REFRESH %french_refresh% ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
