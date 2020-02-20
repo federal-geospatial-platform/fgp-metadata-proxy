@@ -57,20 +57,20 @@ set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 set log_comp_2=met\log_comp_%test_number%_2.log
 SET att_to_map=resources{}.format
-SET code_refresh=Yes
-SET english_refresh=Yes
-SET error_not_mapped=Yes
-SET french_refresh=Yes
+SET error_not_mapped=YES
+SET real_value_refresh=YES
+SET res_type_en_refresh=YES
+SET res_type_fr_refresh=YES
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
 IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 %fme% met\metrique_metadata_format_mapper.fmw ^
 --ATT_TO_MAP %att_to_map% ^
---CODE_REFRESH %code_refresh% ^
---ENGLISH_REFRESH %english_refresh% ^
 --ERROR_NOT_MAPPED %error_not_mapped% ^
---FRENCH_REFRESH %french_refresh% ^
+--REAL_VALUE_REFRESH %real_value_refresh% ^
+--RES_TYPE_EN_REFRESH %res_type_en_refresh% ^
+--RES_TYPE_FR_REFRESH %res_type_fr_refresh% ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
@@ -78,22 +78,12 @@ IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-PAUSE
-
 REM Comparison data output with the standard
 IF EXIST %log_comp% del %log_comp%
 %fme% met\Comparateur.fmw ^
 --IN_ETALON_FILE %etalon% ^
 --IN_RESULTAT_FILE %resultat% ^
 --LOG_FILE %log_comp% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison error output with the standard
-IF EXIST %log_comp_2% del %log_comp_2%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon_2% ^
---IN_RESULTAT_FILE %resultat_2% ^
---LOG_FILE %log_comp_2% 
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM Second FME call,Testing for client side error management
@@ -108,10 +98,10 @@ set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 set log_comp_2=met\log_comp_%test_number%_2.log
 SET att_to_map=resources{}.format
-SET code_refresh=Yes
-SET english_refresh=Yes
-SET error_not_mapped=Yes
-SET french_refresh=Yes
+SET error_not_mapped=YES
+SET real_value_refresh=YES
+SET res_type_en_refresh=YES
+SET res_type_fr_refresh=YES
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
@@ -119,10 +109,10 @@ IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 
 %fme% met\metrique_metadata_format_mapper.fmw ^
 --ATT_TO_MAP %att_to_map% ^
---CODE_REFRESH %code_refresh% ^
---ENGLISH_REFRESH %english_refresh% ^
 --ERROR_NOT_MAPPED %error_not_mapped% ^
---FRENCH_REFRESH %french_refresh% ^
+--REAL_VALUE_REFRESH %real_value_refresh% ^
+--RES_TYPE_EN_REFRESH %res_type_en_refresh% ^
+--RES_TYPE_FR_REFRESH %res_type_fr_refresh% ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
@@ -147,7 +137,7 @@ IF EXIST %log_comp_2% del %log_comp_2%
 --LOG_FILE %log_comp_2% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [000000000] (
+@IF [%Statut%] EQU [00000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
