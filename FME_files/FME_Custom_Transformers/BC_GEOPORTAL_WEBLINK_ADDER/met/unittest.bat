@@ -81,7 +81,7 @@ IF EXIST met\resultat.ffs DEL met\resultat.ffs
 %fme% met\metrique_bc_geoportal_weblink_adder.fmw ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
---TEST_URL https://catalogue.data.gov.bc.ca/dataset/TOTO ^
+--TEST_URL http://httpstat.us/404 ^
 --LOG_FILE %log% 
 FIND "Client side error.  Status code 404.   BC Geoportal Weblink not created." %log%
 SET Statut=%Statut%%ERRORLEVEL%
