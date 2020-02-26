@@ -24,7 +24,7 @@ SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
-SET NomApp=AB_MISSING_ATTRIBUTE_MANAGER
+SET NomApp=AB_CREATE_PRETRANSLATE
 SET fme=%FME2019%
 
 
@@ -43,31 +43,115 @@ SET Statut=%Statut%%ERRORLEVEL%
 
 REM Define sources
 
-REM First FME call,creating FFS File.  Source data for testing has seven data records, each containing at least one of the elements converted by this transformer.
+REM First FME call, testing Alberta HTTP call to three URL's.  
 set test_number=1
-SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat.ffs
+set source_1=met\source1.ffs
+set source_2=met\source2.ffs
+set source_3=met\source3.ffs
+set resultat_1=met\resultat_1.ffs
+set resultat_2=met\resultat_2.ffs
+set resultat_3=met\resultat_3.ffs
 set log=met\log_%test_number%.log
-set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
-IF EXIST met\resultat.ffs DEL met\resultat.ffs
-%fme% met\metrique_ab_missing_attribute_manager.fmw ^
---IN_FFS_FILE %source% ^
---OUT_FFS_FILE %resultat% ^
+%fme% met\metrique_ab_create_pretranslate.fmw ^
+--CSW_QUERY_1 "https://geodiscover.alberta.ca/geoportal/csw?request=getRecords&service=CSW ..." ^
+--CSW_QUERY_2 "https://geodiscover.alberta.ca/geoportal/csw?request=getRecords&service=CSW&resultType=results&ElementSetName=summary&startPosition=1" ^
+--CSW_QUERY_3 "https://geodiscover.alberta.ca/geoportal/rest/metadata/item/a82d775c1dc841e4b0e61186531c0d8b/xml" ^
+--IN_FFS_FILE_1 %source_1% ^
+--IN_FFS_FILE_2 %source_2% ^
+--IN_FFS_FILE_3 %source_3% ^
+--OUT_FFS_FILE_1 %resultat_1% ^
+--OUT_FFS_FILE_2 %resultat_2% ^
+--OUT_FFS_FILE_3 %resultat_3% ^
+--UNIT_TEST_HTTP_BYPASS No ^
 --LOG_FILE %log% 
+FIND "First HTTP status code is 200" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+FIND "Second HTTP status code is 200" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+FIND "Third HTTP status code is 200" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison with the standard
-IF EXIST %log_comp% del %log_comp%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
---LOG_FILE %log_comp% 
+REM Second FME call, testing Alberta HTTP call, inducing an error to the first URL.  
+set test_number=2
+set source_1=met\source1.ffs
+set source_2=met\source2.ffs
+set source_3=met\source3.ffs
+set resultat_1=met\resultat_1.ffs
+set resultat_2=met\resultat_2.ffs
+set resultat_3=met\resultat_3.ffs
+set log=met\log_%test_number%.log
+
+IF EXIST %log% del %log%
+%fme% met\metrique_ab_create_pretranslate.fmw ^
+--CSW_QUERY_1 "http://httpstat.us/500" ^
+--CSW_QUERY_2 "https://geodiscover.alberta.ca/geoportal/csw?request=getRecords&service=CSW&resultType=results&ElementSetName=summary&startPosition=1" ^
+--CSW_QUERY_3 "https://geodiscover.alberta.ca/geoportal/rest/metadata/item/a82d775c1dc841e4b0e61186531c0d8b/xml" ^
+--IN_FFS_FILE_1 %source_1% ^
+--IN_FFS_FILE_2 %source_2% ^
+--IN_FFS_FILE_3 %source_3% ^
+--OUT_FFS_FILE_1 %resultat_1% ^
+--OUT_FFS_FILE_2 %resultat_2% ^
+--OUT_FFS_FILE_3 %resultat_3% ^
+--UNIT_TEST_HTTP_BYPASS No ^
+--LOG_FILE %log% 
+FIND "ERROR 500: Error calling AB CSW node" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [0000] (
+REM Third FME call, testing Alberta HTTP call, inducing an error to the second URL.  
+set test_number=3
+set source_1=met\source1.ffs
+set source_2=met\source2.ffs
+set source_3=met\source3.ffs
+set resultat_1=met\resultat_1.ffs
+set resultat_2=met\resultat_2.ffs
+set resultat_3=met\resultat_3.ffs
+set log=met\log_%test_number%.log
+
+IF EXIST %log% del %log%
+%fme% met\metrique_ab_create_pretranslate.fmw ^
+--CSW_QUERY_1 "https://geodiscover.alberta.ca/geoportal/csw?request=getRecords&service=CSW ..." ^
+--CSW_QUERY_2 "http://httpstat.us/500" ^
+--CSW_QUERY_3 "https://geodiscover.alberta.ca/geoportal/rest/metadata/item/a82d775c1dc841e4b0e61186531c0d8b/xml" ^
+--IN_FFS_FILE_1 %source_1% ^
+--IN_FFS_FILE_2 %source_2% ^
+--IN_FFS_FILE_3 %source_3% ^
+--OUT_FFS_FILE_1 %resultat_1% ^
+--OUT_FFS_FILE_2 %resultat_2% ^
+--OUT_FFS_FILE_3 %resultat_3% ^
+--UNIT_TEST_HTTP_BYPASS No ^
+--LOG_FILE %log% 
+FIND "ERROR 500: Unable to call CSW query" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Fourth FME call, testing Alberta HTTP call, inducing an error to the third URL.  
+set test_number=3
+set source_1=met\source1.ffs
+set source_2=met\source2.ffs
+set source_3=met\source3.ffs
+set resultat_1=met\resultat_1.ffs
+set resultat_2=met\resultat_2.ffs
+set resultat_3=met\resultat_3.ffs
+set log=met\log_%test_number%.log
+
+IF EXIST %log% del %log%
+%fme% met\metrique_ab_create_pretranslate.fmw ^
+--CSW_QUERY_1 "https://geodiscover.alberta.ca/geoportal/csw?request=getRecords&service=CSW ..." ^
+--CSW_QUERY_2 "https://geodiscover.alberta.ca/geoportal/csw?request=getRecords&service=CSW&resultType=results&ElementSetName=summary&startPosition=1" ^
+--CSW_QUERY_3 "http://httpstat.us/404" ^
+--IN_FFS_FILE_1 %source_1% ^
+--IN_FFS_FILE_2 %source_2% ^
+--IN_FFS_FILE_3 %source_3% ^
+--OUT_FFS_FILE_1 %resultat_1% ^
+--OUT_FFS_FILE_2 %resultat_2% ^
+--OUT_FFS_FILE_3 %resultat_3% ^
+--UNIT_TEST_HTTP_BYPASS No ^
+--LOG_FILE %log% 
+FIND "Unable to call: http://httpstat.us/404.  Error code 404" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+@IF [%Statut%] EQU [00000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
