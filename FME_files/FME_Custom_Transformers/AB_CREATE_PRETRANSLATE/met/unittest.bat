@@ -73,6 +73,8 @@ SET Statut=%Statut%%ERRORLEVEL%
 FIND "Third HTTP status code is 200" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
+PAUSE
+
 REM Second FME call, testing Alberta HTTP call, inducing an error to the first URL.  
 set test_number=2
 set source_1=met\source1.ffs
@@ -98,6 +100,8 @@ IF EXIST %log% del %log%
 --LOG_FILE %log% 
 FIND "ERROR 500: Error calling AB CSW node" %log%
 SET Statut=%Statut%%ERRORLEVEL%
+
+PAUSE
 
 REM Third FME call, testing Alberta HTTP call, inducing an error to the second URL.  
 set test_number=3
@@ -125,8 +129,10 @@ IF EXIST %log% del %log%
 FIND "ERROR 500: Unable to call CSW query" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
+PAUSE
+
 REM Fourth FME call, testing Alberta HTTP call, inducing an error to the third URL.  
-set test_number=3
+set test_number=4
 set source_1=met\source1.ffs
 set source_2=met\source2.ffs
 set source_3=met\source3.ffs
@@ -148,8 +154,10 @@ IF EXIST %log% del %log%
 --OUT_FFS_FILE_3 %resultat_3% ^
 --UNIT_TEST_HTTP_BYPASS No ^
 --LOG_FILE %log% 
-FIND "Unable to call: http://httpstat.us/404.  Error code 404" %log%
+FIND "ERROR 404.  Unable to call" %log%
 SET Statut=%Statut%%ERRORLEVEL%
+
+PAUSE
 
 @IF [%Statut%] EQU [00000000] (
  @ECHO INFORMATION : Metric test passed
