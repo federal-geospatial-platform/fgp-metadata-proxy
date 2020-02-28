@@ -16,6 +16,8 @@ REM ===========================================================================
 SET Repertoire=%~dp0
 PUSHD %Repertoire%\..
 
+
+
 REM Define FME transformer path
 SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 
@@ -24,6 +26,7 @@ REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=BC_CREATE_PRETRANSLATE
 SET fme=%FME2019%
+
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
 
@@ -40,7 +43,123 @@ SET Statut=%Statut%%ERRORLEVEL%
 
 REM Define sources
 
-@IF [%Statut%] EQU [00] (
+REM First FME call, testing British Columbia HTTP call to two URL's.  
+set test_number=1
+set source_1=met\source1.ffs
+set source_2=met\source2.ffs
+set resultat_1=met\resultat1.ffs
+set resultat_2=met\resultat2.ffs
+set log=met\log_%test_number%.log
+
+IF EXIST %log% del %log%
+IF EXIST %resultat_1% DEL %resultat_1%
+IF EXIST %resultat_2% DEL %resultat_2%
+%fme% met\metrique_bc_create_pretranslate.fmw ^
+--CSW_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
+--CSW_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
+--IN_FFS_FILE_1 %source_1% ^
+--IN_FFS_FILE_2 %source_2% ^
+--OUT_FFS_FILE_1 %resultat_1% ^
+--OUT_FFS_FILE_2 %resultat_2% ^
+--UNIT_TEST_HTTP_BYPASS No ^
+--LOG_FILE %log% 
+FIND "First HTTP status code is 200" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+FIND "Second HTTP status code is 200" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Second FME call, testing British Columbia HTTP call, inducing an error to the first URL.  
+set test_number=2
+set source_1=met\source1.ffs
+set source_2=met\source2.ffs
+set resultat_1=met\resultat1.ffs
+set resultat_2=met\resultat2.ffs
+set log=met\log_%test_number%.log
+
+IF EXIST %log% del %log%
+IF EXIST %resultat_1% DEL %resultat_1%
+IF EXIST %resultat_2% DEL %resultat_2%
+%fme% met\metrique_bc_create_pretranslate.fmw ^
+--CSW_QUERY_1 "http://httpstat.us/500" ^
+--CSW_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
+--IN_FFS_FILE_1 %source_1% ^
+--IN_FFS_FILE_2 %source_2% ^
+--OUT_FFS_FILE_1 %resultat_1% ^
+--OUT_FFS_FILE_2 %resultat_2% ^
+--UNIT_TEST_HTTP_BYPASS No ^
+--LOG_FILE %log% 
+FIND "ERROR 500: Error calling BC CSW node" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Third FME call, testing British Columbia HTTP call, inducing an error to the second URL.  
+set test_number=3
+set source_1=met\source1.ffs
+set source_2=met\source2.ffs
+set resultat_1=met\resultat1.ffs
+set resultat_2=met\resultat2.ffs
+set log=met\log_%test_number%.log
+
+IF EXIST %log% del %log%
+IF EXIST %resultat_1% DEL %resultat_1%
+IF EXIST %resultat_2% DEL %resultat_2%
+IF EXIST %resultat_3% DEL %resultat_3%
+%fme% met\metrique_bc_create_pretranslate.fmw ^
+--CSW_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
+--CSW_QUERY_2 "http://httpstat.us/500" ^
+--IN_FFS_FILE_1 %source_1% ^
+--IN_FFS_FILE_2 %source_2% ^
+--OUT_FFS_FILE_1 %resultat_1% ^
+--OUT_FFS_FILE_2 %resultat_2% ^
+--UNIT_TEST_HTTP_BYPASS No ^
+--LOG_FILE %log% 
+FIND "ERROR 500: Unable to call CSW query" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Fifth FME call, bypassing HTTP Call and processing with FFS source data, with three FFS source files created following each HTTP call and acting as proxies for the HTTP results.
+set test_number=5
+SET etalon_1=met\etalon1.ffs
+SET etalon_2=met\etalon2.ffs
+set source_1=met\source1.ffs
+set source_2=met\source2.ffs
+set resultat_1=met\resultat1.ffs
+set resultat_2=met\resultat2.ffs
+set log=met\log_%test_number%.log
+set log_comp_1=met\log_comp_%test_number%_1.log
+set log_comp_2=met\log_comp_%test_number%_2.log
+
+IF EXIST %log% del %log%
+IF EXIST %resultat_1% DEL %resultat_1%
+IF EXIST %resultat_2% DEL %resultat_2%
+%fme% met\metrique_bc_create_pretranslate.fmw ^
+--CSW_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
+--CSW_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
+--IN_FFS_FILE_1 %source_1% ^
+--IN_FFS_FILE_2 %source_2% ^
+--OUT_FFS_FILE_1 %resultat_1% ^
+--OUT_FFS_FILE_2 %resultat_2% ^
+--UNIT_TEST_HTTP_BYPASS Yes ^
+--LOG_FILE %log% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+PAUSE
+
+REM Comparison data output with the standard.  Testing the output results prior to the second proxy HTTP call.
+IF EXIST %log_comp_1% del %log_comp_1%
+%fme% met\Comparateur.fmw ^
+--IN_ETALON_FILE %etalon_1% ^
+--IN_RESULTAT_FILE %resultat_1% ^
+--LOG_FILE %log_comp_1% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Comparison data output with the standard.  Testing the output results prior to the thirds HTTP call.
+IF EXIST %log_comp_2% del %log_comp_2%
+%fme% met\Comparateur.fmw ^
+--IN_ETALON_FILE %etalon_2% ^
+--IN_RESULTAT_FILE %resultat_2% ^
+--LOG_FILE %log_comp_2% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+@IF [%Statut%] EQU [000000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
