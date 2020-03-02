@@ -63,6 +63,7 @@ IF EXIST %resultat_2% DEL %resultat_2%
 --OUT_FFS_FILE_2 %resultat_2% ^
 --UNIT_TEST_HTTP_BYPASS No ^
 --LOG_FILE %log% 
+
 FIND "First HTTP status code is 200" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 FIND "Second HTTP status code is 200" %log%
@@ -102,7 +103,6 @@ set log=met\log_%test_number%.log
 IF EXIST %log% del %log%
 IF EXIST %resultat_1% DEL %resultat_1%
 IF EXIST %resultat_2% DEL %resultat_2%
-IF EXIST %resultat_3% DEL %resultat_3%
 %fme% met\metrique_bc_create_pretranslate.fmw ^
 --CSW_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
 --CSW_QUERY_2 "http://httpstat.us/500" ^
@@ -115,8 +115,8 @@ IF EXIST %resultat_3% DEL %resultat_3%
 FIND "ERROR 500: Unable to call CSW query" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Fifth FME call, bypassing HTTP Call and processing with FFS source data, with three FFS source files created following each HTTP call and acting as proxies for the HTTP results.
-set test_number=5
+REM Fourth FME call, bypassing HTTP Call and processing with FFS source data, with three FFS source files created following each HTTP call and acting as proxies for the HTTP results.
+set test_number=4
 SET etalon_1=met\etalon1.ffs
 SET etalon_2=met\etalon2.ffs
 set source_1=met\source1.ffs
@@ -140,8 +140,6 @@ IF EXIST %resultat_2% DEL %resultat_2%
 --UNIT_TEST_HTTP_BYPASS Yes ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
-
-PAUSE
 
 REM Comparison data output with the standard.  Testing the output results prior to the second proxy HTTP call.
 IF EXIST %log_comp_1% del %log_comp_1%
