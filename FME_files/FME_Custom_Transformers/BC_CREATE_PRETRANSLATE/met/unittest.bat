@@ -55,8 +55,8 @@ IF EXIST %log% del %log%
 IF EXIST %resultat_1% DEL %resultat_1%
 IF EXIST %resultat_2% DEL %resultat_2%
 %fme% met\metrique_bc_create_pretranslate.fmw ^
---CSW_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
---CSW_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
+--API_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
+--API_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
 --IN_FFS_FILE_1 %source_1% ^
 --IN_FFS_FILE_2 %source_2% ^
 --OUT_FFS_FILE_1 %resultat_1% ^
@@ -81,8 +81,8 @@ IF EXIST %log% del %log%
 IF EXIST %resultat_1% DEL %resultat_1%
 IF EXIST %resultat_2% DEL %resultat_2%
 %fme% met\metrique_bc_create_pretranslate.fmw ^
---CSW_QUERY_1 "http://httpstat.us/500" ^
---CSW_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
+--API_QUERY_1 "http://httpstat.us/500" ^
+--API_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
 --IN_FFS_FILE_1 %source_1% ^
 --IN_FFS_FILE_2 %source_2% ^
 --OUT_FFS_FILE_1 %resultat_1% ^
@@ -104,8 +104,8 @@ IF EXIST %log% del %log%
 IF EXIST %resultat_1% DEL %resultat_1%
 IF EXIST %resultat_2% DEL %resultat_2%
 %fme% met\metrique_bc_create_pretranslate.fmw ^
---CSW_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
---CSW_QUERY_2 "http://httpstat.us/500" ^
+--API_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
+--API_QUERY_2 "http://httpstat.us/500" ^
 --IN_FFS_FILE_1 %source_1% ^
 --IN_FFS_FILE_2 %source_2% ^
 --OUT_FFS_FILE_1 %resultat_1% ^
@@ -131,8 +131,8 @@ IF EXIST %log% del %log%
 IF EXIST %resultat_1% DEL %resultat_1%
 IF EXIST %resultat_2% DEL %resultat_2%
 %fme% met\metrique_bc_create_pretranslate.fmw ^
---CSW_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
---CSW_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
+--API_QUERY_1 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?" ^
+--API_QUERY_2 "https://catalogue.data.gov.bc.ca/api/3/action/package_search?start=1&rows=1000" ^
 --IN_FFS_FILE_1 %source_1% ^
 --IN_FFS_FILE_2 %source_2% ^
 --OUT_FFS_FILE_1 %resultat_1% ^
