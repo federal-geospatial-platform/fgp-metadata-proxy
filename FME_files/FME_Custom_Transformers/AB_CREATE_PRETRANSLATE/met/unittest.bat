@@ -67,6 +67,11 @@ IF EXIST %resultat_3% DEL %resultat_3%
 --OUT_FFS_FILE_1 %resultat_1% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
 --OUT_FFS_FILE_3 %resultat_3% ^
+--SAMPLE_SELECT Yes ^
+--SAMPLE_SIZE 100 ^
+--TIME_FILTER_DAYS 0 ^
+--TIME_FILTER_MONTHS 24 ^
+--TIME_STAMP 20200309 ^
 --UNIT_TEST_HTTP_BYPASS No ^
 --LOG_FILE %log% 
 FIND "First HTTP status code is 200" %log%
@@ -100,6 +105,11 @@ IF EXIST %resultat_3% DEL %resultat_3%
 --OUT_FFS_FILE_1 %resultat_1% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
 --OUT_FFS_FILE_3 %resultat_3% ^
+--SAMPLE_SELECT Yes ^
+--SAMPLE_SIZE 100 ^
+--TIME_FILTER_DAYS 0 ^
+--TIME_FILTER_MONTHS 24 ^
+--TIME_STAMP 20200309 ^
 --UNIT_TEST_HTTP_BYPASS No ^
 --LOG_FILE %log% 
 FIND "ERROR 500: Error calling AB CSW node" %log%
@@ -129,6 +139,11 @@ IF EXIST %resultat_3% DEL %resultat_3%
 --OUT_FFS_FILE_1 %resultat_1% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
 --OUT_FFS_FILE_3 %resultat_3% ^
+--SAMPLE_SELECT Yes ^
+--SAMPLE_SIZE 100 ^
+--TIME_FILTER_DAYS 0 ^
+--TIME_FILTER_MONTHS 24 ^
+--TIME_STAMP 20200309 ^
 --UNIT_TEST_HTTP_BYPASS No ^
 --LOG_FILE %log% 
 FIND "ERROR 500: Unable to call CSW query" %log%
@@ -158,6 +173,11 @@ IF EXIST %resultat_3% DEL %resultat_3%
 --OUT_FFS_FILE_1 %resultat_1% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
 --OUT_FFS_FILE_3 %resultat_3% ^
+--SAMPLE_SELECT Yes ^
+--SAMPLE_SIZE 100 ^
+--TIME_FILTER_DAYS 0 ^
+--TIME_FILTER_MONTHS 24 ^
+--TIME_STAMP 20200309 ^
 --UNIT_TEST_HTTP_BYPASS No ^
 --LOG_FILE %log% 
 FIND "ERROR 404.  Unable to call" %log%
@@ -193,6 +213,11 @@ IF EXIST %resultat_3% DEL %resultat_3%
 --OUT_FFS_FILE_1 %resultat_1% ^
 --OUT_FFS_FILE_2 %resultat_2% ^
 --OUT_FFS_FILE_3 %resultat_3% ^
+--SAMPLE_SELECT Yes ^
+--SAMPLE_SIZE 100 ^
+--TIME_FILTER_DAYS 0 ^
+--TIME_FILTER_MONTHS 24 ^
+--TIME_STAMP 20200309 ^
 --UNIT_TEST_HTTP_BYPASS Yes ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
