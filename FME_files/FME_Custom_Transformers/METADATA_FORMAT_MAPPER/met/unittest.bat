@@ -23,12 +23,10 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=METADATA_FORMAT_MAPPER
-SET NomApp_2=MAPPING_ERROR_LIST_CREATOR
 SET fme=%FME2019%
 
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
-SET UserProfileFmx_2="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp_2%.fmx"
 
 REM ===========================================================================
 REM Initialization of the variable that contains the result of the execution
@@ -40,8 +38,6 @@ REM Copy FMX to Documents
 REM ===========================================================================
 COPY/Y fme\%NomApp%.fmx %UserProfileFmx%
 SET Statut=%Statut%%ERRORLEVEL%
-COPY/Y fme\%NomApp_2%.fmx %UserProfileFmx_2%
-SET Statut=%Statut%%ERRORLEVEL%
 
 REM Define sources
 
@@ -49,13 +45,10 @@ REM First FME call,creating FFS File with ten compliant data records
 set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
-set etalon_2=met\etalon%test_number%_2.ffs
 set lookup=met\FormatLookupUnitTest.csv
 set resultat=met\resultat.ffs
-set resultat_2=met\resultat_2.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
-set log_comp_2=met\log_comp_%test_number%_2.log
 SET att_to_map=resources{}.format
 SET error_not_mapped=YES
 SET real_value_refresh=YES
@@ -64,7 +57,6 @@ SET res_type_fr_refresh=YES
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
-IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 %fme% met\metrique_metadata_format_mapper.fmw ^
 --ATT_TO_MAP %att_to_map% ^
 --ERROR_NOT_MAPPED %error_not_mapped% ^
@@ -73,7 +65,6 @@ IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 --RES_TYPE_FR_REFRESH %res_type_fr_refresh% ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
---OUT_FFS_FILE_2 %resultat_2% ^
 --LOOKUP_TABLE %lookup% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
@@ -90,13 +81,10 @@ REM Second FME call,Testing for client side error management
 set test_number=2
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
-set etalon_2=met\etalon%test_number%_2.ffs
 set lookup=met\FormatLookupUnitTest.csv
 set resultat=met\resultat.ffs
-set resultat_2=met\resultat_2.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
-set log_comp_2=met\log_comp_%test_number%_2.log
 SET att_to_map=resources{}.format
 SET error_not_mapped=YES
 SET real_value_refresh=YES
@@ -105,7 +93,6 @@ SET res_type_fr_refresh=YES
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
-IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 
 %fme% met\metrique_metadata_format_mapper.fmw ^
 --ATT_TO_MAP %att_to_map% ^
@@ -115,7 +102,6 @@ IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
 --RES_TYPE_FR_REFRESH %res_type_fr_refresh% ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
---OUT_FFS_FILE_2 %resultat_2% ^
 --LOOKUP_TABLE %lookup% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
@@ -129,15 +115,7 @@ IF EXIST %log_comp% del %log_comp%
 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison error output with the standard
-IF EXIST %log_comp_2% del %log_comp_2%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon_2% ^
---IN_RESULTAT_FILE %resultat_2% ^
---LOG_FILE %log_comp_2% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-@IF [%Statut%] EQU [00000000] (
+@IF [%Statut%] EQU [000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
