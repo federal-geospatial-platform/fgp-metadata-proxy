@@ -16,6 +16,8 @@ REM ===========================================================================
 SET Repertoire=%~dp0
 PUSHD %Repertoire%\..
 
+
+
 REM Define FME transformer path
 SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 
@@ -24,6 +26,7 @@ REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=DEFAULT_ATTRIBUTE_MAPPER
 SET fme=%FME2019%
+
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
 
@@ -40,7 +43,33 @@ SET Statut=%Statut%%ERRORLEVEL%
 
 REM Define sources
 
-@IF [%Statut%] EQU [00] (
+REM First FME call
+set test_number=1
+SET source=met\source%test_number%.ffs
+set lookup=met\Default_BC.csv
+set etalon=met\etalon%test_number%.ffs
+SET resultat=met\resultat%test_number%.ffs
+set log=met\log_%test_number%.log
+set log_comp=met\log_comp_%test_number%.log
+
+IF EXIST %log% del %log%
+IF EXIST met\resultat.xml DEL met\resultat.xml
+%fme% met\metrique_default_attribute_mapper.fmw ^
+--IN_FFS_FILE %source% ^
+--LOOKUP_TABLE %lookup% ^
+--OUT_FFS_FILE %resultat% ^
+--LOG_FILE %log% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Comparison with the standard
+IF EXIST %log_comp% del %log_comp%
+%fme% met\Comparateur.fmw ^
+--IN_ETALON_FILE %etalon% ^
+--IN_RESULTAT_FILE %resultat% ^
+--LOG_FILE %log_comp% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+@IF [%Statut%] EQU [0000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
