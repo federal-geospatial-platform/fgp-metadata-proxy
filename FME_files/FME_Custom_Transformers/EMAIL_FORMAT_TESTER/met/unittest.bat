@@ -44,7 +44,7 @@ SET Statut=%Statut%%ERRORLEVEL%
 REM Define sources
 
 
-REM First FME call,creating FFS File with fifteen compliant data records, ten of which require wms formatting
+REM First FME call,creating FFS File with seven data records, three of which have incorrect email formats
 set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
