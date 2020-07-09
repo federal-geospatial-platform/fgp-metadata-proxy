@@ -61,7 +61,7 @@ IF EXIST met\resultat.ffs DEL met\resultat.ffs
 --LOOKUP_TABLE %lookup% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
-FIND "Unable to perform getCapabilites request: https://maps.alberta.ca/genesis/services/TOTO/Latest/MapServer/WMSServer?" %log%
+FIND "Unable to perform getCapabilites request: https://maps.alberta.ca/genesis/services/TOTO/Latest/MapServer/WMSServer?service=WMS&request=GetCapabilities" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 FIND "Unable to perform getCapabilites request: https://maps.alberta.ca/TOTO/rest/services/Land_Use_Management/Latest/MapServer?f=pjson" %log%
 SET Statut=%Statut%%ERRORLEVEL%
