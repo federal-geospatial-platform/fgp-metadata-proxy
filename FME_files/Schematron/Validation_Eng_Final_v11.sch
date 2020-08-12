@@ -29,7 +29,7 @@
                 //*[gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString[starts-with(text(),'Government of Alberta')]]
                 [gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString = 'Open Government Licence - Alberta (https://open.alberta.ca/licence)']
                 or
-				//*[gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString[starts-with(text(),'Government of Quebec')]]
+				//*[gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString[starts-with(text(),'Quebec Government and Municipalities')]]
                 [gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString = 'Creative Commons 4.0 Attribution (CC-BY) licence – Quebec (https://www.donneesquebec.ca/fr/licence/)']
                 or
                 //*[gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString[starts-with(text(),'Government of British Columbia')]]
@@ -193,7 +193,7 @@
                 or starts-with(text(),'Government of Newfoundland and Labrador ; Government of Newfoundland and Labrador')
                 or starts-with(text(),'Government of Alberta; Government of Alberta')
                 or starts-with(text(),'Government of British Columbia; Government of British Columbia')
-				or starts-with(text(),'Government of Quebec; Government of Quebec')
+				or starts-with(text(),'Quebec Government and Municipalities; Quebec Government and Municipalities')
                 
                 ]">Error in business rule #5, Name of the organization | Erreur dans la règle d’affaire #5, Nom de l'organisation (valeur)</sch:assert>
 
@@ -519,8 +519,8 @@
                 or (count(gco:CharacterString[starts-with(text(),'Government of Alberta; Government of Alberta')]) = 1
                 and count(gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[starts-with(text(),'Gouvernement de l''Alberta; Gouvernement de l''Alberta')]) = 1)
 				
-				or (count(gco:CharacterString[starts-with(text(),'Government of Quebec; Government of Quebec')]) = 1
-                and count(gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[starts-with(text(),'Gouvernement du Québec; Gouvernement du Québec')]) = 1)
+				or (count(gco:CharacterString[starts-with(text(),'Quebec Government and Municipalities; Quebec Government and Municipalities')]) = 1
+                and count(gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[starts-with(text(),'Gouvernement et municipalités du Québec; Gouvernement et municipalités du Québec')]) = 1)
                 
                 or (count(gco:CharacterString[starts-with(text(),'Government of British Columbia; Government of British Columbia')]) = 1
                 and count(gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[starts-with(text(),'Gouvernement de la Colombie-Britannique; Gouvernement de la Colombie-Britannique')]) = 1)">
