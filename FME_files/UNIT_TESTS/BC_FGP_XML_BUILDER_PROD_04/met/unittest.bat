@@ -52,8 +52,7 @@ set xml_etalon=met\XML_etalon_%test_number%
 set xml_resultat=met\XML_resultat
 set process_report_directory_etalon=met\XLSX_etalon_%test_number%
 set process_report_directory_resultat=met\XLSX_resultat_%test_number%
-set process_report_subdirectory_resultat=\met\XLSX_resultat_%t
-est_number%
+set process_report_subdirectory_resultat=\met\XLSX_resultat_%test_number%
 
 set xlsx_etalon=%process_report_directory_etalon%\xlsx_etalon_%test_number%.xlsx
 set xlsx_resultat=%process_report_directory_resultat%\xlsx_resultat_%test_number%.xlsx
