@@ -68,7 +68,7 @@ MD %process_report_directory_resultat%
 --IN_XLS_LOOKUP_TABLE_FILE %lookup% ^
 --LOCAL_WRITER %Yes% ^
 --LOCAL_SOURCE_METADATA_DELTA_FINDER %Yes% ^
---OUT_RESULT_FOLDER %xml_resultat% ^
+--OUT_XML_LOCAL_DIR %xml_resultat% ^
 --OUT_XLS_NOTIFICATION_DIR %process_report_directory_resultat% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
@@ -134,7 +134,7 @@ MD %process_report_directory_resultat%
 --IN_XLS_LOOKUP_TABLE_FILE %lookup% ^
 --LOCAL_WRITER %Yes% ^
 --LOCAL_SOURCE_METADATA_DELTA_FINDER %Yes% ^
---OUT_RESULT_FOLDER %xml_resultat% ^
+--OUT_XML_LOCAL_DIR %xml_resultat% ^
 --OUT_FFS_MAPPING_ERROR %ffs_resultat% ^
 --OUT_XLS_NOTIFICATION_DIR %process_report_directory_resultat% ^
 --LOG_FILE %log% 
