@@ -19,7 +19,7 @@ PUSHD %Repertoire%\..
 
 
 REM Define FME transformer path
-SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
+SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents
 
 REM ===========================================================================
 REM Create file name variable in relative mode.
@@ -28,7 +28,8 @@ SET NomApp=QC_PROJECTION_GEOEXTENTS_EXTRACTOR
 SET fme=%FME2019%
 
 
-SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
+SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\FME\Transformers\%NomApp%.fmx"
+SET UserProfileFmxGitHub="%FME_USER_RESOURCE_DIR%\GitHub\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\%NomApp%.fmx"
 
 REM ===========================================================================
 REM Initialization of the variable that contains the result of the execution
@@ -67,8 +68,10 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
+COPY/Y %UserProfileFmxGitHub% %UserProfileFmx%
+SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [0000] (
+@IF [%Statut%] EQU [00000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
