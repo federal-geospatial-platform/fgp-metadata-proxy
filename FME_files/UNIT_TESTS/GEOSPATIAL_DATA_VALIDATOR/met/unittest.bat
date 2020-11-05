@@ -19,7 +19,7 @@ PUSHD %Repertoire%\..
 
 
 REM Define FME transformer path
-SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
+SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents
 
 REM ===========================================================================
 REM Create file name variable in relative mode.
@@ -27,8 +27,8 @@ REM ===========================================================================
 SET NomApp=GEOSPATIAL_DATA_VALIDATOR
 SET fme=%FME2019%
 
-
-SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
+SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\FME\Transformers\%NomApp%.fmx"
+SET UserProfileFmxGitHub="%FME_USER_RESOURCE_DIR%\GitHub\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\%NomApp%.fmx"
 
 REM ===========================================================================
 REM Initialization of the variable that contains the result of the execution
@@ -51,7 +51,8 @@ set etalon=met\etalon%test_number%.ffs
 set etalon2=met\etalon%test_number%_2.ffs
 set resultat=met\resultat.ffs
 set resultat2=met\resultat2.ffs
-set lookup=met\Geospatial_QC.xlsx
+set listsearch=tags{}.display_name
+set lookup=met\GeospatialValidation.xlsx
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 set log_comp2=met\log_comp_%test_number%_2.log
@@ -62,12 +63,13 @@ IF EXIST met\resultat2.ffs DEL met\resultat2.ffs
 %fme% met\metrique_geospatial_data_validator.fmw ^
 --IN_FFS_FILE %source% ^
 --KEYWORD_SEARCH "Photographie aérienne|Toponyme|Toponymie|photogrammétrie|GPS|cartographie" ^
+--LIST_SEARCH_ATTRIBUTE %listsearch% ^
 --OUT_FFS_FILE_1 %resultat% ^
 --OUT_FFS_FILE_2 %resultat2% ^
 --LOOKUP_TABLE %lookup% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
-FIND "Attribute value TOTO missing from Geospatial lookup table in GEOSPATIAL_DATA_VALIDATOR transformer." %log%
+FIND "Attribute value toto missing from Geospatial lookup table in GEOSPATIAL_DATA_VALIDATOR transformer." %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM Comparison with the standard, geospatial data
@@ -86,7 +88,10 @@ IF EXIST %log_comp2% del %log_comp2%
 --LOG_FILE %log_comp2% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [000000] (
+COPY/Y %UserProfileFmxGitHub% %UserProfileFmx%
+SET Statut=%Statut%%ERRORLEVEL%
+
+@IF [%Statut%] EQU [0000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
