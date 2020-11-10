@@ -24,8 +24,9 @@ SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents
 REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
-SET NomApp=DUPLICATE_SERVICE_REMOVER
+SET NomApp=MANUAL_GEOSPATIAL_SETTER
 SET fme=%FME2019%
+
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\FME\Transformers\%NomApp%.fmx"
 SET UserProfileFmxGitHub="%FME_USER_RESOURCE_DIR%\GitHub\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\%NomApp%.fmx"
@@ -43,59 +44,103 @@ SET Statut=%Statut%%ERRORLEVEL%
 
 REM Define sources
 
-
-REM First FME call,creating FFS File with four compliant data records, none with more than two WMS or ESRI services
+REM First FME call with nine data records.  Five geospatial.  Four nongeospatial.
 set test_number=1
 SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat.ffs
+set etalon1=met\etalon%test_number%_1.ffs
+set etalon2=met\etalon%test_number%_2.ffs
+set resultat1=met\resultat1.ffs
+set resultat2=met\resultat2.ffs
+set resultat3=met\resultat3.ffs
+set lookup=met\MANUAL_GEOSPATIAL_SETTER_TEST_%test_number%.xlsx
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
-IF EXIST met\resultat.ffs DEL met\resultat.ffs
-%fme% met\metrique_duplicate_service_remover.fmw ^
+IF EXIST met\resultat1.ffs DEL met\resultat1.ffs
+IF EXIST met\resultat2.ffs DEL met\resultat2.ffs
+IF EXIST met\resultat3.ffs DEL met\resultat3.ffs
+%fme% met\metrique_manual_geospatial_setter.fmw ^
 --IN_FFS_FILE %source% ^
---OUT_FFS_FILE %resultat% ^
+--IN_XLS_FILE %lookup% ^
+--OUT_FFS_FILE %resultat1% ^
+--OUT_FFS_FILE_2 %resultat2% ^
+--OUT_FFS_FILE_3 %resultat3% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison with the standard
+REM Comparison of geospatial data output with the standard
 IF EXIST %log_comp% del %log_comp%
 %fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
+--IN_ETALON_FILE %etalon1% ^
+--IN_RESULTAT_FILE %resultat1% ^
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Second FME call,creating four records, creating two records that have in excess of two WMS and ESRI services.
+REM Comparison of nongeospatial with the standard
+IF EXIST %log_comp% del %log_comp%
+%fme% met\Comparateur.fmw ^
+--IN_ETALON_FILE %etalon2% ^
+--IN_RESULTAT_FILE %resultat2% ^
+--LOG_FILE %log_comp% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Second FME call with the same nine data records.  Five geospatial.  Four nongeospatial.  XLS file is missing one record throwing mapping warning.
 set test_number=2
-SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat.ffs
+SET source=met\source1.ffs
+set etalon1=met\etalon%test_number%_1.ffs
+set etalon2=met\etalon%test_number%_2.ffs
+set etalon3=met\etalon%test_number%_3.ffs
+set resultat1=met\resultat1.ffs
+set resultat2=met\resultat2.ffs
+set resultat3=met\resultat3.ffs
+set lookup=met\MANUAL_GEOSPATIAL_SETTER_TEST_%test_number%.xlsx
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
-IF EXIST met\resultat.ffs DEL met\resultat.ffs
-%fme% met\metrique_duplicate_service_remover.fmw ^
+IF EXIST met\resultat1.ffs DEL met\resultat1.ffs
+IF EXIST met\resultat2.ffs DEL met\resultat2.ffs
+IF EXIST met\resultat3.ffs DEL met\resultat3.ffs
+%fme% met\metrique_manual_geospatial_setter.fmw ^
 --IN_FFS_FILE %source% ^
---OUT_FFS_FILE %resultat% ^
+--IN_XLS_FILE %lookup% ^
+--OUT_FFS_FILE %resultat1% ^
+--OUT_FFS_FILE_2 %resultat2% ^
+--OUT_FFS_FILE_3 %resultat3% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
+FIND "Data record with id fbdf77f1-096d-4985-bb3c-8a93956b1dec missing from UnmappedGeoData lookup table in MANUAL_GEOSPATIAL_SETTER transformer." %log%
+SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison with the standard
+REM Comparison of geospatial data output with the standard
 IF EXIST %log_comp% del %log_comp%
 %fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
+--IN_ETALON_FILE %etalon1% ^
+--IN_RESULTAT_FILE %resultat1% ^
+--LOG_FILE %log_comp% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Comparison of nongeospatial data output with the standard
+IF EXIST %log_comp% del %log_comp%
+%fme% met\Comparateur.fmw ^
+--IN_ETALON_FILE %etalon2% ^
+--IN_RESULTAT_FILE %resultat2% ^
+--LOG_FILE %log_comp% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Comparison of unmapped data record with the standard
+IF EXIST %log_comp% del %log_comp%
+%fme% met\Comparateur.fmw ^
+--IN_ETALON_FILE %etalon3% ^
+--IN_RESULTAT_FILE %resultat3% ^
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
 COPY/Y %UserProfileFmxGitHub% %UserProfileFmx%
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [0000000] (
+@IF [%Statut%] EQU [00000000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999

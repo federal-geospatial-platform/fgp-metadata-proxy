@@ -16,16 +16,20 @@ REM ===========================================================================
 SET Repertoire=%~dp0
 PUSHD %Repertoire%\..
 
+
+
 REM Define FME transformer path
-SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
+SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents
 
 REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
-SET NomApp=QC_LICENSE_FILTER
+SET NomApp=EMPTY_FORMAT_MAPPER
 SET fme=%FME2019%
 
-SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
+
+SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\FME\Transformers\%NomApp%.fmx"
+SET UserProfileFmxGitHub="%FME_USER_RESOURCE_DIR%\GitHub\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\%NomApp%.fmx"
 
 REM ===========================================================================
 REM Initialization of the variable that contains the result of the execution
@@ -40,88 +44,23 @@ SET Statut=%Statut%%ERRORLEVEL%
 
 REM Define sources
 
-REM First FME call,creating FFS File with four compliant data records
+REM First FME call with three data records.  One with an undetermined empty format, one with an empty format that is an ESRI REST map service, and one that has no empty formats
 set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
 set resultat=met\resultat.ffs
-set resultat_2=met\resultat_2.ffs
-set log=met\log_%test_number%.log
-set log_comp=met\log_comp_%test_number%.log
-set lookup=met\QC_License_Filter_Lookup.xlsx
-
-IF EXIST %log% del %log%
-IF EXIST met\resultat.ffs DEL met\resultat.ffs
-IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
-%fme% met\metrique_qc_license_filter.fmw ^
---IN_FFS_FILE %source% ^
---LOOKUP_TABLE %lookup% ^
---LOG_FILE %log% ^
---OUT_FFS_FILE %resultat% ^
---OUT_FFS_FILE_2 %resultat_2% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison data output with the standard
-IF EXIST %log_comp% del %log_comp%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
---LOG_FILE %log_comp% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Second FME call, testing for license values not for publishing
-set test_number=2
-SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
-IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
-
-%fme% met\metrique_qc_license_filter.fmw ^
+%fme% met\metrique_empty_format_mapper.fmw ^
 --IN_FFS_FILE %source% ^
---LOOKUP_TABLE %lookup% ^
---LOG_FILE %log% ^
 --OUT_FFS_FILE %resultat% ^
---OUT_FFS_FILE_2 %resultat_2% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison data output with the standard
-IF EXIST %log_comp% del %log_comp%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
---LOG_FILE %log_comp% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Third FME call, testing for unmapped license_id values
-set test_number=3
-SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set etalon_2=met\etalon%test_number%_2.ffs
-set resultat=met\resultat.ffs
-set resultat_2=met\resultat_2.ffs
-set log=met\log_%test_number%.log
-set log_comp=met\log_comp_%test_number%.log
-set log_comp_2=met\log_comp_%test_number%_2.log
-
-IF EXIST %log% del %log%
-IF EXIST met\resultat.ffs DEL met\resultat.ffs
-IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
-
-%fme% met\metrique_qc_license_filter.fmw ^
---IN_FFS_FILE %source% ^
---LOOKUP_TABLE %lookup% ^
---OUT_FFS_FILE %resultat% ^
---OUT_FFS_FILE_2 %resultat_2% ^
 --LOG_FILE %log% 
-FIND "missing from License_QC lookup table in QC_LICENSE_FILTER transformer" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison data output with the standard
+REM Comparison with the standard
 IF EXIST %log_comp% del %log_comp%
 %fme% met\Comparateur.fmw ^
 --IN_ETALON_FILE %etalon% ^
@@ -129,15 +68,10 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison error output with the standard
-IF EXIST %log_comp_2% del %log_comp_2%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon_2% ^
---IN_RESULTAT_FILE %resultat_2% ^
---LOG_FILE %log_comp_2% 
+COPY/Y %UserProfileFmxGitHub% %UserProfileFmx%
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [000000000] (
+@IF [%Statut%] EQU [00000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
