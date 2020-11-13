@@ -97,6 +97,8 @@ SET Statut=%Statut%%ERRORLEVEL%
 REM Remove XLSX directory
 RD %process_report_directory_resultat% /S /Q
 
+
+
 REM Second FME call, processing FFS file with 153 source data files filtered to 29 data records.  Two are are updated in the local XML repository.  
 REM 27 records identified as no longer existant in source data in METADATA_DELTA_FINDER and logged in PROCESS_REPORT_MANUAL_TASKS for manual deletion.  
 REM PROCESS_REPORT_MANUAL_TASKS also identifies the following errors:
@@ -141,7 +143,7 @@ MD %process_report_directory_resultat%
 SET Statut=%Statut%%ERRORLEVEL%
 FIND "Client side error.  Status code 400" %log%
 SET Statut=%Statut%%ERRORLEVEL%
-FIND "Attribute value TOTO missing from Geospatial lookup table in GEOSPATIAL_DATA_VALIDATOR transformer.  See PROCESS_REPORT_MANUAL_TASKS.xls file in XLS directory for details." %log%
+FIND "Attribute value toto missing from Geospatial lookup table in GEOSPATIAL_DATA_VALIDATOR transformer." %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM Comparison of FFS attribute mapping error file with the standard
@@ -171,6 +173,7 @@ RENAME %process_report_directory_resultat%\"*" "xlsx_resultat_%test_number%.xlsx
 --IN_RESULTAT_FILE %xlsx_resultat% ^
 --LOG_FILE %log_comp_xlsx% 
 SET Statut=%Statut%%ERRORLEVEL%
+pause
 REM Remove XLSX Directory
 RD %process_report_directory_resultat% /S /Q
 
