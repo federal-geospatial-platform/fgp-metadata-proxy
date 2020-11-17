@@ -52,7 +52,6 @@ set etalon=met\etalon%test_number%.ffs
 set resultat=met\resultat.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
-REM set test_url=https://geodiscover.alberta.ca/geoportal/rest/metadata/item/@Value(id)/xml
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
