@@ -173,7 +173,6 @@ RENAME %process_report_directory_resultat%\"*" "xlsx_resultat_%test_number%.xlsx
 --IN_RESULTAT_FILE %xlsx_resultat% ^
 --LOG_FILE %log_comp_xlsx% 
 SET Statut=%Statut%%ERRORLEVEL%
-pause
 REM Remove XLSX Directory
 RD %process_report_directory_resultat% /S /Q
 
