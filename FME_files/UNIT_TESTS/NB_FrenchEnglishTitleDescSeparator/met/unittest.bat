@@ -98,7 +98,7 @@ SET Statut=%Statut%%ERRORLEVEL%
 
 REM Third FME call,testing for output with too many slashes in description. 7 compliant records, 3 error records, error output resultat
 set test_number=3
-ET source=met\source%test_number%.ffs
+SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
 set lookup=met\SlashCountLookupTable.csv
 set resultat=met\resultat.ffs
