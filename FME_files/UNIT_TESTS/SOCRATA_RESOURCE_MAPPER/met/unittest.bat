@@ -74,7 +74,7 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Second FME call,testing for missing geospatial column data, feature output resultat
+REM Second FME call,testing for missing geospatial column data, feature output resultat, 8 compliant records, 2 noncompliant records
 set test_number=2
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
@@ -104,7 +104,7 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM third FME call,testing for missing geospatial column data, error log output
+REM third FME call,testing for missing geospatial column data, 8 compliant records, 2 noncompliant records error log output
 set test_number=3
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
@@ -136,7 +136,7 @@ IF EXIST %log_comp% del %log_comp%
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM FINAL TEST
-@IF [%Statut%] EQU [000000] (
+@IF [%Statut%] EQU [00000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
