@@ -123,7 +123,7 @@ IF EXIST %log_comp% del %log_comp%
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM FINAL TEST
-@IF [%Statut%] EQU [000000] (
+@IF [%Statut%] EQU [00000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
