@@ -99,7 +99,7 @@ IF EXIST %log_comp% del %log_comp%
 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM third FME call,testing for invalid url catching. 10 compliant records, invalid url in lookup table. testing ERROR OUTPUT
+REM third FME call,testing for invalid url catching. 9 compliant records, 1 noncompliant records, 2 invalid url in lookup table.expecting 2 error outputs expected testing ERROR OUTPUT
 set test_number=3
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
@@ -127,7 +127,7 @@ IF EXIST %log_comp% del %log_comp%
 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM 4th FME call,testing for invalid url catching. 10 compliant records, invalid url in lookup table. testing FEATURE OUTPUT
+REM 4th FME call,testing for invalid url catching. 10 compliant records, invalid url in lookup table. no error output expected testing FEATURE OUTPUT
 set test_number=4
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
@@ -156,7 +156,7 @@ IF EXIST %log_comp% del %log_comp%
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM FINAL TEST
-@IF [%Statut%] EQU [000000] (
+@IF [%Statut%] EQU [0000000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
