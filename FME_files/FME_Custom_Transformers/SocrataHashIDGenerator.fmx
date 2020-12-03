@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN SocrataHashIDGenerator,1,"FGP Tools",4cbce239-8784-4c59-a825-25385ae1274a,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,,No
+# TRANSFORMER_BEGIN SocrataHashIDGenerator,1,"FGP Tools",baec8d65-18d6-44f0-9aab-02f764209a50,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
 # 
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
@@ -11,8 +11,8 @@
 #!   DOC_TOP_LEFT="-768.008 -530.879"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="4cbce239-8784-4c59-a825-25385ae1274a"
-#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_DOCUMENT_GUID="baec8d65-18d6-44f0-9aab-02f764209a50"
+#!   FME_DOCUMENT_PRIORGUID="4cbce239-8784-4c59-a825-25385ae1274a"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -23,19 +23,19 @@
 #!   FMX_INSERT_MODE="Linked by Default"
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - macosx)"
-#!   LAST_SAVE_DATE="2020-12-02T03:29:01"
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN64)"
+#!   LAST_SAVE_DATE="2020-12-03T04:22:49"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
-#!   PYTHON_COMPATIBILITY=""
+#!   PYTHON_COMPATIBILITY="37"
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="SocrataHashIDGenerator"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-936.009 729.007"
+#!   VIEW_POSITION="-937.509 729.174"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -170,16 +170,16 @@
 #! </LOOKUP_TABLES>
 #! </TRANSFORMER>
 
-FME_PYTHON_VERSION 
+FME_PYTHON_VERSION 37
 #! START_HEADER
 #! END_HEADER
 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO SocrataHashIDGenerator_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SocrataHashIDGenerator_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SocrataHashIDGenerator_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_input1606897741 Input Splitter"   INPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_input"   OUTPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_input"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_input1606987369 Input Splitter"   INPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_input"   OUTPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_input"
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
 FACTORY_DEF * PythonFactory    FACTORY_NAME $(SocrataHashIDGenerator_WORKSPACE_NAME)_PythonCaller_2    INPUT  FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_input"    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>import<space>uuid<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space><space><space><space><space>SocrataID<space>=<space>feature.getAttribute<openparen><apos>resource.id<apos><closeparen><lf><space><space><space><space><space><space><space><space>feature_uuid<space>=<space>uuid.uuid5<openparen>uuid.NAMESPACE_X500<comma>SocrataID<closeparen><lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>id<apos><comma>str<openparen>feature_uuid<closeparen><closeparen><lf><space><space><space><space><space><space><space><space><lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_output1606897741 Output Collector"   INPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_output1606987369 Output Collector"   INPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SocrataHashIDGenerator_WORKSPACE_NAME)_feature_output"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SocrataHashIDGenerator_WORKSPACE_NAME))}]
