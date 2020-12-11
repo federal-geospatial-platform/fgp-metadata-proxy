@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN UniqueValuesGrabber,1,"FGP Tools",ee218b7c-7fa6-42ed-876a-da11b701f715,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,,No
+# TRANSFORMER_BEGIN UniqueValuesGrabber,1,"FGP Tools",5d7c3b9e-5a19-416e-a32f-e705ec7e634f,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
 # 
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
@@ -11,8 +11,8 @@
 #!   DOC_TOP_LEFT="-1870.85 -662"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="ee218b7c-7fa6-42ed-876a-da11b701f715"
-#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_DOCUMENT_GUID="5d7c3b9e-5a19-416e-a32f-e705ec7e634f"
+#!   FME_DOCUMENT_PRIORGUID="ee218b7c-7fa6-42ed-876a-da11b701f715"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -24,12 +24,12 @@
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN64)"
-#!   LAST_SAVE_DATE="2020-12-10T12:44:54"
+#!   LAST_SAVE_DATE="2020-12-10T13:32:50"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
-#!   PYTHON_COMPATIBILITY=""
+#!   PYTHON_COMPATIBILITY="37"
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="UniqueValuesGrabber"
@@ -568,7 +568,7 @@
 #! </LOOKUP_TABLES>
 #! </TRANSFORMER>
 
-FME_PYTHON_VERSION 
+FME_PYTHON_VERSION 37
 DEFAULT_MACRO $(UniqueValuesGrabber_WORKSPACE_NAME)_attName 
 DEFAULT_MACRO $(UniqueValuesGrabber_WORKSPACE_NAME)_list_attribute 
 DEFAULT_MACRO $(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName 
@@ -578,7 +578,7 @@ DEFAULT_MACRO $(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO UniqueValuesGrabber_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(UniqueValuesGrabber_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(UniqueValuesGrabber_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UniqueValuesGrabber_WORKSPACE_NAME)_Input1607622294 Input Splitter"   INPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_Input"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UniqueValuesGrabber_WORKSPACE_NAME)_Input1607625170 Input Splitter"   INPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_Input"
 # -------------------------------------------------------------------------
 Tcl2 proc $(UniqueValuesGrabber_WORKSPACE_NAME)_ParameterFetcher_doFetch {} {    foreach {name val} {"_isList_ {$($(UniqueValuesGrabber_WORKSPACE_NAME)_list_attribute$encode)} _attName_ {$($(UniqueValuesGrabber_WORKSPACE_NAME)_attName$encode)} _outColumnName_ {$($(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName$encode)}"} {         if { [string match {*<at>*} $val] == 1 } {             set val [FME_Execute EvaluateExpression {STRING} $val {$(UniqueValuesGrabber_WORKSPACE_NAME)_ParameterFetcher}];         } elseif {[string match {*FME_CONDITIONAL*} $val] == 1} {             set val [FME_Execute EvaluateExpression {STRING} $val {$(UniqueValuesGrabber_WORKSPACE_NAME)_ParameterFetcher}];         } else {             set val [FME_DecodeTextOrAttr $val];         };       FME_SetAttribute [FME_DecodeText $name] $val    } }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAME)_ParameterFetcher    INPUT  FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_Input"    OUTPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_ParameterFetcher_OUTPUT"         @Tcl2($(UniqueValuesGrabber_WORKSPACE_NAME)_ParameterFetcher_doFetch)
@@ -594,8 +594,8 @@ FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME $(UniqueValuesGrabber_WO
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "$($(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName$encode)" "SET_TO" "<at>Value<openparen>_value_<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2_1d459674_16a5_46d7_b147_04591873947c0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,$($(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName$encode),fme_pcre_match,"^fme_$($(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2_1d459674_16a5_46d7_b147_04591873947c0_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2_c154caaa_9747_4ec5_8188_1f8bfe09aee60_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,$($(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName$encode),fme_pcre_match,"^fme_$($(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2_c154caaa_9747_4ec5_8188_1f8bfe09aee60_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
 # -------------------------------------------------------------------------
@@ -606,7 +606,7 @@ FACTORY_DEF * ElementFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAM
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_ListExploder_ELEMENTS"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "$($(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName$encode)" "SET_TO" "<at>Value<openparen>value<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_1473e428_e24d_4594_a558_1b75aa0e0a550_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    OUTPUT { FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,$($(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName$encode),fme_pcre_match,"^fme_$($(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_1473e428_e24d_4594_a558_1b75aa0e0a550_LIST_EXP)")         }
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UniqueValuesGrabber_WORKSPACE_NAME)_Output1607622294 Output Collector"   INPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   INPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_Output"
+INCLUDE [    set macroLine "MACRO $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_09651e08_1482_419e_9604_9dd6d93342a30_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    OUTPUT { FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,$($(UniqueValuesGrabber_WORKSPACE_NAME)_outColumnName$encode),fme_pcre_match,"^fme_$($(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_09651e08_1482_419e_9604_9dd6d93342a30_LIST_EXP)")         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(UniqueValuesGrabber_WORKSPACE_NAME)_Output1607625170 Output Collector"   INPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   INPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(UniqueValuesGrabber_WORKSPACE_NAME)_Output"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(UniqueValuesGrabber_WORKSPACE_NAME))}]
