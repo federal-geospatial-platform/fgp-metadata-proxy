@@ -49,7 +49,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-01-25T14:48:43"
+#!   LAST_SAVE_DATE="2021-01-25T14:57:23"
 #!   LOG_FILE="$(LOG_FILE)"
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -68,7 +68,7 @@
 #!   TITLE=""
 #!   USAGE=""
 #!   USE_MARKDOWN=""
-#!   VIEW_POSITION="17626 -4119.54"
+#!   VIEW_POSITION="25668.5 -3294.06"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   ZOOM_SCALE="53"
@@ -23864,8 +23864,8 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeCreator_5 OUTPUT Splitter"   I
 INCLUDE [    set macroLine "MACRO AttributeRemover_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeRemover    INPUT  FEATURE_TYPE AttributeCreator_5_OUTPUT_1_lbcjWHeNkKI=    OUTPUT { FEATURE_TYPE AttributeRemover_OUTPUT        @RemoveAttributes(fme_encoded,)        @RemoveAttributes(fme_pcre_match"$(AttributeRemover_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_fc8b2b35_1a6a_4f02_8b13_fecc568925588_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE AttributeCreator_5_OUTPUT_0_FzMqF8JOTj8=    OUTPUT { FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,id,fme_pcre_match,"^fme_$(AttributeKeeper_fc8b2b35_1a6a_4f02_8b13_fecc568925588_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_fc8b2b35_1a6a_4f02_8b13_fecc5689255810_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE AttributeCreator_5_OUTPUT_0_FzMqF8JOTj8=    OUTPUT { FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,id,fme_pcre_match,"^fme_$(AttributeKeeper_fc8b2b35_1a6a_4f02_8b13_fecc5689255810_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * ElementFactory    FACTORY_NAME ListExploder    INPUT  FEATURE_TYPE AttributeKeeper_OUTPUT    LIST_NAME "resources{}"    ELEMENT_NUMBER_FIELD "_RESIDX"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE ListExploder_ELEMENTS         @RemoveAttributes(ElementFactory.baseCloned)
 # -------------------------------------------------------------------------
@@ -23916,12 +23916,12 @@ MACRO VariableRetriever_14_VAR _timestamp
 INCLUDE [if {{Global} == {Local}} {   puts {MACRO VariableRetriever_14_VAR $(WB_CURRENT_CONTEXT)__timestamp}; };
 FACTORY_DEF * TeeFactory    FACTORY_NAME VariableRetriever_14    INPUT  FEATURE_TYPE MAPPING_ERROR_LIST_CREATOR_ERROR_OUTPUT    OUTPUT FEATURE_TYPE VariableRetriever_14_OUTPUT        @GlobalVariable(fme_encoded,$(VariableRetriever_14_VAR),fme_result_attribute,_timestamp)
 # -------------------------------------------------------------------------
-DEFAULT_MACRO __StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e113_GROUP_BY
-MACRO StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e113_PORT_SPECIFIED no
-INCLUDE [puts_real {$(StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e113_PORT_SPECIFIED)}
+DEFAULT_MACRO __StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e115_GROUP_BY
+MACRO StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e115_PORT_SPECIFIED no
+INCLUDE [puts_real {$(StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e115_PORT_SPECIFIED)}
 DYNAMIC_FUNCTION_CONFIGURATION Python FMEOBJECTS
 DYNAMIC_FUNCTION_CONFIGURATION Python import StatisticsCalculator
-DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    'StatisticsCalculator',{     'GROUP_BY_MACRO':'__StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e113_GROUP_BY',     'STATS_ATTRS':'id',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$(StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e113_PORT_SPECIFIED)',     None:None})"
+DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    'StatisticsCalculator',{     'GROUP_BY_MACRO':'__StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e115_GROUP_BY',     'STATS_ATTRS':'id',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$(StatisticsCalculator_f04207c3_1507_46c5_a786_e7be5a3124e115_PORT_SPECIFIED)',     None:None})"
 FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_InputProcessor    INPUT  FEATURE_TYPE Creator_2_CREATED    INPUT  FEATURE_TYPE Tester_FAILED    OUTPUT FEATURE_TYPE __ORIGINAL__       @Python(StatisticsCalculator.recordFeature,StatisticsCalculator)
 FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_UnneededInputNuker    INPUT FEATURE_TYPE __ORIGINAL__
 FACTORY_DEF * SortFactory    FACTORY_NAME StatisticsCalculator_CompleteOutputter    INPUT FEATURE_TYPE __UNUSED_INPUT_TO_GUARANTEE_FACTORY_DOESNT_CONSUME_EVERYTHING__
@@ -23930,7 +23930,7 @@ FACTORY_DEF * ElementFactory    FACTORY_NAME StatisticsCalculator_SummaryExplode
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE StatisticsCalculator_SUMMARY    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_real_count" "SET_TO" "<at>Evaluate<openparen><at>Value<openparen>_count<closeparen>-1<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_2_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_Logger    INPUT  FEATURE_TYPE AttributeCreator_2_OUTPUT    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_a978a2b9_20f4_4e82_b943_f91daffd7dae13)
+FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_Logger    INPUT  FEATURE_TYPE AttributeCreator_2_OUTPUT    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_a978a2b9_20f4_4e82_b943_f91daffd7dae15)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "StatisticsCalculator_Summary LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER CONFIG_FILE Input Collector"   INPUT FEATURE_TYPE LOOKUP_TABLES_READER_15_Output   OUTPUT FEATURE_TYPE XML_PUBLISHER_CONFIG_FILE
