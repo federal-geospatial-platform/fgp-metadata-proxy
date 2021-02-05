@@ -2,6 +2,7 @@ REM ===========================================================================
 REM Enable local variables 
 REM ===========================================================================
 SETLOCAL ENABLEDELAYEDEXPANSION
+
  
 REM ===========================================================================
 REM Allow accented characters
@@ -13,9 +14,10 @@ REM Determine the directory where the.bat is located and place it
 REM in the directory above while keeping the original directory
 REM ===========================================================================
 SET Repertoire=%~dp0
-PUSHD %Repertoire%\..
+SET Wsfolder=%Repertoire%\..\..\..\FME_Workspaces\
+PUSHD %Wsfolder%
 
-REM Define FME transformer path
+REM Define FME workspace path
 SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 
 REM ===========================================================================
@@ -24,7 +26,8 @@ REM ===========================================================================
 SET NomApp=BC_FGP_XML_BUILDER_PROD_04
 SET fme=%FME2019%
 
-SET UserProfileFmw="%FME_USER_RESOURCE_DIR%\workspaces\%NomApp%.fmw"
+
+SET UserProfileFmw="%FME_USER_RESOURCE_DIR%\Workspaces\%NomApp%.fmw"
 
 REM ===========================================================================
 REM Initialization of the variable that contains the result of the execution
@@ -32,10 +35,12 @@ REM ===========================================================================
 SET Statut=0
 
 REM ===========================================================================
-REM Copy FMW to Documents
+REM Copy FMX to Documents
 REM ===========================================================================
-COPY/Y fme\%NomApp%.fmw %UserProfileFmw%
+COPY/Y %Wsfolder%\%NomApp%.fmw %UserProfileFmw%
 SET Statut=%Statut%%ERRORLEVEL%
+
+PUSHD %Repertoire%\..
 
 REM Define sources
 
@@ -61,7 +66,7 @@ IF EXIST %log% del %log%
 IF EXIST %xml_resultat% del %xml_resultat% /Q
 REM Create XLSX directory
 MD %process_report_directory_resultat%
-%fme% fme\BC_FGP_XML_BUILDER_PROD_04.fmw ^
+%fme% %UserProfileFmw% ^
 --ACTIVATE_TRANSLATION %No% ^
 --CATALOGUE_READER_SELECT %No% ^
 --IN_FFS_TESTING_FILE %source% ^
@@ -129,7 +134,7 @@ IF EXIST %log% del %log%
 IF EXIST %ffs_resultat% del %ffs_resultat%
 REM Create XLSX directory
 MD %process_report_directory_resultat%
-%fme% fme\BC_FGP_XML_BUILDER_PROD_04.fmw ^
+%fme% %UserProfileFmw% ^
 --ACTIVATE_TRANSLATION %No% ^
 --CATALOGUE_READER_SELECT %No% ^
 --IN_FFS_TESTING_FILE %source% ^
