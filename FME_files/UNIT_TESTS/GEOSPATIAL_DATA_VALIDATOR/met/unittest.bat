@@ -14,12 +14,11 @@ REM Determine the directory where the.bat is located and place it
 REM in the directory above while keeping the original directory
 REM ===========================================================================
 SET Repertoire=%~dp0
-PUSHD %Repertoire%\..
-
-
+SET Ctfolder=%Repertoire%\..\..\..\FME_Custom_Transformers\
+PUSHD %Ctfolder%
 
 REM Define FME transformer path
-SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents
+SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 
 REM ===========================================================================
 REM Create file name variable in relative mode.
@@ -27,8 +26,8 @@ REM ===========================================================================
 SET NomApp=GEOSPATIAL_DATA_VALIDATOR
 SET fme=%FME2019%
 
-SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\FME\Transformers\%NomApp%.fmx"
-SET UserProfileFmxGitHub="%FME_USER_RESOURCE_DIR%\GitHub\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\%NomApp%.fmx"
+
+SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
 
 REM ===========================================================================
 REM Initialization of the variable that contains the result of the execution
@@ -38,8 +37,10 @@ SET Statut=0
 REM ===========================================================================
 REM Copy FMX to Documents
 REM ===========================================================================
-COPY/Y fme\%NomApp%.fmx %UserProfileFmx%
+COPY/Y %Ctfolder%\%NomApp%.fmx %UserProfileFmx%
 SET Statut=%Statut%%ERRORLEVEL%
+
+PUSHD %Repertoire%\..
 
 REM Define sources
 
@@ -88,10 +89,7 @@ IF EXIST %log_comp2% del %log_comp2%
 --LOG_FILE %log_comp2% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-COPY/Y %UserProfileFmxGitHub% %UserProfileFmx%
-SET Statut=%Statut%%ERRORLEVEL%
-
-@IF [%Statut%] EQU [0000000] (
+@IF [%Statut%] EQU [000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999

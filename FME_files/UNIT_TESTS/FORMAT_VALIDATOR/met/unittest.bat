@@ -10,13 +10,24 @@ REM ===========================================================================
 chcp 1252
 
 REM ===========================================================================
+REM ===========================================================================
+REM Enable local variables 
+REM ===========================================================================
+SETLOCAL ENABLEDELAYEDEXPANSION
+
+ 
+REM ===========================================================================
+REM Allow accented characters
+REM ===========================================================================
+chcp 1252
+
+REM ===========================================================================
 REM Determine the directory where the.bat is located and place it  
 REM in the directory above while keeping the original directory
 REM ===========================================================================
 SET Repertoire=%~dp0
-PUSHD %Repertoire%\..
-
-
+SET Ctfolder=%Repertoire%\..\..\..\FME_Custom_Transformers\
+PUSHD %Ctfolder%
 
 REM Define FME transformer path
 SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
@@ -38,8 +49,10 @@ SET Statut=0
 REM ===========================================================================
 REM Copy FMX to Documents
 REM ===========================================================================
-COPY/Y fme\%NomApp%.fmx %UserProfileFmx%
+COPY/Y %Ctfolder%\%NomApp%.fmx %UserProfileFmx%
 SET Statut=%Statut%%ERRORLEVEL%
+
+PUSHD %Repertoire%\..
 
 REM Define sources
 
@@ -59,8 +72,6 @@ IF EXIST met\resultat.ffs DEL met\resultat.ffs
 --OUT_FFS_FILE %resultat% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
-
-pause
 
 REM Comparison with the standard
 IF EXIST %log_comp% del %log_comp%
