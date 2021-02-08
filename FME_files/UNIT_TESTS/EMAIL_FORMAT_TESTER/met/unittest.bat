@@ -50,12 +50,14 @@ set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
 set resultat=met\resultat.ffs
+set default_contact_email=geodiscoveralberta@gov.ab.ca
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
 %fme% met\metrique_email_format_tester.fmw ^
+--DEFAULT_CONTACT_EMAIL %default_contact_email% ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
 --LOG_FILE %log% 
