@@ -60,10 +60,6 @@ IF EXIST met\resultat.ffs DEL met\resultat.ffs
 --OUT_FFS_FILE %resultat% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
-FIND "Data without Open Government licence" %log%
-SET Statut=%Statut%%ERRORLEVEL%
-FIND "Feature without resources" %log%
-SET Statut=%Statut%%ERRORLEVEL%
 
 REM Comparison with the standard
 IF EXIST %log_comp% del %log_comp%
@@ -73,7 +69,7 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [000000] (
+@IF [%Statut%] EQU [0000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
