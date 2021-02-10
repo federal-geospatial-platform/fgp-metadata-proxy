@@ -44,8 +44,7 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
-REM First FME call,creating FFS File.  Source data for testing is an FFS file containing the preliminary query results performed by catalogue reader transformer
-REM Log file is checked for metadata extraction errors, missing open government licenses, and features without resources
+REM First FME call,creating FFS File.  
 set test_number=1
 set source1=met\source1.ffs
 set source2=met\source2.ffs
