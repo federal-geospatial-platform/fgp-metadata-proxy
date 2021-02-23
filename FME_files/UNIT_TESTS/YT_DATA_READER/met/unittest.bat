@@ -50,24 +50,19 @@ set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon1=met\etalon1.ffs
 set etalon2=met\etalon2.ffs
-set etalon3=met\etalon3.ffs
 set resultat1=met\resultat1.ffs
 set resultat2=met\resultat2.ffs
-set resultat3=met\resultat3.ffs
 set log=met\log_%test_number%.log
 set log_comp_1=met\log_comp_1.log
 set log_comp_2=met\log_comp_2.log
-set log_comp_3=met\log_comp_3.log
 
 IF EXIST %log% del %log%
 IF EXIST %resultat1% DEL %resultat1%
 IF EXIST %resultat2% DEL %resultat2%
-IF EXIST %resultat3% DEL %resultat3%
 %fme% met\metrique_yt_data_reader.fmw ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE_1 %resultat1% ^
 --OUT_FFS_FILE_2 %resultat2% ^
---OUT_FFS_FILE_3 %resultat3% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
@@ -87,15 +82,7 @@ IF EXIST %log_comp_2% del %log_comp_2%
 --LOG_FILE %log_comp_2% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison with the standard
-IF EXIST %log_comp_3% del %log_comp_3%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon3% ^
---IN_RESULTAT_FILE %resultat3% ^
---LOG_FILE %log_comp_3% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-@IF [%Statut%] EQU [000000] (
+@IF [%Statut%] EQU [00000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
