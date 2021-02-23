@@ -46,62 +46,27 @@ REM Define sources
 
 REM First FME call,creating FFS File.  
 set test_number=1
-set source1=met\source1.ffs
-set source2=met\source2.ffs
-set etalon1=met\etalon1.ffs
-set etalon2=met\etalon2.ffs
-set etalon3=met\etalon3.ffs
+set source=met\source1.ffs
 set resultat1=met\resultat1.ffs
 set resultat2=met\resultat2.ffs
-set resultat3=met\resultat3.ffs
+set unique_att=name
 set log=met\log_%test_number%.log
-set log_comp_1=met\log_comp_1.log
-set log_comp_2=met\log_comp_2.log
-set log_comp_3=met\log_comp_3.log
-set unit_test_activate=Yes
 
 IF EXIST %log% del %log%
 IF EXIST %resultat1% del %resultat1%
 IF EXIST %resultat2% del %resultat2%
-IF EXIST %resultat3% del %resultat3%
 %fme% met\metrique_yt_catalogue_reader.fmw ^
---IN_FFS_FILE_1 %source1% ^
---IN_FFS_FILE_2 %source2% ^
+--IN_FFS_FILE %source% ^
 --OUT_FFS_FILE_1 %resultat1% ^
 --OUT_FFS_FILE_2 %resultat2% ^
---OUT_FFS_FILE_3 %resultat3% ^
---UNIT_TEST_ACTIVATE %unit_test_activate% ^
+--UNIQUE_ATT %unique_att% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison with the standard
-IF EXIST %log_comp_1% del %log_comp_1%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon1% ^
---IN_RESULTAT_FILE %resultat1% ^
---LOG_FILE %log_comp_1% 
+FIND "HTTP transfer summary - status code: 200" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison with the standard
-IF EXIST %log_comp_2% del %log_comp_2%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon2% ^
---IN_RESULTAT_FILE %resultat2% ^
---LOG_FILE %log_comp_2% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison with the standard
-IF EXIST %log_comp_3% del %log_comp_3%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon3% ^
---IN_RESULTAT_FILE %resultat3% ^
---LOG_FILE %log_comp_3% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-FIND "'result' list atttribute missing from source data with unique name value yukon-landform-atlas.  Verify data with _response_body attribute in PROCESS_REPORT_MANUAL_TASKS .xlsx file in the project XLS folder" %log%
-SET Statut=%Statut%%ERRORLEVEL%
-
-@IF [%Statut%] EQU [0000000] (
+@IF [%Statut%] EQU [0000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
