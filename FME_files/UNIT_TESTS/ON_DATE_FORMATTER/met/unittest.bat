@@ -67,9 +67,7 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-SET Statut=%Statut%%ERRORLEVEL%
-
-@IF [%Statut%] EQU [00000] (
+@IF [%Statut%] EQU [0000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
