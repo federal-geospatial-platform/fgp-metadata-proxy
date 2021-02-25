@@ -66,8 +66,6 @@ IF EXIST %resultat2% DEL %resultat2%
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-pause
-
 FIND "URL with value https://httpstat.us/400 could not be resolved in AB_GEODISCOVER_RESOURCE_EXTRACTOR." %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
