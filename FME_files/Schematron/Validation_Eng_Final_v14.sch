@@ -18,7 +18,7 @@
                 [gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString = 'Open Government Licence - Ontario (https://www.ontario.ca/page/open-government-licence-ontario)']
                 or
 				//*[gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString[starts-with(text(),'Government of Yukon')]]
-                [gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString = 'Open Government Licence - Yukon (https://open.yukon.ca/data/open-government-licence-yukon)']
+                [gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString = 'Open Government Licence – Yukon (https://open.yukon.ca/data/open-government-licence-yukon)']
                 or
                 //*[gmd:contact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString[starts-with(text(),'Government of Nova Scotia')]]
                 [gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString = 'Open Government Licence - Nova Scotia (https://novascotia.ca/opendata/licence.asp)']
@@ -818,7 +818,7 @@
                 gmd:MD_LegalConstraints/gmd:useLimitation[gco:CharacterString = 'Open Government Licence - Ontario (https://www.ontario.ca/page/open-government-licence-ontario)']
                 [gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString = 'Licence du gouvernement ouvert - Ontario (https://www.ontario.ca/fr/page/licence-du-gouvernement-ouvert-ontario)']
 				or
-                gmd:MD_LegalConstraints/gmd:useLimitation[gco:CharacterString = 'Open Government Licence - Yukon (https://open.yukon.ca/data/open-government-licence-yukon)']
+                gmd:MD_LegalConstraints/gmd:useLimitation[gco:CharacterString = 'Open Government Licence – Yukon (https://open.yukon.ca/data/open-government-licence-yukon)']
                 [gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString = 'Licence du gouvernement ouvert – Yukon (https://open.yukon.ca/data/fr/gouvernement-ouvert-licence-du-yukon)']
                 or
                 gmd:MD_LegalConstraints/gmd:useLimitation[gco:CharacterString = 'Open Government Licence - Prince Edward Island (https://www.princeedwardisland.ca/en/information/finance/open-government-licence-prince-edward-island)']
