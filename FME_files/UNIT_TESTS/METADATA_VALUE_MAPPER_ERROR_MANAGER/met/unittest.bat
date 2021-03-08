@@ -44,7 +44,7 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
-REM First FME call,creating FFS File with four compliant data records
+REM First FME call,creating FFS File 
 set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
