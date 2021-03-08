@@ -44,7 +44,7 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
-REM First FME call,creating FFS File with eleven compliant data records, mapping projection codespace values
+REM First FME call,creating FFS File
 SET test_number=1
 SET source=met\source%test_number%.ffs
 SET etalon=met\etalon%test_number%.ffs
