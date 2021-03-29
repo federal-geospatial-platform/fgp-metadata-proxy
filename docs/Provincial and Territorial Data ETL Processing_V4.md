@@ -179,7 +179,7 @@ These workspaces are segmented into bookmarks,common to each workspace (exceptio
 
 All FME Workspaces can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_files/FME_Workspaces)
 
-A process flow chart showing the interconnectivity of the process can be found [here] (https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/docs/P-T_FGP-TBS_XML-JSON_BUILDER_WORKSPACE_PROCESS_FLOW_STANDARD_v2.docx)
+A process flow chart showing the interconnectivity of the process can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/docs/P-T_FGP-TBS_XML-JSON_BUILDER_WORKSPACE_PROCESS_FLOW_STANDARD_v2.docx)
 
 ### Custom Transformers
 
