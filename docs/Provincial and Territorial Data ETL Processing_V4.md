@@ -143,39 +143,41 @@ Open data extraction, transformation and loading processes utilize one of two di
 
 These workspaces are segmented into bookmarks,common to each workspace, with each bookmark containing a series of transformers that may differ from workspace to workspace.  Each of these bookmarks represent a stage in the ETL process:
 
--  **ETL PROCESS INITIATION:**
--  **DATA EXTRACTION:**
--  **P/T SPECIFIC TRANSFORMATIONS:**
--  **PRE METADATA MAPPING TRANSFORMATIONS:**
--  **SPATIAL DATA TYPE MANAGEMENT:**
--  **METADATA MAPPING:**
--  **POST METADATA MAPPING TRANSFORMATIONS:**
--  **PUBLISHING MANAGMENT:**
--  **LANGUAGE_TRANSLATION:**
--  **XML CREATION & PUBLISHING:**
--  **METADATA OUTPUT:**
+-  **ETL PROCESS INITIATION:** Starts the process and sets date/time for process reports.
+-  **DATA EXTRACTION:** Reads the API and exposes required attributes.  Filters geo/non-geo data when attribute testing allows for selection.
+-  **P/T SPECIFIC TRANSFORMATIONS:** Contains custom transformers that are specific to a province or territory due to the unique nature of the metadata and cannot be addressed with a universal transformer.
+-  **PRE METADATA MAPPING TRANSFORMATIONS:** Contains universal custom transformers that require processing prior to metadata mapping.
+-  **SPATIAL DATA TYPE MANAGEMENT:** Will perform one or more of the following tasks; Validates geospatial data and maps spatial data types.  Filters geo/non-geo data when it can’t be completed in the DATA EXTRACTION process. 
+-  **METADATA MAPPING:** Contains universal custom transformers that utilize lookup tables to map data types to HNAP standards.
+-  **POST METADATA MAPPING TRANSFORMATIONS:** Contains universal custom transformers to fine tune and customize metadata prior to publishing.
+-  **PUBLISHING MANAGMENT:** Contains universal custom transformers that determine the URL of the PyCSW Repository, and compares existing repository data with the current run time data to identify records that are new, obsolete or updated.
+-  **LANGUAGE_TRANSLATION:** Universal custom transformer that leverages the AWS translation service to translate specific data items to English or French as required.  Due to the fees required of the AWS, there is an option to bypass the translation service and enter proxy items in the required data fields for testing purposes by turning off the ACTIVATE_TRANSLATION published parameter.
+-  **XML CREATION & PUBLISHING:** Inserts processed data into a series of XML templates that are assembled into a single XML file for each data record, then published to PyCSW repository.  Outputs a copy of each XML file to a local folder and filters records that failed to publish.
+For development/testing, the PyCSW repository can be bypassed to write XML to a local folder only by selecting the LOCAL_WRITER option in published parameters.
+-  **METADATA OUTPUT:** Local repository locations to write XML files.  These can be used to validate XML files in the schematron.
 
 -  **(p-t_abbreviation)_FGP-TBS_XML-JSON_BUILDER.fmw:**  These workspaces extract, transform and load a complete geospatial dataset to an empty Catalogue Service for the Web (CSW), as XML files for the FGP, and filter non-geospatial data output as JSON files for the TBS.  They also output error logs in .XLS format, to allow for updating of lookup table data, troubleshooting errors, or for information only. 
 
 These workspaces are segmented into bookmarks,common to each workspace (exception for nongeospatial data), with each bookmark containing a series of transformers that may differ from workspace to workspace.  Each of these bookmarks represent a stage in the ETL process:
 
--  **ETL PROCESS INITIATION:**
--  **DATA EXTRACTION:**
--  **P/T SPECIFIC TRANSFORMATIONS:**
--  **PRE METADATA MAPPING TRANSFORMATIONS:**
--  **SPATIAL DATA TYPE MANAGEMENT:**
--  **PRE METADATA MAPPING TRANFORMATIONS - NONGEO:**
--  **METADATA MAPPING - NONGEO:**
--  **POST METADATA MAPPING TRANSFORMATIONS - NONGEO:**
--  **METADATA MAPPING:**
--  **POST METADATA MAPPING TRANSFORMATIONS:**
--  **PUBLISHING MANAGMENT:**
--  **LANGUAGE_TRANSLATION:**
--  **LANGUAGE_TRANSLATION - NONGEO:**
--  **XML CREATION & PUBLISHING:**
--  **JSON CREATION:**
--  **METADATA OUTPUT:**
--  **METADATA OUTPUT - NONGEO:**
+-  **ETL PROCESS INITIATION:** Starts the process and sets date/time for process reports.
+-  **DATA EXTRACTION:** Reads the API and exposes required attributes.  Filters geo/non-geo data when attribute testing allows for selection.
+-  **P/T SPECIFIC TRANSFORMATIONS:** Contains custom transformers that are specific to a province or territory due to the unique nature of the metadata and cannot be addressed with a universal transformer.
+-  **PRE METADATA MAPPING TRANSFORMATIONS:** Contains universal custom transformers that require processing prior to metadata mapping.
+-  **SPATIAL DATA TYPE MANAGEMENT:** Will perform one or more of the following tasks; Validates geospatial data and maps spatial data types.  Filters geo/non-geo data when it can’t be completed in the DATA EXTRACTION process. 
+-  **PRE METADATA MAPPING TRANFORMATIONS - NONGEO:** Contains universal custom transformers that require processing prior to metadata mapping.
+-  **METADATA MAPPING - NONGEO:** Contains universal custom transformers that utilize lookup tables to map data types to HNAP standards.
+-  **POST METADATA MAPPING TRANSFORMATIONS - NONGEO:** Contains universal custom transformers to fine tune and customize metadata prior to publishing.
+-  **METADATA MAPPING:** Contains universal custom transformers that utilize lookup tables to map data types to HNAP standards.
+-  **POST METADATA MAPPING TRANSFORMATIONS:** Contains universal custom transformers to fine tune and customize metadata prior to publishing.
+-  **PUBLISHING MANAGMENT:** Contains universal custom transformers that determine the URL of the PyCSW Repository, and compares existing repository data with the current run time data to identify records that are new, obsolete or updated.
+-  **LANGUAGE_TRANSLATION:** Universal custom transformer that leverages the AWS translation service to translate specific data items to English or French as required.  Due to the fees required of the AWS, there is an option to bypass the translation service and enter proxy items in the required data fields for testing purposes by turning off the ACTIVATE_TRANSLATION published parameter.
+-  **LANGUAGE_TRANSLATION - NONGEO:** Universal custom transformer that leverages the AWS translation service to translate specific data items to English or French as required.  Due to the fees required of the AWS, there is an option to bypass the translation service and enter proxy items in the required data fields for testing purposes by turning off the ACTIVATE_TRANSLATION published parameter.
+-  **XML CREATION & PUBLISHING:** Inserts processed data into a series of XML templates that are assembled into a single XML file for each data record, then published to PyCSW repository.  Outputs a copy of each XML file to a local folder and filters records that failed to publish.
+For development/testing, the PyCSW repository can be bypassed to write XML to a local folder only by selecting the LOCAL_WRITER option in published parameters.
+-  **JSON CREATION:** Inserts processed data into a series of JSON templates that are assembled into a single JSON file for each data record, to be written to a local folder.
+-  **METADATA OUTPUT:** Local repository locations to write XML files.  These can be used to validate XML files in the schematron.
+-  **METADATA OUTPUT - NONGEO:** Local repository location to write JSON files.  
 
 All FME Workspaces can be found [here](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/tree/master/FME_files/FME_Workspaces)
 
@@ -272,17 +274,15 @@ All XML templates can be found [here](https://github.com/federal-geospatial-plat
 
 #### Overview
 
-ETL (extract, transformation and loading) workspaces created in Safe Software's Feature Manipulation Engine (FME) are used to extract and parse specific attributes using two approaches:
+ETL (extract, transformation and loading) workspaces created in Safe Software's Feature Manipulation Engine (FME) are used to extract and parse specific attributes using two data sources:
 
 -   **Alberta Open Data Catalogue**: Alberta ISO 19115 compliant data is extracted by exposing data from CKAN API [Alberta's Open Data Catalogue](https://open.alberta.ca/opendata), extracting a JSON (Javascript Object Notation) file, and subsequently, via the JSON file, an XML file in Geospatial Catalog. 
 
--  **Alberta Geospatial Catalog**:  A small amount of ISO 19139 compliant data using exclusively ESRI REST services is unavailable in the Alberta Open Data Catalog and is exposed directly from [Alberta Geospatial Catalogue](https://geodiscover.alberta.ca/geoportal).  The unique ID naming conventions are accurate with this data subset that allows for direct extraction.  The remainder of ISO 19139 data not exposing ESRI REST services that is found in the Alberta geospatial catalogue has been found to be largely incomplete and unusable.  
+-  **Alberta Geodiscover Portal**:  A secondary data source is utilized to extract web map services (WMS) or ESRI REST services through XML files that are extracted from Alberta Open Data Catalogue.
 
 Attributes required to meet mandatory requirements for individual XML (Extensible Markup Language) files are extracted from both the exposed JSON file and XML files, each representing and defining a unique dataset, that are published to a CSW (Catalogue Service for the Web) and subsequently harvested from the CSW by the Federal Geospatial Platform (FGP).  The FME workspaces use a series of custom transformers appropriately placed to address attribute deficiencies that are either missing or have formats incompatible to FGP requirements.  
 
-A detailed list of all attributes processed by FME for insertion to the XML files can be found here:
 
--   [FGP Attribute to XML Key](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/FGP_Attribute-XML_Key-v2.xlsx)
 
 The Alberta Metadata FME Workspaces can be found here:
 
@@ -290,13 +290,12 @@ The Alberta Metadata FME Workspaces can be found here:
 
 - **NOTE:** The CSW is a type built on Python scripting and may be referred to throughout this document as **PyCSW**.
 
-#### AB_CREATE Workspace Detail
+#### AB_FGP_XML_BUILDER Bookmark Contents
 
-The AB_CREATE workspace utilizes the following sequence of custom transformers.  Note that transformer names are hyperlinked to view detail:
+The AB_FGP_XML_BUILDER workspace utilizes the following sequence of bookmarks.  Transformer contents are indicated.  Note that transformer names are hyperlinked to view detail:
 
 ##### [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate-1)
 
-Queries both the Alberta open government portal API and the Alberta geospatial API, exposes returned attributes and filters data by open, geospatial data.  It also contains a date filter for admin testing purposes only.
 
 ##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
 
