@@ -9,18 +9,6 @@ Provincial and Territorial Extraction, Transformation and Loading Processes
 	- [Custom Transformers](#custom-transformers)
 	- [XML Templates](#xml-templates)
   - [Workspaces](#workspaces-1)
-  - [Alberta](#alberta)
-  - [British Columbia](#british-columbia)
-  - [Manitoba](#manitoba)
-  - [New Brunswick](#new-brunswick)
-  - [Newfoundland and Labrador](#newfoundland-and-labrador)
-  - [Nova Scotia](#nova-scotia)
-  - [Nunavut](#nunavut)
-  - [Ontario](#ontario)
-  - [Prince Edward Island](#prince-edward-island)
-  - [Québec](#québec)
-  - [Saskatchewan](#saskatchewan)
-  - [Yukon](#yukon)
   - [Custom Transformers Detail](#custom-transformers-detail)	
    
 # Provincial and Territorial Extraction, Transformation and Loading Processes
