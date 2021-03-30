@@ -294,7 +294,7 @@ The Alberta Metadata FME Workspaces can be found here:
 
 The AB_FGP_XML_BUILDER workspace utilizes the following sequence of bookmarks.  Transformer contents are indicated.  Note that transformer names are hyperlinked to view detail:
 
-##### [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate-1)
+-   [AB_CREATE_PRETRANSLATE](#ab_create_pretranslate-1)
 
 
 ##### [DEFAULT_ATTRIBUTE_MAPPER](#default_attribute_mapper-4)
