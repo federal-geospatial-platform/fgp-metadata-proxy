@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN YT_CATALOGUE_READER,1,"FGP Tools",2d85b4a3-d039-4594-9c7f-71b2e723e058,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,,No
+# TRANSFORMER_BEGIN YT_CATALOGUE_READER,1,"FGP Tools",c6232ae3-0e27-4345-89a3-ededada1e12f,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
 # 
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
@@ -11,8 +11,8 @@
 #!   DOC_TOP_LEFT="-4960.99 -2885.45"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="2d85b4a3-d039-4594-9c7f-71b2e723e058"
-#!   FME_DOCUMENT_PRIORGUID="ff07f3e4-1167-48d8-b8ba-b5081850463f"
+#!   FME_DOCUMENT_GUID="c6232ae3-0e27-4345-89a3-ededada1e12f"
+#!   FME_DOCUMENT_PRIORGUID="ff07f3e4-1167-48d8-b8ba-b5081850463f,2d85b4a3-d039-4594-9c7f-71b2e723e058"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -24,18 +24,18 @@
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-04-12T10:59:02"
+#!   LAST_SAVE_DATE="2021-04-12T12:50:46"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
-#!   PYTHON_COMPATIBILITY=""
+#!   PYTHON_COMPATIBILITY="37"
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="YT_CATALOGUE_READER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-2665.75 1571.99"
+#!   VIEW_POSITION="-75.7583 1036.94"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -324,7 +324,7 @@
 #!   BOUNDING_RECT="-4960.9871098710983 1118.761187611876 9982.7387162760497 4004.2067087337537"
 #!   STICKY="true"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
-#!   CONTENTS="9 31 35 53 43 10 68 52 40 64 13 34 45 46 11 60 5 38 21 12 57 20 63 7 48 61 26 14 25 55 44 23 18 19 30 49 15 3 37 16 50 29 6 28 56 39 17 54 2 24 27 42 22 65 32 33 59 41 58 36 8 62 4 47 "
+#!   CONTENTS="28 16 36 59 65 35 29 17 37 63 48 55 31 47 24 46 44 60 21 22 6 25 43 3 52 33 68 15 18 30 4 27 8 19 57 9 50 58 34 26 38 12 49 41 7 42 11 54 13 53 64 40 62 32 20 14 61 39 10 2 23 56 5 45 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -1247,14 +1247,14 @@
 #! </LOOKUP_TABLES>
 #! </TRANSFORMER>
 
-FME_PYTHON_VERSION 
+FME_PYTHON_VERSION 37
 #! START_HEADER
 #! END_HEADER
 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO YT_CATALOGUE_READER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(YT_CATALOGUE_READER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(YT_CATALOGUE_READER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_INPUT1618239542 Input Splitter"   INPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_INPUT1618246246 Input Splitter"   INPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_INPUT"    TARGET_URL "https:<solidus><solidus>open.yukon.ca<solidus>api<solidus>3<solidus>action<solidus>package_list?page=0"    HTTP_METHOD GET    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS Yes    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
 # -------------------------------------------------------------------------
@@ -1290,8 +1290,8 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRenamer    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_ListExploder_ELEMENTS" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "result" "orig_name" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_a688495e_d2d4_47b9_9d6d_eaaf0a1c81390_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,orig_name,fme_pcre_match,"^fme_$($(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_a688495e_d2d4_47b9_9d6d_eaaf0a1c81390_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_92961c90_ec27_4803_bfcb_7d1cc18118210_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,orig_name,fme_pcre_match,"^fme_$($(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_92961c90_ec27_4803_bfcb_7d1cc18118210_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    CASE_INSENSITIVE_TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>orig_name<closeparen>,$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Tester) BEGINS_WITH data<solidus>datasets<solidus> ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Tester_PASSED"
 # -------------------------------------------------------------------------
@@ -1323,10 +1323,10 @@ FACTORY_DEF * ElementFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAM
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_Cloner_Cloner    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_ListExploder_2_<REJECTED>"    NUMBER_OF_COPIES "1"    COPY_NUMBER_ATTRIBUTE _copynum    REJECT_INVALID YES    OUTPUT COPY "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Cloner_COPY"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Cloner_COPY"    OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>YT_CATALOGUE_READER_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<apos>result<apos><space>list<space>atttribute<space>missing<space>from<space>source<space>data<space>with<space>unique<space>name<space>value<space><at>Value<openparen>orig_name<closeparen>.<space><space>Verify<space>data<space>with<space>_response_body<space>attribute<space>in<space>PROCESS_REPORT_MANUAL_TASKS<space>.xlsx<space>file<space>in<space>the<space>project<space>XLS<space>folder,$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger)","20","20","",INFO,LOG_RECORD,$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger_d2420727_4ad8_498b_b022_4fd4fe748d7b0)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Cloner_COPY"    OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>YT_CATALOGUE_READER_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<apos>result<apos><space>list<space>atttribute<space>missing<space>from<space>source<space>data<space>with<space>unique<space>name<space>value<space><at>Value<openparen>orig_name<closeparen>.<space><space>Verify<space>data<space>with<space>_response_body<space>attribute<space>in<space>PROCESS_REPORT_MANUAL_TASKS<space>.xlsx<space>file<space>in<space>the<space>project<space>XLS<space>folder,$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger)","20","20","",INFO,LOG_RECORD,$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger_09495e61_5f44_4bc8_b60a_42eb7dda661b0)
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2_1aecdd23_6d80_47ae_b158_376ba81610ce0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger_LOGGED"    OUTPUT { FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,_response_body,name,fme_pcre_match,"^fme_$($(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2_1aecdd23_6d80_47ae_b158_376ba81610ce0_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2_f94d64da_81f7_43f7_8fef_e203b778166d0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_Logger_LOGGED"    OUTPUT { FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,_response_body,name,fme_pcre_match,"^fme_$($(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2_f94d64da_81f7_43f7_8fef_e203b778166d0_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_UNIQUE_ID_CREATOR INPUT Input Collector"   INPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_ListExploder_2_ELEMENTS"   OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_UNIQUE_ID_CREATOR_INPUT"
 MACRO UNIQUE_ID_CREATOR_WORKSPACE_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_UNIQUE_ID_CREATOR
@@ -1339,6 +1339,6 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_U
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_UNIQUE_ID_CREATOR_OUTPUT"    OUTPUT { FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_element_index,_response_body,_http_status_code)        @RemoveAttributes(fme_pcre_match"$($(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_DATA_OUTPUT1618239542 Output Collector"   INPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_DATA_OUTPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_ERROR_OUTPUT1618239542 Output Collector"   INPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_ERROR_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_DATA_OUTPUT1618246246 Output Collector"   INPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_DATA_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_ERROR_OUTPUT1618246246 Output Collector"   INPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(YT_CATALOGUE_READER_WORKSPACE_NAME)_ERROR_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(YT_CATALOGUE_READER_WORKSPACE_NAME))}]
