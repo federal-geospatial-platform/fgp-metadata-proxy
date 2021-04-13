@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN URL_HTTPS_MAKER,1,,0d0938f8-dbd5-438b-9bd7-54908df298ca,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
+# TRANSFORMER_BEGIN URL_HTTPS_MAKER,1,,1937d656-2ef6-417b-b013-27cf25eb8c1e,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
 # 
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
@@ -11,8 +11,8 @@
 #!   DOC_TOP_LEFT="-1696.93 -2715.88"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="0d0938f8-dbd5-438b-9bd7-54908df298ca"
-#!   FME_DOCUMENT_PRIORGUID="73509e48-0b6b-4005-94f2-fa6dad50b93e,af4b8c18-b29e-4a8a-91e2-0de4589eef36"
+#!   FME_DOCUMENT_GUID="1937d656-2ef6-417b-b013-27cf25eb8c1e"
+#!   FME_DOCUMENT_PRIORGUID="73509e48-0b6b-4005-94f2-fa6dad50b93e,af4b8c18-b29e-4a8a-91e2-0de4589eef36,0d0938f8-dbd5-438b-9bd7-54908df298ca"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -24,7 +24,7 @@
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-02-08T15:58:39"
+#!   LAST_SAVE_DATE="2021-04-12T15:52:32"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -35,7 +35,7 @@
 #!   TITLE="URL_HTTPS_MAKER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-328.393 238.35"
+#!   VIEW_POSITION="1075.22 926.916"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -271,7 +271,7 @@
 #!     <XFORM_PARM PARM_NAME="AUTH_NAMED_CONNECTION" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="AUTH_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="AUTH_USERNAME" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="CONNECTION_TIMEOUT_LENGTH" PARM_VALUE="60"/>
+#!     <XFORM_PARM PARM_NAME="CONNECTION_TIMEOUT_LENGTH" PARM_VALUE="10"/>
 #!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS_GROUP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="ERROR_ATTR" PARM_VALUE="_error"/>
@@ -294,7 +294,7 @@
 #!     <XFORM_PARM PARM_NAME="TARGET_ATTR" PARM_VALUE="_response_body"/>
 #!     <XFORM_PARM PARM_NAME="TARGET_ATTR_ENCODING" PARM_VALUE="auto-detect"/>
 #!     <XFORM_PARM PARM_NAME="TARGET_URL" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;url2&lt;closeparen&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TRANSFER_TIMEOUT_LENGTH" PARM_VALUE="90"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFER_TIMEOUT_LENGTH" PARM_VALUE="10"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="UPLOAD_BODY" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="UPLOAD_CONTENT_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -800,7 +800,7 @@
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO URL_HTTPS_MAKER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(URL_HTTPS_MAKER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(URL_HTTPS_MAKER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_Input1612817919 Input Splitter"   INPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_Input"   OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_Input"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_Input1618257152 Input Splitter"   INPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_Input"   OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_Input"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_Input"    OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
 # -------------------------------------------------------------------------
@@ -810,8 +810,8 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDG
 INCLUDE [    set macroLine "MACRO $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_sL/V9L+YME0="    OUTPUT { FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,)        @RemoveAttributes(fme_pcre_match"$($(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper_6634468f_61b7_41bc_831c_0a038169b5430_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_R4cRXe9bRF4="    OUTPUT { FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,_uuid_https,fme_pcre_match,"^fme_$($(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper_6634468f_61b7_41bc_831c_0a038169b5430_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper_31bc1cd3_f670_42ed_9401_e2dc504ab6530_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_R4cRXe9bRF4="    OUTPUT { FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,_uuid_https,fme_pcre_match,"^fme_$($(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper_31bc1cd3_f670_42ed_9401_e2dc504ab6530_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * ElementFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_ListExploder    INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    LIST_NAME "resources{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
 # -------------------------------------------------------------------------
@@ -832,7 +832,7 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_Test
 # -------------------------------------------------------------------------
 FACTORY_DEF * StringReplacerFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_StringReplacer    INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_Tester_PASSED"    USE_REGEX NO    CASE_SENSITIVE NO    SOURCE_ATTRIBUTES url2    FIND_TEXT "http"    REPLACE_TEXT "https"    REPLACE_NO_MATCH "_FME_NO_OP_"    OUTPUT OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_StringReplacer_OUTPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF * HTTPFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_StringReplacer_OUTPUT"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url2<closeparen>,$(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller)"    HTTP_METHOD HEAD    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS Yes    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
+FACTORY_DEF * HTTPFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_StringReplacer_OUTPUT"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url2<closeparen>,$(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller)"    HTTP_METHOD HEAD    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 10    TRANSFER_TIMEOUT_LENGTH 10    FOLLOW_REDIRECTS Yes    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_HTTPCaller_Output"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "url" "SET_TO" "<at>Value<openparen>url2<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
 # -------------------------------------------------------------------------
@@ -852,5 +852,5 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_Term
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>._uuid_https"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_3    INPUT  FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT { FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,_uuid_https)        @RemoveAttributes(fme_pcre_match"$($(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP)")         }
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_Output1612817919 Output Collector"   INPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_Output1618257152 Output Collector"   INPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(URL_HTTPS_MAKER_WORKSPACE_NAME)_Output"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(URL_HTTPS_MAKER_WORKSPACE_NAME))}]
