@@ -3,16 +3,16 @@
 #    Command-line to run this workspace:
 #        "C:\Program Files (x86)\fme\fme2019.0_b19238\fme.exe" C:\Users\ngariepy\Documents\GitHub\fgp-metadata-proxy\FME_files\FME_Workspaces\ON_FGP_XML_BUILDER_PROD_07.fmw
 #              --ACTIVATE_GEO "Yes"
-#              --ACTIVATE_NON_GEO "No"
-#              --ACTIVATE_TRANSLATION "Yes"
+#              --ACTIVATE_NON_GEO "Yes"
+#              --ACTIVATE_TRANSLATION "No"
 #              --CATALOGUE_READER_SELECT "Yes"
 #              --FORCED_PYCSW_URL ""
-#              --IN_CSV_LOOKUPTABLES_DIR "C:\Users\ngariepy\Documents\GitHub\fgp-metadata-proxy\FME_files\LOOKUP_TABLES"
+#              --IN_CSV_LOOKUPTABLES_DIR "C:\Data\PT_Harvester\LOOKUP_TABLES"
 #              --IN_FFS_TESTING_FILE ""
 #              --IN_GMD_XML_TEMPLATE_DIR "C:\Data\PT_Harvester\XML_TEMPLATES"
 #              --IN_TBS_JSON_TEMPLATE_DIR "C:\Data\PT_Harvester\JSON_TEMPLATES"
-#              --LOCAL_SOURCE_METADATA_DELTA_FINDER "No"
-#              --LOCAL_WRITER "No"
+#              --LOCAL_SOURCE_METADATA_DELTA_FINDER "Yes"
+#              --LOCAL_WRITER "Yes"
 #              --LOG_FILE "C:\Data\PT_Harvester\ON_FGP_XML_BUILDER.log"
 #              --OUT_JSON_LOCAL_DIR "C:\Data\PT_Harvester\ON\JSON_LOCAL"
 #              --OUT_XLS_NOTIFICATION_DIR "C:\Data\PT_Harvester\ON\XLS"
@@ -21,8 +21,8 @@
 #              --OUT_XML_PASSED_DIR "C:\Data\PT_Harvester\ON\XML_PASSED"
 #              --P-T_ABBR "ON"
 #              --PYCSW_OVERWRITE "NO"
-#              --SAMPLE_SELECT "No"
-#              --SAMPLE_SIZE "1"
+#              --SAMPLE_SELECT "Yes"
+#              --SAMPLE_SIZE "100"
 #    
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BEGIN_PYTHON=""
@@ -47,7 +47,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-04-20T09:36:36"
+#!   LAST_SAVE_DATE="2021-04-20T13:07:20"
 #!   LOG_FILE="$(LOG_FILE)"
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -66,7 +66,7 @@
 #!   TITLE=""
 #!   USAGE=""
 #!   USE_MARKDOWN=""
-#!   VIEW_POSITION="46384 -3795.55"
+#!   VIEW_POSITION="50131 -515.782"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   ZOOM_SCALE="103"
@@ -2054,12 +2054,12 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI CHOICE_OR_ATTR ACTIVATE_NON_GEO Yes%No ACTIVATE_NON_GEO:"
-#!   DEFAULT_VALUE="No"
+#!   DEFAULT_VALUE="Yes"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL CHOICE_OR_ATTR ACTIVATE_TRANSLATION Yes%No ACTIVATE_TRANSLATION:"
-#!   DEFAULT_VALUE="Yes"
+#!   DEFAULT_VALUE="No"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
@@ -2074,7 +2074,7 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL DIRNAME_SRC_OR_ATTR IN_CSV_LOOKUPTABLES_DIR CSV Lookup Tables Directory:"
-#!   DEFAULT_VALUE="C:\Users\ngariepy\Documents\GitHub\fgp-metadata-proxy\FME_files\LOOKUP_TABLES"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\LOOKUP_TABLES"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
@@ -2084,52 +2084,52 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME_SRC_OR_ATTR IN_GMD_XML_TEMPLATE_DIR IN_GMD_XML_TEMPLATE_DIR:"
-#!   DEFAULT_VALUE="C:\Data\PT_Harvester\XML_TEMPLATES"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\XML_TEMPLATES"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME_SRC_OR_ATTR IN_TBS_JSON_TEMPLATE_DIR IN_TBS_JSON_TEMPLATE_DIR:"
-#!   DEFAULT_VALUE="C:\Data\PT_Harvester\JSON_TEMPLATES"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\JSON_TEMPLATES"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI CHOICE_OR_ATTR LOCAL_SOURCE_METADATA_DELTA_FINDER Yes%No LOCAL_SOURCE_METADATA_DELTA_FINDER:"
-#!   DEFAULT_VALUE="No"
+#!   DEFAULT_VALUE="Yes"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL STRING_OR_CHOICE_OR_ATTR LOCAL_WRITER Yes%No LOCAL_WRITER:"
-#!   DEFAULT_VALUE="No"
+#!   DEFAULT_VALUE="Yes"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL FILENAME LOG_FILE Log_Files_(*.log)|*.log|All_Files_(*.*)|*.* LOG_FILE:"
-#!   DEFAULT_VALUE="C:\Data\PT_Harvester\ON_FGP_XML_BUILDER.log"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON_FGP_XML_BUILDER.log"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI FILENAME OUT_JSON_LOCAL_DIR Text/Compressed_Text_Files(*.txt;*.txt.gz)|*.txt;*.txt.gz|Text_Files(*.txt)|*.txt|Compressed_Text_Files(*.txt.gz)|*.txt.gz|All_files(*)|* OUT_JSON_LOCAL_DIR:"
-#!   DEFAULT_VALUE="C:\Data\PT_Harvester\ON\JSON_LOCAL"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\JSON_LOCAL"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME OUT_XLS_NOTIFICATION_DIR OUT_XLS_NOTIFICATION_DIR:"
-#!   DEFAULT_VALUE="C:\Data\PT_Harvester\ON\XLS"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\XLS"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME OUT_XML_FAILED_DIR OUT_XML_FAILED_DIR:"
-#!   DEFAULT_VALUE="C:\Data\PT_Harvester\ON\XML_FAILED"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\XML_FAILED"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME OUT_XML_LOCAL_DIR OUT_XML_LOCAL_DIR:"
-#!   DEFAULT_VALUE="C:\Data\PT_Harvester\ON\XML_LOCAL"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\XML_LOCAL"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME OUT_XML_PASSED_DIR OUT_XML_PASSED_DIR:"
-#!   DEFAULT_VALUE="C:\Data\PT_Harvester\ON\XML_PASSED"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\XML_PASSED"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
@@ -2144,12 +2144,12 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL STRING_OR_CHOICE_OR_ATTR SAMPLE_SELECT Yes%No SAMPLE_SELECT:"
-#!   DEFAULT_VALUE="No"
+#!   DEFAULT_VALUE="Yes"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL RANGE_SLIDER SAMPLE_SIZE &quot;RANGE:[,]&quot; SAMPLE_SIZE:"
-#!   DEFAULT_VALUE="1"
+#!   DEFAULT_VALUE="100"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
@@ -25325,8 +25325,8 @@
 #!   IDENTIFIER="552"
 #!   TYPE="VariableRetriever"
 #!   VERSION="3"
-#!   POSITION="49333.017602020678 -5006.1180223452711"
-#!   BOUNDING_RECT="49333.017602020678 -5006.1180223452711 454 71"
+#!   POSITION="49329.98359109804 -5022.2527221274904"
+#!   BOUNDING_RECT="49329.98359109804 -5022.2527221274904 454 71"
 #!   ORDER="500000000002025"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -27499,50 +27499,50 @@
 
 FME_PYTHON_VERSION 37
 GUI IGNORE DestDataset_XLSXW_1,XLSXW_OUT_FME_GROUP_NAMED1_XLSXW_1,XLSXW_OUT_OVERWRITE_FILE_XLSXW_1,XLSXW_OUT_TEMPLATEFILE_XLSXW_1,XLSXW_OUT_TEMPLATE_SHEET_XLSXW_1,DestDataset_TEXTLINE_1,TEXTLINE_OUT_OVERWRITE_FILE_TEXTLINE_1,TEXTLINE_OUT_ENCODING_TEXTLINE_1,TEXTLINE_OUT_END_OF_LINE_TEXTLINE_1,DestDataset_TEXTLINE_2,TEXTLINE_OUT_FME_GROUP_NAMED1_TEXTLINE_2,TEXTLINE_OUT_OVERWRITE_FILE_TEXTLINE_2,TEXTLINE_OUT_FME_GROUP_NAMED2_TEXTLINE_2,TEXTLINE_OUT_END_OF_LINE_TEXTLINE_2,TEXTLINE_OUT_WRITE_LAST_EOL_TEXTLINE_2,TEXTLINE_OUT_ENCODING_TEXTLINE_2,TEXTLINE_OUT_WRITE_UTF8_BOM_TEXTLINE_2,TEXTLINE_OUT_FME_GROUP_NAMED3_TEXTLINE_2,TEXTLINE_OUT_MIME_TYPE_TEXTLINE_2,DestDataset_TEXTLINE_3,TEXTLINE_OUT_FME_GROUP_NAMED1_TEXTLINE_3,TEXTLINE_OUT_OVERWRITE_FILE_TEXTLINE_3,TEXTLINE_OUT_FME_GROUP_NAMED2_TEXTLINE_3,TEXTLINE_OUT_END_OF_LINE_TEXTLINE_3,TEXTLINE_OUT_WRITE_LAST_EOL_TEXTLINE_3,TEXTLINE_OUT_ENCODING_TEXTLINE_3,TEXTLINE_OUT_WRITE_UTF8_BOM_TEXTLINE_3,TEXTLINE_OUT_FME_GROUP_NAMED3_TEXTLINE_3,TEXTLINE_OUT_MIME_TYPE_TEXTLINE_3,DestDataset_TEXTLINE_4,TEXTLINE_OUT_FME_GROUP_NAMED1_TEXTLINE_4,TEXTLINE_OUT_OVERWRITE_FILE_TEXTLINE_4,TEXTLINE_OUT_FME_GROUP_NAMED2_TEXTLINE_4,TEXTLINE_OUT_END_OF_LINE_TEXTLINE_4,TEXTLINE_OUT_WRITE_LAST_EOL_TEXTLINE_4,TEXTLINE_OUT_ENCODING_TEXTLINE_4,TEXTLINE_OUT_WRITE_UTF8_BOM_TEXTLINE_4,TEXTLINE_OUT_FME_GROUP_NAMED3_TEXTLINE_4,TEXTLINE_OUT_MIME_TYPE_TEXTLINE_4
+DEFAULT_MACRO FME_SHAREDRESOURCE_DATA C:\Data
+GUI IGNORE OPTIONAL DIRNAME_SRC FME_SHAREDRESOURCE_DATA FME Server Resource Data:
 DEFAULT_MACRO ACTIVATE_GEO Yes
 GUI CHOICE ACTIVATE_GEO Yes%No ACTIVATE_GEO:
-DEFAULT_MACRO ACTIVATE_NON_GEO No
+DEFAULT_MACRO ACTIVATE_NON_GEO Yes
 GUI CHOICE ACTIVATE_NON_GEO Yes%No ACTIVATE_NON_GEO:
-DEFAULT_MACRO ACTIVATE_TRANSLATION Yes
+DEFAULT_MACRO ACTIVATE_TRANSLATION No
 GUI OPTIONAL CHOICE ACTIVATE_TRANSLATION Yes%No ACTIVATE_TRANSLATION:
 DEFAULT_MACRO CATALOGUE_READER_SELECT Yes
 GUI OPTIONAL STRING_OR_CHOICE CATALOGUE_READER_SELECT Yes%No CATALOGUE_READER_SELECT:
 DEFAULT_MACRO FORCED_PYCSW_URL 
 GUI OPTIONAL STRING_OR_CHOICE FORCED_PYCSW_URL http://127.0.0.1:8080/pycsw FORCED_PYCSW_URL:
-DEFAULT_MACRO IN_CSV_LOOKUPTABLES_DIR C:\Users\ngariepy\Documents\GitHub\fgp-metadata-proxy\FME_files\LOOKUP_TABLES
+DEFAULT_MACRO IN_CSV_LOOKUPTABLES_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\LOOKUP_TABLES
 GUI OPTIONAL DIRNAME_SRC IN_CSV_LOOKUPTABLES_DIR CSV Lookup Tables Directory:
 DEFAULT_MACRO IN_FFS_TESTING_FILE 
 GUI OPTIONAL MULTIFILE IN_FFS_TESTING_FILE INCLUDE_WEB_BROWSER%FME_Feature_Store_Files(*.ffs)|*.ffs|Compressed_Files(*.bz2_*.gz)|*.bz2_*.gz|Archive_Files(*.7z_*.7zip_*.rar_*.rvz_*.tar_*.tar.bz2_*.tar.gz_*.tgz_*.zip_*.zipx)|*.7z_*.7zip_*.rar_*.rvz_*.tar_*.tar.bz2_*.tar.gz_*.tgz_*.zip_*.zipx|All_Files|* IN_FFS_TESTING_FILE:
-DEFAULT_MACRO IN_GMD_XML_TEMPLATE_DIR C:\Data\PT_Harvester\XML_TEMPLATES
+DEFAULT_MACRO IN_GMD_XML_TEMPLATE_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\XML_TEMPLATES
 GUI DIRNAME_SRC IN_GMD_XML_TEMPLATE_DIR IN_GMD_XML_TEMPLATE_DIR:
-DEFAULT_MACRO IN_TBS_JSON_TEMPLATE_DIR C:\Data\PT_Harvester\JSON_TEMPLATES
+DEFAULT_MACRO IN_TBS_JSON_TEMPLATE_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\JSON_TEMPLATES
 GUI DIRNAME_SRC IN_TBS_JSON_TEMPLATE_DIR IN_TBS_JSON_TEMPLATE_DIR:
-DEFAULT_MACRO LOCAL_SOURCE_METADATA_DELTA_FINDER No
+DEFAULT_MACRO LOCAL_SOURCE_METADATA_DELTA_FINDER Yes
 GUI CHOICE LOCAL_SOURCE_METADATA_DELTA_FINDER Yes%No LOCAL_SOURCE_METADATA_DELTA_FINDER:
-DEFAULT_MACRO LOCAL_WRITER No
+DEFAULT_MACRO LOCAL_WRITER Yes
 GUI OPTIONAL STRING_OR_CHOICE LOCAL_WRITER Yes%No LOCAL_WRITER:
-DEFAULT_MACRO LOG_FILE C:\Data\PT_Harvester\ON_FGP_XML_BUILDER.log
+DEFAULT_MACRO LOG_FILE $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON_FGP_XML_BUILDER.log
 GUI OPTIONAL FILENAME LOG_FILE Log_Files_(*.log)|*.log|All_Files_(*.*)|*.* LOG_FILE:
-DEFAULT_MACRO OUT_JSON_LOCAL_DIR C:\Data\PT_Harvester\ON\JSON_LOCAL
+DEFAULT_MACRO OUT_JSON_LOCAL_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\JSON_LOCAL
 GUI FILENAME OUT_JSON_LOCAL_DIR Text/Compressed_Text_Files(*.txt;*.txt.gz)|*.txt;*.txt.gz|Text_Files(*.txt)|*.txt|Compressed_Text_Files(*.txt.gz)|*.txt.gz|All_files(*)|* OUT_JSON_LOCAL_DIR:
-DEFAULT_MACRO OUT_XLS_NOTIFICATION_DIR C:\Data\PT_Harvester\ON\XLS
+DEFAULT_MACRO OUT_XLS_NOTIFICATION_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\XLS
 GUI DIRNAME OUT_XLS_NOTIFICATION_DIR OUT_XLS_NOTIFICATION_DIR:
-DEFAULT_MACRO OUT_XML_FAILED_DIR C:\Data\PT_Harvester\ON\XML_FAILED
+DEFAULT_MACRO OUT_XML_FAILED_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\XML_FAILED
 GUI DIRNAME OUT_XML_FAILED_DIR OUT_XML_FAILED_DIR:
-DEFAULT_MACRO OUT_XML_LOCAL_DIR C:\Data\PT_Harvester\ON\XML_LOCAL
+DEFAULT_MACRO OUT_XML_LOCAL_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\XML_LOCAL
 GUI DIRNAME OUT_XML_LOCAL_DIR OUT_XML_LOCAL_DIR:
-DEFAULT_MACRO OUT_XML_PASSED_DIR C:\Data\PT_Harvester\ON\XML_PASSED
+DEFAULT_MACRO OUT_XML_PASSED_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\ON\XML_PASSED
 GUI DIRNAME OUT_XML_PASSED_DIR OUT_XML_PASSED_DIR:
 DEFAULT_MACRO P-T_ABBR ON
 GUI OPTIONAL TEXT P-T_ABBR P-T_ABBR:
 DEFAULT_MACRO PYCSW_OVERWRITE NO
 GUI OPTIONAL CHOICE PYCSW_OVERWRITE YES%NO PYCSW_OVERWRITE:
-DEFAULT_MACRO SAMPLE_SELECT No
+DEFAULT_MACRO SAMPLE_SELECT Yes
 GUI OPTIONAL STRING_OR_CHOICE SAMPLE_SELECT Yes%No SAMPLE_SELECT:
-DEFAULT_MACRO SAMPLE_SIZE 1
+DEFAULT_MACRO SAMPLE_SIZE 100
 GUI OPTIONAL RANGE_SLIDER SAMPLE_SIZE "RANGE:[,]" SAMPLE_SIZE:
-DEFAULT_MACRO FME_SHAREDRESOURCE_DATA C:\Data
-GUI IGNORE OPTIONAL DIRNAME_SRC FME_SHAREDRESOURCE_DATA FME Server Resource Data:
 INCLUDE [ if {{$(ACTIVATE_GEO)} == {}} { puts_real {Parameter 'ACTIVATE_GEO' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(ACTIVATE_NON_GEO)} == {}} { puts_real {Parameter 'ACTIVATE_NON_GEO' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(IN_GMD_XML_TEMPLATE_DIR)} == {}} { puts_real {Parameter 'IN_GMD_XML_TEMPLATE_DIR' must be given a value.}; exit 1; }; ]
@@ -28832,8 +28832,8 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "AWS_TRANSLATE_4 TRANSLATION_PROBLEM Out
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_11    INPUT  FEATURE_TYPE AttributeCreator_16_OUTPUT_0_VPGIQKSd6fw=    OUTPUT FEATURE_TYPE AttributeExposer_11_OUTPUT
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_99beae19_6239_4834_aeeb_d44d3454a5640_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE AttributeExposer_11_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,datasetid,fme_pcre_match,"^fme_$(AttributeKeeper_99beae19_6239_4834_aeeb_d44d3454a5640_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_99beae19_6239_4834_aeeb_d44d3454a5642_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE AttributeExposer_11_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,datasetid,fme_pcre_match,"^fme_$(AttributeKeeper_99beae19_6239_4834_aeeb_d44d3454a5642_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * ElementFactory    FACTORY_NAME ListExploder    INPUT  FEATURE_TYPE AttributeKeeper_OUTPUT    LIST_NAME "resources{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE ListExploder_ELEMENTS         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE ListExploder_<REJECTED>         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
 # -------------------------------------------------------------------------
@@ -28978,12 +28978,12 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER UPDATE_PASSED Output Rena
 FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER UPDATE_FAILED Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_UPDATE_FAILED   OUTPUT FEATURE_TYPE XML_PUBLISHER_UPDATE_FAILED
 FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER InvalidMetadata Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_InvalidMetadata
 # -------------------------------------------------------------------------
-DEFAULT_MACRO __StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1810_GROUP_BY
-MACRO StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1810_PORT_SPECIFIED no
-INCLUDE [puts_real {$(StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1810_PORT_SPECIFIED)}
+DEFAULT_MACRO __StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1812_GROUP_BY
+MACRO StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1812_PORT_SPECIFIED no
+INCLUDE [puts_real {$(StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1812_PORT_SPECIFIED)}
 DYNAMIC_FUNCTION_CONFIGURATION Python FMEOBJECTS
 DYNAMIC_FUNCTION_CONFIGURATION Python import StatisticsCalculator
-DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    'StatisticsCalculator',{     'GROUP_BY_MACRO':'__StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1810_GROUP_BY',     'STATS_ATTRS':'id',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$(StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1810_PORT_SPECIFIED)',     None:None})"
+DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    'StatisticsCalculator',{     'GROUP_BY_MACRO':'__StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1812_GROUP_BY',     'STATS_ATTRS':'id',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$(StatisticsCalculator_d715e7f1_c4b8_418f_9b57_4e6df92bb1812_PORT_SPECIFIED)',     None:None})"
 FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_InputProcessor    INPUT  FEATURE_TYPE Creator_2_CREATED    INPUT  FEATURE_TYPE Tester_FAILED    OUTPUT FEATURE_TYPE __ORIGINAL__       @Python(StatisticsCalculator.recordFeature,StatisticsCalculator)
 FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_UnneededInputNuker    INPUT FEATURE_TYPE __ORIGINAL__
 FACTORY_DEF * SortFactory    FACTORY_NAME StatisticsCalculator_CompleteOutputter    INPUT FEATURE_TYPE __UNUSED_INPUT_TO_GUARANTEE_FACTORY_DOESNT_CONSUME_EVERYTHING__
@@ -28992,7 +28992,7 @@ FACTORY_DEF * ElementFactory    FACTORY_NAME StatisticsCalculator_SummaryExplode
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE StatisticsCalculator_SUMMARY    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_real_count" "SET_TO" "<at>Evaluate<openparen><at>Value<openparen>_count<closeparen>-1<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_2_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_Logger    INPUT  FEATURE_TYPE AttributeCreator_2_OUTPUT    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_6f16c69a_c0e8_4b8d_b797_9a680e2765c40)
+FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_Logger    INPUT  FEATURE_TYPE AttributeCreator_2_OUTPUT    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_6f16c69a_c0e8_4b8d_b797_9a680e2765c42)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "StatisticsCalculator_Summary LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED
 # -------------------------------------------------------------------------
 
