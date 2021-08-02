@@ -1,18 +1,18 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN EMPTY_FORMAT_MAPPER,1,"FGP Tools",45df8462-31bf-40b6-ac8a-d781339b70e9,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
+# TRANSFORMER_BEGIN EMPTY_FORMAT_MAPPER,1,"FGP Tools",e098f983-3522-4a16-8511-19d9b03a4eb2,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
 # 
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="FGP Tools"
 #!   DESCRIPTION=""
-#!   DOC_EXTENTS="4008.22 466.652"
-#!   DOC_TOP_LEFT="-10232 -632.684"
+#!   DOC_EXTENTS="4934.77 464.184"
+#!   DOC_TOP_LEFT="-10232 -630.216"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="45df8462-31bf-40b6-ac8a-d781339b70e9"
-#!   FME_DOCUMENT_PRIORGUID="c5b193b6-1814-4bed-8bb0-5098d083ca44"
+#!   FME_DOCUMENT_GUID="e098f983-3522-4a16-8511-19d9b03a4eb2"
+#!   FME_DOCUMENT_PRIORGUID="c5b193b6-1814-4bed-8bb0-5098d083ca44,45df8462-31bf-40b6-ac8a-d781339b70e9"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -24,7 +24,7 @@
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2020-10-29T10:34:38"
+#!   LAST_SAVE_DATE="2021-08-02T13:17:58"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -35,11 +35,11 @@
 #!   TITLE="EMPTY_FORMAT_MAPPER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-13865.9 5034.77"
+#!   VIEW_POSITION="-9473.78 137.063"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="27"
+#!   ZOOM_SCALE="57"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -131,6 +131,22 @@
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListElementCounter"/>
 #! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="-6705.1109107582297 -559.21611847697432"
+#!   BOUNDING_RECT="-6705.1109107582297 -559.21611847697432 533.00106825772946 71"
+#!   ORDER="500000000001869"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <SUBDOCUMENT_IOS>
 #! <SUBDOCUMENT_IO
@@ -147,8 +163,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="3"
 #!   NAME="DATA_OUTPUT"
-#!   POSITION="-6898.7672357871434 -561.68389216038088"
-#!   BOUNDING_RECT="-6898.7672357871434 -561.68389216038088 675.00106825772946 71"
+#!   POSITION="-5972.2228826243136 -529.97574471102212"
+#!   BOUNDING_RECT="-5972.2228826243136 -529.97574471102212 675.00106825772946 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -162,6 +178,17 @@
 #!   TARGET_NODE="17"
 #!   SOURCE_PORT_DESC="0"
 #!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -190,11 +217,11 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="75"
+#!   IDENTIFIER="11"
 #!   SOURCE_NODE="72"
-#!   TARGET_NODE="3"
+#!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -218,7 +245,7 @@ FME_PYTHON_VERSION 37
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO EMPTY_FORMAT_MAPPER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_INPUT1603982078 Input Splitter"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_INPUT1627924678 Input Splitter"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_INPUT"    OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
 # -------------------------------------------------------------------------
@@ -226,5 +253,12 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_L
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
 FACTORY_DEF * PythonFactory    FACTORY_NAME $(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>for<space>i<space>in<space>range<openparen>int<openparen>feature.getAttribute<openparen><apos>_element_count<apos><closeparen><closeparen><closeparen>:<lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>format=feature.getAttribute<openparen><apos>resources<opencurly>%d<closecurly>.format<apos>%<openparen>i<closeparen><closeparen><lf><space><space><space><space><space><space><space><space>if<space>not<space>format:<lf><space><space><space><space><space><space><space><space><space><space><space><space>url=feature.getAttribute<openparen><apos>resources<opencurly>%d<closecurly>.url<apos>%<openparen>i<closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>if<space>not<space>url:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>new_format=<apos>other<apos><lf><space><space><space><space><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>r<apos>service=wms<apos><space>in<space>url.lower<openparen><closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>new_format=<apos>WMS<apos><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#feature.setAttribute<openparen><apos>assignation<apos><comma>new_format<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>elif<space>r<apos>mapserver<apos><space>in<space>url.lower<openparen><closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>new_format=<apos>ESRI<space>REST<apos><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#feature.setAttribute<openparen><apos>assignation<apos><comma>new_format<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>try:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>len<openparen>url.split<openparen>r<apos><solidus><apos><closeparen><openbracket>-1<closebracket>.split<openparen><apos>.<apos><closeparen><closeparen><gt>1:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>len<openparen>url.split<openparen>r<apos><solidus><apos><closeparen><openbracket>-1<closebracket>.split<openparen><apos>.<apos><closeparen><openbracket>-1<closebracket><closeparen><lt>10:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>new_format=url.split<openparen>r<apos><solidus><apos><closeparen><openbracket>-1<closebracket>.split<openparen><apos>.<apos><closeparen><openbracket>-1<closebracket><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#feature.setAttribute<openparen><apos>assignation<apos><comma>new_format<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>new_format=<apos>other<apos><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#feature.setAttribute<openparen><apos>assignation<apos><comma>new_format<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>new_format=<apos>other<apos><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#feature.setAttribute<openparen><apos>assignation<apos><comma>new_format<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>except:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>new_format=<apos>other<apos><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>resources<opencurly>%d<closecurly>.format<apos>%<openparen>i<closeparen><comma>new_format<closeparen><lf><space><space><space><space><lf><lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_PythonCaller_OUTPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT1603982078 Output Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT1627924678 Output Collector"   INPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(EMPTY_FORMAT_MAPPER_WORKSPACE_NAME))}]
