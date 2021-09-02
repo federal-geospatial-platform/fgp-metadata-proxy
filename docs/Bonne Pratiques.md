@@ -35,10 +35,10 @@ Le *Terminator* offre aussi la possibilité d'affiché un texte lorsqu'il est ac
 
 # Nom du transformer
 
-Toujours conserver le nom du *transformer* tel que donner par FME.  Si vous avez plus d'un *transformer* du même type dans votre *workbench* alors ajouter un suffixe (ex: _1, ou _2).  Conserver le nom du *transformer* original permet d'identifier plus rapidement le type de transformer employé.  Si un nom plus représentatif vous semble important alors privilégier une annotation sur le *transformer*. 
+Toujours conserver le nom du *transformer* tel que donner par FME.  Si vous avez plus d'un *transformer* du même type dans votre *workbench* alors ajouter un suffixe (ex pour Tester: Tester, Tester_1, Tester_2, ...).  Conserver le nom du *transformer* original permet d'identifier plus rapidement le type de transformer employé.  Si un nom plus représentatif vous semble important alors privilégier une annotation sur le *transformer*. 
 
 
-#Gestion des attributs
+# Gestion des attributs
  
 
 Le traitment des collection de métadonnées des différentes provinces contient plusieurs centaines d'attributs et de listes en plus de ceux qui sont créés par les différents   
