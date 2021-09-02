@@ -1,4 +1,4 @@
-Les directives contenues dans ce document ont pout but d'assurer une homogénéité dans le code produit par les différents membres de l'équipes en plus de maximiser la lisibilité.
+Les directives de documentation contenues dans ce document ont pout but d'assurer une homogénéité dans le code produit par les différents membres de l'équipes en plus de maximiser la lisibilité et l'usage.
 
 Ce document adresse les éléments de documentstion suivant:
 
@@ -10,22 +10,20 @@ Ce document adresse les éléments de documentstion suivant:
 
 # Annotation
 
-L'annonations est l'élément de base de la documentation dans FME.  N'hésitez pas à ajouter une annotation à pratiquemment tous vos *transformers* dans votre *workbench*.  Ce qui est trivial lorsqu'on écrit du code aujourd'hui peut devenir moins trivial pour une autre personne ou pour vous même dans quelques semaines.  De bonnes annotations permettent aussi de suivre le déroulement d'un *workbench* sans avoir à toujours cliquer dans les boîtes pour les ouvrir et en comprendre le comportement.
+L'annonations est l'élément de base de la documentation dans FME.  N'hésitez pas à ajouter une annotation à pratiquemment tous vos *transformers* dans votre *workbench*.  Ce qui est trivial lorsqu'on écrit du code aujourd'hui peut devenir moins trivial pour une autre personne ou pour vous même dans quelques semaines.  De bonnes annotations permettent aussi de suivre le déroulement d'un *workbench* sans avoir à toujours cliquer dans les boîtes pour les ouvrir et en comprendre le comportement.  Pour des annotation plus complexes, il est possible de placer des hyper liens et de changer le style du texte.
 
-ajouter image annotation
+![img_3.png](img_3.png)
 
 # Bookmark
 
-Le bookmark est un élément visuel puissant qui permet de regrouper ensemble des *transformers* qui forment une unité de traitement.  Les *bookmarks* permettent de simuler des sous-routines
+Le *bookmark* (signet) est un élément visuel puissant qui permet de regrouper ensemble des *transformers* qui forment une unité de traitement.  Les *bookmarks* permettent de simuler des sous-routines.  Vous devriez toujours ajouter une courte phrase qui résume ce qui s'exécute dans le *bookmark*.  Vous pouvez aussi donner une couleur à votre *bookmark*, ce qui permet de les localiser plus rapidement et d'organiser votre espace de travail.
 
-Le bookmark (signet) est un moyen de définir des zones de votre *FME Workspace* pour un accès facile. Un bookmark permet de circonscrir une zone, généralement celle qui exécute une tâche spécifique, afin que vous puissiez facilement vous déplacer dans le *workspace*.  Vous devriez toujours ajouter une courte phrase qui résume ce qui s'exécute dans le *bookmark*.  Vous pouvez aussi donner une couleur à votre *bookmark*, ce qui permet de les localiser plus rapidement et d'organiser votre espace de travail.
+Les *bookmark* jouent un rôle important dans FME pour plusieurs raisons :
 
-Les signets jouent un rôle important dans FME pour plusieurs raisons :
-
-Comme marqueur pour un accès rapide à certaines zones.
-Pour diviser un espace de travail en différentes sections clairement marquées.
-Pour organise un espace de travail afin que vous puissiez déplacer plusieurs *transformers* en même temps.
-Pour facilite la gestion des grands espaces de travail en réduisant (*collapse*) les sections qui sont mises en *bookmark*.
+  * Comme marqueur pour un accès rapide à certaines zones de votre *workbench*.
+  * Pour diviser un espace de travail en différentes sections clairement marquées.
+  * Pour organise un *workbench* afin que vous puissiez déplacer plusieurs *transformers* en même temps.
+  * Pour facilite la gestion des grands *workspace* en réduisant (*collapse*) les sections qui sont mises en *bookmark*.
 
 La figure ci-sessous montre un exemple d'utilisation de *bookmark* pour diviser l'espace de travail et mettre en relief les différentes tâches effectuées:
 
@@ -33,7 +31,7 @@ La figure ci-sessous montre un exemple d'utilisation de *bookmark* pour diviser 
 
 # Bookmark imbriqué
 
-Il est possible d'imbriquer des *bookmark* les uns dans les autres.  ce qui permet d'ajouter une dimension supplémentaire dans le regroupement de tâches similaires dans un *workspace* voluminuex.
+Il est possible d'imbriquer des *bookmark* les uns dans les autres.  ce qui permet d'ajouter une dimension supplémentaire dans le regroupement de tâches similaires dans un *workspace* volumineux.
 
 # Description
 
@@ -45,7 +43,7 @@ Cliquer sur Overview et la fenêtre ci-dessous va apparaître:
 
 ![img_2.png](img_2.png)
 
-Vous devez remplir la *Category*: FGP Tools et l'onglet Overview et History.
+Vous devez remplir le champ  *Category* avec la valeur *FGP Tools* (habituellement), l'onglet Overview et l'onglet History.
 
 L'onglet *Overview* doit contenir les informations suivantes
 
@@ -58,22 +56,24 @@ L'onglet *Overview* doit contenir les informations suivantes
  
 <u>**Input Ports**</u>
 
-  * Décrire tous les ports d'entrées (*input ports*) du *custom transformer*. Si votre *custom transformer* ne contient qu'un seul port d'entrée, il devrait simplement être nommé *Input*
+  * Décrire de façon détaillée tous les ports d'entrées (*input ports*) du *custom transformer*. Si votre *custom transformer* ne contient qu'un seul port d'entrée, il devrait simplement être nommé *Input*
 
 
 <u>**Output Ports**</u>
 
-  * Décrire tous les ports de sorties (*output ports*) du *custom transformer*. Si votre *custom transformer* ne contient qu'un seul port de sortie, il devrait simplement être nommé *Output*
+  * Décrire de façon détaillé tous les ports de sorties (*output ports*) du *custom transformer*. Si votre *custom transformer* ne contient qu'un seul port de sortie, il devrait simplement être nommé *Output*
 
 
 <u>**Parameters**</u>
 
-  * Description détaillée de chaque paramètres du *custom transformer*.  Inscrire la valeur par défaut, si le paramètre contient une liste de valeurs, il faut documenter le comportement de chaque valeur. 
+  * Description détaillée de chaque paramètres du *custom transformer*.  Inscrire la valeur par défaut, si le paramètre contient une liste de valeurs (ex.: YES|NO), il faut documenter le comportement de chaque valeur. 
 
 
 <u>**Note**</u> ou <u>**Usage**</u> 
 
-  * Les section Note et Usage sont facultative et devrait être seulement utilisé lorsque de l'information aditionnelle est requise pour aider à la comprhension du *custom transformer*.
+  * Les sections *Note8 et/ou *Usage* sont facultatives et devraient être seulement utilisés lorsque de l'information aditionnelle est requise pour aider à la comprhension du *custom transformer*.
 
 
-L'onglet *History* contient l'historique des travaux fait sur un *custom transformer*.  Normalement à chaque fois que le *custom transformer* est publié ou rebuplié dans le dépôt GitHub, on devrait ajouter une ligne dans l'historique qui contient la date du développement, le nom du développeur et un commentaire (pour la première version, on peut écrire "Version originale")
+L'onglet *History* contient l'historique des travaux fait sur un *custom transformer*.  Normalement à chaque fois que le *custom transformer* est publié ou republié dans le dépôt GitHub, on devrait ajouter une ligne dans l'historique.  Cet onglet contient la date du développement, le nom du développeur et un commentaire (pour la première version, on peut écrire "Version originale")
+
+Note: Les *custom transformer* JSON_PUBLISHER et XML_PUBLISHER sont de bons exemples pour la documentation.
