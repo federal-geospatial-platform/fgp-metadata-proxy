@@ -1,6 +1,9 @@
+# Documentation FME
+
+
 Les directives de documentation contenues dans ce document ont pout but d'assurer une homogénéité dans le code produit par les différents membres de l'équipes en plus de maximiser la lisibilité et l'usage.
 
-Ce document adresse les éléments de documentstion suivant:
+Ce document adresse les éléments de documentation suivants:
 
  - [Annotation](#Annotation)
  - [Bookmark](#Bookmark)
