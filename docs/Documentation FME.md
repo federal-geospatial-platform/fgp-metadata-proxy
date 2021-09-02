@@ -1,61 +1,79 @@
 Les directives contenues dans ce document ont pout but d'assurer une homogénéité dans le code produit par les différents membres de l'équipes en plus de maximiser la lisibilité.
 
-Ce document adresse les éléments de documentstion suivant
+Ce document adresse les éléments de documentstion suivant:
 
-# This is a tag
-## This is an <h2> tag
-
-http://github.com - automatic!
-[GitHub](http://github.com)
-
-I think you should use an
-`<addr>` element here instead.
-
-# The header1
-# The header2
-
-[Link to Header](#the-header1)
-coco1
-
-[Link to Header](#the-header2)
-coco2
+ - [Annotation](#Annotation)
+ - [Bookmark](#Bookmark)
+ - [Bookmark imbriqué](#Bookmark-imbriqué)
+ - [Description](#Description)
 
 
+# Annotation
+
+L'annonations est l'élément de base de la documentation dans FME.  N'hésitez pas à ajouter une annotation à pratiquemment tous vos *transformers* dans votre *workbench*.  Ce qui est trivial lorsqu'on écrit du code aujourd'hui peut devenir moins trivial pour une autre personne ou pour vous même dans quelques semaines.  De bonnes annotations permettent aussi de suivre le déroulement d'un *workbench* sans avoir à toujours cliquer dans les boîtes pour les ouvrir et en comprendre le comportement.
+
+ajouter image annotation
+
+# Bookmark
+
+Le bookmark est un élément visuel puissant qui permet de regrouper ensemble des *transformers* qui forment une unité de traitement.  Les *bookmarks* permettent de simuler des sous-routines
+
+Le bookmark (signet) est un moyen de définir des zones de votre *FME Workspace* pour un accès facile. Un bookmark permet de circonscrir une zone, généralement celle qui exécute une tâche spécifique, afin que vous puissiez facilement vous déplacer dans le *workspace*.  Vous devriez toujours ajouter une courte phrase qui résume ce qui s'exécute dans le *bookmark*.  Vous pouvez aussi donner une couleur à votre *bookmark*, ce qui permet de les localiser plus rapidement et d'organiser votre espace de travail.
+
+Les signets jouent un rôle important dans FME pour plusieurs raisons :
+
+Comme marqueur pour un accès rapide à certaines zones.
+Pour diviser un espace de travail en différentes sections clairement marquées.
+Pour organise un espace de travail afin que vous puissiez déplacer plusieurs *transformers* en même temps.
+Pour facilite la gestion des grands espaces de travail en réduisant (*collapse*) les sections qui sont mises en *bookmark*.
+
+La figure ci-sessous montre un exemple d'utilisation de *bookmark* pour diviser l'espace de travail et mettre en relief les différentes tâches effectuées:
+
+![img.png](img.png)
+
+# Bookmark imbriqué
+
+Il est possible d'imbriquer des *bookmark* les uns dans les autres.  ce qui permet d'ajouter une dimension supplémentaire dans le regroupement de tâches similaires dans un *workspace* voluminuex.
+
+# Description
+
+Tous les *workbench* et *custom transformer* doivent être documentés.  L'application FME offre des outils intégrés qui facilite la documentation.  On retrouve ces outils dans la fenêtre Navigator sous l'onglet Transformer Parameters > Description (voir image cidessous)
+
+![img_1.png](img_1.png)
+
+Cliquer sur Overview et la fenêtre ci-dessous va apparaître:
+
+![img_2.png](img_2.png)
+
+Vous devez remplir la *Category*: FGP Tools et l'onglet Overview et History.
+
+L'onglet *Overview* doit contenir les informations suivantes
+
+<u>**Description**</u>
+
+  * Inclure une decription détaillée du *custom transformer*.  La description doit mettre l'emphase sur ce que fait (*le quoi*) le custom transformer plutôt que sur le comment les choses sont faites.
+
+  * Au besoin décrire les pré-conditions nécessaires à l'exécution du *custom transformer*
+
+ 
+<u>**Input Ports**</u>
+
+  * Décrire tous les ports d'entrées (*input ports*) du *custom transformer*. Si votre *custom transformer* ne contient qu'un seul port d'entrée, il devrait simplement être nommé *Input*
 
 
+<u>**Output Ports**</u>
+
+  * Décrire tous les ports de sorties (*output ports*) du *custom transformer*. Si votre *custom transformer* ne contient qu'un seul port de sortie, il devrait simplement être nommé *Output*
 
 
+<u>**Parameters**</u>
 
-- [Reduce Bend](#Reduce-Bend) for line simplification and generalization
- - [Chordal Axis](#Chordal-Axis) for polygon to line simplification (skeletonization)
- - [Simplify](#Simplify) for line simplification
-
-## Requirements  
-- [QGIS](https://www.qgis.org) >3.14
-
-## QGIS plugin installation
-
-From the GitHub repo download the zip file of the latest tag (or the tag you wish to install) and unzip the content in the QGIS plugin directory _geo_sim_processing_ and reload the plugin geo_sim_processing.  If the _Plugin Reloader_ is not present install it from the menu Plugins > Manage and Install Plugins
-
-Plugin directory in Linux: /home/_usename_/.local/share/QGIS/QGIS3/profiles/default/plugins/geo_sim_processing
-d
-d
-d
-d
-d
-
-d
+  * Description détaillée de chaque paramètres du *custom transformer*.  Inscrire la valeur par défaut, si le paramètre contient une liste de valeurs, il faut documenter le comportement de chaque valeur. 
 
 
-d
+<u>**Note**</u> ou <u>**Usage**</u> 
 
-dd
-
-
-Plugin directory in Windows: C:\Users\\_usename_\AppData\Roaming\QGIS\QGIS3\profiles\default\plugins\geo_sim_processing
-
-Note: Other locations are possible, but these are the default one
-
-# Reduce Bend
+  * Les section Note et Usage sont facultative et devrait être seulement utilisé lorsque de l'information aditionnelle est requise pour aider à la comprhension du *custom transformer*.
 
 
+L'onglet *History* contient l'historique des travaux fait sur un *custom transformer*.  Normalement à chaque fois que le *custom transformer* est publié ou rebuplié dans le dépôt GitHub, on devrait ajouter une ligne dans l'historique qui contient la date du développement, le nom du développeur et un commentaire (pour la première version, on peut écrire "Version originale")
