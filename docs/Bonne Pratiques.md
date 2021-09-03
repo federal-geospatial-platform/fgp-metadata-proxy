@@ -32,7 +32,7 @@ Le *Terminator* est un *transformer* qui arrête abruptement l'exécution du *wo
 
 Le *Terminator* offre aussi la possibilité d'afficher un texte lorsqu'il est activé.  Le texte devrait toujours être représentatif de la raison pourquoi le *Terminator* est activé (ex.: *Invalid attribute value for ID*) et éviter les formalutation trop générique (ex.: *Translation failed...*)
 
-![img_5.png](img_5.png)
+![Terminator usage](images/img_5.png)
 
 # Nom du transformer
 
