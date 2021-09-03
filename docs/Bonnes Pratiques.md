@@ -9,8 +9,9 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
  - [Documentation](#Documentation)
  - [Hardcoding](#Bookmark)
  - [Terminator](#Bookmark-imbriqué)
- - [Résillience](#Résillience)
  - [Nom du transformer](#Nom-du-transformer)
+ - [Résillience](#Résillience)
+ - [Enregistrement entrant et sortant](#Enregistrement-entrant-et-sortant)
  - [Gestion des attributs](#Gestion-des-attributs)
 
 
@@ -44,6 +45,11 @@ Toujours conserver le nom du *transformer* tel que donner par FME.  Si vous avez
 Le traitement des collections d'enregistrements de métadonnées de l'environnement des provinces et territoires (P/T) à celui du gouvernment fédéral se fait par traitment en lot (via *FME Server*).  Il est donc primordial que tous les *workbench* qui traitent les différentes P/T soient très résillients aux problèmes.  Si un ou plusieurs enregistrments de métadonnées ne peuvent pas être traduits car ces derniers contiennent un ou plusieurs cas particuliers qui ne sont pas pris en compte, il faut alors rejeter ce ou ces enregistrments, laisser une trace du problème dans un fichier log et traiter tous les autres enregistrements que le workbench est capable de manipuler.  Dans ce type de condition, il ne faut pas utiliser de *Terminator* qui ferait arrêter abruptement l'exécution du programme. 
 
 **C'est au développeur de trouver la juste balance entre quand utiliser le *Terminator* (faire terminer abruptement un programme) car un *workbench* est dans un état instable et quand un *workbench* est incapable de traîter un enregistrement de métadonnées et ce dernier doit simplement être rejeté.**
+
+# Enregistrement entrant et sortant
+
+
+Dans un *custom transformer* le nombre d'enregistrement entrant devrait habituellement être égal au nombre d'enregistrement sortant.  Si vous avez des enregistrements problématique, il est préférable d'avoir un ou plusieurs ports de sortie dédiés pour gérer ces cas (ex.: *Error* ou *Unprocessable*) afin de laisser au *workbench* ou *custom transformer* appelant la décision de comment gérer ces cas problématiques: en les enregistrant dans un fichier de log ou en appelant un *Terminator* ou autre moyen de gestion des cas problématiques.
 
 # Gestion des attributs
  
