@@ -17,7 +17,7 @@ L'annonations est l'élément de base de la documentation dans FME.  N'hésitez 
 
 De bonnes annotations permettent aussi de suivre et comprendre plus facilement le déroulement d'un *workbench* ou d'un *custom transformer* sans avoir à toujours cliquer dans les différentes boîtes pour les ouvrir et en comprendre le comportement.  Pour des annotation plus complexes, il est possible de placer des hyper liens et de changer le style du texte.
 
-![img_3.png](img_3.png)
+![Transformer annotation](images/img_3.png)
 
 # Bookmark
 
@@ -31,7 +31,7 @@ Les *bookmark* jouent un rôle important dans FME pour plusieurs raisons :
 
 La figure ci-sessous montre un exemple d'utilisation de *bookmark* pour diviser l'espace de travail et mettre en relief les différentes tâches effectuées:
 
-![img.png](img.png)
+![Bookmark](images/img.png)
 
 # Bookmark imbriqué
 
@@ -41,11 +41,11 @@ Il est possible d'imbriquer des *bookmark* les uns dans les autres.  ce qui perm
 
 Tous les *workbench* et *custom transformer* doivent être documentés.  L'application FME offre des outils intégrés qui facilite la documentation.  On retrouve ces outils dans la fenêtre Navigator sous l'onglet Transformer Parameters > Description (voir image cidessous)
 
-![img_1.png](img_1.png)
+![Navigator panel](images/img_1.png)
 
 Cliquer sur Overview et la fenêtre ci-dessous va apparaître:
 
-![img_2.png](img_2.png)
+![Transformer documentation](images/img_2.png)
 
 Vous devez remplir le champ  *Category* avec la valeur *FGP Tools* (habituellement), l'onglet Overview et l'onglet History.
 
