@@ -62,7 +62,7 @@ Le *Terminator* offre aussi la possibilité d'afficher un texte lorsqu'il est ac
 ![Terminator usage](images/img_5.png)
 
 
-# Tester ouTestFilter
+# Tester ou TestFilter
 
 Les *transformer* *Tester* et *TestFilter* offre des capacités similaires pour tester des attributs et aiguiller l'exécution du programme.  Par contre, le transformer *TestFilter* offre les avantages suivants: 
   - Permet de par sa structure de fusionner plusieurs *transformer* *Tester* en un seul *transformer* *TestFilter* ce qui allège l'espace de travail; 
