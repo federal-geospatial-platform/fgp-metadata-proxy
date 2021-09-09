@@ -1,18 +1,44 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN METADATA_VALUE_MAPPER_ERROR_MANAGER,1,"Federal Geo Platform",a4c5bc39-fac5-4f35-995e-ca9019dad423,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
-# 
+# TRANSFORMER_BEGIN METADATA_VALUE_MAPPER_ERROR_MANAGER,1,"FGP Tools",d3d3dd3d-ebb3-43ab-b0db-6b401064e7a7,"Linked Always",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
+# p, li { white-space: pre-wrap; }
+# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This custom transformer checks if the input records have mapping errors.  A record has one or more mapping errors if the attribute </span><span style=" font-size:10pt; font-style:italic;">mapping_errors{}</span><span style=" font-size:10pt;">. is present.  If mapping errors are present the individual errors are individually extracted from the list (</span><span style=" font-size:10pt; font-style:italic;">mapping_errors{} </span><span style=" font-size:10pt;">list is exploded) and sent to the ERROR_OUTPUT port. </span></li>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <li style=" font-size:10pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Mapping errors are created by the following custom transformers: METADATA_VALUE_MAPPER, METADATA_FORMAT_MAPPER</li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">Input:</span><span style=" font-weight:400; text-decoration:none;"> The input metadata records to process.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">ERROR_OUTPUT: </span><span style=" font-weight:400; text-decoration:none;">The detailed list of errors (one record per error)</span></li></ul>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">DATA_OUTPUT: </span><span style=" font-weight:400; text-decoration:none;">The metadata record without any mapping error</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">None</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
-#!   CATEGORY="Federal Geo Platform"
-#!   DESCRIPTION=""
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This custom transformer checks if the input records have mapping errors.  A record has one or more mapping errors if the attribute &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;mapping_errors{}&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;. is present.  If mapping errors are present the individual errors are individually extracted from the list (&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;mapping_errors{} &lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;list is exploded) and sent to the ERROR_OUTPUT port. &lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Mapping errors are created by the following custom transformers: METADATA_VALUE_MAPPER, METADATA_FORMAT_MAPPER&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;Input:&lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; The input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;ERROR_OUTPUT: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The detailed list of errors (one record per error)&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;DATA_OUTPUT: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The metadata record without any mapping error&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;None&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   DOC_EXTENTS="7232.38 1990.64"
 #!   DOC_TOP_LEFT="-2714.96 -1090.64"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="a4c5bc39-fac5-4f35-995e-ca9019dad423"
-#!   FME_DOCUMENT_PRIORGUID="011afcc4-7ecb-4d80-a028-18df60d05403,cfe3e520-02e9-437f-b140-c7dae96553d1"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="d3d3dd3d-ebb3-43ab-b0db-6b401064e7a7"
+#!   FME_DOCUMENT_PRIORGUID="a4c5bc39-fac5-4f35-995e-ca9019dad423"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -20,22 +46,23 @@
 #!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
 #!   FME_SERVER_SERVICES=""
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
-#!   FMX_INSERT_MODE="Linked by Default"
-#!   HISTORY=""
+#!   FMX_INSERT_MODE="Linked Always"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,08&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added"
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-08-02T13:27:31"
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-09-09T13:11:04"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
 #!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="METADATA_VALUE_MAPPER_ERROR_MANAGER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-1610.26 1736.13"
+#!   VIEW_POSITION="-2197.94 1236.12"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -55,27 +82,12 @@
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
-#!   IDENTIFIER="19"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Creates an FFS file of data item values that cannot be mapped to a valid value due to the value missing from the look-up table of known data entry errors.  Allows administrators to update the look-up table to include the missing value and re-run workspace.  &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-1031.2603126031258 -550.00550005500054"
-#!   TOP_LEFT="-1031.2603126031258 -550.00550005500054"
-#!   BOTTOM_RIGHT="581.25581255812585 -842.5081250812508"
-#!   BOUNDING_RECT="-1031.2603126031258 -550.00550005500054 1612.5161251612517 292.50262502625026"
-#!   ORDER="500000000000061"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.37647058823529411,0.36078431372549019,0.33333333333333331,0.39215686274509803"
-#!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="0"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="20"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Counts the number of mapping errors found following processing of METADATA_VALUE _MAPPER or METADATA_FORMAT_MAPPER&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-1467.2009516556996 -123.99655853786192"
-#!   TOP_LEFT="-1467.2009516556996 -123.99655853786192"
-#!   BOTTOM_RIGHT="153.12653126531268 -297.74799605223706"
-#!   BOUNDING_RECT="-1467.2009516556996 -123.99655853786192 1620.3274829210122 173.75143751437514"
+#!   IDENTIFIER="22"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Counts the number of mapping errors found in one record&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-958.32791661249962 600"
+#!   TOP_LEFT="-958.32791661249962 600"
+#!   BOTTOM_RIGHT="-392.3650347614589 369.9979999799998"
+#!   BOUNDING_RECT="-958.32791661249962 600 565.96288185104072 230.00200002000017"
 #!   ORDER="500000000000062"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -85,7 +97,7 @@
 #!   ANCHORED_NODE="5"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="21"
+#!   IDENTIFIER="23"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests for error count &amp;gt; 0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-230.2258435882045 582.26050403276383"
 #!   TOP_LEFT="-230.2258435882045 582.26050403276383"
@@ -100,7 +112,7 @@
 #!   ANCHORED_NODE="6"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="22"
+#!   IDENTIFIER="24"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Removes all attributes except mapping_errors{}.error&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="557.81929854680232 641.63609778870136"
 #!   TOP_LEFT="557.81929854680232 641.63609778870136"
@@ -115,8 +127,8 @@
 #!   ANCHORED_NODE="7"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="23"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes mapping_errors{} list to write individual attributes to FFS file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   IDENTIFIER="25"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Explodes mapping_errors{} list to write individual attributes in the ERROR_OUTPUT port&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="1412.0939374233742 641.63609778870136"
 #!   TOP_LEFT="1412.0939374233742 641.63609778870136"
 #!   BOTTOM_RIGHT="2011.5198751987523 349.13347276245111"
@@ -134,7 +146,7 @@
 #! </CONSTANTS>
 #! <BOOKMARKS>
 #! <BOOKMARK
-#!   IDENTIFIER="24"
+#!   IDENTIFIER="26"
 #!   NAME="METADATA_VALUE_MAPPER_ERROR_MANAGER"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="-1893.7689376893768 900.00900009000088"
@@ -144,7 +156,7 @@
 #!   BOUNDING_RECT="-1893.7689376893768 900.00900009000088 5443.8044380443807 1990.6449064490675"
 #!   STICKY="true"
 #!   COLOUR="0.37647058823529411,0.36078431372549019,0.33333333333333331,0.39215686274509803"
-#!   CONTENTS="9 13 7 26 25 21 12 8 5 23 16 22 18 6 20 10 14 19 "
+#!   CONTENTS="20 22 8 25 11 13 15 23 19 6 7 14 10 17 5 24 9 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -193,10 +205,12 @@
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_element_count" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_element_count&lt;closeparen&gt; != 0"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
 #! </TRANSFORMER>
@@ -288,7 +302,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="25"
+#!   IDENTIFIER="11"
 #!   TYPE="ATTRIBUTE_UNEXPOSER"
 #!   VERSION="1"
 #!   POSITION="2881.9732641770856 -212.6757378684897"
@@ -296,7 +310,7 @@
 #!   ORDER="500000000000068"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="19238"
+#!   LAST_PARM_EDIT="20200"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -339,7 +353,7 @@
 #! </SUBDOCUMENT_IOS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="11"
+#!   IDENTIFIER="12"
 #!   SOURCE_NODE="2"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="0"
@@ -347,10 +361,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="12"
+#!   IDENTIFIER="13"
 #!   SOURCE_NODE="5"
 #!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -358,10 +376,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="13"
+#!   IDENTIFIER="14"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="7"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
@@ -369,10 +391,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="14"
+#!   IDENTIFIER="15"
 #!   SOURCE_NODE="7"
 #!   TARGET_NODE="8"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -380,10 +406,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="15"
+#!   IDENTIFIER="16"
 #!   SOURCE_NODE="8"
 #!   TARGET_NODE="3"
 #!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
@@ -391,10 +421,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="16"
+#!   IDENTIFIER="17"
 #!   SOURCE_NODE="9"
 #!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -402,32 +436,44 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="27"
-#!   SOURCE_NODE="25"
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="11"
 #!   TARGET_NODE="4"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="26"
+#!   IDENTIFIER="19"
 #!   SOURCE_NODE="6"
-#!   TARGET_NODE="25"
+#!   TARGET_NODE="11"
 #!   SOURCE_PORT_DESC="fo 1 FAILED"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="18"
+#!   IDENTIFIER="20"
 #!   SOURCE_NODE="8"
 #!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
@@ -435,6 +481,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! </FEAT_LINKS>
@@ -455,13 +505,13 @@ FME_PYTHON_VERSION 37
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_INPUT1627925251 Input Splitter"   INPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_INPUT1631207464 Input Splitter"   INPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListElementCounter    INPUT  FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"         "_element_count" @NumElements("mapping_errors<opencurly><closecurly>",ENCODED)
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_element_count<closeparen>,$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester) != 0 ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester_FAILED"
+FACTORY_DEF * TestFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListElementCounter_OUTPUT"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_element_count<closeparen>,$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester)" != 0 ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester_FAILED"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester_FAILED"   OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
 MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
@@ -470,8 +520,8 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper_4eab84da_7370_49df_8bfc_768cad6f486e0_LIST_EXP ";    foreach attr [split "mapping_errors<opencurly><closecurly>.error"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT { FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,id,fme_pcre_match,"^fme_$($(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper_4eab84da_7370_49df_8bfc_768cad6f486e0_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper_260e4ace_2e02_4a2c_a55c_b28ae981a4311_LIST_EXP ";    foreach attr [split "mapping_errors<opencurly><closecurly>.error"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT { FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,id,fme_pcre_match,"^fme_$($(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper_260e4ace_2e02_4a2c_a55c_b28ae981a4311_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * ElementFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListExploder    INPUT  FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    LIST_NAME "mapping_errors{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
 # -------------------------------------------------------------------------
@@ -482,6 +532,6 @@ FACTORY_DEF * ElementFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAG
 # somesuch.
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TestFactory    FACTORY_NAME $(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListExploder_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated")
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ERROR_OUTPUT1627925251 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListExploder_ELEMENTS"   OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ERROR_OUTPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_DATA_OUTPUT1627925251 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_DATA_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ERROR_OUTPUT1631207464 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ListExploder_ELEMENTS"   OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ERROR_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_DATA_OUTPUT1631207464 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME)_DATA_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(METADATA_VALUE_MAPPER_ERROR_MANAGER_WORKSPACE_NAME))}]
