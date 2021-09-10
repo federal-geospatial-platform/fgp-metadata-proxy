@@ -17,7 +17,7 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
  - [Tester ou TestFilter](#Tester-ou-TestFilter)
 
 
-#Création de custom transformer
+# Création de custom transformer
 
 Le *custom transformers* est une composante essentielle pour écrire du code réutilisable et développer des *workbench* qui sont plus facilement lisibles et maintenables.  Le *custom transformer* permet d'encapsuler (d'isoler) du code qui est un concept important de la programmation moderne.
 
