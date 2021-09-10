@@ -85,4 +85,4 @@ Les *transformer* *Tester* et *TestFilter* offre des capacités similaires pour 
   - Offre la possibilité de nommer les ports de sortie ce qui permet souvent d'autodocumenter le *tranformer*
   - Offre la possibilité d'avoir un port de sortie spécial (ex.: *Unfiltered*) pour gérer les cas non traités.  Vous pouvez alors utiliser un *Terminator* pour gérer tous ces cas problématiques.
 
-En résumé, utiliser *Tester* pour des tests binaires (True|False) qui conviennent bien à leur port de sortie (*Passed/Failed*). Privilégié *TestFilter* pour les autres cas pour diminuer le nombre de transformer et augmenter la lisibilité.
+En résumé, utiliser *Tester* pour des tests binaires (True|False) qui conviennent bien à leur port de sortie (*Passed/Failed*). Privilégié *TestFilter* pour les autres cas pour diminuer le nombre de transformers et augmenter la lisibilité.
