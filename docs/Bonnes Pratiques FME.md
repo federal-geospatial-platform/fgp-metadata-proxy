@@ -43,7 +43,7 @@ Dans un *custom transformer* le nombre d'enregistrement entrant devrait habituel
 
 # Gestion des attributs
 
-Le traitment des collections d'enregistrements de métadonnées des différentes provinces utilise plusieurs centaines d'attributs FME et de listes FME en plus de ceux qui sont créés par les différents *transformer* et *custom transformer* de vos *workbench*.  En plus de saturer le FME Data Inspector et de rendre l'interprétation des résultats plus difficile, les attributs et listes sont de grands consommateurs de ressources pour FME (mémoire et CPU).  Afin de mieux gérer les attributs doivent tous les *custom transformer* doivent doivent se conformer aux directives suivantes:
+Le traitment des collections d'enregistrements de métadonnées des différentes provinces utilise plusieurs centaines d'attributs FME et de listes FME en plus de ceux qui sont créés par les différents *transformer* et *custom transformer* de vos *workbench*.  En plus de saturer le FME Data Inspector et de rendre l'interprétation des résultats plus difficile, les attributs et listes sont de grands consommateurs de ressources pour FME (mémoire et CPU).  Afin de mieux gérer les attributs tous les *custom transformer* doivent se conformer aux directives suivantes:
   * Utiliser le *custom transformer* ATTRIBUTE_UNEXPOSER à la fin de l'exécution d'un *custom transformer* afin qu'aucun n'attribut ne soit exposé;
   * Utilisé le *transformer* *AttributeExposer* au début de votre *custom transformer* afin d'exposer uniquement les attributs nécessaires à votre traitement afin d'en faciliter la lecture, le débuggage et optimiser l'utilisation des ressources;
   * Utiliser le *AttributeRemover* afin d'enlever tous les attributs et listes temporaires et/ou qui ne sont plus utiles à votre traitement subséquents afin d'en faciliter la lecture, le débuggage et optimiser l'utilisation des ressources.
@@ -58,7 +58,7 @@ C'est au développeur d'identifier les situations potentielles de *hardcoding* e
 
 # Nom du transformer
 
-Toujours conserver le nom du *transformer* tel que donner par FME.  Si vous avez plus d'un *transformer* du même type dans votre *workbench* alors ajouter un suffixe numérique (ex pour le *transformer* Tester: Tester, Tester_1, Tester_2, ...).  Conserver le nom du *transformer* original permet d'identifier plus rapidement le type de *transformer* employé.  Si un nom plus représentatif vous semble important alors privilégier une annotation sur le *transformer*. 
+Toujours conserver le nom du *transformer* tel que donné par FME.  Si vous avez plus d'un *transformer* du même type dans votre *workbench* alors ajouter un suffixe numérique (ex pour le *transformer* Tester: Tester, Tester_1, Tester_2, ...).  Conserver le nom du *transformer* original permet d'identifier plus rapidement le type de *transformer* employé.  Si un nom plus représentatif vous semble important alors privilégier une annotation sur le *transformer*. 
 
 
 # Résillience
@@ -85,4 +85,4 @@ Les *transformer* *Tester* et *TestFilter* offre des capacités similaires pour 
   - Offre la possibilité de nommer les ports de sortie ce qui permet souvent d'autodocumenter le *tranformer*
   - Offre la possibilité d'avoir un port de sortie spécial (ex.: *Unfiltered*) pour gérer les cas non traités.  Vous pouvez alors utiliser un *Terminator* pour gérer tous ces cas problématiques.
 
-En résumé, utiliser *Tester* pour des tests binaires (True|False) qui conviennent bien à leur port de sortie (*Passed/Failed*). Privilégié *TestFilter* pour les autres cas pour diminuer le nombre de transformer et augmenter la lisibilité.
+En résumé, utiliser *Tester* pour des tests binaires (True|False) qui conviennent bien à leur port de sortie (*Passed/Failed*). Privilégié *TestFilter* pour les autres cas pour diminuer le nombre de transformers et augmenter la lisibilité.
