@@ -1,18 +1,49 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN GEOSPATIAL_DATA_VALIDATOR,1,"FGP Tools",8132075b-d609-4ec9-9b85-8bf23be97076,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
-# 
+# TRANSFORMER_BEGIN GEOSPATIAL_DATA_VALIDATOR,1,"FGP Tools",28db1fd9-18b9-4c51-873f-b7a0959157f4,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
+# p, li { white-space: pre-wrap; }
+# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This custom transformer fan out the metadata records between three types of metadata (GeoSpatial, Non GeoSpatial and Unknown).  In order to determine the type of metadta record, the transformer is using two strategies: firstly by checking if the format has been published in the FGP (if positive it is a GeoSpatial record); secondly by checking the content of a list of keywords againts the content of an attribute in the metadata record (if there is a match it is a GeoSpatial record) </span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">LOOKUP_TABLE_INPUT:<span style=" font-weight:400; text-decoration:none;"> Input information from the lookup table</span></li>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration: underline;">DATA_INPUT</span>:<span style=" font-weight:400;"> The input metadata records to process.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">GEOSPATIAL<span style=" text-decoration:none;">:</span><span style=" font-weight:400; text-decoration:none;"> Output port for all gepspatial metadata record</span></li>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt; font-weight:600;"><br /></p>
+# <li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration: underline;">NON-GEOSPATIAL</span>:<span style=" font-weight:400;"> Output port for all non geospatial metadata record</span></li>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt; font-weight:600;"><br /></p>
+# <li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> <span style=" text-decoration: underline;">UNKNOWN_FORMAT</span>:<span style=" font-weight:400;"> Output port for metadata record that cannot be mapped to geospatial or non geospatial</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">KEYWORD_SEARCH:<span style=" font-weight:400; text-decoration:none;"> List of keywords used to determine if a metadata record is geospatial.  If more than one keyword is needed, separate each keyword with a vertical bar &quot;|&quot;</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">LIST_SEARCH_ATTRIBITE:<span style=" font-weight:400; text-decoration:none;"> Name of the attribute in plain text (ex.: tag{}.display_name) used to search for a string match from the KEYWORD_SEARCH parameter</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p></body></html>
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="FGP Tools"
-#!   DESCRIPTION=""
-#!   DOC_EXTENTS="11812.3 2928.92"
-#!   DOC_TOP_LEFT="-1937.52 -1566.4"
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This custom transformer fan out the metadata records between three types of metadata (GeoSpatial, Non GeoSpatial and Unknown).  In order to determine the type of metadta record, the transformer is using two strategies: firstly by checking if the format has been published in the FGP (if positive it is a GeoSpatial record); secondly by checking the content of a list of keywords againts the content of an attribute in the metadata record (if there is a match it is a GeoSpatial record) &lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;LOOKUP_TABLE_INPUT:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Input information from the lookup table&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;DATA_INPUT&lt;/span&gt;:&lt;span style=&quot; font-weight:400;&quot;&gt; The input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;GEOSPATIAL&lt;span style=&quot; text-decoration:none;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Output port for all gepspatial metadata record&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;NON-GEOSPATIAL&lt;/span&gt;:&lt;span style=&quot; font-weight:400;&quot;&gt; Output port for all non geospatial metadata record&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; &lt;span style=&quot; text-decoration: underline;&quot;&gt;UNKNOWN_FORMAT&lt;/span&gt;:&lt;span style=&quot; font-weight:400;&quot;&gt; Output port for metadata record that cannot be mapped to geospatial or non geospatial&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;KEYWORD_SEARCH:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; List of keywords used to determine if a metadata record is geospatial.  If more than one keyword is needed, separate each keyword with a vertical bar &amp;quot;|&amp;quot;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;LIST_SEARCH_ATTRIBITE:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Name of the attribute in plain text (ex.: tag{}.display_name) used to search for a string match from the KEYWORD_SEARCH parameter&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   DOC_EXTENTS="12264.3 3203.44"
+#!   DOC_TOP_LEFT="-1937.52 -1840.93"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="8132075b-d609-4ec9-9b85-8bf23be97076"
-#!   FME_DOCUMENT_PRIORGUID="83d7c445-8c13-482f-86b8-4c315bcc518d"
+#!   FME_DOCUMENT_GUID="28db1fd9-18b9-4c51-873f-b7a0959157f4"
+#!   FME_DOCUMENT_PRIORGUID="83d7c445-8c13-482f-86b8-4c315bcc518d,a68e13df-0e2a-45ca-abfb-a030a6051013"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -21,10 +52,10 @@
 #!   FME_SERVER_SERVICES=""
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
 #!   FMX_INSERT_MODE="Linked by Default"
-#!   HISTORY=""
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,10&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2021-09-08T16:06:38"
+#!   LAST_SAVE_DATE="2021-09-10T12:40:12"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -36,11 +67,11 @@
 #!   TITLE="GEOSPATIAL_DATA_VALIDATOR"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="4552.13 1118.07"
+#!   VIEW_POSITION="-2573.89 2210.25"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="90"
+#!   ZOOM_SCALE="44"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -143,25 +174,25 @@
 #! <COMMENT
 #!   IDENTIFIER="76"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Retains _uuid, original_id and resources{} list only&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="464.75067633840467 221.75543755437553"
-#!   TOP_LEFT="464.75067633840467 221.75543755437553"
-#!   BOTTOM_RIGHT="918.75067633840467 220.75543755437553"
-#!   BOUNDING_RECT="464.75067633840467 221.75543755437553 454 1"
+#!   POSITION="631.41900968840446 179.00400004000039"
+#!   TOP_LEFT="631.41900968840446 179.00400004000039"
+#!   BOTTOM_RIGHT="1085.4190096884045 178.00400004000039"
+#!   BOUNDING_RECT="631.41900968840446 179.00400004000039 454 1"
 #!   ORDER="500000000001575"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,0.78431372549019607"
+#!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="10"
 #! />
 #! <COMMENT
 #!   IDENTIFIER="77"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Explodes resources{} list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="1697.7812467013555 -332.92064587312541"
-#!   TOP_LEFT="1697.7812467013555 -332.92064587312541"
-#!   BOTTOM_RIGHT="2151.7812467013555 -333.92064587312541"
-#!   BOUNDING_RECT="1697.7812467013555 -332.92064587312541 454 1"
+#!   POSITION="2343.6210384326059 -260.00325003250032"
+#!   TOP_LEFT="2343.6210384326059 -260.00325003250032"
+#!   BOTTOM_RIGHT="2797.6210384326059 -261.00325003250032"
+#!   BOUNDING_RECT="2343.6210384326059 -260.00325003250032 454 1"
 #!   ORDER="500000000001576"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -173,10 +204,10 @@
 #! <COMMENT
 #!   IDENTIFIER="78"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Joins lookup table and feature data on value &apos;format&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="3784.7600698229212 975.76999658885472"
-#!   TOP_LEFT="3784.7600698229212 975.76999658885472"
-#!   BOTTOM_RIGHT="4267.7600698229217 974.76999658885472"
-#!   BOUNDING_RECT="3784.7600698229212 975.76999658885472 483 1"
+#!   POSITION="3864.1132836328388 924.38359383593831"
+#!   TOP_LEFT="3864.1132836328388 924.38359383593831"
+#!   BOTTOM_RIGHT="4347.1132836328388 923.38359383593831"
+#!   BOUNDING_RECT="3864.1132836328388 924.38359383593831 483 1"
 #!   ORDER="500000000001579"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -188,10 +219,10 @@
 #! <COMMENT
 #!   IDENTIFIER="79"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Rejoins data on _uuid attribute and rebuilds resources{} list&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="4850.0281082805104 252.84610068322792"
-#!   TOP_LEFT="4850.0281082805104 252.84610068322792"
-#!   BOTTOM_RIGHT="5333.0281082805104 251.84610068322792"
-#!   BOUNDING_RECT="4850.0281082805104 252.84610068322792 483 1"
+#!   POSITION="4711.137830488844 140.34797570197912"
+#!   TOP_LEFT="4711.137830488844 140.34797570197912"
+#!   BOTTOM_RIGHT="5194.137830488844 139.34797570197912"
+#!   BOUNDING_RECT="4711.137830488844 140.34797570197912 483 1"
 #!   ORDER="500000000001580"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -203,10 +234,10 @@
 #! <COMMENT
 #!   IDENTIFIER="80"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attribute cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="7723.764261478228 -163.75168751687539"
-#!   TOP_LEFT="7723.764261478228 -163.75168751687539"
-#!   BOTTOM_RIGHT="8177.764261478228 -164.75168751687539"
-#!   BOUNDING_RECT="7723.764261478228 -163.75168751687539 454 1"
+#!   POSITION="7740.8098864799322 -300"
+#!   TOP_LEFT="7740.8098864799322 -300"
+#!   BOTTOM_RIGHT="8194.8098864799322 -301"
+#!   BOUNDING_RECT="7740.8098864799322 -300 454 1"
 #!   ORDER="500000000001583"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -233,25 +264,25 @@
 #! <COMMENT
 #!   IDENTIFIER="82"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Rename &apos;orignal_id&apos; back to &apos;id&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="4587.8931011532359 -1392.6534654235436"
-#!   TOP_LEFT="4587.8931011532359 -1392.6534654235436"
-#!   BOTTOM_RIGHT="5134.9683844060683 -1566.4049029379187"
-#!   BOUNDING_RECT="4587.8931011532359 -1392.6534654235436 547.07528325283261 173.75143751437514"
+#!   POSITION="4500 -1050"
+#!   TOP_LEFT="4500 -1050"
+#!   BOTTOM_RIGHT="5047.0752832528324 -1223.7514375143751"
+#!   BOUNDING_RECT="4500 -1050 547.07528325283261 173.75143751437514"
 #!   ORDER="500000000001589"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="21"
 #! />
 #! <COMMENT
 #!   IDENTIFIER="83"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Retains &apos;id&apos; and &apos;format&apos; for unmapped output file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="7866.5929348182362 -895.96263881969094"
-#!   TOP_LEFT="7866.5929348182362 -895.96263881969094"
-#!   BOTTOM_RIGHT="8320.5929348182362 -896.96263881969094"
-#!   BOUNDING_RECT="7866.5929348182362 -895.96263881969094 454 1"
+#!   POSITION="7126.135624992613 -1050"
+#!   TOP_LEFT="7126.135624992613 -1050"
+#!   BOTTOM_RIGHT="7727.3500007727334 -1280.0020000200002"
+#!   BOUNDING_RECT="7126.135624992613 -1050 601.21437578012046 230.00200002000017"
 #!   ORDER="500000000001590"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -293,10 +324,10 @@
 #! <COMMENT
 #!   IDENTIFIER="86"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attribute cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="8273.7692615282285 -615.10097909198248"
-#!   TOP_LEFT="8273.7692615282285 -615.10097909198248"
-#!   BOTTOM_RIGHT="8727.7692615282285 -616.10097909198248"
-#!   BOUNDING_RECT="8273.7692615282285 -615.10097909198248 454 1"
+#!   POSITION="7875.4066920439454 -685.48245492555941"
+#!   TOP_LEFT="7875.4066920439454 -685.48245492555941"
+#!   BOTTOM_RIGHT="8329.4066920439454 -686.48245492555941"
+#!   BOUNDING_RECT="7875.4066920439454 -685.48245492555941 454 1"
 #!   ORDER="500000000001583"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -338,10 +369,10 @@
 #! <COMMENT
 #!   IDENTIFIER="89"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Putting format and fgp_publish in lower case&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="3064.6525942966668 658.32821249560743"
-#!   TOP_LEFT="3064.6525942966668 658.32821249560743"
-#!   BOTTOM_RIGHT="3525.6525942966668 657.32821249560743"
-#!   BOUNDING_RECT="3064.6525942966668 658.32821249560743 461 1"
+#!   POSITION="3060.7463052337762 673.95336874716997"
+#!   TOP_LEFT="3060.7463052337762 673.95336874716997"
+#!   BOTTOM_RIGHT="3521.7463052337762 672.95336874716997"
+#!   BOUNDING_RECT="3060.7463052337762 673.95336874716997 461 1"
 #!   ORDER="500000000001653"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -365,21 +396,6 @@
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="32"
 #! />
-#! <COMMENT
-#!   IDENTIFIER="97"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Retrait du lot des features dont un format est inconnu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="3839.1130336303368 -285.84104174375051"
-#!   TOP_LEFT="3839.1130336303368 -285.84104174375051"
-#!   BOTTOM_RIGHT="4322.1130336303368 -286.84104174375051"
-#!   BOUNDING_RECT="3839.1130336303368 -285.84104174375051 483 1"
-#!   ORDER="500000000001660"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
-#!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="99"
-#! />
 #! </COMMENTS>
 #! <CONSTANTS>
 #! </CONSTANTS>
@@ -395,7 +411,7 @@
 #!   BOUNDING_RECT="-934.38434384343839 1121.8862188621886 4582.8583285832856 912.49547899973413"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="48 25 67 76 26 9 72 16 41 90 64 89 54 68 71 22 85 55 84 23 24 33 "
+#!   CONTENTS="89 68 90 85 72 24 9 41 23 84 67 22 71 26 54 25 33 55 64 48 16 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -405,11 +421,11 @@
 #!   TOP_LEFT="-1003.1350313503135 1362.5136251362514"
 #!   ORDER="500000000001513"
 #!   PALETTE_COLOR="Color6"
-#!   BOTTOM_RIGHT="8898.5264852648506 -1346.8884688846888"
-#!   BOUNDING_RECT="-1003.1350313503135 1362.5136251362514 9901.6615166151641 2709.4020940209402"
+#!   BOTTOM_RIGHT="9327.3660009327359 -1840.9275001840929"
+#!   BOUNDING_RECT="-1003.1350313503135 1362.5136251362514 10330.501032283049 3203.4411253203443"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="77 102 47 20 84 56 13 70 54 72 31 28 52 16 53 23 59 96 80 41 93 100 32 64 7 85 18 48 49 101 74 10 68 14 45 98 39 24 21 94 38 95 99 17 87 50 69 97 42 90 83 12 58 62 11 81 88 76 71 91 22 73 55 63 44 75 9 8 66 40 27 33 26 15 29 30 78 79 86 67 25 19 89 "
+#!   CONTENTS="52 12 73 32 87 63 76 25 39 20 68 13 28 55 54 81 83 65 21 16 29 38 46 17 74 22 58 67 77 15 19 89 62 23 80 66 34 50 10 72 44 33 85 48 86 64 11 41 88 31 27 90 59 9 49 30 35 75 47 40 79 14 26 57 18 69 43 45 24 8 56 53 82 7 71 70 42 91 84 78 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -434,7 +450,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
@@ -450,7 +465,7 @@
 #!   ORDER="500000000001518"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="19238"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -461,8 +476,7 @@
 #!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="resources{}.format,tags{}.display_name,id,resources{}.url,resources{}.name,notes,title,resources{}.fgp_publish"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="resources{}.format,tags{}.display_name,id,resources{}.url,resources{}.name,notes,title"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
 #! </TRANSFORMER>
@@ -490,8 +504,8 @@
 #!   IDENTIFIER="10"
 #!   TYPE="AttributeKeeper"
 #!   VERSION="3"
-#!   POSITION="1045.9656066127075 35.876968769687693"
-#!   BOUNDING_RECT="1045.9656066127075 35.876968769687693 454 71"
+#!   POSITION="1212.6339399627072 -6.874468744687448"
+#!   BOUNDING_RECT="1212.6339399627072 -6.874468744687448 454 71"
 #!   ORDER="500000000001520"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -505,7 +519,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="notes,title,orig_id,_uuid"/>
 #!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;"/>
@@ -517,8 +530,8 @@
 #!   IDENTIFIER="11"
 #!   TYPE="ListExploder"
 #!   VERSION="6"
-#!   POSITION="1738.906277951668 -19.791864585312513"
-#!   BOUNDING_RECT="1738.906277951668 -19.791864585312513 454 71"
+#!   POSITION="2384.7460696829185 53.125531255312552"
+#!   BOUNDING_RECT="2384.7460696829185 53.125531255312552 454 71"
 #!   ORDER="500000000001521"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -532,7 +545,6 @@
 #!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
@@ -543,7 +555,6 @@
 #!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
@@ -584,8 +595,8 @@
 #!   IDENTIFIER="13"
 #!   TYPE="FeatureMerger"
 #!   VERSION="18"
-#!   POSITION="4877.769477846985 -337.50637506375176"
-#!   BOUNDING_RECT="4877.769477846985 -337.50637506375176 483 71"
+#!   POSITION="4738.8792000553185 -450.00450004500055"
+#!   BOUNDING_RECT="4738.8792000553185 -450.00450004500055 483 71"
 #!   ORDER="500000000001524"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -826,8 +837,8 @@
 #!   IDENTIFIER="17"
 #!   TYPE="FeatureMerger"
 #!   VERSION="18"
-#!   POSITION="3747.2596948191713 304.51393402822913"
-#!   BOUNDING_RECT="3747.2596948191713 304.51393402822913 483 71"
+#!   POSITION="3826.6129086290889 253.12753127531278"
+#!   BOUNDING_RECT="3826.6129086290889 253.12753127531278 483 71"
 #!   ORDER="500000000001523"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -979,8 +990,8 @@
 #!   IDENTIFIER="19"
 #!   TYPE="AttributeKeeper"
 #!   VERSION="3"
-#!   POSITION="7279.2394590612566 -1134.3863438634387"
-#!   BOUNDING_RECT="7279.2394590612566 -1134.3863438634387 454 71"
+#!   POSITION="7200 -1418.1825000068181"
+#!   BOUNDING_RECT="7200 -1418.1825000068181 454 71"
 #!   ORDER="500000000001584"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1016,7 +1027,6 @@
 #!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id orig_id RENAME_SET_DEFAULT "/>
@@ -1027,8 +1037,8 @@
 #!   IDENTIFIER="21"
 #!   TYPE="AttributeRenamer"
 #!   VERSION="4"
-#!   POSITION="4587.8931011532359 -1052.7883056608346"
-#!   BOUNDING_RECT="4587.8931011532359 -1052.7883056608346 454 71"
+#!   POSITION="4500 -1350"
+#!   BOUNDING_RECT="4500 -1350 454 71"
 #!   ORDER="500000000001588"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1165,8 +1175,8 @@
 #!   IDENTIFIER="27"
 #!   TYPE="Terminator"
 #!   VERSION="3"
-#!   POSITION="3071.643032326047 -149.30704862604171"
-#!   BOUNDING_RECT="3071.643032326047 -149.30704862604171 454 71"
+#!   POSITION="3826.6129086290889 -371.53149309270862"
+#!   BOUNDING_RECT="3826.6129086290889 -371.53149309270862 454 71"
 #!   ORDER="500000000001641"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1197,8 +1207,8 @@
 #!   IDENTIFIER="29"
 #!   TYPE="Logger"
 #!   VERSION="4"
-#!   POSITION="6208.3954172875046 -1134.3863438634387"
-#!   BOUNDING_RECT="6208.3954172875046 -1134.3863438634387 454 71"
+#!   POSITION="6150 -1350"
+#!   BOUNDING_RECT="6150 -1350 454 71"
 #!   ORDER="500000000001644"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1229,8 +1239,8 @@
 #!   IDENTIFIER="30"
 #!   TYPE="AttributeRemover"
 #!   VERSION="1"
-#!   POSITION="7830.6333618891731 -764.47682285042004"
-#!   BOUNDING_RECT="7830.6333618891731 -764.47682285042004 454 71"
+#!   POSITION="7858.4114174475053 -880.03293396708682"
+#!   BOUNDING_RECT="7858.4114174475053 -880.03293396708682 454 71"
 #!   ORDER="500000000001525"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1263,10 +1273,10 @@
 #!   IDENTIFIER="31"
 #!   TYPE="Cloner"
 #!   VERSION="0"
-#!   POSITION="2468.7746877468776 -149.30704862604171"
-#!   BOUNDING_RECT="2468.7746877468776 -149.30704862604171 454 71"
+#!   POSITION="3020.8635419687535 -173.6128472395834"
+#!   BOUNDING_RECT="3020.8635419687535 -173.6128472395834 454 71"
 #!   ORDER="500000000001651"
-#!   PARMS_EDITED="true"
+#!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="19238"
 #! >
@@ -1278,7 +1288,6 @@
 #!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_copynum" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1373,138 +1382,6 @@
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_2"/>
 #! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="93"
-#!   TYPE="AttributeRemover"
-#!   VERSION="1"
-#!   POSITION="2395.8572919062526 60.252812528125276"
-#!   BOUNDING_RECT="2395.8572919062526 60.252812528125276 454 71"
-#!   ORDER="500000000001656"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
-#! >
-#!     <OUTPUT_FEAT NAME="OUTPUT"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="orig_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="fgp_publish"/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_3"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="99"
-#!   TYPE="FeatureMerger"
-#!   VERSION="18"
-#!   POSITION="3839.1130336303368 -507.09260425937566"
-#!   BOUNDING_RECT="3839.1130336303368 -507.09260425937566 483 71"
-#!   ORDER="500000000001659"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
-#! >
-#!     <OUTPUT_FEAT NAME="MERGED"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="orig_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
-#!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
-#!     <FEAT_COLLAPSED COLLAPSED="2"/>
-#!     <XFORM_ATTR ATTR_NAME="orig_id" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
-#!     <FEAT_COLLAPSED COLLAPSED="3"/>
-#!     <XFORM_ATTR ATTR_NAME="orig_id" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
-#!     <FEAT_COLLAPSED COLLAPSED="4"/>
-#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="orig_id" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
-#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
-#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
-#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_uuid&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;_uuid&lt;closeparen&gt; AUTO"/>
-#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
-#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
-#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger_3"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="98"
-#!   TYPE="Terminator"
-#!   VERSION="3"
-#!   POSITION="3927.1226045593785 -1184.0396181739593"
-#!   BOUNDING_RECT="3927.1226045593785 -1184.0396181739593 454 71"
-#!   ORDER="500000000001661"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
-#! >
-#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Translation&lt;space&gt;Terminated"/>
-#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_6"/>
-#! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <SUBDOCUMENT_IOS>
 #! <SUBDOCUMENT_IO
@@ -1532,8 +1409,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="4"
 #!   NAME="GEOSPATIAL"
-#!   POSITION="9106.3410634106294 -494.37934379343812"
-#!   BOUNDING_RECT="9106.3410634106294 -494.37934379343812 768.42477091437831 71"
+#!   POSITION="9510.8905634510811 -371.65084378116529"
+#!   BOUNDING_RECT="9510.8905634510811 -371.65084378116529 768.42477091437831 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -1542,8 +1419,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="5"
 #!   NAME="UNKNOWN_FORMAT"
-#!   POSITION="9148.0081467481323 -1194.3863438634387"
-#!   BOUNDING_RECT="9148.0081467481323 -1194.3863438634387 726.75768757687638 71"
+#!   POSITION="9600 -1444.3888438884387"
+#!   BOUNDING_RECT="9600 -1444.3888438884387 726.75768757687638 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -1552,8 +1429,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="6"
 #!   NAME="NON-GEOSPATIAL"
-#!   POSITION="9106.3410634106294 -718.75718757187565"
-#!   BOUNDING_RECT="9106.3410634106294 -718.75718757187565 681.61834729458678 71"
+#!   POSITION="9600 -950.5776875950578"
+#!   BOUNDING_RECT="9600 -950.5776875950578 681.61834729458678 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -1667,9 +1544,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="94"
+#!   IDENTIFIER="43"
 #!   SOURCE_NODE="11"
-#!   TARGET_NODE="93"
+#!   TARGET_NODE="32"
 #!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -1684,9 +1561,9 @@
 #! <FEAT_LINK
 #!   IDENTIFIER="44"
 #!   SOURCE_NODE="12"
-#!   TARGET_NODE="99"
+#!   TARGET_NODE="13"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -1952,21 +1829,6 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="95"
-#!   SOURCE_NODE="93"
-#!   TARGET_NODE="32"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
-#!   PEN_WIDTH="4"
-#!   PEN_STYLE="1"
-#!   LINK_STYLE_NAME="&lt;Default&gt;"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
 #!   IDENTIFIER="62"
 #!   SOURCE_NODE="11"
 #!   TARGET_NODE="31"
@@ -2012,28 +1874,13 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="102"
-#!   SOURCE_NODE="17"
-#!   TARGET_NODE="99"
-#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
-#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
-#!   PEN_WIDTH="4"
-#!   PEN_STYLE="1"
-#!   LINK_STYLE_NAME="&lt;Default&gt;"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="101"
+#!   IDENTIFIER="65"
 #!   SOURCE_NODE="17"
 #!   TARGET_NODE="21"
 #!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
-#!   EXECUTION_IDX="1"
+#!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
 #!   COLOUR="0,0,0,1"
 #!   PEN_WIDTH="4"
@@ -2076,36 +1923,6 @@
 #!   SOURCE_NODE="23"
 #!   TARGET_NODE="24"
 #!   SOURCE_PORT_DESC="fo 0 FAILED"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
-#!   PEN_WIDTH="4"
-#!   PEN_STYLE="1"
-#!   LINK_STYLE_NAME="&lt;Default&gt;"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="96"
-#!   SOURCE_NODE="99"
-#!   TARGET_NODE="13"
-#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
-#!   TARGET_PORT_DESC="fi 1 REQUESTOR"
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
-#!   PEN_WIDTH="4"
-#!   PEN_STYLE="1"
-#!   LINK_STYLE_NAME="&lt;Default&gt;"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="100"
-#!   SOURCE_NODE="99"
-#!   TARGET_NODE="98"
-#!   SOURCE_PORT_DESC="fo 3 UNUSED_SUPPLIER"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
@@ -2166,8 +1983,8 @@ DEFAULT_MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LIST_SEARCH_ATTRIBUTE
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_INPUT1631131598 Input Splitter"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_INPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1631131598 Input Splitter"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_INPUT1631292012 Input Splitter"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1631292012 Input Splitter"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"    OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
 # -------------------------------------------------------------------------
@@ -2214,22 +2031,18 @@ FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_DEfGF6o1SXM=" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "id" "orig_id" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_8f5f475c_9a8c_4d2f_9d06_271d1e004c531_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,notes,title,orig_id,_uuid,fme_pcre_match,"^fme_$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_8f5f475c_9a8c_4d2f_9d06_271d1e004c531_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_fdfc1ed8_3279_4816_b8c4_39e0faced7c50_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,notes,title,orig_id,_uuid,fme_pcre_match,"^fme_$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_fdfc1ed8_3279_4816_b8c4_39e0faced7c50_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * ElementFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListExploder    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    LIST_NAME "resources{}"    ELEMENT_NUMBER_FIELD "_element_index"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListExploder_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListExploder_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Cloner_Cloner    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListExploder_<REJECTED>"    NUMBER_OF_COPIES "1"    COPY_NUMBER_ATTRIBUTE _copynum    REJECT_INVALID YES
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_3    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListExploder_ELEMENTS"    OUTPUT { FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,fgp_publish)        @RemoveAttributes(fme_pcre_match"$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP)")         }
-# -------------------------------------------------------------------------
 INCLUDE [          if { ({Selected Attributes} == {All Attributes}) } {             puts {MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger_func @RenameAttributes(PERFORM_OPERATION,value,.*,lower,"-_")};          } else {             puts {MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger_func @RenameAttributes(LIST_ATTR, "value", "format",lower,"-_")};          }         ]
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"    OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger_OUTPUT"         $($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger_func)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListExploder_ELEMENTS"    OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger_OUTPUT"         $($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger_func)
 # -------------------------------------------------------------------------
 INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
 FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_StringCaseChanger_2_OUTPUT"    REFERENCE_INFO $($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>format<closeparen>,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>format<closeparen>,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT REJECTED FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger UNMERGED_REQUESTOR Splitter"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR_0_ClFDeukp/9I="   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR_1_YdqJDi7t0bo="
 # -------------------------------------------------------------------------
 # The default behaviour is to abort on any feature entering the transformer.
 # If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
@@ -2239,26 +2052,15 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_N
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Terminator_4    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Process<space>failed<space>at<space>Feature<space>Merger<comma><space>GEOSPATIAL_DATA_VALIDATOR<space>transformer.<space><space>Translation<space>terminated.")       @SupplyAttributes(_wb_termination_xformer,"$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Terminator_4")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Process<space>failed<space>at<space>Feature<space>Merger<comma><space>GEOSPATIAL_DATA_VALIDATOR<space>transformer.<space><space>Translation<space>terminated.")
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_2    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR_1_YdqJDi7t0bo=" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "orig_id" "id" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_2    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "orig_id" "id" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Attribute<space>value<space><at>Value<openparen>format<closeparen><space>missing<space>from<space>Geospatial<space>lookup<space>table<space>in<space>GEOSPATIAL_DATA_VALIDATOR<space>transformer.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_ONLY,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger_f9cf993e_efee_41ce_a6a5_06e03b9a97401)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRenamer_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Attribute<space>value<space><at>Value<openparen>format<closeparen><space>missing<space>from<space>Geospatial<space>lookup<space>table<space>in<space>GEOSPATIAL_DATA_VALIDATOR<space>transformer.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_ONLY,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger_0976df6a_e55d_4fdc_86f2_1fe286fca0c50)
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2_8bfef1fc_ad5f_41cc_9a75_4d6322854b8d1_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger_LOGGED"    OUTPUT { FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,id,format,fme_pcre_match,"^fme_$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2_8bfef1fc_ad5f_41cc_9a75_4d6322854b8d1_LIST_EXP)")         }
-# -------------------------------------------------------------------------
-INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
-FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR_0_ClFDeukp/9I="    REFERENCE_INFO $($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT INCOMPLETE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_UNMERGED_REQUESTOR"    OUTPUT UNREFERENCED FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_UNUSED_SUPPLIER"
-# -------------------------------------------------------------------------
-# The default behaviour is to abort on any feature entering the transformer.
-# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
-# then the features will instead be passed through with a feature type of
-# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
-# somesuch.
-DEFAULT_MACRO _WB_BYPASS_TERMINATION No
-FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Terminator_6    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_UNUSED_SUPPLIER"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Translation<space>Terminated")       @SupplyAttributes(_wb_termination_xformer,"$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Terminator_6")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Translation<space>Terminated")
+INCLUDE [    set macroLine "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2_b223864c_d23c_4409_b6f5_d00c00c13f8d0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_Logger_LOGGED"    OUTPUT { FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,id,format,fme_pcre_match,"^fme_$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2_b223864c_d23c_4409_b6f5_d00c00c13f8d0_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
-FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_3_UNMERGED_REQUESTOR"    INPUT REFERENCEE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_MERGED"    REFERENCE_INFO $($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_NAME "resources"    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE ALL    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT REJECTED FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_MERGED"    REFERENCE_INFO $($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_uuid<closeparen>,$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_NAME "resources"    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE ALL    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT REJECTED FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_<REJECTED>"
 # -------------------------------------------------------------------------
 # The default behaviour is to abort on any feature entering the transformer.
 # If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
@@ -2271,18 +2073,18 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_
 # most of this is close to the code from listindexer but not exact beucase
 # we have a type LIST_ATTR rather than type LIST_NAME so need
 # to figure out the list name
-Tcl2 proc $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.fgp_publish];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__IndexedFeatures___         "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1" @SearchList(fme_encoded,"resources<opencurly><closecurly>.fgp_publish","oui",REGULAR_EXPRESSION_ENCODED)
-FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__Tester    INPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__IndexedFeatures___    TEST @Value($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1) == "-1"    OUTPUT PASSED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_NOT_FOUND" @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1)    OUTPUT FAILED FEATURE_TYPE  $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__IndexFound__
-FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__Tester2    INPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__IndexFound__    TEST NO == "NO"    OUTPUT PASSED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_FOUND" @CopyAttributes(_list_index, $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1) @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1)    OUTPUT FAILED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_FOUND"  @Tcl2("$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1_indexer {@Value($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1)} {<Unused>}") @CopyAttributes(_list_index, $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1) @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_55087007_85b9_4343_b57e_2f0164742b6e1)
+Tcl2 proc $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.fgp_publish];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_FeatureMerger_2_MERGED"    OUTPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__IndexedFeatures___         "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50" @SearchList(fme_encoded,"resources<opencurly><closecurly>.fgp_publish","oui",REGULAR_EXPRESSION_ENCODED)
+FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__Tester    INPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__IndexedFeatures___    TEST @Value($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50) == "-1"    OUTPUT PASSED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_NOT_FOUND" @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50)    OUTPUT FAILED FEATURE_TYPE  $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__IndexFound__
+FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__Tester2    INPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2__IndexFound__    TEST NO == "NO"    OUTPUT PASSED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_FOUND" @CopyAttributes(_list_index, $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50) @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50)    OUTPUT FAILED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_FOUND"  @Tcl2("$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50_indexer {@Value($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50)} {<Unused>}") @CopyAttributes(_list_index, $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50) @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_5201c00d_8b6f_461a_944c_d9df00bc70a50)
 # -------------------------------------------------------------------------
 # most of this is close to the code from listindexer but not exact beucase
 # we have a type LIST_ATTR rather than type LIST_NAME so need
 # to figure out the list name
-Tcl2 proc $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661_indexer {index prefix} {    set fullListAttrName [FME_DecodeText $($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LIST_SEARCH_ATTRIBUTE$encode)];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_NOT_FOUND"    OUTPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___         "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661" @SearchList(fme_encoded,"$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LIST_SEARCH_ATTRIBUTE$encode)","@EvaluateExpression(FDIV,STRING_ENCODED,$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_KEYWORD_SEARCH$encode),$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher)",REGULAR_EXPRESSION_ENCODED)
-FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__Tester    INPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___    TEST @Value($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661) == "-1"    OUTPUT PASSED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_NOT_FOUND" @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661)    OUTPUT FAILED FEATURE_TYPE  $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__IndexFound__
-FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__Tester2    INPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__IndexFound__    TEST NO == "NO"    OUTPUT PASSED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_FOUND" @CopyAttributes(_list_index, $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661) @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661)    OUTPUT FAILED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_FOUND"  @Tcl2("$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661_indexer {@Value($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661)} {<Unused>}") @CopyAttributes(_list_index, $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661) @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_442b6e7c_2691_4732_9fe7_1590bf3a18661)
+Tcl2 proc $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80_indexer {index prefix} {    set fullListAttrName [FME_DecodeText $($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LIST_SEARCH_ATTRIBUTE$encode)];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_2_NOT_FOUND"    OUTPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___         "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80" @SearchList(fme_encoded,"$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LIST_SEARCH_ATTRIBUTE$encode)","@EvaluateExpression(FDIV,STRING_ENCODED,$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_KEYWORD_SEARCH$encode),$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher)",REGULAR_EXPRESSION_ENCODED)
+FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__Tester    INPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___    TEST @Value($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80) == "-1"    OUTPUT PASSED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_NOT_FOUND" @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80)    OUTPUT FAILED FEATURE_TYPE  $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__IndexFound__
+FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__Tester2    INPUT FEATURE_TYPE $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher__IndexFound__    TEST NO == "NO"    OUTPUT PASSED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_FOUND" @CopyAttributes(_list_index, $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80) @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80)    OUTPUT FAILED FEATURE_TYPE  "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_FOUND"  @Tcl2("$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80_indexer {@Value($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80)} {<Unused>}") @CopyAttributes(_list_index, $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80) @RemoveAttributes($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_d7549e9b_5c79_436f_8b86_94ebdf858ff80)
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split "resources<opencurly><closecurly>._element_index resources<opencurly><closecurly>._uuid resources<opencurly><closecurly>.fgp_publish"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ListSearcher_NOT_FOUND"    OUTPUT { FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_uuid,_element_index,format,fgp_publish)        @RemoveAttributes(fme_pcre_match"$($(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
@@ -2303,7 +2105,7 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(GEOSPATIAL_DATA_VALID
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_GEOSPATIAL1631131598 Output Collector"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_GEOSPATIAL"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_UNKNOWN_FORMAT1631131598 Output Collector"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_UNKNOWN_FORMAT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_NON-GEOSPATIAL1631131598 Output Collector"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_NON-GEOSPATIAL"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_GEOSPATIAL1631292012 Output Collector"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_GEOSPATIAL"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_UNKNOWN_FORMAT1631292012 Output Collector"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_UNKNOWN_FORMAT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_NON-GEOSPATIAL1631292012 Output Collector"   INPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_NON-GEOSPATIAL"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME))}]
