@@ -1,18 +1,44 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN SPATIAL_TYPE_MAPPER,1,"FGP Tools",351ec381-ee78-4e63-84a7-4d9a0ad1c1fb,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
-# 
+# TRANSFORMER_BEGIN SPATIAL_TYPE_MAPPER,1,"FGP Tools",e0d876a5-8bac-40e9-b093-608189e21e27,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
+# p, li { white-space: pre-wrap; }
+# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This custom transformer attributes a spatial representation type to the input metadata records.  There are three representation spatial types: grid, vector and textTable.  In order to determine the spatial type, the custom transformer uses 2 distinct strategies: firstly it analyses the </span><span style=" font-size:10pt; font-style:italic;">resources{}.spatial_type </span><span style=" font-size:10pt;">to extract the spatial type; secondly, if the first strategy fails, the custom transformer is using a lookup table containing the spatial representation type for a list of specific ID (uuid).</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">LOOKUP_TABLE_INPUT:<span style=" font-weight:400; text-decoration:none;"> Input information from the lookup table</span></li>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">DATA_INPUT:<span style=" font-weight:400;"> The input metadata records to process.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">DATA_OUTPUT_PASSED: </span><span style=" font-weight:400; text-decoration:none;">The output metdata records for which the spatial representation type was successfully set.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">DATA_OUTPUT_FAILED: </span><span style=" font-weight:400; text-decoration:none;">The output metdata records for which the spatial representation type was not successfully set.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">No parameter needed</li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p></body></html>
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="FGP Tools"
-#!   DESCRIPTION=""
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This custom transformer attributes a spatial representation type to the input metadata records.  There are three representation spatial types: grid, vector and textTable.  In order to determine the spatial type, the custom transformer uses 2 distinct strategies: firstly it analyses the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;resources{}.spatial_type &lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;to extract the spatial type; secondly, if the first strategy fails, the custom transformer is using a lookup table containing the spatial representation type for a list of specific ID (uuid).&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;LOOKUP_TABLE_INPUT:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Input information from the lookup table&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;DATA_INPUT:&lt;span style=&quot; font-weight:400;&quot;&gt; The input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;DATA_OUTPUT_PASSED: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The output metdata records for which the spatial representation type was successfully set.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;DATA_OUTPUT_FAILED: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The output metdata records for which the spatial representation type was not successfully set.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;No parameter needed&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   DOC_EXTENTS="9892.54 3140.66"
 #!   DOC_TOP_LEFT="-5375.12 -1437.51"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="351ec381-ee78-4e63-84a7-4d9a0ad1c1fb"
-#!   FME_DOCUMENT_PRIORGUID="ff12785b-795d-428e-9b53-9b28f0d040ea"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="e0d876a5-8bac-40e9-b093-608189e21e27"
+#!   FME_DOCUMENT_PRIORGUID="351ec381-ee78-4e63-84a7-4d9a0ad1c1fb"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -21,25 +47,26 @@
 #!   FME_SERVER_SERVICES=""
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
 #!   FMX_INSERT_MODE="Linked by Default"
-#!   HISTORY=""
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,13&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added"
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-02-18T13:19:16"
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-09-14T08:49:55"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
 #!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="SPATIAL_TYPE_MAPPER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-453.13 1143.76"
+#!   VIEW_POSITION="-4301.63 1134.93"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="100"
+#!   ZOOM_SCALE="63"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -309,7 +336,7 @@
 #!   BOUNDING_RECT="-4490.6737364907831 1703.1420314203142 8075.084580599224 3140.6564065640655"
 #!   STICKY="true"
 #!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="22 44 23 26 50 19 17 40 51 20 59 31 72 54 7 28 65 33 18 49 27 55 70 25 53 38 75 8 32 46 14 66 45 48 6 73 63 36 58 56 13 69 9 52 21 35 67 24 57 62 12 60 34 37 16 61 68 10 11 43 71 39 47 15 "
+#!   CONTENTS="7 60 9 66 70 35 47 69 62 54 44 19 49 48 53 67 17 31 20 12 14 11 27 40 23 43 59 36 34 26 72 38 45 52 25 55 56 18 73 63 28 57 32 39 71 37 16 65 15 10 13 21 8 75 68 24 51 58 6 46 61 33 22 50 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -323,7 +350,7 @@
 #!   BOUNDING_RECT="-4320.1166391043344 1575.0157501575015 3320.1066390043334 1165.6366563665638"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="14 39 22 18 20 56 72 21 44 55 58 59 "
+#!   CONTENTS="59 56 18 72 21 58 55 22 44 14 39 20 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -414,10 +441,12 @@
 #!     <XFORM_ATTR ATTR_NAME="spatialType_histogram{}.value" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="spatialType_histogram{}.count" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="COMPOSITE"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1 AND 2"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;spatialType_histogram&lt;opencurly&gt;0&lt;closecurly&gt;.count&lt;closeparen&gt; = &lt;at&gt;Value&lt;openparen&gt;spatialType_histogram&lt;opencurly&gt;1&lt;closecurly&gt;.count&lt;closeparen&gt;&#10;TEST &lt;at&gt;Value&lt;openparen&gt;spatialType_histogram&lt;opencurly&gt;1&lt;closecurly&gt;.count&lt;closeparen&gt; = &lt;at&gt;Value&lt;openparen&gt;spatialType_histogram&lt;opencurly&gt;2&lt;closecurly&gt;.count&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_6"/>
 #! </TRANSFORMER>
@@ -456,10 +485,12 @@
 #!     <XFORM_ATTR ATTR_NAME="spatialType_histogram{}.value" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="spatialType_histogram{}.count" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;spatialType_histogram&lt;opencurly&gt;0&lt;closecurly&gt;.count&lt;closeparen&gt; = &lt;at&gt;Value&lt;openparen&gt;spatialType_histogram&lt;opencurly&gt;1&lt;closecurly&gt;.count&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_7"/>
 #! </TRANSFORMER>
@@ -756,9 +787,11 @@
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="INPUT_ORDERED_CHOICE" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="KEYATTR" PARM_VALUE="uuid"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DuplicateFilter"/>
 #! </TRANSFORMER>
@@ -815,10 +848,12 @@
 #!     <XFORM_ATTR ATTR_NAME="uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="spatial_representation_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="AND"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1 AND 2"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST uuid ATTRIBUTE_HAS_A_VALUE &quot;&quot;&#10;TEST spatial_representation_type ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
 #! </TRANSFORMER>
@@ -899,8 +934,8 @@
 #!   IDENTIFIER="25"
 #!   TYPE="ListHistogrammer"
 #!   VERSION="0"
-#!   POSITION="-2853.4703972235029 -62.778854635982611"
-#!   BOUNDING_RECT="-2853.4703972235029 -62.778854635982611 454 71"
+#!   POSITION="-2850 -62.778854635982611"
+#!   BOUNDING_RECT="-2850 -62.778854635982611 454 71"
 #!   ORDER="500000000001564"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -954,8 +989,8 @@
 #!   IDENTIFIER="27"
 #!   TYPE="PythonCaller"
 #!   VERSION="4"
-#!   POSITION="-2902.2670520298843 -676.78785472598372"
-#!   BOUNDING_RECT="-2902.2670520298843 -676.78785472598372 454 71"
+#!   POSITION="-2791.154829796551 -645.04150551645978"
+#!   BOUNDING_RECT="-2791.154829796551 -645.04150551645978 454 71"
 #!   ORDER="500000000001647"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -988,8 +1023,8 @@
 #!   IDENTIFIER="28"
 #!   TYPE="AttributeRemover"
 #!   VERSION="1"
-#!   POSITION="-2691.6761840630784 -869.03816722910824"
-#!   BOUNDING_RECT="-2691.6761840630784 -869.03816722910824 454 71"
+#!   POSITION="-2592.4688427833162 -980.15038946244169"
+#!   BOUNDING_RECT="-2592.4688427833162 -980.15038946244169 454 71"
 #!   ORDER="500000000001648"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1067,6 +1102,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1078,6 +1117,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1089,6 +1132,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1100,6 +1147,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1111,6 +1162,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1122,6 +1177,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1133,6 +1192,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1144,6 +1207,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1155,6 +1222,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1166,6 +1237,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1177,6 +1252,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1188,6 +1267,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS="931 584"
 #! />
 #! <FEAT_LINK
@@ -1199,6 +1282,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1210,6 +1297,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1221,6 +1312,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1232,6 +1327,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1243,6 +1342,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1254,6 +1357,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1265,6 +1372,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1276,6 +1387,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1287,6 +1402,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1298,6 +1417,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1309,6 +1432,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1320,6 +1447,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1331,6 +1462,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1342,6 +1477,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1353,6 +1492,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1364,6 +1507,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
@@ -1375,6 +1522,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! </FEAT_LINKS>
@@ -1395,14 +1546,14 @@ FME_PYTHON_VERSION 37
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO SPATIAL_TYPE_MAPPER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT1613672356 Input Splitter"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1613672356 Input Splitter"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT1631623795 Input Splitter"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1631623795 Input Splitter"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    TEST uuid ATTRIBUTE_HAS_A_VALUE "" ENCODED TEST spatial_representation_type ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR AND    COMPOSITE_TEST_EXPR "1 AND 2"    OUTPUT PASSED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_FAILED"
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DuplicateFilter    COMMAND_PARM_EVALUATION SINGLE_PASS    SUPPORTS_FEATURE_TABLES    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_PASSED"    KEY_ATTRIBUTES { uuid }    INPUT_IS_ORDERED NO    OUTPUT DUPLICATE FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DuplicateFilter_DUPLICATE"    OUTPUT UNIQUE FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"
+FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DuplicateFilter    COMMAND_PARM_EVALUATION SINGLE_PASS    SUPPORTS_FEATURE_TABLES    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_PASSED"    KEY_ATTRIBUTES { uuid }    INPUT_IS_ORDERED NO    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT DUPLICATE FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DuplicateFilter_DUPLICATE"    OUTPUT UNIQUE FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"
 # -------------------------------------------------------------------------
 # The default behaviour is to abort on any feature entering the transformer.
 # If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
@@ -1425,10 +1576,10 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_A
 # most of this is close to the code from listindexer but not exact beucase
 # we have a type LIST_ATTR rather than type LIST_NAME so need
 # to figure out the list name
-Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.spatial_type];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer_3_OUTPUT"    OUTPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___         "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1" @SearchList(fme_encoded,"resources<opencurly><closecurly>.spatial_type","",FIRST_NOT_MATCHED_ENCODED)
-FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__Tester    INPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___    TEST @Value($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1) == "-1"    OUTPUT PASSED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_NOT_FOUND" @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1)    OUTPUT FAILED FEATURE_TYPE  $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexFound__
-FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__Tester2    INPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexFound__    TEST NO == "NO"    OUTPUT PASSED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND" @CopyAttributes(_list_index, $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1) @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1)    OUTPUT FAILED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND"  @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1_indexer {@Value($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1)} {<Unused>}") @CopyAttributes(_list_index, $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1) @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_cdb6cd13_1756_4eb1_a619_7fe8d2be60ff1)
+Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.spatial_type];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer_3_OUTPUT"    OUTPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___         "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21" @SearchList(fme_encoded,"resources<opencurly><closecurly>.spatial_type","",FIRST_NOT_MATCHED_ENCODED)
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__Tester    INPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___    TEST @Value($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21) == "-1"    OUTPUT PASSED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_NOT_FOUND" @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21)    OUTPUT FAILED FEATURE_TYPE  $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexFound__
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__Tester2    INPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexFound__    TEST NO == "NO"    OUTPUT PASSED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND" @CopyAttributes(_list_index, $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21) @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21)    OUTPUT FAILED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND"  @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21_indexer {@Value($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21)} {<Unused>}") @CopyAttributes(_list_index, $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21) @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21)
 # -------------------------------------------------------------------------
 Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListHistogrammer_2_histo {} {    foreach attr [FME_AttributeNames] {    		 regsub -all \"{\[0-9\]+}\" $attr \"{}\" flatAttr;        if {$flatAttr == \"resources{}.spatial_type\" }        {          set attrVal [FME_GetAttribute $attr];          if {$attrVal == {} && [FME_IsAttributeNull $attr]}          {    	         set attrVal {FME_NULL_VALUE};          }; 	       if {[info exists histogram($attrVal)]} { 	           incr histogram($attrVal); 	       } else { 	           set histogram($attrVal) 1; 	       };        };    };    set toSort {};    foreach {name value} [array get histogram] {        lappend s $name $value;        lappend toSort $s;        unset s;    };    set sortedHisto [lsort -integer -decreasing -index end $toSort];    set spot 0;    foreach nameCount $sortedHisto {        set rootName "spatialType_histogram_temp{$spot}";        set valueAttr "$rootName.value";        set countAttr "$rootName.count";        if {[lindex $nameCount 0] == {FME_NULL_VALUE}} { 	       FME_SetAttributeNull $valueAttr; 	     } else { 	       FME_SetAttribute $valueAttr [lindex $nameCount 0];        };        FME_SetAttribute $countAttr [lindex $nameCount end];        incr spot;    } }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListHistogrammer_2    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListHistogrammer_2_OUTPUT"         @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListHistogrammer_2_histo")
@@ -1441,22 +1592,20 @@ FACTORY_DEF * PythonFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME
 INCLUDE [    set macroLine "MACRO $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP ";    foreach attr [split "spatialType_histogram_temp<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_3    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,)        @RemoveAttributes(fme_pcre_match"$($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-Tcl2 set ListSorterRenamedAttrPrefix ________
-Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_2_sort {} {    set COMMENT {    = NOTE: algorithm below does not support nested lists.    };    global ListSorterRenamedAttrPrefix;    regsub \"{}.*$\" {spatialType_histogram{}.count} \"\" listBaseNoBrace;    regsub \"{}.*$\" {spatialType_histogram{}.count} \"\{\" listBase;    regsub \"{}.*$\" {spatialType_histogram{}.count} \"\" listName;    set listBaseLen [string length $listBase];    set listNameLen [expr $listBaseLen - 1];    set listValueExtension [string replace {spatialType_histogram{}.count} 0 $listBaseLen {}];    set kMissingSidecarAttrSuffix {._________WAS_MISSING_________________};    set kCloseBrace \"\}\";    set kAnyOtherCharacters {*};    set COMMENT {    = To resolve PR 46315 (and friends), lets make a first pass to determine the full list of    = possible index numbers. Then we'll go through and make sure we have a KEY value for each    = of those.  We'll track what "keys" we added so that at the end we can REMOVE them so they stay MISSING.    };    set maxElementCount 0;    set attributeNames [FME_AttributeNames];    set listRegExp $listBaseNoBrace;    append listRegExp "\{(\[0-9\]+)\}";    set elementIndices {};    foreach attr $attributeNames {       if { [regexp $listRegExp $attr dummy subExpr] == 1 } {          lappend elementIndices $subExpr;          if { [expr $subExpr > $maxElementCount] } {             set maxElementCount $subExpr;          };       };    };    set curElement 0;    set COMMENT {    = Now that we have a list of the actual element numbers included in the list. Lets whip through and make sure    = we have an actual element for each of the "key" parts of the list we want to sort. If we don't, we'll    = make an element there with an empty value.  Note that we can't easily separate and sort NULL < missing < empty,    = but we'll live with that shortcoming in here as long as it is documented.    };    foreach curElement [lsort -integer -unique $elementIndices] {       set COMMENT {We found that there is at least some kind of element at this index in the list                    so we need to ensure there is a key element at this index};       set COMMENT {Minimum float is taken from std::numeric_limits<T>::lowest() cppreference web page.};       set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;       set indexKeyElementSidecarAttr $listBase$curElement$kCloseBrace$kMissingSidecarAttrSuffix;       if { ! [FME_AttributeExists $indexKeyElementAttr ] } {           set COMMENT {The key value attribute didn't exist. So lets put it on};           if { {-real} == {} } {              set COMMENT {doing string comparison so empty string};              FME_SetAttribute $indexKeyElementAttr {};           } else {              set COMMENT {doing numeric comparison so lowest float};              FME_SetAttribute $indexKeyElementAttr -3.40282e+38;           };           FME_SetAttribute $indexKeyElementSidecarAttr {FME_MISSING_VAL};       } elseif { {-real} != {} && [FME_IsAttributeNull $indexKeyElementAttr] } {           set COMMENT {attribute exists and we are doing numeric comparisons set null values to min float so they pass the lsort};           FME_SetAttribute $indexKeyElementSidecarAttr {FME_NULL_VALUE};           FME_SetAttribute $indexKeyElementAttr -3.40282e+38;       } elseif { {-real} != {} && [FME_GetAttribute $indexKeyElementAttr] == {} } {           set COMMENT {attribute exists and we are doing numeric comparisons set empty values to min float so they pass the lsort};           FME_SetAttribute $indexKeyElementSidecarAttr {};           FME_SetAttribute $indexKeyElementAttr -3.40282e+38;       };    };    set COMMENT {    =    For each attribute "listattr{<index>}.count" and all related attributes    =    "listattr{<index>}<extension>", create a list of the form    =       {$listattr{<index>}.count <index>}    =    and append the list to toSort, and keep a list of the extensions    =    for each index in the associative array listExtensions(<index>).    =    While iterating over the attributes, rename all such attributes to    =    "________listattr{<index>}<extension>" to    =    keep them out of the way, and to make them easier to clean up later.    =    Note that we're manually pulling out the index and extension, instead    =    of using regular expressions, as it is much more efficient    };    set toSort {};    foreach attr [FME_AttributeNames] {       set attrStart [string range $attr 0 $listNameLen];       if { $attrStart == $listBase } {          set braceEnd [string first \} $attr $listBaseLen];          set index [string range $attr $listBaseLen [expr $braceEnd - 1]];          set extension [string range $attr [expr $braceEnd + 1] end];          lappend listExtensions($index) $extension;          if { $extension == $listValueExtension } {             lappend toSort [list [FME_GetAttribute $attr] $index]          };          FME_RenameAttribute "$ListSorterRenamedAttrPrefix$attr" $attr;          set renamedAttrs($ListSorterRenamedAttrPrefix$attr) 1;       }    };    set COMMENT {    =    Sort the {$listattr{<index>} <index>} by index 0 (attr value)    };    set sortedList [lsort -real -decreasing -index 0 $toSort];    set destIndex 0;    set COMMENT {    =    For each list within sortedList, iterate over the list, renaming    =    "________listattr{<index>}<extension>" to    =    "listattr{<newIndex>}<extension>"    };    foreach pair $sortedList {       set elementNum [lindex $pair 1];       set newAttrBase "$listName\{$destIndex\}";       set oldAttrBase "$listName\{$elementNum\}";       foreach extension $listExtensions($elementNum) {          FME_RenameAttribute "$newAttrBase$extension" "$ListSorterRenamedAttrPrefix$oldAttrBase$extension";          unset renamedAttrs($ListSorterRenamedAttrPrefix$oldAttrBase$extension);       };       incr destIndex    };    set COMMENT {    =    If any attributes were renamed to their temporary names above, and they    =    did not contain the structure extension on which we were sorting, they    =    will still exist on the feature, and must be cleaned up.    };    set attrs [array names renamedAttrs];    if {[llength $attrs]} { eval FME_UnsetAttributes [array names renamedAttrs] };    set COMMENT {    =    = Lastly, go through and any of the MISSING, EMPTY, or NULL key values and set appropriately.  We'll have preserved their    = parallel list structure friends, but we need to restore the moved key to its original state: missing, blank or NULL    =    };    set curElement 0;    while { $curElement <= $maxElementCount } {        set indexKeyElementSidecarAttr $listBase$curElement$kCloseBrace$kMissingSidecarAttrSuffix;        if { [FME_AttributeExists $indexKeyElementSidecarAttr ] } {            set COMMENT {Get rid of the sidecar attribute and key attribute too};            set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;            set value [FME_GetAttribute $indexKeyElementSidecarAttr];            if {$value == {FME_NULL_VALUE}} {              FME_SetAttributeNull $indexKeyElementAttr;            } elseif { $value == {FME_MISSING_VAL} } {                FME_UnsetAttributes $indexKeyElementAttr;            } else {              FME_SetAttribute $indexKeyElementAttr {};            };            FME_UnsetAttributes $indexKeyElementSidecarAttr;        };        incr curElement;    }; }
+Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_2_sort {} {    set COMMENT {    = NOTE: algorithm below does not support nested lists.    };    regsub \"{}.*$\" {spatialType_histogram{}.count} \"\{\" listBase;    regsub \"{}.*$\" {spatialType_histogram{}.count} \"\" listName;    set listBaseLen [string length $listBase];    set listNameLen [expr $listBaseLen - 1];    set listValueExtension [string replace {spatialType_histogram{}.count} 0 $listBaseLen {}];    set kCloseBrace \"\}\";    set kAnyOtherCharacters {*};    set kPlaceholderMissingVal 1;    set kPlaceholderNullVal 2;    set kPlaceholderEmptyVal 3;    set COMMENT {    = To resolve PR 46315 (and friends), lets make a first pass to determine the full list of    = possible index numbers. Then we'll go through and make sure we have a KEY value for each    = of those.  We'll track what "keys" we added so that at the end we can REMOVE them so they stay MISSING.    };    set maxElementCount 0;    foreach attr [FME_AttributeNames] {       set COMMENT {       =    For each attribute "listattr{<index>}.count" and all related attributes       =    "listattr{<index>}<extension>", create a list of the form       =       {$listattr{<index>}.count <index>}, and keep a list of the extensions       =    for each index in the associative array listExtensions(<index>).       };       set attrStart [string range $attr 0 $listNameLen];       if { $attrStart == $listBase } {          set braceEnd [string first \} $attr $listBaseLen];          set index [string range $attr $listBaseLen [expr $braceEnd - 1]];          set extension [string range $attr [expr $braceEnd + 1] end];          if { [regexp {^[0-9]+$} $index] == 1 } {             lappend listExtensions($index) $extension;             set attrsToRename($attr) 1;             set COMMENT {Keep track of the maximum index value};             if { [expr $index > $maxElementCount] } {                set maxElementCount $index;             }          };       }    };    set curElement 0;    set COMMENT {    = Now that we have a list of the actual element numbers included in the list. Lets whip through and make sure    = we have an actual element for each of the "key" parts of the list we want to sort. If we don't, we'll    = make an element there with an empty value.  Note that we can't easily separate and sort NULL < missing < empty,    = but we'll live with that shortcoming in here as long as it is documented.    };    catch {unset emptyPlaceholder};    set toSort {};    set placeholdersToSort {};    foreach curElement [lsort -integer -unique [array names listExtensions]] {       set COMMENT {       =    We found that there is at least some kind of element at this index in the list       =    so we need to ensure there is a key element at this index. If it is missing,       =    NULL or an empty string, then we save it to a separate array of placehoder values of 1, 2 or       =    3, respectively, so that can be deterministically sorted separately from the other       =    elements, and then tacked on at either the beginning of the end later on.       };       set COMMENT {Minimum float is taken from std::numeric_limits<T>::lowest() cppreference web page.};       set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;       if { ! [FME_AttributeExists $indexKeyElementAttr ] } {           set COMMENT {The key value attribute didn't exist, so put it on a separate placeholder list for sorting};           lappend placeholdersToSort [list $kPlaceholderMissingVal $curElement];           set emptyPlaceholder($curElement) $kPlaceholderMissingVal;       } elseif { [FME_IsAttributeNull $indexKeyElementAttr] } {           set COMMENT {Key attribute exists but is null, so put it on a separate placeholder list for sorting};           set emptyPlaceholder($curElement) $kPlaceholderNullVal;           lappend placeholdersToSort [list $kPlaceholderNullVal $curElement];       } elseif { [FME_GetAttribute $indexKeyElementAttr] == {} } {           set COMMENT {Key attribute exists but is empty, so put it on a separate placeholder list for sorting};           set emptyPlaceholder($curElement) $kPlaceholderEmptyVal;           lappend placeholdersToSort [list $kPlaceholderEmptyVal $curElement];       } else {           lappend toSort [list [FME_GetAttribute $indexKeyElementAttr] $curElement]       };    };    set COMMENT {    =    Sort the {$listattr{<index>} <index>} by index 0 (attr value). If we had (1,2,3) placeholders    =    for missing, NULL, or empty values, we sort those as well, and then tack them onto the    =    proper end of the resulting list.    };    set sortedAttrs [lsort -real -decreasing -index 0 $toSort];    set sortedPlaceholders [lsort -real -decreasing -index 0 $placeholdersToSort];    set COMMMENT {    =    If there were placeholders for null/missing/empty, put them at the beginning    =    or end of the sortedAttrs, depending on sort order    };    if { {-decreasing} != {} } {       set sortedAttrs [concat $sortedAttrs $sortedPlaceholders];    } else {       set sortedAttrs [concat $sortedPlaceholders $sortedAttrs];    };    set destIndex 0;    set COMMENT {    =    For each list within sortedAttrs, iterate over the list, renaming    =    "listattr{<index>}<extension>" to    =    "listattr{<newIndex>}<extension>"    };    catch {unset nullRemap};    set renameAttrsFrom {};    set renameAttrsTo {};    foreach pair $sortedAttrs {       set elementNum [lindex $pair 1];       set nullRemap($destIndex) $elementNum;       set newAttrBase "$listName\{$destIndex\}";       set oldAttrBase "$listName\{$elementNum\}";       foreach extension $listExtensions($elementNum) {          lappend renameAttrsFrom $oldAttrBase$extension;          lappend renameAttrsTo $newAttrBase$extension;          unset attrsToRename($oldAttrBase$extension);       };       incr destIndex    };    set COMMENT {    =    If any attributes were list attributes but did not contain the    =    structure extension on which we were sorting, they must be cleaned up.    };    set attrs [array names attrsToRename];    if {[llength $attrs]} { eval FME_UnsetAttributes $attrs };    FME_RenameAttribute -list $renameAttrsTo $renameAttrsFrom;    set COMMENT {    =    = Lastly, go through and any of the MISSING, EMPTY, or NULL key values and set appropriately.  We'll have preserved their    = parallel list structure friends, but we need to restore the moved key to its original state: missing, blank or NULL    =    };    set curElement 0;    while { $curElement <= $maxElementCount } {        if { [info exists nullRemap($curElement)] } {            set origIndex $nullRemap($curElement);            if { [info exists emptyPlaceholder($origIndex)] } {                set COMMENT {Get rid of the sidecar attribute and key attribute too};                set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;                set value $emptyPlaceholder($origIndex);                if {$value == $kPlaceholderNullVal} {                  FME_SetAttributeNull $indexKeyElementAttr;                } elseif { $value == $kPlaceholderMissingVal } {                    FME_UnsetAttributes $indexKeyElementAttr;                } else {                  FME_SetAttribute $indexKeyElementAttr {};                };             };        };        incr curElement;    }; }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_2    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_2_OUTPUT"         @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_2_sort")
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_2_OUTPUT"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>0<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6) = @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>1<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6) ENCODED TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>1<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6) = @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>2<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6) ENCODED    BOOLEAN_OPERATOR COMPOSITE    COMPOSITE_TEST_EXPR "1 AND 2"    OUTPUT PASSED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6_FAILED"
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_2_OUTPUT"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>0<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6)" = "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>1<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6)" ENCODED TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>1<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6)" = "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>2<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6)" ENCODED    BOOLEAN_OPERATOR COMPOSITE    COMPOSITE_TEST_EXPR "1 AND 2"    OUTPUT PASSED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6_FAILED"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6_FAILED"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>0<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7) = @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>1<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7) ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7_FAILED"
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6_FAILED"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>0<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7)" = "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>spatialType_histogram<opencurly>1<closecurly>.count<closeparen>,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7)" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7_FAILED"
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7_PASSED"    OUTPUT { FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,spatialType_histogram<opencurly>2<closecurly>.value,spatialType_histogram<opencurly>2<closecurly>.count)        @RemoveAttributes(fme_pcre_match"$($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-Tcl2 set ListSorterRenamedAttrPrefix ________
-Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_sort {} {    set COMMENT {    = NOTE: algorithm below does not support nested lists.    };    global ListSorterRenamedAttrPrefix;    regsub \"{}.*$\" {spatialType_histogram{}.value} \"\" listBaseNoBrace;    regsub \"{}.*$\" {spatialType_histogram{}.value} \"\{\" listBase;    regsub \"{}.*$\" {spatialType_histogram{}.value} \"\" listName;    set listBaseLen [string length $listBase];    set listNameLen [expr $listBaseLen - 1];    set listValueExtension [string replace {spatialType_histogram{}.value} 0 $listBaseLen {}];    set kMissingSidecarAttrSuffix {._________WAS_MISSING_________________};    set kCloseBrace \"\}\";    set kAnyOtherCharacters {*};    set COMMENT {    = To resolve PR 46315 (and friends), lets make a first pass to determine the full list of    = possible index numbers. Then we'll go through and make sure we have a KEY value for each    = of those.  We'll track what "keys" we added so that at the end we can REMOVE them so they stay MISSING.    };    set maxElementCount 0;    set attributeNames [FME_AttributeNames];    set listRegExp $listBaseNoBrace;    append listRegExp "\{(\[0-9\]+)\}";    set elementIndices {};    foreach attr $attributeNames {       if { [regexp $listRegExp $attr dummy subExpr] == 1 } {          lappend elementIndices $subExpr;          if { [expr $subExpr > $maxElementCount] } {             set maxElementCount $subExpr;          };       };    };    set curElement 0;    set COMMENT {    = Now that we have a list of the actual element numbers included in the list. Lets whip through and make sure    = we have an actual element for each of the "key" parts of the list we want to sort. If we don't, we'll    = make an element there with an empty value.  Note that we can't easily separate and sort NULL < missing < empty,    = but we'll live with that shortcoming in here as long as it is documented.    };    foreach curElement [lsort -integer -unique $elementIndices] {       set COMMENT {We found that there is at least some kind of element at this index in the list                    so we need to ensure there is a key element at this index};       set COMMENT {Minimum float is taken from std::numeric_limits<T>::lowest() cppreference web page.};       set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;       set indexKeyElementSidecarAttr $listBase$curElement$kCloseBrace$kMissingSidecarAttrSuffix;       if { ! [FME_AttributeExists $indexKeyElementAttr ] } {           set COMMENT {The key value attribute didn't exist. So lets put it on};           if { {} == {} } {              set COMMENT {doing string comparison so empty string};              FME_SetAttribute $indexKeyElementAttr {};           } else {              set COMMENT {doing numeric comparison so lowest float};              FME_SetAttribute $indexKeyElementAttr -3.40282e+38;           };           FME_SetAttribute $indexKeyElementSidecarAttr {FME_MISSING_VAL};       } elseif { {} != {} && [FME_IsAttributeNull $indexKeyElementAttr] } {           set COMMENT {attribute exists and we are doing numeric comparisons set null values to min float so they pass the lsort};           FME_SetAttribute $indexKeyElementSidecarAttr {FME_NULL_VALUE};           FME_SetAttribute $indexKeyElementAttr -3.40282e+38;       } elseif { {} != {} && [FME_GetAttribute $indexKeyElementAttr] == {} } {           set COMMENT {attribute exists and we are doing numeric comparisons set empty values to min float so they pass the lsort};           FME_SetAttribute $indexKeyElementSidecarAttr {};           FME_SetAttribute $indexKeyElementAttr -3.40282e+38;       };    };    set COMMENT {    =    For each attribute "listattr{<index>}.count" and all related attributes    =    "listattr{<index>}<extension>", create a list of the form    =       {$listattr{<index>}.count <index>}    =    and append the list to toSort, and keep a list of the extensions    =    for each index in the associative array listExtensions(<index>).    =    While iterating over the attributes, rename all such attributes to    =    "________listattr{<index>}<extension>" to    =    keep them out of the way, and to make them easier to clean up later.    =    Note that we're manually pulling out the index and extension, instead    =    of using regular expressions, as it is much more efficient    };    set toSort {};    foreach attr [FME_AttributeNames] {       set attrStart [string range $attr 0 $listNameLen];       if { $attrStart == $listBase } {          set braceEnd [string first \} $attr $listBaseLen];          set index [string range $attr $listBaseLen [expr $braceEnd - 1]];          set extension [string range $attr [expr $braceEnd + 1] end];          lappend listExtensions($index) $extension;          if { $extension == $listValueExtension } {             lappend toSort [list [FME_GetAttribute $attr] $index]          };          FME_RenameAttribute "$ListSorterRenamedAttrPrefix$attr" $attr;          set renamedAttrs($ListSorterRenamedAttrPrefix$attr) 1;       }    };    set COMMENT {    =    Sort the {$listattr{<index>} <index>} by index 0 (attr value)    };    set sortedList [lsort   -index 0 $toSort];    set destIndex 0;    set COMMENT {    =    For each list within sortedList, iterate over the list, renaming    =    "________listattr{<index>}<extension>" to    =    "listattr{<newIndex>}<extension>"    };    foreach pair $sortedList {       set elementNum [lindex $pair 1];       set newAttrBase "$listName\{$destIndex\}";       set oldAttrBase "$listName\{$elementNum\}";       foreach extension $listExtensions($elementNum) {          FME_RenameAttribute "$newAttrBase$extension" "$ListSorterRenamedAttrPrefix$oldAttrBase$extension";          unset renamedAttrs($ListSorterRenamedAttrPrefix$oldAttrBase$extension);       };       incr destIndex    };    set COMMENT {    =    If any attributes were renamed to their temporary names above, and they    =    did not contain the structure extension on which we were sorting, they    =    will still exist on the feature, and must be cleaned up.    };    set attrs [array names renamedAttrs];    if {[llength $attrs]} { eval FME_UnsetAttributes [array names renamedAttrs] };    set COMMENT {    =    = Lastly, go through and any of the MISSING, EMPTY, or NULL key values and set appropriately.  We'll have preserved their    = parallel list structure friends, but we need to restore the moved key to its original state: missing, blank or NULL    =    };    set curElement 0;    while { $curElement <= $maxElementCount } {        set indexKeyElementSidecarAttr $listBase$curElement$kCloseBrace$kMissingSidecarAttrSuffix;        if { [FME_AttributeExists $indexKeyElementSidecarAttr ] } {            set COMMENT {Get rid of the sidecar attribute and key attribute too};            set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;            set value [FME_GetAttribute $indexKeyElementSidecarAttr];            if {$value == {FME_NULL_VALUE}} {              FME_SetAttributeNull $indexKeyElementAttr;            } elseif { $value == {FME_MISSING_VAL} } {                FME_UnsetAttributes $indexKeyElementAttr;            } else {              FME_SetAttribute $indexKeyElementAttr {};            };            FME_UnsetAttributes $indexKeyElementSidecarAttr;        };        incr curElement;    }; }
+Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_sort {} {    set COMMENT {    = NOTE: algorithm below does not support nested lists.    };    regsub \"{}.*$\" {spatialType_histogram{}.value} \"\{\" listBase;    regsub \"{}.*$\" {spatialType_histogram{}.value} \"\" listName;    set listBaseLen [string length $listBase];    set listNameLen [expr $listBaseLen - 1];    set listValueExtension [string replace {spatialType_histogram{}.value} 0 $listBaseLen {}];    set kCloseBrace \"\}\";    set kAnyOtherCharacters {*};    set kPlaceholderMissingVal 1;    set kPlaceholderNullVal 2;    set kPlaceholderEmptyVal 3;    set COMMENT {    = To resolve PR 46315 (and friends), lets make a first pass to determine the full list of    = possible index numbers. Then we'll go through and make sure we have a KEY value for each    = of those.  We'll track what "keys" we added so that at the end we can REMOVE them so they stay MISSING.    };    set maxElementCount 0;    foreach attr [FME_AttributeNames] {       set COMMENT {       =    For each attribute "listattr{<index>}.count" and all related attributes       =    "listattr{<index>}<extension>", create a list of the form       =       {$listattr{<index>}.count <index>}, and keep a list of the extensions       =    for each index in the associative array listExtensions(<index>).       };       set attrStart [string range $attr 0 $listNameLen];       if { $attrStart == $listBase } {          set braceEnd [string first \} $attr $listBaseLen];          set index [string range $attr $listBaseLen [expr $braceEnd - 1]];          set extension [string range $attr [expr $braceEnd + 1] end];          if { [regexp {^[0-9]+$} $index] == 1 } {             lappend listExtensions($index) $extension;             set attrsToRename($attr) 1;             set COMMENT {Keep track of the maximum index value};             if { [expr $index > $maxElementCount] } {                set maxElementCount $index;             }          };       }    };    set curElement 0;    set COMMENT {    = Now that we have a list of the actual element numbers included in the list. Lets whip through and make sure    = we have an actual element for each of the "key" parts of the list we want to sort. If we don't, we'll    = make an element there with an empty value.  Note that we can't easily separate and sort NULL < missing < empty,    = but we'll live with that shortcoming in here as long as it is documented.    };    catch {unset emptyPlaceholder};    set toSort {};    set placeholdersToSort {};    foreach curElement [lsort -integer -unique [array names listExtensions]] {       set COMMENT {       =    We found that there is at least some kind of element at this index in the list       =    so we need to ensure there is a key element at this index. If it is missing,       =    NULL or an empty string, then we save it to a separate array of placehoder values of 1, 2 or       =    3, respectively, so that can be deterministically sorted separately from the other       =    elements, and then tacked on at either the beginning of the end later on.       };       set COMMENT {Minimum float is taken from std::numeric_limits<T>::lowest() cppreference web page.};       set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;       if { ! [FME_AttributeExists $indexKeyElementAttr ] } {           set COMMENT {The key value attribute didn't exist, so put it on a separate placeholder list for sorting};           lappend placeholdersToSort [list $kPlaceholderMissingVal $curElement];           set emptyPlaceholder($curElement) $kPlaceholderMissingVal;       } elseif { [FME_IsAttributeNull $indexKeyElementAttr] } {           set COMMENT {Key attribute exists but is null, so put it on a separate placeholder list for sorting};           set emptyPlaceholder($curElement) $kPlaceholderNullVal;           lappend placeholdersToSort [list $kPlaceholderNullVal $curElement];       } elseif { [FME_GetAttribute $indexKeyElementAttr] == {} } {           set COMMENT {Key attribute exists but is empty, so put it on a separate placeholder list for sorting};           set emptyPlaceholder($curElement) $kPlaceholderEmptyVal;           lappend placeholdersToSort [list $kPlaceholderEmptyVal $curElement];       } else {           lappend toSort [list [FME_GetAttribute $indexKeyElementAttr] $curElement]       };    };    set COMMENT {    =    Sort the {$listattr{<index>} <index>} by index 0 (attr value). If we had (1,2,3) placeholders    =    for missing, NULL, or empty values, we sort those as well, and then tack them onto the    =    proper end of the resulting list.    };    set sortedAttrs [lsort   -index 0 $toSort];    set sortedPlaceholders [lsort   -index 0 $placeholdersToSort];    set COMMMENT {    =    If there were placeholders for null/missing/empty, put them at the beginning    =    or end of the sortedAttrs, depending on sort order    };    if { {} != {} } {       set sortedAttrs [concat $sortedAttrs $sortedPlaceholders];    } else {       set sortedAttrs [concat $sortedPlaceholders $sortedAttrs];    };    set destIndex 0;    set COMMENT {    =    For each list within sortedAttrs, iterate over the list, renaming    =    "listattr{<index>}<extension>" to    =    "listattr{<newIndex>}<extension>"    };    catch {unset nullRemap};    set renameAttrsFrom {};    set renameAttrsTo {};    foreach pair $sortedAttrs {       set elementNum [lindex $pair 1];       set nullRemap($destIndex) $elementNum;       set newAttrBase "$listName\{$destIndex\}";       set oldAttrBase "$listName\{$elementNum\}";       foreach extension $listExtensions($elementNum) {          lappend renameAttrsFrom $oldAttrBase$extension;          lappend renameAttrsTo $newAttrBase$extension;          unset attrsToRename($oldAttrBase$extension);       };       incr destIndex    };    set COMMENT {    =    If any attributes were list attributes but did not contain the    =    structure extension on which we were sorting, they must be cleaned up.    };    set attrs [array names attrsToRename];    if {[llength $attrs]} { eval FME_UnsetAttributes $attrs };    FME_RenameAttribute -list $renameAttrsTo $renameAttrsFrom;    set COMMENT {    =    = Lastly, go through and any of the MISSING, EMPTY, or NULL key values and set appropriately.  We'll have preserved their    = parallel list structure friends, but we need to restore the moved key to its original state: missing, blank or NULL    =    };    set curElement 0;    while { $curElement <= $maxElementCount } {        if { [info exists nullRemap($curElement)] } {            set origIndex $nullRemap($curElement);            if { [info exists emptyPlaceholder($origIndex)] } {                set COMMENT {Get rid of the sidecar attribute and key attribute too};                set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;                set value $emptyPlaceholder($origIndex);                if {$value == $kPlaceholderNullVal} {                  FME_SetAttributeNull $indexKeyElementAttr;                } elseif { $value == $kPlaceholderMissingVal } {                    FME_UnsetAttributes $indexKeyElementAttr;                } else {                  FME_SetAttribute $indexKeyElementAttr {};                };             };        };        incr curElement;    }; }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6_PASSED"    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_OUTPUT"         @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_sort")
 # -------------------------------------------------------------------------
-Tcl2 set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_6fbeb9e2_e3d8_48ea_9eb9_7b47d7a7c6361_splitDelim [FME_DecodeText {-}];      if { [regexp {^([1-9][0-9]*s)+$} [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_6fbeb9e2_e3d8_48ea_9eb9_7b47d7a7c6361_splitDelim]] }      {         set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_6fbeb9e2_e3d8_48ea_9eb9_7b47d7a7c6361_splitWidths [split [regsub -all {s$} {-} {}] s];         proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_6fbeb9e2_e3d8_48ea_9eb9_7b47d7a7c6361_splitWidths;            set source [FME_GetAttribute [FME_DecodeText {spatialType_histogram<opencurly>0<closecurly>.value}]];            set attrNum 0;            set listName [FME_DecodeText {spatial_trim}];            set attrPos 0;            set keepEmptyParts [string equal {No} {No}];            foreach width [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_6fbeb9e2_e3d8_48ea_9eb9_7b47d7a7c6361_splitWidths]            {               set endPos [expr $attrPos + $width - 1];               set bit [string range $source $attrPos $endPos];               set part [string trim $bit];               if { $keepEmptyParts || $part != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $part;                  incr attrNum;               };               incr attrPos $width;            };         };      }      else      {         proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_6fbeb9e2_e3d8_48ea_9eb9_7b47d7a7c6361_splitDelim;            set delim [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_6fbeb9e2_e3d8_48ea_9eb9_7b47d7a7c6361_splitDelim];            set delimLength [string length $delim];            set source [FME_GetAttribute [FME_DecodeText {spatialType_histogram<opencurly>0<closecurly>.value}]];            set keepEmptyParts [string equal {No} {No}];            set bits {};            set startIndex 0;            set nextIndex [string first $delim $source $startIndex];            while {$nextIndex >= 0} {              lappend bits [string range $source $startIndex [expr $nextIndex-1]];              set startIndex [expr $nextIndex + $delimLength];              set nextIndex [string first $delim $source $startIndex];            };            lappend bits [string range $source $startIndex end];            set listName [FME_DecodeText {spatial_trim}];            set attrNum 0;            foreach bit $bits            {               set trimmedPart [string trim $bit];               if { $keepEmptyParts || $trimmedPart != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $trimmedPart;                  incr attrNum;               };            }          }       }
+Tcl2 set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitDelim [FME_DecodeText {-}];      if { [regexp {^([1-9][0-9]*s)+$} [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitDelim]] }      {         set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitWidths [split [regsub -all {s$} {-} {}] s];         proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitWidths;            set source [FME_GetAttribute [FME_DecodeText {spatialType_histogram<opencurly>0<closecurly>.value}]];            set attrNum 0;            set listName [FME_DecodeText {spatial_trim}];            set attrPos 0;            set keepEmptyParts [string equal {No} {No}];            foreach width [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitWidths]            {               set endPos [expr $attrPos + $width - 1];               set bit [string range $source $attrPos $endPos];               set part [string trim $bit];               if { $keepEmptyParts || $part != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $part;                  incr attrNum;               };               incr attrPos $width;            };         };      }      else      {         proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitDelim;            set delim [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitDelim];            set delimLength [string length $delim];            set source [FME_GetAttribute [FME_DecodeText {spatialType_histogram<opencurly>0<closecurly>.value}]];            set keepEmptyParts [string equal {No} {No}];            set bits {};            set startIndex 0;            set nextIndex [string first $delim $source $startIndex];            while {$nextIndex >= 0} {              lappend bits [string range $source $startIndex [expr $nextIndex-1]];              set startIndex [expr $nextIndex + $delimLength];              set nextIndex [string first $delim $source $startIndex];            };            lappend bits [string range $source $startIndex end];            set listName [FME_DecodeText {spatial_trim}];            set attrNum 0;            foreach bit $bits            {               set trimmedPart [string trim $bit];               if { $keepEmptyParts || $trimmedPart != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $trimmedPart;                  incr attrNum;               };            }          }       }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_OUTPUT"    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7_FAILED"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_OUTPUT"         @Tcl2($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit)
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "spatial_representation_type" "SET_TO" "<at>Value<openparen>spatial_trim<opencurly>1<closecurly><closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
@@ -1475,10 +1624,10 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_
 INCLUDE [    set macroLine "MACRO $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split "spatialType_histogram<opencurly><closecurly> spatial_trim<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT { FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_element_count,uuid,_list_index)        @RemoveAttributes(fme_pcre_match"$($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>SPATIAL_TYPE_MAPPER_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Data<space>record<space>with<space>unique<space>ID<space><at>Value<openparen>id<closeparen><space>missing<space>from<space>UUID_Spatial<space>lookup<space>table<space>in<space>SPATIAL_TYPE_MAPPER<space>transformer<space>and<space>could<space>not<space>be<space>mapped<space>to<space>a<space>value.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_63e8fea2_0782_48d0_a559_c373bddb6eb11)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>SPATIAL_TYPE_MAPPER_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Data<space>record<space>with<space>unique<space>ID<space><at>Value<openparen>id<closeparen><space>missing<space>from<space>UUID_Spatial<space>lookup<space>table<space>in<space>SPATIAL_TYPE_MAPPER<space>transformer<space>and<space>could<space>not<space>be<space>mapped<space>to<space>a<space>value.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_01a45843_388e_4320_9d07_1a05da511ebd1)
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_46bad7e4_d17b_4e9f_99d7_9c25a89ad3cb1_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_LOGGED"    OUTPUT { FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,url,id,title,notes,fme_pcre_match,"^fme_$($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_46bad7e4_d17b_4e9f_99d7_9c25a89ad3cb1_LIST_EXP)")         }
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED1613672356 Output Collector"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_FAILED1613672356 Output Collector"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_FAILED"
+INCLUDE [    set macroLine "MACRO $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_66eb49fc_c224_4d3e_9aa3_274818478cda1_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_LOGGED"    OUTPUT { FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,url,id,title,notes,fme_pcre_match,"^fme_$($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_66eb49fc_c224_4d3e_9aa3_274818478cda1_LIST_EXP)")         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED1631623795 Output Collector"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_FAILED1631623795 Output Collector"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_FAILED"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME))}]
