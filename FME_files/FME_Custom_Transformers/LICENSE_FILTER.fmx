@@ -1,18 +1,44 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN LICENSE_FILTER,1,"FGP Tools",79265875-d196-472a-bb6f-dc63870ca0e1,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
-# 
+# TRANSFORMER_BEGIN LICENSE_FILTER,1,"FGP Tools",698043c0-c1d6-4ac6-9cda-db337734d7df,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
+# p, li { white-space: pre-wrap; }
+# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This custom transformer allows to sort the metadata records based on the type of license.  If the licence allows to publish the metadata records in the FGP, the metadata records  are sent to the LICENSE_FILTER_PASSED port.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">LOOKUP_TABLE_INPUT:<span style=" font-weight:400; text-decoration:none;"> Input information from the lookup table about the different type of licence.</span></li>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">DATA_INPUT:<span style=" font-weight:400;"> The input metadata records to process.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">LICENSE_FILTER_PASSED: </span><span style=" font-weight:400; text-decoration:none;">The metadata records that have a license allowing to be publish in the FGP.</span></li>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <li style=" font-size:10pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">UNKNOWN_LICENCE</span>: The metadata records with a license not found in the lookup table.</li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">LICENCE_ATT:<span style=" font-weight:400; text-decoration:none;"> Name of the attribute of the metadata record containing the licence type used to determine if the metadata records can be published in the FGP.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p></body></html>
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="FGP Tools"
-#!   DESCRIPTION=""
-#!   DOC_EXTENTS="8427 2526.34"
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This custom transformer allows to sort the metadata records based on the type of license.  If the licence allows to publish the metadata records in the FGP, the metadata records  are sent to the LICENSE_FILTER_PASSED port.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;LOOKUP_TABLE_INPUT:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Input information from the lookup table about the different type of licence.&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;DATA_INPUT:&lt;span style=&quot; font-weight:400;&quot;&gt; The input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;LICENSE_FILTER_PASSED: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The metadata records that have a license allowing to be publish in the FGP.&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;UNKNOWN_LICENCE&lt;/span&gt;: The metadata records with a license not found in the lookup table.&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;LICENCE_ATT:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Name of the attribute of the metadata record containing the licence type used to determine if the metadata records can be published in the FGP.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   DOC_EXTENTS="8983.82 2526.34"
 #!   DOC_TOP_LEFT="-2640.82 -888.167"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="79265875-d196-472a-bb6f-dc63870ca0e1"
-#!   FME_DOCUMENT_PRIORGUID="f26cda78-1d08-44bd-8022-e4e47e4ff300,b2805cef-293a-4079-b1b9-c60c942e09ae,2a3f007c-43d5-4206-b13b-628ec7a946e7,c2d58df3-32ce-4456-beb9-937cbffa781f"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="698043c0-c1d6-4ac6-9cda-db337734d7df"
+#!   FME_DOCUMENT_PRIORGUID="79265875-d196-472a-bb6f-dc63870ca0e1"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -21,25 +47,26 @@
 #!   FME_SERVER_SERVICES=""
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
 #!   FMX_INSERT_MODE="Linked by Default"
-#!   HISTORY=""
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-08-02T13:16:32"
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-09-15T16:53:58"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
 #!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="LICENSE_FILTER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-1864.94 2379.06"
+#!   VIEW_POSITION="-1392.06 2204.57"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="62"
+#!   ZOOM_SCALE="44"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -60,7 +87,7 @@
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
-#!   IDENTIFIER="33"
+#!   IDENTIFIER="35"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes  attributes from incoming data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-1205.3819726038494 -261.34242302876362"
 #!   TOP_LEFT="-1205.3819726038494 -261.34242302876362"
@@ -75,7 +102,7 @@
 #!   ANCHORED_NODE="7"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="34"
+#!   IDENTIFIER="36"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes from lookup table&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-1194.8844082361441 881.96110697949075"
 #!   TOP_LEFT="-1194.8844082361441 881.96110697949075"
@@ -90,7 +117,7 @@
 #!   ANCHORED_NODE="8"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="35"
+#!   IDENTIFIER="37"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests for duplicates of &apos;license_id_value&apos; attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="978.58829608519727 1071.4762910202198"
 #!   TOP_LEFT="978.58829608519727 1071.4762910202198"
@@ -105,12 +132,12 @@
 #!   ANCHORED_NODE="11"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="36"
+#!   IDENTIFIER="38"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Merges values from lookup table with with data on values &apos;license_id_value&apos; and &apos;license_id&apos;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="1874.2161712491825 -476.74461585186157"
-#!   TOP_LEFT="1874.2161712491825 -476.74461585186157"
-#!   BOTTOM_RIGHT="2851.271202770507 -709.87164712217429"
-#!   BOUNDING_RECT="1874.2161712491825 -476.74461585186157 977.05503152132451 233.1270312703127"
+#!   POSITION="1950 600"
+#!   TOP_LEFT="1950 600"
+#!   BOTTOM_RIGHT="2927.0550315213245 366.87296872968727"
+#!   BOUNDING_RECT="1950 600 977.05503152132451 233.1270312703127"
 #!   ORDER="500000000001569"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -120,7 +147,7 @@
 #!   ANCHORED_NODE="6"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="37"
+#!   IDENTIFIER="39"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Filters license_id for &apos;fgp_publish = Oui&apos; from incoming joined lookup table values  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="3082.639001000141 1185.2394252458589"
 #!   TOP_LEFT="3082.639001000141 1185.2394252458589"
@@ -135,7 +162,7 @@
 #!   ANCHORED_NODE="9"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="38"
+#!   IDENTIFIER="40"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attribute cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="4045.3255409747071 755.500909044178"
 #!   TOP_LEFT="4045.3255409747071 755.500909044178"
@@ -150,7 +177,7 @@
 #!   ANCHORED_NODE="10"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="39"
+#!   IDENTIFIER="41"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests lookup table for attributes with no value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-449.65442576088071 1028.1461793565304"
 #!   TOP_LEFT="-449.65442576088071 1028.1461793565304"
@@ -169,21 +196,21 @@
 #! </CONSTANTS>
 #! <BOOKMARKS>
 #! <BOOKMARK
-#!   IDENTIFIER="40"
+#!   IDENTIFIER="42"
 #!   NAME="QC License Filter"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="-1400.0140001400014 1638.174276479607"
 #!   ORDER="500000000001542"
 #!   PALETTE_COLOR="Color3"
-#!   BOTTOM_RIGHT="4722.2694449166702 -888.16677640460898"
-#!   BOUNDING_RECT="-1400.0140001400014 1638.174276479607 6122.2834450566716 2526.341052884216"
+#!   BOTTOM_RIGHT="5238.6887505238683 -888.16677640460898"
+#!   BOUNDING_RECT="-1400.0140001400014 1638.174276479607 6638.7027506638697 2526.341052884216"
 #!   STICKY="true"
 #!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="21 11 7 9 27 32 39 23 31 41 22 33 17 13 36 6 15 10 37 25 30 38 12 35 20 34 8 26 29 16 14 "
+#!   CONTENTS="10 35 16 25 38 7 24 26 31 37 28 41 22 15 12 14 18 33 36 23 34 6 40 13 32 43 9 17 11 8 39 21 27 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="41"
+#!   IDENTIFIER="43"
 #!   NAME="Check lookup table for duplicates of join value"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="-1309.6598311719085 1328.9606580276329"
@@ -193,7 +220,7 @@
 #!   BOUNDING_RECT="-1309.6598311719085 1328.9606580276329 3198.5676091385767 1183.0710412367284"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="13 11 34 26 39 35 8 30 31 14 22 12 "
+#!   CONTENTS="27 37 41 14 8 12 13 36 32 33 11 23 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -317,10 +344,12 @@
 #!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;LowerCase&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;fgp_publish&lt;closeparen&gt;&lt;closeparen&gt; = oui"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
 #! </TRANSFORMER>
@@ -364,9 +393,11 @@
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="INPUT_ORDERED_CHOICE" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="KEYATTR" PARM_VALUE="license_id_value"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DuplicateFilter"/>
 #! </TRANSFORMER>
@@ -391,10 +422,12 @@
 #!     <XFORM_ATTR ATTR_NAME="license_id_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fgp_publish" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="AND"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1 AND 2"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST fgp_publish ATTRIBUTE_HAS_A_VALUE &quot;&quot;&#10;TEST license_id_value ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
 #! </TRANSFORMER>
@@ -475,8 +508,8 @@
 #!   IDENTIFIER="17"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="3441.6798701320349 -21.771651049843783"
-#!   BOUNDING_RECT="3441.6798701320349 -21.771651049843783 454 71"
+#!   POSITION="3538.4550314320354 -86.28842524984384"
+#!   BOUNDING_RECT="3538.4550314320354 -86.28842524984384 454 71"
 #!   ORDER="500000000001582"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -498,7 +531,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="42"
+#!   IDENTIFIER="18"
 #!   TYPE="ATTRIBUTE_UNEXPOSER"
 #!   VERSION="1"
 #!   POSITION="4616.9816536875041 312.50312503125042"
@@ -506,7 +539,7 @@
 #!   ORDER="500000000001583"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="19238"
+#!   LAST_PARM_EDIT="20200"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -529,8 +562,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="3"
 #!   NAME="LICENSE_FILTER_PASSED"
-#!   POSITION="4864.5929351922605 459.24657321207604"
-#!   BOUNDING_RECT="4864.5929351922605 459.24657321207604 784.08897162680842 71"
+#!   POSITION="5478.235435253624 300"
+#!   BOUNDING_RECT="5478.235435253624 300 784.08897162680842 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -550,8 +583,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="5"
 #!   NAME="UNKNOWN_LICENSE"
-#!   POSITION="4928.1742817428185 -215.20988543218752"
-#!   BOUNDING_RECT="4928.1742817428185 -215.20988543218752 858.00900009000088 71"
+#!   POSITION="5484.9980317985001 -150"
+#!   BOUNDING_RECT="5484.9980317985001 -150 858.00900009000088 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -560,7 +593,7 @@
 #! </SUBDOCUMENT_IOS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="18"
+#!   IDENTIFIER="19"
 #!   SOURCE_NODE="2"
 #!   TARGET_NODE="7"
 #!   SOURCE_PORT_DESC="0"
@@ -568,10 +601,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="19"
+#!   IDENTIFIER="20"
 #!   SOURCE_NODE="4"
 #!   TARGET_NODE="8"
 #!   SOURCE_PORT_DESC="0"
@@ -579,10 +616,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="20"
+#!   IDENTIFIER="21"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 0 MERGED"
@@ -590,10 +631,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="21"
+#!   IDENTIFIER="22"
 #!   SOURCE_NODE="7"
 #!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -601,10 +646,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="22"
+#!   IDENTIFIER="23"
 #!   SOURCE_NODE="8"
 #!   TARGET_NODE="12"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -612,10 +661,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="23"
+#!   IDENTIFIER="24"
 #!   SOURCE_NODE="9"
 #!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
@@ -623,21 +676,29 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="43"
+#!   IDENTIFIER="25"
 #!   SOURCE_NODE="10"
-#!   TARGET_NODE="42"
+#!   TARGET_NODE="18"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="25"
+#!   IDENTIFIER="26"
 #!   SOURCE_NODE="11"
 #!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 1 UNIQUE"
@@ -645,10 +706,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="26"
+#!   IDENTIFIER="27"
 #!   SOURCE_NODE="12"
 #!   TARGET_NODE="11"
 #!   SOURCE_PORT_DESC="fo 1 PASSED"
@@ -656,10 +721,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="27"
+#!   IDENTIFIER="28"
 #!   SOURCE_NODE="16"
 #!   TARGET_NODE="17"
 #!   SOURCE_PORT_DESC="fo 0 LOGGED"
@@ -667,10 +736,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="28"
+#!   IDENTIFIER="29"
 #!   SOURCE_NODE="17"
 #!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -678,21 +751,29 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="44"
-#!   SOURCE_NODE="42"
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="18"
 #!   TARGET_NODE="3"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="29"
+#!   IDENTIFIER="31"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="16"
 #!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
@@ -700,10 +781,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="30"
+#!   IDENTIFIER="32"
 #!   SOURCE_NODE="11"
 #!   TARGET_NODE="13"
 #!   SOURCE_PORT_DESC="fo 0 DUPLICATE"
@@ -711,10 +796,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="31"
+#!   IDENTIFIER="33"
 #!   SOURCE_NODE="12"
 #!   TARGET_NODE="14"
 #!   SOURCE_PORT_DESC="fo 0 FAILED"
@@ -722,10 +811,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="32"
+#!   IDENTIFIER="34"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="15"
 #!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
@@ -733,6 +826,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! </FEAT_LINKS>
@@ -754,14 +851,14 @@ DEFAULT_MACRO $(LICENSE_FILTER_WORKSPACE_NAME)_LICENSE_ATT
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO LICENSE_FILTER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(LICENSE_FILTER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(LICENSE_FILTER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_INPUT1627924592 Input Splitter"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_INPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1627924592 Input Splitter"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_INPUT1631739238 Input Splitter"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1631739238 Input Splitter"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"    OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_Tester_2    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    TEST fgp_publish ATTRIBUTE_HAS_A_VALUE "" ENCODED TEST license_id_value ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR AND    COMPOSITE_TEST_EXPR "1 AND 2"    OUTPUT PASSED FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Tester_2_FAILED"
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_DuplicateFilter    COMMAND_PARM_EVALUATION SINGLE_PASS    SUPPORTS_FEATURE_TABLES    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Tester_2_PASSED"    KEY_ATTRIBUTES { license_id_value }    INPUT_IS_ORDERED NO    OUTPUT DUPLICATE FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_DuplicateFilter_DUPLICATE"    OUTPUT UNIQUE FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"
+FACTORY_DEF {*} DuplicateRemoverFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_DuplicateFilter    COMMAND_PARM_EVALUATION SINGLE_PASS    SUPPORTS_FEATURE_TABLES    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Tester_2_PASSED"    KEY_ATTRIBUTES { license_id_value }    INPUT_IS_ORDERED NO    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT DUPLICATE FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_DuplicateFilter_DUPLICATE"    OUTPUT UNIQUE FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_DuplicateFilter_UNIQUE"
 # -------------------------------------------------------------------------
 # The default behaviour is to abort on any feature entering the transformer.
 # If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
@@ -792,11 +889,11 @@ FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TestFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_Terminator_3    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_FeatureMerger_<REJECTED>"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"Process<space>failed<space>at<space>Feature<space>Merger<comma><space>QC_LICENSE_FILTER<space>transformer.<space><space>Translation<space>terminated.")       @SupplyAttributes(_wb_termination_xformer,"$(LICENSE_FILTER_WORKSPACE_NAME)_Terminator_3")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"Process<space>failed<space>at<space>Feature<space>Merger<comma><space>QC_LICENSE_FILTER<space>transformer.<space><space>Translation<space>terminated.")
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>LICENSE_FILTER_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Attribute<space>value<space>$($(LICENSE_FILTER_WORKSPACE_NAME)_LICENSE_ATT$encode)<space>missing<space>from<space>LicenseValidation<space>lookup<space>table<space>in<space>LICENSE_FILTER<space>transformer.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(LICENSE_FILTER_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(LICENSE_FILTER_WORKSPACE_NAME)_Logger_2e44b013_5a40_4d33_85c7_08f0be54b3870)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>LICENSE_FILTER_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Attribute<space>value<space>$($(LICENSE_FILTER_WORKSPACE_NAME)_LICENSE_ATT$encode)<space>missing<space>from<space>LicenseValidation<space>lookup<space>table<space>in<space>LICENSE_FILTER<space>transformer.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(LICENSE_FILTER_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(LICENSE_FILTER_WORKSPACE_NAME)_Logger_d09f324b_07f7_4201_9e93_41d12dda681a1)
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Logger_LOGGED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "license_id" "SET_TO" "$($(LICENSE_FILTER_WORKSPACE_NAME)_LICENSE_ATT$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_FeatureMerger_MERGED"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen><at>Value<openparen>fgp_publish<closeparen><closeparen>,$(LICENSE_FILTER_WORKSPACE_NAME)_Tester) = oui ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Tester_PASSED"
+FACTORY_DEF * TestFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_FeatureMerger_MERGED"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen><at>Value<openparen>fgp_publish<closeparen><closeparen>,$(LICENSE_FILTER_WORKSPACE_NAME)_Tester)" = oui ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Tester_PASSED"
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(LICENSE_FILTER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(LICENSE_FILTER_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT { FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,fgp_publish,license_id_value)        @RemoveAttributes(fme_pcre_match"$($(LICENSE_FILTER_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
@@ -807,6 +904,6 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(LICENSE_FILTER_WORKSP
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_LICENSE_FILTER_PASSED1627924592 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_LICENSE_FILTER_PASSED"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_UNKNOWN_LICENSE1627924592 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_UNKNOWN_LICENSE"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_LICENSE_FILTER_PASSED1631739238 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_LICENSE_FILTER_PASSED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LICENSE_FILTER_WORKSPACE_NAME)_UNKNOWN_LICENSE1631739238 Output Collector"   INPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"   OUTPUT FEATURE_TYPE "$(LICENSE_FILTER_WORKSPACE_NAME)_UNKNOWN_LICENSE"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LICENSE_FILTER_WORKSPACE_NAME))}]
