@@ -1,18 +1,44 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN GEOPORTAL_WEBLINK_ADDER,1,"Federal Geo Platform",bb0290a8-1fd2-4a98-83e1-e79a8f22e68b,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
-# 
+# TRANSFORMER_BEGIN GEOPORTAL_WEBLINK_ADDER,1,"FGP Tools",9d4ca5df-89ad-468a-8f4b-4147877a4881,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
+# p, li { white-space: pre-wrap; }
+# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding this web link at the end of the resources{} list of the  metadata record.  Unvalid web links are log in the FME logger.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">LOOKUP_TABLE_INPUT:<span style=" font-weight:400; text-decoration:none;"> Input information from the lookup table to build the additional resource information.</span></li>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">DATA_INPUT:<span style=" font-weight:400;"> The input metadata records to process.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">OUTPUT: </span><span style=" font-weight:400; text-decoration:none;">The process output metdata records with the added web link resource.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">WEBLINK_WILDCARD:<span style=" font-weight:400; text-decoration:none;"> Name of the attribute containing the information to add to the web link in order to retreive the metadata record from the portal of the province.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">URL_VALIDATION:<span style=" font-weight:400; text-decoration:none;"> Flag use to validate if the web link is well formed, online and responding. Can take 2 values: YES: validate the web link; NO: Do not validate th web link. Note: During testing, it is interesting to use NO as the validation is slow.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p></body></html>
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
-#!   CATEGORY="Federal Geo Platform"
-#!   DESCRIPTION=""
-#!   DOC_EXTENTS="11801.2 3504.89"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding this web link at the end of the resources{} list of the  metadata record.  Unvalid web links are log in the FME logger.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;LOOKUP_TABLE_INPUT:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Input information from the lookup table to build the additional resource information.&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;DATA_INPUT:&lt;span style=&quot; font-weight:400;&quot;&gt; The input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;OUTPUT: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The process output metdata records with the added web link resource.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;WEBLINK_WILDCARD:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Name of the attribute containing the information to add to the web link in order to retreive the metadata record from the portal of the province.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;URL_VALIDATION:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Flag use to validate if the web link is well formed, online and responding. Can take 2 values: YES: validate the web link; NO: Do not validate th web link. Note: During testing, it is interesting to use NO as the validation is slow.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   DOC_EXTENTS="11838 3504.89"
 #!   DOC_TOP_LEFT="-3157.03 -2872.08"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="bb0290a8-1fd2-4a98-83e1-e79a8f22e68b"
-#!   FME_DOCUMENT_PRIORGUID="b7ce0f38-c448-407a-8365-ee582670b02d,a1eec79d-9d11-4aa5-b094-d291372d6392,9473f29f-b9b5-451a-8489-1e5f35a97348,e592e0f3-f004-4cab-9272-d35df29f9eaa,9aa05bb8-9cab-4709-ab4d-a844f48db570,953a5bfc-85bf-4c19-a00f-4cd34b4bb712,41e2ab7c-7e3a-4f08-bbf2-4afb00775fb3"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="9d4ca5df-89ad-468a-8f4b-4147877a4881"
+#!   FME_DOCUMENT_PRIORGUID="bb0290a8-1fd2-4a98-83e1-e79a8f22e68b,8c8c050d-3c5f-43bb-b240-4502ea246599"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -21,25 +47,26 @@
 #!   FME_SERVER_SERVICES=""
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
 #!   FMX_INSERT_MODE="Linked by Default"
-#!   HISTORY=""
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added"
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-08-03T11:48:35"
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-09-15T14:06:40"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
 #!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="GEOPORTAL_WEBLINK_ADDER"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-1583.92 830.488"
+#!   VIEW_POSITION="-3733.37 2450.02"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="73"
+#!   ZOOM_SCALE="30"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -65,7 +92,7 @@
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
-#!   IDENTIFIER="58"
+#!   IDENTIFIER="55"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;This custom transformer merges an Excel file containing default attribute values common to each dataset&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-1903.146698059998 -1121.8862188621888"
 #!   TOP_LEFT="-1903.146698059998 -1121.8862188621888"
@@ -80,12 +107,12 @@
 #!   ANCHORED_NODE="0"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="59"
+#!   IDENTIFIER="56"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Each default key attribute is turned into an individual attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-767.7574375743759 507.19148233718659"
-#!   TOP_LEFT="-767.7574375743759 507.19148233718659"
-#!   BOTTOM_RIGHT="115.62615626156264 333.44004482281144"
-#!   BOUNDING_RECT="-767.7574375743759 507.19148233718659 883.38359383593854 173.75143751437514"
+#!   POSITION="-678.71545126410183 527.73963302417292"
+#!   TOP_LEFT="-678.71545126410183 527.73963302417292"
+#!   BOTTOM_RIGHT="92.466678091438439 297.73763300417272"
+#!   BOUNDING_RECT="-678.71545126410183 527.73963302417292 771.18212935554027 230.00200002000017"
 #!   ORDER="500000000000919"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -95,12 +122,12 @@
 #!   ANCHORED_NODE="7"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="60"
+#!   IDENTIFIER="57"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Default attributes are merged with each dataset&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="55.101249745486825 -535.56608215092797"
-#!   TOP_LEFT="55.101249745486825 -535.56608215092797"
-#!   BOTTOM_RIGHT="485.10124974548683 -534.56608215092797"
-#!   BOUNDING_RECT="55.101249745486825 -535.56608215092797 430 -1"
+#!   POSITION="150 450"
+#!   TOP_LEFT="150 450"
+#!   BOTTOM_RIGHT="580 451"
+#!   BOUNDING_RECT="150 450 430 -1"
 #!   ORDER="500000000000920"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -110,12 +137,12 @@
 #!   ANCHORED_NODE="6"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="61"
+#!   IDENTIFIER="58"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes attributes required by this transformer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-1985.9931233992502 -491.25556255562634"
-#!   TOP_LEFT="-1985.9931233992502 -491.25556255562634"
-#!   BOTTOM_RIGHT="-1519.9931233992502 -490.25556255562634"
-#!   BOUNDING_RECT="-1985.9931233992502 -491.25556255562634 466 -1"
+#!   POSITION="-1896.951137088977 52.315166987286347"
+#!   TOP_LEFT="-1896.951137088977 52.315166987286347"
+#!   BOTTOM_RIGHT="-1430.951137088977 53.315166987286347"
+#!   BOUNDING_RECT="-1896.951137088977 52.315166987286347 466 -1"
 #!   ORDER="500000000001246"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -125,12 +152,12 @@
 #!   ANCHORED_NODE="12"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="62"
+#!   IDENTIFIER="59"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Counts number of elements in dataset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-1095.8857188571887 -528.75593755937621"
-#!   TOP_LEFT="-1095.8857188571887 -528.75593755937621"
-#!   BOTTOM_RIGHT="-568.88571885718875 -527.75593755937621"
-#!   BOUNDING_RECT="-1095.8857188571887 -528.75593755937621 527 -1"
+#!   POSITION="-1105.1488692090461 0"
+#!   TOP_LEFT="-1105.1488692090461 0"
+#!   BOTTOM_RIGHT="-578.1488692090461 1"
+#!   BOUNDING_RECT="-1105.1488692090461 0 527 -1"
 #!   ORDER="500000000001247"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -140,13 +167,28 @@
 #!   ANCHORED_NODE="11"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="64"
+#!   IDENTIFIER="60"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes data from lookup table&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="740.01170155692239 543.87902390593422"
-#!   TOP_LEFT="740.01170155692239 543.87902390593422"
-#!   BOTTOM_RIGHT="1260.0117015569224 542.87902390593422"
-#!   BOUNDING_RECT="740.01170155692239 543.87902390593422 520 1"
+#!   POSITION="623.57218099733313 456.84938356232874"
+#!   TOP_LEFT="623.57218099733313 456.84938356232874"
+#!   BOTTOM_RIGHT="1143.5721809973331 455.84938356232874"
+#!   BOUNDING_RECT="623.57218099733313 456.84938356232874 520 1"
 #!   ORDER="500000000001286"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="61"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test URL connectivity.  Only successful connections will proceed through the output port&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2805.4790068448629 -63.81152449335292"
+#!   TOP_LEFT="2805.4790068448629 -63.81152449335292"
+#!   BOTTOM_RIGHT="3560.1473334938823 -353.81412451935313"
+#!   BOUNDING_RECT="2805.4790068448629 -63.81152449335292 754.66832664901949 290.00260002600021"
+#!   ORDER="500000000000958"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
@@ -155,103 +197,133 @@
 #!   ANCHORED_NODE="14"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="65"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test URL connectivity.  Only successful connections will proceed through the output port&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="2670.1008493358308 -104.90782586732556"
-#!   TOP_LEFT="2670.1008493358308 -104.90782586732556"
-#!   BOTTOM_RIGHT="3577.1884915717892 -338.03485713763826"
-#!   BOUNDING_RECT="2670.1008493358308 -104.90782586732556 907.08764223595836 233.1270312703127"
-#!   ORDER="500000000000958"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
-#!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="15"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="66"
+#!   IDENTIFIER="62"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests for error code 400&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="3659.3498851461541 -1439.5593152445649"
-#!   TOP_LEFT="3659.3498851461541 -1439.5593152445649"
-#!   BOTTOM_RIGHT="4089.3498851461541 -1438.5593152445649"
-#!   BOUNDING_RECT="3659.3498851461541 -1439.5593152445649 430 -1"
+#!   POSITION="4350 -1110.3966788982966"
+#!   TOP_LEFT="4350 -1110.3966788982966"
+#!   BOTTOM_RIGHT="4780 -1109.3966788982966"
+#!   BOUNDING_RECT="4350 -1110.3966788982966 430 -1"
 #!   ORDER="500000000001271"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
+#!   COLOUR="0.38039215686274508,0.25490196078431371,0.72156862745098038,0.39215686274509803"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="16"
+#!   ANCHORED_NODE="15"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="67"
+#!   IDENTIFIER="63"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tests for other 4xx error codes.  Failed port outputs 5xx error codes by default&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="3503.0983226305298 -1740.8137527889412"
-#!   TOP_LEFT="3503.0983226305298 -1740.8137527889412"
-#!   BOTTOM_RIGHT="3933.0983226305298 -1739.8137527889412"
-#!   BOUNDING_RECT="3503.0983226305298 -1740.8137527889412 430 -1"
+#!   POSITION="4050 -2100"
+#!   TOP_LEFT="4050 -2100"
+#!   BOTTOM_RIGHT="4790.6190637248837 -2330.0020000200002"
+#!   BOUNDING_RECT="4050 -2100 740.61906372488363 230.00200002000017"
 #!   ORDER="500000000001272"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
-#!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="18"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="68"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Logs 400 error code&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="5023.5180409683626 -1060.1870431770676"
-#!   TOP_LEFT="5023.5180409683626 -1060.1870431770676"
-#!   BOTTOM_RIGHT="5495.5180409683626 -1059.1870431770676"
-#!   BOUNDING_RECT="5023.5180409683626 -1060.1870431770676 472 -1"
-#!   ORDER="500000000001273"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
+#!   COLOUR="0.38039215686274508,0.25490196078431371,0.72156862745098038,0.39215686274509803"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="17"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="71"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Logs 4xx error code&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="5023.5180409683626 -2079.1929715811289"
-#!   TOP_LEFT="5023.5180409683626 -2079.1929715811289"
-#!   BOTTOM_RIGHT="5495.5180409683626 -2078.1929715811289"
-#!   BOUNDING_RECT="5023.5180409683626 -2079.1929715811289 472 -1"
-#!   ORDER="500000000001278"
+#!   IDENTIFIER="64"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Logs 400 error code&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5055.62583973442 -1100.41355969493"
+#!   TOP_LEFT="5055.62583973442 -1100.41355969493"
+#!   BOTTOM_RIGHT="5527.62583973442 -1099.41355969493"
+#!   BOUNDING_RECT="5055.62583973442 -1100.41355969493 472 -1"
+#!   ORDER="500000000001273"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
+#!   COLOUR="0.38039215686274508,0.25490196078431371,0.72156862745098038,0.39215686274509803"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="19"
+#!   ANCHORED_NODE="16"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="72"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Logs 5xx error code&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="5047.5182909708592 -2507.321752868942"
-#!   TOP_LEFT="5047.5182909708592 -2507.321752868942"
-#!   BOTTOM_RIGHT="5519.5182909708592 -2506.321752868942"
-#!   BOUNDING_RECT="5047.5182909708592 -2507.321752868942 472 -1"
+#!   IDENTIFIER="65"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Logs 4xx error code&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5057.7649587800061 -1575.7632797499641"
+#!   TOP_LEFT="5057.7649587800061 -1575.7632797499641"
+#!   BOTTOM_RIGHT="5529.7649587800061 -1574.7632797499641"
+#!   BOUNDING_RECT="5057.7649587800061 -1575.7632797499641 472 -1"
 #!   ORDER="500000000001278"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.38039215686274508,0.25490196078431371,0.72156862745098038,0.39215686274509803"
 #!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="18"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="66"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Logs 5xx error code&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5054.3676745331877 -2031.2895952870917"
+#!   TOP_LEFT="5054.3676745331877 -2031.2895952870917"
+#!   BOTTOM_RIGHT="5526.3676745331877 -2030.2895952870917"
+#!   BOUNDING_RECT="5054.3676745331877 -2031.2895952870917 472 -1"
+#!   ORDER="500000000001278"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.38039215686274508,0.25490196078431371,0.72156862745098038,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="19"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="67"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test URL connectivity.  Only successful connections will proceed through the output port&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3346.1287148841184 -369.69833526404796"
+#!   TOP_LEFT="3346.1287148841184 -369.69833526404796"
+#!   BOTTOM_RIGHT="4253.2163571200763 -602.82536653436068"
+#!   BOUNDING_RECT="3346.1287148841184 -369.69833526404796 907.08764223595836 233.1270312703127"
+#!   ORDER="500000000000958"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="20"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="68"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Creating URL which contains url to add&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1195.2468991284386 431.16163598365335"
+#!   TOP_LEFT="1195.2468991284386 431.16163598365335"
+#!   BOTTOM_RIGHT="1703.2468991284386 432.16163598365335"
+#!   BOUNDING_RECT="1195.2468991284386 431.16163598365335 508 -1"
+#!   ORDER="500000000001248"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="21"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="69"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Trimming / , if no values in root url&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1767.2636638653144 489.69669042263774"
+#!   TOP_LEFT="1767.2636638653144 489.69669042263774"
+#!   BOTTOM_RIGHT="2221.2636638653144 488.69669042263774"
+#!   BOUNDING_RECT="1767.2636638653144 489.69669042263774 454 1"
+#!   ORDER="500000000001289"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
+#!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="22"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="73"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test URL connectivity.  Only successful connections will proceed through the output port&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="3390.6497080392551 -359.42425992055479"
-#!   TOP_LEFT="3390.6497080392551 -359.42425992055479"
-#!   BOTTOM_RIGHT="4297.7373502752134 -592.55129119086746"
-#!   BOUNDING_RECT="3390.6497080392551 -359.42425992055479 907.08764223595836 233.1270312703127"
-#!   ORDER="500000000000958"
+#!   IDENTIFIER="70"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Creates one additional entry in resources{}.  The new resources is added at the end of the resources{} list. Resource is constructued from the information supplied in the lookup table.  based upon element count and adds required elements from lookup table data.  Concatenate URL to Geoportal Weblink&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4650 61.691662349778767"
+#!   TOP_LEFT="4650 61.691662349778767"
+#!   BOTTOM_RIGHT="5498.1328749166569 -348.31213768822158"
+#!   BOUNDING_RECT="4650 61.691662349778767 848.13287491665687 410.00380003800035"
+#!   ORDER="500000000001248"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
@@ -259,57 +331,12 @@
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="23"
 #! />
-#! <COMMENT
-#!   IDENTIFIER="74"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Creating URL which contains url to add&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="1256.8913511893977 0.92721581642467754"
-#!   TOP_LEFT="1256.8913511893977 0.92721581642467754"
-#!   BOTTOM_RIGHT="1764.8913511893977 1.9272158164246775"
-#!   BOUNDING_RECT="1256.8913511893977 0.92721581642467754 508 -1"
-#!   ORDER="500000000001248"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
-#!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="24"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="75"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Trimming / , if no values in root url&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="1832.3328077074375 321.96489528165927"
-#!   TOP_LEFT="1832.3328077074375 321.96489528165927"
-#!   BOTTOM_RIGHT="2286.3328077074375 320.96489528165927"
-#!   BOUNDING_RECT="1832.3328077074375 321.96489528165927 454 1"
-#!   ORDER="500000000001289"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
-#!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="25"
-#! />
-#! <COMMENT
-#!   IDENTIFIER="80"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Creates additional entry in resources{} list based upon element count and adds required elements from lookup table data.  Concatenate URL to Geoportal Weblink&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="4792.3344886610876 73.031285331359641"
-#!   TOP_LEFT="4792.3344886610876 73.031285331359641"
-#!   BOTTOM_RIGHT="5300.3344886610876 74.031285331359641"
-#!   BOUNDING_RECT="4792.3344886610876 73.031285331359641 508 -1"
-#!   ORDER="500000000001248"
-#!   FOLLOW_ANCHOR="true"
-#!   INFO_NODE="false"
-#!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
-#!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="79"
-#! />
 #! </COMMENTS>
 #! <CONSTANTS>
 #! </CONSTANTS>
 #! <BOOKMARKS>
 #! <BOOKMARK
-#!   IDENTIFIER="76"
+#!   IDENTIFIER="71"
 #!   NAME="New Bookmark"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="-2159.3965939659397 632.81663858874924"
@@ -319,11 +346,11 @@
 #!   BOUNDING_RECT="-2159.3965939659397 632.81663858874924 9496.9699696996977 3110.9664200865641"
 #!   STICKY="true"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
-#!   CONTENTS="71 39 9 33 56 55 75 25 69 14 59 37 61 67 24 83 68 49 16 31 5 11 8 57 65 23 17 41 78 84 70 15 36 12 60 7 81 80 58 18 54 73 6 53 22 64 30 32 62 52 74 79 19 66 43 "
+#!   CONTENTS="48 64 24 39 11 33 28 54 59 19 7 9 60 29 66 21 6 56 50 61 17 49 43 8 68 62 31 65 44 34 5 52 14 42 15 53 35 37 13 57 69 63 36 22 45 12 20 18 30 51 16 55 67 23 70 58 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="77"
+#!   IDENTIFIER="72"
 #!   NAME="Error code handling"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="3368.6029480674338 -1006.4314089655018"
@@ -333,7 +360,7 @@
 #!   BOUNDING_RECT="3368.6029480674338 -1006.4314089655018 4040.6654066540673 1865.6436564365645"
 #!   STICKY="true"
 #!   COLOUR="0.38039215686274508,0.25490196078431371,0.72156862745098038,0.39215686274509803"
-#!   CONTENTS="18 72 43 55 71 54 68 19 17 22 41 16 66 67 "
+#!   CONTENTS="17 65 37 16 19 18 51 63 39 15 66 50 62 64 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -589,8 +616,8 @@
 #!   IDENTIFIER="11"
 #!   TYPE="ListElementCounter"
 #!   VERSION="1"
-#!   POSITION="-1047.5862332104716 -218.75218752187527"
-#!   BOUNDING_RECT="-1047.5862332104716 -218.75218752187527 431 71"
+#!   POSITION="-1050 -300"
+#!   BOUNDING_RECT="-1050 -300 431 71"
 #!   ORDER="500000000001062"
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
@@ -627,8 +654,8 @@
 #!   IDENTIFIER="12"
 #!   TYPE="AttributeExposer"
 #!   VERSION="1"
-#!   POSITION="-1903.146698059998 -218.75218752187527"
-#!   BOUNDING_RECT="-1903.146698059998 -218.75218752187527 431 71"
+#!   POSITION="-1896.2973144976695 -300"
+#!   BOUNDING_RECT="-1896.2973144976695 -300 431 71"
 #!   ORDER="500000000001065"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -659,11 +686,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="14"
+#!   IDENTIFIER="13"
 #!   TYPE="AttributeExposer"
 #!   VERSION="1"
-#!   POSITION="740.01170155692239 -59.072784183575322"
-#!   BOUNDING_RECT="740.01170155692239 -59.072784183575322 454 71"
+#!   POSITION="654.39440702781269 -52.223400621246569"
+#!   BOUNDING_RECT="654.39440702781269 -52.223400621246569 454 71"
 #!   ORDER="500000000001284"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -706,7 +733,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_3"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="15"
+#!   IDENTIFIER="14"
 #!   TYPE="HTTPCaller"
 #!   VERSION="1"
 #!   POSITION="2911.7433679494784 -563.31453771222175"
@@ -831,11 +858,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTTPCaller"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="16"
+#!   IDENTIFIER="15"
 #!   TYPE="Tester"
 #!   VERSION="2"
-#!   POSITION="4330.2313539608413 -1422.3107527589395"
-#!   BOUNDING_RECT="4330.2313539608413 -1422.3107527589395 431 71"
+#!   POSITION="4350 -1350"
+#!   BOUNDING_RECT="4350 -1350 431 71"
 #!   ORDER="500000000001262"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -916,19 +943,21 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_http_status_code&lt;closeparen&gt; = 400"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="17"
+#!   IDENTIFIER="16"
 #!   TYPE="Logger"
 #!   VERSION="4"
-#!   POSITION="5040.4946669846258 -1450.1858465098771"
-#!   BOUNDING_RECT="5040.4946669846258 -1450.1858465098771 431 71"
+#!   POSITION="5100 -1350"
+#!   BOUNDING_RECT="5100 -1350 431 71"
 #!   ORDER="500000000001263"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -983,7 +1012,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="18"
+#!   IDENTIFIER="17"
 #!   TYPE="Tester"
 #!   VERSION="2"
 #!   POSITION="4330.2313539608413 -1853.3148778001914"
@@ -1068,15 +1097,17 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="AND"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_http_status_code&lt;closeparen&gt; &gt; 400&#10;TEST &lt;at&gt;Value&lt;openparen&gt;_http_status_code&lt;closeparen&gt; &lt; 500"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="19"
+#!   IDENTIFIER="18"
 #!   TYPE="Logger"
 #!   VERSION="4"
 #!   POSITION="5040.4946669846258 -1850.1898465498789"
@@ -1135,7 +1166,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="22"
+#!   IDENTIFIER="19"
 #!   TYPE="Logger"
 #!   VERSION="4"
 #!   POSITION="5064.4949169871225 -2278.3186278376916"
@@ -1194,7 +1225,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger_3"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="23"
+#!   IDENTIFIER="20"
 #!   TYPE="HTTPCaller"
 #!   VERSION="1"
 #!   POSITION="3502.0825912232158 -773.77889194111481"
@@ -1321,11 +1352,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTTPCaller_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="24"
+#!   IDENTIFIER="21"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="1256.8913511893977 168.83836401634662"
-#!   BOUNDING_RECT="1256.8913511893977 168.83836401634662 431 71"
+#!   POSITION="1150.7259059733017 150"
+#!   BOUNDING_RECT="1150.7259059733017 150 431 71"
 #!   ORDER="500000000001245"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1376,11 +1407,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_5"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="25"
+#!   IDENTIFIER="22"
 #!   TYPE="AttributeTrimmer"
 #!   VERSION="3"
-#!   POSITION="1832.2919254236149 110.30330957736228"
-#!   BOUNDING_RECT="1832.2919254236149 110.30330957736228 454 71"
+#!   POSITION="1709.0030213016971 150"
+#!   BOUNDING_RECT="1709.0030213016971 150 454 71"
 #!   ORDER="500000000001288"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1428,7 +1459,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeTrimmer"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="79"
+#!   IDENTIFIER="23"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
 #!   POSITION="4792.3344886610876 -623.31453771222175"
@@ -1487,11 +1518,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="69"
+#!   IDENTIFIER="24"
 #!   TYPE="Tester"
 #!   VERSION="2"
-#!   POSITION="2431.1683794804053 228.83836401634662"
-#!   BOUNDING_RECT="2431.1683794804053 228.83836401634662 454 71"
+#!   POSITION="2311.3041671396513 150"
+#!   BOUNDING_RECT="2311.3041671396513 150 454 71"
 #!   ORDER="500000000001290"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1564,15 +1595,17 @@
 #!     <XFORM_ATTR ATTR_NAME="resources_transfer_option_description_language_other_lang" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="resources_xlink_role" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;LowerCase&lt;openparen&gt;$(URL_VALIDATION)&lt;closeparen&gt; = yes"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_3"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="85"
+#!   IDENTIFIER="25"
 #!   TYPE="ATTRIBUTE_UNEXPOSER"
 #!   VERSION="1"
 #!   POSITION="7487.2324065706398 -235.4475599550517"
@@ -1580,7 +1613,7 @@
 #!   ORDER="500000000001291"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="19238"
+#!   LAST_PARM_EDIT="20200"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -1592,8 +1625,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="2"
 #!   NAME="OUTPUT"
-#!   POSITION="8213.1837848316827 -41.718929098188781"
-#!   BOUNDING_RECT="8213.1837848316827 -41.718929098188781 431 71"
+#!   POSITION="8250 -75.052595768188795"
+#!   BOUNDING_RECT="8250 -75.052595768188795 431 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -1602,28 +1635,28 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="3"
 #!   NAME="INPUT"
-#!   POSITION="-2778.1527815278159 -218.75218752187527"
-#!   BOUNDING_RECT="-2778.1527815278159 -218.75218752187527 431 71"
+#!   POSITION="-2850 -396.83616014242341"
+#!   BOUNDING_RECT="-2850 -396.83616014242341 431 71"
 #!   COLLAPSED="true"
 #!   PUBLISHED="true"
 #!   IS_SOURCE="true"
 #!   ATTR_MODE="0"
 #! >
-#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.format" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.name" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.url" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
 #! </SUBDOCUMENT_IO>
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="4"
@@ -1635,26 +1668,26 @@
 #!   IS_SOURCE="true"
 #!   ATTR_MODE="0"
 #! >
-#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.format" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.name" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="resources{}.url" ATTR_VALUE="" />
-#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.email" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="contacts{}.role" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.codespace" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.projection_name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="projectionList{}.version" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_end_date" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.data_collection_start_date" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.format" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_update_cycle" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" ATTR_TYPE="varchar(200)" ATTR_VALUE="" />
 #! </SUBDOCUMENT_IO>
 #! </SUBDOCUMENT_IOS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="28"
+#!   IDENTIFIER="26"
 #!   SOURCE_NODE="3"
 #!   TARGET_NODE="12"
 #!   SOURCE_PORT_DESC="0"
@@ -1662,10 +1695,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="29"
+#!   IDENTIFIER="27"
 #!   SOURCE_NODE="4"
 #!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="0"
@@ -1673,10 +1710,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="30"
+#!   IDENTIFIER="28"
 #!   SOURCE_NODE="5"
 #!   TARGET_NODE="8"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1684,21 +1725,29 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="31"
+#!   IDENTIFIER="29"
 #!   SOURCE_NODE="6"
-#!   TARGET_NODE="14"
+#!   TARGET_NODE="13"
 #!   SOURCE_PORT_DESC="fo 0 MERGED"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="32"
+#!   IDENTIFIER="30"
 #!   SOURCE_NODE="7"
 #!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1706,10 +1755,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="33"
+#!   IDENTIFIER="31"
 #!   SOURCE_NODE="8"
 #!   TARGET_NODE="7"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1717,21 +1770,29 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="86"
+#!   IDENTIFIER="32"
 #!   SOURCE_NODE="10"
-#!   TARGET_NODE="85"
+#!   TARGET_NODE="25"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="36"
+#!   IDENTIFIER="33"
 #!   SOURCE_NODE="11"
 #!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1739,10 +1800,14 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="37"
+#!   IDENTIFIER="34"
 #!   SOURCE_NODE="12"
 #!   TARGET_NODE="11"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1750,65 +1815,104 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="39"
-#!   SOURCE_NODE="14"
-#!   TARGET_NODE="24"
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="21"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="81"
-#!   SOURCE_NODE="15"
-#!   TARGET_NODE="79"
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="23"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="41"
-#!   SOURCE_NODE="16"
-#!   TARGET_NODE="17"
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="16"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="89"
-#!   SOURCE_NODE="17"
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="16"
 #!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 0 LOGGED"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="43"
-#!   SOURCE_NODE="18"
-#!   TARGET_NODE="19"
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="18"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="87"
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 LOGGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
 #!   SOURCE_NODE="19"
 #!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 0 LOGGED"
@@ -1816,87 +1920,104 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="88"
-#!   SOURCE_NODE="22"
-#!   TARGET_NODE="10"
-#!   SOURCE_PORT_DESC="fo 0 LOGGED"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="83"
-#!   SOURCE_NODE="23"
-#!   TARGET_NODE="79"
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="23"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="49"
-#!   SOURCE_NODE="24"
-#!   TARGET_NODE="25"
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="22"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="70"
-#!   SOURCE_NODE="25"
-#!   TARGET_NODE="69"
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="22"
+#!   TARGET_NODE="24"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="78"
-#!   SOURCE_NODE="69"
-#!   TARGET_NODE="15"
-#!   SOURCE_PORT_DESC="fo 0 PASSED"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="82"
-#!   SOURCE_NODE="79"
+#!   IDENTIFIER="46"
+#!   SOURCE_NODE="23"
 #!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="90"
-#!   SOURCE_NODE="85"
+#!   IDENTIFIER="45"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="47"
+#!   SOURCE_NODE="25"
 #!   TARGET_NODE="2"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="52"
+#!   IDENTIFIER="48"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
@@ -1904,65 +2025,89 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="49"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="50"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="51"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="19"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="52"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
 #!   IDENTIFIER="53"
-#!   SOURCE_NODE="15"
+#!   SOURCE_NODE="24"
 #!   TARGET_NODE="23"
-#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   EXTRA_POINTS=""
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS="3945 -58"
 #! />
 #! <FEAT_LINK
 #!   IDENTIFIER="54"
-#!   SOURCE_NODE="16"
-#!   TARGET_NODE="18"
-#!   SOURCE_PORT_DESC="fo 1 FAILED"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="55"
-#!   SOURCE_NODE="18"
-#!   TARGET_NODE="22"
-#!   SOURCE_PORT_DESC="fo 1 FAILED"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="56"
-#!   SOURCE_NODE="23"
-#!   TARGET_NODE="16"
-#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="84"
-#!   SOURCE_NODE="69"
-#!   TARGET_NODE="79"
-#!   SOURCE_PORT_DESC="fo 1 FAILED"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="57"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
@@ -1970,6 +2115,10 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! </FEAT_LINKS>
@@ -1992,13 +2141,13 @@ DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_URL_VALIDATION Yes
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_INPUT1628005715 Input Splitter"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_INPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1628005715 Input Splitter"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_INPUT1631729200 Input Splitter"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1631729200 Input Splitter"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper_58d834d4_f15c_4f56_8ab1_74fc0d0f44b10_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,default_value,default_key,fme_pcre_match,"^fme_$($(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper_58d834d4_f15c_4f56_8ab1_74fc0d0f44b10_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper_a19faba0_24f7_488f_9b7d_147be69df7770_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT { FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,default_value,default_key,fme_pcre_match,"^fme_$($(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper_a19faba0_24f7_488f_9b7d_147be69df7770_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_3    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "<at>Value<openparen>default_key<closeparen>" "SET_TO" "<at>Value<openparen>default_value<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"
 # -------------------------------------------------------------------------
@@ -2021,24 +2170,24 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAM
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_5    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeExposer_3_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "test_url" "SET_TO" "<at>Value<openparen>resources_url<closeparen><solidus>$($(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_WEBLINK_WILDCARD$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_5_OUTPUT"
 # -------------------------------------------------------------------------
-Tcl2 proc $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer_e375bc5a_05f4_446e_b7e6_5cc148c6cdc20_trimmer { trimChars} {    set attrs [split {test_url} {,}];    set trimChars [FME_DecodeText $trimChars];    foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set length [string length $attrVal];       if {$length > 0} {          if {[string length $trimChars] == 0} {             set result [string trimleft $attrVal];         } else {             set result [string trimleft $attrVal $trimChars];         };          if {[string length $result] == 0 && {Yes} == {No}} {              if { {trimleft} == {trimleft}} {                set lastPos [expr $length - 1];                set result [string range $attrVal $lastPos $lastPos ];              } elseif { {trimleft} == {trimright}} {                set result [string range $attrVal 0 0];              } else {                set midPos [expr $length / 2];                set result [string range $attrVal $midPos $midPos];              };          };          FME_SetAttribute $attr $result;       };    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_5_OUTPUT"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer_OUTPUT"      @Tcl2("$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer_e375bc5a_05f4_446e_b7e6_5cc148c6cdc20_trimmer {<solidus>} ")
+Tcl2 proc $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer_5da721ca_bd78_4aff_ad43_cacdcb03ebfc0_trimmer { trimChars} {    set attrs [split {test_url} {,}];    set trimChars [FME_DecodeText $trimChars];    foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set length [string length $attrVal];       if {$length > 0} {          if {[string length $trimChars] == 0} {             set result [string trimleft $attrVal];         } else {             set result [string trimleft $attrVal $trimChars];         };          if {[string length $result] == 0 && {Yes} == {No}} {              if { {trimleft} == {trimleft}} {                set lastPos [expr $length - 1];                set result [string range $attrVal $lastPos $lastPos ];              } elseif { {trimleft} == {trimright}} {                set result [string range $attrVal 0 0];              } else {                set midPos [expr $length / 2];                set result [string range $attrVal $midPos $midPos];              };          };          FME_SetAttribute $attr $result;       };    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_5_OUTPUT"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer_OUTPUT"      @Tcl2("$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer_5da721ca_bd78_4aff_ad43_cacdcb03ebfc0_trimmer {<solidus>} ")
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer_OUTPUT"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen>$($(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_URL_VALIDATION$encode)<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3) = yes ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3_FAILED"
+FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeTrimmer_OUTPUT"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>LowerCase<openparen>$($(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_URL_VALIDATION$encode)<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3)" = yes ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3_FAILED"
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3_PASSED"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>test_url<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller)"    HTTP_METHOD OPTIONS    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS Yes    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_2       INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>test_url<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_2)"    HTTP_METHOD HEAD    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS Yes    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_2_Output"    OUTPUT REJECTED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_2_<REJECTED>"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_2_<REJECTED>"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester) = 400 ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_FAILED"
+FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_2_<REJECTED>"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester)" = 400 ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_FAILED"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_FAILED"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2) > 400 ENCODED TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2) < 500 ENCODED    BOOLEAN_OPERATOR AND    COMPOSITE_TEST_EXPR "<Unused>"    OUTPUT PASSED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_FAILED"
+FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_FAILED"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2)" > 400 ENCODED TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_http_status_code<closeparen>,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2)" < 500 ENCODED    BOOLEAN_OPERATOR AND    COMPOSITE_TEST_EXPR "<Unused>"    OUTPUT PASSED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_FAILED"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_3_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_FAILED"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_3_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME<closeparen>_Logger_3:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Server<space>side<space>error.<space><space>Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.<space><space><space>BC<space>Geoportal<space>Weblink<space>not<space>created.,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_3)","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_3_2458cd04_8cdb_4fc0_934d_06b7eeb4eabd0)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_3_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_FAILED"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_3_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME<closeparen>_Logger_3:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Server<space>side<space>error.<space><space>Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.<space><space><space>BC<space>Geoportal<space>Weblink<space>not<space>created.,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_3)","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_3_e63b60d9_c2e9_4213_898c_d6eff1a25f130)
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME<closeparen>_Logger_2:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Client<space>side<space>error.<space><space>Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.<space><space><space>BC<space>Geoportal<space>Weblink<space>not<space>created.,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2)","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_a9634e14_9461_4e1c_8ca3_f666f9c8c3a10)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_2_PASSED"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME<closeparen>_Logger_2:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Client<space>side<space>error.<space><space>Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.<space><space><space>BC<space>Geoportal<space>Weblink<space>not<space>created.,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2)","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_2_8d801b2d_cedc_42f8_9904_348dd30c94130)
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME<closeparen>_Logger:<space>Error<space>Code<space>400:<space>Bad<space>request<space>by<space>client.<space><space>Verify<space>URL<space>syntax.<space><space>BC<space>Geoportal<space>Weblink<space>not<space>created.","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_1f522c99_00d0_4071_b7f3_46b1430d60090)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME<closeparen>_Logger:<space>Error<space>Code<space>400:<space>Bad<space>request<space>by<space>client.<space><space>Verify<space>URL<space>syntax.<space><space>BC<space>Geoportal<space>Weblink<space>not<space>created.","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Logger_6b7539ce_6cee_4701_b124_db4a2b1d2b8e0)
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_Output"    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_HTTPCaller_2_Output"    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_Tester_3_FAILED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format" "SET_TO" "<at>Value<openparen>resources_format<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.name" "SET_TO" "<at>Value<openparen>resources_name<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.protocol" "SET_TO" "<at>Value<openparen>resources_protocol<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.url" "SET_TO" "<at>Value<openparen>test_url<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format_resourceType_en" "SET_TO" "<at>Value<openparen>resources_format_resourceType_en<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.format_resourceType_fr" "SET_TO" "<at>Value<openparen>resources_format_resourceType_fr<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.transfer_option_description_language" "SET_TO" "<at>Value<openparen>resources_transfer_option_description_language<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.transfer_option_description_language_other_lang" "SET_TO" "<at>Value<openparen>resources_transfer_option_description_language_other_lang<closeparen>" }      ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_element_count_res<closeparen><closecurly>.xlink_role" "SET_TO" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
 # -------------------------------------------------------------------------
@@ -2051,5 +2200,5 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(GEOPORTAL_WEBLINK_ADD
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_OUTPUT1628005715 Output Collector"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_OUTPUT1631729200 Output Collector"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME)_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(GEOPORTAL_WEBLINK_ADDER_WORKSPACE_NAME))}]
