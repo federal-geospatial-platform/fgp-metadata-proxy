@@ -10,12 +10,13 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
  - [Documentation](#Documentation)
  - [Enregistrement entrant et sortant](#Enregistrement-entrant-et-sortant)
  - [Gestion des attributs](#Gestion-des-attributs)
- - [Hardcoding](#Bookmark)
+ - [Hardcoding](#Hardcoding)
  - [Nom du transformer](#Nom-du-transformer)
+ - [Patron de conception](#Patron-de-conception)
+   - [Traitement d'une liste](#Traitement-d'une-liste)
  - [Résillience](#Résillience)
- - [Terminator](#Bookmark-imbriqué)
+ - [Terminator](#Terminator)
  - [Tester ou TestFilter](#Tester-ou-TestFilter)
-
 
 # Création de custom transformer
 
@@ -60,6 +61,24 @@ C'est au développeur d'identifier les situations potentielles de *hardcoding* e
 
 Toujours conserver le nom du *transformer* tel que donné par FME.  Si vous avez plus d'un *transformer* du même type dans votre *workbench* alors ajouter un suffixe numérique (ex pour le *transformer* Tester: Tester, Tester_1, Tester_2, ...).  Conserver le nom du *transformer* original permet d'identifier plus rapidement le type de *transformer* employé.  Si un nom plus représentatif vous semble important alors privilégier une annotation sur le *transformer*. 
 
+
+# Patron de conception
+
+Les patrons de conception décrivent des procédés de conception généraux et permettent en conséquence de capitaliser l'expérience appliquée à la conception de logiciel. Ils ont une influence sur l'architecture logicielle d'un système informatique en accélérant le développement et en assurant un hogénéité du code.
+
+D'une manière analogue à un motif de conception en architecture, le patron de conception décrit les grandes lignes d'une solution, qui peuvent ensuite être modifiées et adaptées en fonction des besoins.
+
+Vous trouverez ci-dessous une liste de patron de conception adaptée au logiciel FME de Safe Software.
+
+[Exemples de patron de conception en FME workbench](../patron_conception)
+
+## Traitement d'une liste
+
+Bien que que logiciel FME soit capable de gérer des listes, il est souvent difficile de manipuler et d'éditer facilement le contenu d'une liste dans FME.  Le patron de conception *Traitement d'une liste* permet d'exploser le contenu d'une liste, d'avoir accès directement aux attributs sans avoir à gérer les index d'une liste et de reconstruire la liste.
+
+La figure ci-dessous décrit le patron de conception *Traitement d'une liste*. 
+
+![img.png](images/img_8.png)
 
 # Résillience
 
