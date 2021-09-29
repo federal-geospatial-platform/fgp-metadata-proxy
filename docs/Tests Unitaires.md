@@ -1,4 +1,4 @@
-# Tests unitaire dans FME
+# Tests unitaires dans FME
 
 - [Mise en contexte](#Mise-en-contexte)
 - [Le fichier de commandes](#Le-fichier-de-commandes)
@@ -6,13 +6,13 @@
 - [Contenu du fichier de commandes](#Contenu-du-fichier-de-commandes)
   - [Changement du répertoire](#Changement-du-répertoire) 
   - [Définition des noms de fichiers relatifs](#Définition-des-noms-de-fichiers-relatifs)
-  - [Copie de fichiers](#Copie de fichiers)
+  - [Copie de fichiers](#Copie-de-fichiers)
   - [Concaténation des codes de retour](#Concaténation-des-codes-de-retour)
     - [Initialisation de la variable contenant les codes de retour](#Initialisation-de-la-variable-contenant-les-codes-de-retour) 
     - [Exécution de FME et capture du code de retour](#Exécution-de-FME-et-capture-du-code-de-retour)
   - [Comparaison du résultat de l'exécution avec l'étalon](#Comparaison-du-résultat-de-l'exécution-avec-l'étalon) 
-    - [Comparaison avec FME](#Comparaison avec FME)
-    - [Comparaison de fichiers ASCII](#Comparaison de fichiers ASCII)
+    - [Comparaison avec FME](#Comparaison-avec-FME)
+    - [Comparaison de fichiers ASCII](#Comparaison-de fichiers-ASCII)
   - [Vérification de la réussite du test unitaire](#Vérification-de-la-réussite-du-test-unitaire) 
 
 ## Mise en contexte
