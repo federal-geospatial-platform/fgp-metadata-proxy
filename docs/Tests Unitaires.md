@@ -1,7 +1,7 @@
 # Tests unitaire dans FME
 
 - [Mise en contexte](#Mise-en-contexte)
-- [Le fichier metrique.bat](#Le-fichier-metriques.bat)
+- [Le fichier metrique.bat](#Le-fichier-de-commandes)
 
 ## Mise en contexte
 
@@ -19,9 +19,9 @@ Pour le logiciel FME de Safe Software les tests unitaires ont pour but de tester
   - Les tests unitaires devraient s'assurer de passer par les différentes intersections de votre programme afin de pouvoir valider les différents scénarios possibles.  Au besoin utiliser plusieurs exécutions de FME pour tester le *custom transformer*;
   - Les tests unitaires doivent utiliser des *lookup table* local et non pas ceux de production car ces derniers ne sont pas *supposer* contenir d'erreurs et sont mis-à-jour régulièrement de manière à réfléter la réalité de la production.
 
-## Le fichier metriques.bat
+## Le fichier de commandes
 
-Les tests unitaires s'effectuent à partir d'un fichier de commandes en lot sur Windows (.bat). Ce fichier doit contenir les commandes nécessaires à l'exécution du programme à tester ainsi que les commandes nécessaires à la vérification du résultat.
+Les tests unitaires s'effectuent à partir d'un fichier de commandes en lot sur Windows (metriques.bat). Ce fichier doit contenir les commandes nécessaires à l'exécution du programme à tester ainsi que les commandes nécessaires à la vérification du résultat.
 
 Les test unitaires se retrouvent dans le répertoire [...FME_files/UNIT_TEST/...](../UNIT_TESTS)
 
