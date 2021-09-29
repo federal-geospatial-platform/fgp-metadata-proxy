@@ -74,7 +74,7 @@ Vous trouverez ci-dessous une liste de patron de conception adaptée au logiciel
 
 ## Traitement d'une liste
 
-Bien que le logiciel FME soit capable de gérer des listes d'attributs, il est souvent difficile de manipuler et d'éditer facilement le contenu d'une liste dans FME.  Le patron de conception *Traitement d'une liste* permet d'exploser le contenu d'une liste, d'avoir accès directement aux attributs (sans avoir à gérer les indices d'une liste) et de reconstruire la liste.
+Bien que le logiciel FME soit capable de gérer des listes d'attributs, il est souvent difficile de manipuler et d'éditer facilement le contenu d'une liste dans FME.  Le patron de conception *Traitement d'une liste* permet d'exploser le contenu d'une liste, d'avoir accès directement aux attributs (sans avoir à gérer les indices d'une liste) et de reconstruire la liste. 
 
 La figure ci-dessous décrit le patron de conception *Traitement d'une liste*. 
 
