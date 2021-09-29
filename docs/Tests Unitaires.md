@@ -3,12 +3,17 @@
 - [Mise en contexte](#Mise-en-contexte)
 - [Le fichier de commandes](#Le-fichier-de-commandes)
   - [Exécution automatique des tests unitaires](#Exécution-automatique-des-tests-unitaires)
-- [Çontenu du fichier de commandes](#Çontenu-du-fichier-de-commandes)
+- [Contenu du fichier de commandes](#Contenu-du-fichier-de-commandes)
   - [Changement du répertoire](#Changement-du-répertoire) 
   - [Définition des noms de fichiers relatifs](#Définition-des-noms-de-fichiers-relatifs)
   - [Copie de fichiers](#Copie de fichiers)
-  - [Concaténation des codes de retour](*Concaténation-des-codes-de-retour)
+  - [Concaténation des codes de retour](#Concaténation-des-codes-de-retour)
     - [Initialisation de la variable contenant les codes de retour](#Initialisation-de-la-variable-contenant-les-codes-de-retour) 
+    - [Exécution de FME et capture du code de retour](#Exécution-de-FME-et-capture-du-code-de-retour)
+  - [Comparaison du résultat de l'exécution avec l'étalon](#Comparaison-du-résultat-de-l'exécution-avec-l'étalon) 
+    - [Comparaison avec FME](#Comparaison avec FME)
+    - [Comparaison de fichiers ASCII](#Comparaison de fichiers ASCII)
+  - [Vérification de la réussite du test unitaire](#Vérification-de-la-réussite-du-test-unitaire) 
 
 ## Mise en contexte
 
@@ -108,8 +113,13 @@ REM ===========================================================================
 REM Initialisation de la variable qui contient le résultat de l'exécution
 REM ===========================================================================
 SET Statut=0
-Exécution de FME et capture du code de retour
+```
+
+#### Exécution de FME et capture du code de retour
+
 La capture du code de retour se fait en ajoutant le contenu de la variable système ERRORLEVEL au contenu de la variable Statut initialisée précédemment.
+
+```DOS
 REM ===========================================================================
 REM Exécuter l'application. On détruit un fichier .LOG qui pourrait exister
 REM avant l'exécution.
@@ -160,11 +170,11 @@ FINDSTR /R "ERREUR.:.La.zone.utm.et.le.m.*ridien.central.n.*est.pas.identique." 
 SET Statut=%Statut%%ERRORLEVEL%
 ```
 
-Comparaison du résultat de l'exécution avec l'étalon
+### Comparaison du résultat de l'exécution avec l'étalon
 
 Une fois l'exécution de l'application terminée, on doit comparer le résultat avec une copie des données attendues.
 
-Comparaison avec FME
+#### Comparaison avec FME
 
 Si la comparaison se fait à l'aide du ChangeDetector, vous exécutez simplement FME en utilisant le .fmw prévu à cet effet. Pour pouvoir utiliser le code de retour, le .fmw qui fait la comparaison doit utiliser le Terminator pour faire échouer le test lorsqu'il y a des différences. De cette façon, le code de retour sera différent de zéro ce qui indiquera un échec.
 
@@ -183,19 +193,26 @@ IF EXIST %FichierLOG2% DEL %FichierLOG2%
 ```
 
 
-Comparaison de fichiers ASCII
+#### Comparaison de fichiers ASCII
 
 Dans certains cas, le résultat de l'exécution de FME peut être un fichier ASCII. Dans ce cas, il est peut-être plus simple d'utiliser les commandes DOS COMP ou FC pour comparer le fichier résultant avec l'étalon. La commande COMP permet de comparer une ou plusieurs paires de fichiers. FC permet de comparer deux fichiers en ne tenant pas compte des différences de fins de lignes (CR, CRLF).
 
+
+##### COMP
+
 ```
-COMP
 REM ===========================================================================
 REM Vérification des valeurs obtenues par rapport à ce qui est attendu
 REM ===========================================================================
+
 Comparer les fichiers
 ECHO N | COMP %rapport% %rapport_attendu% /A
 SET Statut=%Statut%%ERRORLEVEL%
-FC
+```
+
+##### FC
+
+```
 REM ===========================================================================
 REM Vérification des valeurs obtenues par rapport à ce qui est attendu
 REM ===========================================================================
@@ -203,7 +220,7 @@ FC /A /L /N %rapport% %rapport_attendu%
 SET Statut=%Statut%%ERRORLEVEL%
 ```
 
-Vérification de la réussite du test et sortie de la procédure
+### Vérification de la réussite du test unitaire
 
 Pour valider le résultat du test, il suffit de vérifier le contenu de la variable Statut. Par exemple, si le test est composé de deux exécutions de FME plus l'exécution d'un comparateur, l'accumulation des codes de retour en cas de réussite donnera 000. En y ajoutant la valeur 0 de l'initialisation, la variable Statut contiendra donc 0000 lorsque le test est réussi. On peut alors gérer la sortie de la procédure.
 
