@@ -70,7 +70,7 @@ D'une manière analogue à un motif de conception en architecture, le patron de 
 
 Vous trouverez ci-dessous une liste de patron de conception adaptée au logiciel FME de Safe Software.
 
-[Exemples de patron de conception en FME workbench](patron_conception)
+Des exemples FME de patron de conception sont disponibles dans le répertoire [.../doc/patron_conception](patron_conception)
 
 ## Traitement d'une liste
 
