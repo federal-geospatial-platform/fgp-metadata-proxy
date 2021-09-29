@@ -3,6 +3,12 @@
 - [Mise en contexte](#Mise-en-contexte)
 - [Le fichier de commandes](#Le-fichier-de-commandes)
   - [Exécution automatique des tests unitaires](#Exécution-automatique-des-tests-unitaires)
+- [Çontenu du fichier de commandes](#Çontenu-du-fichier-de-commandes)
+  - [Changement du répertoire](#Changement-du-répertoire) 
+  - [Définition des noms de fichiers relatifs](#Définition-des-noms-de-fichiers-relatifs)
+  - [Copie de fichiers](#Copie de fichiers)
+  - [Concaténation des codes de retour](*Concaténation-des-codes-de-retour)
+    - [Initialisation de la variable contenant les codes de retour](#Initialisation-de-la-variable-contenant-les-codes-de-retour) 
 
 ## Mise en contexte
 
@@ -24,7 +30,7 @@ Pour le logiciel FME de Safe Software les tests unitaires ont pour but de tester
 
 Les tests unitaires s'effectuent à partir d'un fichier de commandes en lot sur Windows (metriques.bat). Ce fichier doit contenir les commandes nécessaires à l'exécution du programme à tester ainsi que les commandes nécessaires à la vérification du résultat.
 
-Les test unitaires se retrouvent dans le répertoire [...FME_files/UNIT_TEST/...](../UNIT_TESTS)
+Les test unitaires se retrouvent dans le répertoire [...FME_files/UNIT_TESTS/...](../FME_files/UNIT_TESTS)
 
 ### Exécution automatique des tests unitaires
 
@@ -35,11 +41,13 @@ Un fichier de commandes en lot (*.bat) a été créé pour exécuter les tests u
   - la procédure doit valider elle-même le résultat de l'exécution des différentes composantes du test;
   - la procédure doit retourner un code de retour 999999 (ERRORLEVEL) lorsque le test a réussi.
 
-Contenu du .bat
+## Contenu du fichier de commandes
 
 Voici les différentes sections que doit contenir le fichier de commandes pour remplir les exigences de l'exécution automatique des tests unitaires.
 
-Changement du répertoire d'exécution pour utilisation des noms de fichiers relatifs et activation des variables locales
+### Changement du répertoire 
+
+Changement du répertoire d'exécution pour utilisation des noms de fichiers relatifs et activation des différentes variables locales
 
 ```DOS
 REM ===========================================================================
@@ -60,7 +68,7 @@ REM ===========================================================================
 SET Repertoire=%~dp0
 PUSHD %Repertoire%\..
 ```
-Définition des noms de fichiers relatifs
+### Définition des noms de fichiers relatifs
 
 ```DOS
 REM ===========================================================================
@@ -77,7 +85,7 @@ SET FichierLOG1=met\met_%NomApp%_EXECUTION.log
 SET FichierLOG2=met\met_%NomApp%_COMPARAISON.log
 ```
 
-Copie de fichiers
+### Copie de fichiers
 
 Il est parfois nécessaire de copier certains fichiers avant le début des tests unitaires . Par exemple, le fichier source contient le contexte initial et le programme est conçu dans le but de modifier celui-ci. Pour conserver le fichier source intact, il faudra copier celui-ci sous un autre nom avant l'exécution du programme.
 
@@ -89,11 +97,11 @@ copy %FichierSOURCE% %FichierRESULTAT%
 ```
 
 
-Concaténation des codes de retour
+### Concaténation des codes de retour
 
 Pour permettre à la procédure de valider elle-même le résultat du test, on accumule le code de retour de l'exécution de chaque étape du test dans une variable. L'exécution d'un programme retourne 0 quand tout s'est bien déroulé. Une autre valeur est retournée lorsqu'un problème survient. De cette façon, la variable contiendra une série de zéros lorsque le test est valide.
 
-Initialisation de la variable contenant les codes de retour
+#### Initialisation de la variable contenant les codes de retour
 
 ```DOS
 REM ===========================================================================
