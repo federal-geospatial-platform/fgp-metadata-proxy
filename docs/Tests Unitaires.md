@@ -26,7 +26,7 @@ Les tests unitaires s'effectuent à partir d'un fichier de commandes en lot sur 
 
 Les test unitaires se retrouvent dans le répertoire [...FME_files/UNIT_TEST/...](../UNIT_TESTS)
 
-###Exécution automatique des tests unitaires
+### Exécution automatique des tests unitaires
 
 Un fichier de commandes en lot (*.bat) a été créé pour exécuter les tests unitaires sans intervention humaine Pour tous les *Custom Transformer*. Pour que ce fichier de commandes puisse utiliser un test unitaire, le .bat à exécuter doit rencontrer les exigences suivantes :
 
