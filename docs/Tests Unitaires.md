@@ -2,7 +2,7 @@
 
 - [Mise en contexte](#Mise-en-contexte)
 - [Le fichier de commandes](#Le-fichier-de-commandes)
-- [Exécution automatique des tests unitaires](#Exécution-automatique-des-tests-unitaires)
+  - [Exécution automatique des tests unitaires](#Exécution-automatique-des-tests-unitaires)
 
 ## Mise en contexte
 
