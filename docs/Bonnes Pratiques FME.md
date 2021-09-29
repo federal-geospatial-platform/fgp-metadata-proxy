@@ -64,7 +64,7 @@ Toujours conserver le nom du *transformer* tel que donné par FME.  Si vous avez
 
 # Patron de conception
 
-Les patrons de conception décrivent des procédés de conception généraux et permettent en conséquence de capitaliser l'expérience appliquée à la conception de logiciel. Ils ont une influence sur l'architecture logicielle d'un système informatique en accélérant le développement et en assurant un hogénéité du code.
+Les patrons de conception décrivent des procédés de conception généraux et permettent en conséquence de capitaliser l'expérience appliquée à la conception de logiciel. Ils ont une influence sur l'architecture logicielle d'un système informatique en accélérant le développement et en assurant une meilleure homogénéité du code.
 
 D'une manière analogue à un motif de conception en architecture, le patron de conception décrit les grandes lignes d'une solution, qui peuvent ensuite être modifiées et adaptées en fonction des besoins.
 
@@ -74,7 +74,7 @@ Vous trouverez ci-dessous une liste de patron de conception adaptée au logiciel
 
 ## Traitement d'une liste
 
-Bien que que logiciel FME soit capable de gérer des listes, il est souvent difficile de manipuler et d'éditer facilement le contenu d'une liste dans FME.  Le patron de conception *Traitement d'une liste* permet d'exploser le contenu d'une liste, d'avoir accès directement aux attributs sans avoir à gérer les index d'une liste et de reconstruire la liste.
+Bien que le logiciel FME soit capable de gérer des listes d'attributs, il est souvent difficile de manipuler et d'éditer facilement le contenu d'une liste dans FME.  Le patron de conception *Traitement d'une liste* permet d'exploser le contenu d'une liste, d'avoir accès directement aux attributs (sans avoir à gérer les indices d'une liste) et de reconstruire la liste.
 
 La figure ci-dessous décrit le patron de conception *Traitement d'une liste*. 
 
