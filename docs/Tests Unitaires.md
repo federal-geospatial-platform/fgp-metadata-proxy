@@ -12,7 +12,7 @@
     - [Exécution de FME et capture du code de retour](#Exécution-de-FME-et-capture-du-code-de-retour)
   - [Comparaison du résultat de l'exécution avec l'étalon](#Comparaison-du-résultat-de-l'exécution-avec-l'étalon) 
     - [Comparaison avec FME](#Comparaison-avec-FME)
-    - [Comparaison de fichiers ASCII](#Comparaison-de fichiers-ASCII)
+    - [Comparaison de fichiers ASCII](#Comparaison-de-fichiers-ASCII)
   - [Vérification de la réussite du test unitaire](#Vérification-de-la-réussite-du-test-unitaire) 
 
 ## Mise en contexte
