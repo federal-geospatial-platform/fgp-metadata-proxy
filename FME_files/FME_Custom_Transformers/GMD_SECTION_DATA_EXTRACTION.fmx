@@ -1,18 +1,39 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN GMD_SECTION_DATA_EXTRACTION,1,"Federal Geo Platform",09386e3e-f216-489f-8301-55e8e0f2af31,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
-# 
+# TRANSFORMER_BEGIN GMD_SECTION_DATA_EXTRACTION,1,"FGP Tools",61e0aa53-fdcf-4500-a581-5936686f94e7,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
+# p, li { white-space: pre-wrap; }
+# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This transformer copies original lists then removes duplicates from elements where only unique values are required for the dataset.  Duplicate attribute </span><span style=" font-size:10pt; font-style:italic;">format</span><span style=" font-size:10pt;"> are removed. Duplicate projection name are removed. Only the first occurrence of the </span><span style=" font-size:10pt; font-style:italic;">cycle</span><span style=" font-size:10pt;"> and </span><span style=" font-size:10pt; font-style:italic;">cycle_code attributes are kept. Duplicate more_info{}.link are removed</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">INPUT:<span style=" font-weight:400;"> </span><span style=" font-weight:400; text-decoration:none;">Input metadata records to process.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">DATA_OUTPUT: </span><span style=" font-weight:400; text-decoration:none;">The process output metdata records.</span></li></ul>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic; text-decoration:none;">NONE</span></li></ul></body></html>
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
-#!   CATEGORY="Federal Geo Platform"
-#!   DESCRIPTION=""
-#!   DOC_EXTENTS="12739.3 4285.45"
-#!   DOC_TOP_LEFT="-6569.06 -2787.53"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This transformer copies original lists then removes duplicates from elements where only unique values are required for the dataset.  Duplicate attribute &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;format&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; are removed. Duplicate projection name are removed. Only the first occurrence of the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;cycle&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; and &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;cycle_code attributes are kept. Duplicate more_info{}.link are removed&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;INPUT:&lt;span style=&quot; font-weight:400;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;Input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;DATA_OUTPUT: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The process output metdata records.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic; text-decoration:none;&quot;&gt;NONE&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   DOC_EXTENTS="13106.7 3031.28"
+#!   DOC_TOP_LEFT="-6600 -958.343"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   FME_BUILD_NUM="19238"
-#!   FME_DOCUMENT_GUID="09386e3e-f216-489f-8301-55e8e0f2af31"
-#!   FME_DOCUMENT_PRIORGUID="7b574145-ef3e-43f0-a2e4-35c123b1a919,628d4bb3-e767-4a45-9e7e-d9597369a28e,68da0e98-0381-4dbb-8da5-e1dcf7f8ae06"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="61e0aa53-fdcf-4500-a581-5936686f94e7"
+#!   FME_DOCUMENT_PRIORGUID="09386e3e-f216-489f-8301-55e8e0f2af31"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -23,23 +44,24 @@
 #!   FMX_INSERT_MODE="Linked by Default"
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
-#!   LAST_SAVE_DATE="2021-08-02T13:29:15"
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-09-29T09:19:03"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
 #!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="GMD_SECTION_DATA_EXTRACTION"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="1344.95 1131.34"
+#!   VIEW_POSITION="293.272 1846.17"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="79"
+#!   ZOOM_SCALE="52"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -55,12 +77,12 @@
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
-#!   IDENTIFIER="32"
+#!   IDENTIFIER="36"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This section removes list duplicates from projection formats.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-1828.6258604017767 8.367367541168278"
-#!   TOP_LEFT="-1828.6258604017767 8.367367541168278"
-#!   BOTTOM_RIGHT="-1078.6258604017767 -41.632632458831722"
-#!   BOUNDING_RECT="-1828.6258604017767 8.367367541168278 750 50"
+#!   POSITION="-1888.4669231307698 957.69288462115389"
+#!   TOP_LEFT="-1888.4669231307698 957.69288462115389"
+#!   BOTTOM_RIGHT="-1138.4669231307698 907.69288462115389"
+#!   BOUNDING_RECT="-1888.4669231307698 957.69288462115389 750 50"
 #!   ORDER="500000000000877"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -70,12 +92,12 @@
 #!   ANCHORED_NODE="0"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="33"
+#!   IDENTIFIER="37"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This section extracts the first update cycle only from the dataset&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="404.12166151788415 23.562145651135154"
-#!   TOP_LEFT="404.12166151788415 23.562145651135154"
-#!   BOTTOM_RIGHT="1154.1216615178841 -26.437854348864846"
-#!   BOUNDING_RECT="404.12166151788415 23.562145651135154 750 50"
+#!   POSITION="150 900"
+#!   TOP_LEFT="150 900"
+#!   BOTTOM_RIGHT="900 850"
+#!   BOUNDING_RECT="150 900 750 50"
 #!   ORDER="500000000000877"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -85,12 +107,12 @@
 #!   ANCHORED_NODE="0"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="34"
+#!   IDENTIFIER="38"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This section removes list duplicates from distribution formats.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-4119.7493713328286 119.9038017400834"
-#!   TOP_LEFT="-4119.7493713328286 119.9038017400834"
-#!   BOTTOM_RIGHT="-3369.7493713328286 69.903801740083395"
-#!   BOUNDING_RECT="-4119.7493713328286 119.9038017400834 750 50"
+#!   POSITION="-5100 1050"
+#!   TOP_LEFT="-5100 1050"
+#!   BOTTOM_RIGHT="-4350 1000"
+#!   BOUNDING_RECT="-5100 1050 750 50"
 #!   ORDER="500000000000877"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -100,7 +122,7 @@
 #!   ANCHORED_NODE="0"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="35"
+#!   IDENTIFIER="39"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;This section removes list duplicates from additional info URL&apos;s.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="3928.6103687916971 358.3751215472804"
 #!   TOP_LEFT="3928.6103687916971 358.3751215472804"
@@ -115,27 +137,27 @@
 #!   ANCHORED_NODE="0"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="36"
+#!   IDENTIFIER="40"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Exposes list attributes required by this transformer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-5003.6652327307602 1009.7748099326687"
-#!   TOP_LEFT="-5003.6652327307602 1009.7748099326687"
-#!   BOTTOM_RIGHT="-4573.6652327307602 1010.7748099326687"
-#!   BOUNDING_RECT="-5003.6652327307602 1009.7748099326687 430 -1"
+#!   POSITION="-5094.4443888883325 702.78115558933359"
+#!   TOP_LEFT="-5094.4443888883325 702.78115558933359"
+#!   BOTTOM_RIGHT="-4664.4443888883325 703.78115558933359"
+#!   BOUNDING_RECT="-5094.4443888883325 702.78115558933359 430 -1"
 #!   ORDER="500000000000892"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.5725490196078431,0.19607843137254902,0.23529411764705882,0.39215686274509803"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="10"
+#!   ANCHORED_NODE="9"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="37"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;This transformer copies original lists then removes duplicates from elements where only unique values are required for the dataset&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-5078.1757817578182 -437.50437504375066"
-#!   TOP_LEFT="-5078.1757817578182 -437.50437504375066"
-#!   BOTTOM_RIGHT="-4034.4153441534418 -883.13353133531359"
-#!   BOUNDING_RECT="-5078.1757817578182 -437.50437504375066 1043.7604376043764 445.62915629156294"
+#!   IDENTIFIER="41"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;This transformer copies original lists then removes duplicates from elements where only unique values are required for the dataset&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-5057.3422400890686 1800"
+#!   TOP_LEFT="-5057.3422400890686 1800"
+#!   BOTTOM_RIGHT="-4013.5818024846922 1354.370843708437"
+#!   BOUNDING_RECT="-5057.3422400890686 1800 1043.7604376043764 445.62915629156294"
 #!   ORDER="500000000000893"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -145,40 +167,145 @@
 #!   ANCHORED_NODE="0"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="38"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="4880.0179301793005 812.57797843291382"
-#!   TOP_LEFT="4880.0179301793005 812.57797843291382"
-#!   BOTTOM_RIGHT="5421.0179301793005 811.57797843291382"
-#!   BOUNDING_RECT="4880.0179301793005 812.57797843291382 541 1"
+#!   IDENTIFIER="42"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Cleanup&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4877.385769242308 873.82789093203928"
+#!   TOP_LEFT="4877.385769242308 873.82789093203928"
+#!   BOTTOM_RIGHT="5228.1893780476285 763.82709092403923"
+#!   BOUNDING_RECT="4877.385769242308 873.82789093203928 350.80360880532044 110.00080000800007"
 #!   ORDER="500000000000903"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.72156862745098038,0.49803921568627452,0.61176470588235299,0.39215686274509803"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="15"
+#!   ANCHORED_NODE="14"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="48"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Copy ressources{} list to projectionList&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1697.1173557889424 602.30786538634607"
+#!   TOP_LEFT="-1697.1173557889424 602.30786538634607"
+#!   BOTTOM_RIGHT="-1266.1173557889424 601.30786538634607"
+#!   BOUNDING_RECT="-1697.1173557889424 602.30786538634607 431 1"
+#!   ORDER="500000000000908"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.7686274509803922,0.11764705882352941,0.74901960784313726,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="49"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Remove duplicate from projectionList{}.projection_name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1050 300"
+#!   TOP_LEFT="-1050 300"
+#!   BOTTOM_RIGHT="-337.50187501875018 144.99874998749988"
+#!   BOUNDING_RECT="-1050 300 712.49812498124982 155.00125001250012"
+#!   ORDER="500000000000909"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.7686274509803922,0.11764705882352941,0.74901960784313726,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="50"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Copy ressources{} list to distributionList&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3841.8451922980762 600"
+#!   TOP_LEFT="-3841.8451922980762 600"
+#!   BOTTOM_RIGHT="-3387.8451922980762 599"
+#!   BOUNDING_RECT="-3841.8451922980762 600 454 1"
+#!   ORDER="500000000000910"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.5725490196078431,0.19607843137254902,0.23529411764705882,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="17"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="51"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Remove duplicate from distributionList{}.format&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-3236.5393269317306 600"
+#!   TOP_LEFT="-3236.5393269317306 600"
+#!   BOTTOM_RIGHT="-2620.2185098774062 439.9986999869999"
+#!   BOUNDING_RECT="-3236.5393269317306 600 616.32081705432438 160.0013000130001"
+#!   ORDER="500000000000911"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.5725490196078431,0.19607843137254902,0.23529411764705882,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="52"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:13pt;&quot;&gt;Copy ressources{} list to updateList&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="150 600"
+#!   TOP_LEFT="150 600"
+#!   BOTTOM_RIGHT="700.50812508125068 414.99844998449987"
+#!   BOUNDING_RECT="150 600 550.50812508125068 185.00155001550013"
+#!   ORDER="500000000000912"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0,0.80000000000000004,0.80000000000000004,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="7"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="53"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Only keep the first occurrence of the updateLiist{0} and some more...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1950 300"
+#!   TOP_LEFT="1950 300"
+#!   BOTTOM_RIGHT="2666.8739425855797 84.998149981499836"
+#!   BOUNDING_RECT="1950 300 716.8739425855797 215.00185001850016"
+#!   ORDER="500000000000913"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0,0.80000000000000004,0.80000000000000004,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="54"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Remove duplicate from more_info{}.link&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4007.1922596149034 900"
+#!   TOP_LEFT="4007.1922596149034 900"
+#!   BOTTOM_RIGHT="4653.8926927730818 692.49822498224989"
+#!   BOUNDING_RECT="4007.1922596149034 900 646.70043315817838 207.50177501775016"
+#!   ORDER="500000000000914"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.80000000000000004,0.80000000000000004,0.39215686274509803,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
 #! />
 #! </COMMENTS>
 #! <CONSTANTS>
 #! </CONSTANTS>
 #! <BOOKMARKS>
 #! <BOOKMARK
-#!   IDENTIFIER="39"
+#!   IDENTIFIER="43"
 #!   NAME="Distribution Formatter"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="-5128.7277578658141 1032.3087723620754"
+#!   TOP_LEFT="-5178.7282578708146 1172.2339445616676"
 #!   ORDER="500000000000885.13"
 #!   PALETTE_COLOR=""
-#!   BOTTOM_RIGHT="-2413.3056136628329 -293.75293752937569"
-#!   BOUNDING_RECT="-5128.7277578658141 1032.3087723620754 2715.4221442029811 1326.0617098914511"
+#!   BOTTOM_RIGHT="-2463.3061136678334 -276.06170989145107"
+#!   BOUNDING_RECT="-5178.7282578708146 1172.2339445616676 2715.4221442029811 1448.2956544531187"
 #!   STICKY="true"
 #!   COLOUR="0.5725490196078431,0.19607843137254902,0.23529411764705882,0.39215686274509803"
-#!   CONTENTS="34 7 46 36 44 10 48 49 45 "
+#!   CONTENTS="40 6 16 32 50 38 9 33 17 51 25 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="40"
+#!   IDENTIFIER="44"
 #!   NAME="Projection Formatter"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="-1931.424605163782 1043.1608378441958"
@@ -188,11 +315,11 @@
 #!   BOUNDING_RECT="-1931.424605163782 1043.1608378441958 1800.2022334578785 1361.9140253760715"
 #!   STICKY="true"
 #!   COLOUR="0.7686274509803922,0.11764705882352941,0.74901960784313726,0.39215686274509803"
-#!   CONTENTS="4 19 32 5 "
+#!   CONTENTS="36 48 5 4 21 49 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="41"
+#!   IDENTIFIER="45"
 #!   NAME="Update Formatter"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="46.875468754687539 1039.6054284522884"
@@ -202,25 +329,25 @@
 #!   BOUNDING_RECT="46.875468754687539 1039.6054284522884 3664.0991409914095 1797.4255066530704"
 #!   STICKY="true"
 #!   COLOUR="0,0.80000000000000004,0.80000000000000004,0.39215686274509803"
-#!   CONTENTS="14 12 11 22 33 26 8 31 28 25 13 27 16 "
+#!   CONTENTS="23 13 29 53 37 15 7 28 27 26 35 12 52 11 10 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="42"
+#!   IDENTIFIER="46"
 #!   NAME="New Bookmark"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="-5290.6779067790667 1497.926411106559"
+#!   TOP_LEFT="-5290.6779067790667 2072.9373960406269"
 #!   ORDER="500000000000885"
 #!   PALETTE_COLOR=""
-#!   BOTTOM_RIGHT="5660.2128521285194 -2787.5278752787522"
-#!   BOUNDING_RECT="-5290.6779067790667 1497.926411106559 10950.890758907586 4285.4542863853112"
+#!   BOTTOM_RIGHT="5903.9051928980825 -958.34291676250086"
+#!   BOUNDING_RECT="-5290.6779067790667 2072.9373960406269 11194.583099677149 3031.2803128031278"
 #!   STICKY="true"
 #!   COLOUR="0.72156862745098038,0.49803921568627452,0.61176470588235299,0.39215686274509803"
-#!   CONTENTS="15 27 39 19 46 26 12 35 23 45 40 22 11 29 43 33 16 37 25 44 38 28 18 9 13 49 47 50 4 48 8 41 7 5 32 14 36 31 10 34 21 "
+#!   CONTENTS="49 25 26 10 22 52 27 14 37 9 30 16 6 24 29 44 35 36 42 48 21 40 39 43 23 53 12 55 17 45 50 11 4 7 28 15 13 38 32 5 51 20 41 33 8 56 54 47 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="43"
+#!   IDENTIFIER="47"
 #!   NAME="More Info URL Formatter"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="3850.7250676085732 1031.7066438974948"
@@ -230,7 +357,7 @@
 #!   BOUNDING_RECT="3850.7250676085732 1031.7066438974948 866.50960473814939 1037.9567063981203"
 #!   STICKY="true"
 #!   COLOUR="0.80000000000000004,0.80000000000000004,0.39215686274509803,0.39215686274509803"
-#!   CONTENTS="35 9 "
+#!   CONTENTS="54 39 8 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -239,8 +366,8 @@
 #!   IDENTIFIER="4"
 #!   TYPE="ListDuplicateRemover"
 #!   VERSION="1"
-#!   POSITION="-1337.0289292795733 251.39736327963794"
-#!   BOUNDING_RECT="-1337.0289292795733 251.39736327963794 481.26669325772946 71"
+#!   POSITION="-971.64066001226479 0"
+#!   BOUNDING_RECT="-971.64066001226479 0 481.26669325772946 71"
 #!   ORDER="500000000000807"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -273,8 +400,8 @@
 #!   IDENTIFIER="5"
 #!   TYPE="ListCopier"
 #!   VERSION="1"
-#!   POSITION="-1367.4485372731217 691.13583843239473"
-#!   BOUNDING_RECT="-1367.4485372731217 691.13583843239473 431 71"
+#!   POSITION="-1713.6058450000455 349.0374519129806"
+#!   BOUNDING_RECT="-1713.6058450000455 349.0374519129806 431 71"
 #!   ORDER="500000000000880"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -305,11 +432,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListCopier"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="7"
+#!   IDENTIFIER="6"
 #!   TYPE="ListDuplicateRemover"
 #!   VERSION="1"
-#!   POSITION="-3376.3312806180124 694.52124739704288"
-#!   BOUNDING_RECT="-3376.3312806180124 694.52124739704288 431 71"
+#!   POSITION="-3150 347.89259251990285"
+#!   BOUNDING_RECT="-3150 347.89259251990285 431 71"
 #!   ORDER="500000000000831"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -334,11 +461,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListDuplicateRemover_3"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="8"
+#!   IDENTIFIER="7"
 #!   TYPE="ListCopier"
 #!   VERSION="1"
-#!   POSITION="322.08959119718088 648.21610543759653"
-#!   BOUNDING_RECT="322.08959119718088 648.21610543759653 431 71"
+#!   POSITION="203.84519229807682 300"
+#!   BOUNDING_RECT="203.84519229807682 300 431 71"
 #!   ORDER="500000000000880"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -374,11 +501,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListCopier_3"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="9"
+#!   IDENTIFIER="8"
 #!   TYPE="ListDuplicateRemover"
 #!   VERSION="1"
-#!   POSITION="4082.8478436260002 678.8272909260387"
-#!   BOUNDING_RECT="4082.8478436260002 678.8272909260387 431 71"
+#!   POSITION="4050 600"
+#!   BOUNDING_RECT="4050 600 430 71"
 #!   ORDER="500000000000890"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -412,11 +539,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListDuplicateRemover"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="10"
+#!   IDENTIFIER="9"
 #!   TYPE="AttributeExposer"
 #!   VERSION="1"
-#!   POSITION="-5003.6652327307602 694.52124739704288"
-#!   BOUNDING_RECT="-5003.6652327307602 694.52124739704288 431 71"
+#!   POSITION="-5100 300"
+#!   BOUNDING_RECT="-5100 300 431 71"
 #!   ORDER="500000000000891"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -436,11 +563,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="11"
+#!   IDENTIFIER="10"
 #!   TYPE="AttributeRemover"
 #!   VERSION="1"
-#!   POSITION="2324.8756737189919 612.28391063517154"
-#!   BOUNDING_RECT="2324.8756737189919 612.28391063517154 454 71"
+#!   POSITION="2100 507.69288462115389"
+#!   BOUNDING_RECT="2100 507.69288462115389 454 71"
 #!   ORDER="500000000000898"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -472,11 +599,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="12"
+#!   IDENTIFIER="11"
 #!   TYPE="UUIDGenerator"
 #!   VERSION="0"
-#!   POSITION="1034.3853438534384 678.8272909260387"
-#!   BOUNDING_RECT="1034.3853438534384 678.8272909260387 454 71"
+#!   POSITION="1050 353.84519229807677"
+#!   BOUNDING_RECT="1050 353.84519229807677 454 71"
 #!   ORDER="500000000000899"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -512,11 +639,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="UUIDGenerator"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="13"
+#!   IDENTIFIER="12"
 #!   TYPE="AttributeKeeper"
 #!   VERSION="3"
-#!   POSITION="1850.018500185002 276.56526565265642"
-#!   BOUNDING_RECT="1850.018500185002 276.56526565265642 454 71"
+#!   POSITION="2100 0"
+#!   BOUNDING_RECT="2100 0 454 71"
 #!   ORDER="500000000000900"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -535,7 +662,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="14"
+#!   IDENTIFIER="13"
 #!   TYPE="FeatureMerger"
 #!   VERSION="18"
 #!   POSITION="3102.1337362996192 331.25331253312527"
@@ -648,11 +775,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="15"
+#!   IDENTIFIER="14"
 #!   TYPE="AttributeRemover"
 #!   VERSION="1"
-#!   POSITION="4918.0179301793005 678.8272909260387"
-#!   BOUNDING_RECT="4918.0179301793005 678.8272909260387 454 71"
+#!   POSITION="4800 702.86599285151942"
+#!   BOUNDING_RECT="4800 702.86599285151942 454 71"
 #!   ORDER="500000000000902"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -686,7 +813,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="16"
+#!   IDENTIFIER="15"
 #!   TYPE="Terminator"
 #!   VERSION="3"
 #!   POSITION="3102.1337362996192 -488.28613286132872"
@@ -702,11 +829,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="45"
+#!   IDENTIFIER="16"
 #!   TYPE="AttributeRemover"
 #!   VERSION="1"
-#!   POSITION="-4488.4158441584423 694.52124739704288"
-#!   BOUNDING_RECT="-4488.4158441584423 694.52124739704288 454 71"
+#!   POSITION="-4500 300"
+#!   BOUNDING_RECT="-4500 300 454 71"
 #!   ORDER="500000000000905"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -727,11 +854,11 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_3"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="44"
+#!   IDENTIFIER="17"
 #!   TYPE="ListCopier"
 #!   VERSION="1"
-#!   POSITION="-3924.0898738101282 695.09157419228404"
-#!   BOUNDING_RECT="-3924.0898738101282 695.09157419228404 454 71"
+#!   POSITION="-3851.9225961490383 300"
+#!   BOUNDING_RECT="-3851.9225961490383 300 454 71"
 #!   ORDER="500000000000906"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -757,15 +884,15 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListCopier_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="47"
+#!   IDENTIFIER="55"
 #!   TYPE="ATTRIBUTE_UNEXPOSER"
 #!   VERSION="1"
-#!   POSITION="5031.6958865791194 276.90150319224711"
-#!   BOUNDING_RECT="5031.6958865791194 276.90150319224711 533.00106825772946 71"
-#!   ORDER="500000000000907"
+#!   POSITION="5250 450"
+#!   BOUNDING_RECT="5250 450 533.00106825772946 71"
+#!   ORDER="500000000000915"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="19238"
+#!   LAST_PARM_EDIT="20200"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -777,8 +904,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="2"
 #!   NAME="OUTPUT"
-#!   POSITION="5739.2026171737371 618.8272909260387"
-#!   BOUNDING_RECT="5739.2026171737371 618.8272909260387 431 71"
+#!   POSITION="6075.7444441304688 300"
+#!   BOUNDING_RECT="6075.7444441304688 300 431 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -787,8 +914,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="3"
 #!   NAME="INPUT"
-#!   POSITION="-6569.0604977476623 825.03725843950667"
-#!   BOUNDING_RECT="-6569.0604977476623 825.03725843950667 431 71"
+#!   POSITION="-6600 300"
+#!   BOUNDING_RECT="-6600 300 431 71"
 #!   COLLAPSED="true"
 #!   PUBLISHED="true"
 #!   IS_SOURCE="true"
@@ -798,29 +925,37 @@
 #! </SUBDOCUMENT_IOS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="17"
+#!   IDENTIFIER="19"
 #!   SOURCE_NODE="3"
-#!   TARGET_NODE="10"
+#!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="0"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="18"
+#!   IDENTIFIER="20"
 #!   SOURCE_NODE="4"
-#!   TARGET_NODE="8"
+#!   TARGET_NODE="7"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="19"
+#!   IDENTIFIER="21"
 #!   SOURCE_NODE="5"
 #!   TARGET_NODE="4"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -828,160 +963,220 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="21"
-#!   SOURCE_NODE="7"
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="6"
 #!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="22"
-#!   SOURCE_NODE="8"
-#!   TARGET_NODE="12"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
 #!   IDENTIFIER="23"
-#!   SOURCE_NODE="9"
-#!   TARGET_NODE="15"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="46"
-#!   SOURCE_NODE="10"
-#!   TARGET_NODE="45"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="25"
-#!   SOURCE_NODE="11"
-#!   TARGET_NODE="14"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="26"
-#!   SOURCE_NODE="12"
+#!   SOURCE_NODE="7"
 #!   TARGET_NODE="11"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
 #!   IDENTIFIER="27"
-#!   SOURCE_NODE="12"
-#!   TARGET_NODE="13"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="12"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="1"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="28"
-#!   SOURCE_NODE="13"
-#!   TARGET_NODE="14"
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="13"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 1 SUPPLIER"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="29"
-#!   SOURCE_NODE="14"
-#!   TARGET_NODE="9"
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="8"
 #!   SOURCE_PORT_DESC="fo 0 MERGED"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="50"
-#!   SOURCE_NODE="15"
-#!   TARGET_NODE="47"
+#!   IDENTIFIER="56"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="55"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="49"
-#!   SOURCE_NODE="44"
-#!   TARGET_NODE="7"
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="17"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="48"
-#!   SOURCE_NODE="45"
-#!   TARGET_NODE="44"
+#!   IDENTIFIER="32"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="51"
-#!   SOURCE_NODE="47"
+#!   IDENTIFIER="57"
+#!   SOURCE_NODE="55"
 #!   TARGET_NODE="2"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="31"
-#!   SOURCE_NODE="14"
-#!   TARGET_NODE="16"
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="15"
 #!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;REJECTED&lt;gt&gt;"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
 #!   EXTRA_POINTS=""
 #! />
 #! </FEAT_LINKS>
@@ -1002,7 +1197,7 @@ FME_PYTHON_VERSION 37
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_INPUT1627925355 Input Splitter"   INPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_INPUT1632921543 Input Splitter"   INPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
 # -------------------------------------------------------------------------
@@ -1024,8 +1219,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator    INPUT  FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_ListCopier_3_OUTPUT"    OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"         "_uuid_update_list" @UUID()
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator OUTPUT Splitter"   INPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator_OUTPUT"   OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_eZWlTMU3aLk="   OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_yRw5M2/GjfU="
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeKeeper_6ae4d9d0_9df5_4f0d_ab54_82670a84515d0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_yRw5M2/GjfU="    OUTPUT { FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,updateList<opencurly>0<closecurly>.resource_update_cycle_code,updateList<opencurly>0<closecurly>.resource_update_cycle_fr,updateList<opencurly>0<closecurly>.resource_update_cycle,_uuid_update_list,fme_pcre_match,"^fme_$($(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeKeeper_6ae4d9d0_9df5_4f0d_ab54_82670a84515d0_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeKeeper_44d93223_e795_45ed_b3b9_719a320283d82_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_1_yRw5M2/GjfU="    OUTPUT { FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,updateList<opencurly>0<closecurly>.resource_update_cycle_code,updateList<opencurly>0<closecurly>.resource_update_cycle_fr,updateList<opencurly>0<closecurly>.resource_update_cycle,_uuid_update_list,fme_pcre_match,"^fme_$($(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeKeeper_44d93223_e795_45ed_b3b9_719a320283d82_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split "updateList<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_UUIDGenerator_OUTPUT_0_eZWlTMU3aLk="    OUTPUT { FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,)        @RemoveAttributes(fme_pcre_match"$($(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
@@ -1053,5 +1248,5 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(GMD_SECTION_DATA_EXTR
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_OUTPUT1627925355 Output Collector"   INPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_OUTPUT1632921543 Output Collector"   INPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME)_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(GMD_SECTION_DATA_EXTRACTION_WORKSPACE_NAME))}]
