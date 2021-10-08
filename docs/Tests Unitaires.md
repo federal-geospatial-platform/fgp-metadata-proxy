@@ -25,11 +25,14 @@ d’une modification de la structure des données.
 
 Pour le logiciel FME de Safe Software les tests unitaires ont pour but de tester les Custom Transformer.  Les spécification suivantes doivent être rencontrés lorsque des tests unitaires sont développées.  Ces spécifications permettent d'augmenter le niveau de confiance dans les tests unitaires et de faciliter l'utilisation de ces tests unitaires.
 
-  - Le tests unitaires devrait minimiser les dépendances et ne devrait jamais contenir de dépendances vers des répertoires situés à l'extérieur du répertoires de tests de métriques.  Cette restriction permet d'isoler le test unitaire et d'éviter que des éléments externes viennent corrompre le test unitaire;
-  - Les messages d'erreurs dans le log doivent être distinct les uns des autres afin de pouvoir les extraire et les valider automatiques à partir du fichier de commandes en lot;
-  - Les tests unitaires devraient être minimaliste afin de pouvoir être exécutés rapidement et être inspecté facilement; 
-  - Les tests unitaires devraient s'assurer de passer par les différentes intersections de votre programme afin de pouvoir valider les différents scénarios possibles.  Au besoin utiliser plusieurs exécutions de FME pour tester le *custom transformer*;
-  - Les tests unitaires doivent utiliser des *lookup table* local et non pas ceux de production car ces derniers ne sont pas *supposer* contenir d'erreurs et sont mis-à-jour régulièrement de manière à réfléter la réalité de la production.
+- Les tests unitaires devraient minimiser les dépendances et ne devrait jamais contenir de dépendances vers des répertoires situés à l'extérieur du répertoires de tests de métriques.  Cette restriction permet d'isoler le test unitaire et d'éviter que des éléments externes viennent corrompre le test unitaire;
+- Les messages d'erreurs dans le log doivent être distinct les uns des autres afin de pouvoir les extraire et les valider automatiquement à partir du fichier de commandes en lot;
+- Les tests unitaires devraient être minimaliste afin de pouvoir être exécutés rapidement et être inspecté facilement; 
+- Les tests unitaires devraient s'assurer de passer par les différentes intersections (*Tester*) de votre programme afin de pouvoir valider les différents scénarios possibles.  Au besoin utiliser plusieurs exécutions de FME pour tester le *custom transformer*;
+- Les tests unitaires doivent utiliser des *lookup table* local et non pas ceux de production car ces derniers ne sont pas *supposer* contenir d'erreurs et sont mis-à-jour régulièrement de manière à réfléter la réalité de la production;
+- Pour les sources à utiliser vous devez vous assurer que le fichier le/les fichiers sources contiennent uniquement les *features* et attributs nécessaires pour tester le *custom transformer*.  Si vous avez beaucoup de *features* sont-il vraiment nécessaires ou sont-ils redondants? Il en va de même pour les attributs, il faut conserver uniquement les attributs qui sont accédés et/ou manipulés par le *custom transformer*, les attributs supplémentaires peuvent vite devenir une source d'erreurs. Pour créer vos sources, les deux stratégies suivantes sont intéressantes: 
+    - Créer un/des fichier de sources (*.ffs) minimalistes spécifiques au besoin des tests unitaires du *custom transformer*;
+    - Dans le programme qui appelle le *custom transformer* utiliser le *transformer: Creator, AttributeCreator*, *Cloner*... pour créer un entrée minimaliste de *feature* et d'attributs  qui permettra de tester votre *custom transformer*.
 
 ## Le fichier de commandes
 

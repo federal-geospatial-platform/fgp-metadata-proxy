@@ -24,7 +24,7 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=GMD_SECTION_DATA_EXTRACTION
-SET fme=%FME2019%
+SET fme=%FME2020%
 
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
