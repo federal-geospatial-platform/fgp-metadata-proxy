@@ -24,7 +24,7 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=METADATA_VALUE_MAPPER_ERROR_MANAGER
-SET fme=%FME2019%
+SET fme=%FME2020%
 
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"

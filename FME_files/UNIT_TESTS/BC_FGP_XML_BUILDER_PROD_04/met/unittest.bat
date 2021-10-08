@@ -24,7 +24,7 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=BC_FGP_XML_BUILDER_PROD_04
-SET fme=%FME2019%
+SET fme=%FME2020%
 
 
 SET UserProfileFmw="%FME_USER_RESOURCE_DIR%\Workspaces\%NomApp%.fmw"

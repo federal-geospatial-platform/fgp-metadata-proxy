@@ -24,7 +24,7 @@ REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
 SET NomApp=REMOVE_BROKEN_URL_WMS_ESRI_REST
-SET fme=%FME2019%
+SET fme=%FME2020%
 
 
 SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
