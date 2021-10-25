@@ -1,0 +1,12 @@
+# Creash with the no_null action
+CSV_COLUMNS:
+  original_value: [trim, lower, no_null, explode]
+  real_value_english: [trim, upper, no_null, explode]
+  real_value_french: [no_null, explode]
+  code_value: [upper, explode]
+#
+CREATE_KEY_VALUE:
+  code_value: original_value
+#
+NO_DUPLICATE:
+  DUP_1: [code_value]
