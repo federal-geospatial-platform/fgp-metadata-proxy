@@ -101,7 +101,7 @@ Les sources Python doivent être placés dans le répertoire '..\fgp-metadata-pr
 
 Finalement, Il faut modifier le PYTHONPATH pour permettre à FME de "retrouver" les sources Python lors de l'exécution.  Dans l'éditeur des variables d'environnement pour votre compte (Edit Environment Variable for your Account) vous devez ajouter le chemin '..\fgp-metadata-proxy\FME_files\python\' à la variable d'environnement PYTHONPATH.  Si la variable d'environnement PYTHONPATH n'existe pas vous devez la créer.
 
-**Note pour discussion Benoit et Nic: on pourrait aussi placer tous les sources san faire de sous répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER.py'**
+**Note pour discussion avec Benoit et Nic: on pourrait aussi placer tous les sources sans faire de sous répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER.py'**
 
 ## Débuggage en python
 
@@ -113,7 +113,7 @@ Pour débugger avec web-pdb vous devez installer le package web-pdb dans l'envir
 
   - fme.exe python -m pip install web-pdb --target C:\Users\\*&lt;user&gt;*\Documents\FME\Plugins\Python
 
-Vous devez placer votre code Python dans l'environnement des répertoires Python (sinon web-pdb ne pourra pas voir le code qui s'exécute)
+Vous devez placer votre code Python dans l'environnement des répertoires Python (sinon web-pdb ne pourra pas voir le code qui s'exécute).
 
 Vous devez écrire la commande suivante dans votre code Python à l'endroit où vous voulez que l'exécution s'arrête:
 
