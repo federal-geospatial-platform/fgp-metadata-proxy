@@ -66,6 +66,10 @@ C'est au développeur d'identifier les situations potentielles de *hardcoding* e
    - [Gestion des sources](#Gestion-des-sources)
    - [Debuggage en Python](#Debuggage-en-python)
 
+# Python 
+
+Cette section décrit les bonnes pratiques relatives à l'utilisation de Python dans FME
+
 ## Installation de packages
 
 Il est possible d'étendre les possibilités de Python dans FME en installant des package supplémentaires.  Par contre, on doit passer par FME pour installer ces packages car dans l'environnement FME les programmes Python sont exécutés par FME.
@@ -80,7 +84,6 @@ Note: La commande précédente installera un package dans l'environnement Python
 
 Se référer à la [documentation FME](https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_Workbench/Workbench/Installing-Python-Packages.htm) pour plus d'information pour installer des package python.
 
-
 ## Packages requis
 
 L'installation des package suivants est requis pour la transformation des métadonnées provinciales et territoriales:
@@ -88,6 +91,15 @@ L'installation des package suivants est requis pour la transformation des métad
   - PyYAML: Pour convertir des fichiers YAML
     - Installation: fme.exe python -m pip install PyYAML --target C:\Users\\*&lt;user&gt;*\Documents\FME\Plugins\Python
 
+## Gestion des sources Python
+
+Il existe deux solutions pour gérer le code source Python dans l'environnement FME.  Premièrement on peut laisser le code source directement dans les différents *PythonCaller*; ou deuxièmement on peut placer le code source python dans un répertoire centralisé visible par FME et y accécer via la commande *import*.  Les deux solutions ne sont pas incompatibles, si la première solution est la plus simple à implanter; la deuxième permet d'utiliser des outils de débuggage mais aussi de centraliser des utilitaires qui peuvent alors être partager entre les différents *PythonCaller*.
+
+Une solution mixte est aussi préconisée, si votre *PythonCaller* contient peu de lignes de codes, il est préconisé de laisser le code source dans les *PythonCaller* alors que si le *PythonCaller* contient beaucoup de lignes de codes alors la solution de placer le code source dans un répertoire centrailisé est préconisée. 
+
+Les sources Python doivent être placés dans le répertoire '..\fgp-metadata-proxy\FME_files\python\' les sources sont alors organisés par répertoire selon le nom du *CustomTransformer* dans lequel le code source se trouve.  Par exemple, le code source Python associé au *Custom Transformer*LOOKUP_TABLE_READER se trouve dans le répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER'.  Les utilitaires doivent être placés à la racine du répertoire des sources Python dans le fichier *utils.py*
+
+Finalement, Il faut modifier le PYTHONPATH pour permettre à FME de "retrouver" les sources Python lors de l'exécution.  Dans l'éditeur des variables d'environnement pour votre compte (Edit Environment Variable for your Account) vous devez ajouter le chemin '..\fgp-metadata-proxy\FME_files\python\' à la variable d'environnement PYTHONPATH.  Si la variable d'environnement PYTHONPATH n'existe pas vous devez la créer.
 
 ## Débuggage en python
 
@@ -116,18 +128,6 @@ Vous devez alors ouvrir une fureteur internet (Chrome ou autre) et taper la comm
 Vous pouvez alors contrôler l'exécution du *PythonCaller* dans Chrome; une fois l'exécution du Python terminée vous pouvez retourner dans l'environnement FME pour visualiser les résultats de l'exécution.
 
 Plus de détails sur web-pdb sont disponibles dans le [répertoire GitHub de web-pdb](https://github.com/romanvm/python-web-pdb)
-
-## Gestion des sources Python
-
-Il existe deux solutions pour gérer le code source Python dans l'environnement FME.  Premièrement on peut laisser le code source directement dans les différents *PythonCaller*; ou deuxièmement on peut placer le code source python dans un répertoire centralisé visible par FME et y accécer via la commande *import*.  Les deux solutions ne sont pas incompatibles, si la première solution est la plus simple à implanter; la deuxième permet d'utiliser des outils de débuggage mais aussi de centraliser des utilitaires qui peuvent alors être partager entre les différents *PythonCaller*.
-
-Une solution mixte est aussi préconisée, si votre *PythonCaller* contient peu de lignes de codes, il est préconisé de laisser le code source dans les *PythonCaller* alors que si le *PythonCaller* contient beaucoup de lignes de codes alors la solution de placer le code source dans un répertoire centrailisé est préconisée. 
-
-Les sources Python doivent être placés dans le répertoire '..\fgp-metadata-proxy\FME_files\python\' les sources sont alors organisés par répertoire selon le nom du *CustomTransformer* dans lequel le code source se trouve.  Par exemple, le code source Python associé au *Custom Transformer*LOOKUP_TABLE_READER se trouve dans le répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER'.  Les utilitaires doivent être placés à la racine du répertoire des sources Python dans le fichier *utils.py*
-
-Finalement, Il faut modifier le PYTHONPATH pour permettre à FME de "retrouver" les sources Python lors de l'exécution.  Dans l'éditeur des variables d'environnement pour votre compte (Edit Environment Variable for your Account) vous devez ajouter le chemin '..\fgp-metadata-proxy\FME_files\python\' à la variable d'environnement PYTHONPATH.  Si la variable d'environnement PYTHONPATH n'existe pas vous devez la créer.
-
-
 
 # Nom du transformer
 
