@@ -11,6 +11,11 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
  - [Enregistrement entrant et sortant](#Enregistrement-entrant-et-sortant)
  - [Gestion des attributs](#Gestion-des-attributs)
  - [Hardcoding](#Hardcoding)
+ - [Python](#Python)
+   - [Installation de Packages](#Installation-de-packages)
+   - [Packages requis](#Packages-requis)
+   - [Gestion des sources Python](#Gestion-des-sources-Python)
+   - [Débuggage en Python](#Debuggage-en-python)
  - [Nom du transformer](#Nom-du-transformer)
  - [Patron de conception](#Patron-de-conception)
    - [Traitement d'une liste](#Traitement-d'une-liste)
@@ -55,6 +60,73 @@ Le traitment des collections d'enregistrements de métadonnées des différentes
 Le *hardcoding* est une pratique de développement logiciel où les données sont directement écrite dans le code.  Cette pratique tend à créer du code moins générique qu'il faut constamment modifier pour l'adapter à de nouvelles situations (ex.: prise en charge de nouvelles provinces).  Le *hardcoding* est à éviter à tout prix.  L'utilisation de fichiers de configuration et de *publish parameters* est encouragée afin d'éviter les problèmes engendrés par le *hardcoding*.
 
 C'est au développeur d'identifier les situations potentielles de *hardcoding* et de choisir la meilleure stratégie d'évitement.
+
+   - [Installation de Packages](#Installation-de-packages)
+   - [Packages requis](#Packages-requis)
+   - [Gestion des sources](#Gestion-des-sources)
+   - [Debuggage en Python](#Debuggage-en-python)
+
+## Installation de packages
+
+Il est possible d'étendre les possibilités de Python dans FME en installant des package supplémentaires.  Par contre, on doit passer par FME pour installer ces packages car dans l'environnement FME les programmes Python sont exécutés par FME.
+
+Pour installer un package Python qui sera accessible par tous les environnement Python (3.5, 3.6, 3.7, 3.8, ...) de FME utiliser la commande suivante (où *&lt;user&gt;* représente votre nom d'usager):
+  - fme.exe python -m pip install *<package_name>* --target C:\Users\\*&lt;user&gt;*\Documents\FME\Plugins\Python
+
+Pour installer un package Python qui sera accessible par un environnement Python spécifique (3.5 ou 3.6 ou 3.7 ou  3.8 ou ...) utiliser la commande suivante:
+  - fme.exe python -m pip install <package_name> --target C:\Users\\*&lt;user&gt;*\Documents\FME\Plugins\Python\python37
+
+Note: La commande précédente installera un package dans l'environnement Python 3.7 uniquement.
+
+Se référer à la [documentation FME](https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_Workbench/Workbench/Installing-Python-Packages.htm) pour plus d'information pour installer des package python.
+
+
+## Packages requis
+
+L'installation des package suivants est requis pour la transformation des métadonnées provinciales et territoriales:
+
+  - PyYAML: Pour convertir des fichiers YAML
+    - Installation: fme.exe python -m pip install PyYAML --target C:\Users\\*&lt;user&gt;*\Documents\FME\Plugins\Python
+
+
+## Débuggage en python
+
+Le débuggage des *PythonCaller* peut vite devenir très laborieux. La seule façon de faire du débuggage étant de placer des commandes *print* dans le code et d'examiner le log produit par FME.
+
+L'outil web-pdb est un outil de débugage minimaliste qui permet de débugger des *PythonCaller* en exécutant le code pas à pas et en examinant les variibles locales et globales.  Cet outil est moins puissant que d'autres outils de debuggage à distance tel que PyCharm, Eclipse ou LiClipse mais il n'y a pas d'autres applications à installer et la configuration est minimaliste.
+
+Pour debugger avec web-pdb vous devez installer le package web-pdb dans l'environnement Python de FME avec la commande suivante:
+
+  - fme.exe python -m pip install web-pdb --target C:\Users\\*&lt;user&gt;*\Documents\FME\Plugins\Python
+
+Vous devez placer votre code Python dans l'environnement des répertoires Python (sinon web-pdb ne pourra pas voir le code qui s'exécute)
+
+Vous devez placer la commande suivante dans votre code Python à l'endroit où vous voulez que l'exécution s'arrête
+
+`import web_pdb; web_pdb.set_trace()`
+
+Finalement, vous exécutez votre workbench FME et lorsque que FME exécute la commande: `import web_pdb; web_pdb.set_trace()`; l'exécution s'arrête et FME affiche le message suivant dans le log:
+
+<span style="color:red">`CRITICAL:root:Web-PDB: starting web-server on L-SHE-A147764:5555...`
+
+Vous devez alors ouvrir une fureteur internet (Chrome ou autre) et taper la commande suivante
+
+`localhost:5555`
+
+Vous pouvez alors contrôler l'exécution du *PythonCaller* dans Chrome; une fois l'exécution du Python terminée vous pouvez retourner dans l'environnement FME pour visualiser les résultats de l'exécution.
+
+Plus de détails sur web-pdb sont disponibles dans le [répertoire GitHub de web-pdb](https://github.com/romanvm/python-web-pdb)
+
+## Gestion des sources Python
+
+Il existe deux solutions pour gérer le code source Python dans l'environnement FME.  Premièrement on peut laisser le code source directement dans les différents *PythonCaller*; ou deuxièmement on peut placer le code source python dans un répertoire centralisé visible par FME et y accécer via la commande *import*.  Les deux solutions ne sont pas incompatibles, si la première solution est la plus simple à implanter; la deuxième permet d'utiliser des outils de débuggage mais aussi de centraliser des utilitaires qui peuvent alors être partager entre les différents *PythonCaller*.
+
+Une solution mixte est aussi préconisée, si votre *PythonCaller* contient peu de lignes de codes, il est préconisé de laisser le code source dans les *PythonCaller* alors que si le *PythonCaller* contient beaucoup de lignes de codes alors la solution de placer le code source dans un répertoire centrailisé est préconisée. 
+
+Les sources Python doivent être placés dans le répertoire '..\fgp-metadata-proxy\FME_files\python\' les sources sont alors organisés par répertoire selon le nom du *CustomTransformer* dans lequel le code source se trouve.  Par exemple, le code source Python associé au *Custom Transformer*LOOKUP_TABLE_READER se trouve dans le répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER'.  Les utilitaires doivent être placés à la racine du répertoire des sources Python dans le fichier *utils.py*
+
+Finalement, Il faut modifier le PYTHONPATH pour permettre à FME de "retrouver" les sources Python lors de l'exécution.  Dans l'éditeur des variables d'environnement pour votre compte (Edit Environment Variable for your Account) vous devez ajouter le chemin '..\fgp-metadata-proxy\FME_files\python\' à la variable d'environnement PYTHONPATH.  Si la variable d'environnement PYTHONPATH n'existe pas vous devez la créer.
+
 
 
 # Nom du transformer
