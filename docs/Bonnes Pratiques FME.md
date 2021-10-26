@@ -15,7 +15,7 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
    - [Installation de Packages](#Installation-de-packages)
    - [Packages requis](#Packages-requis)
    - [Gestion des sources Python](#Gestion-des-sources-Python)
-   - [Débuggage en Python](#Debuggage-en-python)
+   - [Débuggage en Python](#Débuggage-en-python)
  - [Nom du transformer](#Nom-du-transformer)
  - [Patron de conception](#Patron-de-conception)
    - [Traitement d'une liste](#Traitement-d'une-liste)
