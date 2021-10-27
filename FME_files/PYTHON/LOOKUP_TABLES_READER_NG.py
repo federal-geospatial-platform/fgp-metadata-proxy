@@ -1,10 +1,8 @@
 #
 # Ce fichier contientle ccode python appelé le Custom Transformer
-# LOOKUP_TABLE_READER
-#
-#
-#-check_file_present-----------------------------------------------------------
-#
+# LOOKUP_TABLE_READER_NG
+
+
 import fme
 import fmeobjects
 import os
@@ -13,8 +11,12 @@ import traceback
 try:
     import web_pdb
 except:
+    # No problem if the package is not avalaible
     pass
 
+#
+#-check_file_present-----------------------------------------------------------
+#
 def check_file_present(feature):
 # This method checks if a file is present in the shared or the province directory
     
