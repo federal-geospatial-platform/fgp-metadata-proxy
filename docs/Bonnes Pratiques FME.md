@@ -61,11 +61,6 @@ Le *hardcoding* est une pratique de développement logiciel où les données son
 
 C'est au développeur d'identifier les situations potentielles de *hardcoding* et de choisir la meilleure stratégie d'évitement.
 
-   - [Installation de Packages](#Installation-de-packages)
-   - [Packages requis](#Packages-requis)
-   - [Gestion des sources](#Gestion-des-sources)
-   - [Debuggage en Python](#Debuggage-en-python)
-
 # Python 
 
 Cette section décrit les bonnes pratiques relatives à l'utilisation de Python dans FME
