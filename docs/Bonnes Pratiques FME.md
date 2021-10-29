@@ -69,7 +69,7 @@ Cette section décrit les bonnes pratiques relatives à l'utilisation de Python 
 
 Il est possible d'étendre les possibilités de Python dans FME en installant des package supplémentaires.  Par contre, on doit passer par FME pour installer ces packages car dans l'environnement FME les programmes Python sont exécutés par FME.
 
-Pour installer un package Python qui sera accessible par tous les environnement Python (3.5, 3.6, 3.7, 3.8, ...) de FME, utiliser la commande suivante (où *&lt;user&gt;* représente votre nom d'usager):
+Pour installer un package Python qui sera accessible par tous les environnement Python (3.5, 3.6, 3.7, 3.8, ...) de FME, utiliser la commande suivante (où *&lt;user&gt;* représente votre nom d'usager) qui doit être exécutée dans le Command Prompt de Windows (cmd.exe):
   - fme.exe python -m pip install *<package_name>* --target C:\Users\\*&lt;user&gt;*\Documents\FME\Plugins\Python
 
 Pour installer un package Python qui sera accessible par un environnement Python spécifique (3.5 ou 3.6 ou 3.7 ou  3.8 ou ...) utiliser la commande suivante:
