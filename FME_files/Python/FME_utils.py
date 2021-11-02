@@ -29,9 +29,9 @@ def extract_attribute_list(feature, att_name):
 
     if att_name.find("{}") != -1:
         # The attribute to search is a list
-        regex_search = att_name.replace(att_name, regex_list)
+        regex_search = att_name.replace("{}", regex_list)
         for feature_att in feature_atts:
-            list_index = re.findall(regex_list, feature_att)  # Check if attribute name is present
+            list_index = re.findall(regex_search , feature_att)  # Check if attribute name is present
             if len(list_index) == 1:
                 index = re.findall(regex_index, list_index[0])  # Extract the index value
                 if len(index) == 1:
@@ -47,9 +47,5 @@ def extract_attribute_list(feature, att_name):
             if att_name == feature_att:
                 atts.append((None, att_name))
                 break
-        
-    # Warning if nothing is mathed
-    if len(atts) == 0:
-        logger.logMessageString("No attribute extracted: {}".format(att_name), fmeobjects.FME_WARN)
 
     return atts
