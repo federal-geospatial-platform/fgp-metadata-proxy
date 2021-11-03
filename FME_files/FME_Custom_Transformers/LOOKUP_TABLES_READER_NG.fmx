@@ -1,13 +1,13 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN LOOKUP_TABLES_READER_NG,1,"FGP Tools",b36564f4-477f-49cb-8ae9-e2e12f075e70,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# TRANSFORMER_BEGIN LOOKUP_TABLES_READER_NG,1,"FGP Tools",f4dacf0f-5b76-44cd-90f9-67a610908356,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
 # <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 # <html><head><meta name="qrichtext" content="1" /><style type="text/css">
 # p, li { white-space: pre-wrap; }
 # </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
 # <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
 # <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:400; text-decoration:none;">This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See </span></li></ul>
+# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:400; text-decoration:none;">This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.</span></li></ul>
 # <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
 # <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
 # <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
@@ -47,30 +47,35 @@
 # <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">NO_DUPLICATE:</span></p>
 # <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  DUP_1: [code_value]</span></p>
 # <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  DUP_2: [original_value, real_value_english]</span></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">#</span></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">CHECK_DOMAIN</span></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  original_value: [year, yearly]</span></p>
 # <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:10pt; color:#000000;"><br /></p>
 # <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; text-decoration: underline; color:#000000;">Description of the three sections of a YAML file</span></p>
 # <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:10pt; color:#000000;"><br /></p>
-# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &quot;</span><span style=" font-family:'Courier'; font-size:10pt;">CSV_COLUMNS:&quot; </span><span style=" font-size:10pt;">you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a column &quot;:&quot;; followed by the list of actions separated by a comea &quot;,&quot; and enclosed between brackets &quot;[]&quot;.  Here's the list of possible actions:</span></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &quot;</span><span style=" font-family:'Courier'; font-size:10pt;">CSV_COLUMNS:&quot; </span><span style=" font-size:10pt;">you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon &quot;:&quot;; followed by the list of actions separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;.  Here's the list of possible actions:</span></p>
 # <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &quot;   a   test&quot; ==­&gt; &quot;a test&quot;);</li>
 # <li style=" font-size:10pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">lower: Put the column value in lower case;</li>
 # <li style=" font-size:10pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">upper: Put the column value in upper case;</li>
 # <li style=" font-size:10pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">no_null: Check that the column is not empty or null; it terminates execution if not null;</li>
 # <li style=" font-size:10pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">explode: Duplicate the row if the column contains values separated by semicolumn &quot;;&quot;.  The line is exploded by the number of values in the column (ex: &quot;QC;ON;MB&quot;, will duplicate all the content of the line 2 times, the first line will contain &quot;QC&quot;; the second &quot;ON&quot; and the third &quot;MB&quot;.</li></ul>
 # <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
-# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &quot;CREATE_KEY_VALUE:&quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a column &quot;:&quot;; followed by the name of the column containing the value of the attribute;</span></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &quot;CREATE_KEY_VALUE:&quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon &quot;:&quot;; followed by the name of the column containing the value of the attribute;</span></p>
 # <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
-# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns.. Following &quot;NO_DUPLICATE:&quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by column &quot;:&quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. <br /></span></p></body></html>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following &quot;NO_DUPLICATE:&quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon &quot;:&quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. </span></p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following &quot;CHECK_DUPLICATE:&quot; you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon &quot;:&quot;; followed by the domain values separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;. If you want to check for empty value &quot;&quot;, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.</span></p></body></html>
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="FGP Tools"
-#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See &lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;This custom transformer has no Input Port&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;OUTPUT_LOCAL: &lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The content of the lookup table (one record by row in the CSV file)&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;FEATURE_TYPE:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; File name of the lookup table without the .csv extension&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;CSV_PATH:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into &lt;/span&gt;&lt;span style=&quot; font-weight:400; font-style:italic; text-decoration:none;&quot;&gt;CSV_PATH&lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;\shared when it is a lookup table shared between PT and secondly in &lt;/span&gt;&lt;span style=&quot; font-weight:400; font-style:italic; text-decoration:none;&quot;&gt;CSV_PATH&lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;\&lt;/span&gt;&lt;span style=&quot; font-weight:400; font-style:italic; text-decoration:none;&quot;&gt;PT &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;when the lookup table is specific to a PT&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;PT:&lt;/span&gt; Two letter code of the province or territory to process (ex.: ON, QC, AB...)&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;CSV_ENCODING&lt;/span&gt;: Type of encoding of the lookup tale&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline; color:#000000;&quot;&gt;Content of the YAML file &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file.&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;CSV_COLUMNS:&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  original_value: [trim, lower, no_null, explode]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  real_value_english: [trim, upper, no_null, explode]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  real_value_french: [no_null_err, explode]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  code_value: [upper, explode]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;#&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;CREATE_KEY_VALUE:&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  code_value: original_value&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;#&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;NO_DUPLICATE:&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  DUP_1: [code_value]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  DUP_2: [original_value, real_value_english]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#000000;&quot;&gt;Description of the three sections of a YAML file&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt;&quot;&gt;CSV_COLUMNS:&amp;quot; &lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a column &amp;quot;:&amp;quot;; followed by the list of actions separated by a comea &amp;quot;,&amp;quot; and enclosed between brackets &amp;quot;[]&amp;quot;.  Here&apos;s the list of possible actions:&lt;/span&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &amp;quot;   a   test&amp;quot; ==­&amp;gt; &amp;quot;a test&amp;quot;);&lt;/li&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;lower: Put the column value in lower case;&lt;/li&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;upper: Put the column value in upper case;&lt;/li&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;no_null: Check that the column is not empty or null; it terminates execution if not null;&lt;/li&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;explode: Duplicate the row if the column contains values separated by semicolumn &amp;quot;;&amp;quot;.  The line is exploded by the number of values in the column (ex: &amp;quot;QC;ON;MB&amp;quot;, will duplicate all the content of the line 2 times, the first line will contain &amp;quot;QC&amp;quot;; the second &amp;quot;ON&amp;quot; and the third &amp;quot;MB&amp;quot;.&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &amp;quot;CREATE_KEY_VALUE:&amp;quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a column &amp;quot;:&amp;quot;; followed by the name of the column containing the value of the attribute;&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns.. Following &amp;quot;NO_DUPLICATE:&amp;quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by column &amp;quot;:&amp;quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. &lt;br /&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;This custom transformer has no Input Port&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;OUTPUT_LOCAL: &lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The content of the lookup table (one record by row in the CSV file)&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;FEATURE_TYPE:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; File name of the lookup table without the .csv extension&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;CSV_PATH:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into &lt;/span&gt;&lt;span style=&quot; font-weight:400; font-style:italic; text-decoration:none;&quot;&gt;CSV_PATH&lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;\shared when it is a lookup table shared between PT and secondly in &lt;/span&gt;&lt;span style=&quot; font-weight:400; font-style:italic; text-decoration:none;&quot;&gt;CSV_PATH&lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;\&lt;/span&gt;&lt;span style=&quot; font-weight:400; font-style:italic; text-decoration:none;&quot;&gt;PT &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;when the lookup table is specific to a PT&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;PT:&lt;/span&gt; Two letter code of the province or territory to process (ex.: ON, QC, AB...)&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;CSV_ENCODING&lt;/span&gt;: Type of encoding of the lookup tale&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline; color:#000000;&quot;&gt;Content of the YAML file &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file.&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;CSV_COLUMNS:&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  original_value: [trim, lower, no_null, explode]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  real_value_english: [trim, upper, no_null, explode]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  real_value_french: [no_null_err, explode]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  code_value: [upper, explode]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;#&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;CREATE_KEY_VALUE:&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  code_value: original_value&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;#&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;NO_DUPLICATE:&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  DUP_1: [code_value]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  DUP_2: [original_value, real_value_english]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;#&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;CHECK_DOMAIN&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;  original_value: [year, yearly]&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; text-decoration: underline; color:#000000;&quot;&gt;Description of the three sections of a YAML file&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Courier&apos;; font-size:10pt; color:#000000;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Courier&apos;; font-size:10pt;&quot;&gt;CSV_COLUMNS:&amp;quot; &lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon &amp;quot;:&amp;quot;; followed by the list of actions separated by a coma &amp;quot;,&amp;quot; and enclosed between brackets &amp;quot;[]&amp;quot;.  Here&apos;s the list of possible actions:&lt;/span&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &amp;quot;   a   test&amp;quot; ==­&amp;gt; &amp;quot;a test&amp;quot;);&lt;/li&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;lower: Put the column value in lower case;&lt;/li&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;upper: Put the column value in upper case;&lt;/li&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;no_null: Check that the column is not empty or null; it terminates execution if not null;&lt;/li&gt;&#10;&lt;li style=&quot; font-size:10pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;explode: Duplicate the row if the column contains values separated by semicolumn &amp;quot;;&amp;quot;.  The line is exploded by the number of values in the column (ex: &amp;quot;QC;ON;MB&amp;quot;, will duplicate all the content of the line 2 times, the first line will contain &amp;quot;QC&amp;quot;; the second &amp;quot;ON&amp;quot; and the third &amp;quot;MB&amp;quot;.&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &amp;quot;CREATE_KEY_VALUE:&amp;quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon &amp;quot;:&amp;quot;; followed by the name of the column containing the value of the attribute;&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following &amp;quot;NO_DUPLICATE:&amp;quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon &amp;quot;:&amp;quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following &amp;quot;CHECK_DUPLICATE:&amp;quot; you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon &amp;quot;:&amp;quot;; followed by the domain values separated by a coma &amp;quot;,&amp;quot; and enclosed between brackets &amp;quot;[]&amp;quot;. If you want to check for empty value &amp;quot;&amp;quot;, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   DOC_EXTENTS="9775.74 1839.07"
 #!   DOC_TOP_LEFT="-3718.79 -789.07"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="b36564f4-477f-49cb-8ae9-e2e12f075e70"
-#!   FME_DOCUMENT_PRIORGUID="beadd668-dc91-46ec-96c6-d59711aed419,3775d82d-e823-416f-babc-2b7b0f8a0614,4ca13246-1507-49c8-98f1-c22c3d7772bb,2cf26cfa-d7f8-4b87-a51b-4e60e0828bd1,b05afa17-0ab7-491f-b497-06164d11d55f"
+#!   FME_DOCUMENT_GUID="f4dacf0f-5b76-44cd-90f9-67a610908356"
+#!   FME_DOCUMENT_PRIORGUID="b36564f4-477f-49cb-8ae9-e2e12f075e70"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -79,10 +84,10 @@
 #!   FME_SERVER_SERVICES=""
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
 #!   FMX_INSERT_MODE="Linked by Default"
-#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,12&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added,20&lt;solidus&gt;10&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Generic&lt;space&gt;LookUp&lt;space&gt;Tables&lt;space&gt;Reader"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,12&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added,20&lt;solidus&gt;10&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Generic&lt;space&gt;LookUp&lt;space&gt;Tables&lt;space&gt;Reader,02&lt;solidus&gt;11&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Added&lt;space&gt;CHECK_DOMAIN&lt;space&gt;option"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2021-10-27T15:32:18"
+#!   LAST_SAVE_DATE="2021-11-03T16:50:51"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -94,7 +99,7 @@
 #!   TITLE="LOOKUP_TABLES_READER_NG"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-2271.85 1423.63"
+#!   VIEW_POSITION="-2266.89 1433.55"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -134,7 +139,7 @@
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
-#!   IDENTIFIER="85"
+#!   IDENTIFIER="43"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Create attribute from the publish parameters&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-2580.8403890338122 798.87012928461922"
 #!   TOP_LEFT="-2580.8403890338122 798.87012928461922"
@@ -149,7 +154,7 @@
 #!   ANCHORED_NODE="8"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="86"
+#!   IDENTIFIER="44"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Check if the file is present in the pt or shared directory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-1967.3612847239581 854.16770834375006"
 #!   TOP_LEFT="-1967.3612847239581 854.16770834375006"
@@ -164,7 +169,7 @@
 #!   ANCHORED_NODE="7"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="87"
+#!   IDENTIFIER="45"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Expose attribute from the PythonCaller&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-1300.5006250062502 788.19717641620855"
 #!   TOP_LEFT="-1300.5006250062502 788.19717641620855"
@@ -176,10 +181,10 @@
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="38"
+#!   ANCHORED_NODE="17"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="88"
+#!   IDENTIFIER="46"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Check if file exists&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-662.50062500625017 795.97353195754192"
 #!   TOP_LEFT="-662.50062500625017 795.97353195754192"
@@ -194,7 +199,7 @@
 #!   ANCHORED_NODE="4"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="89"
+#!   IDENTIFIER="47"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Read the lookup table file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="201.78623214803565 882.14267856964295"
 #!   TOP_LEFT="201.78623214803565 882.14267856964295"
@@ -209,7 +214,7 @@
 #!   ANCHORED_NODE="6"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="90"
+#!   IDENTIFIER="48"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Read the yaml file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="229.5642877063691 241.17004662110116"
 #!   TOP_LEFT="229.5642877063691 241.17004662110116"
@@ -221,10 +226,10 @@
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="39"
+#!   ANCHORED_NODE="18"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="91"
+#!   IDENTIFIER="49"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Schema information&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="949.49937499374983 730.00065000650011"
 #!   TOP_LEFT="949.49937499374983 730.00065000650011"
@@ -239,7 +244,7 @@
 #!   ANCHORED_NODE="10"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="92"
+#!   IDENTIFIER="50"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;CSV content&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="1057.1393402822914 408.33291666249994"
 #!   TOP_LEFT="1057.1393402822914 408.33291666249994"
@@ -254,7 +259,7 @@
 #!   ANCHORED_NODE="11"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="93"
+#!   IDENTIFIER="51"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;YAML content&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="1039.5832291656247 71.749365892893294"
 #!   TOP_LEFT="1039.5832291656247 71.749365892893294"
@@ -266,10 +271,10 @@
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="40"
+#!   ANCHORED_NODE="19"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="94"
+#!   IDENTIFIER="52"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Unexpose all attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="4800 450"
 #!   TOP_LEFT="4800 450"
@@ -281,10 +286,10 @@
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="41"
+#!   ANCHORED_NODE="20"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="95"
+#!   IDENTIFIER="53"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Validate the content of the YAML file and validate the CSV file againsts the YAML file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="1789.7705554833324 544.5851291846252"
 #!   TOP_LEFT="1789.7705554833324 544.5851291846252"
@@ -299,7 +304,7 @@
 #!   ANCHORED_NODE="9"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="96"
+#!   IDENTIFIER="54"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Remove unecessary attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="3920.3729170625043 516.66818334850018"
 #!   TOP_LEFT="3920.3729170625043 516.66818334850018"
@@ -311,10 +316,10 @@
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="42"
+#!   ANCHORED_NODE="21"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="99"
+#!   IDENTIFIER="55"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test the status of the validation of the YMAL and CSV file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="3094.7304225423213 502.81115466832318"
 #!   TOP_LEFT="3094.7304225423213 502.81115466832318"
@@ -333,7 +338,7 @@
 #! </CONSTANTS>
 #! <BOOKMARKS>
 #! <BOOKMARK
-#!   IDENTIFIER="97"
+#!   IDENTIFIER="56"
 #!   NAME="Read and validate the YAML and loopup table"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="-3718.7871878718784 1050"
@@ -343,7 +348,7 @@
 #!   BOUNDING_RECT="-3718.7871878718784 1050 8375.0837508375007 1839.0703907039069"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="87 98 11 86 90 88 92 50 15 7 99 43 69 80 54 3 47 74 49 73 13 42 85 51 83 96 89 45 8 6 91 95 9 12 46 93 14 75 4 48 16 39 53 10 52 70 40 38 5 "
+#!   CONTENTS="11 33 51 27 30 5 55 48 10 23 4 15 19 41 47 18 16 42 45 38 39 43 54 44 40 53 21 25 31 13 28 49 46 17 34 3 24 7 26 8 22 14 32 6 9 29 50 12 37 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -933,7 +938,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_4"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="38"
+#!   IDENTIFIER="17"
 #!   TYPE="AttributeExposer"
 #!   VERSION="1"
 #!   POSITION="-1262.5006250062502 540.27868056458351"
@@ -960,7 +965,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_1"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="39"
+#!   IDENTIFIER="18"
 #!   TYPE="FeatureReader"
 #!   VERSION="11"
 #!   POSITION="240.37926373513722 98.800679506525739"
@@ -1062,7 +1067,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureReader_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="40"
+#!   IDENTIFIER="19"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
 #!   POSITION="987.49937499374983 -68.668054947981759"
@@ -1087,7 +1092,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="41"
+#!   IDENTIFIER="20"
 #!   TYPE="ATTRIBUTE_UNEXPOSER"
 #!   VERSION="1"
 #!   POSITION="4800 300"
@@ -1103,7 +1108,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="42"
+#!   IDENTIFIER="21"
 #!   TYPE="AttributeRemover"
 #!   VERSION="1"
 #!   POSITION="3920.1780906697954 300"
@@ -1140,7 +1145,7 @@
 #! </SUBDOCUMENT_IOS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="43"
+#!   IDENTIFIER="22"
 #!   SOURCE_NODE="3"
 #!   TARGET_NODE="8"
 #!   SOURCE_PORT_DESC="fo 0 CREATED"
@@ -1155,7 +1160,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="45"
+#!   IDENTIFIER="23"
 #!   SOURCE_NODE="4"
 #!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
@@ -1170,9 +1175,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="46"
+#!   IDENTIFIER="24"
 #!   SOURCE_NODE="4"
-#!   TARGET_NODE="39"
+#!   TARGET_NODE="18"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
 #!   TARGET_PORT_DESC="fi 0 INITIATOR"
 #!   ENABLED="true"
@@ -1185,7 +1190,7 @@
 #!   EXTRA_POINTS="64 457"
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="47"
+#!   IDENTIFIER="25"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 0 &lt;lt&gt;SCHEMA&lt;gt&gt;"
@@ -1200,9 +1205,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="48"
+#!   IDENTIFIER="26"
 #!   SOURCE_NODE="7"
-#!   TARGET_NODE="38"
+#!   TARGET_NODE="17"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -1215,7 +1220,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="49"
+#!   IDENTIFIER="27"
 #!   SOURCE_NODE="8"
 #!   TARGET_NODE="7"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1230,7 +1235,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="50"
+#!   IDENTIFIER="28"
 #!   SOURCE_NODE="9"
 #!   TARGET_NODE="14"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1245,7 +1250,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="51"
+#!   IDENTIFIER="29"
 #!   SOURCE_NODE="10"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1260,7 +1265,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="52"
+#!   IDENTIFIER="30"
 #!   SOURCE_NODE="11"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1275,9 +1280,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="53"
+#!   IDENTIFIER="31"
 #!   SOURCE_NODE="13"
-#!   TARGET_NODE="42"
+#!   TARGET_NODE="21"
 #!   SOURCE_PORT_DESC="fo 0 CSV&lt;lt&gt;space&lt;gt&gt;OK"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -1290,7 +1295,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="54"
+#!   IDENTIFIER="32"
 #!   SOURCE_NODE="14"
 #!   TARGET_NODE="13"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1305,8 +1310,8 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="69"
-#!   SOURCE_NODE="38"
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="17"
 #!   TARGET_NODE="4"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
@@ -1320,8 +1325,8 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="70"
-#!   SOURCE_NODE="40"
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="19"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
@@ -1335,8 +1340,8 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="71"
-#!   SOURCE_NODE="41"
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="20"
 #!   TARGET_NODE="2"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="0"
@@ -1350,9 +1355,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="72"
-#!   SOURCE_NODE="42"
-#!   TARGET_NODE="41"
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="20"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
@@ -1365,7 +1370,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="73"
+#!   IDENTIFIER="37"
 #!   SOURCE_NODE="4"
 #!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="fo 1 FAILED"
@@ -1380,7 +1385,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="74"
+#!   IDENTIFIER="38"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="11"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;OTHER&lt;gt&gt;"
@@ -1395,7 +1400,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="75"
+#!   IDENTIFIER="39"
 #!   SOURCE_NODE="13"
 #!   TARGET_NODE="12"
 #!   SOURCE_PORT_DESC="fo 1 CSV&lt;lt&gt;space&lt;gt&gt;ERROR"
@@ -1410,9 +1415,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="80"
-#!   SOURCE_NODE="39"
-#!   TARGET_NODE="40"
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="19"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;OTHER&lt;gt&gt;"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -1425,7 +1430,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="98"
+#!   IDENTIFIER="41"
 #!   SOURCE_NODE="13"
 #!   TARGET_NODE="15"
 #!   SOURCE_PORT_DESC="fo 2 YAML&lt;lt&gt;space&lt;gt&gt;ERROR"
@@ -1440,7 +1445,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="83"
+#!   IDENTIFIER="42"
 #!   SOURCE_NODE="13"
 #!   TARGET_NODE="16"
 #!   SOURCE_PORT_DESC="fo 3 OTHER"
@@ -1489,7 +1494,7 @@ INCLUDE [ if { {Geometry Object} == {2D Min/Max Box} } {            set comment 
 FACTORY_DEF $($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_XML) CreationFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_XML_Creator    CREATE_AT_END no    OUTPUT FEATURE_TYPE _____CREATED______        @Geometry(FROM_ENCODED_STRING,<lt>?xml<space>version=<quote>1.0<quote><space>encoding=<quote>US_ASCII<quote><space>standalone=<quote>no<quote><space>?<gt><lt>geometry<space>dimension=<quote>2<quote><gt><lt>null<solidus><gt><lt><solidus>geometry<gt>)
 FACTORY_DEF $($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CLASSIC) CreationFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CLASSIC_Creator    $($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_2D3D) $($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_COORDS)    CREATE_AT_END no    OUTPUT FEATURE_TYPE _____CREATED______
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_Cloner    INPUT FEATURE_TYPE _____CREATED______        @Tcl2($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CoordSysRemover)        @CoordSys()    NUMBER_OF_COPIES 1    COPY_NUMBER_ATTRIBUTE "_creation_instance"    OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED"        fme_feature_type $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator
-FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED Brancher -1 43"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED Brancher -1 22"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
 # -------------------------------------------------------------------------
@@ -1581,5 +1586,5 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(LOOKUP_TABLES_READER_
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output1635363138 Output Collector"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output1635972651 Output Collector"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME))}]
