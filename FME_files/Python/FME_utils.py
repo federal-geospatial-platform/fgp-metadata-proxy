@@ -1,5 +1,7 @@
 import re
 import fmeobjects
+import yaml
+import traceback
 
 try:
     import web_pdb
@@ -117,7 +119,22 @@ def repair_attribute_list(feature, att_list_name, default_att_name=[]):
         logger.logMessageString("Not a valid attribute list: {}".format(att_list_name), fmeobjects.FME_WARN)    
             
     return
-            
+
+def load_yaml(yaml_str_document):
+    """ This method loads a YMAL document from a string.
+    
+    :param: str_yaml: String containing a YAML document
+    
+    """
+    
+    try:
+        # Load the YMAL directives into python dictionnaries
+        yaml_document = yaml.safe_load(yaml_str_document)
+    except Exception:
+        traceback.print_exc()
+        raise Exception("Error loading YAML document: \n{}".format(yaml_str_document))
+
+    return yaml_document
         
     
     
