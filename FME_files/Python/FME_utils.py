@@ -120,7 +120,7 @@ def repair_attribute_list(feature, att_list_name, default_att_name=[]):
             
     return
 
-def load_yaml(yaml_str_document):
+def load_yaml_document(yaml_str_document):
     """ This method loads a YMAL document from a string.
     
     :param: str_yaml: String containing a YAML document
