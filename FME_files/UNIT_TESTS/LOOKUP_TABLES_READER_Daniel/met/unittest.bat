@@ -46,8 +46,6 @@ REM Définition de la source
 REM Source 1
 REM Une feature sur laquelle on a défini progress_code=COMPLETED, contact{0}.role=OWNER et contact{0}.role=USER
 
-
-
 REM ============================================================================
 REM ========================== TEST  #1   ======================================
 REM ============================================================================
@@ -79,7 +77,7 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-
+:deux
 REM ============================================================================
 REM ========================== TEST  #2   ======================================
 REM ============================================================================
@@ -226,7 +224,7 @@ IF EXIST %resultat% DEL %resultat%
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-FIND "YAML column name do not match CSV: real_value_english_err" %log%
+FIND "YAML column name in CSV_COLUMNS do not match CSV: real_value_english_err" %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
 
@@ -257,10 +255,37 @@ SET Statut=%Statut%%ERRORLEVEL%
 FIND "YAML action is not known. Column: original_value; Action: lower_err" %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
+REM ============================================================================
+REM ========================== TEST  #8   ======================================
+REM ============================================================================
+REM On test la lecture d'un lookup table avec le YAML associé
+REM Le nom des actions est invalide (inconnu)
+SET test_number=8
+SET etalon=met\etalon_%test_number%.ffs
+SET resultat=met\resultat_%test_number%.ffs
+SET log=met\log_%test_number%.log
+SET log_comp=met\log_comp_%test_number%.log
+SET feature_type=Update_%test_number%
+SET csv_path=.\met
+SET pt=QC
+
+IF EXIST %log% del %log%
+IF EXIST %resultat% DEL %resultat%
+%fme% met\metrique_lookup_table_reader.fmw ^
+--FEATURE_TYPE %feature_type% ^
+--CSV_PATH %csv_path% ^
+--PT %pt% ^
+--OUT_FFS_FILE %resultat% ^
+--LOG_FILE %log% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+FIND "Column: real_value_english: value: ANNUAL: Invalid domain" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
 
 :end
 echo %Statut%
-@IF [%Statut%] EQU [0000000010101010] (
+@IF [%Statut%] EQU [000000001010101010] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999

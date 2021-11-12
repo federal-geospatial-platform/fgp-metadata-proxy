@@ -1,5 +1,13 @@
 import re
 import fmeobjects
+import yaml
+import traceback
+
+try:
+    import web_pdb
+except:
+    # No problem if the package is not avalaible
+    pass
 
 def extract_attribute_list(feature, att_name):
 
@@ -49,3 +57,84 @@ def extract_attribute_list(feature, att_name):
                 break
 
     return atts
+
+def repair_attribute_list(feature, att_list_name, default_att_name=[]):
+
+    """This method repairs a list by creating the missing attribute in a list.
+    
+    For example if the list resources{} contains the following attributes
+      - resources{0}.a
+      - resources{1}.a
+      - resources{1}.b
+      - resources{3}.a
+    This method will create with empty values the following missing attribute:
+      - resources{0}.b
+      - resources{2}.a
+      - resources{2}.b
+      - resources{3}.b
+    
+    :param: feature: FME feature to process
+    :param: att_list_name: Name of the attribute to extract (ex: values{})
+    :parama: default_att_name: ...
+    """
+    
+    att_names = default_att_name
+    max_index = -1
+    regex_list = "\{\d+\}"
+    regex_index = "\d+"
+    logger = fmeobjects.FMELogFile()
+    
+#    web_pdb.set_trace()
+    if att_list_name.find("{}") != -1:    
+        # Extract only the attribute to process
+        attributes = extract_attribute_list(feature, att_list_name)
+        
+        for index, attribute in attributes:
+            if index > max_index:
+                max_index = index  # Set the maximum index number
+                
+            # Build the list of names (after the dot; ex: att{99}.name)
+            att_split = attribute.split(".")
+            att_name = att_split[1]
+            if att_name not in att_names:
+               att_names.append(att_name)  # Update the list
+               
+        # Repair the missing attributes names in the attribute list
+        for index in range(max_index+1):
+            for att_name in att_names:
+                attribute = att_list_name.replace('{}', '{%i}') + '.' + att_name
+                attribute = attribute%index  # Add the index number 
+                if not feature.getAttribute(attribute):
+                    feature.setAttribute(attribute, '')
+                    
+        # Validate reparation
+        attributes = extract_attribute_list(feature, att_list_name)
+        if len(attributes) == (max_index+1) * len(att_names):
+            # Reparation works
+            pass
+        else:
+            logger.logMessageString("Internal error: {}".format(att_list_name), fmeobjects.FME_ERROR)
+                    
+    else:
+        logger.logMessageString("Not a valid attribute list: {}".format(att_list_name), fmeobjects.FME_WARN)    
+            
+    return
+
+def load_yaml_document(yaml_str_document):
+    """ This method loads a YMAL document from a string.
+    
+    :param: str_yaml: String containing a YAML document
+    
+    """
+    
+    try:
+        # Load the YMAL directives into python dictionnaries
+        yaml_document = yaml.safe_load(yaml_str_document)
+    except Exception:
+        traceback.print_exc()
+        raise Exception("Error loading YAML document: \n{}".format(yaml_str_document))
+
+    return yaml_document
+        
+    
+    

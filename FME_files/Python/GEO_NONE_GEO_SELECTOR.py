@@ -67,7 +67,7 @@ class GeoNoneGeoSelector(object):
             # Extract the KEYWORD_SEARCH and SEARCH_ATTRIBUTE (Published parameter)
             keyword_search =  feature.getAttribute(KEYWORD_SEARCH)
             search_atts =  feature.getAttribute(LIST_SEARCH_ATTRIBUTE)
-            lst_search_atts = search_atts.split(",")
+            lst_search_atts = search_atts.split("|")
             
             # Check the ressources{}.format
 #            web_pdb.set_trace()

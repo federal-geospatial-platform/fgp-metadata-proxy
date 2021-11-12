@@ -1,5 +1,5 @@
 #
-# Ce fichier contientle ccode python appelé le Custom Transformer
+# Ce fichier contient le ccode python appelé le Custom Transformer
 # LOOKUP_TABLE_READER_NG
 
 
@@ -8,6 +8,7 @@ import fmeobjects
 import os
 import yaml
 import traceback
+import FME_utils
 try:
     import web_pdb
 except:
@@ -68,11 +69,12 @@ def check_file_present(feature):
 #-LoadValidateYaml-------------------------------------------------------------
 #
 # Constant for the YAML directives
+CHECK_DOMAIN = "CHECK_DOMAIN"
 CREATE_KEY_VALUE = "CREATE_KEY_VALUE"
 CSV_COLUMNS = "CSV_COLUMNS"
 NO_DUPLICATE = "NO_DUPLICATE"
 # List of directives
-LST_DIRECTIVES = [CSV_COLUMNS, CREATE_KEY_VALUE, NO_DUPLICATE]
+LST_DIRECTIVES = [CSV_COLUMNS, CREATE_KEY_VALUE, NO_DUPLICATE, CHECK_DOMAIN]
 
 CSV_ERROR = "_csv_error"  # Name of the FME attribute containing the FME errors
 CSV_DIRECTIVES = "_csv_directives"  # Name of the FME attribute containing the YAML
@@ -119,19 +121,17 @@ class LoadValidateYaml(object):
             self.directive_errors = "Error schema"
             return
     
-        # Load the name of the column from the schema record    
+        # Load the name of the column from the schema feature        
         csv_column_names = []
-        i = 0
-        column_name = self.schema.getAttribute('attribute{%d}.name'%i)
-        while  column_name is not None:
+        lst_attributes = FME_utils.extract_attribute_list(self.schema, 'attribute{}.name')
+        for index, attribute in lst_attributes:
+            column_name = self.schema.getAttribute(attribute)
             csv_column_names.append(column_name)
-            i += 1
-            column_name = self.schema.getAttribute('attribute{%d}.name'%i)
             
         # Validate the content and form of the YAML CSV directives
         lst_directives = dict_directives.keys()
         for directive in lst_directives:
-            if directive not in [CSV_COLUMNS, CREATE_KEY_VALUE, NO_DUPLICATE]:
+            if directive not in LST_DIRECTIVES:
                self.directive_errors += "ERROR`Unknown YMAL directives: " + str(directive) + "\n"
         if self.directive_errors != "":
            # There is an error do not continue
@@ -143,7 +143,7 @@ class LoadValidateYaml(object):
             for column_name, lst_actions in csv_directives.items():
                 if isinstance(lst_actions, list):
                     if column_name not in csv_column_names:
-                        self.directive_errors += "ERROR: YAML column name do not match CSV: {} \n".format(str(column_name))
+                        self.directive_errors += "ERROR: YAML column name in CSV_COLUMNS do not match CSV: {} \n".format(str(column_name))
                     for action in lst_actions:
                         if action not in LST_ACTION:
                             self.directive_errors += "ERROR: YAML action is not known. Column: {}; Action: {} \n".format(str(column_name), str(action))
@@ -177,6 +177,17 @@ class LoadValidateYaml(object):
         else:
             # NO_DUPLICATE is empty: no problem
             pass
+            
+        # Validate the content of the CHECK_DOMAIN section in the YAML
+        csv_directives = dict_directives[CHECK_DOMAIN]
+        if csv_directives is not None:
+            for column_name, lst_domain in csv_directives.items():
+                if isinstance(lst_domain, list):
+                    if column_name not in csv_column_names:
+                        self.directive_errors += "ERROR: YAML column name in CHECK_DOMAIN do not match CSV: {} \n".format(str(column_name))
+                else:
+                    # Must be a list 
+                    self.directive_errors += "ERROR: YAML actions must be a list []. Column: {} \n".format(str(column_name))    
 
         return dict_directives
         
@@ -193,7 +204,7 @@ class LoadValidateYaml(object):
                     key_values.append(column_value)
                 if column_value in dict_no_duplicate.keys():
                     # Duplicate value found
-                    self.directive_errors += "Column: {0}: Duplicate keys \n".format(str(column_names))
+                    self.directive_errors += "Column: {0}: Duplicate keys \n".format(str(column_name))
                 else:
                     dict_no_duplicate[column_value] = "dummy"
 
@@ -204,7 +215,18 @@ class LoadValidateYaml(object):
             for feature in self.features:
                 key = feature.getAttribute(key_column)
                 value = feature.getAttribute(value_column)
-                feature.setAttribute(key, value)      
+                feature.setAttribute(key, value)
+
+    def _process_check_domain(self, dict_check_domain):
+        
+        # Check the domain of the columns
+        for key_column, lst_domains in dict_check_domain.items():
+            for feature in self.features:
+                value = feature.getAttribute(key_column)
+                if value not in lst_domains:
+                    # Domain is not valid
+                    self.directive_errors += "Column: {0}: value: {1}: Invalid domain \n".format(str(key_column), str(value))
+                
     
     def _process_csv_columns(self, dict_csv_columns):
         
@@ -322,6 +344,15 @@ class LoadValidateYaml(object):
                     self._process_no_duplicate(dict_no_duplicate)
                 else:
                     # NO_DUPLICATE is empty: No problem
+                    pass
+                    
+            # Process the CHECK_DOMAIN directives
+            if CHECK_DOMAIN in dict_directives:
+                dict_check_domain = dict_directives[CHECK_DOMAIN]
+                if dict_check_domain is not None:
+                    self._process_check_domain(dict_check_domain)
+                else:
+                    # check_domain is empty: No problem
                     pass
                   
             # Output the features
