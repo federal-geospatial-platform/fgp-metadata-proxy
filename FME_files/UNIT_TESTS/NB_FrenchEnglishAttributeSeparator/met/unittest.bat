@@ -66,7 +66,7 @@ SET att_to_split=attribute_to_split
 
 IF EXIST %log% del %log%
 IF EXIST %resultat% DEL %resultat%
-%fme% met\metrique_FrenchEnglishAttributeSeparator_featureResult.fmw ^
+%fme% met\metrique_NB_FrenchEnglishAttributeSeparator.fmw ^
 --IN_FFS_FILE %source% ^
 --ATTRIBUTE_TO_SPLIT %att_to_split% ^
 --OUT_FFS_FILE %resultat% ^
@@ -100,7 +100,7 @@ SET att_to_split=attribute_to_split
 
 IF EXIST %log% del %log%
 IF EXIST %resultat% DEL %resultat%
-%fme% met\metrique_FrenchEnglishAttributeSeparator_featureResult.fmw ^
+%fme% met\metrique_NB_FrenchEnglishAttributeSeparator.fmw ^
 --IN_FFS_FILE %source% ^
 --ATTRIBUTE_TO_SPLIT %att_to_split% ^
 --OUT_FFS_FILE %resultat% ^
@@ -134,7 +134,7 @@ SET att_to_split=attribute_to_split
 
 IF EXIST %log% del %log%
 IF EXIST %resultat% DEL %resultat%
-%fme% met\metrique_FrenchEnglishAttributeSeparator_errorResult.fmw ^
+%fme% met\metrique_NB_FrenchEnglishAttributeSeparator.fmw ^
 --IN_FFS_FILE %source% ^
 --ATTRIBUTE_TO_SPLIT %att_to_split% ^
 --OUT_FFS_FILE %resultat% ^
@@ -159,7 +159,6 @@ REM On test une lookup table sans attribut 'dataid'
 REM ============================================================================
 
 SET test_number=ERREUR-1
-SET etalon=met\etalon_%test_number%.ffs
 SET lookup=met\lookuptables\%test_number%.csv
 SET resultat=met\resultat_%test_number%.ffs
 set source=met\source_2.ffs
@@ -169,7 +168,7 @@ SET att_to_split=attribute_to_split
 
 IF EXIST %log% del %log%
 IF EXIST %resultat% DEL %resultat%
-%fme% met\metrique_FrenchEnglishAttributeSeparator_featureResult.fmw ^
+%fme% met\metrique_NB_FrenchEnglishAttributeSeparator.fmw ^
 --IN_FFS_FILE %source% ^
 --ATTRIBUTE_TO_SPLIT %att_to_split% ^
 --OUT_FFS_FILE %resultat% ^
@@ -188,7 +187,6 @@ REM On test une lookup table sans attribut 'lang_sep_pos'
 REM ============================================================================
 
 SET test_number=ERREUR-2
-SET etalon=met\etalon_%test_number%.ffs
 SET lookup=met\lookuptables\%test_number%.csv
 SET resultat=met\resultat_%test_number%.ffs
 set source=met\source_2.ffs
@@ -198,7 +196,7 @@ SET att_to_split=attribute_to_split
 
 IF EXIST %log% del %log%
 IF EXIST %resultat% DEL %resultat%
-%fme% met\metrique_FrenchEnglishAttributeSeparator_featureResult.fmw ^
+%fme% met\metrique_NB_FrenchEnglishAttributeSeparator.fmw ^
 --IN_FFS_FILE %source% ^
 --ATTRIBUTE_TO_SPLIT %att_to_split% ^
 --OUT_FFS_FILE %resultat% ^
