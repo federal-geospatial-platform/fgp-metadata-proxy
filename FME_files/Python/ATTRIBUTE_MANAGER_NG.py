@@ -1,7 +1,7 @@
 import fme
 import fmeobjects
 import yaml
-from FME_utils import *
+from FME_utils import FME_utils
 
 
 #Définissons les constantes qui constituent l'ensemble des actions possibles.
@@ -9,6 +9,9 @@ ATTR_NOT_NULL = 'attribute_not_null'
 ATTR_OVERWRITE = 'attribute_overwrite'
 TXT_NOT_NULL = 'text_not_null'
 TXT_OVERWRITE = 'text_overwrite'
+#Définissons le séparateur à utiliser pour identifier une liste dans notre YAML
+LIST_SEPARATOR = '{}'
+REPLACEMENT_LIST_SEPARATOR = '{0}'
 
 # List des actions
 LST_ACTION = [ATTR_NOT_NULL, ATTR_OVERWRITE, TXT_NOT_NULL, TXT_OVERWRITE]
@@ -25,7 +28,7 @@ class FeatureProcessor(object):
     def input(self, feature):
         #Vérification de la valeur de l'attribut _ordre = 1 afin de lire le YAML
         if feature.getAttribute('_order') == 1:
-            self.mapping = load_yaml_document(feature.getAttribute('in_yaml'))
+            self.mapping = FME_utils.load_yaml_document(feature.getAttribute('in_yaml'))
             for key in self.mapping.keys():
                 try:
                     #Validation des actions
@@ -49,27 +52,41 @@ class FeatureProcessor(object):
         #Vérification de la valeur de l'attribut _ordre = 2 afin de process le YAML
         if feature.getAttribute('_order') == 2:
             for key in self.mapping.keys():
+
+                #Définissons un switch pour la variable replace_key:
+                replace_key_switch = False
+                              
+                #Établissons quels attributs de notre YAML sont des listes en vérifiant le séparateur '{}.'
+                sep = key.split(LIST_SEPARATOR)
+                if len(sep) > 1:                  
+                    #Réparation de la liste pour l'attribut en spécifié
+                    repaired_list = FME_utils.repair_attribute_list(feature, sep[0])
+                else:
+                    pass
+                    
+                #Si on confirme que c'est une liste en vérifiant le patron suivant --> LIST_SEPARATOR et qu'elle n'existe pas dans le feature alors on ajoute l'index 0 à la liste pour créer l'attribut
+                if feature.getAttribute(key) is None and key.find(LIST_SEPARATOR) != -1:
+                    replace_key = key.replace(LIST_SEPARATOR, REPLACEMENT_LIST_SEPARATOR)
+                    replace_key_switch = True
+                else:
+                    pass  
+
                 #Extraction du l'action
                 action = self.mapping[key]['action']
                 #Extraction de l'attribut
                 attr = self.mapping[key]['attr2set']
-                #Création d'un dictionnaire d'attribut
-                dict_attr = {key: self.mapping[key]['attr2set']}
-
-#------------------------------------------------------------------------------------------------------------------------                
-#                #Établissons quels attributs sont des listes en vérifiant le séparateur '.'
-#                sep = key.split('.')
-#                if len(sep) > 1:
-#                    #Réparation de la liste pour l'attribut en spécifié
-#                    repaired_list = repair_attribute_list(feature, sep[0], [sep[1]])
-#                    print(repaired_list, 'KARINE')
-#                    print(sep[1])
-#                else:
-#                    pass
-#--------------------------------------------------------------------------------------------------------------------------
-
+                
                 #Ajustons le dictionnaire d'attribut pour lui faire considérer les listes
-                extr_att_list = extract_attribute_list(feature, key)
+                extr_att_list = FME_utils.extract_attribute_list(feature, key)
+
+                #Gérons une liste non présente dans le feature pour lui créer l'indice .{0}
+                if not replace_key_switch:
+                    #Création d'un dictionaire d'attribut
+                    dict_attr = {key: self.mapping[key]['attr2set']}
+                elif replace_key_switch:
+                    #Création d'un dictionaire d'attribut avec la nouvelle clée qui est une liste d'indice 0 --> {0}.
+                    dict_attr = {replace_key: self.mapping[key]['attr2set']}
+                    key = replace_key
                 
                 #Initialisation dictionnaire vide pour y inclure les listes d'attributs
                 dict_attr_updated = {}
@@ -88,9 +105,8 @@ class FeatureProcessor(object):
                 else :
                     #On a une liste de tuple alors on boucle dedans
                     for elem in extr_att_list:
-                        dict_attr_updated.update({elem[1]: dict_attr[key]}) 
-            
-                
+                        dict_attr_updated.update({elem[1]: dict_attr[key]})
+                        
                 #Validation de l'action NOT_NULL
                 if action == ATTR_NOT_NULL or action == TXT_NOT_NULL:
                     #On boucle dans notre dictionnaire ajusté
@@ -98,7 +114,7 @@ class FeatureProcessor(object):
                         #Vérification que l'attribut n'existe pas (important pour les listes d'attribut)
                         if not feature.getAttribute(attr):
                             #On met une valeur associée à un attribut déjà existant
-                            if action == ATTR_NOT_NULL:   
+                            if action == ATTR_NOT_NULL:
                                 feature.setAttribute(attr, feature.getAttribute(dict_attr_updated[attr]))
                             #On met une valeur texte
                             if action == TXT_NOT_NULL:
