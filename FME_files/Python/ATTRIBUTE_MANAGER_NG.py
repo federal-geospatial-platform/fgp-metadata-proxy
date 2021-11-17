@@ -20,12 +20,19 @@ LST_ACTION = [ATTR_NOT_NULL, ATTR_OVERWRITE, TXT_NOT_NULL, TXT_OVERWRITE]
 # When using this class, make sure its name is set as the value of
 # the 'Class or Function to Process Features' transformer parameter
 class FeatureProcessor(object):
+    """Cette classe permet la gestion des attributs.
+    """
 
     def __init__(self):
+        """Traitment spécifique avant le traitement du premier FME feature.
+        """
     
         self.mapping = {}
    
     def input(self, feature):
+        """Traitement de chaque FME festure...
+        """
+        
         #Vérification de la valeur de l'attribut _ordre = 1 afin de lire le YAML
         if feature.getAttribute('_order') == 1:
             self.mapping = FME_utils.load_yaml_document(feature.getAttribute('in_yaml'))
@@ -139,4 +146,7 @@ class FeatureProcessor(object):
             pass
             
     def close(self):
+        """Traitment spécifique lorsque tous les éléments sont traités.  Pas utilisé.
+        """
+        
         pass
