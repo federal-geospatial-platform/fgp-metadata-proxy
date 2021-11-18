@@ -12,11 +12,12 @@ except:
     pass
 
 class CsvGeoSpatialValidation(NamedTuple):
-    """Class containing one row from the CSV GeoSpatialValidation
+    """Class containing one row from the CSV GeoSpatialValidation.
+    
     """
-    fgp_publish: str
-    format: str
-    spatial_type: str
+    fgp_publish: str  #: Flag indicating if the format is published
+    format: str  #: Name of the format
+    spatial_type: str  #: Spatial type for the format
 
 class FME_utils:
 
@@ -36,8 +37,24 @@ class FME_utils:
         seconde value of the list is the index value: None for non list attribute or "1" for 
         essources{1}.name for list attribute.
         
-        :param: feature: FME feature to process
-        :param: att_name: The name of the attribute to extract
+        Parameters
+        ----------
+        feature : FME_Feature
+            The FME_Feature to process.
+        att_name : str
+                The name of the attribute to extract.
+                
+        Returns
+        ------
+        List of Tuple
+           List of Tuple containing the index number and the name of the atrribute
+        
+        Notes
+        -----
+        The FFT is a fast implementation of the discrete Fourier transform:
+
+        .. math:: X(e^{j\omega } ) = x(n)e^{ - j\omega n}
+        
         """
 
         atts = []
@@ -75,7 +92,6 @@ class FME_utils:
 
     @staticmethod
     def repair_attribute_list(feature, att_list_name, default_att_name=[]):
-
         """This method repairs a list by creating the missing attribute in a list.
         
         For example if the list resources{} contains the following attributes
@@ -89,9 +105,20 @@ class FME_utils:
           - resources{2}.b
           - resources{3}.b
         
-        :param: feature: FME feature to process
-        :param: att_list_name: Name of the attribute to extract (ex: values{})
-        :parama: default_att_name: ...
+        Parameters
+        ----------
+        feature : FME_Feature
+            The FME_Feature to process.
+        att_list_name : str
+             Name of FME list attribute
+        default_att_name : List
+             List of attribute names that must be included during the repair (default: [])
+                
+        Returns
+        ------
+        None
+        
+        
         """
         
         att_names = default_att_name
@@ -140,7 +167,20 @@ class FME_utils:
     def load_yaml_document(yaml_str_document):
         """ This method loads a YMAL document from a string.
         
-        :param: str_yaml: String containing a YAML document
+        Parameters
+        ----------
+        yaml_str_document : str
+            String containing the YAML document to read.
+                
+        Returns
+        ------
+        Dictionary
+           YAML dictionary document.
+        
+        Raises
+        ------
+        Exception
+            If the is an error in the YAML document.
         
         """
         
@@ -157,6 +197,20 @@ class FME_utils:
     def create_set_of_word(str_words, separator = " ", lower = True):
         """Create a set of words from a string of words.
         
+        Parameters
+        ----------
+        str_words : str
+            String of words forming a sentence
+        separator: str
+            Character used to seprate words in the sentence (default: whitespace or " ")
+        lower : Bool
+            Flag indicating if the sentence must be lower case (default: True)
+                
+        Returns
+        ------
+        Set
+           Set of words composing the sentence (no duplication).
+           
         """
         
         word_lst = str_words.split(separator)

@@ -1,12 +1,8 @@
-#
-# Ce fichier contient le code python appelé le Custom Transformer
-# GEO_NON_GEO_SELECTOR
-
 import fme
 import fmeobjects
+
 from FME_utils import FME_utils
 from FME_utils import CsvGeoSpatialValidation
-from typing import NamedTuple
 
 try:
     import web_pdb
@@ -54,13 +50,20 @@ NOT_FOUND_ERR_MSG = "_not_found_err_msg"
 FORMAT = "format"
 
 class GeoNoneGeoSelector(object):
+    """This class is used by the custom transfomer GEO_NON_GEO_SELECTOR in a PythonCaller in order 
+    to sort the record between geospatial and none geospatial records. This class is reading 
+    YAML files that contains the directives to sort the records
+    """
+    
     def __init__(self):
+        """Constructor call before any FME features are passed
+        """
     
         self.csv_features ={}
         self.logger = fmeobjects.FMELogFile()
         
     def _load_csv_feature(self, feature):
-        """ Load a feature from the CSV lookup table
+        """ Load the YAML directuves.
         """
         # Load the information from the CSV feature in a dictionary
 #        web_pdb.set_trace()
@@ -71,6 +74,8 @@ class GeoNoneGeoSelector(object):
         self.csv_features[format] = csv_row  # Insert into the CSV dictionnary
     
     def _validate_value_domain(self, value, domain):
+        """Check if a value is in a list and raise an error if not
+        """
     
         if value in domain:
             # Structure valid
@@ -146,6 +151,8 @@ class GeoNoneGeoSelector(object):
         return domain_set
     
     def _output_feature(self, feature, geo, not_found_err):
+        """Output the feature to FME.
+        """
     
         if geo:
             # Output geopspatial feature#
@@ -168,6 +175,8 @@ class GeoNoneGeoSelector(object):
                 self.pyoutput(cloned_feature)
     
     def _process_feature(self, feature):
+        """Process each FME feature
+        """
     
 #        web_pdb.set_trace()
         # Process each entry in the YAML
@@ -235,6 +244,8 @@ class GeoNoneGeoSelector(object):
         return
 
     def input(self,feature):
+        """Input of all FME features.
+        """
             
         order = feature.getAttribute(ORDER)
         if order == 1:
@@ -251,4 +262,7 @@ class GeoNoneGeoSelector(object):
             # Process the feature
     
     def close(self):
+        """Method call when all the festures are passed
+        """
+        
         pass

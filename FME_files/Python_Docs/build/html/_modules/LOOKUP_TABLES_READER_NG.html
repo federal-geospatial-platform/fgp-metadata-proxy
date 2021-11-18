@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOOKUP_TABLES_READER_NG &#8212; fme_python_pt_harvester 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">fme_python_pt_harvester 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">LOOKUP_TABLES_READER_NG</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for LOOKUP_TABLES_READER_NG</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">fme</span>
+<span class="kn">import</span> <span class="nn">fmeobjects</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">from</span> <span class="nn">FME_utils</span> <span class="kn">import</span> <span class="n">FME_utils</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">web_pdb</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># No problem if the package is not avalaible</span>
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="check_file_present"><a class="viewcode-back" href="../LOOKUP_TABLES_READER_NG.html#LOOKUP_TABLES_READER_NG.check_file_present">[docs]</a><span class="k">def</span> <span class="nf">check_file_present</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This method checks if a file is present in the shared or the province directory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<span class="c1">#    web_pdb.set_trace()</span>
+    <span class="c1"># Manage if execution is done locally or on FME Server</span>
+    <span class="k">if</span> <span class="sa">r</span><span class="s1">&#39;fmeserver&#39;</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;_fme_home&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="n">spacer</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;/&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">spacer</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span>
+    
+    <span class="c1"># Extract some attributes</span>
+    <span class="n">csv_path</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;_csv_path&#39;</span><span class="p">)</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;_feature_type&#39;</span><span class="p">)</span>
+    <span class="n">pt</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;_pt&#39;</span><span class="p">)</span>
+    
+    <span class="n">file_error</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    
+    <span class="c1"># Create the root file name for the shared and the province specific file to read</span>
+    <span class="n">root_shared</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s%s%s%s%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">spacer</span><span class="p">,</span> <span class="s1">&#39;SHARED&#39;</span><span class="p">,</span> <span class="n">spacer</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+    <span class="n">root_path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s%s%s%s%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span><span class="n">spacer</span><span class="p">,</span> <span class="n">pt</span><span class="p">,</span> <span class="n">spacer</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+    
+    <span class="c1"># Add the file extension</span>
+    <span class="n">file_shared</span> <span class="o">=</span> <span class="n">root_shared</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">root_path</span> <span class="o">+</span>  <span class="s2">&quot;.csv&quot;</span>
+    <span class="n">yaml_shared</span> <span class="o">=</span> <span class="n">root_shared</span> <span class="o">+</span> <span class="s2">&quot;.yaml&quot;</span>
+    <span class="n">yaml_path</span> <span class="o">=</span> <span class="n">root_path</span> <span class="o">+</span> <span class="s2">&quot;.yaml&quot;</span>
+    
+    <span class="c1"># Check if the file and the yaml are in the province path directory</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">):</span>
+        <span class="n">file2read</span> <span class="o">=</span> <span class="n">file_path</span>
+        <span class="n">yaml2read</span> <span class="o">=</span> <span class="n">yaml_path</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Check if the file and the yaml are present in the shared  </span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_shared</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">yaml_shared</span><span class="p">):</span>
+            <span class="n">file2read</span> <span class="o">=</span> <span class="n">file_shared</span>
+            <span class="n">yaml2read</span> <span class="o">=</span> <span class="n">yaml_shared</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Set error</span>
+            <span class="n">file_error</span> <span class="o">=</span> <span class="s2">&quot;Lookup table and/or yaml are missing&quot;</span>
+            <span class="n">file2read</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">yaml2read</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    
+    <span class="c1"># Set the FME attribute</span>
+    <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;_file2read&quot;</span><span class="p">,</span> <span class="n">file2read</span><span class="p">)</span>
+    <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;_yaml2read&quot;</span><span class="p">,</span> <span class="n">yaml2read</span><span class="p">)</span>
+    <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;_file_error&quot;</span><span class="p">,</span> <span class="n">file_error</span><span class="p">)</span></div>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#-LoadValidateYaml-------------------------------------------------------------</span>
+<span class="c1">#</span>
+<span class="c1"># Constant for the YAML directives</span>
+<span class="n">CHECK_DOMAIN</span> <span class="o">=</span> <span class="s2">&quot;CHECK_DOMAIN&quot;</span>
+<span class="n">CREATE_KEY_VALUE</span> <span class="o">=</span> <span class="s2">&quot;CREATE_KEY_VALUE&quot;</span>
+<span class="n">CSV_COLUMNS</span> <span class="o">=</span> <span class="s2">&quot;CSV_COLUMNS&quot;</span>
+<span class="n">NO_DUPLICATE</span> <span class="o">=</span> <span class="s2">&quot;NO_DUPLICATE&quot;</span>
+<span class="c1"># List of directives</span>
+<span class="n">LST_DIRECTIVES</span> <span class="o">=</span> <span class="p">[</span><span class="n">CSV_COLUMNS</span><span class="p">,</span> <span class="n">CREATE_KEY_VALUE</span><span class="p">,</span> <span class="n">NO_DUPLICATE</span><span class="p">,</span> <span class="n">CHECK_DOMAIN</span><span class="p">]</span>
+
+<span class="n">CSV_ERROR</span> <span class="o">=</span> <span class="s2">&quot;_csv_error&quot;</span>  <span class="c1"># Name of the FME attribute containing the FME errors</span>
+<span class="n">CSV_DIRECTIVES</span> <span class="o">=</span> <span class="s2">&quot;_csv_directives&quot;</span>  <span class="c1"># Name of the FME attribute containing the YAML</span>
+<span class="n">TEXT_LINE_DATA</span> <span class="o">=</span> <span class="s2">&quot;text_line_data&quot;</span>
+
+<span class="c1"># Contstant for the record type</span>
+<span class="n">FEATURE</span> <span class="o">=</span> <span class="s1">&#39;feature&#39;</span>
+<span class="n">SCHEMA</span> <span class="o">=</span> <span class="s1">&#39;schema&#39;</span>
+<span class="n">YMAL</span> <span class="o">=</span> <span class="s1">&#39;yaml&#39;</span>
+<span class="n">RECORD_TYPE</span> <span class="o">=</span> <span class="s2">&quot;_record_type&quot;</span>
+
+<span class="c1"># Constant for the actions in the Y</span>
+<span class="n">EXPLODE</span> <span class="o">=</span> <span class="s2">&quot;explode&quot;</span>
+<span class="n">LOWER</span> <span class="o">=</span> <span class="s2">&quot;lower&quot;</span>
+<span class="n">NO_NULL</span> <span class="o">=</span> <span class="s2">&quot;no_null&quot;</span>
+<span class="n">TRIM</span> <span class="o">=</span> <span class="s2">&quot;trim&quot;</span>
+<span class="n">UPPER</span> <span class="o">=</span> <span class="s2">&quot;upper&quot;</span>
+<span class="c1"># List of actions</span>
+<span class="n">LST_ACTION</span> <span class="o">=</span> <span class="p">[</span><span class="n">LOWER</span><span class="p">,</span> <span class="n">UPPER</span><span class="p">,</span> <span class="n">TRIM</span><span class="p">,</span> <span class="n">EXPLODE</span><span class="p">,</span> <span class="n">NO_NULL</span><span class="p">]</span>
+
+<div class="viewcode-block" id="LoadValidateYaml"><a class="viewcode-back" href="../LOOKUP_TABLES_READER_NG.html#LOOKUP_TABLES_READER_NG.LoadValidateYaml">[docs]</a><span class="k">class</span> <span class="nc">LoadValidateYaml</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Template Class Interface:</span>
+<span class="sd">    When using this class, make sure its name is set as the value of the &#39;Class</span>
+<span class="sd">    to Process Features&#39; transformer parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LoadValidateYaml.__init__"><a class="viewcode-back" href="../LOOKUP_TABLES_READER_NG.html#LOOKUP_TABLES_READER_NG.LoadValidateYaml.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Base constructor for class members.&quot;&quot;&quot;</span>
+        
+        <span class="c1"># Create instance attribute needed for the processing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># List to accumulate the features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># Contains the errors found</span>
+        <span class="k">pass</span></div>
+        
+    <span class="k">def</span> <span class="nf">_process_yaml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="c1"># Read the CSV YMAL directives from the attribute</span>
+        <span class="n">str_csv_directives</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">TEXT_LINE_DATA</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Load the YMAL directives into python dictionnaries</span>
+            <span class="n">dict_directives</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">str_csv_directives</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">=</span> <span class="s2">&quot;Error schema&quot;</span>
+            <span class="k">return</span>
+    
+        <span class="c1"># Load the name of the column from the schema feature        </span>
+        <span class="n">csv_column_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">lst_attributes</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">extract_attribute_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span> <span class="s1">&#39;attribute</span><span class="si">{}</span><span class="s1">.name&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">lst_attributes</span><span class="p">:</span>
+            <span class="n">column_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>
+            <span class="n">csv_column_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">column_name</span><span class="p">)</span>
+            
+        <span class="c1"># Validate the content and form of the YAML CSV directives</span>
+        <span class="n">lst_directives</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">directive</span> <span class="ow">in</span> <span class="n">lst_directives</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">directive</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">LST_DIRECTIVES</span><span class="p">:</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR`Unknown YMAL directives: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">directive</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+           <span class="c1"># There is an error do not continue</span>
+           <span class="k">return</span>
+        
+        <span class="c1"># Validate the content of the CSV_COLUMNS section in the YAML</span>
+        <span class="n">csv_directives</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="p">[</span><span class="n">CSV_COLUMNS</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">csv_directives</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">lst_actions</span> <span class="ow">in</span> <span class="n">csv_directives</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lst_actions</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">column_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">csv_column_names</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR: YAML column name in CSV_COLUMNS do not match CSV: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">column_name</span><span class="p">))</span>
+                    <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">lst_actions</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">action</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">LST_ACTION</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR: YAML action is not known. Column: </span><span class="si">{}</span><span class="s2">; Action: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">column_name</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Must be a list </span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR: YAML actions must be a list []. Column: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">column_name</span><span class="p">))</span>
+                
+        <span class="c1"># Validate the content of the CREATE_KEY_VALUE section in the YAML</span>
+        <span class="n">csv_directives</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="p">[</span><span class="n">CREATE_KEY_VALUE</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">csv_directives</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">csv_directives</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">csv_column_names</span> <span class="ow">or</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">csv_column_names</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR: YAML (Key,value) names unknown: </span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># CREATE_KEY_VALUE is empty: no problem</span>
+            <span class="k">pass</span>
+                
+        <span class="c1"># Validate the content of the NO_DUPLICATE section in the YAML</span>
+        <span class="n">csv_directives</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="p">[</span><span class="n">NO_DUPLICATE</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">csv_directives</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">dummy</span><span class="p">,</span> <span class="n">lst_column_names</span> <span class="ow">in</span> <span class="n">csv_directives</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lst_column_names</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="c1"># Loop over the list to validate the content</span>
+                    <span class="k">for</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="n">lst_column_names</span><span class="p">:</span>
+                        <span class="c1"># Check that each column_name is valid</span>
+                        <span class="k">if</span> <span class="n">column_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">csv_column_names</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR: YAML NO_DUPLICATE Unknown column names: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">column_name</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Duplicate columns must be a list</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR: YAML NO_DUPLICATE must be a list. Column name: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">lst_column_names</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># NO_DUPLICATE is empty: no problem</span>
+            <span class="k">pass</span>
+            
+        <span class="c1"># Validate the content of the CHECK_DOMAIN section in the YAML</span>
+        <span class="n">csv_directives</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="p">[</span><span class="n">CHECK_DOMAIN</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">csv_directives</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">lst_domain</span> <span class="ow">in</span> <span class="n">csv_directives</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lst_domain</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">column_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">csv_column_names</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR: YAML column name in CHECK_DOMAIN do not match CSV: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">column_name</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Must be a list </span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;ERROR: YAML actions must be a list []. Column: </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">column_name</span><span class="p">))</span>    
+
+        <span class="k">return</span> <span class="n">dict_directives</span>
+        
+    
+    <span class="k">def</span> <span class="nf">_process_no_duplicate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_no_duplicate</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process no duplicate records</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Create new attribute from a key/value pair</span>
+        <span class="k">for</span> <span class="n">dummy</span><span class="p">,</span> <span class="n">column_names</span> <span class="ow">in</span> <span class="n">dict_no_duplicate</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">dict_no_duplicate</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">key_values</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="n">column_names</span><span class="p">:</span>
+                    <span class="n">column_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">column_name</span><span class="p">)</span>
+                    <span class="n">key_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">column_value</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">column_value</span> <span class="ow">in</span> <span class="n">dict_no_duplicate</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="c1"># Duplicate value found</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;Column: </span><span class="si">{0}</span><span class="s2">: Duplicate keys </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">column_name</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">dict_no_duplicate</span><span class="p">[</span><span class="n">column_value</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;dummy&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_process_create_key_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_key_value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create key value pair</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Create new attribute from a key/value pair</span>
+        <span class="k">for</span> <span class="n">key_column</span><span class="p">,</span> <span class="n">value_column</span> <span class="ow">in</span> <span class="n">dict_key_value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">key_column</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">value_column</span><span class="p">)</span>
+                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_process_check_domain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_check_domain</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check the domain of the columns</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Check the domain of the columns</span>
+        <span class="k">for</span> <span class="n">key_column</span><span class="p">,</span> <span class="n">lst_domains</span> <span class="ow">in</span> <span class="n">dict_check_domain</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">key_column</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lst_domains</span><span class="p">:</span>
+                    <span class="c1"># Domain is not valid</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;Column: </span><span class="si">{0}</span><span class="s2">: value: </span><span class="si">{1}</span><span class="s2">: Invalid domain </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key_column</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+                
+    
+    <span class="k">def</span> <span class="nf">_process_csv_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict_csv_columns</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process the EXPLODE action first that duplicate features.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">action_list</span> <span class="ow">in</span> <span class="n">dict_csv_columns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">EXPLODE</span> <span class="ow">in</span> <span class="n">action_list</span><span class="p">:</span>
+                <span class="c1"># Loop over each features</span>
+                <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+                    <span class="c1"># Explode the feature if the attribute contains values separated by coma &quot;,&quot;</span>
+                    <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">column_name</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">att_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">explode_values</span> <span class="o">=</span> <span class="n">att_value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">explode_values</span><span class="p">)</span> <span class="o">&gt;=</span><span class="mi">2</span><span class="p">:</span>
+                            <span class="n">feature_to_clone</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+                            <span class="c1"># Explode the attribute list into different features</span>
+                            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">explode_value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">explode_values</span><span class="p">):</span>
+                                <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                    <span class="c1"># No need to duplicate the first feature</span>
+                                    <span class="k">pass</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="c1"># Duplicate the feature and append the feature to the list</span>
+                                    <span class="n">feature</span> <span class="o">=</span> <span class="n">feature_to_clone</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+                                <span class="c1"># Set the new attribute value</span>
+                                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">column_name</span><span class="p">,</span> <span class="n">explode_value</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c1"># The list contains only one value nothing to explode </span>
+                            <span class="k">pass</span>
+                            
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">action_list</span> <span class="ow">in</span> <span class="n">dict_csv_columns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>                
+                <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">column_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">att_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">att_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>                                    
+                    <span class="c1"># Check if lower case is requested</span>
+                    <span class="k">if</span> <span class="n">LOWER</span> <span class="ow">in</span> <span class="n">action_list</span><span class="p">:</span>
+                        <span class="n">att_value</span> <span class="o">=</span> <span class="n">att_value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                        
+                    <span class="c1"># Check if upper case is requested</span>
+                    <span class="k">if</span> <span class="n">UPPER</span> <span class="ow">in</span> <span class="n">action_list</span><span class="p">:</span>
+                        <span class="n">att_value</span> <span class="o">=</span> <span class="n">att_value</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                        
+                    <span class="c1"># Check if trimming is requested</span>
+                    <span class="k">if</span> <span class="n">TRIM</span> <span class="ow">in</span> <span class="n">action_list</span><span class="p">:</span>
+                        <span class="n">att_value</span> <span class="o">=</span> <span class="n">att_value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        
+                <span class="c1"># Check if NO_NULL checking is requested</span>
+                <span class="k">if</span> <span class="n">NO_NULL</span> <span class="ow">in</span> <span class="n">action_list</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">att_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">att_value</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">+=</span> <span class="s2">&quot;Column: </span><span class="si">{0}</span><span class="s2">: No null error </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column_name</span><span class="p">)</span>
+                
+                <span class="c1"># Update edited field</span>
+                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">column_name</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+
+        <span class="k">return</span>
+    
+<div class="viewcode-block" id="LoadValidateYaml.input"><a class="viewcode-back" href="../LOOKUP_TABLES_READER_NG.html#LOOKUP_TABLES_READER_NG.LoadValidateYaml.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method is called for each FME Feature entering the </span>
+<span class="sd">        PythonCaller. If knowledge of all input Features is not required for </span>
+<span class="sd">        processing, then the processed Feature can be emitted from this method </span>
+<span class="sd">        through self.pyoutput(). Otherwise, the input FME Feature should be </span>
+<span class="sd">        cached to a list class member and processed in the close() method.</span>
+
+<span class="sd">        :param fmeobjects.FMEFeature feature: FME Feature entering the transformer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">record_type</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">RECORD_TYPE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">record_type</span> <span class="o">==</span> <span class="n">FEATURE</span><span class="p">:</span>
+            <span class="c1"># Accumulate the feature for further processing</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">record_type</span> <span class="o">==</span> <span class="n">SCHEMA</span><span class="p">:</span>
+            <span class="c1"># Accumulate the schema for furture processing</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="o">=</span> <span class="n">feature</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Accumulate the YMAL for future processing</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">yaml</span> <span class="o">=</span> <span class="n">feature</span></div>
+
+<div class="viewcode-block" id="LoadValidateYaml.close"><a class="viewcode-back" href="../LOOKUP_TABLES_READER_NG.html#LOOKUP_TABLES_READER_NG.LoadValidateYaml.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method is called once all the FME Features have been processedfrom input().</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+<span class="c1">#        web_pdb.set_trace()  # Breakpoint</span>
+        <span class="c1"># Read and validate the schema record</span>
+        <span class="n">dict_directives</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_yaml</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="c1"># Schema is invalid set the attribute and output the schema</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">CSV_ERROR</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaml</span><span class="p">)</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            
+            <span class="c1"># Only process the CSV if the schema is valid</span>
+            <span class="c1"># Process the CSV_COLUMNS directives</span>
+            <span class="k">if</span> <span class="n">CSV_COLUMNS</span> <span class="ow">in</span> <span class="n">dict_directives</span><span class="p">:</span>
+                <span class="n">dict_csv_columns</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="p">[</span><span class="n">CSV_COLUMNS</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">dict_csv_columns</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_process_csv_columns</span><span class="p">(</span><span class="n">dict_csv_columns</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># CSV_COLUMNS is empty: No problem</span>
+                    <span class="k">pass</span>
+                
+            <span class="c1"># Process the CREATE_VALUE_PAIR directives</span>
+            <span class="k">if</span> <span class="n">CREATE_KEY_VALUE</span> <span class="ow">in</span> <span class="n">dict_directives</span><span class="p">:</span>
+                <span class="n">dict_key_value</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="p">[</span><span class="n">CREATE_KEY_VALUE</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">dict_key_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_process_create_key_value</span><span class="p">(</span><span class="n">dict_key_value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># CREATE_KEY_VALUE is empty: No problem</span>
+                    <span class="k">pass</span>
+            
+            <span class="c1"># Process the NO_DUPLICATE directives</span>
+            <span class="k">if</span> <span class="n">NO_DUPLICATE</span> <span class="ow">in</span> <span class="n">dict_directives</span><span class="p">:</span>
+                <span class="n">dict_no_duplicate</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="p">[</span><span class="n">NO_DUPLICATE</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">dict_no_duplicate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_process_no_duplicate</span><span class="p">(</span><span class="n">dict_no_duplicate</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># NO_DUPLICATE is empty: No problem</span>
+                    <span class="k">pass</span>
+                    
+            <span class="c1"># Process the CHECK_DOMAIN directives</span>
+            <span class="k">if</span> <span class="n">CHECK_DOMAIN</span> <span class="ow">in</span> <span class="n">dict_directives</span><span class="p">:</span>
+                <span class="n">dict_check_domain</span> <span class="o">=</span> <span class="n">dict_directives</span><span class="p">[</span><span class="n">CHECK_DOMAIN</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">dict_check_domain</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_process_check_domain</span><span class="p">(</span><span class="n">dict_check_domain</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># check_domain is empty: No problem</span>
+                    <span class="k">pass</span>
+                  
+            <span class="c1"># Output the features</span>
+            <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+                <span class="c1"># Add the variable containing the errors</span>
+                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">CSV_ERROR</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></div></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">fme_python_pt_harvester 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">LOOKUP_TABLES_READER_NG</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, FGP.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FME_utils &#8212; fme_python_pt_harvester 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">fme_python_pt_harvester 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FME_utils</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for FME_utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">fmeobjects</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NamedTuple</span>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">web_pdb</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># No problem if the package is not avalaible</span>
+    <span class="k">pass</span>
+
+<div class="viewcode-block" id="CsvGeoSpatialValidation"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvGeoSpatialValidation">[docs]</a><span class="k">class</span> <span class="nc">CsvGeoSpatialValidation</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV GeoSpatialValidation.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fgp_publish</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1">#: Flag indicating if the format is published</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1">#: Name of the format</span>
+    <span class="n">spatial_type</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1">#: Spatial type for the format</span></div>
+
+<div class="viewcode-block" id="FME_utils"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils">[docs]</a><span class="k">class</span> <span class="nc">FME_utils</span><span class="p">:</span>
+
+<div class="viewcode-block" id="FME_utils.extract_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.extract_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method extracts a subset of the attributes of a feature.</span>
+<span class="sd">        </span>
+<span class="sd">        If the the attribute name to extract is not a list (ex.: value) than only one </span>
+<span class="sd">        attribute is extracted.</span>
+<span class="sd">        </span>
+<span class="sd">        If the attribute name to extract is a list (ex.: ressources{}.name) than all the</span>
+<span class="sd">        attributes of the list is extrated.</span>
+<span class="sd">        </span>
+<span class="sd">        The method returns a list of tuple one tuplee for each attribute to extract. The </span>
+<span class="sd">        tuple is composed of 2 values the first is the complete attribute name: </span>
+<span class="sd">        ex.: value for none list attribute or ressources{1}.name for list attribute.  The </span>
+<span class="sd">        seconde value of the list is the index value: None for non list attribute or &quot;1&quot; for </span>
+<span class="sd">        essources{1}.name for list attribute.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME_Feature</span>
+<span class="sd">            The FME_Feature to process.</span>
+<span class="sd">        att_name : str</span>
+<span class="sd">                The name of the attribute to extract.</span>
+<span class="sd">                </span>
+<span class="sd">        Returns</span>
+<span class="sd">        ------</span>
+<span class="sd">        List of Tuple</span>
+<span class="sd">           List of Tuple containing the index number and the name of the atrribute</span>
+<span class="sd">        </span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The FFT is a fast implementation of the discrete Fourier transform:</span>
+
+<span class="sd">        .. math:: X(e^{j\omega } ) = x(n)e^{ - j\omega n}</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">atts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">feature_atts</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAllAttributeNames</span><span class="p">()</span>  <span class="c1"># Extract all attribute names</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="n">regex_list</span> <span class="o">=</span> <span class="s2">&quot;\{\d+\}&quot;</span>
+        <span class="n">regex_index</span> <span class="o">=</span> <span class="s2">&quot;\d+&quot;</span>
+
+        <span class="k">if</span> <span class="n">att_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># The attribute to search is a list</span>
+            <span class="n">regex_search</span> <span class="o">=</span> <span class="n">att_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regex_list</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">feature_att</span> <span class="ow">in</span> <span class="n">feature_atts</span><span class="p">:</span>
+                <span class="n">att_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_search</span> <span class="p">,</span> <span class="n">feature_att</span><span class="p">)</span>  <span class="c1"># Check if attribute name is present</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">att_lst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">index_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_list</span><span class="p">,</span> <span class="n">att_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index with &quot;{}&quot;</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_lst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">index</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_index</span><span class="p">,</span> <span class="n">index_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index number</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>  <span class="c1">#Validate index is a number</span>
+                                <span class="n">atts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">feature_att</span><span class="p">))</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># The attribute to search is not a list</span>
+            <span class="k">for</span> <span class="n">feature_att</span> <span class="ow">in</span> <span class="n">feature_atts</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">att_name</span> <span class="o">==</span> <span class="n">feature_att</span><span class="p">:</span>
+                    <span class="n">atts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="kc">None</span><span class="p">,</span> <span class="n">att_name</span><span class="p">))</span>
+                    <span class="k">break</span>
+
+        <span class="k">return</span> <span class="n">atts</span></div>
+
+<div class="viewcode-block" id="FME_utils.repair_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.repair_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">repair_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">,</span> <span class="n">default_att_name</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="sd">&quot;&quot;&quot;This method repairs a list by creating the missing attribute in a list.</span>
+<span class="sd">        </span>
+<span class="sd">        For example if the list resources{} contains the following attributes</span>
+<span class="sd">          - resources{0}.a</span>
+<span class="sd">          - resources{1}.a</span>
+<span class="sd">          - resources{1}.b</span>
+<span class="sd">          - resources{3}.a</span>
+<span class="sd">        This method will create with empty values the following missing attribute:</span>
+<span class="sd">          - resources{0}.b</span>
+<span class="sd">          - resources{2}.a</span>
+<span class="sd">          - resources{2}.b</span>
+<span class="sd">          - resources{3}.b</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME_Feature</span>
+<span class="sd">            The FME_Feature to process.</span>
+<span class="sd">        att_list_name : str</span>
+<span class="sd">             Name of FME list attribute</span>
+<span class="sd">        default_att_name : List</span>
+<span class="sd">             List of attribute names that must be included during the repair (default: [])</span>
+<span class="sd">                </span>
+<span class="sd">        Returns</span>
+<span class="sd">        ------</span>
+<span class="sd">        None</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">att_names</span> <span class="o">=</span> <span class="n">default_att_name</span>
+        <span class="n">max_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">regex_list</span> <span class="o">=</span> <span class="s2">&quot;\{\d+\}&quot;</span>
+        <span class="n">regex_index</span> <span class="o">=</span> <span class="s2">&quot;\d+&quot;</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        
+    <span class="c1">#    web_pdb.set_trace()</span>
+        <span class="k">if</span> <span class="n">att_list_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>    
+            <span class="c1"># Extract only the attribute to process</span>
+            <span class="n">attributes</span> <span class="o">=</span> <span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">)</span>
+            
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="n">max_index</span><span class="p">:</span>
+                    <span class="n">max_index</span> <span class="o">=</span> <span class="n">index</span>  <span class="c1"># Set the maximum index number</span>
+                    
+                <span class="c1"># Build the list of names (after the dot; ex: att{99}.name)</span>
+                <span class="n">att_split</span> <span class="o">=</span> <span class="n">attribute</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+                <span class="n">att_name</span> <span class="o">=</span> <span class="n">att_split</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">att_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">att_names</span><span class="p">:</span>
+                   <span class="n">att_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">att_name</span><span class="p">)</span>  <span class="c1"># Update the list</span>
+                   
+            <span class="c1"># Repair the missing attributes names in the attribute list</span>
+            <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_index</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">att_name</span> <span class="ow">in</span> <span class="n">att_names</span><span class="p">:</span>
+                    <span class="n">attribute</span> <span class="o">=</span> <span class="n">att_list_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;{</span><span class="si">%i</span><span class="s1">}&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">att_name</span>
+                    <span class="n">attribute</span> <span class="o">=</span> <span class="n">attribute</span><span class="o">%</span><span class="n">index</span>  <span class="c1"># Add the index number </span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">attribute</span><span class="p">):</span>
+                        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                        
+            <span class="c1"># Validate reparation</span>
+            <span class="n">attributes</span> <span class="o">=</span> <span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">attributes</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">max_index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">att_names</span><span class="p">):</span>
+                <span class="c1"># Reparation works</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Internal error: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_list_name</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+                        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Not a valid attribute list: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_list_name</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>    
+                
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="FME_utils.load_yaml_document"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.load_yaml_document">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load_yaml_document</span><span class="p">(</span><span class="n">yaml_str_document</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; This method loads a YMAL document from a string.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        yaml_str_document : str</span>
+<span class="sd">            String containing the YAML document to read.</span>
+<span class="sd">                </span>
+<span class="sd">        Returns</span>
+<span class="sd">        ------</span>
+<span class="sd">        Dictionary</span>
+<span class="sd">           YAML dictionary document.</span>
+<span class="sd">        </span>
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        Exception</span>
+<span class="sd">            If the is an error in the YAML document.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Load the YMAL directives into python dictionnaries</span>
+            <span class="n">yaml_document</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">yaml_str_document</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Error loading YAML document: </span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yaml_str_document</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">yaml_document</span></div>
+        
+<div class="viewcode-block" id="FME_utils.create_set_of_word"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.create_set_of_word">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_set_of_word</span><span class="p">(</span><span class="n">str_words</span><span class="p">,</span> <span class="n">separator</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a set of words from a string of words.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        str_words : str</span>
+<span class="sd">            String of words forming a sentence</span>
+<span class="sd">        separator: str</span>
+<span class="sd">            Character used to seprate words in the sentence (default: whitespace or &quot; &quot;)</span>
+<span class="sd">        lower : Bool</span>
+<span class="sd">            Flag indicating if the sentence must be lower case (default: True)</span>
+<span class="sd">                </span>
+<span class="sd">        Returns</span>
+<span class="sd">        ------</span>
+<span class="sd">        Set</span>
+<span class="sd">           Set of words composing the sentence (no duplication).</span>
+<span class="sd">           </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">word_lst</span> <span class="o">=</span> <span class="n">str_words</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lower</span><span class="p">:</span>
+            <span class="n">word_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_lst</span><span class="p">]</span>
+             
+        <span class="c1"># Create the set of words    </span>
+        <span class="n">word_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">word_lst</span><span class="p">)</span>
+         
+        <span class="k">return</span> <span class="n">word_set</span></div></div>
+        
+    
+    
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">fme_python_pt_harvester 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FME_utils</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, FGP.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.0.
+    </div>
+  </body>
+</html>

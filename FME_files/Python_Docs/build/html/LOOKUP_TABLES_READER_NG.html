@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Custom Transformer: LOOKUP_TABLES_READER_NG &#8212; fme_python_pt_harvester 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Custom Transformer: GEO_NONE_GEO_SELECTOR" href="GEO_NONE_GEO_SELECTOR.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="GEO_NONE_GEO_SELECTOR.html" title="Custom Transformer: GEO_NONE_GEO_SELECTOR"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">fme_python_pt_harvester 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Custom Transformer: LOOKUP_TABLES_READER_NG</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="custom-transformer-lookup-tables-reader-ng">
+<h1>Custom Transformer: LOOKUP_TABLES_READER_NG<a class="headerlink" href="#custom-transformer-lookup-tables-reader-ng" title="Permalink to this headline">¶</a></h1>
+<p><strong>Description</strong></p>
+<p>This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.</p>
+<p><strong>Input Ports</strong></p>
+<ul class="simple">
+<li><p>This custom transformer has no Input Port</p></li>
+</ul>
+<p><strong>Output Ports</strong></p>
+<ul class="simple">
+<li><p>OUTPUT_LOCAL: The content of the lookup table (one record by row in the CSV file)</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p>FEATURE_TYPE: File name of the lookup table without the .csv extension</p></li>
+<li><p>CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into CSV_PATHshared when it is a lookup table shared between PT and secondly in CSV_PATHPT when the lookup table is specific to a PT</p></li>
+<li><p>PT: Two letter code of the province or territory to process (ex.: ON, QC, AB…)</p></li>
+<li><p>CSV_ENCODING: Type of encoding of the lookup tale</p></li>
+</ul>
+<p><strong>Content of the YAML file</strong></p>
+<p>The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSV_COLUMNS</span><span class="p">:</span>
+  <span class="n">original_value</span><span class="p">:</span> <span class="p">[</span><span class="n">trim</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">no_null</span><span class="p">,</span> <span class="n">explode</span><span class="p">]</span>
+  <span class="n">real_value_english</span><span class="p">:</span> <span class="p">[</span><span class="n">trim</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">no_null</span><span class="p">,</span> <span class="n">explode</span><span class="p">]</span>
+  <span class="n">real_value_french</span><span class="p">:</span> <span class="p">[</span><span class="n">no_null_err</span><span class="p">,</span> <span class="n">explode</span><span class="p">]</span>
+  <span class="n">code_value</span><span class="p">:</span> <span class="p">[</span><span class="n">upper</span><span class="p">,</span> <span class="n">explode</span><span class="p">]</span>
+<span class="c1">#</span>
+<span class="n">CREATE_KEY_VALUE</span><span class="p">:</span>
+  <span class="n">code_value</span><span class="p">:</span> <span class="n">original_value</span>
+<span class="c1">#</span>
+<span class="n">NO_DUPLICATE</span><span class="p">:</span>
+  <span class="n">DUP_1</span><span class="p">:</span> <span class="p">[</span><span class="n">code_value</span><span class="p">]</span>
+  <span class="n">DUP_2</span><span class="p">:</span> <span class="p">[</span><span class="n">original_value</span><span class="p">,</span> <span class="n">real_value_english</span><span class="p">]</span>
+<span class="c1">#</span>
+<span class="n">CHECK_DOMAIN</span>
+  <span class="n">original_value</span><span class="p">:</span> <span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">yearly</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Description of the three sections of a YAML file</strong></p>
+<ul class="simple">
+<li><p>The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the “CSV_COLUMNS:” you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon “:”; followed by the list of actions separated by a coma “,” and enclosed between brackets “[]”.  Here’s the list of possible actions:</p>
+<ul>
+<li><p>trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: ”   a   test” ==­&gt; “a test”);</p></li>
+<li><p>lower: Put the column value in lower case;</p></li>
+<li><p>upper: Put the column value in upper case;</p></li>
+<li><p>no_null: Check that the column is not empty or null; it terminates execution if not null;</p></li>
+<li><p>explode: Duplicate the row if the column contains values separated by semicolumn “;”.  The line is exploded by the number of values in the column (ex: “QC;ON;MB”, will duplicate all the content of the line 2 times, the first line will contain “QC”; the second “ON” and the third “MB”.</p></li>
+</ul>
+</li>
+<li><p>The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the “CREATE_KEY_VALUE:” you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon “:”; followed by the name of the column containing the value of the attribute;</p></li>
+<li><p>The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following “NO_DUPLICATE:” you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon “:”; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket.</p></li>
+<li><p>The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following “CHECK_DUPLICATE:” you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon “:”; followed by the domain values separated by a coma “,” and enclosed between brackets “[]”. If you want to check for empty value “”, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.</p></li>
+</ul>
+<section id="sommaire-des-classes-et-modules">
+<h2>Sommaire des classes et modules<a class="headerlink" href="#sommaire-des-classes-et-modules" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#LOOKUP_TABLES_READER_NG.check_file_present" title="LOOKUP_TABLES_READER_NG.check_file_present"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOOKUP_TABLES_READER_NG.check_file_present</span></code></a>(feature)</p></td>
+<td><p>This method checks if a file is present in the shared or the province directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml" title="LOOKUP_TABLES_READER_NG.LoadValidateYaml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOOKUP_TABLES_READER_NG.LoadValidateYaml</span></code></a>()</p></td>
+<td><p>Template Class Interface: When using this class, make sure its name is set as the value of the 'Class to Process Features' transformer parameter.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-LOOKUP_TABLES_READER_NG">
+<span id="description-detaillee-des-classes-et-modules"></span><h2>Description détaillée des classes et modules<a class="headerlink" href="#module-LOOKUP_TABLES_READER_NG" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="LOOKUP_TABLES_READER_NG.LoadValidateYaml">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">LOOKUP_TABLES_READER_NG.</span></span><span class="sig-name descname"><span class="pre">LoadValidateYaml</span></span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#LoadValidateYaml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Template Class Interface:
+When using this class, make sure its name is set as the value of the ‘Class
+to Process Features’ transformer parameter.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="LOOKUP_TABLES_READER_NG.LoadValidateYaml.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#LoadValidateYaml.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base constructor for class members.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="LOOKUP_TABLES_READER_NG.LoadValidateYaml.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#LoadValidateYaml.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called once all the FME Features have been processedfrom input().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="LOOKUP_TABLES_READER_NG.LoadValidateYaml.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#LoadValidateYaml.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml.input" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called for each FME Feature entering the
+PythonCaller. If knowledge of all input Features is not required for
+processing, then the processed Feature can be emitted from this method
+through self.pyoutput(). Otherwise, the input FME Feature should be
+cached to a list class member and processed in the close() method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>fmeobjects.FMEFeature</em>) – FME Feature entering the transformer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="LOOKUP_TABLES_READER_NG.check_file_present">
+<span class="sig-prename descclassname"><span class="pre">LOOKUP_TABLES_READER_NG.</span></span><span class="sig-name descname"><span class="pre">check_file_present</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#check_file_present"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.check_file_present" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method checks if a file is present in the shared or the province directory.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Custom Transformer: LOOKUP_TABLES_READER_NG</a><ul>
+<li><a class="reference internal" href="#sommaire-des-classes-et-modules">Sommaire des classes et modules</a></li>
+<li><a class="reference internal" href="#module-LOOKUP_TABLES_READER_NG">Description détaillée des classes et modules</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="GEO_NONE_GEO_SELECTOR.html"
+                        title="previous chapter">Custom Transformer: GEO_NONE_GEO_SELECTOR</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/LOOKUP_TABLES_READER_NG.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="GEO_NONE_GEO_SELECTOR.html" title="Custom Transformer: GEO_NONE_GEO_SELECTOR"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">fme_python_pt_harvester 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Custom Transformer: LOOKUP_TABLES_READER_NG</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, FGP.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.0.
+    </div>
+  </body>
+</html>

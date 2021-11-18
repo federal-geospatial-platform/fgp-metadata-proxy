@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Custom Transformer: GEO_NONE_GEO_SELECTOR &#8212; fme_python_pt_harvester 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Custom Transformer: LOOKUP_TABLES_READER_NG" href="LOOKUP_TABLES_READER_NG.html" />
+    <link rel="prev" title="Custom transformer: ATTRIBUTE_MANAGER_NG" href="ATTRIBUTE_MANAGER_NG.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="LOOKUP_TABLES_READER_NG.html" title="Custom Transformer: LOOKUP_TABLES_READER_NG"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ATTRIBUTE_MANAGER_NG.html" title="Custom transformer: ATTRIBUTE_MANAGER_NG"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">fme_python_pt_harvester 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Custom Transformer: GEO_NONE_GEO_SELECTOR</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="custom-transformer-geo-none-geo-selector">
+<h1>Custom Transformer: GEO_NONE_GEO_SELECTOR<a class="headerlink" href="#custom-transformer-geo-none-geo-selector" title="Permalink to this headline">¶</a></h1>
+<p><strong>Description</strong></p>
+<p>This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial).  When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives.  See the section Content of the YAML directives below for a complete description of the YAML directives.</p>
+<p><strong>Input Ports</strong></p>
+<ul class="simple">
+<li><p>DATA_INPUT: The input metadata records to process.</p></li>
+</ul>
+<p><strong>Output Ports</strong></p>
+<ul class="simple">
+<li><p>GEOSPATIAL: Output port for all gepspatial metadata records;</p></li>
+<li><p>NON-GEOSPATIAL: Output port for all none geospatial metadata records;</p></li>
+<li><p>ERROR_LOG: Output port for metadata records that need to be logged according to the YAML directives.</p></li>
+</ul>
+<p>Note: All the input records will go through either the GeoSpatial the None GeoSpatial port.  Some input records may be duplicated and sent through the LOG_ERROR port  if requested by the YAML directives.</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p>YAML_DIRECTIVES: YAML directives for determining the Geospatial and None Geospatial records.  See the section Content of the YAML directives below for a description of the YAML directives.</p></li>
+</ul>
+<p><strong>Content of the YAML directives</strong></p>
+<p>The YAML directives are used by the custom transformer to decide the type of the metadata records: GeoSpatial or None GeoSpatial.  Here’s an exemple of a YAML directives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resources</span><span class="p">{}</span><span class="o">.</span><span class="n">format</span><span class="p">:</span>
+  <span class="n">domain</span><span class="p">:</span> <span class="n">LOOKUP_TABLE_FORMAT</span>
+  <span class="n">spatial_type</span><span class="p">:</span> <span class="n">overwrite</span>
+  <span class="n">not_found</span><span class="p">:</span> <span class="n">log</span>
+  <span class="n">search_type</span><span class="p">:</span> <span class="n">equals</span>
+<span class="c1">#</span>
+<span class="n">description</span><span class="p">:</span>
+  <span class="n">domain</span><span class="p">:</span> <span class="p">[</span><span class="n">spatial</span><span class="p">,</span> <span class="n">geographic</span><span class="p">]</span>
+  <span class="n">spatial_type</span><span class="p">:</span> <span class="n">no_overwrite</span>
+  <span class="n">not_found</span><span class="p">:</span> <span class="n">no_log</span>
+  <span class="n">search_type</span><span class="p">:</span> <span class="n">contains</span>
+</pre></div>
+</div>
+<p><strong>Description of the YAML directives</strong></p>
+<p>The first part of the YAML is the name of the FME attribute to use to validate the record, it can be a list attribute (ex.: resources{}..format) or a simple  attribute (ex.: description). If it’s a list attribute,the name must contain the 2 characters:”{}”.  The content of that attribute will be used to determine if the record is GeoSpatial or None GeoSpatial.</p>
+<p>Following the FME attribute to validate, there are 4 keywords: domain, spatial_type, not_found and search_type.</p>
+<ul class="simple">
+<li><p>The first keyword domain defines the domain of values that are used to determine if a metadata record is GeoSpatial or None GeoSpatial. Two values are possible: LOOKUP_TABLE_FORMAT or a list of word defining the domain between brackets (ex.: [point, line, poygone]).  When using the keyword LOOKUP_TABLE_FORMAT, the custom transformer will use the content of the column name format of the CSV fileto define the domain of values. The record type will be GeoSpatial if the column fgp_publish is set to “oui”.  When using a domain list, the metadata record will be GeoSpatial if the value of the FME attribute is contained in the domain list.</p></li>
+<li><p>The second keyword spatial_type defines how to set the spatial type when there is a domain match of the FME attribute.  Three values are possible: no_overwite, overwrite and if_null_overwrite.  no_overwite means that even if there is a match do not try to overwrite the spatial type.  overwite means that if there is a match, take the spatial type value associated in the CSV file (column name: spatial_type) and assign it (or create it if empty) to the corresponding FME attribute.  if_null_overwite as the same meaning as overwrite but only when the content of the spatial type is empty or missing.  The values overwrite and if_null_overwrite can only be used when the domain keyword value is LOOKUP_TABLE_FORMAT.</p></li>
+<li><p>The third keyword not_found defines how the custom transformer behaves when an FME attribute is not found in the domain of values.  Two values are possible: log and no_log. log means create a duplicate (clone) of the record and send it through the LOG_ERROR output port. no_log means do not log any error when the FME attribute is not found in the domain of values.</p></li>
+<li><p>The fourth keyword search type defines how to search the content of the FME attribute.  Two values are possible: equals or contains. equals means that the value of the FME attribute must be exactly the same.  contains means that one of the word the FME attribute must be in the domain values (usefull when we search for one word in a sentence).</p></li>
+</ul>
+<p>You can define more than one FME attribute to search.  Do not duplicate the FME attribute name, the last one overwrite the others.</p>
+<section id="sommaire-des-classes-et-modules">
+<h2>Sommaire des classes et modules<a class="headerlink" href="#sommaire-des-classes-et-modules" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector" title="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector</span></code></a>()</p></td>
+<td><p>This class is used by the custom transfomer GEO_NON_GEO_SELECTOR in a PythonCaller in order to sort the record between geospatial and none geospatial records.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-GEO_NONE_GEO_SELECTOR">
+<span id="description-detaillee-des-classes-et-modules"></span><h2>Description détaillée des classes et modules<a class="headerlink" href="#module-GEO_NONE_GEO_SELECTOR" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GEO_NONE_GEO_SELECTOR.</span></span><span class="sig-name descname"><span class="pre">GeoNoneGeoSelector</span></span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used by the custom transfomer GEO_NON_GEO_SELECTOR in a PythonCaller in order
+to sort the record between geospatial and none geospatial records. This class is reading
+YAML files that contains the directives to sort the records</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor call before any FME features are passed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method call when all the festures are passed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input of all FME features.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Custom Transformer: GEO_NONE_GEO_SELECTOR</a><ul>
+<li><a class="reference internal" href="#sommaire-des-classes-et-modules">Sommaire des classes et modules</a></li>
+<li><a class="reference internal" href="#module-GEO_NONE_GEO_SELECTOR">Description détaillée des classes et modules</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ATTRIBUTE_MANAGER_NG.html"
+                        title="previous chapter">Custom transformer: ATTRIBUTE_MANAGER_NG</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="LOOKUP_TABLES_READER_NG.html"
+                        title="next chapter">Custom Transformer: LOOKUP_TABLES_READER_NG</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/GEO_NONE_GEO_SELECTOR.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="LOOKUP_TABLES_READER_NG.html" title="Custom Transformer: LOOKUP_TABLES_READER_NG"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ATTRIBUTE_MANAGER_NG.html" title="Custom transformer: ATTRIBUTE_MANAGER_NG"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">fme_python_pt_harvester 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Custom Transformer: GEO_NONE_GEO_SELECTOR</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, FGP.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.0.
+    </div>
+  </body>
+</html>
