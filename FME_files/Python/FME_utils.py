@@ -130,7 +130,7 @@ class FME_utils:
     #    web_pdb.set_trace()
         if att_list_name.find("{}") != -1:    
             # Extract only the attribute to process
-            attributes = extract_attribute_list(feature, att_list_name)
+            attributes = FME_utils.extract_attribute_list(feature, att_list_name)
             
             for index, attribute in attributes:
                 if index > max_index:
@@ -151,7 +151,7 @@ class FME_utils:
                         feature.setAttribute(attribute, '')
                         
             # Validate reparation
-            attributes = extract_attribute_list(feature, att_list_name)
+            attributes = FME_utils.extract_attribute_list(feature, att_list_name)
             if len(attributes) == (max_index+1) * len(att_names):
                 # Reparation works
                 pass
