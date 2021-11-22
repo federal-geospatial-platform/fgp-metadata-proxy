@@ -10,8 +10,10 @@ ATTR_OVERWRITE = 'attribute_overwrite'
 TXT_NOT_NULL = 'text_not_null'
 TXT_OVERWRITE = 'text_overwrite'
 #Définissons le séparateur à utiliser pour identifier une liste dans notre YAML
-LIST_SEPARATOR = '{}'
-REPLACEMENT_LIST_SEPARATOR = '{0}'
+LIST_SEPARATOR_IDENTIFIER = '{}.'
+REPLACEMENT_LIST_SEPARATOR = '{0}.'
+LIST_SEPARATOR_BRACKET = '{}'
+
 
 # List des actions
 LST_ACTION = [ATTR_NOT_NULL, ATTR_OVERWRITE, TXT_NOT_NULL, TXT_OVERWRITE]
@@ -63,17 +65,19 @@ class FeatureProcessor(object):
                 #Définissons un switch pour la variable replace_key:
                 replace_key_switch = False
                               
-                #Établissons quels attributs de notre YAML sont des listes en vérifiant le séparateur '{}.'
-                sep = key.split(LIST_SEPARATOR)
-                if len(sep) > 1:                  
+                #Établissons quels attributs de notre YAML sont des listes en vérifiant le séparateur LIST_SEPARATOR_IDENTIFIER
+                sep = key.split(LIST_SEPARATOR_IDENTIFIER)
+                print('BENNET', sep)
+                if len(sep) > 1:  
+                    print('KAKI',sep[0] + LIST_SEPARATOR_BRACKET)
                     #Réparation de la liste pour l'attribut en spécifié
-                    repaired_list = FME_utils.repair_attribute_list(feature, sep[0])
+                    FME_utils.repair_attribute_list(feature, sep[0] + LIST_SEPARATOR_BRACKET)
                 else:
                     pass
                     
-                #Si on confirme que c'est une liste en vérifiant le patron suivant --> LIST_SEPARATOR et qu'elle n'existe pas dans le feature alors on ajoute l'index 0 à la liste pour créer l'attribut
-                if feature.getAttribute(key) is None and key.find(LIST_SEPARATOR) != -1:
-                    replace_key = key.replace(LIST_SEPARATOR, REPLACEMENT_LIST_SEPARATOR)
+                #Si on confirme que c'est une liste en vérifiant le patron suivant --> LIST_SEPARATOR_IDENTIFIER et qu'elle n'existe pas dans le feature alors on ajoute l'index 0 à la liste pour créer l'attribut
+                if feature.getAttribute(key) is None and key.find(LIST_SEPARATOR_IDENTIFIER) != -1:
+                    replace_key = key.replace(LIST_SEPARATOR_IDENTIFIER, REPLACEMENT_LIST_SEPARATOR)
                     replace_key_switch = True
                 else:
                     pass  

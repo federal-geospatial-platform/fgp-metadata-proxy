@@ -91,7 +91,7 @@ class FME_utils:
         return atts
 
     @staticmethod
-    def repair_attribute_list(feature, att_list_name, default_att_name=[]):
+    def repair_attribute_list(feature, att_list_name, default_att_name=None):
         """This method repairs a list by creating the missing attribute in a list.
         
         For example if the list resources{} contains the following attributes
@@ -120,14 +120,17 @@ class FME_utils:
         
         
         """
-        
-        att_names = default_att_name
+        #Managing mutable default values
+        if default_att_name is None:
+            att_names = []
+        else:
+            att_names = list(default_att_name)
+            
         max_index = -1
         regex_list = "\{\d+\}"
         regex_index = "\d+"
         logger = fmeobjects.FMELogFile()
         
-    #    web_pdb.set_trace()
         if att_list_name.find("{}") != -1:    
             # Extract only the attribute to process
             attributes = FME_utils.extract_attribute_list(feature, att_list_name)
@@ -160,7 +163,7 @@ class FME_utils:
                         
         else:
             logger.logMessageString("Not a valid attribute list: {}".format(att_list_name), fmeobjects.FME_WARN)    
-                
+        
         return
 
     @staticmethod
