@@ -10,9 +10,9 @@ ATTR_OVERWRITE = 'attribute_overwrite'
 TXT_NOT_NULL = 'text_not_null'
 TXT_OVERWRITE = 'text_overwrite'
 #Définissons le séparateur à utiliser pour identifier une liste dans notre YAML
-LIST_SEPARATOR_IDENTIFIER = '{}.'
-REPLACEMENT_LIST_SEPARATOR = '{0}.'
-LIST_SEPARATOR_BRACKET = '{}'
+LIST_SEPARATOR_IDENTIFIER = '{}.' #À utiliser pour identifier la liste dans notre YAML
+REPLACEMENT_LIST_SEPARATOR = '{0}.' #À utiliser pour créer au moins un élément dans une liste qui n'existe pas
+LIST_SEPARATOR_BRACKET = '{}' #À utiliser pour combiner avec le nom d'un attribut pour l'identifier comme liste
 
 
 # List des actions
@@ -62,16 +62,21 @@ class FeatureProcessor(object):
         if feature.getAttribute('_order') == 2:
             for key in self.mapping.keys():
 
-                #Définissons un switch pour la variable replace_key:
+                #Définissons une switch pour la variable replace_key:
                 replace_key_switch = False
                               
                 #Établissons quels attributs de notre YAML sont des listes en vérifiant le séparateur LIST_SEPARATOR_IDENTIFIER
                 sep = key.split(LIST_SEPARATOR_IDENTIFIER)
-                print('BENNET', sep)
-                if len(sep) > 1:  
-                    print('KAKI',sep[0] + LIST_SEPARATOR_BRACKET)
+                if len(sep) > 1:
+                    if len(sep[1]):
+                        #default_att_name devient la valeur de l'élément de la liste à forcer 
+                        default_att_name = [sep[1]]
+                    else:
+                        #Définissons la variable default_att_name à None
+                        default_att_name = None
+                        pass
                     #Réparation de la liste pour l'attribut en spécifié
-                    FME_utils.repair_attribute_list(feature, sep[0] + LIST_SEPARATOR_BRACKET)
+                    FME_utils.repair_attribute_list(feature, sep[0] + LIST_SEPARATOR_BRACKET, default_att_name)
                 else:
                     pass
                     
