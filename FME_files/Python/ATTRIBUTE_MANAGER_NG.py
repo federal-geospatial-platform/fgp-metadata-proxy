@@ -21,7 +21,7 @@ LST_ACTION = [ATTR_NOT_NULL, ATTR_OVERWRITE, TXT_NOT_NULL, TXT_OVERWRITE]
 # Template Class Interface:
 # When using this class, make sure its name is set as the value of
 # the 'Class or Function to Process Features' transformer parameter
-class FeatureProcessor(object):
+class AttributeManagerNG(object):
     """This class is used by the ATTRIBUTE_MANAGER_NG custom transformer in a PythonCaller in order to
     to manage attribute values. It can overwrite any attribute (including list) or set a specific attribute value for null attributes.
     This class is reading YAML directives received as input from the costum transformer.
