@@ -22,17 +22,27 @@ LST_ACTION = [ATTR_NOT_NULL, ATTR_OVERWRITE, TXT_NOT_NULL, TXT_OVERWRITE]
 # When using this class, make sure its name is set as the value of
 # the 'Class or Function to Process Features' transformer parameter
 class FeatureProcessor(object):
-    """Cette classe permet la gestion des attributs.
+    """This class is used by the ATTRIBUTE_MANAGER_NG custom transformer in a PythonCaller in order to
+    to manage attribute values. It can overwrite any attribute (including list) or set a specific attribute value for null attributes.
+    This class is reading YAML directives received as input from the costum transformer.
+    This class uses following Python modules:
+    -yaml
+    -FME_utils
     """
 
     def __init__(self):
-        """Traitment spécifique avant le traitement du premier FME feature.
+        """Constructor call before any FME features are passed
         """
     
         self.mapping = {}
    
     def input(self, feature):
-        """Traitement de chaque FME festure...
+        """Process each FME features. Actions to be done on attributes are specified into the costum transformer YAML directives:
+        -attribute_not_null:
+        -attribute_overwrite:
+        -text_not_null:
+        -text_overwrite:
+        More informations are available into the ATTRIBUTE_MANAGER_NG costum transformer.
         """
         
         #Vérification de la valeur de l'attribut _ordre = 1 afin de lire le YAML
@@ -155,7 +165,7 @@ class FeatureProcessor(object):
             pass
             
     def close(self):
-        """Traitment spécifique lorsque tous les éléments sont traités.  Pas utilisé.
+        """Method call when all the festures are passed, not used.
         """
         
         pass
