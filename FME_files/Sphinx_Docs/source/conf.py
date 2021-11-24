@@ -12,13 +12,8 @@
 #
 import os
 import sys
-#sys.path.insert(0, os.path.abspath(r'C:\DATA\FGP_GITHUB\fgp-metadata-proxy\FME_files\Python_src'))
-#sys.path.insert(0, os.path.abspath('..'))
+
 sys.path.insert(0, os.path.abspath('../..'))
-#sys.path.insert(0, os.path.abspath(r'C:\Program Files (x86)\fme\fme2020.0_b20200'))
-#sys.path.insert(0, os.path.abspath(r'C:\Program Files (x86)\fme\fme2020.0_b20200\fmeobjects\python37'))
-#sys.path.insert(0, os.path.abspath(r'C:\\Program Files (x86)\\fme\\fme2020.0_b20200\\fmepython37\\DLLs'))
-#print (sys.path)
 
 # -- Project information -----------------------------------------------------
 
@@ -28,7 +23,6 @@ author = 'FGP'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -40,18 +34,18 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.coverage', 
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
-              'sphinx.ext.mathjax'
 ]
 
+# Création des autosummary
 autosummary_generate = True
-numpydoc_show_class_members = False
 
+# Nom des classes à usurper 
 autodoc_mock_imports = ["fme", 
                         "fmeobjects",
                         "yaml"]
                         
+# Mettre la documentation Python en ordre alphabétique
 autodoc_member_order = 'alphabetical'
-
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -67,8 +61,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
-html_logo = "_static/Canada.png"
+html_theme = 'sphinx_rtd_theme'  # Utilisation du thème de ReadTheDocs
+
+html_logo = "_static/Canada.png"  # Ajout du logo du Canada
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

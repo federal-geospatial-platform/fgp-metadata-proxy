@@ -162,7 +162,7 @@
         <span class="k">return</span> <span class="n">atts</span></div>
 
 <div class="viewcode-block" id="FME_utils.repair_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.repair_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">repair_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">,</span> <span class="n">default_att_name</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">def</span> <span class="nf">repair_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">,</span> <span class="n">default_att_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method repairs a list by creating the missing attribute in a list.</span>
 <span class="sd">        </span>
 <span class="sd">        For example if the list resources{} contains the following attributes</span>
@@ -191,17 +191,20 @@
 <span class="sd">        </span>
 <span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
-        <span class="n">att_names</span> <span class="o">=</span> <span class="n">default_att_name</span>
+        <span class="c1">#Managing mutable default values</span>
+        <span class="k">if</span> <span class="n">default_att_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">att_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">att_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">default_att_name</span><span class="p">)</span>
+            
         <span class="n">max_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">regex_list</span> <span class="o">=</span> <span class="s2">&quot;\{\d+\}&quot;</span>
         <span class="n">regex_index</span> <span class="o">=</span> <span class="s2">&quot;\d+&quot;</span>
         <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
         
-    <span class="c1">#    web_pdb.set_trace()</span>
         <span class="k">if</span> <span class="n">att_list_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>    
             <span class="c1"># Extract only the attribute to process</span>
-            <span class="n">attributes</span> <span class="o">=</span> <span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">)</span>
+            <span class="n">attributes</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">)</span>
             
             <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="n">max_index</span><span class="p">:</span>
@@ -222,7 +225,7 @@
                         <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
                         
             <span class="c1"># Validate reparation</span>
-            <span class="n">attributes</span> <span class="o">=</span> <span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">)</span>
+            <span class="n">attributes</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">attributes</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">max_index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">att_names</span><span class="p">):</span>
                 <span class="c1"># Reparation works</span>
                 <span class="k">pass</span>
@@ -231,7 +234,7 @@
                         
         <span class="k">else</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Not a valid attribute list: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_list_name</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>    
-                
+        
         <span class="k">return</span></div>
 
 <div class="viewcode-block" id="FME_utils.load_yaml_document"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.load_yaml_document">[docs]</a>    <span class="nd">@staticmethod</span>

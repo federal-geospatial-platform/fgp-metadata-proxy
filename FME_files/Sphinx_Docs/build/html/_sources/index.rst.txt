@@ -6,6 +6,7 @@
 Welcome to PT Harvester's documentation!
 ========================================
 
+
 Documentation de l'utilitaire Python
 ====================================
 
@@ -13,6 +14,7 @@ Documentation de l'utilitaire Python
    :maxdepth: 1
    
    FME_utils.rst
+
    
 Documentation des Custom Transformers
 =====================================
@@ -27,6 +29,6 @@ Documentation des Custom Transformers
 Indices and tables
 ==================
 
-* :ref:`genindex`
+* :ref:`genindex` 
 * :ref:`modindex`
 * :ref:`search`
