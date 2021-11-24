@@ -100,5 +100,21 @@ La mise à jour de la documentation Sphinx se fait par l'éexécution des comman
     make clean
     make html
 
-La publication de la documentation sur le serveur web GitHub se fait automatiquement en 
+La publication de la documentation sur le serveur web GitHub se fait automatiquement en poussant (Push origin) les modifications au contenu du répertoire \fgp-metadata-proxy\FME_files\Python_Docs\* vers la branche master de GitHub.  Il faut attendre une vingtaine de minutes afin de permettre à GitHub de mettre à jour le serveur web et à la nouvelle documentation est disponible par la suite à l'adresse suivante:
+
+    https://federal-geospatial-platform.github.io/fgp-metadata-proxy/FME_files/Python_Docs/build/html/index.html
+
+# Ajout d'un Workbench ou Custom Transformer à la documentation Sphinx
+
+Pour ajouter un nouveau Workbench ou un nouveau Custom Transformer à la documentation on doit créer un nouveau fichier de directives en restructuredText et mettre à jour le fichier restructuredText *index.rst* et créer un nouveau fichier de directives *nom.rst*.
+
+  * Pour ajouter un nouveau fichier restructuredText:
+    * Copier le fichier _template.rst sous le nom du workbench ou Custom Transformer que vous voulez créer.
+    * Mettre à jour la documention des titres en [restructuredText](https://docutils.sourceforge.io/docs/user/rst/quickref.html);
+    * Mettre à jour le nom du fichier .html de la directive Sphinx *..raw:: html*;
+    * Mettre à jour les noms des fichiers contenant le code source python pour les directives Sphinx ..autosummary:: et ..automodule:: dans le fichier .rst.  Les sections autosummary et automodule peuvent être enlevé s'il n'y a pas de code source Python à mettre à jour;
+    * Ajouter au besoin de l'information supplémentaire en [restructuredText](https://docutils.sourceforge.io/docs/user/rst/quickref.html).
+    
+
+
 
