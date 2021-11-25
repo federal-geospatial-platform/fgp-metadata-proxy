@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEO_NONE_GEO_SELECTOR &mdash; fme_python_pt_harvester 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LOOKUP_TABLES_READER_NG" href="LOOKUP_TABLES_READER_NG.html" />
+    <link rel="prev" title="ATTRIBUTE_MANAGER_NG" href="ATTRIBUTE_MANAGER_NG.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> fme_python_pt_harvester
+            <img src="_static/Canada.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GEO_NONE_GEO_SELECTOR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-geo-none-geo-selector-py">Documentation du code GEO_NONE_GEO_SELECTOR.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fme_python_pt_harvester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>GEO_NONE_GEO_SELECTOR</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/GEO_NONE_GEO_SELECTOR.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="geo-none-geo-selector">
+<h1>GEO_NONE_GEO_SELECTOR<a class="headerlink" href="#geo-none-geo-selector" title="Permalink to this headline"></a></h1>
+<section id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description</strong></p>
+<p>This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial).  When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives.  See the section Content of the YAML directives below for a complete description of the YAML directives.</p>
+<p><strong>Input Ports</strong></p>
+<ul class="simple">
+<li><p>DATA_INPUT: The input metadata records to process.</p></li>
+</ul>
+<p><strong>Output Ports</strong></p>
+<ul class="simple">
+<li><p>GEOSPATIAL: Output port for all gepspatial metadata records;</p></li>
+<li><p>NON-GEOSPATIAL: Output port for all none geospatial metadata records;</p></li>
+<li><p>ERROR_LOG: Output port for metadata records that need to be logged according to the YAML directives.</p></li>
+</ul>
+<p>Note: All the input records will go through either the GeoSpatial the None GeoSpatial port.  Some input records may be duplicated and sent through the LOG_ERROR port  if requested by the YAML directives.</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p>YAML_DIRECTIVES: YAML directives for determining the Geospatial and None Geospatial records.  See the section Content of the YAML directives below for a description of the YAML directives.</p></li>
+</ul>
+<p><strong>Content of the YAML directives</strong></p>
+<p>The YAML directives are used by the custom transformer to decide the type of the metadata records: GeoSpatial or None GeoSpatial.  Here’s an exemple of a YAML directives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resources</span><span class="p">{}</span><span class="o">.</span><span class="n">format</span><span class="p">:</span>
+  <span class="n">domain</span><span class="p">:</span> <span class="n">LOOKUP_TABLE_FORMAT</span>
+  <span class="n">spatial_type</span><span class="p">:</span> <span class="n">overwrite</span>
+  <span class="n">not_found</span><span class="p">:</span> <span class="n">log</span>
+  <span class="n">search_type</span><span class="p">:</span> <span class="n">equals</span>
+<span class="c1">#</span>
+<span class="n">description</span><span class="p">:</span>
+  <span class="n">domain</span><span class="p">:</span> <span class="p">[</span><span class="n">spatial</span><span class="p">,</span> <span class="n">geographic</span><span class="p">]</span>
+  <span class="n">spatial_type</span><span class="p">:</span> <span class="n">no_overwrite</span>
+  <span class="n">not_found</span><span class="p">:</span> <span class="n">no_log</span>
+  <span class="n">search_type</span><span class="p">:</span> <span class="n">contains</span>
+</pre></div>
+</div>
+<p><strong>Description of the YAML directives</strong></p>
+<p>The first part of the YAML is the name of the FME attribute to use to validate the record, it can be a list attribute (ex.: resources{}..format) or a simple  attribute (ex.: description). If it’s a list attribute,the name must contain the 2 characters:”{}”.  The content of that attribute will be used to determine if the record is GeoSpatial or None GeoSpatial.</p>
+<p>Following the FME attribute to validate, there are 4 keywords: domain, spatial_type, not_found and search_type.</p>
+<ul class="simple">
+<li><p>The first keyword domain defines the domain of values that are used to determine if a metadata record is GeoSpatial or None GeoSpatial. Two values are possible: LOOKUP_TABLE_FORMAT or a list of word defining the domain between brackets (ex.: [point, line, poygone]).  When using the keyword LOOKUP_TABLE_FORMAT, the custom transformer will use the content of the column name format of the CSV fileto define the domain of values. The record type will be GeoSpatial if the column fgp_publish is set to “oui”.  When using a domain list, the metadata record will be GeoSpatial if the value of the FME attribute is contained in the domain list.</p></li>
+<li><p>The second keyword spatial_type defines how to set the spatial type when there is a domain match of the FME attribute.  Three values are possible: no_overwite, overwrite and if_null_overwrite.  no_overwite means that even if there is a match do not try to overwrite the spatial type.  overwite means that if there is a match, take the spatial type value associated in the CSV file (column name: spatial_type) and assign it (or create it if empty) to the corresponding FME attribute.  if_null_overwite as the same meaning as overwrite but only when the content of the spatial type is empty or missing.  The values overwrite and if_null_overwrite can only be used when the domain keyword value is LOOKUP_TABLE_FORMAT.</p></li>
+<li><p>The third keyword not_found defines how the custom transformer behaves when an FME attribute is not found in the domain of values.  Two values are possible: log and no_log. log means create a duplicate (clone) of the record and send it through the LOG_ERROR output port. no_log means do not log any error when the FME attribute is not found in the domain of values.</p></li>
+<li><p>The fourth keyword search type defines how to search the content of the FME attribute.  Two values are possible: equals or contains. equals means that the value of the FME attribute must be exactly the same.  contains means that one of the word the FME attribute must be in the domain values (usefull when we search for one word in a sentence).</p></li>
+</ul>
+<p>You can define more than one FME attribute to search.  Do not duplicate the FME attribute name, the last one overwrite the others.</p>
+</section>
+<section id="documentation-du-code-geo-none-geo-selector-py">
+<h2>Documentation du code GEO_NONE_GEO_SELECTOR.py<a class="headerlink" href="#documentation-du-code-geo-none-geo-selector-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector" title="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector</span></code></a>()</p></td>
+<td><p>This class is used by the custom transfomer GEO_NON_GEO_SELECTOR in a PythonCaller in order to sort the record between geospatial and none geospatial records.</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-GEO_NONE_GEO_SELECTOR"></span><dl class="py class">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GEO_NONE_GEO_SELECTOR.</span></span><span class="sig-name descname"><span class="pre">GeoNoneGeoSelector</span></span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used by the custom transfomer GEO_NON_GEO_SELECTOR in a PythonCaller in order
+to sort the record between geospatial and none geospatial records. This class is reading
+YAML files that contains the directives to sort the records</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor call before any FME features are passed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.close" title="Permalink to this definition"></a></dt>
+<dd><p>Method call when all the festures are passed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.input" title="Permalink to this definition"></a></dt>
+<dd><p>Input of all FME features.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ATTRIBUTE_MANAGER_NG.html" class="btn btn-neutral float-left" title="ATTRIBUTE_MANAGER_NG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LOOKUP_TABLES_READER_NG.html" class="btn btn-neutral float-right" title="LOOKUP_TABLES_READER_NG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, FGP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
