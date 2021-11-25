@@ -101,7 +101,7 @@ La mise à jour de la documentation Sphinx se fait par l'exécution des commande
 
 La publication de la documentation sur le serveur web GitHub se fait automatiquement en poussant (Push origin) les modifications contenus dans le répertoire \fgp-metadata-proxy\FME_files\Sphinx_Docs\* vers la branche master du projet dans GitHub.  Il faut attendre une vingtaine de minutes afin de permettre à GitHub de mettre à jour le serveur web afin que la nouvelle documentation soit disponible par la suite à l'adresse suivante sur le web:
 
-    https://federal-geospatial-platform.github.io/fgp-metadata-proxy/FME_files/Python_Docs/build/html/index.html
+    https://federal-geospatial-platform.github.io/fgp-metadata-proxy/FME_files/Sphinx_Docs/build/html/index.html
 
 # Ajout d'un Workbench ou Custom Transformer à la documentation Sphinx
 
