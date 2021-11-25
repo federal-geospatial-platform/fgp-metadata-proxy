@@ -49,12 +49,6 @@ class FME_utils:
         List of Tuple
            List of Tuple containing the index number and the name of the atrribute
         
-        Notes
-        -----
-        The FFT is a fast implementation of the discrete Fourier transform:
-
-        .. math:: X(e^{j\omega } ) = x(n)e^{ - j\omega n}
-        
         """
 
         atts = []
