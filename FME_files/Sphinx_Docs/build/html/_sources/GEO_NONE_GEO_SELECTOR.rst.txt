@@ -1,5 +1,8 @@
-Custom Transformer: GEO_NONE_GEO_SELECTOR
-=========================================
+GEO_NONE_GEO_SELECTOR
+=====================
+
+Documentation du Custom Transformer FME
+#######################################
 
 **Description**
 
@@ -59,18 +62,11 @@ Following the FME attribute to validate, there are 4 keywords: domain, spatial_t
 
 You can define more than one FME attribute to search.  Do not duplicate the FME attribute name, the last one overwrite the others.
 
-Sommaire des classes et modules
-###############################
-
+Documentation du code GEO_NONE_GEO_SELECTOR.py
+##############################################
 
 .. autosummary::
    GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector
-   
-
-Description détaillée des classes et modules
-############################################
-
-
  
 .. automodule:: GEO_NONE_GEO_SELECTOR
    :members:

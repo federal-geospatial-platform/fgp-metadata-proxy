@@ -1,14 +1,17 @@
-ATTRIBUTE_MANAGER_NG
-====================
+nom du module
+=============
 
 Documentation du Custom Transformer FME
 #######################################
 
-.. raw:: html
-   :file: test_html.html
 
-Documentation du code ATTRIBUTE_MANAGER_NG.py
-#############################################
+.. raw:: html
+   :file: x_html.html
+
+| 
+
+Documentation du code module.py
+###############################
    
 .. autosummary::
    ATTRIBUTE_MANAGER_NG
@@ -17,7 +20,4 @@ Documentation du code ATTRIBUTE_MANAGER_NG.py
    :members:
    :special-members: __init__
    :show-inheritance:
-   
-   
-
     

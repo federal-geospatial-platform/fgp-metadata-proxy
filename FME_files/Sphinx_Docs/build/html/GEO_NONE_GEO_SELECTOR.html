@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custom Transformer: GEO_NONE_GEO_SELECTOR &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>GEO_NONE_GEO_SELECTOR &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Custom Transformer: LOOKUP_TABLES_READER_NG" href="LOOKUP_TABLES_READER_NG.html" />
-    <link rel="prev" title="Custom transformer: ATTRIBUTE_MANAGER_NG" href="ATTRIBUTE_MANAGER_NG.html" /> 
+    <link rel="next" title="LOOKUP_TABLES_READER_NG" href="LOOKUP_TABLES_READER_NG.html" />
+    <link rel="prev" title="ATTRIBUTE_MANAGER_NG" href="ATTRIBUTE_MANAGER_NG.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,17 +38,17 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">Custom transformer: ATTRIBUTE_MANAGER_NG</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Custom Transformer: GEO_NONE_GEO_SELECTOR</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#sommaire-des-classes-et-modules">Sommaire des classes et modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-GEO_NONE_GEO_SELECTOR">Description détaillée des classes et modules</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GEO_NONE_GEO_SELECTOR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-geo-none-geo-selector-py">Documentation du code GEO_NONE_GEO_SELECTOR.py</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">Custom Transformer: LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
 </ul>
 
         </div>
@@ -65,7 +65,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Custom Transformer: GEO_NONE_GEO_SELECTOR</li>
+      <li>GEO_NONE_GEO_SELECTOR</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/GEO_NONE_GEO_SELECTOR.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -75,8 +75,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="custom-transformer-geo-none-geo-selector">
-<h1>Custom Transformer: GEO_NONE_GEO_SELECTOR<a class="headerlink" href="#custom-transformer-geo-none-geo-selector" title="Permalink to this headline"></a></h1>
+  <section id="geo-none-geo-selector">
+<h1>GEO_NONE_GEO_SELECTOR<a class="headerlink" href="#geo-none-geo-selector" title="Permalink to this headline"></a></h1>
+<section id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
 <p><strong>Description</strong></p>
 <p>This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial).  When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives.  See the section Content of the YAML directives below for a complete description of the YAML directives.</p>
 <p><strong>Input Ports</strong></p>
@@ -119,8 +121,9 @@
 <li><p>The fourth keyword search type defines how to search the content of the FME attribute.  Two values are possible: equals or contains. equals means that the value of the FME attribute must be exactly the same.  contains means that one of the word the FME attribute must be in the domain values (usefull when we search for one word in a sentence).</p></li>
 </ul>
 <p>You can define more than one FME attribute to search.  Do not duplicate the FME attribute name, the last one overwrite the others.</p>
-<section id="sommaire-des-classes-et-modules">
-<h2>Sommaire des classes et modules<a class="headerlink" href="#sommaire-des-classes-et-modules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="documentation-du-code-geo-none-geo-selector-py">
+<h2>Documentation du code GEO_NONE_GEO_SELECTOR.py<a class="headerlink" href="#documentation-du-code-geo-none-geo-selector-py" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -132,10 +135,7 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="module-GEO_NONE_GEO_SELECTOR">
-<span id="description-detaillee-des-classes-et-modules"></span><h2>Description détaillée des classes et modules<a class="headerlink" href="#module-GEO_NONE_GEO_SELECTOR" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<span class="target" id="module-GEO_NONE_GEO_SELECTOR"></span><dl class="py class">
 <dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GEO_NONE_GEO_SELECTOR.</span></span><span class="sig-name descname"><span class="pre">GeoNoneGeoSelector</span></span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -169,8 +169,8 @@ YAML files that contains the directives to sort the records</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ATTRIBUTE_MANAGER_NG.html" class="btn btn-neutral float-left" title="Custom transformer: ATTRIBUTE_MANAGER_NG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="LOOKUP_TABLES_READER_NG.html" class="btn btn-neutral float-right" title="Custom Transformer: LOOKUP_TABLES_READER_NG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ATTRIBUTE_MANAGER_NG.html" class="btn btn-neutral float-left" title="ATTRIBUTE_MANAGER_NG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LOOKUP_TABLES_READER_NG.html" class="btn btn-neutral float-right" title="LOOKUP_TABLES_READER_NG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

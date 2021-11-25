@@ -3,8 +3,24 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to PT Harvester's documentation!
-========================================
+Bienvenue sur la page principale de PT Harvester!
+=================================================
+
+Documentation des Workbench FME
+===============================
+   
+*à venir...*
+
+
+Documentation des Custom Transformers FME
+=========================================
+   
+.. toctree::
+   :maxdepth: 1   
+
+   ATTRIBUTE_MANAGER_NG.rst
+   GEO_NONE_GEO_SELECTOR.rst
+   LOOKUP_TABLES_READER_NG.rst
 
 
 Documentation de l'utilitaire Python
@@ -15,16 +31,6 @@ Documentation de l'utilitaire Python
    
    FME_utils.rst
 
-   
-Documentation des Custom Transformers
-=====================================
-   
-.. toctree::
-   :maxdepth: 1   
-
-   ATTRIBUTE_MANAGER_NG.rst
-   GEO_NONE_GEO_SELECTOR.rst
-   LOOKUP_TABLES_READER_NG.rst
    
 Indices and tables
 ==================

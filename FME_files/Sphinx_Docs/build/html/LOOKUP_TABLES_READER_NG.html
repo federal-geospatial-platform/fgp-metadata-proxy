@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custom Transformer: LOOKUP_TABLES_READER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>LOOKUP_TABLES_READER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Custom Transformer: GEO_NONE_GEO_SELECTOR" href="GEO_NONE_GEO_SELECTOR.html" /> 
+    <link rel="next" title="Documentation de la classe FME_utils" href="FME_utils.html" />
+    <link rel="prev" title="GEO_NONE_GEO_SELECTOR" href="GEO_NONE_GEO_SELECTOR.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,17 +38,17 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">Custom transformer: ATTRIBUTE_MANAGER_NG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">Custom Transformer: GEO_NONE_GEO_SELECTOR</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Custom Transformer: LOOKUP_TABLES_READER_NG</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#sommaire-des-classes-et-modules">Sommaire des classes et modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-LOOKUP_TABLES_READER_NG">Description détaillée des classes et modules</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LOOKUP_TABLES_READER_NG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-lookup-tables-reader-py">Documentation du code LOOKUP_TABLES_READER.py</a></li>
 </ul>
 </li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
 </ul>
 
         </div>
@@ -64,7 +65,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Custom Transformer: LOOKUP_TABLES_READER_NG</li>
+      <li>LOOKUP_TABLES_READER_NG</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/LOOKUP_TABLES_READER_NG.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -74,8 +75,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="custom-transformer-lookup-tables-reader-ng">
-<h1>Custom Transformer: LOOKUP_TABLES_READER_NG<a class="headerlink" href="#custom-transformer-lookup-tables-reader-ng" title="Permalink to this headline"></a></h1>
+  <section id="lookup-tables-reader-ng">
+<h1>LOOKUP_TABLES_READER_NG<a class="headerlink" href="#lookup-tables-reader-ng" title="Permalink to this headline"></a></h1>
+<section id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
 <p><strong>Description</strong></p>
 <p>This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.</p>
 <p><strong>Input Ports</strong></p>
@@ -127,8 +130,9 @@
 <li><p>The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following “NO_DUPLICATE:” you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon “:”; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket.</p></li>
 <li><p>The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following “CHECK_DUPLICATE:” you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon “:”; followed by the domain values separated by a coma “,” and enclosed between brackets “[]”. If you want to check for empty value “”, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.</p></li>
 </ul>
-<section id="sommaire-des-classes-et-modules">
-<h2>Sommaire des classes et modules<a class="headerlink" href="#sommaire-des-classes-et-modules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="documentation-du-code-lookup-tables-reader-py">
+<h2>Documentation du code LOOKUP_TABLES_READER.py<a class="headerlink" href="#documentation-du-code-lookup-tables-reader-py" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -143,10 +147,7 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="module-LOOKUP_TABLES_READER_NG">
-<span id="description-detaillee-des-classes-et-modules"></span><h2>Description détaillée des classes et modules<a class="headerlink" href="#module-LOOKUP_TABLES_READER_NG" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<span class="target" id="module-LOOKUP_TABLES_READER_NG"></span><dl class="py class">
 <dt class="sig sig-object py" id="LOOKUP_TABLES_READER_NG.LoadValidateYaml">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">LOOKUP_TABLES_READER_NG.</span></span><span class="sig-name descname"><span class="pre">LoadValidateYaml</span></span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#LoadValidateYaml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -195,7 +196,8 @@ cached to a list class member and processed in the close() method.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="GEO_NONE_GEO_SELECTOR.html" class="btn btn-neutral float-left" title="Custom Transformer: GEO_NONE_GEO_SELECTOR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="GEO_NONE_GEO_SELECTOR.html" class="btn btn-neutral float-left" title="GEO_NONE_GEO_SELECTOR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FME_utils.html" class="btn btn-neutral float-right" title="Documentation de la classe FME_utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

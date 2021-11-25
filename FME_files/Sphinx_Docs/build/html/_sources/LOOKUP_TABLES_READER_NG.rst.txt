@@ -1,5 +1,8 @@
-Custom Transformer: LOOKUP_TABLES_READER_NG
-===========================================
+LOOKUP_TABLES_READER_NG
+=======================
+
+Documentation du Custom Transformer FME
+#######################################
 
 **Description**
 
@@ -63,15 +66,12 @@ The YAML file is used by the custom transformer for manipulating (editing, cloni
 
 * The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following "CHECK_DUPLICATE:" you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon ":"; followed by the domain values separated by a coma "," and enclosed between brackets "[]". If you want to check for empty value "", you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.
    
-Sommaire des classes et modules
-###############################
+Documentation du code LOOKUP_TABLES_READER.py
+#############################################
    
 .. autosummary::
    LOOKUP_TABLES_READER_NG.check_file_present
    LOOKUP_TABLES_READER_NG.LoadValidateYaml
- 
-Description détaillée des classes et modules
-############################################ 
  
 .. automodule:: LOOKUP_TABLES_READER_NG
    :members:
