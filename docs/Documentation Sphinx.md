@@ -37,10 +37,12 @@ Note importante sur l'utilisation de Sphinx
 
 **Cette étape a besoin d'être faite qu'une seule fois.**  Il ne faut pas la refaire car cette action viendrait écraser l'initialisation faite précédemment.
 
-Pour créer l'environnement initial de Sphinx
+Pour créer l'environnement initial de Sphinx:
 
     cd .\répertoire de départ...\
     sphinx-quickstart
+
+Le fichier sphinx-quickstart.exe se trouve dans le dossier Scripts de l'installation Pyhton. L'emplacement du répertoire de construction de la sortie de Sphinx sera le même que celui où est situé l'exécutable sphinx-quickstart.
 
 Répondre aux questions interactives:
 
