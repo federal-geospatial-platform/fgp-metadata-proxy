@@ -79,63 +79,67 @@
 <h1>ATTRIBUTE_MANAGER_NG<a class="headerlink" href="#attribute-manager-ng" title="Permalink to this headline"></a></h1>
 <section id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-<html>
-<head><meta name="qrichtext" content="1" /><style type="text/css">
-p, li { white-space: pre-wrap; }
-</style>
-</head>
-<body>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; font-weight:600;">Description </span></p>
-<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.</li></ul>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; font-weight:600;">Input Ports</span></p>
-<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; font-weight:400;">This custom transformer has no Input Port</span></li></ul>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; font-weight:600;">Output Ports </span></p>
-<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; font-weight:400;">OUTPUT_LOCAL: The content of the lookup table (one record by row in the CSV file)</span></li></ul>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; font-weight:600;">Parameters </span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600;"><br /></p>
-<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; font-weight:400;">FEATURE_TYPE: File name of the lookup table without the .csv extension</span></li>
-<li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into <span style=" font-style:italic;">CSV_PATH\shared</span> when it is a lookup table shared between PT and secondly in <span style=" font-style:italic;">CSV_PATH\PT</span> when the lookup table is specific to a PT</li>
-<li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">PT: Two letter code of the province or territory to process (ex.: ON, QC, AB...)</li>
-<li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">CSV_ENCODING: Type of encoding of the lookup tale</li></ul>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; color:#000000;">Content of the YAML file </span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#000000;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt;">The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file.</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">CSV_COLUMNS:</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  original_value: [trim, lower, no_null, explode]</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  real_value_english: [trim, upper, no_null, explode]</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  real_value_french: [no_null_err, explode]</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  code_value: [upper, explode]</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">#</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">CREATE_KEY_VALUE:</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  code_value: original_value</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">#</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">NO_DUPLICATE:</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  DUP_1: [code_value]</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  DUP_2: [original_value, real_value_english]</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">#</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">CHECK_DOMAIN</span></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Courier'; font-size:10pt; color:#000000;">  original_value: [year, yearly]</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:10pt; color:#000000;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt; font-weight:600; color:#000000;">Description of the three sections of a YAML file</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:10pt; color:#000000;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt;">The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &quot;CSV_COLUMNS:&quot; you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon &quot;:&quot;; followed by the list of actions separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;.  Here's the list of possible actions:</span></p>
-<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &quot;   a   test&quot; ==­&gt; &quot;a test&quot;);</li>
-<li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">lower: Put the column value in lower case;</li>
-<li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">upper: Put the column value in upper case;</li>
-<li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">no_null: Check that the column is not empty or null; it terminates execution if not null;</li>
-<li style=" font-size:12pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">explode: Duplicate the row if the column contains values separated by semicolumn &quot;;&quot;.  The line is exploded by the number of values in the column (ex: &quot;QC;ON;MB&quot;, will duplicate all the content of the line 2 times, the first line will contain &quot;QC&quot;; the second &quot;ON&quot; and the third &quot;MB&quot;.</li></ul>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt;">The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &quot;CREATE_KEY_VALUE:&quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon &quot;:&quot;; followed by the name of the column containing the value of the attribute;</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt;">The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following &quot;NO_DUPLICATE:&quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon &quot;:&quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. </span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:12pt;">The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following &quot;CHECK_DUPLICATE:&quot; you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon &quot;:&quot;; followed by the domain values separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;. If you want to check for empty value &quot;&quot;, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.</span></p></body></html></section>
+<p><strong>Description</strong>
+This custom Transformer allow the user to set a specified value for one or many attributes into a FME feature (attributes can be simple list i.e. with only one index). It can either overwrite the attribute value or set a specified value if the attribute is Null. The value can be set as text or as another attribute value from the same FME feature. In the case where the specified attribute is a list, the custom Transformer repairs it (it assures there is no missing index into the list). Attributes to process and actions to do are contained into input YAML directives.</p>
+<p><strong>Input Ports</strong>
+* DATA_INPUT : A FME feature.</p>
+<p><strong>Output Ports</strong>
+* OUTPUT : The FME feature for witch attributes have been modified according the YAML directives.</p>
+<p><strong>Parameters</strong>
+* IN_YAML_TEXT: YAML directives to determine the attribute and the action to be done on the FME feature. See the section Content of the YAML directives below for a description of the YAML directives.</p>
+<p><strong>Content of the YAML directives</strong></p>
+<ul class="simple">
+<li><p>The YAML directives are used by the custom transformer to decide the attribute to process and the process itself. Below is an example of YAML directives. Notice that there is 6 attributes, each of them has 2 keywords values: action and attr2set .</p></li>
+</ul>
+<dl class="simple">
+<dt>notes:</dt><dd><p>action: attribute_not_null
+attr2set: title</p>
+</dd>
+<dt>iso_topic{}.:</dt><dd><p>action: attribute_not_null
+attr2set: default_iso_topic</p>
+</dd>
+<dt>publisher:</dt><dd><p>action: text_overwrite
+attr2set: NRCan</p>
+</dd>
+<dt>description:</dt><dd><p>action: text_not_null
+attr2set: Description PGF</p>
+</dd>
+<dt>maintainer:</dt><dd><p>action: attribute_overwrite
+attr2set: description</p>
+</dd>
+<dt>tags{}.name:</dt><dd><p>action: attribute_not_null
+attr2set: default_tags_display_name</p>
+</dd>
+</dl>
+<p><strong>Description of the YAML directives</strong></p>
+<ul class="simple">
+<li><p>The first part of the YAML is the name of the FME attribute on which we want to do an action, it can be a list with a specific attribute to access (e.g. iso_topic{}.topic_value ) or just a list (e.g. iso_topic{}. ). Note that if the FME feature being processed does not contain the specific attribute of the list you want to access, it will not be process. For example, if you want to do text_not_null on every feature for the list iso_topic {}.,you need to specify the specific attribute of the list (topic_value) so that all feature will be affected, even those not containing iso_topic{}.topic_value.</p></li>
+<li><p>When referring to a list, it is important to write it with the following 3 characters “{}.”. It can also be a single attribute (e.g. description ).</p></li>
+<li><p>Following the FME attribute to process, there are 2 keywords: action and attr2set . The keyword action defines the action to do with the attribute it relates to, 4 options are available. The keyword attr2set , defines either the attribute name or a text literal depending of the action selected. If the action name contains attribute , then it sets the value of the specified attribute. If the action name contains text then it sets the text written.</p></li>
+<li><p>action :</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>attribute_not_null: This option verify if the attribute value is Null , if yes it sets the value of the attribute specified by the attr2set keyword.</p></li>
+<li><p>attribute_overwrite: This option overwrite the attribute value by setting the value of the attribute specified by the attr2set keyword.</p></li>
+<li><p>text_not_null: This option verify if the attribute value is Null , if yes it sets the text written into the attr2set keyword.</p></li>
+<li><p>text_overwrite: This option overwrite the attribute value, it sets the text written into the attr2set keyword.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>attr2set:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>attribute_not_null and attribute_overwrite: Sets the attribute value specified.</p></li>
+<li><p>text_not_null and text_overwrite: Sets the literal text written.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>New attributes or list:</p></li>
+<li><p>If the list or the attribute written into the YAML does not exist, it will be created. Lists will be set with an index {0}. Note that attributes or lists are processed in the YAML from top to bottom. Therefore, you can use in lower attributes in the YAML, the attributes values that have been sets higher in the YAML.</p></li>
+</ul>
+</section>
 <section id="documentation-du-code-attribute-manager-ng-py">
 <h2>Documentation du code ATTRIBUTE_MANAGER_NG.py<a class="headerlink" href="#documentation-du-code-attribute-manager-ng-py" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">

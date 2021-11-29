@@ -48,7 +48,7 @@ Répondre aux questions interactives:
 
 ![quick-start.png](quick-start.png)
 
-Ajustement du fichier de configuration en ajoutant ou modifiant les lignes suivants dans le fichier conf.py:
+Ajustement du fichier de configuration en ajoutant ou modifiant les lignes suivants dans le fichier conf.py (situé dans le dossier source):
  
     # Indiquer où se trouve le code source Python
     sys.path.insert(0, os.path.abspath('../..'))
@@ -100,6 +100,13 @@ La mise à jour de la documentation Sphinx se fait par l'exécution des commande
     cd .\répertoire de départ...\
     make clean
     make html
+
+Le résultat de l'exécution de la commande *make html* devrait terminer en affichant:
+
+    build succeeded, XX warnings.
+    The HTML pages are in build\html.
+
+Il faut s'assurer de copier le nouveau contenu du ficher *build* vers le répertoire GitHub. Ne pas oublier d'insérer dans le répertoire GitHub *source*, les nouveaux fichiers **.rst*.
 
 La publication de la documentation sur le serveur web GitHub se fait automatiquement en poussant (Push origin) les modifications contenus dans le répertoire \fgp-metadata-proxy\FME_files\Sphinx_Docs\* vers la branche master du projet dans GitHub.  Il faut attendre une vingtaine de minutes afin de permettre à GitHub de mettre à jour le serveur web afin que la nouvelle documentation soit disponible par la suite à l'adresse suivante sur le web:
 
