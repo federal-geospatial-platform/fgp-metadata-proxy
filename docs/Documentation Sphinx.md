@@ -101,10 +101,10 @@ La mise à jour de la documentation Sphinx se fait par l'exécution des commande
     make clean
     make html
 
-Le résultat de l'exécution de la commande 'make html' devrait terminer en affichant:
-  
-  build succeeded, XX warnings.
-  The HTML pages are in build\html.
+Le résultat de l'exécution de la commande *make html* devrait terminer en affichant:
+
+    build succeeded, XX warnings.
+    The HTML pages are in build\html.
 
 Il faut s'assurer de copier le dossier nouvellement créé nommé 'build' dans le répertoire GitHub. Ne pas oublier d'insérer dans le répertoire source, les nouveaux fichiers *.rst.
 
