@@ -48,7 +48,7 @@ Répondre aux questions interactives:
 
 ![quick-start.png](quick-start.png)
 
-Ajustement du fichier de configuration en ajoutant ou modifiant les lignes suivants dans le fichier conf.py:
+Ajustement du fichier de configuration en ajoutant ou modifiant les lignes suivants dans le fichier conf.py (situé dans le dossier source):
  
     # Indiquer où se trouve le code source Python
     sys.path.insert(0, os.path.abspath('../..'))

@@ -4,68 +4,48 @@ LOOKUP_TABLES_READER_NG
 Documentation du Custom Transformer FME
 #######################################
 
-**Description**
-
-This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.
-
-
-**Input Ports**
-
-* This custom transformer has no Input Port
-
-
-**Output Ports**
-
-* OUTPUT_LOCAL: The content of the lookup table (one record by row in the CSV file)
-
-
-**Parameters**
-
-* FEATURE_TYPE: File name of the lookup table without the .csv extension
-
-* CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into CSV_PATH\shared when it is a lookup table shared between PT and secondly in CSV_PATH\PT when the lookup table is specific to a PT
-
-* PT: Two letter code of the province or territory to process (ex.: ON, QC, AB...)
-
-* CSV_ENCODING: Type of encoding of the lookup tale
-
-
-**Content of the YAML file**
-
-The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file::
-
- CSV_COLUMNS:
-   original_value: [trim, lower, no_null, explode]
-   real_value_english: [trim, upper, no_null, explode]
-   real_value_french: [no_null_err, explode]
-   code_value: [upper, explode]
- #
- CREATE_KEY_VALUE:
-   code_value: original_value
- #
- NO_DUPLICATE:
-   DUP_1: [code_value]
-   DUP_2: [original_value, real_value_english]
- #
- CHECK_DOMAIN
-   original_value: [year, yearly]
-
-**Description of the three sections of a YAML file**
-
-* The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the "CSV_COLUMNS:" you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon ":"; followed by the list of actions separated by a coma "," and enclosed between brackets "[]".  Here's the list of possible actions:
-
-  * trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: "   a   test" ==­> "a test");
-  * lower: Put the column value in lower case;
-  * upper: Put the column value in upper case;
-  * no_null: Check that the column is not empty or null; it terminates execution if not null;
-  * explode: Duplicate the row if the column contains values separated by semicolumn ";".  The line is exploded by the number of values in the column (ex: "QC;ON;MB", will duplicate all the content of the line 2 times, the first line will contain "QC"; the second "ON" and the third "MB".
-
-* The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the "CREATE_KEY_VALUE:" you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon ":"; followed by the name of the column containing the value of the attribute;
-
-* The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following "NO_DUPLICATE:" you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon ":"; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. 
-
-* The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following "CHECK_DUPLICATE:" you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon ":"; followed by the domain values separated by a coma "," and enclosed between brackets "[]". If you want to check for empty value "", you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.
-   
+Description 
+· This custom Transformer allow the user to set a specified value for one or many attributes into a FME feature (attributes can be simple list i.e. with only one index). It can either overwrite the attribute value or set a specified value if the attribute is Null. The value can be set as text or as another attribute value from the same FME feature. In the case where the specified attribute is a list, the custom Transformer repairs it (it assures there is no missing index into the list). Attributes to process and actions to do are contained into input YAML directives. 
+Input Ports 
+· DATA_INPUT : A FME feature. 
+Output Ports 
+· OUTPUT : The FME feature for witch attributes have been modified according the YAML directives. 
+Parameters 
+· IN_YAML_TEXT: YAML directives to determine the attribute and the action to be done on the FME feature. See the section Content of the YAML directives below for a description of the YAML directives. 
+Content of the YAML directives 
+The YAML directives are used by the custom transformer to decide the attribute to process and the process itself. Below is an example of YAML directives. Notice that there is 6 attributes, each of them has 2 keywords values: action and attr2set . 
+notes: 
+    action: attribute_not_null 
+    attr2set: title 
+iso_topic{}.: 
+    action: attribute_not_null 
+    attr2set: default_iso_topic 
+publisher: 
+    action: text_overwrite 
+    attr2set: NRCan 
+description: 
+    action: text_not_null 
+    attr2set: Description PGF 
+maintainer: 
+    action: attribute_overwrite 
+    attr2set: description 
+tags{}.name: 
+    action: attribute_not_null 
+    attr2set: default_tags_display_name 
+Description of the YAML directives 
+The first part of the YAML is the name of the FME attribute on which we want to do an action, it can be a list with a specific attribute to access (e.g. iso_topic{}.topic_value ) or just a list (e.g. iso_topic{}. ). Note that if the FME feature being processed does not contain the specific attribute of the list you want to access, it will not be process. For example, if you want to do text_not_null on every feature for the list iso_topic {}.,you need to specify the specific attribute of the list (topic_value) so that all feature will be affected, even those not containing iso_topic{}.topic_value. 
+When referring to a list, it is important to write it with the following 3 characters "{}.". It can also be a single attribute (e.g. description ). 
+Following the FME attribute to process, there are 2 keywords: action and attr2set . The keyword action defines the action to do with the attribute it relates to, 4 options are available. The keyword attr2set , defines either the attribute name or a text literal depending of the action selected. If the action name contains attribute , then it sets the value of the specified attribute. If the action name contains text then it sets the text written. 
+action : 
+- attribute_not_null: This option verify if the attribute value is Null , if yes it sets the value of the attribute specified by the attr2set keyword. 
+- attribute_overwrite: This option overwrite the attribute value by setting the value of the attribute specified by the attr2set keyword. 
+- text_not_null: This option verify if the attribute value is Null , if yes it sets the text written into the attr2set keyword. 
+- text_overwrite: This option overwrite the attribute value, it sets the text written into the attr2set keyword. 
+attr2set: 
+-attribute_not_null and attribute_overwrite: Sets the attribute value specified. 
+- text_not_null and text_overwrite: Sets the literal text written. 
+New attributes or list: 
+If the list or the attribute written into the YAML does not exist, it will be created. Lists will be set with an index {0}. Note that attributes or lists are processed in the YAML from top to bottom. Therefore, you can use in lower attributes in the YAML, the attributes values that have been sets higher in the YAML.   
 Documentation du code LOOKUP_TABLES_READER.py
 #############################################
    
