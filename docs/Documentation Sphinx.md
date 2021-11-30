@@ -89,7 +89,7 @@ Pour que cet extraction et intégration puisse s'opérer correctement, il est im
 
 # Extraction automatique de la documention FME
 
-Afin de rendre accessible à Sphinx la documentation FME, il faut extraire la description des Workbench/Custom Transformer. Le programme **reading_FME_description.fmw** du répertoire *<u>fgp-metadata-proxy\FME_files\Sphinx_Docs\reading fme files<u>* permet de faire cette tâche. Le répertoire *<u>fgp-metadata-proxy\FME_files\Sphinx_Docs\reading fme files\FME description files<u>* contient un fichier HTML pour chaque Workbench/Custom Transformers. Si aucune information n'est contenue dans l'onglet description du Workbench/Custom Transformers, alors aucun fichier ne sera présent. Le nom du fichiers HTML est le même que celui du Workbench/Custom Transformers auquel il se rapporte.
+Afin de rendre accessible à Sphinx la documentation FME, il faut extraire la description des Workbench/Custom Transformer. Le programme **reading_FME_description.fmw** du répertoire *<u>fgp-metadata-proxy\FME_files\Sphinx_Docs\reading fme files</u>* permet de faire cette tâche. Le répertoire *<u>fgp-metadata-proxy\FME_files\Sphinx_Docs\reading fme files\FME description files</u>* contient un fichier HTML pour chaque Workbench/Custom Transformers. Si aucune information n'est contenue dans l'onglet description du Workbench/Custom Transformers, alors aucun fichier ne sera présent. Le nom du fichiers HTML est le même que celui du Workbench/Custom Transformers auquel il se rapporte.
 
 L'image suivante montre les paramètres d'entrée à ajuster en fonction de l'utilisateur, afin d'exécuter correctement le programme *reading_FME_description.fmw*:
 
