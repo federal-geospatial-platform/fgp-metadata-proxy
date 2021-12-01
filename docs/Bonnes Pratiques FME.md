@@ -14,7 +14,7 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
  - [Python](#Python)
    - [Installation de Packages](#Installation-de-packages)
    - [Packages requis](#Packages-requis)
-   - [Gestion des sources Python](#Gestion-des-sources-Python)
+   - [Gestion des sources Python et PYTHONPATH](#Gestion-des-sources-Python-et-PYTHONPATH)
    - [Débuggage en Python](#Débuggage-en-python)
  - [Nom du transformer](#Nom-du-transformer)
  - [Patron de conception](#Patron-de-conception)
@@ -86,17 +86,17 @@ L'installation des package suivants est requis pour la transformation des métad
   - PyYAML: Pour convertir des fichiers YAML
     - Installation: fme.exe python -m pip install PyYAML --target C:\Users\\*&lt;user&gt;*\Documents\FME\Plugins\Python
 
-## Gestion des sources Python
+## Gestion des sources Python et PYTHONPATH
 
 Il existe deux solutions pour gérer le code source Python dans l'environnement FME.  Premièrement on peut laisser le code source directement dans les différents *PythonCaller*; ou deuxièmement on peut placer le code source python dans un répertoire centralisé visible par FME et y accécer via la commande *import*.  Les deux solutions ne sont pas incompatibles, si la première solution est plus simple à implanter; la deuxième permet d'utiliser des outils de débuggage mais aussi de centraliser des utilitaires qui peuvent alors être partager entre les différents *PythonCaller*.
 
 Une solution mixte est préconisée, si votre *PythonCaller* contient peu de lignes de codes, il est préconisé de laisser le code source dans les *PythonCaller* alors que si le *PythonCaller* contient beaucoup de lignes de codes alors la solution de placer le code source dans un répertoire centralisé est préconisée. 
 
-Les sources Python doivent être placés dans le répertoire '..\fgp-metadata-proxy\FME_files\python\' les sources sont alors organisés par répertoire selon le nom du *CustomTransformer* dans lequel le code source se trouve.  Par exemple, le code source Python associé au *Custom Transformer*LOOKUP_TABLE_READER se trouve dans le répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER\'.  Les utilitaires doivent être placés à la racine du répertoire des sources Python dans le fichier *utils.py*
+Les sources Python doivent être placés dans le répertoire '..\fgp-metadata-proxy\FME_files\python\' les sources sont alors organisés par répertoire selon le nom du *CustomTransformer* dans lequel le code source se trouve.  Par exemple, le code source Python associé au *Custom Transformer* LOOKUP_TABLE_READER se trouve dans le répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER\'.  Les utilitaires doivent être placés à la racine du répertoire des sources Python dans le fichier *utils.py*
 
-Finalement, Il faut modifier le PYTHONPATH pour permettre à FME de "retrouver" les sources Python lors de l'exécution.  Dans l'éditeur des variables d'environnement pour votre compte (Edit Environment Variable for your Account) vous devez ajouter le chemin '..\fgp-metadata-proxy\FME_files\python\' à la variable d'environnement PYTHONPATH.  Si la variable d'environnement PYTHONPATH n'existe pas vous devez la créer.
+Finalement, Il faut modifier le **PYTHONPATH** pour permettre à FME de "retrouver" les sources Python lors de l'exécution.  Dans l'éditeur des variables d'environnement pour votre compte (Settings > Edit Environment Variable for your Account) vous devez ajouter le chemin '..\fgp-metadata-proxy\FME_files\python\' à la variable d'environnement PYTHONPATH.  Si la variable d'environnement PYTHONPATH n'existe pas vous devez la créer.
 
-**Note pour discussion avec Benoit et Nic: on pourrait aussi placer tous les sources sans faire de sous répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER.py'**
+
 
 ## Débuggage en python
 

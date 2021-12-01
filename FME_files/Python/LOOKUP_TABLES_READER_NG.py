@@ -1,8 +1,3 @@
-#
-# Ce fichier contient le ccode python appelé le Custom Transformer
-# LOOKUP_TABLE_READER_NG
-
-
 import fme
 import fmeobjects
 import os
@@ -15,11 +10,10 @@ except:
     # No problem if the package is not avalaible
     pass
 
-#
-#-check_file_present-----------------------------------------------------------
-#
+
 def check_file_present(feature):
-# This method checks if a file is present in the shared or the province directory
+    """This method checks if a file is present in the shared or the province directory.
+    """
     
 #    web_pdb.set_trace()
     # Manage if execution is done locally or on FME Server
@@ -193,6 +187,8 @@ class LoadValidateYaml(object):
         
     
     def _process_no_duplicate(self, dict_no_duplicate):
+        """Process no duplicate records
+        """
         
         # Create new attribute from a key/value pair
         for dummy, column_names in dict_no_duplicate.items():
@@ -209,6 +205,8 @@ class LoadValidateYaml(object):
                     dict_no_duplicate[column_value] = "dummy"
 
     def _process_create_key_value(self, dict_key_value):
+        """Create key value pair
+        """
         
         # Create new attribute from a key/value pair
         for key_column, value_column in dict_key_value.items():
@@ -218,6 +216,8 @@ class LoadValidateYaml(object):
                 feature.setAttribute(key, value)
 
     def _process_check_domain(self, dict_check_domain):
+        """Check the domain of the columns
+        """
         
         # Check the domain of the columns
         for key_column, lst_domains in dict_check_domain.items():
@@ -229,9 +229,9 @@ class LoadValidateYaml(object):
                 
     
     def _process_csv_columns(self, dict_csv_columns):
-        
-        
-        # Process the EXPLODE action first that duplicate features
+        """Process the EXPLODE action first that duplicate features.
+        """
+
         for column_name, action_list in dict_csv_columns.items():
             if EXPLODE in action_list:
                 # Loop over each features
