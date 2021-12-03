@@ -3,7 +3,7 @@ import fmeobjects
 import os
 import yaml
 import traceback
-from FME_utils import FME_utils
+import FME_utils
 try:
     import web_pdb
 except:
