@@ -82,12 +82,13 @@ L'onglet *Overview* doit contenir les informations suivantes
 
 L'onglet *History* contient l'historique des travaux fait sur un *workbench*ou un *custom transformer*.  Normalement à chaque fois que le *custom transformer* est publié ou republié dans le dépôt GitHub, on devrait ajouter une ligne dans l'historique.  Cet onglet contient la date du développement, le nom du développeur et un commentaire (pour la première version, on peut écrire "Version originale")
 
-Note1: Les *custom transformer* JSON_PUBLISHER et XML_PUBLISHER sont de bons exemples pour la documentation.
+**Note 1:** Les *custom transformer* JSON_PUBLISHER et XML_PUBLISHER sont de bons exemples pour la documentation.
 
-Note2: Vous pouvez copier/coller le gabarit suivants en markdown pour amorcer et faciliter votre documentation.
+**Note 2:** Vous pouvez copier/coller le gabarit suivants qui contient déjà les entêtes en markdown pour amorcer et faciliter votre documentation FME.
 
 <pre>
 **Description**
+
 ...
 
 **Input Ports**
@@ -106,7 +107,7 @@ Note2: Vous pouvez copier/coller le gabarit suivants en markdown pour amorcer et
   - ...
 </pre>
 
-Note 3: Si vous vouslez incrire un *Block code* dans la documentation FME.  Utiliser la méthode décrite ci-dessous car les autres méthodes de type *markdown* ne fonctionne pas correctement.
+**Note 3:** Si vous vouslez incrire un *Block code* dans la documentation FME.  Utiliser la méthode décrite ci-dessous car les autres méthodes de type *markdown* ne fonctionne pas correctement.
 
 Exemple de markdown:
 
@@ -121,3 +122,7 @@ import fme
 import yaml  
 \<\\pre>
 </pre>
+
+Note 4: Lorsque vous entrez la documentation FME dans le *Transformer Parameters*, il y a dans le coin inférieur droit un bouton **Reference** qui si vous le cliquer affichera un *Markdown Quick Reference* contenant les commandes importantes pour entrer du *markdown*.
+
+![Bouton référence](images/img_9.png)
