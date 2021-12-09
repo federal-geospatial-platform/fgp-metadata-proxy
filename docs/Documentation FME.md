@@ -47,37 +47,76 @@ Cliquer sur Overview et la fenêtre ci-dessous va apparaître:
 
 ![Transformer documentation](images/img_2.png)
 
-Vous devez remplir le champ  *Category* avec la valeur *FGP Tools* (habituellement), l'onglet Overview et l'onglet History.
+Vous devez remplir le champ  *Category* avec la valeur *FGP Tools* (habituellement) et la boite description.
+
+Vous devez cocher *User Markdown (Recommended for FME Hub)*.  L'utilisation du markdown facilite par la suite l'inclusion des descriptions FME dans la [documentation Sphinx](Documentation Sphinx.md). 
 
 L'onglet *Overview* doit contenir les informations suivantes
 
-<u>**Description**</u>
+**Description**
 
   * Inclure une decription détaillée du *custom transformer*.  La description doit mettre l'emphase sur ce que fait (*le quoi*) le *workbench* ou le *custom transformer* plutôt que sur le comment les choses sont faites.
 
   * Au besoin décrire les pré-conditions nécessaires à l'exécution du *custom transformer*
 
  
-<u>**Input Ports**</u>
+**Input Ports**
 
   * Décrire de façon détaillée le contenu de tous les ports d'entrées (*input ports*) du *custom transformer*. Si votre *custom transformer* ne contient qu'un seul port d'entrée, il devrait simplement être nommé *Input*
 
 
-<u>**Output Ports**</u>
+**Output Ports**
 
   * Décrire de façon détaillé le contenu de tous les ports de sorties (*output ports*) du *custom transformer*. Si votre *custom transformer* ne contient qu'un seul port de sortie, il devrait simplement être nommé *Output*
 
 
-<u>**Parameters**</u>
+**Parameters**
 
   * Description détaillée de chaque paramètres du *custom transformer*.  Inscrire la valeur par défaut, si le paramètre contient une liste de valeurs (ex.: YES|NO), il faut documenter le comportement attendu de chaque valeur. 
 
 
-<u>**Note**</u> ou <u>**Usage**</u> *(Sections optionnelles)*
+**Note** ou **Usage** *(Sections optionnelles)*
 
   * Les sections *Note* et/ou *Usage* sont facultatives et devraient être seulement utilisés lorsque de l'information aditionnelle est requise pour aider à la comprhension du *custom transformer*.
 
 
 L'onglet *History* contient l'historique des travaux fait sur un *workbench*ou un *custom transformer*.  Normalement à chaque fois que le *custom transformer* est publié ou republié dans le dépôt GitHub, on devrait ajouter une ligne dans l'historique.  Cet onglet contient la date du développement, le nom du développeur et un commentaire (pour la première version, on peut écrire "Version originale")
 
-Note: Les *custom transformer* JSON_PUBLISHER et XML_PUBLISHER sont de bons exemples pour la documentation.
+Note1: Les *custom transformer* JSON_PUBLISHER et XML_PUBLISHER sont de bons exemples pour la documentation.
+
+Note2: Vous pouvez copier/coller le gabarit suivants en markdown pour amorcer et faciliter votre documentation.
+
+\*\*Description\*\*
+
+...
+
+\*\*Input Ports\*\*
+
+  \- ...
+  \- ...
+
+\*\*Output Ports\*\*
+
+  \- ...
+  \- ...
+
+\*\*Parameters\*\*
+ 
+  \- ...
+  \- ...
+
+Note 3: Si vous vouslez incrire un *Block code* dans la documentation FME.  Utiliser la méthode décrite ci-dessous car les autres méthodes de type *markdown* ne fonctionne pas correctement.
+
+Exemple de markdown:
+
+    import fme
+    import yaml
+
+Pour simuler un *Block code* (bloc de code) dans une description FME, vous devez entourer le bloce de code par les commandes \<pre\>...<\\pre\> 
+
+\<pre>
+import fme
+import yaml
+\<\\pre>
+
+
