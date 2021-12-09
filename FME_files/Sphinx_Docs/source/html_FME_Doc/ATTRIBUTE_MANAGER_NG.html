@@ -1,192 +1,73 @@
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">Description </span>
-</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Symbol'; font-size:10pt; color:#5555ff;">·</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">This custom Transformer allow the user to set a specified value for one or many attributes into a FME feature (attributes can be simple list i.e. with only one index). It can either overwrite the attribute value or set a specified value if the attribute is Null. The value can be set as text or as another attribute value from the same FME feature. In the case where the specified attribute is a list, the custom Transformer repairs it (it assures there is no missing index into the list). Attributes to process and actions to do are contained into input YAML directives.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">Input Ports </span>
-</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Symbol'; font-size:10pt; color:#5555ff;">·</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; text-decoration: underline; color:#5555ff;">DATA_INPUT</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">: A FME feature.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">Output Ports </span>
-</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Symbol'; font-size:10pt; color:#5555ff;">·</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; text-decoration: underline; color:#5555ff;">OUTPUT</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">: The FME feature for witch attributes have been modified according the YAML directives.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">Parameters </span>
-</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Symbol'; font-size:10pt; color:#5555ff;">·</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">IN_YAML_TEXT: YAML directives to determine the attribute and the action to be done on the FME feature. See the section </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; font-style:italic; color:#5555ff;">Content of the YAML directives</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">below for a description of the YAML directives.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">Content of the YAML directives </span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">The YAML directives are used by the custom transformer to decide the attribute to process and the process itself. Below is an example of YAML directives. Notice that there is 6 attributes, each of them has 2 keywords values: </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">action</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">and </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attr2set</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">. In YAML syntax dictionnary, the colon must be followed by a SPACE --&gt; action: &lt;value&gt; .</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">notes:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    action: attribute_not_null</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    attr2set: title</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">iso_topic{}.:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    action: attribute_not_null</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    attr2set: default_iso_topic</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">publisher:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    action: text_overwrite</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    attr2set: NRCan</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">description:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    action: text_not_null</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    attr2set: Description PGF</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">maintainer:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    action: attribute_overwrite</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    attr2set: description</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">tags{}.name:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    action: attribute_not_null</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">    attr2set: default_tags_display_name</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; text-decoration: underline; color:#5555ff;">Description of the YAML directives</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">The first part of the YAML is the name of the FME attribute on which we want to do an action, it can be a list with a specific attribute to access (e.g. </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">iso_topic{}.topic_value</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">) or just a list (e.g. </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">iso_topic{}.</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">). Note that if the FME feature being processed does not contain the specific attribute of the list you want to access, it will not be process. For example, if you want to do </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">text_not_null </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">on every feature for the list </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">iso_topic</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">{}.,you need to specify the specific attribute of the list</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">(topic_value) </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">so that all feature will be affected, even those not containing </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">iso_topic{}.topic_value.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">When referring to a list, it is important to write it with the following 3 characters "{}.". It can also be a single attribute (e.g. </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">description</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">).</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">Following the FME attribute to process, there are 2 keywords: </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">action</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">and </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attr2set</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">. The keyword </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">action</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">defines the action to do with the attribute it relates to, 4 options are available. The keyword </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attr2set</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">, defines either the attribute name or a text literal depending of the action selected. If the action name contains </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attribute</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">, then it sets the value of the specified attribute. If the action name contains </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">text </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">then it sets the text written.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">action</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">-</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attribute_not_null: </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">This option verify if the attribute value is</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">Null</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">, if yes it sets the value of the attribute specified by the</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attr2set </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">keyword.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">-</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attribute_overwrite: </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">This option overwrite the attribute value by setting the value of the attribute specified by the </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attr2set </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">keyword.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">-</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">text_not_null: </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">This option verify if the attribute value is</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">Null</span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">, if yes it sets the text written into the</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attr2set </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">keyword.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">-</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">text_overwrite: </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">This option overwrite the attribute value, it sets the text written into the</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attr2set </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">keyword.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">attr2set:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">-attribute_not_null </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">and </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">attribute_overwrite: </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">Sets the attribute value specified.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">-</span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">text_not_null </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">and </span>
-    <span style=" font-family:'Courier'; font-size:10pt; color:#5555ff;">text_overwrite: </span>
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">Sets the literal text written.</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; font-weight:600; text-decoration: underline; color:#5555ff;">New attributes or list:</span>
-</p>
-<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-    <span style=" font-family:'MS Shell Dlg 2,sans-serif'; font-size:10pt; color:#5555ff;">If the list or the attribute written into the YAML does not exist, it will be created. Lists will be set with an index {0}. Note that attributes or lists are processed in the YAML from top to bottom. Therefore, you can use in lower attributes in the YAML, the attributes values that have been sets higher in the YAML.</span>
-</p>
+<p><strong>Description</strong></p>
+<p><strong>Bonjour</strong></p>
+<p>This custom Transformer allow the user to set a specified value for one or many attributes into a FME feature (attributes can be simple list i.e. with only one index). It can either overwrite the attribute value or set a specified value if the attribute is Null. The value can be set as text or as another attribute value from the same FME feature. In the case where the specified attribute is a list, the custom Transformer repairs it (it assures there is no missing index into the list). Attributes to process and actions to do are contained into input YAML directives.</p>
+<p><strong>Input Ports</strong></p>
+<ul>
+<li>DATA_INPUT : A FME feature.</li>
+</ul>
+<p><strong>Output Ports</strong></p>
+<ul>
+<li>OUTPUT : The FME feature for witch attributes have been modified according the YAML directives.</li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>IN_YAML_TEXT: YAML directives to determine the attribute and the action to be done on the FME feature. See the section Content of the YAML directives below for a description of the YAML directives.</li>
+</ul>
+<p><strong>Content of the YAML directives</strong></p>
+<p>The YAML directives are used by the custom transformer to decide the attribute to process and the process itself. Below is an example of YAML directives. Notice that there is 6 attributes, each of them has 2 keywords values: <em>action</em> and <em>attr2set</em> . In YAML syntax dictionnary, the colon must be followed by a SPACE --&gt; action: value .</p>
+<pre>
+notes:  
+      action: attribute_not_null  
+      attr2set: title
 
+iso_topic{}.:  
+      action: attribute_not_null  
+      attr2set: default_iso_topic  
+
+publisher:  
+      action: text_overwrite  
+      attr2set: NRCan  
+
+description:  
+      action: text_not_null  
+      attr2set: Description PGF  
+
+maintainer:  
+      action: attribute_overwrite  
+      attr2set: description  
+
+tags{}.name:  
+      action: attribute_not_null  
+      attr2set: default_tags_display_name
+</pre>
+
+<p><strong>Description of the YAML directives</strong></p>
+<p>The first part of the YAML is the name of the FME attribute on which we want to do an action, it can be a list with a specific attribute to access (e.g. <em>iso_topic{}.topic_value</em> ) or just a list (e.g.<em> iso_topic{}.</em> ). Note that if the FME feature being processed does not contain the specific attribute of the list you want to access, it will not be process. For example, if you want to do text_not_null on every feature for the list _ iso_topic {}.<em>,you need to specify the specific attribute of the list (_topic_value</em>) so that all feature will be affected, even those not containing <em>iso_topic{}.topic_value</em>.</p>
+<p>When referring to a list, it is important to write it with the following 3 characters "<em>{}.</em>". It can also be a single attribute (e.g. <em>description</em> ).</p>
+<p>Following the FME attribute to process, there are 2 keywords: <em>action</em> and <em>attr2set</em> . The keyword action defines the action to do with the attribute it relates to, 4 options are available. The keyword <em>attr2set</em> , defines either the attribute name or a text literal depending of the action selected. If the action name contains <em>attribute</em> , then it sets the value of the specified attribute. If the action name contains <em>text</em> then it sets the text written.</p>
+<p><strong>action :</strong></p>
+<ul>
+<li>
+<p><em>attribute_not_null</em>: This option verify if the attribute value is <em>Null</em> , if yes it sets the value of the attribute specified by the <em>attr2set</em> keyword.</p>
+</li>
+<li>
+<p><em>attribute_overwrite</em>: This option overwrite the attribute value by setting the value of the attribute specified by the <em>attr2set</em> keyword.</p>
+</li>
+<li>
+<p><em>text_not_null</em>: This option verify if the attribute value is <em>Null</em> , if yes it sets the text written into the <em>attr2set</em> keyword.</p>
+</li>
+<li>
+<p><em>text_overwrite</em>: This option overwrite the attribute value, it sets the text written into the <em>attr2set</em> keyword.</p>
+</li>
+</ul>
+<p><strong>attr2set:</strong></p>
+<ul>
+<li>
+<p><em>attribute_not_null</em> and <em>attribute_overwrite</em>: Sets the attribute value specified.</p>
+</li>
+<li>
+<p><em>text_not_null</em> and <em>text_overwrite</em>: Sets the literal text written.</p>
+</li>
+</ul>
+<p><strong>New attributes or list:</strong></p>
+<p>If the list or the attribute written into the YAML does not exist, it will be created. Lists will be set with an index <em>{0}</em>. Note that attributes or lists are processed in the YAML from top to bottom. Therefore, you can use in lower attributes in the YAML, the attributes values that have been sets higher in the YAML. </p>

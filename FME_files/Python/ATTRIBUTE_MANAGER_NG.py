@@ -25,9 +25,12 @@ class AttributeManagerNG(object):
     """This class is used by the ATTRIBUTE_MANAGER_NG custom transformer in a PythonCaller in order to
     to manage attribute values. It can overwrite any attribute (including list) or set a specific attribute value for null attributes.
     This class is reading YAML directives received as input from the costum transformer.
-    This class uses following Python modules:
-    -yaml
-    -FME_utils
+    
+    Dependency
+    ----------
+    Python modules:
+        - yaml
+        - FME_utils
     """
 
     def __init__(self):
@@ -37,12 +40,26 @@ class AttributeManagerNG(object):
         self.mapping = {}
    
     def input(self, feature):
-        """Process each FME features. Actions to be done on attributes are specified into the costum transformer YAML directives:
-        -attribute_not_null:
-        -attribute_overwrite:
-        -text_not_null:
-        -text_overwrite:
+        """Process each FME features. Actions to be done on attributes are specified into the costum transformer YAML directives.
         More informations are available into the ATTRIBUTE_MANAGER_NG costum transformer.
+        
+        Example, the following actions can be done on attributes:
+        
+        -attribute_not_null
+        -attribute_overwrite
+        -text_not_null
+        -text_overwrite
+        
+        Parameters
+        ----------
+        feature: FME feature
+            FME feature to process
+        
+        Returns
+        -------
+        feature: FME feature
+            FME feature who's attributes have been processed according to the yaml directives.
+        
         """
         
         #Vérification de la valeur de l'attribut _ordre = 1 afin de lire le YAML
