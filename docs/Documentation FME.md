@@ -120,7 +120,7 @@ Pour simuler un *Block code* (bloc de code) dans une description FME, vous devez
 &#60pre&#62
 import fme  
 import yaml  
-&#60&#67pre&#62
+&#60&#47pre&#62
 </pre>
 
 Note 4: Lorsque vous entrez la documentation FME dans le *Transformer Parameters*, il y a dans le coin inférieur droit un bouton **Reference** qui si vous le cliquer affichera un *Markdown Quick Reference* contenant les commandes importantes pour entrer du *markdown*.
