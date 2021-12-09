@@ -117,7 +117,7 @@ Exemple de markdown:
 Pour simuler un *Block code* (bloc de code) dans une description FME, vous devez entourer le bloce de code par les commandes \<pre\>...<\/pre\> 
 
 <pre>
-\<pre>
+&#60pre&#62
 import fme  
 import yaml  
 \<\/pre>
