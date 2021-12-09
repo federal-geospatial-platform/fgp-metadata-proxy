@@ -88,7 +88,6 @@ Note2: Vous pouvez copier/coller le gabarit suivants en markdown pour amorcer et
 
 <pre>
 **Description**
-
 ...
 
 **Input Ports**
@@ -116,9 +115,9 @@ Exemple de markdown:
 
 Pour simuler un *Block code* (bloc de code) dans une description FME, vous devez entourer le bloce de code par les commandes \<pre\>...<\\pre\> 
 
+<pre>
 \<pre>
 import fme  
-import yaml
+import yaml  
 \<\\pre>
-
-
+</pre>
