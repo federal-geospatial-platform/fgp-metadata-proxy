@@ -86,24 +86,26 @@ Note1: Les *custom transformer* JSON_PUBLISHER et XML_PUBLISHER sont de bons exe
 
 Note2: Vous pouvez copier/coller le gabarit suivants en markdown pour amorcer et faciliter votre documentation.
 
-\*\*Description\*\*
+<pre>
+**Description**
 
 ...
 
-\*\*Input Ports\*\*
+**Input Ports**
 
-  \- ...
-  \- ...
+  - ...    
+  - ...
 
-\*\*Output Ports\*\*
+**Output Ports**
 
-  \- ...
-  \- ...
+  - ...  
+  - ...
 
-\*\*Parameters\*\*
+**Parameters**
  
-  \- ...
-  \- ...
+  - ...  
+  - ...
+</pre>
 
 Note 3: Si vous vouslez incrire un *Block code* dans la documentation FME.  Utiliser la méthode décrite ci-dessous car les autres méthodes de type *markdown* ne fonctionne pas correctement.
 
@@ -115,7 +117,7 @@ Exemple de markdown:
 Pour simuler un *Block code* (bloc de code) dans une description FME, vous devez entourer le bloce de code par les commandes \<pre\>...<\\pre\> 
 
 \<pre>
-import fme
+import fme  
 import yaml
 \<\\pre>
 
