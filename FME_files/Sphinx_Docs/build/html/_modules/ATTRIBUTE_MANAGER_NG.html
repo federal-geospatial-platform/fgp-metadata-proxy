@@ -96,9 +96,12 @@
     <span class="sd">&quot;&quot;&quot;This class is used by the ATTRIBUTE_MANAGER_NG custom transformer in a PythonCaller in order to</span>
 <span class="sd">    to manage attribute values. It can overwrite any attribute (including list) or set a specific attribute value for null attributes.</span>
 <span class="sd">    This class is reading YAML directives received as input from the costum transformer.</span>
-<span class="sd">    This class uses following Python modules:</span>
-<span class="sd">    -yaml</span>
-<span class="sd">    -FME_utils</span>
+<span class="sd">    </span>
+<span class="sd">    Dependency</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Python modules:</span>
+<span class="sd">        - yaml</span>
+<span class="sd">        - FME_utils</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="AttributeManagerNG.__init__"><a class="viewcode-back" href="../ATTRIBUTE_MANAGER_NG.html#ATTRIBUTE_MANAGER_NG.AttributeManagerNG.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -108,12 +111,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span></div>
    
 <div class="viewcode-block" id="AttributeManagerNG.input"><a class="viewcode-back" href="../ATTRIBUTE_MANAGER_NG.html#ATTRIBUTE_MANAGER_NG.AttributeManagerNG.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Process each FME features. Actions to be done on attributes are specified into the costum transformer YAML directives:</span>
-<span class="sd">        -attribute_not_null:</span>
-<span class="sd">        -attribute_overwrite:</span>
-<span class="sd">        -text_not_null:</span>
-<span class="sd">        -text_overwrite:</span>
+        <span class="sd">&quot;&quot;&quot;Process each FME features. Actions to be done on attributes are specified into the costum transformer YAML directives.</span>
 <span class="sd">        More informations are available into the ATTRIBUTE_MANAGER_NG costum transformer.</span>
+<span class="sd">        </span>
+<span class="sd">        Example, the following actions can be done on attributes:</span>
+<span class="sd">        </span>
+<span class="sd">        -attribute_not_null</span>
+<span class="sd">        -attribute_overwrite</span>
+<span class="sd">        -text_not_null</span>
+<span class="sd">        -text_overwrite</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature: FME feature</span>
+<span class="sd">            FME feature to process</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        feature: FME feature</span>
+<span class="sd">            FME feature who&#39;s attributes have been processed according to the yaml directives.</span>
+<span class="sd">        </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="c1">#Vérification de la valeur de l&#39;attribut _ordre = 1 afin de lire le YAML</span>

@@ -26,8 +26,8 @@ class AttributeManagerNG(object):
     to manage attribute values. It can overwrite any attribute (including list) or set a specific attribute value for null attributes.
     This class is reading YAML directives received as input from the costum transformer.
     
-    Dependency
-    ----------
+    Notes
+    -----
     Python modules:
         - yaml
         - FME_utils
