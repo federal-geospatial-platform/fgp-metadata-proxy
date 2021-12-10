@@ -27,6 +27,7 @@ Il faut installer les packages Python suivants avec l'utilitaire *pip install* a
 
     pip install sphinx 
     pip install sphinx-rtd-theme
+    pip install sphinx-toolbox
 
 Note importante sur l'utilisation de Sphinx
   * Il est suggéré d'utiliser python >= 3.7;
