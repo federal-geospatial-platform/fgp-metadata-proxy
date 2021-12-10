@@ -123,6 +123,6 @@ import yaml
 &#60&#47pre&#62
 </pre>
 
-Note 4: Lorsque vous entrez la documentation FME dans le *Transformer Parameters*, il y a dans le coin inférieur droit un bouton **Reference** qui affichera un *Markdown Quick Reference* contenant les commandes importantes pour entrer du *markdown*.
+**Note 4:** Lorsque vous entrez la documentation FME dans le *Transformer Parameters*, il y a dans le coin inférieur droit un bouton **Reference** qui affichera un *Markdown Quick Reference* contenant les commandes importantes pour entrer du *markdown*.
 
 ![Bouton référence](images/img_9.png)
