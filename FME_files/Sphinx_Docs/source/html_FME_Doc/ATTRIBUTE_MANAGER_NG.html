@@ -1,5 +1,4 @@
 <p><strong>Description</strong></p>
-<p><strong>Bonjour</strong></p>
 <p>This custom Transformer allow the user to set a specified value for one or many attributes into a FME feature (attributes can be simple list i.e. with only one index). It can either overwrite the attribute value or set a specified value if the attribute is Null. The value can be set as text or as another attribute value from the same FME feature. In the case where the specified attribute is a list, the custom Transformer repairs it (it assures there is no missing index into the list). Attributes to process and actions to do are contained into input YAML directives.</p>
 <p><strong>Input Ports</strong></p>
 <ul>
@@ -16,29 +15,29 @@
 <p><strong>Content of the YAML directives</strong></p>
 <p>The YAML directives are used by the custom transformer to decide the attribute to process and the process itself. Below is an example of YAML directives. Notice that there is 6 attributes, each of them has 2 keywords values: <em>action</em> and <em>attr2set</em> . In YAML syntax dictionnary, the colon must be followed by a SPACE --&gt; action: value .</p>
 <pre>
-notes:  
-      action: attribute_not_null  
-      attr2set: title
+notes:
+    action: attribute_not_null
+    attr2set: title
 
-iso_topic{}.:  
-      action: attribute_not_null  
-      attr2set: default_iso_topic  
+iso_topic{}.:
+    action: attribute_not_null
+    attr2set: default_iso_topic
 
-publisher:  
-      action: text_overwrite  
-      attr2set: NRCan  
+publisher:
+    action: text_overwrite
+    attr2set: NRCan
 
-description:  
-      action: text_not_null  
-      attr2set: Description PGF  
+description:
+    action: text_not_null
+    attr2set: Description PGF
 
-maintainer:  
-      action: attribute_overwrite  
-      attr2set: description  
+maintainer:
+    action: attribute_overwrite
+    attr2set: description
 
-tags{}.name:  
-      action: attribute_not_null  
-      attr2set: default_tags_display_name
+tags{}.name:
+    action: attribute_not_null
+    attr2set: default_tags_display_name
 </pre>
 
 <p><strong>Description of the YAML directives</strong></p>
