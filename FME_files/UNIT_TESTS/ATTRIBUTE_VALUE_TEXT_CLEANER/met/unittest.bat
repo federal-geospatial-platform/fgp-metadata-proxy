@@ -54,16 +54,14 @@ REM Define sources
 
 REM First FME call, complete incoming from QC extraction 
 set test_number=1
-SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat.ffs
+set resultat=met\resultat%test_number%.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
 %fme% met\metrique_attribute_value_text_cleaner.fmw ^
---IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
