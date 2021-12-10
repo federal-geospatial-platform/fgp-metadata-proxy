@@ -34,6 +34,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.coverage', 
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
+              'sphinx_toolbox.more_autodoc.autonamedtuple',
 ]
 
 # Création des autosummary
@@ -46,6 +47,12 @@ autodoc_mock_imports = ["fme",
                         
 # Mettre la documentation Python en ordre alphabétique
 autodoc_member_order = 'alphabetical'
+
+# autodoc settings
+autodoc_default_options = {
+    'members':          True,
+    'undoc-members':    True,
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
