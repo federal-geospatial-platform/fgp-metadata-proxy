@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATTRIBUTE_MANAGER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>nom du module &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,9 +16,7 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="GEO_NONE_GEO_SELECTOR" href="GEO_NONE_GEO_SELECTOR.html" />
-    <link rel="prev" title="Bienvenue sur la page principale de PT Harvester!" href="index.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,12 +35,8 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ATTRIBUTE_MANAGER_NG</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-module-py">Documentation du code module.py</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
@@ -67,9 +61,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>ATTRIBUTE_MANAGER_NG</li>
+      <li>nom du module</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/ATTRIBUTE_MANAGER_NG.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/_Template - Copie.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,82 +71,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="attribute-manager-ng">
-<h1>ATTRIBUTE_MANAGER_NG<a class="headerlink" href="#attribute-manager-ng" title="Permalink to this headline"></a></h1>
+  <div class="section" id="nom-du-module">
+<h1>nom du module<a class="headerlink" href="#nom-du-module" title="Permalink to this headline"></a></h1>
 <div class="section" id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
-<p><strong>Description</strong></p>
-<p>This custom Transformer allow the user to set a specified value for one or many attributes into a FME feature (attributes can be simple list i.e. with only one index). It can either overwrite the attribute value or set a specified value if the attribute is Null. The value can be set as text or as another attribute value from the same FME feature. In the case where the specified attribute is a list, the custom Transformer repairs it (it assures there is no missing index into the list). Attributes to process and actions to do are contained into input YAML directives.</p>
-<p><strong>Input Ports</strong></p>
-<ul>
-<li>DATA_INPUT : A FME feature.</li>
-</ul>
-<p><strong>Output Ports</strong></p>
-<ul>
-<li>OUTPUT : The FME feature for witch attributes have been modified according the YAML directives.</li>
-</ul>
-<p><strong>Parameters</strong></p>
-<ul>
-<li>IN_YAML_TEXT: YAML directives to determine the attribute and the action to be done on the FME feature. See the section Content of the YAML directives below for a description of the YAML directives.</li>
-</ul>
-<p><strong>Content of the YAML directives</strong></p>
-<p>The YAML directives are used by the custom transformer to decide the attribute to process and the process itself. Below is an example of YAML directives. Notice that there is 6 attributes, each of them has 2 keywords values: <em>action</em> and <em>attr2set</em> . In YAML syntax dictionnary, the colon must be followed by a SPACE --&gt; action: value .</p>
-<pre>
-notes:
-    action: attribute_not_null
-    attr2set: title
-
-iso_topic{}.:
-    action: attribute_not_null
-    attr2set: default_iso_topic
-
-publisher:
-    action: text_overwrite
-    attr2set: NRCan
-
-description:
-    action: text_not_null
-    attr2set: Description PGF
-
-maintainer:
-    action: attribute_overwrite
-    attr2set: description
-
-tags{}.name:
-    action: attribute_not_null
-    attr2set: default_tags_display_name
-</pre>
-
-<p><strong>Description of the YAML directives</strong></p>
-<p>The first part of the YAML is the name of the FME attribute on which we want to do an action, it can be a list with a specific attribute to access (e.g. <em>iso_topic{}.topic_value</em> ) or just a list (e.g.<em> iso_topic{}.</em> ). Note that if the FME feature being processed does not contain the specific attribute of the list you want to access, it will not be process. For example, if you want to do text_not_null on every feature for the list _ iso_topic {}.<em>,you need to specify the specific attribute of the list (_topic_value</em>) so that all feature will be affected, even those not containing <em>iso_topic{}.topic_value</em>.</p>
-<p>When referring to a list, it is important to write it with the following 3 characters "<em>{}.</em>". It can also be a single attribute (e.g. <em>description</em> ).</p>
-<p>Following the FME attribute to process, there are 2 keywords: <em>action</em> and <em>attr2set</em> . The keyword action defines the action to do with the attribute it relates to, 4 options are available. The keyword <em>attr2set</em> , defines either the attribute name or a text literal depending of the action selected. If the action name contains <em>attribute</em> , then it sets the value of the specified attribute. If the action name contains <em>text</em> then it sets the text written.</p>
-<p><strong>action :</strong></p>
-<ul>
-<li>
-<p><em>attribute_not_null</em>: This option verify if the attribute value is <em>Null</em> , if yes it sets the value of the attribute specified by the <em>attr2set</em> keyword.</p>
-</li>
-<li>
-<p><em>attribute_overwrite</em>: This option overwrite the attribute value by setting the value of the attribute specified by the <em>attr2set</em> keyword.</p>
-</li>
-<li>
-<p><em>text_not_null</em>: This option verify if the attribute value is <em>Null</em> , if yes it sets the text written into the <em>attr2set</em> keyword.</p>
-</li>
-<li>
-<p><em>text_overwrite</em>: This option overwrite the attribute value, it sets the text written into the <em>attr2set</em> keyword.</p>
-</li>
-</ul>
-<p><strong>attr2set:</strong></p>
-<ul>
-<li>
-<p><em>attribute_not_null</em> and <em>attribute_overwrite</em>: Sets the attribute value specified.</p>
-</li>
-<li>
-<p><em>text_not_null</em> and <em>text_overwrite</em>: Sets the literal text written.</p>
-</li>
-</ul>
-<p><strong>New attributes or list:</strong></p>
-<p>If the list or the attribute written into the YAML does not exist, it will be created. Lists will be set with an index <em>{0}</em>. Note that attributes or lists are processed in the YAML from top to bottom. Therefore, you can use in lower attributes in the YAML, the attributes values that have been sets higher in the YAML. </p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="section" id="documentation-du-code-module-py">
 <h2>Documentation du code module.py<a class="headerlink" href="#documentation-du-code-module-py" title="Permalink to this headline"></a></h2>
@@ -162,7 +87,7 @@ tags{}.name:
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_Template%20-%20Copie.html#module-ATTRIBUTE_MANAGER_NG" title="ATTRIBUTE_MANAGER_NG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ATTRIBUTE_MANAGER_NG</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-ATTRIBUTE_MANAGER_NG" title="ATTRIBUTE_MANAGER_NG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ATTRIBUTE_MANAGER_NG</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -225,10 +150,7 @@ More informations are available into the ATTRIBUTE_MANAGER_NG costum transformer
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Bienvenue sur la page principale de PT Harvester!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="GEO_NONE_GEO_SELECTOR.html" class="btn btn-neutral float-right" title="GEO_NONE_GEO_SELECTOR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
