@@ -92,7 +92,9 @@ Pour que cet extraction et intégration puisse s'opérer correctement, il est im
 
 Afin de rendre accessible à Sphinx la documentation FME, il faut extraire la description des Workspaces/Customs. Le programme **reading_FME_description.fmw** du répertoire *fgp-metadata-proxy\FME_files\FME_Workspaces\tools* permet de faire cette tâche. Le fichier *read_fme_description.bat* dans le dossier *fgp-metadata-proxy\FME_files\Sphinx_Docs* lance l'exécution de ce Workspace.
 
-Le répertoire *fgp-metadata-proxy\FME_files\Sphinx_Docs\source\html_FME_Doc* contient un fichier HTML pour chaque Workspace/Custom Transformer. Si aucune information n'est contenue dans l'onglet description du Workbench/Custom Transformers, alors aucun fichier ne sera présent. Le nom du fichiers HTML est le même que celui du Workbench/Custom Transformers auquel il se rapporte.
+Le répertoire *fgp-metadata-proxy\FME_files\Sphinx_Docs\source\html_FME_Doc* contient un fichier HTML pour chaque Workspace/Custom Transformer. Si aucune information n'est contenue dans l'onglet description du Workbench/Custom Transformers, alors aucun fichier ne sera présent. Le nom du fichiers HTML est le même que celui du Workbench/Custom auquel il se rapporte. Afin d'obtenir une documentation Sphinx dont la mise en forme est uniforme, il est important d'utiliser le language Markdown dans la section *Description* du Custom/Workspace.
+
+![description_markdown.png](description_markdown.png)
 
 L'image suivante montre le fichier *read_fme_description.bat*. On y voit les chemins d'accès relatifs où sont situés les Workspaces/Customs à lire et le répertoire vers lesquel les descriptions en format html seront créées.
 
@@ -100,24 +102,20 @@ L'image suivante montre le fichier *read_fme_description.bat*. On y voit les che
 
 # Mise à jour  et publication de la documentation
 
-La mise à jour de la documentation Sphinx se fait par l'exécution des commandes suivante qui détruit la documentation existente et la reconstruit par la suite:
+La mise à jour de la documentation Sphinx se fait par l'exécution des commandes suivante qui détruit la documentation existante et la reconstruit par la suite:
 
     cd .\répertoire de départ...\
     make clean
     make html
 
-Mettre à jour la documentation Sphinx est utile lorsqu'on ajoute de l'information. Dans le cadre du projet PT Harvester il faut se référer à la section [Extraction automatique de la documention FME](Extraction-automatique-de-la-documention-FME).
-
-Dans le cadre du projet PT Harvester, mentionnons qu'il est utile d'ajouter à la variable d'environnement *Path* le chemin d'accès vers l'installation Python où est installé Sphinx.
-
-![variable_environnement.png](variable_environnement.png)
-
-Autrement, il faut s'assurer de copier le nouveau contenu du ficher *build* vers le répertoire GitHub. Ne pas oublier d'insérer dans le répertoire GitHub *source*, les nouveaux fichiers *.rst* créés.
-
 Le résultat de l'exécution de la commande *make html* devrait terminer en affichant:
 
     build succeeded, XX warnings.
     The HTML pages are in build\html.
+
+Mettre à jour la documentation Sphinx est utile lorsqu'on ajoute de l'information, se référer à la section **Ajout d'un Workbench ou Custom Transformer à la documentation Sphinx** pour plus d'informations.
+
+Dans le cadre du projet PT Harvester, mentionnons qu'il est utile d'ajouter à la variable d'environnement *Path* le chemin d'accès vers l'installation Python où est installé Sphinx. Autrement, il faut s'assurer de copier le nouveau contenu du ficher *build* vers le répertoire GitHub. Ne pas oublier d'insérer dans le répertoire GitHub *source*, les nouveaux fichiers *.rst* créés.
 
 La publication de la documentation sur le serveur web GitHub se fait automatiquement en poussant (Push origin) les modifications contenus dans le répertoire *\fgp-metadata-proxy\FME_files\Sphinx_Docs* vers la branche master du projet dans GitHub.  Il faut attendre une vingtaine de minutes afin de permettre à GitHub de mettre à jour le serveur web afin que la nouvelle documentation soit disponible par la suite à l'adresse suivante sur le web:
 
@@ -128,9 +126,12 @@ La publication de la documentation sur le serveur web GitHub se fait automatique
 Pour ajouter un nouveau Workbench ou un nouveau Custom Transformer à la documentation on doit créer un nouveau fichier de directives en restructuredText et mettre à jour le fichier restructuredText *index.rst* et créer un nouveau fichier de directives *nom.rst*.
 
   * Pour ajouter un nouveau fichier restructuredText:
-    * Copier le fichier _Template.rst sous le nom du Workbench ou Custom Transformer que vous voulez créer.
+    * Copier le fichier _Template.rst et renommez le avec le nom du Workbench ou Custom Transformer que vous voulez créer.
     * Mettre à jour la documention des titres en [restructuredText](https://docutils.sourceforge.io/docs/user/rst/quickref.html);
-    * Mettre à jour le nom du fichier .html de la directive Sphinx *..raw:: html*;
+    * Mettre à jour le nom du fichier .html de la directive Sphinx *..raw:: html* (voir la section ci-haut **Extraction automatique de la documention FME**);
     * Mettre à jour les noms des fichiers contenant le code source python pour les directives Sphinx ..autosummary:: et ..automodule:: dans le fichier .rst.  Les sections autosummary et automodule peuvent être enlevé s'il n'y a pas de code source Python à mettre à jour;
     * Ajouter au besoin de l'information supplémentaire en [restructuredText](https://docutils.sourceforge.io/docs/user/rst/quickref.html).
     
+L'image ci-dessous illustre certaines des étapes dont il est mention ci-haut.
+
+![rst_files_description.png](rst_files_description.png)
