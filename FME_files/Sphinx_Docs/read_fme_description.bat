@@ -73,7 +73,8 @@ REM ===========================================================================
 SET Statut=0
 
 
-REM First FME call, complete incoming from QC extraction 
+REM First FME call
+REM ===========================================================================
 set IN_FMW_DIR=..\*.fmw
 set OUT_XML_Workspace_DIR=..\..\Sphinx_Docs\source\html_FME_Doc
 set IN_FMX_DIR=..\..\FME_Custom_Transformers\*.fmx

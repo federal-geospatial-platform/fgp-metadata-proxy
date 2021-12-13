@@ -36,7 +36,7 @@ Note importante sur l'utilisation de Sphinx
 
 # Initialisation de l'environnement de départ
 
-**Cette étape a besoin d'être faite qu'une seule fois.**  Il ne faut pas la refaire car cette action viendrait écraser l'initialisation faite précédemment.
+**Cette étape a besoin d'être faite qu'une seule fois.**  Il ne faut pas la refaire car cette action viendrait écraser l'initialisation faite précédemment. Dans le cadre du projet PT Harvester, l'initialisation est déjà faite (ce sont les dossiers *build* et *source* dans le dossier *fgp-metadata-proxy\FME_files\Sphinx_Docs*).
 
 Pour créer l'environnement initial de Sphinx:
 
@@ -82,7 +82,7 @@ La création de l'environnement Sphinx va aussi créer le fichier make.bat qui s
 
 # Convention de documentation
 
-Dans le cadre du projet PT Harvester, Sphinx est utilisé pour extraire et intégrer automatiquement la documentation des Workbench/Custom Transformer de FME et la documentation des fichiers sources Python.  
+Dans le cadre du projet PT Harvester, Sphinx est utilisé pour extraire et intégrer automatiquement la documentation des Workbench/Custom de FME et la documentation des fichiers sources Python.  
 
 Pour que cet extraction et intégration puisse s'opérer correctement, il est impératif de se conformer aux conventions suivantes de documentation:
   * La documentation des Workbench/Custom Transformer de FME doit suivre les conventions décrites dans le document [Documentation FME](DocumentationFME.md);
@@ -90,11 +90,13 @@ Pour que cet extraction et intégration puisse s'opérer correctement, il est im
 
 # Extraction automatique de la documention FME
 
-Afin de rendre accessible à Sphinx la documentation FME, il faut extraire la description des Workbench/Custom Transformer. Le programme **reading_FME_description.fmw** du répertoire *fgp-metadata-proxy\FME_files\Sphinx_Docs\reading fme files<* permet de faire cette tâche. Le répertoire *fgp-metadata-proxy\FME_files\Sphinx_Docs\reading fme files\FME description files* contient un fichier HTML pour chaque Workbench/Custom Transformers. Si aucune information n'est contenue dans l'onglet description du Workbench/Custom Transformers, alors aucun fichier ne sera présent. Le nom du fichiers HTML est le même que celui du Workbench/Custom Transformers auquel il se rapporte.
+Afin de rendre accessible à Sphinx la documentation FME, il faut extraire la description des Workspaces/Customs. Le programme **reading_FME_description.fmw** du répertoire *fgp-metadata-proxy\FME_files\FME_Workspaces\tools* permet de faire cette tâche. Le fichier *read_fme_description.bat* dans le dossier *fgp-metadata-proxy\FME_files\Sphinx_Docs* lance l'exécution de ce Workspace.
 
-L'image suivante montre les paramètres d'entrée à ajuster en fonction de l'utilisateur, afin d'exécuter correctement le programme *reading_FME_description.fmw*:
+Le répertoire *fgp-metadata-proxy\FME_files\Sphinx_Docs\source\html_FME_Doc* contient un fichier HTML pour chaque Workspace/Custom Transformer. Si aucune information n'est contenue dans l'onglet description du Workbench/Custom Transformers, alors aucun fichier ne sera présent. Le nom du fichiers HTML est le même que celui du Workbench/Custom Transformers auquel il se rapporte.
 
-![reading_fme_files_input.png](reading_fme_files_input.png)
+L'image suivante montre le fichier *read_fme_description.bat*. On y voit les chemins d'accès relatifs où sont situés les Workspaces/Customs à lire et le répertoire vers lesquel les descriptions en format html seront créées.
+
+![batchfile_reading_fme_description.png](batchfile_reading_fme_description.png)
 
 # Mise à jour  et publication de la documentation
 
@@ -104,14 +106,20 @@ La mise à jour de la documentation Sphinx se fait par l'exécution des commande
     make clean
     make html
 
+Mettre à jour la documentation Sphinx est utile lorsqu'on ajoute de l'information. Dans le cadre du projet PT Harvester il faut se référer à la section [Extraction automatique de la documention FME](Extraction-automatique-de-la-documention-FME).
+
+Dans le cadre du projet PT Harvester, mentionnons qu'il est utile d'ajouter à la variable d'environnement *Path* le chemin d'accès vers l'installation Python où est installé Sphinx.
+
+![variable_environnement.png](variable_environnement.png)
+
+Autrement, il faut s'assurer de copier le nouveau contenu du ficher *build* vers le répertoire GitHub. Ne pas oublier d'insérer dans le répertoire GitHub *source*, les nouveaux fichiers *.rst* créés.
+
 Le résultat de l'exécution de la commande *make html* devrait terminer en affichant:
 
     build succeeded, XX warnings.
     The HTML pages are in build\html.
 
-Il faut s'assurer de copier le nouveau contenu du ficher *build* vers le répertoire GitHub. Ne pas oublier d'insérer dans le répertoire GitHub *source*, les nouveaux fichiers **.rst*.
-
-La publication de la documentation sur le serveur web GitHub se fait automatiquement en poussant (Push origin) les modifications contenus dans le répertoire \fgp-metadata-proxy\FME_files\Sphinx_Docs\* vers la branche master du projet dans GitHub.  Il faut attendre une vingtaine de minutes afin de permettre à GitHub de mettre à jour le serveur web afin que la nouvelle documentation soit disponible par la suite à l'adresse suivante sur le web:
+La publication de la documentation sur le serveur web GitHub se fait automatiquement en poussant (Push origin) les modifications contenus dans le répertoire *\fgp-metadata-proxy\FME_files\Sphinx_Docs* vers la branche master du projet dans GitHub.  Il faut attendre une vingtaine de minutes afin de permettre à GitHub de mettre à jour le serveur web afin que la nouvelle documentation soit disponible par la suite à l'adresse suivante sur le web:
 
     https://federal-geospatial-platform.github.io/fgp-metadata-proxy/FME_files/Sphinx_Docs/build/html/index.html
 
