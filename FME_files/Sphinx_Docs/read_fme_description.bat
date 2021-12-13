@@ -3,19 +3,60 @@ REM Enable local variables
 REM ===========================================================================
 SETLOCAL ENABLEDELAYEDEXPANSION
 
- 
 REM ===========================================================================
 REM Allow accented characters
 REM ===========================================================================
 chcp 1252
 
 REM ===========================================================================
+REM Choice of running workspaces, customs or both
+REM ===========================================================================
+echo off
+:begin
+echo Select a task:
+echo =============
+echo -
+echo 1) Read only FME Customs transformers descriptions.
+echo 2) Read only FME Workspaces descriptions.
+echo 3) Read both (Customs and Workspaces).
+echo -
+set /p op=Type option:
+if "%op%"=="1" goto op1
+if "%op%"=="2" goto op2
+if "%op%"=="3" goto op3
+
+echo Please Pick an option:
+goto begin
+
+REM Setting the right variable according to the choice
+REM ===========================================================================
+:op1
+echo Read only FME Customs transformers descriptions.
+set choice=customs
+goto debutworkspace
+
+:op2
+echo Read only FME Workspaces descriptions.
+set choice=workspaces
+goto debutworkspace
+
+:op3
+echo Read both (Customs and Workspaces).
+set choice=both
+goto debutworkspace
+
+
+REM Once choice has been made, we ship the others options
+REM ===========================================================================
+:debutworkspace
+
+REM ===========================================================================
 REM Determine the directory where the.bat is located and place it  
 REM in the directory above while keeping the original directory
 REM ===========================================================================
 SET Repertoire=%~dp0
-SET Ctfolder=%Repertoire%\..\..\..\FME_Custom_Transformers\
-PUSHD %Ctfolder%
+SET FMWfolder=%Repertoire%\..\FME_Workspaces\tools\
+PUSHD %FMWfolder%
 
 REM Define FME transformer path
 SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
@@ -23,51 +64,35 @@ SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
-SET NomApp=ATTRIBUTE_VALUE_TEXT_CLEANER
+SET NomApp=reading_FME_description
 SET fme=%FME2020%
-
-
-SET UserProfileFmx="%FME_USER_RESOURCE_DIR%\Transformers\%NomApp%.fmx"
 
 REM ===========================================================================
 REM Initialization of the variable that contains the result of the execution
 REM ===========================================================================
 SET Statut=0
 
-REM ===========================================================================
-REM Copy FMX to Documents
-REM ===========================================================================
-COPY/Y %Ctfolder%\%NomApp%.fmx %UserProfileFmx%
-SET Statut=%Statut%%ERRORLEVEL%
-
-PUSHD %Repertoire%\..
-
-REM Define sources
-
 
 REM First FME call, complete incoming from QC extraction 
-set test_number=1
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat%test_number%.ffs
-set log=met\log_%test_number%.log
-set log_comp=met\log_comp_%test_number%.log
+set IN_FMW_DIR=..\*.fmw
+set OUT_XML_Workspace_DIR=..\..\Sphinx_Docs\source\html_FME_Doc
+set IN_FMX_DIR=..\..\FME_Custom_Transformers\*.fmx
+set OUT_XML_Customs_DIR=..\..\Sphinx_Docs\source\html_FME_Doc
+set log=reading_FME_description.log
+
 
 IF EXIST %log% del %log%
-IF EXIST met\resultat.ffs DEL met\resultat.ffs
-%fme% met\metrique_attribute_value_text_cleaner.fmw ^
---OUT_FFS_FILE %resultat% ^
---LOG_FILE %log% 
+%fme% reading_FME_description.fmw ^
+--IN_FMW_DIR %IN_FMW_DIR% ^
+--OUT_XML_Workspace_DIR %OUT_XML_Workspace_DIR% ^
+--IN_FMX_DIR %IN_FMX_DIR% ^
+--OUT_XML_Customs_DIR %OUT_XML_Customs_DIR% ^
+--ACTIVATE_READING %choice% ^
+--LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison with the standard
-IF EXIST %log_comp% del %log_comp%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
---LOG_FILE %log_comp% 
-SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [0000] (
+@IF [%Statut%] EQU [00] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999

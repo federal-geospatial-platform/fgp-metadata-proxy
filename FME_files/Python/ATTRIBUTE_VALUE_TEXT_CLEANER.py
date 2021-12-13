@@ -10,13 +10,15 @@ from html.parser import HTMLParser
 class HTMLFilter(HTMLParser):
     """Class that serves as the basis for parsing text files formatted in HTML (`More informations: <https://docs.python.org/3/library/html.parser.html>`_)
     
-    Notes
-    -----
-    Python modules:
-        - from html.parser import HTMLParser
+    Attributes
+    ----------
+    text : str
+        Class variable needed to parse the html string.
     """
     
     text = ""
+
+    
     def handle_data(self, data):
         """This method is called to process arbitrary data (e.g. text nodes and the content of <script>...</script> and <style>...</style>).
     
@@ -35,7 +37,7 @@ class HTMLFilter(HTMLParser):
 
 
 def processFeature(feature):
-    """cleans all string attributes by performing the followin tasks: 
+    """Cleans all string attributes by performing the followin tasks: 
 
         - Remove html directive (ex.: `<p>bla bla bla <\p>`) so that the string contains only plain text	
         - Replace special character (carriage return, line feed, tab) by white spaces

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATTRIBUTE_MANAGER &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>ATTRIBUTE_MANAGER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -39,13 +38,14 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ATTRIBUTE_MANAGER</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ATTRIBUTE_MANAGER_NG</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-module-py">Documentation du code module.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
@@ -65,7 +65,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>ATTRIBUTE_MANAGER</li>
+      <li>ATTRIBUTE_MANAGER_NG</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/ATTRIBUTE_MANAGER_NG.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -75,12 +75,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="attribute-manager">
-<h1>ATTRIBUTE_MANAGER<a class="headerlink" href="#attribute-manager" title="Permalink to this headline"></a></h1>
-<section id="documentation-du-custom-transformer-fme">
+  <div class="section" id="attribute-manager-ng">
+<h1>ATTRIBUTE_MANAGER_NG<a class="headerlink" href="#attribute-manager-ng" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
 <p><strong>Description</strong></p>
-<p><strong>Bonjour</strong></p>
 <p>This custom Transformer allow the user to set a specified value for one or many attributes into a FME feature (attributes can be simple list i.e. with only one index). It can either overwrite the attribute value or set a specified value if the attribute is Null. The value can be set as text or as another attribute value from the same FME feature. In the case where the specified attribute is a list, the custom Transformer repairs it (it assures there is no missing index into the list). Attributes to process and actions to do are contained into input YAML directives.</p>
 <p><strong>Input Ports</strong></p>
 <ul>
@@ -97,29 +96,29 @@
 <p><strong>Content of the YAML directives</strong></p>
 <p>The YAML directives are used by the custom transformer to decide the attribute to process and the process itself. Below is an example of YAML directives. Notice that there is 6 attributes, each of them has 2 keywords values: <em>action</em> and <em>attr2set</em> . In YAML syntax dictionnary, the colon must be followed by a SPACE --&gt; action: value .</p>
 <pre>
-notes:  
-      action: attribute_not_null  
-      attr2set: title
+notes:
+    action: attribute_not_null
+    attr2set: title
 
-iso_topic{}.:  
-      action: attribute_not_null  
-      attr2set: default_iso_topic  
+iso_topic{}.:
+    action: attribute_not_null
+    attr2set: default_iso_topic
 
-publisher:  
-      action: text_overwrite  
-      attr2set: NRCan  
+publisher:
+    action: text_overwrite
+    attr2set: NRCan
 
-description:  
-      action: text_not_null  
-      attr2set: Description PGF  
+description:
+    action: text_not_null
+    attr2set: Description PGF
 
-maintainer:  
-      action: attribute_overwrite  
-      attr2set: description  
+maintainer:
+    action: attribute_overwrite
+    attr2set: description
 
-tags{}.name:  
-      action: attribute_not_null  
-      attr2set: default_tags_display_name
+tags{}.name:
+    action: attribute_not_null
+    attr2set: default_tags_display_name
 </pre>
 
 <p><strong>Description of the YAML directives</strong></p>
@@ -152,8 +151,8 @@ tags{}.name:
 </ul>
 <p><strong>New attributes or list:</strong></p>
 <p>If the list or the attribute written into the YAML does not exist, it will be created. Lists will be set with an index <em>{0}</em>. Note that attributes or lists are processed in the YAML from top to bottom. Therefore, you can use in lower attributes in the YAML, the attributes values that have been sets higher in the YAML. </p>
-</section>
-<section id="documentation-du-code-module-py">
+</div>
+<div class="section" id="documentation-du-code-module-py">
 <h2>Documentation du code module.py<a class="headerlink" href="#documentation-du-code-module-py" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -168,11 +167,12 @@ tags{}.name:
 </table>
 <span class="target" id="module-ATTRIBUTE_MANAGER_NG"></span><dl class="py class">
 <dt class="sig sig-object py" id="ATTRIBUTE_MANAGER_NG.AttributeManagerNG">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ATTRIBUTE_MANAGER_NG.</span></span><span class="sig-name descname"><span class="pre">AttributeManagerNG</span></span><a class="reference internal" href="_modules/ATTRIBUTE_MANAGER_NG.html#AttributeManagerNG"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ATTRIBUTE_MANAGER_NG.AttributeManagerNG" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ATTRIBUTE_MANAGER_NG.</span></span><span class="sig-name descname"><span class="pre">AttributeManagerNG</span></span><a class="reference internal" href="_modules/ATTRIBUTE_MANAGER_NG.html#AttributeManagerNG"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ATTRIBUTE_MANAGER_NG.AttributeManagerNG" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This class is used by the ATTRIBUTE_MANAGER_NG custom transformer in a PythonCaller in order to
 to manage attribute values. It can overwrite any attribute (including list) or set a specific attribute value for null attributes.
 This class is reading YAML directives received as input from the costum transformer.</p>
+<p class="rubric">Notes</p>
 <dl class="simple">
 <dt>Python modules:</dt><dd><ul class="simple">
 <li><p>yaml</p></li>
@@ -217,8 +217,8 @@ More informations are available into the ATTRIBUTE_MANAGER_NG costum transformer
 
 </dd></dl>
 
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

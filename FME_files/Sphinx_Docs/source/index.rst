@@ -21,6 +21,7 @@ Documentation des Custom Transformers FME
    ATTRIBUTE_MANAGER_NG.rst
    GEO_NONE_GEO_SELECTOR.rst
    LOOKUP_TABLES_READER_NG.rst
+   ATTRIBUTE_VALUE_TEXT_CLEANER.rst
 
 
 Documentation de l'utilitaire Python
