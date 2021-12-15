@@ -59,6 +59,7 @@ class FME_utils:
             a list of FME attribute
         """
 
+#        web_pdb.set_trace()
         atts = []
         feature_atts = feature.getAllAttributeNames()  # Extract all attribute names
         logger = fmeobjects.FMELogFile()
@@ -67,10 +68,11 @@ class FME_utils:
 
         if att_name.find("{}") != -1:
             # The attribute to search is a list
+            att_name = "^" + att_name + "$"  # Regular expression exact match
             regex_search = att_name.replace("{}", regex_list)
             for feature_att in feature_atts:
-                att_lst = re.findall(regex_search , feature_att)  # Check if attribute name is present
-                if len(att_lst) == 1:
+                att_lst = re.match(regex_search , feature_att)  # Check if attribute name is present
+                if att_lst is not None:
                     index_lst = re.findall(regex_list, att_lst[0])  # Extract the index with "{}"
                     if len(index_lst) == 1:
                         index = re.findall(regex_index, index_lst[0])  # Extract the index number
@@ -89,6 +91,8 @@ class FME_utils:
                 if att_name == feature_att:
                     atts.append((None, att_name))
                     break
+        # Sort the list indexes as FME getAllAttributeNames break the order of the list
+        atts.sort()
 
         return atts
 
