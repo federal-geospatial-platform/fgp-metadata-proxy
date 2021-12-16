@@ -1,0 +1,714 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN EXTRACT_COLLECTION_START_END_DATE,1,"FGP Tools",7473cf51-1371-487a-93ec-68a0a06f6735,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <h3>Description:</h3>
+# <p>Custom transformer utilisé pour extraire une étendue temporelle lorsque possible dans une chaine de caractère. Le custom a 3 actions possibles à poser.</p>
+# <ol>
+# <li>Si la chaine de caractère est vide, on attribue la date de début à 0001-01-01. La date de fin est vide </li>
+# <li>Si la chaine de caractère match une des expression régulière définies dans le code, le programme extrait la date de début et aussi de fin lorque présente </li>
+# <li>Si la chaine de caractère ne matche pas l'expression régulière, il est possibile de définir manuellement les valeurs de début/fin grâce à une lookup table</li>
+# </ol>
+# <p>Dans le cas où aucune des trois actions n'est possible, la feature ressort par le port unworking_extraction. Dans ce cas, on doit mettre à jour la lookup table ou bien ajouter une regex dans le code python.</p>
+# <h2>Définifition de la lookup table:</h2>
+# <p>On utilise une lookup table selon template yaml suivant:</p>
+# <p>CSV_COLUMNS:</p>
+# <p>source_date_extent: [trim, no_null]</p>
+# <p>data_collection_start_date: [trim, no_null]</p>
+# <p>data_collection_end_date: [trim] </p>
+# <h1></h1>
+# <p>CREATE_KEY_VALUE:</p>
+# <h1></h1>
+# <p>NO_DUPLICATE:
+# DUP_1: [source_date_extent]</p>
+# <h1></h1>
+# <p>CHECK_DOMAIN:</p>
+# <p><strong>Output</strong>: </p>
+# <p>Lorsque l'extraction fonctionne, on ajoute les attributs data_collection_start_date et data_collection_end_date. Lorsque ça ne fonctionne pas, l'attribut unmatched_date_extent contient la chaine de caractère non matchée.</p>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;h3&gt;Description:&lt;/h3&gt;&#10;&lt;p&gt;Custom transformer utilisé pour extraire une étendue temporelle lorsque possible dans une chaine de caractère. Le custom a 3 actions possibles à poser.&lt;/p&gt;&#10;&lt;ol&gt;&#10;&lt;li&gt;Si la chaine de caractère est vide, on attribue la date de début à 0001-01-01. La date de fin est vide &lt;/li&gt;&#10;&lt;li&gt;Si la chaine de caractère match une des expression régulière définies dans le code, le programme extrait la date de début et aussi de fin lorque présente &lt;/li&gt;&#10;&lt;li&gt;Si la chaine de caractère ne matche pas l&apos;expression régulière, il est possibile de définir manuellement les valeurs de début/fin grâce à une lookup table&lt;/li&gt;&#10;&lt;/ol&gt;&#10;&lt;p&gt;Dans le cas où aucune des trois actions n&apos;est possible, la feature ressort par le port unworking_extraction. Dans ce cas, on doit mettre à jour la lookup table ou bien ajouter une regex dans le code python.&lt;/p&gt;&#10;&lt;h2&gt;Définifition de la lookup table:&lt;/h2&gt;&#10;&lt;p&gt;On utilise une lookup table selon template yaml suivant:&lt;/p&gt;&#10;&lt;p&gt;CSV_COLUMNS:&lt;/p&gt;&#10;&lt;p&gt;source_date_extent: [trim, no_null]&lt;/p&gt;&#10;&lt;p&gt;data_collection_start_date: [trim, no_null]&lt;/p&gt;&#10;&lt;p&gt;data_collection_end_date: [trim] &lt;/p&gt;&#10;&lt;h1&gt;&lt;/h1&gt;&#10;&lt;p&gt;CREATE_KEY_VALUE:&lt;/p&gt;&#10;&lt;h1&gt;&lt;/h1&gt;&#10;&lt;p&gt;NO_DUPLICATE:&#10;DUP_1: [source_date_extent]&lt;/p&gt;&#10;&lt;h1&gt;&lt;/h1&gt;&#10;&lt;p&gt;CHECK_DOMAIN:&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;: &lt;/p&gt;&#10;&lt;p&gt;Lorsque l&apos;extraction fonctionne, on ajoute les attributs data_collection_start_date et data_collection_end_date. Lorsque ça ne fonctionne pas, l&apos;attribut unmatched_date_extent contient la chaine de caractère non matchée.&lt;/p&gt;"
+#!   DOC_EXTENTS="6553.62 778.134"
+#!   DOC_TOP_LEFT="-2259.83 -477.878"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20200"
+#!   FME_DOCUMENT_GUID="7473cf51-1371-487a-93ec-68a0a06f6735"
+#!   FME_DOCUMENT_PRIORGUID="86582bd7-e4c5-474c-a14b-7e549c07fcda"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-12-08T16:01:21"
+#!   MARKDOWN_DESCRIPTION="###Description: &#10;&#10;Custom transformer utilisé pour extraire une étendue temporelle lorsque possible dans une chaine de caractère. Le custom a 3 actions possibles à poser.&#10;&#10;1. Si la chaine de caractère est vide, on attribue la date de début à 0001-01-01. La date de fin est vide &#10;2. Si la chaine de caractère match une des expression régulière définies dans le code, le programme extrait la date de début et aussi de fin lorque présente &#10;3. Si la chaine de caractère ne matche pas l&apos;expression régulière, il est possibile de définir manuellement les valeurs de début/fin grâce à une lookup table&#10; &#10;Dans le cas où aucune des trois actions n&apos;est possible, la feature ressort par le port unworking_extraction. Dans ce cas, on doit mettre à jour la lookup table ou bien ajouter une regex dans le code python.&#10;&#10;##Définifition de la lookup table: &#10;On utilise une lookup table selon template yaml suivant:&#10;&#10;CSV_COLUMNS:&#10;&#10;source_date_extent: [trim, no_null]&#10;&#10;data_collection_start_date: [trim, no_null]&#10;&#10;data_collection_end_date: [trim] &#10;&#10;#&#10;CREATE_KEY_VALUE:&#10;#&#10;NO_DUPLICATE:&#10;DUP_1: [source_date_extent]&#10;#&#10;CHECK_DOMAIN:&#10;&#10;**Output**: &#10;&#10;Lorsque l&apos;extraction fonctionne, on ajoute les attributs data_collection_start_date et data_collection_end_date. Lorsque ça ne fonctionne pas, l&apos;attribut unmatched_date_extent contient la chaine de caractère non matchée.&#10;&#10;&#10;"
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="EXTRACT_COLLECTION_START_END_DATE"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-2481.27 1115.64"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR CSV_PATH MAX%MAX CSV_PATH:"
+#!   DEFAULT_VALUE="C:&lt;backslash&gt;Data&lt;backslash&gt;PT_Harvester&lt;backslash&gt;LOOKUP_TABLES"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR PT MAX%MAX PT:"
+#!   DEFAULT_VALUE="NS"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE_OR_ATTR DATE_EXTENT MAX%MAX DATE_EXTENT:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="21"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Extraction fonctionnelle&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2149.5218752187529 279.00249666910122"
+#!   TOP_LEFT="2149.5218752187529 279.00249666910122"
+#!   BOTTOM_RIGHT="2603.5218752187529 278.00249666910122"
+#!   BOUNDING_RECT="2149.5218752187529 279.00249666910122 454 1"
+#!   ORDER="500000000000026"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="19"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-1212.9434143462545 -126.49862834214889"
+#!   BOUNDING_RECT="-1212.9434143462545 -126.49862834214889 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_date_to_process" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _date_to_process SET_TO $(DATE_EXTENT)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="652.7002420903118 101.50137165785111"
+#!   BOUNDING_RECT="652.7002420903118 101.50137165785111 454 71"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_ordre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="source_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_date_to_process" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="unmatched_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="data_collection_start_date data_collection_end_date unmatched_date_extent"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;EXTRACT_COLLECTION_START_END_DATE&lt;space&gt;import&lt;space&gt;collection_end_start_date_extractor"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="collection_end_start_date_extractor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-600.43728928500138 -126.49862834214889"
+#!   BOUNDING_RECT="-600.43728928500138 -126.49862834214889 454 71"
+#!   ORDER="500000000000017"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_ordre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_date_to_process" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _ordre SET_TO 2"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-787.93916430375282 300.25585495097511"
+#!   BOUNDING_RECT="-787.93916430375282 300.25585495097511 454 71"
+#!   ORDER="500000000000017"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_ordre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="source_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _ordre SET_TO 1"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="Sorter"
+#!   VERSION="2"
+#!   POSITION="-12.931414226251377 101.50137165785111"
+#!   BOUNDING_RECT="-12.931414226251377 101.50137165785111 454 71"
+#!   ORDER="500000000000018"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="SORTED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_ordre" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="source_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_date_to_process" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SORT_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SORT_PARM" PARM_VALUE="_ordre NUMERIC ASCENDING"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Sorter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-2259.8288832009403 300.25585495097511"
+#!   BOUNDING_RECT="-2259.8288832009403 300.25585495097511 634.00106825772946 71"
+#!   ORDER="500000000000019"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(CSV_PATH)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="NS_Manual_end_start_collection_date"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(PT)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-1419.1954768668784 300.25585495097511"
+#!   BOUNDING_RECT="-1419.1954768668784 300.25585495097511 454 71"
+#!   ORDER="500000000000021"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="source_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="source_date_extent,data_collection_start_date,data_collection_end_date"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="19"
+#!   TYPE="TestFilter"
+#!   VERSION="2"
+#!   POSITION="2187.5218752187529 101.50137165785111"
+#!   BOUNDING_RECT="2187.5218752187529 101.50137165785111 454 71"
+#!   ORDER="500000000000025"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   OUTPUT_FT_ORDER="Yes%No"
+#! >
+#!     <OUTPUT_FEAT NAME="Yes"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="source_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="unmatched_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="No"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="source_date_extent" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="unmatched_date_extent" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;unmatched_date_extent&lt;space&gt;ATTRIBUTE_HAS_A_VALUE&lt;space&gt;&lt;quote&gt;&lt;quote&gt;&quot;,No"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="1449.5832109199996 101.50137165785111"
+#!   BOUNDING_RECT="1449.5832109199996 101.50137165785111 454 71"
+#!   ORDER="500000000000029"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="source_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="unmatched_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_date_to_process,_ordre"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="29"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="3009.4050940509405 -153.75093750937506"
+#!   BOUNDING_RECT="3009.4050940509405 -153.75093750937506 533.00106825772946 71"
+#!   ORDER="500000000000030"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="32"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="3088.40616230867 -406.8784687846877"
+#!   BOUNDING_RECT="3088.40616230867 -406.8784687846877 454 71"
+#!   ORDER="500000000000031"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="unmatched_date_extent" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="unmatched_date_extent"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="31"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="2955.4042757957118 279.00249666910122"
+#!   BOUNDING_RECT="2955.4042757957118 279.00249666910122 533.00106825772946 71"
+#!   ORDER="500000000000030"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="17"
+#!   NAME="Input"
+#!   POSITION="-2012.5201252012525 -249.87521875218704"
+#!   BOUNDING_RECT="-2012.5201252012525 -249.87521875218704 430 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="22"
+#!   NAME="Output"
+#!   POSITION="3837.5383753837541 161.8772187721878"
+#!   BOUNDING_RECT="3837.5383753837541 161.8772187721878 430 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="24"
+#!   NAME="Unworking_extent"
+#!   POSITION="3793.7879378793782 -186.49862834214889"
+#!   BOUNDING_RECT="3793.7879378793782 -186.49862834214889 500.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 SORTED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="29"
+#!   SOURCE_PORT_DESC="fo 1 No"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="19"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="29"
+#!   TARGET_NODE="32"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="31"
+#!   TARGET_NODE="22"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="32"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="31"
+#!   SOURCE_PORT_DESC="fo 0 Yes"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_CSV_PATH C:<backslash>Data<backslash>PT_Harvester<backslash>LOOKUP_TABLES
+DEFAULT_MACRO $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_PT NS
+DEFAULT_MACRO $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_DATE_EXTENT 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Input1638997281 Input Splitter"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE NS_Manual_end_start_collection_date
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_CSV_PATH)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_PT)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output Brancher -1 10"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator_3    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_ordre" "SET_TO" "1" }    OUTPUT OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_date_to_process" "SET_TO" "$($(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_DATE_EXTENT)" }    OUTPUT OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_ordre" "SET_TO" "2" }    OUTPUT OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} SortFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Sorter    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    FLUSH_WHEN_GROUPS_CHANGE No    SORT_BY { _ordre NUMERIC ASCENDING }    OUTPUT SORTED FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Sorter_SORTED"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Sorter_SORTED"    SYMBOL_NAME collection_end_start_date_extractor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>EXTRACT_COLLECTION_START_END_DATE<space>import<space>collection_end_start_date_extractor    OUTPUT PYOUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_date_to_process,_ordre)        @RemoveAttributes(fme_pcre_match"$($(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeRemover_OUTPUT"    OUTPUT FEATURE_TYPE $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_Condition_1 INPUT FEATURE_TYPE $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0 TEST unmatched_date_extent ATTRIBUTE_HAS_A_VALUE "" ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_No OUTPUT FAILED FEATURE_TYPE $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_Yes INPUT FEATURE_TYPE $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_Yes
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_No"   OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"    OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Input Input Collector"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_TestFilter_Yes"   OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Output1638997281 Output Collector"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Unworking_extent1638997281 Output Collector"   INPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_AttributeExposer_OUTPUT"   OUTPUT FEATURE_TYPE "$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME)_Unworking_extent"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(EXTRACT_COLLECTION_START_END_DATE_WORKSPACE_NAME))}]
