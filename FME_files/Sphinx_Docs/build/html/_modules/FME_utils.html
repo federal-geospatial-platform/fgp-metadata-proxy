@@ -42,6 +42,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../FME_utils.html">Documentation de la classe FME_utils</a></li>
@@ -133,6 +139,7 @@
 <span class="sd">            a list of FME attribute</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
+<span class="c1">#        web_pdb.set_trace()</span>
         <span class="n">atts</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">feature_atts</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAllAttributeNames</span><span class="p">()</span>  <span class="c1"># Extract all attribute names</span>
         <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
@@ -141,10 +148,11 @@
 
         <span class="k">if</span> <span class="n">att_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="c1"># The attribute to search is a list</span>
+            <span class="n">att_name</span> <span class="o">=</span> <span class="s2">&quot;^&quot;</span> <span class="o">+</span> <span class="n">att_name</span> <span class="o">+</span> <span class="s2">&quot;$&quot;</span>  <span class="c1"># Regular expression exact match</span>
             <span class="n">regex_search</span> <span class="o">=</span> <span class="n">att_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regex_list</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">feature_att</span> <span class="ow">in</span> <span class="n">feature_atts</span><span class="p">:</span>
-                <span class="n">att_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_search</span> <span class="p">,</span> <span class="n">feature_att</span><span class="p">)</span>  <span class="c1"># Check if attribute name is present</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">att_lst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">att_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regex_search</span> <span class="p">,</span> <span class="n">feature_att</span><span class="p">)</span>  <span class="c1"># Check if attribute name is present</span>
+                <span class="k">if</span> <span class="n">att_lst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">index_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_list</span><span class="p">,</span> <span class="n">att_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index with &quot;{}&quot;</span>
                     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_lst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                         <span class="n">index</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_index</span><span class="p">,</span> <span class="n">index_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index number</span>
@@ -163,6 +171,8 @@
                 <span class="k">if</span> <span class="n">att_name</span> <span class="o">==</span> <span class="n">feature_att</span><span class="p">:</span>
                     <span class="n">atts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="kc">None</span><span class="p">,</span> <span class="n">att_name</span><span class="p">))</span>
                     <span class="k">break</span>
+        <span class="c1"># Sort the list indexes as FME getAllAttributeNames break the order of the list</span>
+        <span class="n">atts</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">atts</span></div>
 

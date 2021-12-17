@@ -43,7 +43,8 @@ autosummary_generate = True
 # Nom des classes à usurper 
 autodoc_mock_imports = ["fme", 
                         "fmeobjects",
-                        "yaml"]
+                        "yaml",
+                        "dateutil"]
                         
 # Mettre la documentation Python en ordre alphabétique
 autodoc_member_order = 'alphabetical'

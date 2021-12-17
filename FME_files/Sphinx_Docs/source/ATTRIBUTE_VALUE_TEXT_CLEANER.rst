@@ -13,7 +13,8 @@ Documentation du code module.py
 ###############################
    
 .. autosummary::
-   ATTRIBUTE_VALUE_TEXT_CLEANER
+   ATTRIBUTE_VALUE_TEXT_CLEANER.HTMLFilter
+   ATTRIBUTE_VALUE_TEXT_CLEANER.processFeature
    
 .. automodule:: ATTRIBUTE_VALUE_TEXT_CLEANER
    :members:

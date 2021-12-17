@@ -24,6 +24,12 @@ Documentation des Custom Transformers FME
    ATTRIBUTE_VALUE_TEXT_CLEANER.rst
    JSON_PUBLISHER.rst
    XML_PUBLISHER.rst
+   Catalogue_Reader.rst
+   DEFAULT_ATTRIBUTE_MAPPER.rst
+   DUPLICATE_SERVICE_REMOVER.rst
+   EMAIL_FORMAT_TESTER.rst
+   EXTRACT_COLLECTION_START_END_DATE.rst
+   FORMAT_VALIDATOR.rst
 
 
 Documentation de l'utilitaire Python
