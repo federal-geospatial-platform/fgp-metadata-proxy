@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>METADATA_DELTA_FINDER &mdash; fme_python_pt_harvester 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="METADATA_FORMAT_MAPPER" href="METADATA_FORMAT_MAPPER.html" />
+    <link rel="prev" title="MAP_RESOURCE_ATTRIBUTION_REMOVER" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> fme_python_pt_harvester
+            <img src="_static/Canada.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER.html">LICENSE_FILTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">METADATA_DELTA_FINDER</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_ERROR_MANAGER.html">METADATA_VALUE_MAPPER_ERROR_MANAGER</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fme_python_pt_harvester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>METADATA_DELTA_FINDER</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/METADATA_DELTA_FINDER.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="metadata-delta-finder">
+<h1>METADATA_DELTA_FINDER<a class="headerlink" href="#metadata-delta-finder" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description</strong> </p>
+<p>This custom transformer identify the type of transaction (insert, update, delete, no change) for each metadata records read from the province.  In order to determine the type of transaction, the metadata reference records (from the PYCSW or from a Local Source) are read and are compared using a hash function (see note) with the records from the province (new records). There are four possible types of transaction:</p>
+<ul>
+<li>
+<p>Insert: A record read from the province is not found in the reference records (PYCSW or Local Source)</p>
+</li>
+<li>
+<p>Update: A record read from the province is found in the reference records (PYCSW or Local Source) but with one or more differences in the content of the metadata record</p>
+</li>
+<li>
+<p>Delete: A record is present in the reference record (PYCSW or Local Source) but not in the province</p>
+</li>
+<li>
+<p>No change: A record read from the province is identical (all fields are the same) to a record found in the reference records (PYCSW or Local Source).</p>
+</li>
+</ul>
+<p><strong>Input Ports </strong></p>
+<p>Input: The input metadata records from the province.</p>
+<p><strong>Output Ports</strong> </p>
+<p>OUTPUT: The input metdata records from the province with an attribute with the type of transaction (Insert, Update, Delete, No change)</p>
+<p><strong>Parameters </strong></p>
+<ul>
+<li>ABSTRACT_ATT_NEW: Name of the attribute containing the description of the abstract for the new record from the province</li>
+<li>
+<p>ABSTRACT_ATT_REF: Name of the attribute containing the description of the abstract for the reference record (PYCSW or Local source)</p>
+</li>
+<li>
+<p>DATESTAMP_ATT_NEW: Name of the attribute containing the date stamp for the new record from the province</p>
+</li>
+<li>
+<p>DATESTAMP_ATT_REF: Name of the attribute containing the date stamp for the reference record (PYCSW or Local source)</p>
+</li>
+<li>
+<p>ID_ATT_NEW: Name of the attribute containing the identification for the new record from the province</p>
+</li>
+<li>
+<p>ID_ATT_REF: Name of the attribute containing the identification for the reference record (PYCSW or Local Source)</p>
+</li>
+<li>
+<p>RES_NAME_ATT_NEW: Name of the attribute containing the resource name for the new record from the province</p>
+</li>
+<li>
+<p>RES_NAME_ATT_REF: Name of the attribute containing the resource name for the reference record (PYCSW or Local Source)</p>
+</li>
+<li>
+<p>RES_URL_ATT_NEW: Name of the attribute containing the resource URL for the new record from the province</p>
+</li>
+<li>
+<p>RES_URL_ATT_REF: Name of the attribute containing the resource URL for the reference record (PYCSW or Local Source)</p>
+</li>
+<li>
+<p>TITLE_ATT_NEW: Name of the attribute containing the title for the new record from the province</p>
+</li>
+<li>
+<p>TITLE_ATT_REF: Name of the attribute containing the title for the reference record (PYCSW or Local Source)</p>
+</li>
+<li>
+<p>CUSTOM_CSW_CKAN_URL: Name of the attribute containing the URL of the PYCSW server</p>
+</li>
+<li>
+<p>CKAN_FILTER: Name of the attribute used to filter CKAN records in the PyCSW server</p>
+</li>
+<li>
+<p>LOCAL_SOURCE: Flag indicating if the metadata record for identifying the action (insert, update, delete, no change) must be read from the PYCSW server or are stored on the local system. Can take 2 values: YES: read the records from the PYCSW; NO read the records from the Local source.</p>
+</li>
+<li>
+<p>LOCAL_SOURCE_FORMAT: Flag indicating the type of metadata format format to process.  Can take 2 values: XML to process XML format records (geospatial data); JSON to process JSON format records (non geospatial data)</p>
+</li>
+<li>
+<p>LOCAL_SOURCE_DIR: Name of the directory containing the local source of the referenced records. Used if LOCAL_SOURCE parameters is set to NO</p>
+</li>
+<li>
+<p>CSW_FILTER: Name of the attribute used to filter CSW records in the PyCSW server in order to select records from one province only</p>
+</li>
+<li>
+<p>RES_FORMAT_ATT_NEW: Name of the attribute containing the format of the resource for the new record from the province</p>
+</li>
+<li>
+<p>RES_FORMAT_ATT_REF: Name of the attribute containing the format of the resource for the reference record (PYCSW or Local Source)</p>
+</li>
+</ul>
+<p><strong>Note:</strong></p>
+<p>A hash function using strategig attributes is used to determine if 2 metadata records are the same  .</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html" class="btn btn-neutral float-left" title="MAP_RESOURCE_ATTRIBUTION_REMOVER" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="METADATA_FORMAT_MAPPER.html" class="btn btn-neutral float-right" title="METADATA_FORMAT_MAPPER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, FGP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

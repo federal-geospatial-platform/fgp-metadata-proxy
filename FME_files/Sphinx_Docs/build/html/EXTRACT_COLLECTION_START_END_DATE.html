@@ -39,11 +39,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
@@ -55,11 +51,21 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER.html">LICENSE_FILTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_ERROR_MANAGER.html">METADATA_VALUE_MAPPER_ERROR_MANAGER</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
@@ -93,7 +99,7 @@
 <h1>EXTRACT_COLLECTION_START_END_DATE<a class="headerlink" href="#extract-collection-start-end-date" title="Permalink to this headline"></a></h1>
 <div class="section" id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
-<h3>Description:</h3>
+<p><strong>Description: </strong></p>
 <p>Custom transformer utilisé pour extraire une étendue temporelle lorsque possible dans une chaine de caractère. Le custom a 3 actions possibles à poser.</p>
 <ol>
 <li>Si la chaine de caractère est vide, on attribue la date de début à 0001-01-01. La date de fin est vide </li>
@@ -101,20 +107,28 @@
 <li>Si la chaine de caractère ne matche pas l'expression régulière, il est possibile de définir manuellement les valeurs de début/fin grâce à une lookup table</li>
 </ol>
 <p>Dans le cas où aucune des trois actions n'est possible, la feature ressort par le port unworking_extraction. Dans ce cas, on doit mettre à jour la lookup table ou bien ajouter une regex dans le code python.</p>
-<h2>Définifition de la lookup table:</h2>
+<p><strong>Définifition de la lookup table:</strong> </p>
+<p><strong>Input Ports</strong></p>
 <p>On utilise une lookup table selon template yaml suivant:</p>
-<p>CSV_COLUMNS:</p>
-<p>source_date_extent: [trim, no_null]</p>
-<p>data_collection_start_date: [trim, no_null]</p>
-<p>data_collection_end_date: [trim] </p>
-<h1></h1>
-<p>CREATE_KEY_VALUE:</p>
-<h1></h1>
-<p>NO_DUPLICATE:
-DUP_1: [source_date_extent]</p>
-<h1></h1>
-<p>CHECK_DOMAIN:</p>
-<p><strong>Output</strong>: </p>
+<pre>
+CSV_COLUMNS:
+
+source_date_extent: [trim, no_null]
+
+data_collection_start_date: [trim, no_null]
+
+data_collection_end_date: [trim] 
+
+#
+CREATE_KEY_VALUE:
+#
+NO_DUPLICATE:
+DUP_1: [source_date_extent]
+#
+CHECK_DOMAIN:
+</pre>
+
+<p><strong>Output Ports</strong></p>
 <p>Lorsque l'extraction fonctionne, on ajoute les attributs data_collection_start_date et data_collection_end_date. Lorsque ça ne fonctionne pas, l'attribut unmatched_date_extent contient la chaine de caractère non matchée.</p>
 </div>
 <div class="section" id="documentation-du-code-module-py">
@@ -136,35 +150,41 @@ DUP_1: [source_date_extent]</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Cette classe python permet d’extraire l’étendu temporel à partir d’expression régulière
 Quand c’est une date contenant juste une année, on ajout -01-01 lorsque date début et -12-31 quand fin</p>
-<p>Liste des expressions régulières:
-1. ^[1-2][0-9][0-9][0-9]$  –&gt; 2001
-2. ^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$  –&gt; 2001-2002
-3. ^[1-2][0-9][0-9][0-9] - [1-2][0-9][0-9][0-9]$  –&gt; 2001 - 2002
-4. ^[1-2][0-9][0-9][0-9] to [1-2][0-9][0-9][0-9]$ –&gt; 2002 to 2020
-5. ^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]/[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$ –&gt; 2017-2018/2019-2020
-6. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ –&gt; 2012-09/2020-06
-7. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 2018-04-01 to 2021-06-24
-8. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 2018-04-01/2021-06-24
-9. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to present$ –&gt;2000-01-01 to present
-10. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/present$ –&gt; 2000-01-01/present
-11. ^[1-2][0-9][0-9][0-9]-present$ –&gt;  2000-present
-12. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]; [1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ –&gt;2012-09/2016-06; 2018-09/2019-06
-13. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9], [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 1995-01-01, 2000-01-01/2006-12-31
-14. ^([1-2][0-9][0-9][0-9],)+ ==&gt; 2001,2002,2003 …</p>
+<p class="rubric">Notes</p>
+<p>Liste des expressions régulières:</p>
+<ol class="arabic simple">
+<li><p>^[1-2][0-9][0-9][0-9]$  –&gt; 2001</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$  –&gt; 2001-2002</p></li>
+<li><p>^[1-2][0-9][0-9][0-9] - [1-2][0-9][0-9][0-9]$  –&gt; 2001 - 2002</p></li>
+<li><p>^[1-2][0-9][0-9][0-9] to [1-2][0-9][0-9][0-9]$ –&gt; 2002 to 2020</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]/[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$ –&gt; 2017-2018/2019-2020</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ –&gt; 2012-09/2020-06</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 2018-04-01 to 2021-06-24</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 2018-04-01/2021-06-24</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to present$ –&gt;2000-01-01 to present</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/present$ –&gt; 2000-01-01/present</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-present$ –&gt;  2000-present</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]; [1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ –&gt;2012-09/2016-06; 2018-09/2019-06</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9], [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 1995-01-01, 2000-01-01/2006-12-31</p></li>
+<li><p>^([1-2][0-9][0-9][0-9],)+ ==&gt; 2001,2002,2003 …</p></li>
+</ol>
 <dl class="py method">
 <dt class="sig sig-object py" id="EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/EXTRACT_COLLECTION_START_END_DATE.html#collection_end_start_date_extractor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.__init__" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Constructor call before any FME features are passed</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.close">
 <span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/EXTRACT_COLLECTION_START_END_DATE.html#collection_end_start_date_extractor.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.close" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Method call when all the festures are passed, not used.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.input">
 <span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EXTRACT_COLLECTION_START_END_DATE.html#collection_end_start_date_extractor.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.input" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Process each FME features.</p>
+</dd></dl>
 
 </dd></dl>
 

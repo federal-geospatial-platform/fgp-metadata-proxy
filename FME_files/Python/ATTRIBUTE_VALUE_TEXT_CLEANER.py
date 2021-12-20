@@ -10,8 +10,8 @@ from html.parser import HTMLParser
 class HTMLFilter(HTMLParser):
     """Class that serves as the basis for parsing text files formatted in HTML (`More informations: <https://docs.python.org/3/library/html.parser.html>`_)
     
-    Attributes
-    ----------
+    Notes
+    -----
     text : str
         Class variable needed to parse the html string.
     """
