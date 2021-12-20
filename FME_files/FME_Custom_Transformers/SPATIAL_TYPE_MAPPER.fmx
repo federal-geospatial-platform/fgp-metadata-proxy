@@ -1,44 +1,27 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN SPATIAL_TYPE_MAPPER,1,"FGP Tools",e0d876a5-8bac-40e9-b093-608189e21e27,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
-# <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-# <html><head><meta name="qrichtext" content="1" /><style type="text/css">
-# p, li { white-space: pre-wrap; }
-# </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;">
-# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Description </span></p>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">This custom transformer attributes a spatial representation type to the input metadata records.  There are three representation spatial types: grid, vector and textTable.  In order to determine the spatial type, the custom transformer uses 2 distinct strategies: firstly it analyses the </span><span style=" font-size:10pt; font-style:italic;">resources{}.spatial_type </span><span style=" font-size:10pt;">to extract the spatial type; secondly, if the first strategy fails, the custom transformer is using a lookup table containing the spatial representation type for a list of specific ID (uuid).</span></li></ul>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;"><br /></p>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Input Ports </span></p>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">LOOKUP_TABLE_INPUT:<span style=" font-weight:400; text-decoration:none;"> Input information from the lookup table</span></li>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
-# <li style=" font-size:10pt; font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">DATA_INPUT:<span style=" font-weight:400;"> The input metadata records to process.</span></li></ul>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Output Ports </span></p>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">DATA_OUTPUT_PASSED: </span><span style=" font-weight:400; text-decoration:none;">The output metdata records for which the spatial representation type was successfully set.</span></li></ul>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p>
-# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" text-decoration:none;">DATA_OUTPUT_FAILED: </span><span style=" font-weight:400; text-decoration:none;">The output metdata records for which the spatial representation type was not successfully set.</span></li></ul>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt; font-weight:600; text-decoration: underline;">Parameters </span></p>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;"><br /></p>
-# <ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:10pt; font-weight:600; text-decoration: underline;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">No parameter needed</li></ul>
-# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;"><br /></p></body></html>
+# TRANSFORMER_BEGIN SPATIAL_TYPE_MAPPER,1,"FGP Tools",ab11f069-b261-45b2-a65f-5010fa24d9cc,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# <p><strong>Description</strong> </p>
+# <p>This custom transformer attributes a spatial representation type to the input metadata records.  There are three representation spatial types: grid, vector and textTable.  In order to determine the spatial type, the custom transformer uses 2 distinct strategies: firstly it analyses the resources{}.spatial_type to extract the spatial type; secondly, if the first strategy fails, the custom transformer is using a lookup table containing the spatial representation type for a list of specific ID (uuid).</p>
+# <p><strong>Input Ports</strong> </p>
+# <p>LOOKUP_TABLE_INPUT: Input information from the lookup table</p>
+# <p>DATA_INPUT: The input metadata records to process.</p>
+# <p><strong>Output Ports </strong></p>
+# <p>DATA_OUTPUT_PASSED: The output metdata records for which the spatial representation type was successfully set.</p>
+# <p>DATA_OUTPUT_FAILED: The output metdata records for which the spatial representation type was not successfully set.</p>
+# <p><strong>Parameters</strong> </p>
+# <p>No parameter needed</p>
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="FGP Tools"
-#!   DESCRIPTION="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Description &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This custom transformer attributes a spatial representation type to the input metadata records.  There are three representation spatial types: grid, vector and textTable.  In order to determine the spatial type, the custom transformer uses 2 distinct strategies: firstly it analyses the &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-style:italic;&quot;&gt;resources{}.spatial_type &lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;to extract the spatial type; secondly, if the first strategy fails, the custom transformer is using a lookup table containing the spatial representation type for a list of specific ID (uuid).&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Input Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;LOOKUP_TABLE_INPUT:&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt; Input information from the lookup table&lt;/span&gt;&lt;/li&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;li style=&quot; font-size:10pt; font-weight:600;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;DATA_INPUT:&lt;span style=&quot; font-weight:400;&quot;&gt; The input metadata records to process.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Output Ports &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;DATA_OUTPUT_PASSED: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The output metdata records for which the spatial representation type was successfully set.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration:none;&quot;&gt;DATA_OUTPUT_FAILED: &lt;/span&gt;&lt;span style=&quot; font-weight:400; text-decoration:none;&quot;&gt;The output metdata records for which the spatial representation type was not successfully set.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;Parameters &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:10pt; font-weight:600; text-decoration: underline;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;No parameter needed&lt;/li&gt;&lt;/ul&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;This custom transformer attributes a spatial representation type to the input metadata records.  There are three representation spatial types: grid, vector and textTable.  In order to determine the spatial type, the custom transformer uses 2 distinct strategies: firstly it analyses the resources{}.spatial_type to extract the spatial type; secondly, if the first strategy fails, the custom transformer is using a lookup table containing the spatial representation type for a list of specific ID (uuid).&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;LOOKUP_TABLE_INPUT: Input information from the lookup table&lt;/p&gt;&#10;&lt;p&gt;DATA_INPUT: The input metadata records to process.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;DATA_OUTPUT_PASSED: The output metdata records for which the spatial representation type was successfully set.&lt;/p&gt;&#10;&lt;p&gt;DATA_OUTPUT_FAILED: The output metdata records for which the spatial representation type was not successfully set.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;No parameter needed&lt;/p&gt;"
 #!   DOC_EXTENTS="9892.54 3140.66"
 #!   DOC_TOP_LEFT="-5375.12 -1437.51"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="e0d876a5-8bac-40e9-b093-608189e21e27"
-#!   FME_DOCUMENT_PRIORGUID="351ec381-ee78-4e63-84a7-4d9a0ad1c1fb"
+#!   FME_DOCUMENT_GUID="ab11f069-b261-45b2-a65f-5010fa24d9cc"
+#!   FME_DOCUMENT_PRIORGUID="351ec381-ee78-4e63-84a7-4d9a0ad1c1fb,e0d876a5-8bac-40e9-b093-608189e21e27"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -50,8 +33,8 @@
 #!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,13&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2021-09-14T08:49:55"
-#!   MARKDOWN_DESCRIPTION=""
+#!   LAST_SAVE_DATE="2021-12-20T13:51:05"
+#!   MARKDOWN_DESCRIPTION="**Description** &#10;&#10;This custom transformer attributes a spatial representation type to the input metadata records.  There are three representation spatial types: grid, vector and textTable.  In order to determine the spatial type, the custom transformer uses 2 distinct strategies: firstly it analyses the resources{}.spatial_type to extract the spatial type; secondly, if the first strategy fails, the custom transformer is using a lookup table containing the spatial representation type for a list of specific ID (uuid).&#10;&#10;**Input Ports** &#10;&#10;LOOKUP_TABLE_INPUT: Input information from the lookup table&#10;&#10;DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports **&#10;&#10;DATA_OUTPUT_PASSED: The output metdata records for which the spatial representation type was successfully set.&#10;&#10;DATA_OUTPUT_FAILED: The output metdata records for which the spatial representation type was not successfully set.&#10;&#10;**Parameters** &#10;&#10;No parameter needed&#10;"
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
@@ -61,12 +44,12 @@
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="SPATIAL_TYPE_MAPPER"
 #!   USAGE=""
-#!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-4301.63 1134.93"
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-4946.92 1065.64"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="63"
+#!   ZOOM_SCALE="100"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -92,7 +75,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,0.78431372549019607"
+#!   COLOUR="0.42352941176470588,0.16862745098039217,0.46666666666666667,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="18"
 #! />
@@ -107,7 +90,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,0.78431372549019607"
+#!   COLOUR="0.42352941176470588,0.16862745098039217,0.46666666666666667,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="14"
 #! />
@@ -122,7 +105,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="6"
 #! />
@@ -137,7 +120,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="13"
 #! />
@@ -152,7 +135,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="15"
 #! />
@@ -167,7 +150,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="17"
 #! />
@@ -182,7 +165,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="5"
 #! />
@@ -197,7 +180,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="7"
 #! />
@@ -212,7 +195,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="8"
 #! />
@@ -227,7 +210,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="9"
 #! />
@@ -242,7 +225,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="10"
 #! />
@@ -257,7 +240,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="12"
 #! />
@@ -272,7 +255,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="11"
 #! />
@@ -287,7 +270,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="16"
 #! />
@@ -302,7 +285,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,0.78431372549019607"
+#!   COLOUR="0.42352941176470588,0.16862745098039217,0.46666666666666667,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="21"
 #! />
@@ -317,7 +300,7 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="23"
 #! />
@@ -335,8 +318,8 @@
 #!   BOTTOM_RIGHT="3584.4108441084409 -1437.5143751437513"
 #!   BOUNDING_RECT="-4490.6737364907831 1703.1420314203142 8075.084580599224 3140.6564065640655"
 #!   STICKY="true"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="7 60 9 66 70 35 47 69 62 54 44 19 49 48 53 67 17 31 20 12 14 11 27 40 23 43 59 36 34 26 72 38 45 52 25 55 56 18 73 63 28 57 32 39 71 37 16 65 15 10 13 21 8 75 68 24 51 58 6 46 61 33 22 50 "
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,1"
+#!   CONTENTS="33 27 46 37 40 50 57 60 8 14 48 73 6 21 56 23 13 44 26 34 35 10 19 66 16 12 70 31 72 67 22 62 43 45 17 52 59 65 71 47 15 55 11 38 58 51 75 49 63 39 68 61 54 18 32 69 7 9 53 25 28 24 20 36 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -349,8 +332,8 @@
 #!   BOTTOM_RIGHT="-1000.010000100001 409.37909379093776"
 #!   BOUNDING_RECT="-4320.1166391043344 1575.0157501575015 3320.1066390043334 1165.6366563665638"
 #!   STICKY="true"
-#!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="59 56 18 72 21 58 55 22 44 14 39 20 "
+#!   COLOUR="0.42352941176470588,0.16862745098039217,0.46666666666666667,1"
+#!   CONTENTS="58 21 39 20 14 56 55 22 44 59 18 72 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -1102,7 +1085,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1117,7 +1100,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1132,7 +1115,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1147,7 +1130,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1162,7 +1145,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1177,7 +1160,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1192,7 +1175,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1207,7 +1190,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1222,7 +1205,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1237,7 +1220,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1252,7 +1235,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1267,7 +1250,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1282,7 +1265,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1297,7 +1280,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1312,7 +1295,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1327,7 +1310,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1342,7 +1325,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1357,7 +1340,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1372,7 +1355,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1387,7 +1370,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1402,7 +1385,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1417,7 +1400,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1432,7 +1415,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1447,7 +1430,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1462,7 +1445,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1477,7 +1460,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1492,7 +1475,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1507,7 +1490,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1522,7 +1505,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1546,8 +1529,8 @@ FME_PYTHON_VERSION 37
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO SPATIAL_TYPE_MAPPER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT1631623795 Input Splitter"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1631623795 Input Splitter"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT1640026265 Input Splitter"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT1640026265 Input Splitter"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_LOOKUP_TABLE_INPUT"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
 # -------------------------------------------------------------------------
@@ -1576,10 +1559,10 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_A
 # most of this is close to the code from listindexer but not exact beucase
 # we have a type LIST_ATTR rather than type LIST_NAME so need
 # to figure out the list name
-Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.spatial_type];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer_3_OUTPUT"    OUTPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___         "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21" @SearchList(fme_encoded,"resources<opencurly><closecurly>.spatial_type","",FIRST_NOT_MATCHED_ENCODED)
-FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__Tester    INPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___    TEST @Value($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21) == "-1"    OUTPUT PASSED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_NOT_FOUND" @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21)    OUTPUT FAILED FEATURE_TYPE  $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexFound__
-FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__Tester2    INPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexFound__    TEST NO == "NO"    OUTPUT PASSED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND" @CopyAttributes(_list_index, $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21) @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21)    OUTPUT FAILED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND"  @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21_indexer {@Value($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21)} {<Unused>}") @CopyAttributes(_list_index, $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21) @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_3630691f_00ef_4762_9a5f_7caaf5027bb21)
+Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.spatial_type];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeExposer_3_OUTPUT"    OUTPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___         "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610" @SearchList(fme_encoded,"resources<opencurly><closecurly>.spatial_type","",FIRST_NOT_MATCHED_ENCODED)
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__Tester    INPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexedFeatures___    TEST @Value($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610) == "-1"    OUTPUT PASSED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_NOT_FOUND" @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610)    OUTPUT FAILED FEATURE_TYPE  $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexFound__
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__Tester2    INPUT FEATURE_TYPE $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher__IndexFound__    TEST NO == "NO"    OUTPUT PASSED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND" @CopyAttributes(_list_index, $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610) @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610)    OUTPUT FAILED FEATURE_TYPE  "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND"  @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610_indexer {@Value($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610)} {<Unused>}") @CopyAttributes(_list_index, $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610) @RemoveAttributes($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_b6c12ec5_278d_42ec_9a93_881bb3ef21610)
 # -------------------------------------------------------------------------
 Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListHistogrammer_2_histo {} {    foreach attr [FME_AttributeNames] {    		 regsub -all \"{\[0-9\]+}\" $attr \"{}\" flatAttr;        if {$flatAttr == \"resources{}.spatial_type\" }        {          set attrVal [FME_GetAttribute $attr];          if {$attrVal == {} && [FME_IsAttributeNull $attr]}          {    	         set attrVal {FME_NULL_VALUE};          }; 	       if {[info exists histogram($attrVal)]} { 	           incr histogram($attrVal); 	       } else { 	           set histogram($attrVal) 1; 	       };        };    };    set toSort {};    foreach {name value} [array get histogram] {        lappend s $name $value;        lappend toSort $s;        unset s;    };    set sortedHisto [lsort -integer -decreasing -index end $toSort];    set spot 0;    foreach nameCount $sortedHisto {        set rootName "spatialType_histogram_temp{$spot}";        set valueAttr "$rootName.value";        set countAttr "$rootName.count";        if {[lindex $nameCount 0] == {FME_NULL_VALUE}} { 	       FME_SetAttributeNull $valueAttr; 	     } else { 	       FME_SetAttribute $valueAttr [lindex $nameCount 0];        };        FME_SetAttribute $countAttr [lindex $nameCount end];        incr spot;    } }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListHistogrammer_2    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSearcher_FOUND"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListHistogrammer_2_OUTPUT"         @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListHistogrammer_2_histo")
@@ -1605,7 +1588,7 @@ FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)
 Tcl2 proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_sort {} {    set COMMENT {    = NOTE: algorithm below does not support nested lists.    };    regsub \"{}.*$\" {spatialType_histogram{}.value} \"\{\" listBase;    regsub \"{}.*$\" {spatialType_histogram{}.value} \"\" listName;    set listBaseLen [string length $listBase];    set listNameLen [expr $listBaseLen - 1];    set listValueExtension [string replace {spatialType_histogram{}.value} 0 $listBaseLen {}];    set kCloseBrace \"\}\";    set kAnyOtherCharacters {*};    set kPlaceholderMissingVal 1;    set kPlaceholderNullVal 2;    set kPlaceholderEmptyVal 3;    set COMMENT {    = To resolve PR 46315 (and friends), lets make a first pass to determine the full list of    = possible index numbers. Then we'll go through and make sure we have a KEY value for each    = of those.  We'll track what "keys" we added so that at the end we can REMOVE them so they stay MISSING.    };    set maxElementCount 0;    foreach attr [FME_AttributeNames] {       set COMMENT {       =    For each attribute "listattr{<index>}.count" and all related attributes       =    "listattr{<index>}<extension>", create a list of the form       =       {$listattr{<index>}.count <index>}, and keep a list of the extensions       =    for each index in the associative array listExtensions(<index>).       };       set attrStart [string range $attr 0 $listNameLen];       if { $attrStart == $listBase } {          set braceEnd [string first \} $attr $listBaseLen];          set index [string range $attr $listBaseLen [expr $braceEnd - 1]];          set extension [string range $attr [expr $braceEnd + 1] end];          if { [regexp {^[0-9]+$} $index] == 1 } {             lappend listExtensions($index) $extension;             set attrsToRename($attr) 1;             set COMMENT {Keep track of the maximum index value};             if { [expr $index > $maxElementCount] } {                set maxElementCount $index;             }          };       }    };    set curElement 0;    set COMMENT {    = Now that we have a list of the actual element numbers included in the list. Lets whip through and make sure    = we have an actual element for each of the "key" parts of the list we want to sort. If we don't, we'll    = make an element there with an empty value.  Note that we can't easily separate and sort NULL < missing < empty,    = but we'll live with that shortcoming in here as long as it is documented.    };    catch {unset emptyPlaceholder};    set toSort {};    set placeholdersToSort {};    foreach curElement [lsort -integer -unique [array names listExtensions]] {       set COMMENT {       =    We found that there is at least some kind of element at this index in the list       =    so we need to ensure there is a key element at this index. If it is missing,       =    NULL or an empty string, then we save it to a separate array of placehoder values of 1, 2 or       =    3, respectively, so that can be deterministically sorted separately from the other       =    elements, and then tacked on at either the beginning of the end later on.       };       set COMMENT {Minimum float is taken from std::numeric_limits<T>::lowest() cppreference web page.};       set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;       if { ! [FME_AttributeExists $indexKeyElementAttr ] } {           set COMMENT {The key value attribute didn't exist, so put it on a separate placeholder list for sorting};           lappend placeholdersToSort [list $kPlaceholderMissingVal $curElement];           set emptyPlaceholder($curElement) $kPlaceholderMissingVal;       } elseif { [FME_IsAttributeNull $indexKeyElementAttr] } {           set COMMENT {Key attribute exists but is null, so put it on a separate placeholder list for sorting};           set emptyPlaceholder($curElement) $kPlaceholderNullVal;           lappend placeholdersToSort [list $kPlaceholderNullVal $curElement];       } elseif { [FME_GetAttribute $indexKeyElementAttr] == {} } {           set COMMENT {Key attribute exists but is empty, so put it on a separate placeholder list for sorting};           set emptyPlaceholder($curElement) $kPlaceholderEmptyVal;           lappend placeholdersToSort [list $kPlaceholderEmptyVal $curElement];       } else {           lappend toSort [list [FME_GetAttribute $indexKeyElementAttr] $curElement]       };    };    set COMMENT {    =    Sort the {$listattr{<index>} <index>} by index 0 (attr value). If we had (1,2,3) placeholders    =    for missing, NULL, or empty values, we sort those as well, and then tack them onto the    =    proper end of the resulting list.    };    set sortedAttrs [lsort   -index 0 $toSort];    set sortedPlaceholders [lsort   -index 0 $placeholdersToSort];    set COMMMENT {    =    If there were placeholders for null/missing/empty, put them at the beginning    =    or end of the sortedAttrs, depending on sort order    };    if { {} != {} } {       set sortedAttrs [concat $sortedAttrs $sortedPlaceholders];    } else {       set sortedAttrs [concat $sortedPlaceholders $sortedAttrs];    };    set destIndex 0;    set COMMENT {    =    For each list within sortedAttrs, iterate over the list, renaming    =    "listattr{<index>}<extension>" to    =    "listattr{<newIndex>}<extension>"    };    catch {unset nullRemap};    set renameAttrsFrom {};    set renameAttrsTo {};    foreach pair $sortedAttrs {       set elementNum [lindex $pair 1];       set nullRemap($destIndex) $elementNum;       set newAttrBase "$listName\{$destIndex\}";       set oldAttrBase "$listName\{$elementNum\}";       foreach extension $listExtensions($elementNum) {          lappend renameAttrsFrom $oldAttrBase$extension;          lappend renameAttrsTo $newAttrBase$extension;          unset attrsToRename($oldAttrBase$extension);       };       incr destIndex    };    set COMMENT {    =    If any attributes were list attributes but did not contain the    =    structure extension on which we were sorting, they must be cleaned up.    };    set attrs [array names attrsToRename];    if {[llength $attrs]} { eval FME_UnsetAttributes $attrs };    FME_RenameAttribute -list $renameAttrsTo $renameAttrsFrom;    set COMMENT {    =    = Lastly, go through and any of the MISSING, EMPTY, or NULL key values and set appropriately.  We'll have preserved their    = parallel list structure friends, but we need to restore the moved key to its original state: missing, blank or NULL    =    };    set curElement 0;    while { $curElement <= $maxElementCount } {        if { [info exists nullRemap($curElement)] } {            set origIndex $nullRemap($curElement);            if { [info exists emptyPlaceholder($origIndex)] } {                set COMMENT {Get rid of the sidecar attribute and key attribute too};                set indexKeyElementAttr $listBase$curElement$kCloseBrace$listValueExtension;                set value $emptyPlaceholder($origIndex);                if {$value == $kPlaceholderNullVal} {                  FME_SetAttributeNull $indexKeyElementAttr;                } elseif { $value == $kPlaceholderMissingVal } {                    FME_UnsetAttributes $indexKeyElementAttr;                } else {                  FME_SetAttribute $indexKeyElementAttr {};                };             };        };        incr curElement;    }; }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_6_PASSED"    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_OUTPUT"         @Tcl2("$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_sort")
 # -------------------------------------------------------------------------
-Tcl2 set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitDelim [FME_DecodeText {-}];      if { [regexp {^([1-9][0-9]*s)+$} [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitDelim]] }      {         set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitWidths [split [regsub -all {s$} {-} {}] s];         proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitWidths;            set source [FME_GetAttribute [FME_DecodeText {spatialType_histogram<opencurly>0<closecurly>.value}]];            set attrNum 0;            set listName [FME_DecodeText {spatial_trim}];            set attrPos 0;            set keepEmptyParts [string equal {No} {No}];            foreach width [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitWidths]            {               set endPos [expr $attrPos + $width - 1];               set bit [string range $source $attrPos $endPos];               set part [string trim $bit];               if { $keepEmptyParts || $part != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $part;                  incr attrNum;               };               incr attrPos $width;            };         };      }      else      {         proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitDelim;            set delim [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_8ac94d14_39e0_4eca_8bd4_8e42b2d7a3b61_splitDelim];            set delimLength [string length $delim];            set source [FME_GetAttribute [FME_DecodeText {spatialType_histogram<opencurly>0<closecurly>.value}]];            set keepEmptyParts [string equal {No} {No}];            set bits {};            set startIndex 0;            set nextIndex [string first $delim $source $startIndex];            while {$nextIndex >= 0} {              lappend bits [string range $source $startIndex [expr $nextIndex-1]];              set startIndex [expr $nextIndex + $delimLength];              set nextIndex [string first $delim $source $startIndex];            };            lappend bits [string range $source $startIndex end];            set listName [FME_DecodeText {spatial_trim}];            set attrNum 0;            foreach bit $bits            {               set trimmedPart [string trim $bit];               if { $keepEmptyParts || $trimmedPart != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $trimmedPart;                  incr attrNum;               };            }          }       }
+Tcl2 set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_f489ae33_45b9_4971_8ce8_f084d49e3da20_splitDelim [FME_DecodeText {-}];      if { [regexp {^([1-9][0-9]*s)+$} [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_f489ae33_45b9_4971_8ce8_f084d49e3da20_splitDelim]] }      {         set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_f489ae33_45b9_4971_8ce8_f084d49e3da20_splitWidths [split [regsub -all {s$} {-} {}] s];         proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_f489ae33_45b9_4971_8ce8_f084d49e3da20_splitWidths;            set source [FME_GetAttribute [FME_DecodeText {spatialType_histogram<opencurly>0<closecurly>.value}]];            set attrNum 0;            set listName [FME_DecodeText {spatial_trim}];            set attrPos 0;            set keepEmptyParts [string equal {No} {No}];            foreach width [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_f489ae33_45b9_4971_8ce8_f084d49e3da20_splitWidths]            {               set endPos [expr $attrPos + $width - 1];               set bit [string range $source $attrPos $endPos];               set part [string trim $bit];               if { $keepEmptyParts || $part != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $part;                  incr attrNum;               };               incr attrPos $width;            };         };      }      else      {         proc $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit {}         {            global $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_f489ae33_45b9_4971_8ce8_f084d49e3da20_splitDelim;            set delim [set $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_f489ae33_45b9_4971_8ce8_f084d49e3da20_splitDelim];            set delimLength [string length $delim];            set source [FME_GetAttribute [FME_DecodeText {spatialType_histogram<opencurly>0<closecurly>.value}]];            set keepEmptyParts [string equal {No} {No}];            set bits {};            set startIndex 0;            set nextIndex [string first $delim $source $startIndex];            while {$nextIndex >= 0} {              lappend bits [string range $source $startIndex [expr $nextIndex-1]];              set startIndex [expr $nextIndex + $delimLength];              set nextIndex [string first $delim $source $startIndex];            };            lappend bits [string range $source $startIndex end];            set listName [FME_DecodeText {spatial_trim}];            set attrNum 0;            foreach bit $bits            {               set trimmedPart [string trim $bit];               if { $keepEmptyParts || $trimmedPart != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $trimmedPart;                  incr attrNum;               };            }          }       }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_ListSorter_OUTPUT"    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Tester_7_FAILED"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_OUTPUT"         @Tcl2($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_doSplit)
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeSplitter_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "spatial_representation_type" "SET_TO" "<at>Value<openparen>spatial_trim<opencurly>1<closecurly><closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
@@ -1624,10 +1607,10 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_
 INCLUDE [    set macroLine "MACRO $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split "spatialType_histogram<opencurly><closecurly> spatial_trim<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_FeatureMerger_MERGED"    OUTPUT { FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_element_count,uuid,_list_index)        @RemoveAttributes(fme_pcre_match"$($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>SPATIAL_TYPE_MAPPER_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Data<space>record<space>with<space>unique<space>ID<space><at>Value<openparen>id<closeparen><space>missing<space>from<space>UUID_Spatial<space>lookup<space>table<space>in<space>SPATIAL_TYPE_MAPPER<space>transformer<space>and<space>could<space>not<space>be<space>mapped<space>to<space>a<space>value.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_01a45843_388e_4320_9d07_1a05da511ebd1)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"    OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>SPATIAL_TYPE_MAPPER_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Data<space>record<space>with<space>unique<space>ID<space><at>Value<openparen>id<closeparen><space>missing<space>from<space>UUID_Spatial<space>lookup<space>table<space>in<space>SPATIAL_TYPE_MAPPER<space>transformer<space>and<space>could<space>not<space>be<space>mapped<space>to<space>a<space>value.<space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_RECORD,$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_09b7a925_eafe_41ae_a5cb_7c584c8384af0)
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_66eb49fc_c224_4d3e_9aa3_274818478cda1_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_LOGGED"    OUTPUT { FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,url,id,title,notes,fme_pcre_match,"^fme_$($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_66eb49fc_c224_4d3e_9aa3_274818478cda1_LIST_EXP)")         }
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED1631623795 Output Collector"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_FAILED1631623795 Output Collector"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_FAILED"
+INCLUDE [    set macroLine "MACRO $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_e02196b8_429a_4ed5_bfd9_1b7eac37b1c60_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_Logger_LOGGED"    OUTPUT { FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,url,id,title,notes,fme_pcre_match,"^fme_$($(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_e02196b8_429a_4ed5_bfd9_1b7eac37b1c60_LIST_EXP)")         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED1640026265 Output Collector"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_PASSED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_FAILED1640026265 Output Collector"   INPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   OUTPUT FEATURE_TYPE "$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME)_DATA_OUTPUT_FAILED"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SPATIAL_TYPE_MAPPER_WORKSPACE_NAME))}]
