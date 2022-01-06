@@ -48,12 +48,12 @@ REM First FME call with three data records.  One with an undetermined empty form
 set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat.ffs
+set resultat=met\resultat%test_number%.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
-IF EXIST met\resultat.ffs DEL met\resultat.ffs
+IF EXIST %resultat%.ffs DEL %resultat%.ffs
 %fme% met\metrique_empty_format_mapper.fmw ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
