@@ -44,6 +44,9 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
+REM ============================================================================
+REM ========================== TEST  #1   ======================================
+REM ============================================================================
 REM First FME call with nine data records.  Five geospatial.  Four nongeospatial.
 set test_number=1
 SET source=met\source%test_number%.ffs
@@ -85,6 +88,9 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
+REM ============================================================================
+REM ========================== TEST  #2   ======================================
+REM ============================================================================
 REM Second FME call with the same nine data records.  Five geospatial.  Four nongeospatial.  XLS file is missing one record throwing mapping warning.
 set test_number=2
 SET source=met\source1.ffs
