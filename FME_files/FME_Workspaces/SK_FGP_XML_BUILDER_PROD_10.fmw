@@ -2,8 +2,10 @@
 #! <WORKSPACE
 #    Command-line to run this workspace:
 #        "C:\Program Files (x86)\fme\fme2020.0_b20200\fme.exe" C:\Users\bcrepeau\Documents\GitHub\fgp-metadata-proxy\FME_files\FME_Workspaces\SK_FGP_XML_BUILDER_PROD_10.fmw
-#              --CATALOGUE_READER_SELECT "Yes"
-#              --IN_FFS_TESTING_FILE ""
+#              --CATALOGUE_READER_SELECT "No"
+#              --IN_FFS_TESTING_FILE "C:\Data\PT_Harvester\SK\source_06janvier.ffs"
+#              --IN_CSV_LOOKUPTABLES_DIR "C:\Data\PT_Harvester\LOOKUP_TABLES"
+#              --P-T_ABBR "SK"
 #    
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BEGIN_PYTHON=""
@@ -12,14 +14,14 @@
 #!   DESCRIPTION=""
 #!   DESTINATION="NONE"
 #!   DESTINATION_ROUTING_FILE=""
-#!   DOC_EXTENTS="1457.73 1726.89"
-#!   DOC_TOP_LEFT="491.038 -2523.77"
+#!   DOC_EXTENTS="5583.07 1984.42"
+#!   DOC_TOP_LEFT="502.72 -2781.31"
 #!   END_PYTHON=""
 #!   END_TCL=""
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="23bcd321-80e4-4d96-9de5-09d77756d832"
-#!   FME_DOCUMENT_PRIORGUID="1be52d2b-21cc-48ca-8274-b189d1791762,d90978ec-c539-4281-8c4a-789f3d74dd92"
+#!   FME_DOCUMENT_GUID="ec5c5ba0-4ec6-426c-8a34-42cc24370093"
+#!   FME_DOCUMENT_PRIORGUID="1be52d2b-21cc-48ca-8274-b189d1791762,d90978ec-c539-4281-8c4a-789f3d74dd92,23bcd321-80e4-4d96-9de5-09d77756d832,e50fd65f-7557-4638-9fa5-e80db0692b85,8c046112-34a4-4fb2-807d-5d31cdd57d1a"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_REPROJECTION_ENGINE="FME"
@@ -28,7 +30,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2021-12-24T10:27:43"
+#!   LAST_SAVE_DATE="2022-01-10T11:04:53"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -47,10 +49,10 @@
 #!   TITLE=""
 #!   USAGE=""
 #!   USE_MARKDOWN=""
-#!   VIEW_POSITION="-1718.77 -579.433"
+#!   VIEW_POSITION="1743.59 -1346.39"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
-#!   ZOOM_SCALE="64"
+#!   ZOOM_SCALE="107"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -65,30 +67,45 @@
 #! <DATASET
 #!   NAME="FeatureReader"
 #!   OVERRIDE="--FeatureReaderDataset_FeatureReader"
-#!   DATASET="FeatureReader/"
+#!   DATASET="FeatureReader/source_06janvier.ffs"
 #! />
 #! </READER_DATASETS>
 #! </FMESERVER>
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI STRING_OR_CHOICE_OR_ATTR CATALOGUE_READER_SELECT Yes%No CATALOGUE_READER_SELECT:"
-#!   DEFAULT_VALUE="Yes"
+#!   DEFAULT_VALUE="No"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL MULTIFILE_OR_ATTR IN_FFS_TESTING_FILE INCLUDE_WEB_BROWSER%FME_Feature_Store_Files(*.ffs)|*.ffs|Compressed_Files(*.bz2_*.gz)|*.bz2_*.gz|Archive_Files(*.7z_*.7zip_*.rar_*.rvz_*.tar_*.tar.bz2_*.tar.gz_*.tgz_*.zip_*.zipx)|*.7z_*.7zip_*.rar_*.rvz_*.tar_*.tar.bz2_*.tar.gz_*.tgz_*.zip_*.zipx|All_Files|* IN_FFS_TESTING_FILE:"
-#!   DEFAULT_VALUE=""
+#!   DEFAULT_VALUE="C:\Data\PT_Harvester\SK\source_06janvier.ffs"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI DIRNAME_SRC_OR_ATTR IN_CSV_LOOKUPTABLES_DIR Lookup Tables Directory:"
+#!   DEFAULT_VALUE="C:\Data\PT_Harvester\LOOKUP_TABLES"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE="SK"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL DIRNAME_SRC FME_SHAREDRESOURCE_DATA_2 FME Server Resource Data:"
+#!   DEFAULT_VALUE="C:\Data"
 #!   IS_STAND_ALONE="true"
 #! />
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
 #!   IDENTIFIER="10"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Reads pre-generated FFS file for testing as substitute for ARCGIS_HUB_REAADER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="491.03812481136765 -2290.6479064790651"
-#!   TOP_LEFT="491.03812481136765 -2290.6479064790651"
-#!   BOTTOM_RIGHT="1209.6282857992624 -2523.7749377493778"
-#!   BOUNDING_RECT="491.03812481136765 -2290.6479064790651 718.59016098789471 233.1270312703127"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Reads pre-generated FFS file for testing as substitute for ARCGIS_HUB_READER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="502.72048462561997 -2311.0920361540075"
+#!   TOP_LEFT="502.72048462561997 -2311.0920361540075"
+#!   BOTTOM_RIGHT="1221.3106456135147 -2544.2190674243202"
+#!   BOUNDING_RECT="502.72048462561997 -2311.0920361540075 718.59016098789471 233.1270312703127"
 #!   ORDER="500000000002328"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -292,8 +309,8 @@
 #!   IDENTIFIER="12"
 #!   TYPE="SubDocumentTransformer"
 #!   VERSION="1"
-#!   POSITION="1518.7651876518762 -1543.7654376543765"
-#!   BOUNDING_RECT="1518.7651876518762 -1543.7654376543765 430 71"
+#!   POSITION="1347.7864156634582 -1734.3923439234393"
+#!   BOUNDING_RECT="1347.7864156634582 -1734.3923439234393 430 71"
 #!   ORDER="500000000002329"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -301,16 +318,190 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_date_temp" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="links.next" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="data" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="IN_TEXT_URL" PARM_VALUE="https://geohub.saskatchewan.ca/api/v3/datasets?filter[owner]=Saskatchewan.Government&amp;page[number]=1&amp;page[size]=10"/>
 #!     <XFORM_PARM PARM_NAME="SUB_DOC_NAME" PARM_VALUE="GEOHUB_READER"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="GEOHUB_READER"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="3878.5434583317774 -2091.9541725323807"
+#!   BOUNDING_RECT="3878.5434583317774 -2091.9541725323807 454 71"
+#!   ORDER="500000000002331"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attributes.metadata.metadata.dataIdInfo.idCitation.resTitle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.content" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.server.serviceItemId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.typeKeywords{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="attributes.metadata.metadata.dataIdInfo.idCitation.resTitle,attributes.content,attributes.name,attributes.server.serviceItemId,attributes.id,attributes.typeKeywords{}"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="Tester"
+#!   VERSION="3"
+#!   POSITION="3878.5434583317774 -2377.360222200351"
+#!   BOUNDING_RECT="3878.5434583317774 -2377.360222200351 454 71"
+#!   ORDER="500000000002332"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attributes.metadata.metadata.dataIdInfo.idCitation.resTitle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.content" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.server.serviceItemId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.typeKeywords{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="attributes.metadata.metadata.dataIdInfo.idCitation.resTitle" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.content" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.server.serviceItemId" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.typeKeywords{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;attributes.id&lt;closeparen&gt; != &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="20"
+#!   TYPE="AttributeValidator"
+#!   VERSION="3"
+#!   POSITION="3878.5434583317774 -2710.3074769065443"
+#!   BOUNDING_RECT="3878.5434583317774 -2710.3074769065443 454 71"
+#!   ORDER="500000000002336"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attributes.metadata.metadata.dataIdInfo.idCitation.resTitle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.content" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.server.serviceItemId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.typeKeywords{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_fme_validation_message" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="attributes.metadata.metadata.dataIdInfo.idCitation.resTitle" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.content" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.server.serviceItemId" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="attributes.typeKeywords{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_fme_validation_message_list{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_fme_validation_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TABLE" PARM_VALUE="attributes.id;MAXIMUM_LENGTH;32"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VALIDATION_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeValidator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="21"
+#!   TYPE="LOOKUP_TABLES_READER_NG"
+#!   VERSION="1"
+#!   POSITION="2943.9546731915912 -1285.059579567758"
+#!   BOUNDING_RECT="2943.9546731915912 -1285.059579567758 634.10000000000002 71"
+#!   ORDER="500000000002341"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
+#!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUPTABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="GeospatialValidation"/>
+#!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="22"
+#!   TYPE="GEOSPATIAL_DATA_VALIDATOR"
+#!   VERSION="1"
+#!   POSITION="5417.6943638595267 -1363.9155083139613"
+#!   BOUNDING_RECT="5417.6943638595267 -1363.9155083139613 668.10000000000002 71"
+#!   ORDER="500000000002343"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="GEOSPATIAL"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="NON-GEOSPATIAL"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <OUTPUT_FEAT NAME="UNKNOWN_FORMAT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="KEYWORD_SEARCH" PARM_VALUE="Map"/>
+#!     <XFORM_PARM PARM_NAME="LIST_SEARCH_ATTRIBUTE" PARM_VALUE="@Value(attributes.typeKeywords{})"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="GEOSPATIAL_DATA_VALIDATOR"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="24"
+#!   TYPE="SubDocumentTransformer"
+#!   VERSION="1"
+#!   POSITION="2613.1649369976176 -2149.7422255427127"
+#!   BOUNDING_RECT="2613.1649369976176 -2149.7422255427127 731.10000000000002 71"
+#!   ORDER="500000000002354"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="SUB_DOC_NAME" PARM_VALUE="ATTRIBUTE_VALUE_TEXT_CLEANER"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_VALUE_TEXT_CLEANER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="ATTRIBUTE_MANAGER_NG"
+#!   VERSION="1"
+#!   POSITION="5441.0590834880295 -2216.7277747543826"
+#!   BOUNDING_RECT="5441.0590834880295 -2216.7277747543826 569.10000000000002 71"
+#!   ORDER="500000000002355"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="IN_YAML_TEXT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_MANAGER_NG"/>
 #!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
@@ -321,6 +512,21 @@
 #!   TARGET_NODE="3"
 #!   SOURCE_PORT_DESC="fo 0 CREATED"
 #!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="22"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 LOOKUP_TABLE_INPUT"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -376,11 +582,86 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 INPUT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
 #!   IDENTIFIER="11"
 #!   SOURCE_NODE="7"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 1 FAILED"
 #!   TARGET_PORT_DESC="fi 0 INITIATOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;OTHER&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -401,7 +682,7 @@
 #!   CATEGORY="FGP Tools"
 #!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;"
 #!   DOC_DYNAMIC_INPUT_ATTRS="0"
-#!   DOC_EXTENTS="6144.98 1818.99"
+#!   DOC_EXTENTS="6340.73 1818.99"
 #!   DOC_TOP_LEFT="6114.23 -1224.54"
 #!   FME_DOCUMENT_GUID="6dd6e9ad-53e3-4999-8f96-55de6c0db163"
 #!   FME_DOCUMENT_PRIORGUID="71f79f67-0184-4a27-bc89-686378c6b9cf,9a930f3f-f7f3-4d72-8527-a882ceef2cc3,ef246e6f-c4e7-48cc-878b-89a8010244a1,333f1e16-39c2-474e-a902-a869b820a38c,d72a5059-aa4c-4e40-beb9-766eaf9331d1,8cb146e8-0c74-490e-a1f5-31c9c5d809b3,76ec5a68-22c2-4c67-be80-2467488ac62b,77cae6e8-a88b-421f-82b5-ea0f11a0c3b5,30462584-a78c-4f8c-8e0f-7735d4f93da5,3326ee5f-cc60-4109-b5d4-6d5c795ce3be,0acbeb15-a7ba-4d5b-b963-5b1c830843bc,1bde2b18-3531-479a-ad53-b302b205fdb8,8b3aa5a7-f808-4607-83a6-2fad6ba44b44,dc229039-f326-48e9-a815-c14033aa40f6,2238c737-ba3f-4b36-98dd-d766df678c24,76421199-ba6d-4eb0-86d4-8f5bb83ffbbb,6e8d9e98-387f-42ff-909d-0d3e138fde9a,f75f781b-f851-4a1c-a433-74ebcd9fbf53,5969d5a3-6e19-468f-9578-2d33d55d4c18,dad3a33d-d7c7-4b05-9f36-83421d286a66,0e32e5d9-fa5d-421e-bf88-024a0cf572ad,e801c7b8-7651-480b-91a2-5ba8a94bbc5f,c2976450-b2e1-4882-ab45-ac66a97dbffe,913a8a77-57ee-482b-a47c-cf7b4921a8f7,12212ebf-41ec-443f-82bf-819cc27ff046,535c23a2-c228-4750-afa4-ce8650955231,c5a67e08-e050-43a6-b62e-27087c14ff1a,37631e61-0307-479d-afee-7200fc2d68e8,ba4087d3-ffea-4bb3-813a-3e58ca50ba28,a05f63b8-1d39-4775-bf45-dfcfa2ec6bef,14ee18ab-4198-4302-a064-e9c907155539,36b7c8ca-c3cc-4d46-abf5-5a111e6cdaf3,7506ee14-5356-4433-ab01-327556e0ebc1,eb4534ca-1171-4dc4-8037-f1988f030d48,b6270d95-ce81-43cc-9c6c-6fbef8d2444b,612ede36-0e2c-4942-893f-b23435346daf,5294d29f-6f0c-48f5-b310-5efd4a05ff63"
@@ -410,6 +691,7 @@
 #!   FME_PROCESS_GROUP_BY=""
 #!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   GUID="6dd6e9ad-53e3-4999-8f96-55de6c0db163"
 #!   HISTORY=""
 #!   IS_VISIBLE="true"
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
@@ -422,14 +704,14 @@
 #!   TITLE="GEOHUB_READER"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="6875.07 821.322"
+#!   VIEW_POSITION="8688.15 892.464"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="52"
+#!   ZOOM_SCALE="111"
 #! >
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI LITERAL OPTIONAL TEXT IN_TEXT_URL IN_TEXT_URL:"
-#!   DEFAULT_VALUE="https://geoportal.gov.mb.ca/api/v3/datasets?filter[owner]=Saskatchewan_Gouvernment&amp;page[number]=1&amp;page[size]=10"
+#!   DEFAULT_VALUE="https://geohub.saskatchewan.ca/api/v3/datasets?filter%5Bowner%5D=Saskatchewan.Government&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"
 #!   IS_STAND_ALONE="true"
 #! />
 #! </GLOBAL_PARAMETERS>
@@ -638,8 +920,8 @@
 #!   IDENTIFIER="10"
 #!   TYPE="Tester"
 #!   VERSION="3"
-#!   POSITION="9845.072690915842 -436.42105856338281"
-#!   BOUNDING_RECT="9845.072690915842 -436.42105856338281 454 71"
+#!   POSITION="9943.091963791494 -436.42105856338281"
+#!   BOUNDING_RECT="9943.091963791494 -436.42105856338281 454 71"
 #!   ORDER="500000000000028"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -814,6 +1096,22 @@
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester_2"/>
 #! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="37"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="10972.023818951368 51.943067223349388"
+#!   BOUNDING_RECT="10972.023818951368 51.943067223349388 533.10000000000002 71"
+#!   ORDER="500000000000036"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <SUBDOCUMENT_IOS>
 #! <SUBDOCUMENT_IO
@@ -830,8 +1128,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="3"
 #!   NAME="OUTPUT"
-#!   POSITION="11263.335685298738 -11.402160823525662"
-#!   BOUNDING_RECT="11263.335685298738 -11.402160823525662 454 71"
+#!   POSITION="12000.955674111241 115.28829527022444"
+#!   BOUNDING_RECT="12000.955674111241 115.28829527022444 454 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -955,11 +1253,11 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="22"
+#!   IDENTIFIER="38"
 #!   SOURCE_NODE="11"
-#!   TARGET_NODE="3"
+#!   TARGET_NODE="37"
 #!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
-#!   TARGET_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -1045,6 +1343,21 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="37"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
 #!   IDENTIFIER="26"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="9"
@@ -1095,17 +1408,148 @@
 #! <ATTR_LINKS>
 #! </ATTR_LINKS>
 #! </SUBDOCUMENT>
+#! <SUBDOCUMENT
+#!   NAME="ATTRIBUTE_VALUE_TEXT_CLEANER"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer cleans all string attributes by performing the followin tasks: &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Remove html directive (ex.: &lt;code&gt;&amp;lt;p&amp;gt;bla bla bla &amp;lt;\p&amp;gt;&lt;/code&gt;) so that the string contains only plain text    &lt;/li&gt;&#10;&lt;li&gt;Replace special character (carriage return, line feed, tab) by white spaces&lt;/li&gt;&#10;&lt;li&gt;Replace curly braces {} by parenthesis&lt;/li&gt;&#10;&lt;li&gt;Removing front and trailing white spaces&lt;/li&gt;&#10;&lt;li&gt;Replace multiple white spaces by only one white space&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;INPUT: The input metadata records to clean&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;OUTPUT: The cleaned output metdata records&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;None&lt;/p&gt;"
+#!   DOC_DYNAMIC_INPUT_ATTRS="0"
+#!   DOC_EXTENTS="1964.67 131"
+#!   DOC_TOP_LEFT="-919.001 -95.5004"
+#!   FME_DOCUMENT_GUID="cd66c0b7-5178-491c-b0e6-e9396c8469c2"
+#!   FME_DOCUMENT_PRIORGUID="7fd79d20-fbca-48fb-b608-f695e4d6f2aa,e1f1510e-f3c5-4c68-968c-d22193d552fe,940033f5-44b8-4cd9-b78d-e555a2b5b78e"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   GUID="cd66c0b7-5178-491c-b0e6-e9396c8469c2"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation"
+#!   IS_VISIBLE="false"
+#!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
+#!   LAST_SAVE_DATE="2021-12-10T14:24:20"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer cleans all string attributes by performing the followin tasks: &#10;&#10;- Remove html directive (ex.: `&lt;p&gt;bla bla bla &lt;\p&gt;`) so that the string contains only plain text&#9;&#10;- Replace special character (carriage return, line feed, tab) by white spaces&#10;- Replace curly braces {} by parenthesis&#10;- Removing front and trailing white spaces&#10;- Replace multiple white spaces by only one white space&#10;&#10;&#10;**Input Ports **&#10;&#10;INPUT: The input metadata records to clean&#10;&#10;&#10;**Output Ports **&#10;&#10;OUTPUT: The cleaned output metdata records&#10;&#10;&#10;**Parameters **&#10;&#10;None&#10;"
+#!   MARKDOWN_USAGE=""
+#!   PYTHON_COMPATIBILITY=""
+#!   REPLACED_BY=""
+#!   SUPPRESS_UPGRADE="false"
+#!   TITLE="ATTRIBUTE_VALUE_TEXT_CLEANER"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-2565.65 1390.64"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-222.83352137387257 35.499615796873741"
+#!   BOUNDING_RECT="-222.83352137387257 35.499615796873741 454 71"
+#!   ORDER="500000000001750"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;ATTRIBUTE_VALUE_TEXT_CLEANER&lt;space&gt;import&lt;space&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-919.00129796535202 16.999615796873741"
+#!   BOUNDING_RECT="-919.00129796535202 16.999615796873741 516.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="591.67258339250043 -24.500384203126259"
+#!   BOUNDING_RECT="591.67258339250043 -24.500384203126259 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! </SUBDOCUMENT>
 #! </SUBDOCUMENTS>
 #! <LOOKUP_TABLES>
 #! </LOOKUP_TABLES>
 #! </WORKSPACE>
 
 FME_PYTHON_VERSION 37
-DEFAULT_MACRO CATALOGUE_READER_SELECT Yes
+DEFAULT_MACRO CATALOGUE_READER_SELECT No
 GUI STRING_OR_CHOICE CATALOGUE_READER_SELECT Yes%No CATALOGUE_READER_SELECT:
-DEFAULT_MACRO IN_FFS_TESTING_FILE 
+DEFAULT_MACRO IN_FFS_TESTING_FILE C:\Data\PT_Harvester\SK\source_06janvier.ffs
 GUI OPTIONAL MULTIFILE IN_FFS_TESTING_FILE INCLUDE_WEB_BROWSER%FME_Feature_Store_Files(*.ffs)|*.ffs|Compressed_Files(*.bz2_*.gz)|*.bz2_*.gz|Archive_Files(*.7z_*.7zip_*.rar_*.rvz_*.tar_*.tar.bz2_*.tar.gz_*.tgz_*.zip_*.zipx)|*.7z_*.7zip_*.rar_*.rvz_*.tar_*.tar.bz2_*.tar.gz_*.tgz_*.zip_*.zipx|All_Files|* IN_FFS_TESTING_FILE:
+DEFAULT_MACRO IN_CSV_LOOKUPTABLES_DIR C:\Data\PT_Harvester\LOOKUP_TABLES
+GUI DIRNAME_SRC IN_CSV_LOOKUPTABLES_DIR Lookup Tables Directory:
+DEFAULT_MACRO P-T_ABBR SK
+GUI OPTIONAL TEXT P-T_ABBR P-T_ABBR:
+DEFAULT_MACRO FME_SHAREDRESOURCE_DATA_2 C:\Data
+GUI IGNORE OPTIONAL DIRNAME_SRC FME_SHAREDRESOURCE_DATA_2 FME Server Resource Data:
 INCLUDE [ if {{$(CATALOGUE_READER_SELECT)} == {}} { puts_real {Parameter 'CATALOGUE_READER_SELECT' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(IN_CSV_LOOKUPTABLES_DIR)} == {}} { puts_real {Parameter 'IN_CSV_LOOKUPTABLES_DIR' must be given a value.}; exit 1; }; ]
 #! START_HEADER
 #! START_WB_HEADER
 READER_TYPE MULTI_READER
@@ -1151,7 +1595,31 @@ FACTORY_DEF $(Creator_CLASSIC) CreationFactory    FACTORY_NAME Creator_CLASSIC_C
 FACTORY_DEF * TeeFactory    FACTORY_NAME Creator_Cloner    INPUT FEATURE_TYPE _____CREATED______        @Tcl2(Creator_CoordSysRemover)        @CoordSys()    NUMBER_OF_COPIES 1    COPY_NUMBER_ATTRIBUTE "_creation_instance"    OUTPUT FEATURE_TYPE Creator_CREATED        fme_feature_type Creator
 FACTORY_DEF * BranchingFactory   FACTORY_NAME "Creator_CREATED Brancher -1 4"   INPUT FEATURE_TYPE Creator_CREATED   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
 # -------------------------------------------------------------------------
+MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME LOOKUP_TABLES_READER_NG
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE GeospatialValidation
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $(IN_CSV_LOOKUPTABLES_DIR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $(P-T_ABBR$encode)
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
+INCLUDE_CUSTOM_TRANSFORMER_VER LOOKUP_TABLES_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "LOOKUP_TABLES_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE LOOKUP_TABLES_READER_NG_Output   OUTPUT FEATURE_TYPE LOOKUP_TABLES_READER_NG_Output
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "LOOKUP_TABLES_READER_NG_Output Brancher -1 25"   INPUT FEATURE_TYPE LOOKUP_TABLES_READER_NG_Output   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "GEOSPATIAL_DATA_VALIDATOR LOOKUP_TABLE_INPUT Input Collector"   INPUT FEATURE_TYPE LOOKUP_TABLES_READER_NG_Output   OUTPUT FEATURE_TYPE GEOSPATIAL_DATA_VALIDATOR_LOOKUP_TABLE_INPUT
+MACRO GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME GEOSPATIAL_DATA_VALIDATOR
+MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_XFORMER_NAME GEOSPATIAL_DATA_VALIDATOR
+MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_KEYWORD_SEARCH Map
+MACRO $(GEOSPATIAL_DATA_VALIDATOR_WORKSPACE_NAME)_LIST_SEARCH_ATTRIBUTE @Value(attributes.typeKeywords{})
+INCLUDE_CUSTOM_TRANSFORMER_VER GEOSPATIAL_DATA_VALIDATOR:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "GEOSPATIAL_DATA_VALIDATOR GEOSPATIAL Output Renamer/Nuker"   INPUT FEATURE_TYPE GEOSPATIAL_DATA_VALIDATOR_GEOSPATIAL
+FACTORY_DEF * TeeFactory   FACTORY_NAME "GEOSPATIAL_DATA_VALIDATOR NON-GEOSPATIAL Output Renamer/Nuker"   INPUT FEATURE_TYPE GEOSPATIAL_DATA_VALIDATOR_NON-GEOSPATIAL
+FACTORY_DEF * TeeFactory   FACTORY_NAME "GEOSPATIAL_DATA_VALIDATOR UNKNOWN_FORMAT Output Renamer/Nuker"   INPUT FEATURE_TYPE GEOSPATIAL_DATA_VALIDATOR_UNKNOWN_FORMAT
 # -------------------------------------------------------------------------
 DEFAULT_MACRO DateTimeStamper_EXPRESSION
 INCLUDE [    set expression {<at>DateTimeCast<openparen><at>DateTimeNow<openparen>local<closeparen><comma>date<closeparen>};    if { "<Unused>" eq "NO" } {        set expression <at>TimeZoneRemove<openparen>$expression<closeparen>;    };    puts "MACRO DateTimeStamper_EXPRESSION $expression"; ]
@@ -1160,7 +1628,7 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeStamper    INPUT  FEATURE_TYPE 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 MACRO VariableSetter_VAR _timestamp
 INCLUDE [    if {{Global} == {Local}} {       puts {MACRO VariableSetter_VAR $(WB_CURRENT_CONTEXT)__timestamp};    };    proc stripEvaluateExpression {val} {       if [regexp {@EvaluateExpression\([^)]*STRING_ENCODED,([^,]*),.+\)} $val -> unwrapped] {          return $unwrapped       } else {          return $val       };    };    set strippedValue [stripEvaluateExpression {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_date_temp<closeparen>,VariableSetter)}];    puts "MACRO VariableSetter_VALUE $strippedValue"; ]
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME VariableSetter    INPUT  FEATURE_TYPE DateTimeStamper_OUTPUT    ATTR_ACTION { "" VariableSetter_e2c0eafc_73fb_4251_a464_129adcccd4957 SET_TO "$(VariableSetter_VALUE)" }    OUTPUT OUTPUT FEATURE_TYPE VariableSetter_OUTPUT        @GlobalVariable($(VariableSetter_VAR),fme_attribute_name,VariableSetter_e2c0eafc_73fb_4251_a464_129adcccd4957)        @RemoveAttributes(VariableSetter_e2c0eafc_73fb_4251_a464_129adcccd4957)
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME VariableSetter    INPUT  FEATURE_TYPE DateTimeStamper_OUTPUT    ATTR_ACTION { "" VariableSetter_106e4d89_5117_481a_bd53_8d7e9215ad262 SET_TO "$(VariableSetter_VALUE)" }    OUTPUT OUTPUT FEATURE_TYPE VariableSetter_OUTPUT        @GlobalVariable($(VariableSetter_VAR),fme_attribute_name,VariableSetter_106e4d89_5117_481a_bd53_8d7e9215ad262)        @RemoveAttributes(VariableSetter_106e4d89_5117_481a_bd53_8d7e9215ad262)
 # -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME Tester    INPUT  FEATURE_TYPE VariableSetter_OUTPUT    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,$(CATALOGUE_READER_SELECT$encode),Tester)" = Yes ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE Tester_PASSED    OUTPUT FAILED FEATURE_TYPE Tester_FAILED
 # -------------------------------------------------------------------------
@@ -1172,9 +1640,42 @@ INCLUDE [if { ( {NONE} == {<Unused>} ) || ( {($INTERACT_OPTIONS)} == {} ) } {   
 DEFAULT_MACRO FeatureReader_COMBINE_ATTRS
 INCLUDE [       if { {RESULT_ONLY} == {MERGE} } {          puts "MACRO FeatureReader_COMBINE_ATTRS <Unused>";       } else {          puts "MACRO FeatureReader_COMBINE_ATTRS RESULT_ONLY";       };    ]
 INCLUDE [    puts {DEFAULT_MACRO FeatureReaderDataset_FeatureReader @EvaluateExpression(FDIV,STRING_ENCODED,$(IN_FFS_TESTING_FILE$encode),FeatureReader)}; ]
-FACTORY_DEF {*} QueryFactory    FACTORY_NAME FeatureReader    INPUT  FEATURE_TYPE Tester_FAILED    $(FCTQUERY_INTERACTION_LINE)    COMBINE_ATTRIBUTES  { $(FeatureReader_COMBINE_ATTRS) }    QUERYFCT_ATTRIBUTE_PREFIX { <Unused> }    COMBINE_GEOMETRY    { RESULT_ONLY }    ENABLE_CACHE        { NO }    QUERYFCT_TABLE_SEPARATOR { SPACE }    READER_TYPE         { FFS  }    READER_DATASET      { "$(FeatureReaderDataset_FeatureReader)" }    QUERYFCT_IDS        { "" }    READER_DIRECTIVES   { META_MACROS,SourcePASSPHRASE<comma><comma>SourceCONSTRAINT_GROUP<comma><comma>SourceSEARCH_CLOSEST_POINT_GROUP<comma><comma>SourceSEARCH_CLOSEST_POINT_X<comma><comma>SourceSEARCH_CLOSEST_POINT_Y<comma><comma>SourceSEARCH_CLOSEST_POINT_MAX_DIST<comma><comma>SourceUSE_SEARCH_ENVELOPE<comma>NO<comma>SourceSEARCH_ENVELOPE_MINX<comma>0<comma>SourceSEARCH_ENVELOPE_MINY<comma>0<comma>SourceSEARCH_ENVELOPE_MAXX<comma>0<comma>SourceSEARCH_ENVELOPE_MAXY<comma>0<comma>SourceSEARCH_ENVELOPE_COORDINATE_SYSTEM<comma><comma>SourceCLIP_TO_ENVELOPE<comma>NO<comma>SourceEXPOSE_ATTRS_GROUP<comma><comma>SourceFFS_EXPOSE_FORMAT_ATTRS<comma>,METAFILE,FFS }    QUERYFCT_OUTPUT     { "BASED_ON_CONNECTIONS" }    CONTINUE_ON_READER_ERROR YES    QUERYFCT_RESULT_TAGS { $(FeatureReader_OUTPUT_PORTS_ENCODED) }    QUERYFCT_SET_FME_FEATURE_TYPE YES    READER_PARAMS_WWJD     { $(FeatureReader_DIRECTIVES) }    TREAT_READER_PARAM_AMPERSANDS_AS_LITERALS YES    OUTPUT READER_ERROR FEATURE_TYPE FeatureReader_<REJECTED>
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME FeatureReader    INPUT  FEATURE_TYPE Tester_FAILED    $(FCTQUERY_INTERACTION_LINE)    COMBINE_ATTRIBUTES  { $(FeatureReader_COMBINE_ATTRS) }    QUERYFCT_ATTRIBUTE_PREFIX { <Unused> }    COMBINE_GEOMETRY    { RESULT_ONLY }    ENABLE_CACHE        { NO }    QUERYFCT_TABLE_SEPARATOR { SPACE }    READER_TYPE         { FFS  }    READER_DATASET      { "$(FeatureReaderDataset_FeatureReader)" }    QUERYFCT_IDS        { "" }    READER_DIRECTIVES   { META_MACROS,SourcePASSPHRASE<comma><comma>SourceCONSTRAINT_GROUP<comma><comma>SourceSEARCH_CLOSEST_POINT_GROUP<comma><comma>SourceSEARCH_CLOSEST_POINT_X<comma><comma>SourceSEARCH_CLOSEST_POINT_Y<comma><comma>SourceSEARCH_CLOSEST_POINT_MAX_DIST<comma><comma>SourceUSE_SEARCH_ENVELOPE<comma>NO<comma>SourceSEARCH_ENVELOPE_MINX<comma>0<comma>SourceSEARCH_ENVELOPE_MINY<comma>0<comma>SourceSEARCH_ENVELOPE_MAXX<comma>0<comma>SourceSEARCH_ENVELOPE_MAXY<comma>0<comma>SourceSEARCH_ENVELOPE_COORDINATE_SYSTEM<comma><comma>SourceCLIP_TO_ENVELOPE<comma>NO<comma>SourceEXPOSE_ATTRS_GROUP<comma><comma>SourceFFS_EXPOSE_FORMAT_ATTRS<comma>,METAFILE,FFS }    QUERYFCT_OUTPUT     { "BASED_ON_CONNECTIONS" }    CONTINUE_ON_READER_ERROR YES    QUERYFCT_RESULT_TAGS { $(FeatureReader_OUTPUT_PORTS_ENCODED) }    QUERYFCT_SET_FME_FEATURE_TYPE YES    READER_PARAMS_WWJD     { $(FeatureReader_DIRECTIVES) }    TREAT_READER_PARAM_AMPERSANDS_AS_LITERALS YES    OUTPUT RESULT FEATURE_TYPE FeatureReader_<OTHER>    OUTPUT READER_ERROR FEATURE_TYPE FeatureReader_<REJECTED>
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TeeFactory FACTORY_NAME FeatureReader_<Rejected> INPUT FEATURE_TYPE FeatureReader_<REJECTED>  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, FeatureReader<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "ATTRIBUTE_VALUE_TEXT_CLEANER Input Input Collector"   INPUT FEATURE_TYPE FeatureReader_<OTHER>   OUTPUT FEATURE_TYPE ATTRIBUTE_VALUE_TEXT_CLEANER_Input
+MACRO ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME ATTRIBUTE_VALUE_TEXT_CLEANER
+MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_XFORMER_NAME ATTRIBUTE_VALUE_TEXT_CLEANER
+MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_SUB_DOC_NAME ATTRIBUTE_VALUE_TEXT_CLEANER
+DEFAULT_MACRO ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input1641830693 Input Splitter"   INPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Input"    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>ATTRIBUTE_VALUE_TEXT_CLEANER<space>import<space>*    OUTPUT PYOUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Output1641830693 Output Collector"   INPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_PythonCaller_OUTPUT"   OUTPUT FEATURE_TYPE "$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_Output"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME))}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "ATTRIBUTE_VALUE_TEXT_CLEANER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE ATTRIBUTE_VALUE_TEXT_CLEANER_Output   OUTPUT FEATURE_TYPE ATTRIBUTE_VALUE_TEXT_CLEANER_Output
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer    INPUT  FEATURE_TYPE ATTRIBUTE_VALUE_TEXT_CLEANER_Output    OUTPUT FEATURE_TYPE AttributeExposer_OUTPUT
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME Tester_2    INPUT  FEATURE_TYPE AttributeExposer_OUTPUT    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>attributes.id<closeparen>,Tester_2)" != "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE Tester_2_PASSED
+# -------------------------------------------------------------------------
+MACRO testClauses #Tcl to generate test clauses for the table in preparation for the TestFactory
+#Each Attribute gets put in a seperate clause
+INCLUDE [    set table {attributes.id;MAXIMUM_LENGTH;32};    set testString {MACRO testClauses };    set rows [split $table {/}];    foreach row $rows {    set cells [split $row {;}];    set attrs [split [lindex $cells 0] {,}];       set op [lindex $cells 1];       set val [lindex $cells 2];       foreach attr $attrs {           append testString "TEST \{ ${attr} ${op} ${val} ENCODED \} ";       };    };    puts $testString;    ]
+FACTORY_DEF {*} TestFactory    FACTORY_NAME AttributeValidator    INPUT  FEATURE_TYPE Tester_2_PASSED    $(testClauses)    BOOLEAN_OPERATOR AND    VALIDATOR_MODE TRUE    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE AttributeValidator_PASSED
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "ATTRIBUTE_MANAGER_NG INPUT Input Collector"   INPUT FEATURE_TYPE AttributeValidator_PASSED   OUTPUT FEATURE_TYPE ATTRIBUTE_MANAGER_NG_INPUT
+MACRO ATTRIBUTE_MANAGER_NG_WORKSPACE_NAME ATTRIBUTE_MANAGER_NG
+MACRO $(ATTRIBUTE_MANAGER_NG_WORKSPACE_NAME)_XFORMER_NAME ATTRIBUTE_MANAGER_NG
+MACRO $(ATTRIBUTE_MANAGER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_MANAGER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(ATTRIBUTE_MANAGER_NG_WORKSPACE_NAME)_IN_YAML_TEXT 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_MANAGER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "ATTRIBUTE_MANAGER_NG OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE ATTRIBUTE_MANAGER_NG_OUTPUT
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GEOHUB_READER INPUT Input Collector"   INPUT FEATURE_TYPE Tester_PASSED   OUTPUT FEATURE_TYPE GEOHUB_READER_INPUT
 MACRO GEOHUB_READER_WORKSPACE_NAME GEOHUB_READER
@@ -1185,7 +1686,7 @@ MACRO $(GEOHUB_READER_WORKSPACE_NAME)_SUB_DOC_NAME GEOHUB_READER
 MACRO $(GEOHUB_READER_WORKSPACE_NAME)_IN_TEXT_URL https://geohub.saskatchewan.ca/api/v3/datasets?filter[owner]=Saskatchewan.Government&page[number]=1&page[size]=10
 DEFAULT_MACRO GEOHUB_READER_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(GEOHUB_READER_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(GEOHUB_READER_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT1640359663 Input Splitter"   INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT1641830693 Input Splitter"   INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
 # -------------------------------------------------------------------------
@@ -1193,7 +1694,7 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_Tester
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_Tester_2_FAILED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "url" "SET_TO" "$($(GEOHUB_READER_WORKSPACE_NAME)_IN_TEXT_URL$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF * HTTPFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_Tester_2_PASSED"    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,$(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller)"    HTTP_METHOD GET    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
+FACTORY_DEF * HTTPFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_Tester_2_PASSED"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,$(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller)"    HTTP_METHOD GET    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
 # -------------------------------------------------------------------------
 FACTORY_DEF * JSONQueryFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_JSONFlattener    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_HTTPCaller_Output"    MODE FLATTEN    JSON_DOCUMENT "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,$(GEOHUB_READER_WORKSPACE_NAME)_JSONFlattener)"    READ_FROM_FILE NO    FILEPATH_OR_URL "<Unused>"    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN YES    ERROR_LIST_ATTR "_json_error"    OUTPUT EXPLODED FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_JSONFlattener_OUTPUT"    OUTPUT REJECTED FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_JSONFlattener_<REJECTED>"
 # -------------------------------------------------------------------------
@@ -1209,14 +1710,21 @@ FACTORY_DEF * ElementFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_Lis
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TeeFactory FACTORY_NAME "$(GEOHUB_READER_WORKSPACE_NAME)_ListExploder_<Rejected>" INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_ListExploder_<REJECTED>"  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, GEOHUB_READER_ListExploder<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
 # -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOHUB_READER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_ListExploder_ELEMENTS"   OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(GEOHUB_READER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(GEOHUB_READER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOHUB_READER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+# -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeExposer_OUTPUT_0_OWdfU4ANygk="    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>links.next<closeparen>,$(GEOHUB_READER_WORKSPACE_NAME)_Tester)" != "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_Tester_PASSED"
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_Tester_PASSED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "url" "SET_TO" "<at>Value<openparen>links.next<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper_c35d937b_e776_4223_97c8_82bb08a0e1217_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,url,fme_pcre_match,"^fme_$($(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper_c35d937b_e776_4223_97c8_82bb08a0e1217_LIST_EXP)")         }
-FACTORY_DEF * BranchingFactory   TARGET_FACTORY "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT1640359663 Input Splitter"   FACTORY_NAME "Loop to $(GEOHUB_READER_WORKSPACE_NAME)_INPUT1640359663 Input Splitter"   MAXIMUM_COUNT -1   INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   OUTPUT PASSED FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOHUB_READER_WORKSPACE_NAME)_OUTPUT1640359663 Output Collector"   INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_ListExploder_ELEMENTS"   OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [    set macroLine "MACRO $(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper_460404e6_61bc_4ee0_8245_808e6924f6c62_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,url,fme_pcre_match,"^fme_$($(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper_460404e6_61bc_4ee0_8245_808e6924f6c62_LIST_EXP)")         }
+FACTORY_DEF * BranchingFactory   TARGET_FACTORY "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT1641830693 Input Splitter"   FACTORY_NAME "Loop to $(GEOHUB_READER_WORKSPACE_NAME)_INPUT1641830693 Input Splitter"   MAXIMUM_COUNT -1   INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"   OUTPUT PASSED FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOHUB_READER_WORKSPACE_NAME)_OUTPUT1641830693 Output Collector"   INPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(GEOHUB_READER_WORKSPACE_NAME)_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(GEOHUB_READER_WORKSPACE_NAME))}]
 FACTORY_DEF * TeeFactory   FACTORY_NAME "GEOHUB_READER OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE GEOHUB_READER_OUTPUT
 # -------------------------------------------------------------------------
