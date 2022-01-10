@@ -44,7 +44,11 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
+REM ============================================================================
+REM ========================== TEST  #1   ======================================
+REM ============================================================================
 REM First FME call,creating FFS File with four compliant data records
+
 set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
@@ -75,6 +79,9 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
+REM ============================================================================
+REM ========================== TEST  #2   ======================================
+REM ============================================================================
 REM Second FME call, testing for license values not for publishing
 set test_number=2
 SET source=met\source%test_number%.ffs
@@ -105,6 +112,9 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
+REM ============================================================================
+REM ========================== TEST  #3   ======================================
+REM ============================================================================
 REM Third FME call, testing for unmapped license_id values
 set test_number=3
 SET source=met\source%test_number%.ffs
