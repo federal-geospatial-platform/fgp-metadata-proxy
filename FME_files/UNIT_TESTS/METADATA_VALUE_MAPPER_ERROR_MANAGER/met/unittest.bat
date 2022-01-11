@@ -44,6 +44,9 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
+REM ============================================================================
+REM ========================== TEST  #1   ======================================
+REM ============================================================================
 REM First FME call,creating FFS File 
 set test_number=1
 SET source=met\source%test_number%.ffs
@@ -71,6 +74,9 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
+REM ============================================================================
+REM ========================== TEST  #2   ======================================
+REM ============================================================================
 REM Second FME call,Testing for errors.  Errors would be mapped to resultat_2
 set test_number=2
 SET source=met\source%test_number%.ffs
