@@ -44,8 +44,10 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
-
-REM First FME call,creating FFS File with five compliant data records
+REM ============================================================================
+REM ========================== TEST  #1   ======================================
+REM ============================================================================
+REM First FME call,creating FFS File with compliant data records
 set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
@@ -69,7 +71,34 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [0000] (
+REM ============================================================================
+REM ========================== TEST  #2   ======================================
+REM ============================================================================
+REM Second FME call,creating FFS File with one non-compliant data record
+set test_number=2
+SET source=met\source%test_number%.ffs
+set etalon=met\etalon%test_number%.ffs
+set resultat=met\resultat.ffs
+set log=met\log_%test_number%.log
+set log_comp=met\log_comp_%test_number%.log
+
+IF EXIST %log% del %log%
+IF EXIST met\resultat.ffs DEL met\resultat.ffs
+%fme% met\metrique_url_character_encoder.fmw ^
+--IN_FFS_FILE %source% ^
+--OUT_FFS_FILE %resultat% ^
+--LOG_FILE %log% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Comparison with the standard
+IF EXIST %log_comp% del %log_comp%
+%fme% met\Comparateur.fmw ^
+--IN_ETALON_FILE %etalon% ^
+--IN_RESULTAT_FILE %resultat% ^
+--LOG_FILE %log_comp% 
+SET Statut=%Statut%%ERRORLEVEL%
+
+@IF [%Statut%] EQU [000001] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
