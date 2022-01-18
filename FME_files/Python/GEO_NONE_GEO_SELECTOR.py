@@ -55,12 +55,31 @@ FORMAT = "format"
 
 class GeoNoneGeoSelector(object):
     def __init__(self):
+        """Creates some instance variables before processing the FME features.
+        
+        Parameters
+        ----------
+        None
+        
+        Returns
+        =======
+        None
+        """
     
         self.csv_features ={}
         self.logger = fmeobjects.FMELogFile()
         
     def _load_csv_feature(self, feature):
         """ Load a feature from the CSV lookup table
+        
+        Parameters
+        ----------
+        feature: FME Feature object
+            Feature containing the attributes to read
+            
+        Returns
+        -------
+        None
         """
         # Load the information from the CSV feature in a dictionary
 #        web_pdb.set_trace()
@@ -69,18 +88,51 @@ class GeoNoneGeoSelector(object):
         spatial_type = feature.getAttribute(SPATIAL_TYPE)
         csv_row = CsvGeoSpatialValidation(fgp_publish, format, spatial_type)
         self.csv_features[format] = csv_row  # Insert into the CSV dictionnary
+        
+        return
     
     def _validate_value_domain(self, value, domain):
+        """Validates if a string value is contained in a list of strings.
+        
+        An exception is raised when the string is not contained in the list of strings
+        
+        Parameters
+        ----------
+        value: String
+            The value to check
+        domain: List of String
+            List of string used to make the domain validation
+            
+        Returns
+        -------
+        None
+        
+        Exceptions
+        ----------
+        Exception Exception
+            Raised when the value is not in the domain
+        """
     
         if value in domain:
             # Structure valid
             pass
         else:
             raise Exception ("Structure of the YAML is invalid: {}".format(value))
+            
+        return
     
     
     def _load_yaml_document(self, feature):
-        """Load the YAML document
+        """Load the YAML document and validate the values of the document
+        
+        Parameters
+        ----------
+        Feature: FME feature object
+            Feature containing in attribute the YAML document
+            
+        Returns
+        -------
+        None
         """
         
 #        web_pdb.set_trace()
@@ -130,6 +182,15 @@ class GeoNoneGeoSelector(object):
         
         The method returns a set to enable intersection operation
         
+        Parameters
+        ----------
+        directives: Dictionary
+            Contain the YMAL directives 
+            
+        Returns
+        -------
+        Set
+            Values of the DOMAIN directives in the YAML
         """
         
         # Extract the domain values to check
@@ -146,6 +207,19 @@ class GeoNoneGeoSelector(object):
         return domain_set
     
     def _output_feature(self, feature, geo, not_found_err):
+        """Add some attributes to the FME feature and output the FME feature.
+        
+        Parameters
+        ----------
+        feature: FME Feature object
+            The FME feature to process
+        geo: Bool
+            True: The metadata is geosptial
+            False: The metadata is not geospatial
+        not_found_err: List of tuple
+            The first element of the tuple contains the name of the atribute; the second element contains the value of the attribute
+  
+        """
     
         if geo:
             # Output geopspatial feature#
@@ -168,6 +242,17 @@ class GeoNoneGeoSelector(object):
                 self.pyoutput(cloned_feature)
     
     def _process_feature(self, feature):
+        """Process each FME feature according to the directives in the YAML document.
+        
+        Parameters
+        ----------
+        feature: FME Feature object
+            The FME feature to process
+            
+        Returns
+        -------
+        None
+        """
     
 #        web_pdb.set_trace()
         # Process each entry in the YAML
@@ -235,6 +320,17 @@ class GeoNoneGeoSelector(object):
         return
 
     def input(self,feature):
+        """Process the incoming FME features.
+        
+        Parameters
+        ----------
+        feature FME Feature object
+            The incoming FME feature to process
+        
+        Returns
+        -------
+        None
+        """
             
         order = feature.getAttribute(ORDER)
         if order == 1:
@@ -251,4 +347,6 @@ class GeoNoneGeoSelector(object):
             # Process the feature
     
     def close(self):
+        """No action needs to be done when all the FME features have been processed.
+        """
         pass
