@@ -44,7 +44,9 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
-
+REM ============================================================================
+REM ========================== TEST  #1   ======================================
+REM ============================================================================
 REM First FME call, full data set
 set test_number=1
 SET source=met\source%test_number%.ffs
@@ -75,6 +77,9 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
+REM ============================================================================
+REM ========================== TEST  #2   ======================================
+REM ============================================================================
 REM Second FME Call, full data set with one value missing from lookup table creating mapping error
 set test_number=2
 SET source=met\source1.ffs

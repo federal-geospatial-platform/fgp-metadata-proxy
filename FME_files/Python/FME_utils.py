@@ -3,6 +3,11 @@ import fmeobjects
 import yaml
 import traceback
 from typing import NamedTuple
+import requests
+import urllib3
+import urllib.parse
+from urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
 
 
 try:
@@ -10,6 +15,14 @@ try:
 except:
     # No problem if the package is not avalaible
     pass
+
+
+# FME attribute name
+STATUS_CODE = "_status_code"
+STATUS_CODE_DESCRIPTION = "_status_code_description"
+
+# Define HTTP OK return code
+HTTP_OK = 200
 
 class CsvGeoSpatialValidation(NamedTuple):
     """Class containing one row from the CSV GeoSpatialValidation.
@@ -233,5 +246,139 @@ class FME_utils:
          
         return word_set
         
+    @staticmethod
+    def feature_get_attribute(feature, attribute_key, error_if_none=False):
+        """Read an attribute from a FME feature.
+        
+        Parameters
+        ----------
+        feature FME Feature object
+            The FME feature used to read the attribute
+        attribute_key String
+            Name of the attribute to read
+        error_if_none Bool
+            True: Raise exception if the FME attribute is missing; 
+            False: write emtpty string if attribute is missing
+        
+        Returns
+        -------
+        String
+            Value of the attribute read
+        """
+        
+        attribute_value = feature.getAttribute(attribute_key)
+        if attribute_value is None:
+            if error_if_none:
+                raise Exception ("Error.  Attribute: {} is missing)".format(attribute_key))
+            else:
+                attribute_value = ""
+            
+        return attribute_value 
+
+    @staticmethod
+    def make_http_call(fme_self, feature, session, str_http, output_fme=True):
+        """This method makes an http call and manage the request response.
+        
+        If the response from the http request is not 200 (OK); an entry is made in the logger
+        and an FME feature is outputted with the status code and the description.
+        
+        Parameters
+        ----------
+        fme_self: FME session object
+            FME session object the "self"
+        feature: FME Feature object
+            FME feature used to output a feature
+        session: Session object
+            Used to make the http call
+        str_http: str
+            Http string used for the http call
+        output_fme: Bool
+            True: output an FME feature; False: do not output an FME feature
+        
+        Returns
+        -------
+        Request object
+            Result from the get request
+        """
     
+        try:
+            fme_self.logger.logMessageString("HTTP call: {0}".format(str_http), 
+                                         fmeobjects.FME_INFORM)
+            response = session.get(str_http, verify=False, timeout=10)
+            status_code = response.status_code
+            description = requests.status_codes._codes[status_code][0]
+            
+            # Manage if an FME feature need to be outputted
+            if status_code != HTTP_OK and output_fme:
+                lst_key_val_att = [(STATUS_CODE, "Status code: {0}: {1}".format(status_code, description)),
+                                   (STATUS_CODE_DESCRIPTION, description)]
+                fme_self.pyoutput_feature(feature, lst_key_val_att, clone=True)
+                fme_self.logger.logMessageString("Status code: {0}: {1}".format(status_code, description), 
+                                             fmeobjects.FME_INFORM)    
+        except Exception as err:
+            # Manage the case where an error occured during the reading of the CKAN server
+            fme_self.logger.logMessageString("HTTP call error: {0}".format(err), 
+                                         fmeobjects.FME_ERROR)
+            lst_key_val_att = [(STATUS_CODE, "500"),
+                               (STATUS_CODE_DESCRIPTION, requests.status_codes._codes[500][0])]
+            fme_self.pyoutput_feature(feature, lst_key_val_att, clone=True)
+            sys.exit(0)
+
+        return response
     
+    @staticmethod    
+    def create_session():
+        """This method creates an http session.
+        
+        Parameters
+        ----------
+        None
+            
+        Returns
+        -------
+        Session
+            Session to be uses to make the http requests
+        """
+        
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        session = requests.Session()
+        retries = Retry(total=5,
+                        backoff_factor=1.0,
+                        status_forcelist=[ 500, 502, 503, 504 ])
+        session.mount('https://', HTTPAdapter(max_retries=retries))
+        
+        return session
+        
+    @staticmethod
+    def pyoutput_feature(fme_self, feature, lst_key_value_att, clone=False):
+        """Set attributes to the FME feature and output he feature through the FME pyoutput
+        
+        Parameters
+        ----------
+        me_self: FME session object
+            FME session object the "self"
+        feature FME Feature object
+            FME feature used to output a feature
+        lst_key_value_att List of tuples
+            Each tuple contains 2 values: first the name of the key; second the value of the attribute
+        clone Bool
+            True: Clone the feature before output it; 
+            False: do not clone feature before outputit.
+        
+        Returns
+        -------
+        None
+        """
+    
+        if clone:
+            feature_out = feature.clone()
+        else:
+            feature_out = feature
+            
+        for key_att, value_att in lst_key_value_att:
+            feature_out.setAttribute(key_att, value_att)
+            
+        # Output FME feature
+        fme_self.pyoutput(feature_out)      
+        
+        return

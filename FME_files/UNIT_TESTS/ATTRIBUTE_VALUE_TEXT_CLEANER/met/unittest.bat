@@ -48,7 +48,7 @@ REM Define sources
 REM First FME call, complete incoming from QC extraction 
 set test_number=1
 set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat%test_number%.ffs
+set resultat=met\resultat.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 

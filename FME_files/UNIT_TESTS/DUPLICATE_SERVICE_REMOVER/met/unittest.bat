@@ -44,7 +44,9 @@ PUSHD %Repertoire%\..
 
 REM Define sources
 
-
+REM ============================================================================
+REM ========================== TEST  #1   ======================================
+REM ============================================================================
 REM First FME call,creating FFS File with four compliant data records, none with more than two WMS or ESRI services
 set test_number=1
 SET source=met\source%test_number%.ffs
@@ -69,6 +71,9 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
+REM ============================================================================
+REM ========================== TEST  #2   ======================================
+REM ============================================================================
 REM Second FME call,creating four records, creating two records that have in excess of two WMS and ESRI services.
 set test_number=2
 SET source=met\source%test_number%.ffs
