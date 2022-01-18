@@ -39,6 +39,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DCAT_Reader.html">DCAT_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
@@ -156,12 +157,31 @@
 
 <div class="viewcode-block" id="GeoNoneGeoSelector"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector">[docs]</a><span class="k">class</span> <span class="nc">GeoNoneGeoSelector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <div class="viewcode-block" id="GeoNoneGeoSelector.__init__"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates some instance variables before processing the FME features.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
     
         <span class="bp">self</span><span class="o">.</span><span class="n">csv_features</span> <span class="o">=</span><span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span></div>
         
-    <span class="k">def</span> <span class="nf">_load_csv_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+<div class="viewcode-block" id="GeoNoneGeoSelector._load_csv_feature"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._load_csv_feature">[docs]</a>    <span class="k">def</span> <span class="nf">_load_csv_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Load a feature from the CSV lookup table</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature: FME Feature object</span>
+<span class="sd">            Feature containing the attributes to read</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Load the information from the CSV feature in a dictionary</span>
 <span class="c1">#        web_pdb.set_trace()</span>
@@ -170,18 +190,51 @@
         <span class="n">spatial_type</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">SPATIAL_TYPE</span><span class="p">)</span>
         <span class="n">csv_row</span> <span class="o">=</span> <span class="n">CsvGeoSpatialValidation</span><span class="p">(</span><span class="n">fgp_publish</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">spatial_type</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">csv_features</span><span class="p">[</span><span class="nb">format</span><span class="p">]</span> <span class="o">=</span> <span class="n">csv_row</span>  <span class="c1"># Insert into the CSV dictionnary</span>
+        
+        <span class="k">return</span></div>
     
-    <span class="k">def</span> <span class="nf">_validate_value_domain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+<div class="viewcode-block" id="GeoNoneGeoSelector._validate_value_domain"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._validate_value_domain">[docs]</a>    <span class="k">def</span> <span class="nf">_validate_value_domain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validates if a string value is contained in a list of strings.</span>
+<span class="sd">        </span>
+<span class="sd">        An exception is raised when the string is not contained in the list of strings</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value: String</span>
+<span class="sd">            The value to check</span>
+<span class="sd">        domain: List of String</span>
+<span class="sd">            List of string used to make the domain validation</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        </span>
+<span class="sd">        Exceptions</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Exception Exception</span>
+<span class="sd">            Raised when the value is not in the domain</span>
+<span class="sd">        &quot;&quot;&quot;</span>
     
         <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">:</span>
             <span class="c1"># Structure valid</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span> <span class="p">(</span><span class="s2">&quot;Structure of the YAML is invalid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+            
+        <span class="k">return</span></div>
     
     
-    <span class="k">def</span> <span class="nf">_load_yaml_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load the YAML document</span>
+<div class="viewcode-block" id="GeoNoneGeoSelector._load_yaml_document"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._load_yaml_document">[docs]</a>    <span class="k">def</span> <span class="nf">_load_yaml_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load the YAML document and validate the values of the document</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Feature: FME feature object</span>
+<span class="sd">            Feature containing in attribute the YAML document</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
 <span class="c1">#        web_pdb.set_trace()</span>
@@ -224,13 +277,22 @@
                 <span class="c1"># Error Unknown directives           </span>
                 <span class="k">raise</span> <span class="ne">Exception</span> <span class="p">(</span><span class="s2">&quot;Structure of the YAML is invalid: unknown directive </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
 
-        <span class="k">return</span>
+        <span class="k">return</span></div>
         
-    <span class="k">def</span> <span class="nf">_create_domain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directives</span><span class="p">):</span>
+<div class="viewcode-block" id="GeoNoneGeoSelector._create_domain"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._create_domain">[docs]</a>    <span class="k">def</span> <span class="nf">_create_domain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directives</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Extract the domain of possible values to test</span>
 <span class="sd">        </span>
 <span class="sd">        The method returns a set to enable intersection operation</span>
 <span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        directives: Dictionary</span>
+<span class="sd">            Contain the YMAL directives </span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Set</span>
+<span class="sd">            Values of the DOMAIN directives in the YAML</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="c1"># Extract the domain values to check</span>
@@ -244,9 +306,22 @@
             <span class="n">domain_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">]</span>  <span class="c1"># Lower case</span>
             <span class="n">domain_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">domain_lst</span><span class="p">)</span>
             
-        <span class="k">return</span> <span class="n">domain_set</span>
+        <span class="k">return</span> <span class="n">domain_set</span></div>
     
-    <span class="k">def</span> <span class="nf">_output_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">geo</span><span class="p">,</span> <span class="n">not_found_err</span><span class="p">):</span>
+<div class="viewcode-block" id="GeoNoneGeoSelector._output_feature"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._output_feature">[docs]</a>    <span class="k">def</span> <span class="nf">_output_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">geo</span><span class="p">,</span> <span class="n">not_found_err</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add some attributes to the FME feature and output the FME feature.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature: FME Feature object</span>
+<span class="sd">            The FME feature to process</span>
+<span class="sd">        geo: Bool</span>
+<span class="sd">            True: The metadata is geosptial</span>
+<span class="sd">            False: The metadata is not geospatial</span>
+<span class="sd">        not_found_err: List of tuple</span>
+<span class="sd">            The first element of the tuple contains the name of the atribute; the second element contains the value of the attribute</span>
+<span class="sd">  </span>
+<span class="sd">        &quot;&quot;&quot;</span>
     
         <span class="k">if</span> <span class="n">geo</span><span class="p">:</span>
             <span class="c1"># Output geopspatial feature#</span>
@@ -266,9 +341,20 @@
                 <span class="n">not_found_err_msg</span> <span class="o">=</span> <span class="s2">&quot;Attribute name: </span><span class="si">{}</span><span class="s2"> value: </span><span class="si">{}</span><span class="s2"> has no match </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_name</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
                 <span class="n">cloned_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">NOT_FOUND_ERR_MSG</span><span class="p">,</span> <span class="n">not_found_err_msg</span><span class="p">)</span>
                 <span class="n">cloned_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">cloned_feature</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">cloned_feature</span><span class="p">)</span></div>
     
-    <span class="k">def</span> <span class="nf">_process_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+<div class="viewcode-block" id="GeoNoneGeoSelector._process_feature"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._process_feature">[docs]</a>    <span class="k">def</span> <span class="nf">_process_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process each FME feature according to the directives in the YAML document.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature: FME Feature object</span>
+<span class="sd">            The FME feature to process</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
     
 <span class="c1">#        web_pdb.set_trace()</span>
         <span class="c1"># Process each entry in the YAML</span>
@@ -333,9 +419,20 @@
                 
         <span class="bp">self</span><span class="o">.</span><span class="n">_output_feature</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">geo</span><span class="p">,</span> <span class="n">not_found_err</span><span class="p">)</span>
         
-        <span class="k">return</span>
+        <span class="k">return</span></div>
 
 <div class="viewcode-block" id="GeoNoneGeoSelector.input"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process the incoming FME features.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature FME Feature object</span>
+<span class="sd">            The incoming FME feature to process</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
             
         <span class="n">order</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">ORDER</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -352,6 +449,8 @@
             <span class="c1"># Process the feature</span>
     
 <div class="viewcode-block" id="GeoNoneGeoSelector.close"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;No action needs to be done when all the FME features have been processed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div></div>
 </pre></div>
 

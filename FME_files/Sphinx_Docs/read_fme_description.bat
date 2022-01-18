@@ -79,7 +79,7 @@ set IN_FMW_DIR=..\*.fmw
 set OUT_XML_Workspace_DIR=..\..\Sphinx_Docs\source\html_FME_Doc
 set IN_FMX_DIR=..\..\FME_Custom_Transformers\*.fmx
 set OUT_XML_Customs_DIR=..\..\Sphinx_Docs\source\html_FME_Doc
-set log=reading_FME_description.log
+set log=..\..\Sphinx_Docs\source\html_FME_Docreading_FME_description.log
 
 
 IF EXIST %log% del %log%

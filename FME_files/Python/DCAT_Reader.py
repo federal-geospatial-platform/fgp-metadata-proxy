@@ -19,10 +19,11 @@ except:
 ID = "_id"
 DCAT_P_IDENTIFIER = "DCAT_P_identifier"
 DCAT_S_SLUG_ID = "DCAT_S_slug_id_"
+URL_DCAT_PRIMARY = "_url_dcat_primary"
+URL_DCAT_SECONDARY = "_url_dcat_secondary"
 HTTP_CALL_ERROR = "_http_call_error"
 RESPONSE_BODY_P = "_response_body_P"
 RESPONSE_BODY_S = "_response_body_S"
-ROOT_URL = "_root_url"
 STATUS_CODE = "_status_code"
 STATUS_CODE_DESCRIPTION = "_status_code_description"
 TYPE_REQUETE = "_type_requete"
@@ -36,8 +37,6 @@ SLUG_ID_UNKNOWN = "SLUG_id_unknown"
 # Define http return code
 HTTP_OK = 200
 
-# Define SK_GEOHUB_SECONDARY call
-SK_GEOHUB_SECONDARY = "https://geohub.saskatchewan.ca/api/v3/datasets?filter[owner]=Saskatchewan.Government&page[number]=1&page[size]=25"
 
 # Template Class Interface:
 # When using this class, make sure its name is set as the value of
@@ -74,7 +73,7 @@ class ManageHttpCall(object):
         """
         
         # Convert special character in URL (ex.: white space for "%20")
-        str_http = urllib.parse.quote(SK_GEOHUB_SECONDARY, safe="/:&?.=")
+        str_http = urllib.parse.quote(self.url_dcat_secondary, safe="/:&?.=")
         
         # Create a session to be used to make http request
         session = FME_utils.create_session()
@@ -120,13 +119,11 @@ class ManageHttpCall(object):
         None
         """
         
-        str_http = self.root_url
-        
         # Create a session to be used to make http request
         session = FME_utils.create_session()
     
         # Get the header of the web service
-        response = FME_utils.make_http_call(self, feature, session, str_http)
+        response = FME_utils.make_http_call(self, feature, session, self.url_dcat_primary)
         
         # Extarct information
         json_response = response.json()
@@ -171,8 +168,8 @@ class ManageHttpCall(object):
 #        web_pdb.set_trace()
 
         # Extract feature attributes
-        self.root_url = feature.getAttribute(ROOT_URL)
-        self.root_url = FME_utils.feature_get_attribute(feature, ROOT_URL)
+        self.url_dcat_primary = FME_utils.feature_get_attribute(feature, URL_DCAT_PRIMARY)
+        self.url_dcat_secondary = FME_utils.feature_get_attribute(feature, URL_DCAT_SECONDARY)
         
         # Extract the type of request
         self.type_requete = feature.getAttribute(TYPE_REQUETE)
