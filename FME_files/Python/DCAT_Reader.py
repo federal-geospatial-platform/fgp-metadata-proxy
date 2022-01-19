@@ -141,6 +141,11 @@ class ManageHttpCall(object):
                    dcat_id = txt_split[1]
                 else:
                    dcat_id = DCAT_ID_UNKNOWN  # Unable to extract the ID
+                str_json_dataset = json.dumps(json_dataset)  # From JSON to string
+                lst_key_val_att = [(DCAT_P_IDENTIFIER, id), 
+                                   (STATUS_CODE, HTTP_OK), 
+                                   (RESPONSE_BODY_P, str_json_dataset)]
+                FME_utils.pyoutput_feature(self, feature, lst_key_val_att, clone=True)
             except KeyError:
                 dcat_id = DCAT_ID_UNKNOWN  # Unable to extract the ID
                 str_json_dataset = json.dumps(json_dataset)
