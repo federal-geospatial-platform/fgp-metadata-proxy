@@ -142,13 +142,13 @@ class ManageHttpCall(object):
                 else:
                    dcat_id = DCAT_ID_UNKNOWN  # Unable to extract the ID
             except KeyError:
-                   dcat_id = DCAT_ID_UNKNOWN  # Unable to extract the ID
-            str_json_dataset = json.dumps(json_dataset)
-            lst_key_val_att = [(DCAT_P_IDENTIFIER, dcat_id), 
-                               (STATUS_CODE, HTTP_OK), 
-                               (RESPONSE_BODY_P, str_json_dataset)]
-                               
-            FME_utils.pyoutput_feature(self, feature, lst_key_val_att, clone=True)
+                dcat_id = DCAT_ID_UNKNOWN  # Unable to extract the ID
+                str_json_dataset = json.dumps(json_dataset)
+                lst_key_val_att = [(DCAT_P_IDENTIFIER, dcat_id), 
+                                   (STATUS_CODE, HTTP_OK), 
+                                   (RESPONSE_BODY_P, str_json_dataset)]
+                                   
+                FME_utils.pyoutput_feature(self, feature, lst_key_val_att, clone=True)
     
     def input(self,feature):
         """Main routine call be the FME software

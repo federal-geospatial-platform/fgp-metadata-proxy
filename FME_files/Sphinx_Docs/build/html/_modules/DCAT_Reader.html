@@ -244,13 +244,13 @@
                 <span class="k">else</span><span class="p">:</span>
                    <span class="n">dcat_id</span> <span class="o">=</span> <span class="n">DCAT_ID_UNKNOWN</span>  <span class="c1"># Unable to extract the ID</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                   <span class="n">dcat_id</span> <span class="o">=</span> <span class="n">DCAT_ID_UNKNOWN</span>  <span class="c1"># Unable to extract the ID</span>
-            <span class="n">str_json_dataset</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_dataset</span><span class="p">)</span>
-            <span class="n">lst_key_val_att</span> <span class="o">=</span> <span class="p">[(</span><span class="n">DCAT_P_IDENTIFIER</span><span class="p">,</span> <span class="n">dcat_id</span><span class="p">),</span> 
-                               <span class="p">(</span><span class="n">STATUS_CODE</span><span class="p">,</span> <span class="n">HTTP_OK</span><span class="p">),</span> 
-                               <span class="p">(</span><span class="n">RESPONSE_BODY_P</span><span class="p">,</span> <span class="n">str_json_dataset</span><span class="p">)]</span>
-                               
-            <span class="n">FME_utils</span><span class="o">.</span><span class="n">pyoutput_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">lst_key_val_att</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+                <span class="n">dcat_id</span> <span class="o">=</span> <span class="n">DCAT_ID_UNKNOWN</span>  <span class="c1"># Unable to extract the ID</span>
+                <span class="n">str_json_dataset</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_dataset</span><span class="p">)</span>
+                <span class="n">lst_key_val_att</span> <span class="o">=</span> <span class="p">[(</span><span class="n">DCAT_P_IDENTIFIER</span><span class="p">,</span> <span class="n">dcat_id</span><span class="p">),</span> 
+                                   <span class="p">(</span><span class="n">STATUS_CODE</span><span class="p">,</span> <span class="n">HTTP_OK</span><span class="p">),</span> 
+                                   <span class="p">(</span><span class="n">RESPONSE_BODY_P</span><span class="p">,</span> <span class="n">str_json_dataset</span><span class="p">)]</span>
+                                   
+                <span class="n">FME_utils</span><span class="o">.</span><span class="n">pyoutput_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">lst_key_val_att</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="ManageHttpCall.input"><a class="viewcode-back" href="../DCAT_Reader.html#DCAT_Reader.ManageHttpCall.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Main routine call be the FME software</span>
