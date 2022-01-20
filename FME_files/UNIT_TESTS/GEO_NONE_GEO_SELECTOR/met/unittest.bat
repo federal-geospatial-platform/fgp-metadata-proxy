@@ -50,7 +50,6 @@ REM ============================================================================
 REM ========================== TEST  #1   ======================================
 REM ============================================================================
 REM Ce test valide les différentes combinaisons valides du YMAL
-
 SET test_number=1
 SET etalon=met\etalon_%test_number%.ffs
 SET resultat=met\resultat_%test_number%.ffs
