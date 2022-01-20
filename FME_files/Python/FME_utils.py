@@ -4,12 +4,11 @@ import yaml
 import traceback
 from typing import NamedTuple
 import requests
+import sys
 import urllib3
 import urllib.parse
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
-
-
 
 try:
     import web_pdb
@@ -302,6 +301,7 @@ class FME_utils:
             Result from the get request
         """
     
+        #web_pdb.set_trace()
         try:
             fme_self.logger.logMessageString("HTTP call: {0}".format(str_http), 
                                          fmeobjects.FME_INFORM)
@@ -313,16 +313,15 @@ class FME_utils:
             if status_code != HTTP_OK and output_fme:
                 lst_key_val_att = [(STATUS_CODE, "Status code: {0}: {1}".format(status_code, description)),
                                    (STATUS_CODE_DESCRIPTION, description)]
-                fme_self.pyoutput_feature(feature, lst_key_val_att, clone=True)
-                fme_self.logger.logMessageString("Status code: {0}: {1}".format(status_code, description), 
-                                             fmeobjects.FME_INFORM)    
-        except Exception as err:
+                FME_utils.pyoutput_feature(fme_self, feature, lst_key_val_att, clone=True) 
+        except KeyError as err:
+        #except Exception as err:
             # Manage the case where an error occured during the reading of the CKAN server
             fme_self.logger.logMessageString("HTTP call error: {0}".format(err), 
                                          fmeobjects.FME_ERROR)
             lst_key_val_att = [(STATUS_CODE, "500"),
                                (STATUS_CODE_DESCRIPTION, requests.status_codes._codes[500][0])]
-            fme_self.pyoutput_feature(feature, lst_key_val_att, clone=True)
+            FME_utils.pyoutput_feature(fme_self, feature, lst_key_val_att, clone=True)
             sys.exit(0)
 
         return response
