@@ -7,7 +7,7 @@ from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 import json
 import sys
-from FME_utils import FME_utils
+from Python.FME_utils import FME_utils
 
 try:
     import web_pdb  # Web debug tool
@@ -142,7 +142,7 @@ class ManageHttpCall(object):
                 else:
                    dcat_id = DCAT_ID_UNKNOWN  # Unable to extract the ID
                 str_json_dataset = json.dumps(json_dataset)  # From JSON to string
-                lst_key_val_att = [(DCAT_P_IDENTIFIER, id), 
+                lst_key_val_att = [(DCAT_P_IDENTIFIER, dcat_id), 
                                    (STATUS_CODE, HTTP_OK), 
                                    (RESPONSE_BODY_P, str_json_dataset)]
                 FME_utils.pyoutput_feature(self, feature, lst_key_val_att, clone=True)

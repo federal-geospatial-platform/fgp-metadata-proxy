@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN LOOKUP_TABLES_READER_NG,1,"FGP Tools",0ba69025-acf1-4148-9ca5-1549644b315f,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# TRANSFORMER_BEGIN LOOKUP_TABLES_READER_NG,1,"FGP Tools",50d4cb10-709e-4ac1-88d4-0671661923d0,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
 # <p><strong>Description </strong></p>
 # <p>This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.</p>
 # <p><strong>Input Ports</strong></p>
@@ -59,8 +59,8 @@
 #!   DOC_TOP_LEFT="-3718.79 -789.07"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="0ba69025-acf1-4148-9ca5-1549644b315f"
-#!   FME_DOCUMENT_PRIORGUID="b36564f4-477f-49cb-8ae9-e2e12f075e70,f4dacf0f-5b76-44cd-90f9-67a610908356"
+#!   FME_DOCUMENT_GUID="50d4cb10-709e-4ac1-88d4-0671661923d0"
+#!   FME_DOCUMENT_PRIORGUID="b36564f4-477f-49cb-8ae9-e2e12f075e70,f4dacf0f-5b76-44cd-90f9-67a610908356,0ba69025-acf1-4148-9ca5-1549644b315f"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -72,7 +72,7 @@
 #!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,12&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added,20&lt;solidus&gt;10&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Generic&lt;space&gt;LookUp&lt;space&gt;Tables&lt;space&gt;Reader,02&lt;solidus&gt;11&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Added&lt;space&gt;CHECK_DOMAIN&lt;space&gt;option"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2021-12-10T15:19:24"
+#!   LAST_SAVE_DATE="2022-01-20T16:55:56"
 #!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.&#10;&#10;**Input Ports**&#10;&#10;- This custom transformer has no Input Port&#10;&#10;**Output Ports **&#10;&#10;- OUTPUT_LOCAL: The content of the lookup table (one record by row in the CSV file)&#10;&#10;**Parameters **&#10;&#10;- FEATURE_TYPE: File name of the lookup table without the .csv extension&#10;- CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into CSV_PATH\shared when it is a lookup table shared between PT and secondly in CSV_PATH\PT when the lookup table is specific to a PT&#10;- PT: Two letter code of the province or territory to process (ex.: ON, QC, AB...)&#10;- CSV_ENCODING: Type of encoding of the lookup tale&#10;&#10;**Content of the YAML file **&#10;&#10;The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file.&#10;&#10;&lt;pre&gt;&#10;CSV_COLUMNS:&#10;  original_value: [trim, lower, no_null, explode]&#10;  real_value_english: [trim, upper, no_null, explode]&#10;  real_value_french: [no_null_err, explode]&#10;  code_value: [upper, explode]&#10;#&#10;CREATE_KEY_VALUE:&#10;  code_value: original_value&#10;#&#10;NO_DUPLICATE:&#10;  DUP_1: [code_value]&#10;  DUP_2: [original_value, real_value_english]&#10;#&#10;CHECK_DOMAIN&#10;  original_value: [year, yearly]&#10;&lt;/pre&gt;&#10;&#10;**Description of the three sections of a YAML file**&#10;&#10;The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &quot;CSV_COLUMNS:&quot; you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon &quot;:&quot;; followed by the list of actions separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;.  Here&apos;s the list of possible actions:&#10;&#10;- trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &quot;   a   test&quot; ==­&gt; &quot;a test&quot;);&#10;- lower: Put the column value in lower case;&#10;- upper: Put the column value in upper case;&#10;- no_null: Check that the column is not empty or null; it terminates execution if not null;&#10;explode: Duplicate the row if the column contains values separated by semicolumn &quot;;&quot;.  The line is exploded by the number of values in the column (ex: &quot;QC;ON;MB&quot;, will duplicate all the content of the line 2 times, the first line will contain &quot;QC&quot;; the second &quot;ON&quot; and the third &quot;MB&quot;.&#10;&#10;The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &quot;CREATE_KEY_VALUE:&quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon &quot;:&quot;; followed by the name of the column containing the value of the attribute;&#10;&#10;The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following &quot;NO_DUPLICATE:&quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon &quot;:&quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. &#10;&#10;The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following &quot;CHECK_DUPLICATE:&quot; you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon &quot;:&quot;; followed by the domain values separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;. If you want to check for empty value &quot;&quot;, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list."
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -84,11 +84,11 @@
 #!   TITLE="LOOKUP_TABLES_READER_NG"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="-2380.98 1433.55"
+#!   VIEW_POSITION="-4543.31 3693.95"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="63"
+#!   ZOOM_SCALE="39"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -333,7 +333,7 @@
 #!   BOUNDING_RECT="-3718.7871878718784 1050 8375.0837508375007 1839.0703907039069"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="51 27 14 45 15 18 9 46 26 30 13 5 48 34 22 32 50 49 53 23 29 54 42 3 19 7 16 25 11 33 41 4 24 17 12 8 31 43 44 38 39 47 10 40 21 37 28 6 55 "
+#!   CONTENTS="27 51 31 47 5 55 13 23 18 44 32 16 40 41 10 9 42 26 21 34 25 19 8 46 7 45 54 48 43 24 17 3 49 6 39 30 33 28 4 22 29 11 12 15 38 37 14 53 50 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -578,7 +578,7 @@
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="path_shared path_pt"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;LOOKUP_TABLES_READER_NG&lt;space&gt;import&lt;space&gt;check_file_present"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.LOOKUP_TABLES_READER_NG&lt;space&gt;import&lt;space&gt;check_file_present"/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="check_file_present"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_1"/>
@@ -617,7 +617,7 @@
 #!   TYPE="PythonCaller"
 #!   VERSION="4"
 #!   POSITION="1806.9370138145823 220.13809026979158"
-#!   BOUNDING_RECT="1806.9370138145823 220.13809026979158 430 71"
+#!   BOUNDING_RECT="1806.9370138145823 220.13809026979158 454 71"
 #!   ORDER="500000000000019"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -648,10 +648,10 @@
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;LOOKUP_TABLES_READER_NG&lt;space&gt;import&lt;space&gt;LoadValidateYaml&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.LOOKUP_TABLES_READER_NG&lt;space&gt;import&lt;space&gt;LoadValidateYaml&lt;lf&gt;"/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="LoadValidateYaml"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Python_2"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="10"
@@ -1486,7 +1486,7 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TA
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_1    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_csv_path" "SET_TO" "$($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH)" }      ATTR_ACTION { "" "_pt" "SET_TO" "$($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT)" }      ATTR_ACTION { "" "_feature_type" "SET_TO" "$($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE$encode)" }      ATTR_ACTION { "" "_fme_home" "SET_TO" "$(FME_HOME_USERTYPED$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_1_OUTPUT"
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_1_OUTPUT"    SYMBOL_NAME check_file_present    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>LOOKUP_TABLES_READER_NG<space>import<space>check_file_present    OUTPUT PYOUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1_OUTPUT"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_1_OUTPUT"    SYMBOL_NAME check_file_present    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.LOOKUP_TABLES_READER_NG<space>import<space>check_file_present    OUTPUT PYOUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1_OUTPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_1    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1_OUTPUT"    OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_1_OUTPUT"
 # -------------------------------------------------------------------------
@@ -1528,9 +1528,9 @@ FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPA
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FeatureReader_<SCHEMA>"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_record_type" "SET_TO" "schema" }    OUTPUT OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Python_2    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    SYMBOL_NAME LoadValidateYaml    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>LOOKUP_TABLES_READER_NG<space>import<space>LoadValidateYaml<lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Python_2_OUTPUT"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_2    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    SYMBOL_NAME LoadValidateYaml    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.LOOKUP_TABLES_READER_NG<space>import<space>LoadValidateYaml<lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Python_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TestFilter    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    OUTPUT FEATURE_TYPE $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0
 FACTORY_DEF * TestFactory FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TestFilter_Condition_1 INPUT FEATURE_TYPE $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_record_type<closeparen>,$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TestFilter) = feature ENCODED TEST _csv_error ATTRIBUTE_IS_EMPTY "" ENCODED BOOLEAN_OPERATOR AND COMPOSITE_TEST_EXPR "1 AND 2" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TestFilter_CSV<space>OK OUTPUT FAILED FEATURE_TYPE $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1
@@ -1571,5 +1571,5 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(LOOKUP_TABLES_READER_
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output1639167564 Output Collector"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output1642715756 Output Collector"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME))}]

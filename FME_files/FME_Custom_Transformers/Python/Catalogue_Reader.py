@@ -4,7 +4,7 @@ import requests
 import urllib3
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
-from FME_utils import FME_utils
+from Python.FME_utils import FME_utils
 import json
 import sys
 import xml.etree.ElementTree as ElementTree

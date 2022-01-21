@@ -92,9 +92,9 @@ Il existe deux solutions pour gérer le code source Python dans l'environnement 
 
 Une solution mixte est préconisée, si votre *PythonCaller* contient peu de lignes de codes, il est préconisé de laisser le code source dans les *PythonCaller* alors que si le *PythonCaller* contient beaucoup de lignes de codes alors la solution de placer le code source dans un répertoire centralisé est préconisée. 
 
-Les sources Python doivent être placés dans le répertoire '..\fgp-metadata-proxy\FME_files\python\' les sources sont alors organisés par répertoire selon le nom du *CustomTransformer* dans lequel le code source se trouve.  Par exemple, le code source Python associé au *Custom Transformer* LOOKUP_TABLE_READER se trouve dans le répertoire '..\fgp-metadata-proxy\FME_files\python\LOOK_UP_TABLE_READER\'.  Les utilitaires doivent être placés à la racine du répertoire des sources Python dans le fichier *utils.py*
+Les sources Python doivent être placés dans le répertoire des Custom Transmformers '..\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\Python' le code source pour un *CustomTransformer* est placé dans un fichier qui porte le même nom que le *Custom Transformer*.  Par exemple, le code source Python associé au *Custom Transformer* LOOKUP_TABLE_READER se trouve dans le fichier '..\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\Python\LOOK_UP_TABLE_READER.py'.  Les utilitaires communs sont placés à la racine du répertoire des sources Python dans le fichier ''..\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\Python\FME_utils.py'.
 
-Finalement, Il faut modifier le **PYTHONPATH** pour permettre à FME de "retrouver" les sources Python lors de l'exécution.  Dans l'éditeur des variables d'environnement pour votre compte (Settings > Edit Environment Variable for your Account) vous devez ajouter le chemin '..\fgp-metadata-proxy\FME_files\python\' à la variable d'environnement PYTHONPATH.  Si la variable d'environnement PYTHONPATH n'existe pas vous devez la créer.
+Finalement, Il Nest pas nécessaire d'ajuster le **PYTHONPATH** pour permettre à FME de "voir" les sources Python lors de l'exécution.  Les sources Python étant placés dans le répertoire des *Custom Transformer* ce dernier étant visible par FME lors de l'exécution.
 
 
 

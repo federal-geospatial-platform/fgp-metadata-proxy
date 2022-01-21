@@ -1,7 +1,7 @@
 import fme
 import fmeobjects
 import yaml
-from FME_utils import FME_utils
+from Python.FME_utils import FME_utils
 
 
 #Définissons les constantes qui constituent l'ensemble des actions possibles.
