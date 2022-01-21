@@ -7,7 +7,7 @@ from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 import json
 import sys
-from FME_utils import FME_utils
+from Python.FME_utils import FME_utils
 
 try:
     import web_pdb  # Web debug tool

@@ -4,8 +4,8 @@
 
 import fme
 import fmeobjects
-from FME_utils import FME_utils
-from FME_utils import CsvGeoSpatialValidation
+from Python.FME_utils import FME_utils
+from Python.FME_utils import CsvGeoSpatialValidation
 from typing import NamedTuple
 
 try:
