@@ -9,8 +9,8 @@ Documentation du Custom Transformer FME
    :file: ./html_FME_Doc/ATTRIBUTE_VALUE_TEXT_CLEANER.html
 
 
-Documentation du code module.py
-###############################
+Documentation du code ATTRIBUTE_VALUE_TEXT_CLEANER.py
+#####################################################
    
 .. autosummary::
    ATTRIBUTE_VALUE_TEXT_CLEANER.HTMLFilter

@@ -13,7 +13,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('../../Python'))
+sys.path.insert(0, os.path.abspath('../../FME_Custom_Transformers/Python'))
 
 # -- Project information -----------------------------------------------------
 
@@ -34,8 +34,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.coverage', 
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
-              'sphinx_toolbox.more_autodoc.autonamedtuple',
-]
+              'sphinx_toolbox.more_autodoc.autonamedtuple']
 
 # Création des autosummary
 autosummary_generate = True
@@ -44,7 +43,8 @@ autosummary_generate = True
 autodoc_mock_imports = ["fme", 
                         "fmeobjects",
                         "yaml",
-                        "dateutil"]
+                        "dateutil",
+                        "Python"]
                         
 # Mettre la documentation Python en ordre alphabétique
 autodoc_member_order = 'alphabetical'

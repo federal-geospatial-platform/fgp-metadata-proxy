@@ -109,7 +109,7 @@
 <span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="kn">import</span> <span class="n">HTTPAdapter</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">FME_utils</span> <span class="kn">import</span> <span class="n">FME_utils</span>
+<span class="kn">from</span> <span class="nn">Python.FME_utils</span> <span class="kn">import</span> <span class="n">FME_utils</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">web_pdb</span>  <span class="c1"># Web debug tool</span>
@@ -243,6 +243,11 @@
                    <span class="n">dcat_id</span> <span class="o">=</span> <span class="n">txt_split</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
                    <span class="n">dcat_id</span> <span class="o">=</span> <span class="n">DCAT_ID_UNKNOWN</span>  <span class="c1"># Unable to extract the ID</span>
+                <span class="n">str_json_dataset</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_dataset</span><span class="p">)</span>  <span class="c1"># From JSON to string</span>
+                <span class="n">lst_key_val_att</span> <span class="o">=</span> <span class="p">[(</span><span class="n">DCAT_P_IDENTIFIER</span><span class="p">,</span> <span class="n">dcat_id</span><span class="p">),</span> 
+                                   <span class="p">(</span><span class="n">STATUS_CODE</span><span class="p">,</span> <span class="n">HTTP_OK</span><span class="p">),</span> 
+                                   <span class="p">(</span><span class="n">RESPONSE_BODY_P</span><span class="p">,</span> <span class="n">str_json_dataset</span><span class="p">)]</span>
+                <span class="n">FME_utils</span><span class="o">.</span><span class="n">pyoutput_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">lst_key_val_att</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                 <span class="n">dcat_id</span> <span class="o">=</span> <span class="n">DCAT_ID_UNKNOWN</span>  <span class="c1"># Unable to extract the ID</span>
                 <span class="n">str_json_dataset</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_dataset</span><span class="p">)</span>
