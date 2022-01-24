@@ -59,6 +59,7 @@ set log_comp=met\log_comp_%test_number%.log
 IF EXIST %log% del %log%
 IF EXIST met\resultat.ffs DEL met\resultat.ffs
 IF EXIST met\resultat_2.ffs DEL met\resultat_2.ffs
+
 %fme% met\metrique_metadata_value_mapper_error_manager.fmw ^
 --IN_FFS_FILE %source% ^
 --LOG_FILE %log% ^
