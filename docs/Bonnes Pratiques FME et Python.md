@@ -94,7 +94,7 @@ Une solution mixte est préconisée, si votre *PythonCaller* contient peu de lig
 
 Les sources Python doivent être placés dans le répertoire des Custom Transmformers '..\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\Python' le code source pour un *CustomTransformer* est placé dans un fichier qui porte le même nom que le *Custom Transformer*.  Par exemple, le code source Python associé au *Custom Transformer* LOOKUP_TABLE_READER se trouve dans le fichier '..\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\Python\LOOK_UP_TABLE_READER.py'.  Les utilitaires communs sont placés à la racine du répertoire des sources Python dans le fichier ''..\fgp-metadata-proxy\FME_files\FME_Custom_Transformers\Python\FME_utils.py'.
 
-Finalement, Il Nest pas nécessaire d'ajuster le **PYTHONPATH** pour permettre à FME de "voir" les sources Python lors de l'exécution.  Les sources Python étant placés dans le répertoire des *Custom Transformer* ce dernier étant visible par FME lors de l'exécution.
+Finalement, Il n'est pas nécessaire d'ajuster le **PYTHONPATH** pour permettre à FME de "voir" les sources Python lors de l'exécution.  Les sources Python étant placés dans le répertoire des *Custom Transformer* ce dernier étant visible par FME lors de l'exécution.
 
 
 
