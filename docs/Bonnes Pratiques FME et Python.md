@@ -16,6 +16,7 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
    - [Packages requis](#Packages-requis)
    - [Gestion des sources Python et PYTHONPATH](#Gestion-des-sources-Python-et-PYTHONPATH)
    - [Débuggage en Python](#Débuggage-en-python)
+   - [Serveur web fantoche](#Serveur-web-fantoche)
  - [Nom du transformer](#Nom-du-transformer)
  - [Patron de conception](#Patron-de-conception)
    - [Traitement d'une liste](#Traitement-d'une-liste)
@@ -96,8 +97,6 @@ Les sources Python doivent être placés dans le répertoire des Custom Transmfo
 
 Finalement, Il n'est pas nécessaire d'ajuster le **PYTHONPATH** pour permettre à FME de "voir" les sources Python lors de l'exécution.  Les sources Python étant placés dans le répertoire des *Custom Transformer* ce dernier étant visible par FME lors de l'exécution.
 
-
-
 ## Débuggage en python
 
 Le débuggage des *PythonCaller* peut vite devenir très laborieux. La seule façon de faire du débuggage étant de placer des commandes *print* dans le code et d'examiner le log produit par FME.
@@ -124,10 +123,37 @@ Vous pouvez alors contrôler l'exécution du *PythonCaller* dans Chrome; une foi
 
 Plus de détails sur web-pdb sont disponibles dans le [répertoire GitHub de web-pdb](https://github.com/romanvm/python-web-pdb)
 
+
+
 # Nom du transformer
 
 Toujours conserver le nom du *transformer* tel que donné par FME.  Si vous avez plus d'un *transformer* du même type dans votre *workbench* alors ajouter un suffixe numérique (ex pour le *transformer* Tester: Tester, Tester_1, Tester_2, ...).  Conserver le nom du *transformer* original permet d'identifier plus rapidement le type de *transformer* employé.  Si un nom plus représentatif vous semble important alors privilégier une annotation sur le *transformer*. 
 
+##Serveur web fantoche
+
+Certains *Custom Transformer* lisent de l'information sur un (ou plusieurs) sites web externes (ex.: les données d'une province).  Dans un tel contexte, la création de tests de métriques répétables devient très souvent difficilement implantables car ces sites web externes que requièrent ces Custom Transformer sont des sites de production qui changent ou peuvent changer régulièrement.  C'est dans un tel contexte qu'il devient nécessaire de créer des sites web fantoches (dummy web site) dont le seul but est de pouvoir simuler des requêtes web et produire toujours les mêmes résultats pour un test de métrique donné.
+
+Pour créer des sites web fantoches on utilise l'utilitaire [flask](https://flask.palletsprojects.com/en/2.0.x/) qui permet de simuler les requêtes désirées avec un minimum d'effort de programmation.  Le code pour démarrer les serveurs web se trouvent dans le répertoire ..\FGP_GITHUB\fgp-metadata-proxy\FME_files\UNIT_TESTS\Web_Server
+
+Le serveur web utilise l'environnement virtuel de Python et Python > 3.5.  Pour créer l'environnement vituel:
+
+```DOS
+cd ..\FGP_GITHUB\fgp-metadata-proxy\FME_files\UNIT_TESTS\Web_Server
+python -m venv venv/
+```
+
+Pour activer l'environnement virtuel, installer les librairies requises et démarrer le serveur flask
+
+```DOS
+pip install -r requirements.txt
+.\venv\Scripts\activate
+set FLASK_APP=web_server
+flask run
+```
+
+Le code python exécuter par le serveur web se trouve dans le fichier web_server.py
+
+Lorsque vous exécutez un test de métrique qui nécessite l'accès à un serveur web fantoche, le démarrage du serveur devrait se faire directement dans le fichier .bat qui démarre le test de métrique (ex. ..\\FGP_GITHUB\fgp-metadata-proxy\FME_files\UNIT_TESTS\DCAT_Reader\met\unittest.bat)
 
 # Patron de conception
 
