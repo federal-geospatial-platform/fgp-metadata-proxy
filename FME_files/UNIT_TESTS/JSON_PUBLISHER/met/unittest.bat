@@ -47,7 +47,7 @@ REM Define sources
 REM First FME call
 set test_number=1
 SET source=met\source%test_number%.ffs
-set lookup=met\QC_JSON_CONFIG.csv
+set lookup=met\ON_JSON_CONFIG.csv
 set etalon=met\etalon%test_number%.ffs
 SET resultat=met\resultat%test_number%.ffs
 set json_resource_template=met\TBS_RESOURCES_TEMPLATE.json
