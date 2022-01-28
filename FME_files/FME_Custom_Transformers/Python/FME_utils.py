@@ -9,6 +9,8 @@ import urllib3
 import urllib.parse
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
+from datetime import datetime
+
 
 try:
     import web_pdb
@@ -42,6 +44,7 @@ class CsvGeoSpatialValidation(NamedTuple):
     spatial_type: str
 
 class FME_utils:
+
 
     @staticmethod
     def extract_attribute_list(feature, att_name):
@@ -382,3 +385,49 @@ class FME_utils:
         fme_self.pyoutput(feature_out)      
         
         return
+        
+    @staticmethod
+    def convert_unix_time(feature, in_attr_name, out_attr_name='itemModif', forme='%Y-%m-%d %H:%M:%S'):
+        """ This method unix time to a specified format.
+        
+        Parameters
+        ----------
+        feature FME Feature object
+            The FME feature used to read the attribute
+        
+        in_attr_name: str
+            The name of the FME attribute to convert.
+            
+        out_attr_name: str
+            The name of the FME attribute you want the conversion to be done.
+        
+        forme: str
+            String containing the wanted output format for the date.
+            
+        Returns
+        -------
+        str
+            A string representing the time in the specified format.
+            
+        """
+        #web_pdb.set_trace()
+        
+        #Managing empty attributes
+        if not feature.getAttribute(in_attr_name):
+            pass
+        
+        else:
+            #Get the attribute value
+            attr_value = feature.getAttribute(in_attr_name)
+            
+            #Converting the attribute value to string
+            attr_value_str = str(attr_value)
+            
+            #Converting the length adjusted attribute value to integer
+            attr_value_cut = int(attr_value_str[0:10:1])
+
+
+            feature.setAttribute(out_attr_name, datetime.fromtimestamp(attr_value_cut).strftime(forme))
+            
+        return
+        
