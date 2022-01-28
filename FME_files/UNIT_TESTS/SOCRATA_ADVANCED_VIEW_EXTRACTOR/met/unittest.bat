@@ -23,7 +23,7 @@ SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
-SET NomApp=NB_TAGS_MANAGER
+SET NomApp=SOCRATA_ADVANCED_VIEW_EXTRACTOR
 SET fme=%FME2020%
 
 
@@ -47,7 +47,10 @@ REM Define sources
 REM ============================================================================
 REM ========================== TEST  #1   ======================================
 REM ============================================================================
-REM First FME call with several data records all conformes with the NB_keywords.csv list
+REM First FME call with 3 features covering:
+REM - 1 compliant feature where exist the url attribute in the advancedViewResources{} list 
+REM - 1 non-compliant feature where such attribute does not exist but title_fr exist
+REM - 1 non-compliant feature where neither of these attributes exist
 set test_number=1
 SET source=met\source%test_number%.ffs
 set etalon=met\etalon%test_number%.ffs
@@ -57,7 +60,7 @@ set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
 IF EXIST %resultat%.ffs DEL %resultat%.ffs
-%fme% met\metrique_nb_tags_manager.fmw ^
+%fme% met\metrique_socrata_advanced_view_extractor.fmw ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
 --LOG_FILE %log% 
@@ -71,34 +74,7 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM ============================================================================
-REM ========================== TEST  #2   ======================================
-REM ============================================================================
-REM First FME call with 1 data record where tag{0} value is absent from the list
-set test_number=2
-SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat%test_number%.ffs
-set log=met\log_%test_number%.log
-set log_comp=met\log_comp_%test_number%.log
-
-IF EXIST %log% del %log%
-IF EXIST %resultat%.ffs DEL %resultat%.ffs
-%fme% met\metrique_nb_tags_manager.fmw ^
---IN_FFS_FILE %source% ^
---OUT_FFS_FILE %resultat% ^
---LOG_FILE %log% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison with the standard
-IF EXIST %log_comp% del %log_comp%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
---LOG_FILE %log_comp% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-@IF [%Statut%] EQU [000011] (
+@IF [%Statut%] EQU [0000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
