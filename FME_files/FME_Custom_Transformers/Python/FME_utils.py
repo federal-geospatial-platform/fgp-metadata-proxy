@@ -10,6 +10,7 @@ import urllib.parse
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 from datetime import datetime
+import fme
 
 
 try:
@@ -387,7 +388,7 @@ class FME_utils:
         return
         
     @staticmethod
-    def convert_unix_time(feature, in_attr_name, out_attr_name='itemModif', forme='%Y-%m-%d %H:%M:%S'):
+    def convert_unix_time(feature, in_attr_name, out_attr_name='itemModif', out_format='%Y-%m-%d %H:%M:%S'):
         """ This method unix time to a specified format.
         
         Parameters
@@ -401,7 +402,7 @@ class FME_utils:
         out_attr_name: str
             The name of the FME attribute you want the conversion to be done.
         
-        forme: str
+        out_format: str
             String containing the wanted output format for the date.
             
         Returns
@@ -427,7 +428,7 @@ class FME_utils:
             attr_value_cut = int(attr_value_str[0:10:1])
 
 
-            feature.setAttribute(out_attr_name, datetime.fromtimestamp(attr_value_cut).strftime(forme))
+            feature.setAttribute(out_attr_name, datetime.fromtimestamp(attr_value_cut).strftime(out_format))
             
         return
         
