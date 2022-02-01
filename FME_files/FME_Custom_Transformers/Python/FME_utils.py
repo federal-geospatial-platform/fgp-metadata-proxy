@@ -57,7 +57,7 @@ class FME_utils:
         If the attribute name to extract is a list (ex.: ressources{}.name) than all the
         attributes of the list is extrated.
         
-        The method returns a list of tuple one tuplee for each attribute to extract. The 
+        The method returns a list of tuple one tuple for each attribute to extract. The 
         tuple is composed of 2 values the first is the complete attribute name: 
         ex.: value for none list attribute or ressources{1}.name for list attribute.  The 
         seconde value of the list is the index value: None for non list attribute or "1" for 
@@ -73,7 +73,7 @@ class FME_utils:
         Returns
         -------
         list
-            a list of FME attribute
+            A list of FME attribute.  
         """
 
 #        web_pdb.set_trace()

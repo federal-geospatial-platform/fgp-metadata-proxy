@@ -141,6 +141,9 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">spacer</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span>
     
+    <span class="c1"># Create logger for loggin into FME</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+    
     <span class="c1"># Extract some attributes</span>
     <span class="n">csv_path</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;_csv_path&#39;</span><span class="p">)</span>
     <span class="n">file_name</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;_feature_type&#39;</span><span class="p">)</span>
@@ -158,6 +161,10 @@
     <span class="n">yaml_shared</span> <span class="o">=</span> <span class="n">root_shared</span> <span class="o">+</span> <span class="s2">&quot;.yaml&quot;</span>
     <span class="n">yaml_path</span> <span class="o">=</span> <span class="n">root_path</span> <span class="o">+</span> <span class="s2">&quot;.yaml&quot;</span>
     
+    <span class="c1"># Current directory</span>
+    <span class="n">cur_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Current directory: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cur_dir</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
+    
     <span class="c1"># Check if the file and the yaml are in the province path directory</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">):</span>
         <span class="n">file2read</span> <span class="o">=</span> <span class="n">file_path</span>
@@ -172,6 +179,9 @@
             <span class="n">file_error</span> <span class="o">=</span> <span class="s2">&quot;Lookup table and/or yaml are missing&quot;</span>
             <span class="n">file2read</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="n">yaml2read</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Current directory: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cur_dir</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;File do not exist: </span><span class="si">{0}</span><span class="s2"> and </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">yaml_path</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;File do not exist: </span><span class="si">{0}</span><span class="s2"> and </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_shared</span><span class="p">,</span> <span class="n">yaml_shared</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
     
     <span class="c1"># Set the FME attribute</span>
     <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;_file2read&quot;</span><span class="p">,</span> <span class="n">file2read</span><span class="p">)</span>
