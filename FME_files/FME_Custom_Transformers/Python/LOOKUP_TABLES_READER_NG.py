@@ -29,6 +29,9 @@ def check_file_present(feature):
     else:
         spacer="\\"
     
+    # Create logger for loggin into FME
+    logger = fmeobjects.FMELogFile()
+    
     # Extract some attributes
     csv_path = feature.getAttribute('_csv_path')
     file_name = feature.getAttribute('_feature_type')
@@ -46,6 +49,10 @@ def check_file_present(feature):
     yaml_shared = root_shared + ".yaml"
     yaml_path = root_path + ".yaml"
     
+    # Current directory
+    cur_dir = os.getcwd()
+    logger.logMessageString("Current directory: {}".format(cur_dir), fmeobjects.FME_INFORM)
+    
     # Check if the file and the yaml are in the province path directory
     if os.path.exists(file_path) and os.path.exists(yaml_path):
         file2read = file_path
@@ -60,6 +67,9 @@ def check_file_present(feature):
             file_error = "Lookup table and/or yaml are missing"
             file2read = ""
             yaml2read = ""
+            logger.logMessageString("Current directory: {}".format(cur_dir), fmeobjects.FME_ERROR)
+            logger.logMessageString("File do not exist: {0} and {1}".format(file_path, yaml_path), fmeobjects.FME_ERROR)
+            logger.logMessageString("File do not exist: {0} and {1}".format(file_shared, yaml_shared), fmeobjects.FME_ERROR)
     
     # Set the FME attribute
     feature.setAttribute("_file2read", file2read)
