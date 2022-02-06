@@ -30,8 +30,8 @@ HTTP_OK = 200
 class CsvGeoSpatialValidation(NamedTuple):
     """Class containing one row from the CSV GeoSpatialValidation.
     
-    Attributes
-    ----------
+    Attributes:
+    
     fgp_publish: str
         Flag (oui/non) indicating if this format is published in the FGP
     format: str

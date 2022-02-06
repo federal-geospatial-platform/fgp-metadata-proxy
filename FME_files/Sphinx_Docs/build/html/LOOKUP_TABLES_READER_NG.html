@@ -40,7 +40,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">CatalogueReader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DCAT_Reader.html">DCAT_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
@@ -62,6 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">LOOKUP_TABLES_READER_NG</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-python-lookup-tables-reader-ng-py">Documentation du code Python LOOKUP_TABLES_READER_NG.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
@@ -87,7 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">Documentation de la classe FME_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">FME_utils</a></li>
 </ul>
 
         </div>
@@ -167,7 +168,9 @@ explode: Duplicate the row if the column contains values separated by semicolumn
 <p>The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the "CREATE_KEY_VALUE:" you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon ":"; followed by the name of the column containing the value of the attribute;</p>
 <p>The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following "NO_DUPLICATE:" you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon ":"; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. </p>
 <p>The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following "CHECK_DUPLICATE:" you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon ":"; followed by the domain values separated by a coma "," and enclosed between brackets "[]". If you want to check for empty value "", you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.</p>
-<hr class="docutils" />
+</div>
+<div class="section" id="documentation-du-code-python-lookup-tables-reader-ng-py">
+<h2>Documentation du code Python LOOKUP_TABLES_READER_NG.py<a class="headerlink" href="#documentation-du-code-python-lookup-tables-reader-ng-py" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -175,7 +178,7 @@ explode: Duplicate the row if the column contains values separated by semicolumn
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#LOOKUP_TABLES_READER_NG.check_file_present" title="LOOKUP_TABLES_READER_NG.check_file_present"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOOKUP_TABLES_READER_NG.check_file_present</span></code></a>(feature)</p></td>
-<td><p></p></td>
+<td><p>This method checks if a file is present in the shared or the province directory.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml" title="LOOKUP_TABLES_READER_NG.LoadValidateYaml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOOKUP_TABLES_READER_NG.LoadValidateYaml</span></code></a>()</p></td>
 <td><p>Template Class Interface: When using this class, make sure its name is set as the value of the 'Class to Process Features' transformer parameter.</p></td>
@@ -184,7 +187,7 @@ explode: Duplicate the row if the column contains values separated by semicolumn
 </table>
 <span class="target" id="module-LOOKUP_TABLES_READER_NG"></span><dl class="py class">
 <dt class="sig sig-object py" id="LOOKUP_TABLES_READER_NG.LoadValidateYaml">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">LOOKUP_TABLES_READER_NG.</span></span><span class="sig-name descname"><span class="pre">LoadValidateYaml</span></span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#LoadValidateYaml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">LOOKUP_TABLES_READER_NG.</span></span><span class="sig-name descname"><span class="pre">LoadValidateYaml</span></span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#LoadValidateYaml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.LoadValidateYaml" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Template Class Interface:
 When using this class, make sure its name is set as the value of the ‘Class
@@ -221,7 +224,16 @@ cached to a list class member and processed in the close() method.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="LOOKUP_TABLES_READER_NG.check_file_present">
 <span class="sig-prename descclassname"><span class="pre">LOOKUP_TABLES_READER_NG.</span></span><span class="sig-name descname"><span class="pre">check_file_present</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/LOOKUP_TABLES_READER_NG.html#check_file_present"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#LOOKUP_TABLES_READER_NG.check_file_present" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This method checks if a file is present in the shared or the province directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </div>

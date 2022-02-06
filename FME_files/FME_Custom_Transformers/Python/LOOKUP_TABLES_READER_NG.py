@@ -20,7 +20,17 @@ except:
 #-check_file_present-----------------------------------------------------------
 #
 def check_file_present(feature):
-# This method checks if a file is present in the shared or the province directory
+    """This method checks if a file is present in the shared or the province directory.
+    
+    Parameters
+    ----------
+    feature: FmeFeature object
+        Feature object to process
+        
+    Returns
+    -------
+    None
+    """
     
 #    web_pdb.set_trace()
     # Manage if execution is done locally or on FME Server
@@ -75,6 +85,8 @@ def check_file_present(feature):
     feature.setAttribute("_file2read", file2read)
     feature.setAttribute("_yaml2read", yaml2read)
     feature.setAttribute("_file_error", file_error)
+    
+    return
 #
 #
 #-LoadValidateYaml-------------------------------------------------------------
