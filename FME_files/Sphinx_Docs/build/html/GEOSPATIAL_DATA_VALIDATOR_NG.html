@@ -54,6 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">GEOSPATIAL_DATA_VALIDATOR_NG</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-geospatial-data-validator-ng-py">Documentation du code GEOSPATIAL_DATA_VALIDATOR_NG.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
@@ -119,7 +120,18 @@
 <div class="section" id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
 <p><strong>Description</strong> </p>
-<p>This custom transformer fan out the metadata records between three types of metadata (GeoSpatial, Non GeoSpatial and Unknown).  In order to determine the type of metadta record, the transformer is using two strategies: firstly by checking if the format has been published in the FGP (if positive it is a GeoSpatial record); secondly by checking the content of a list of keywords againts the content of an attribute in the metadata record (if there is a match it is a GeoSpatial record) </p>
+<p>This custom transformer fans out the metadata records between three feature types (GeoSpatial, None GeoSpatial and Unknown Format).  In order to determine the type of metadata record, the transformer is using the following strategies:</p>
+<ul>
+<li>
+<p>For each list attribute: resources{}.format it tries to find a match in the CSV file using the format name; if there is a match and in the CSV file the fgp_publish is set to"oui" than it's a GeoSpatial feature otherwise it's a NoneGeoSpatial except if a list attribute resources{}.fgp_publish is set to "oui";</p>
+</li>
+<li>
+<p>The list attribte specified by the published parameter LIST_SEARCH_ATTRIBUTE contains one of the keyword described by the published parameter KEYWORD_SEARCH; than it's a GeoSpatial feature;</p>
+</li>
+<li>
+<p>If the format cannot be find in the CSV file, the format is output in the UNKNOWN_FORMAT port.  A feature can have more than one unknown format and 2 format will be output for one input feature.</p>
+</li>
+</ul>
 <p><strong>Input Ports</strong> </p>
 <ul>
 <li>DATA_INPUT: The input metadata records to process.</li>
@@ -130,10 +142,10 @@
 <p>GEOSPATIAL: Output port for all gepspatial metadata record</p>
 </li>
 <li>
-<p>NON-GEOSPATIAL: Output port for all non geospatial metadata record</p>
+<p>NON-GEOSPATIAL: Output port for all none geospatial metadata record</p>
 </li>
 <li>
-<p>UNKNOWN_FORMAT: Output port for metadata record that cannot be mapped to geospatial or non geospatial</p>
+<p>UNKNOWN_FORMAT: Output port for metadata record for all the unknown format.</p>
 </li>
 </ul>
 <p><strong>Parameters </strong></p>
@@ -154,6 +166,70 @@
 <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
 </li>
 </ul>
+</div>
+<div class="section" id="documentation-du-code-geospatial-data-validator-ng-py">
+<h2>Documentation du code GEOSPATIAL_DATA_VALIDATOR_NG.py<a class="headerlink" href="#documentation-du-code-geospatial-data-validator-ng-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor" title="GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor</span></code></a>()</p></td>
+<td><p>This class implement the design pattern: <em>Processing Composite Data</em></p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-GEOSPATIAL_DATA_VALIDATOR_NG"></span><dl class="py class">
+<dt class="sig sig-object py" id="GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GEOSPATIAL_DATA_VALIDATOR_NG.</span></span><span class="sig-name descname"><span class="pre">FeatureProcessor</span></span><a class="reference internal" href="_modules/GEOSPATIAL_DATA_VALIDATOR_NG.html#FeatureProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class implement the design pattern: <em>Processing Composite Data</em></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOSPATIAL_DATA_VALIDATOR_NG.html#FeatureProcessor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>This constructor method created a dictionary and a list to store the features.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOSPATIAL_DATA_VALIDATOR_NG.html#FeatureProcessor.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor.close" title="Permalink to this definition"></a></dt>
+<dd><p>Determine if the metadata feature is geospatial or non-geospatial.</p>
+<p>The following tasks are performed:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For each resources{}.format, it extracts from the csv file the
+the format, the fgp_publish and the spatial_type.  The spatial_type
+is added as attribute to the feature</p></li>
+<li><p>If the format cannot be match in the CSV; the ID and the format
+are outputtted through the port UNKNOWN_FORMAT</p></li>
+<li><p>To determine if a record is geospatial, the fgp_publish value
+matching the format must be equal to “oui” or the metadata record
+must have an attribute fgp_publish with the value to “oui”; if
+one of these conditions are not met the metadata record is consedered
+to be none geospatial</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOSPATIAL_DATA_VALIDATOR_NG.html#FeatureProcessor.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOSPATIAL_DATA_VALIDATOR_NG.FeatureProcessor.input" title="Permalink to this definition"></a></dt>
+<dd><p>Load the incoming features.</p>
+<p>The features from the CSV (_order=1) are stored in a dictionary according to the unique
+format name. The  metadata features (_order=2) or stored in a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 

@@ -1,6 +1,6 @@
 #
 # Ce fichier contient le ccode python appelé le Custom Transformer
-# LOOKUP_TABLE_READER_NG
+# SPATIAL_TYPE_MAPPER_NG
 
 
 import fme
