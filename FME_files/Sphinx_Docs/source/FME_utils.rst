@@ -1,10 +1,11 @@
-Documentation de la classe FME_utils
-====================================
+FME_utils
+=========
 
 FME_utils contient une liste de méthodes utilisées dans le développement outils python
 intégrés dans dans les PythonCaller de FME
 
 .. autosummary::
+   FME_utils.CsvGeoSpatialValidation
    FME_utils.FME_utils.create_session
    FME_utils.FME_utils.create_set_of_word
    FME_utils.FME_utils.extract_attribute_list
