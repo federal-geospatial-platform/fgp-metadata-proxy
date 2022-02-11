@@ -53,7 +53,7 @@ class FeatureProcessor(object):
    
         order = feature.getAttribute('_order')
         if order == 1:
-            # Load the information from the CSV into a dictionary
+            # Read the attributes from the CSV features into a dictionary
             format = feature.getAttribute(FORMAT)
             fgp_publish = feature.getAttribute(FGP_PUBLISH)
             spatial_type = feature.getAttribute(SPATIAL_TYPE)
