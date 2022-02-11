@@ -38,7 +38,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">CatalogueReader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DCAT_Reader.html">DCAT_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
@@ -139,6 +139,27 @@
 <span class="c1"># Define HTTP OK return code</span>
 <span class="n">HTTP_OK</span> <span class="o">=</span> <span class="mi">200</span>
 
+<div class="viewcode-block" id="CsvMetaDataValueMapper"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvMetaDataValueMapper">[docs]</a><span class="k">class</span> <span class="nc">CsvMetaDataValueMapper</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    original_value: str</span>
+<span class="sd">        Original value that can be found in the metadata record</span>
+<span class="sd">    value_english: str</span>
+<span class="sd">        English value that replace the original value</span>
+<span class="sd">    value_french: str</span>
+<span class="sd">        French value that replace the original value</span>
+<span class="sd">    code_valueL str</span>
+<span class="sd">        Code value for this value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">original_value</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value_english</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value_french</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">code_value</span><span class="p">:</span> <span class="nb">str</span></div>
+    
+  
 <div class="viewcode-block" id="CsvGeoSpatialValidation"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvGeoSpatialValidation">[docs]</a><span class="k">class</span> <span class="nc">CsvGeoSpatialValidation</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV GeoSpatialValidation.</span>
 <span class="sd">    </span>
@@ -157,8 +178,7 @@
     <span class="n">spatial_type</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="FME_utils"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils">[docs]</a><span class="k">class</span> <span class="nc">FME_utils</span><span class="p">:</span>
-
-
+    
 <div class="viewcode-block" id="FME_utils.extract_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.extract_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method extracts a subset of the attributes of a feature.</span>
@@ -542,7 +562,46 @@
 
             <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">out_attr_name</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">attr_value_cut</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">out_format</span><span class="p">))</span>
             
-        <span class="k">return</span></div></div>
+        <span class="k">return</span></div>
+        
+<div class="viewcode-block" id="FME_utils.test_attribute_value"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.test_attribute_value">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_name</span><span class="p">,</span> <span class="n">target_value</span><span class="p">,</span> <span class="n">check_case</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test if a feature has a specific atttribute and a specific attribute value.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature FMEFeature object</span>
+<span class="sd">            Feature object contaiing the attribute to test_attribute</span>
+<span class="sd">        att_name String</span>
+<span class="sd">            Attribute name to test</span>
+<span class="sd">        target_value</span>
+<span class="sd">            Value to test</span>
+<span class="sd">        check_case Bool</span>
+<span class="sd">            Flag for the string case. True: Check the string case; False: string </span>
+<span class="sd">            case is not important</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        Bool</span>
+<span class="sd">            True: The attribute is present and the value is good; </span>
+<span class="sd">            False: The attribute is not there or the value is different</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">att_value</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_name</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">check_case</span><span class="p">:</span>
+            <span class="c1"># Nothing to do</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Adjust the case</span>
+            <span class="n">target_value</span> <span class="o">=</span> <span class="n">target_value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">att_value</span> <span class="o">=</span> <span class="n">att_value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">att_value</span> <span class="o">==</span> <span class="n">target_value</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="kc">False</span>
+            
+        <span class="k">return</span> <span class="n">match</span>    </div></div>
         
 </pre></div>
 

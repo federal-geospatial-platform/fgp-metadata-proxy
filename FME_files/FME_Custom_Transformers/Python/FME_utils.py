@@ -458,8 +458,8 @@ class FME_utils:
         
         Parameters
         ----------
-        feature FMEFeature object
-            Feature object contaiing the attribute to test_attribute
+        feature FMEFeature
+            Feature object containing the attribute to test_attribute
         att_name String
             Attribute name to test
         target_value
