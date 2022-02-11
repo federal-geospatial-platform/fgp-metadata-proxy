@@ -27,6 +27,27 @@ STATUS_CODE_DESCRIPTION = "_status_code_description"
 # Define HTTP OK return code
 HTTP_OK = 200
 
+class CsvMetaDataValueMapper(NamedTuple):
+    """Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.
+    
+    Attributes:
+    
+    original_value: str
+        Original value that can be found in the metadata record
+    value_english: str
+        English value that replace the original value
+    value_french: str
+        French value that replace the original value
+    code_valueL str
+        Code value for this value
+    """
+    
+    original_value: str
+    value_english: str
+    value_french: str
+    code_value: str
+    
+  
 class CsvGeoSpatialValidation(NamedTuple):
     """Class containing one row from the CSV GeoSpatialValidation.
     
@@ -45,8 +66,7 @@ class CsvGeoSpatialValidation(NamedTuple):
     spatial_type: str
 
 class FME_utils:
-
-
+    
     @staticmethod
     def extract_attribute_list(feature, att_name):
         """This method extracts a subset of the attributes of a feature.
@@ -431,4 +451,43 @@ class FME_utils:
             feature.setAttribute(out_attr_name, datetime.fromtimestamp(attr_value_cut).strftime(out_format))
             
         return
+        
+    @staticmethod
+    def test_attribute_value(feature, att_name, target_value, check_case):
+        """Test if a feature has a specific atttribute and a specific attribute value.
+        
+        Parameters
+        ----------
+        feature FMEFeature
+            Feature object containing the attribute to test_attribute
+        att_name String
+            Attribute name to test
+        target_value
+            Value to test
+        check_case Bool
+            Flag for the string case. True: Check the string case; False: string 
+            case is not important
+            
+        Returns
+        Bool
+            True: The attribute is present and the value is good; 
+            False: The attribute is not there or the value is different
+        """
+        
+        att_value = FME_utils.feature_get_attribute(feature, att_name, True)
+        
+        if check_case:
+            # Nothing to do
+            pass
+        else:
+            # Adjust the case
+            target_value = target_value.lower()
+            att_value = att_value.lower()
+        
+        if att_value == target_value:
+            match = True
+        else:
+            match = False
+            
+        return match    
         
