@@ -139,6 +139,21 @@
 <span class="c1"># Define HTTP OK return code</span>
 <span class="n">HTTP_OK</span> <span class="o">=</span> <span class="mi">200</span>
 
+<div class="viewcode-block" id="CsvKeyValuePair"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvKeyValuePair">[docs]</a><span class="k">class</span> <span class="nc">CsvKeyValuePair</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class containing one row from a CSV defining a key-Value pair.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    key: str</span>
+<span class="sd">        Key name of a Key-Value pair</span>
+<span class="sd">    value: str</span>
+<span class="sd">        Value name of a Key-Value pair</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value</span><span class="p">:</span> <span class="nb">str</span></div>
+    
+    
 <div class="viewcode-block" id="CsvMetaDataValueMapper"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvMetaDataValueMapper">[docs]</a><span class="k">class</span> <span class="nc">CsvMetaDataValueMapper</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.</span>
 <span class="sd">    </span>
@@ -244,6 +259,62 @@
         <span class="n">atts</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">atts</span></div>
+        
+<div class="viewcode-block" id="FME_utils.max_index_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.max_index_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">max_index_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">list_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method returns the maximum index number of an attribute list.</span>
+<span class="sd">        </span>
+<span class="sd">        This method only works with a FME attribute list and returns the maximum index</span>
+<span class="sd">        for an attribute list even if there is hole in the list it will return the</span>
+<span class="sd">        maximum index number. So for the list name: att{} if the feature has the following</span>
+<span class="sd">        attribute: att{0}.name and att{3}.value. The method will return 3.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature: FME Feature</span>
+<span class="sd">            FME feature to process</span>
+<span class="sd">        list_name: str</span>
+<span class="sd">            The name of the list to search including the &quot;{}&quot; characters (ex.: &quot;att{}&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Int</span>
+<span class="sd">            Maximum index number in the list.  </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="c1">#        web_pdb.set_trace()</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">feature_atts</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAllAttributeNames</span><span class="p">()</span>  <span class="c1"># Extract all attribute names</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="n">regex_list</span> <span class="o">=</span> <span class="s2">&quot;\{\d+\}&quot;</span>
+        <span class="n">regex_index</span> <span class="o">=</span> <span class="s2">&quot;\d+&quot;</span>
+
+        <span class="n">att_name</span> <span class="o">=</span> <span class="n">list_name</span>
+        <span class="k">if</span> <span class="n">att_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># The attribute to search is a list</span>
+            <span class="n">att_name</span> <span class="o">=</span> <span class="s2">&quot;^&quot;</span> <span class="o">+</span> <span class="n">att_name</span>  <span class="c1"># Regular expression exact match</span>
+            <span class="n">regex_search</span> <span class="o">=</span> <span class="n">att_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regex_list</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">feature_att</span> <span class="ow">in</span> <span class="n">feature_atts</span><span class="p">:</span>
+                <span class="n">att_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regex_search</span> <span class="p">,</span> <span class="n">feature_att</span><span class="p">)</span>  <span class="c1"># Check if attribute name is present</span>
+                <span class="k">if</span> <span class="n">att_lst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">index_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_list</span><span class="p">,</span> <span class="n">att_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index with &quot;{}&quot;</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_lst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">index</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_index</span><span class="p">,</span> <span class="n">index_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index number</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>  <span class="c1">#Validate index is a number</span>
+                                <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">count</span><span class="p">:</span>
+                                    <span class="n">count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># The attribute to search is not a list</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Not valid list name: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_name</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">count</span></div>
 
 <div class="viewcode-block" id="FME_utils.repair_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.repair_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">repair_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">,</span> <span class="n">default_att_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -441,7 +512,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fme_self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;HTTP call: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">str_http</span><span class="p">),</span> 
                                          <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">str_http</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">str_http</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">status_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
             <span class="n">description</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">status_codes</span><span class="o">.</span><span class="n">_codes</span><span class="p">[</span><span class="n">status_code</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
             
@@ -461,7 +532,7 @@
             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">response</span></div>
-    
+            
 <div class="viewcode-block" id="FME_utils.create_session"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.create_session">[docs]</a>    <span class="nd">@staticmethod</span>    
     <span class="k">def</span> <span class="nf">create_session</span><span class="p">():</span>
         <span class="sd">&quot;&quot;&quot;This method creates an http session.</span>
@@ -570,8 +641,8 @@
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        feature FMEFeature object</span>
-<span class="sd">            Feature object contaiing the attribute to test_attribute</span>
+<span class="sd">        feature FMEFeature</span>
+<span class="sd">            Feature object containing the attribute to test_attribute</span>
 <span class="sd">        att_name String</span>
 <span class="sd">            Attribute name to test</span>
 <span class="sd">        target_value</span>
