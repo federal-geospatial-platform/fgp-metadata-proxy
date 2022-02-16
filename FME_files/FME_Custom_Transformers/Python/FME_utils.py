@@ -27,6 +27,21 @@ STATUS_CODE_DESCRIPTION = "_status_code_description"
 # Define HTTP OK return code
 HTTP_OK = 200
 
+class CsvKeyValuePair(NamedTuple):
+    """Class containing one row from a CSV defining a key-Value pair.
+    
+    Attributes:
+    
+    key: str
+        Key name of a Key-Value pair
+    value: str
+        Value name of a Key-Value pair
+    """
+    
+    key: str
+    value: str
+    
+    
 class CsvMetaDataValueMapper(NamedTuple):
     """Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.
     
@@ -132,6 +147,62 @@ class FME_utils:
         atts.sort()
 
         return atts
+        
+    @staticmethod
+    def max_index_attribute_list(feature, list_name):
+        """This method returns the maximum index number of an attribute list.
+        
+        This method only works with a FME attribute list and returns the maximum index
+        for an attribute list even if there is hole in the list it will return the
+        maximum index number. So for the list name: att{} if the feature has the following
+        attribute: att{0}.name and att{3}.value. The method will return 3.
+        
+        Parameters
+        ----------
+        feature: FME Feature
+            FME feature to process
+        list_name: str
+            The name of the list to search including the "{}" characters (ex.: "att{}")
+        
+        Returns
+        -------
+        Int
+            Maximum index number in the list.  
+        """
+
+#        web_pdb.set_trace()
+        count = -1
+        feature_atts = feature.getAllAttributeNames()  # Extract all attribute names
+        logger = fmeobjects.FMELogFile()
+        regex_list = "\{\d+\}"
+        regex_index = "\d+"
+
+        att_name = list_name
+        if att_name.find("{}") != -1:
+            # The attribute to search is a list
+            att_name = "^" + att_name  # Regular expression exact match
+            regex_search = att_name.replace("{}", regex_list)
+            for feature_att in feature_atts:
+                att_lst = re.match(regex_search , feature_att)  # Check if attribute name is present
+                if att_lst is not None:
+                    index_lst = re.findall(regex_list, att_lst[0])  # Extract the index with "{}"
+                    if len(index_lst) == 1:
+                        index = re.findall(regex_index, index_lst[0])  # Extract the index number
+                        if len(index) == 1:
+                            if index[0].isdigit():  #Validate index is a number
+                                if int(index[0]) > count:
+                                    count = int(index[0])
+                            else:
+                                logger.logMessageString("List is not valid: {}".format(feature_att), fmeobjects.FME_WARN)
+                        else:
+                            logger.logMessageString("List is not valid: {}".format(feature_att), fmeobjects.FME_WARN)
+                    else:
+                        logger.logMessageString("List is not valid: {}".format(feature_att), fmeobjects.FME_WARN)
+        else:
+            # The attribute to search is not a list
+            logger.logMessageString("Not valid list name: {}".format(att_name), fmeobjects.FME_WARN)
+
+        return count
 
     @staticmethod
     def repair_attribute_list(feature, att_list_name, default_att_name=None):
@@ -329,7 +400,7 @@ class FME_utils:
         try:
             fme_self.logger.logMessageString("HTTP call: {0}".format(str_http), 
                                          fmeobjects.FME_INFORM)
-            response = session.get(str_http, verify=False, timeout=10)
+            response = session.head(str_http, verify=False, timeout=10,  allow_redirects=True)
             status_code = response.status_code
             description = requests.status_codes._codes[status_code][0]
             
@@ -349,7 +420,7 @@ class FME_utils:
             sys.exit(0)
 
         return response
-    
+            
     @staticmethod    
     def create_session():
         """This method creates an http session.

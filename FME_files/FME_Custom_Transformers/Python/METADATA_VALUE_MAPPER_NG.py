@@ -1,6 +1,6 @@
 #
 # Ce fichier contient le ccode python appelé le Custom Transformer
-# GEOSPATIAL_DATA_VALIDATOR_NG
+# METADATA_VALUE_MAPPER_NG
 
 import fme
 import fmeobjects
@@ -74,7 +74,12 @@ class FeatureProcessor(object):
         
         The following tasks are performed:
         
-         - ...
+         - Extract boolean information on how to map values;
+         - Extract the value of the attribute or attribute list to map
+         - Map the values according to which value to map (Feanch value, 
+           English value, code value)
+         - Append the error to the mapping_errors{}.error attribute list
+         - Output the FME feature
            
         """         
         

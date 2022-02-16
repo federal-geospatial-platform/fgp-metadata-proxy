@@ -8,7 +8,11 @@ cd %Repertoire%
 
 set FLASK_APP=web_server
 REM Activate the virtual environment
-call .\venv\Scripts\activate
+
+C:\Users\dpilon\AppData\Local\Programs\Python\Python37\python.exe -m venv .venv
+call .\.venv\Scripts\activate
+pip install -r requirements.txt
+
 REM
 pip list
 REM 
