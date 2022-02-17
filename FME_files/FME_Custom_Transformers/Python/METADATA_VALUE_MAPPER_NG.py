@@ -90,7 +90,7 @@ class FeatureProcessor(object):
             # Extract attribute value to process
             att_2_map=feature.getAttribute('att_2_map')
             
-            # Extract the status of the value mapping published parameters (through attributes)
+            # Extract the status of the published parameters (passed through attributes)
             bool_english_refresh = FME_utils.test_attribute_value(feature, ENGLISH_REFRESH, YES, False)
             bool_french_refresh = FME_utils.test_attribute_value(feature, FRENCH_REFRESH, YES, False)
             bool_code_refresh = FME_utils.test_attribute_value(feature, CODE_REFRESH, YES, False)

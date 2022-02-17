@@ -42,6 +42,26 @@ class CsvKeyValuePair(NamedTuple):
     value: str
     
     
+class CsvMetaDataFormatMapper(NamedTuple):
+    """Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.
+    
+    Attributes:
+    
+    original_value: str
+        Original value that can be found in the metadata record
+    real_value: str
+        Name that replace the original value
+    resource_type_en: str
+        Name of the English resource
+    resource_type_fr: str
+        Name of the French resource
+        
+    """
+    original_value: str
+    real_value: str 
+    resource_type_en: str 
+    resource_type_fr: str
+
 class CsvMetaDataValueMapper(NamedTuple):
     """Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.
     
