@@ -43,3 +43,12 @@ def testView1():
                     mimetype="text/plain")
 
     return resp
+    
+    
+@app.route("/valid_name")
+def geoportal_weblink_adder():
+    resp = Response(response="OK",
+                    status=200,
+                    mimetype="text/plain")
+
+    return resp

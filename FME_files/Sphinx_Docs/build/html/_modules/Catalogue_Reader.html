@@ -273,19 +273,26 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        List of tuple (int,int)</span>
-<span class="sd">            For each tuple, the first value is the position to read; the second value, the number of record to read.</span>
+<span class="sd">            For each tuple, the first value is the position to read; the second value, </span>
+<span class="sd">            the number of record to read. If there is no record to read it returns an empty list []</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     
-        <span class="n">nbr_loops</span> <span class="o">=</span> <span class="n">nbr_records</span><span class="o">//</span><span class="n">MAX_RECORD_READ</span>
-        <span class="n">remaining</span> <span class="o">=</span> <span class="n">nbr_records</span><span class="o">%</span><span class="n">MAX_RECORD_READ</span>
+        <span class="k">if</span> <span class="n">nbr_records</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+           <span class="c1"># There is no records to read</span>
+           <span class="n">lst_start_max</span> <span class="o">=</span> <span class="p">[]</span>
         
-        <span class="n">lst_start_max</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="n">MAX_RECORD_READ</span><span class="p">,</span> <span class="n">MAX_RECORD_READ</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbr_loops</span><span class="p">)]</span>
-        
-        <span class="k">if</span> <span class="n">remaining</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-           <span class="n">lst_start_max</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nbr_loops</span><span class="o">*</span><span class="n">MAX_RECORD_READ</span><span class="p">,</span> <span class="n">remaining</span><span class="p">))</span>
-           
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst_start_max</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">lst_start_max</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># There is one or more record to read        </span>
+            <span class="n">nbr_loops</span> <span class="o">=</span> <span class="n">nbr_records</span><span class="o">//</span><span class="n">MAX_RECORD_READ</span>
+            <span class="n">remaining</span> <span class="o">=</span> <span class="n">nbr_records</span><span class="o">%</span><span class="n">MAX_RECORD_READ</span>
+            
+            <span class="n">lst_start_max</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="n">MAX_RECORD_READ</span><span class="p">,</span> <span class="n">MAX_RECORD_READ</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbr_loops</span><span class="p">)]</span>
+            
+            <span class="k">if</span> <span class="n">remaining</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+               <span class="n">lst_start_max</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nbr_loops</span><span class="o">*</span><span class="n">MAX_RECORD_READ</span><span class="p">,</span> <span class="n">remaining</span><span class="p">))</span>
+               
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst_start_max</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">lst_start_max</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span>
 
         <span class="k">return</span> <span class="n">lst_start_max</span></div>
             

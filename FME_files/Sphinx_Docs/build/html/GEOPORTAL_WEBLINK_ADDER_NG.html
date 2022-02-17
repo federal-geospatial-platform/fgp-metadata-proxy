@@ -56,6 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">GEOPORTAL_WEBLINK_ADDER_NG</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-geoportal-weblink-adder-ng-py">Documentation du code GEOPORTAL_WEBLINK_ADDER_NG.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
@@ -146,6 +147,85 @@
 <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
 </li>
 </ul>
+</div>
+<div class="section" id="documentation-du-code-geoportal-weblink-adder-ng-py">
+<h2>Documentation du code GEOPORTAL_WEBLINK_ADDER_NG.py<a class="headerlink" href="#documentation-du-code-geoportal-weblink-adder-ng-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor" title="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor</span></code></a>()</p></td>
+<td><p>This class implement the design pattern: <em>Processing Composite Data</em></p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-GEOPORTAL_WEBLINK_ADDER_NG"></span><dl class="py class">
+<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GEOPORTAL_WEBLINK_ADDER_NG.</span></span><span class="sig-name descname"><span class="pre">FeatureProcessor</span></span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class implement the design pattern: <em>Processing Composite Data</em></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>This constructor method created a dictionary and a list to store the features.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor._add_resources">
+<span class="sig-name descname"><span class="pre">_add_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor._add_resources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor._add_resources" title="Permalink to this definition"></a></dt>
+<dd><p>Add the key value pair of the CSV into an extra resources{} list.</p>
+<p>Key-Value pair are added as is except if the key is URL than the web link
+is added as the value of the URL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<em>FmeFeature</em>) – Feature object to process</p></li>
+<li><p><strong>test_url</strong> (<em>String</em>) – The URL address to add</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.close" title="Permalink to this definition"></a></dt>
+<dd><p>Map the requested attribute.</p>
+<p>The following tasks are performed:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Extract the url to test (attribute test_url)</p></li>
+<li><p>Extract the flag for the URL validation</p></li>
+<li><p>Build the http to validate</p></li>
+<li><p>Add an extra resource at the end of the ressources{} list with the
+values from the CSV file and change the value of the URL with the
+url used to test the link</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.input" title="Permalink to this definition"></a></dt>
+<dd><p>Load the incoming features.</p>
+<p>The features from the CSV (_order=1) are stored in a dictionary according to the unique
+format name. The  metadata features (_order=2) or stored in a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
