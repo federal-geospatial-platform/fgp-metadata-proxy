@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN GEOPORTAL_WEBLINK_ADDER_NG,1,"FGP Tools",17d7396f-e82a-4760-abc6-2e4835092c68,"Linked Always",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# TRANSFORMER_BEGIN GEOPORTAL_WEBLINK_ADDER_NG,1,"FGP Tools",8a0d30d2-6de8-4bfb-8fad-e87b57168409,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
 # <p><strong>Description </strong></p>
 # <p>This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding a new ressources{} attribute list containing the web link and the other information contained in the CSV file.  Unvalid web links are log in the FME logger.</p>
 # <p>Note: The web link to test is build from the <em>default key</em> <strong>url</strong> contained in the CSV and the attribute value from the <em>WEBLINK_WILDCARD</em> parameter.</p>
@@ -39,8 +39,8 @@
 #!   DOC_TOP_LEFT="-4439.29 -3109.41"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="17d7396f-e82a-4760-abc6-2e4835092c68"
-#!   FME_DOCUMENT_PRIORGUID="3d25299b-ce5c-4791-b289-c3d0d9d7d9b6"
+#!   FME_DOCUMENT_GUID="8a0d30d2-6de8-4bfb-8fad-e87b57168409"
+#!   FME_DOCUMENT_PRIORGUID="3d25299b-ce5c-4791-b289-c3d0d9d7d9b6,17d7396f-e82a-4760-abc6-2e4835092c68"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -48,11 +48,11 @@
 #!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
 #!   FME_SERVER_SERVICES=""
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
-#!   FMX_INSERT_MODE="Linked Always"
+#!   FMX_INSERT_MODE="Linked by Default"
 #!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added,15&lt;solidus&gt;02&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Python&lt;space&gt;code&lt;space&gt;refactoring"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-02-17T11:46:08"
+#!   LAST_SAVE_DATE="2022-02-17T13:03:16"
 #!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding a new ressources{} attribute list containing the web link and the other information contained in the CSV file.  Unvalid web links are log in the FME logger.&#10;&#10;Note: The web link to test is build from the _default key_ **url** contained in the CSV and the attribute value from the _WEBLINK_WILDCARD_ parameter.&#10;&#10;&#10;**Input Ports **&#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;&#10;**Output Ports **&#10;&#10;- OUTPUT: The process output metdata records with the added web link resource.&#10;&#10;&#10;**Parameters** &#10;&#10;- WEBLINK_WILDCARD: Name of the attribute containing the information to add to the web link in order to retreive the metadata record from the P-T portal&#10;&#10;- URL_VALIDATION: Flag use to validate if the web link is well formed, online and responding. Can take 2 values: YES: validate the web link; NO: Do not validate th web link. Note: During testing, it is interesting to use NO as the validation is very slow;&#10;&#10;- FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10;- IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10;&#10;- P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -64,7 +64,7 @@
 #!   TITLE="GEOPORTAL_WEBLINK_ADDER_NG"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="-4722.27 -312.503"
+#!   VIEW_POSITION="-2002.33 248.845"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -303,7 +303,7 @@
 #!   BOUNDING_RECT="-3632.8488284882842 -731.0340960552461 8638.4792419352743 2378.3719980056944"
 #!   STICKY="true"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
-#!   CONTENTS="31 14 25 43 47 8 51 28 27 37 21 50 13 36 10 9 23 44 32 38 33 34 49 17 16 42 4 46 45 6 22 40 19 29 35 15 5 39 12 24 11 7 41 20 26 "
+#!   CONTENTS="34 25 9 21 19 37 8 36 44 13 27 7 23 17 33 50 43 10 31 49 11 35 20 22 26 5 51 14 45 38 29 39 42 32 12 47 24 28 40 4 46 15 6 41 16 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -317,7 +317,7 @@
 #!   BOUNDING_RECT="300 -960.7133928482142 2821.0418532756748 2061.1918262039762"
 #!   STICKY="true"
 #!   COLOUR="0.38039215686274508,0.25490196078431371,0.72156862745098038,0.39215686274509803"
-#!   CONTENTS="11 41 51 32 4 14 33 20 34 7 15 21 40 38 5 28 35 27 31 13 39 37 "
+#!   CONTENTS="34 20 4 51 7 38 31 35 41 11 40 28 27 32 13 15 14 37 39 21 33 5 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -331,7 +331,7 @@
 #!   BOUNDING_RECT="-3505.1329799012278 -1294.1958705301338 2079.2549668353827 731.03409605524575"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="6 8 42 19 "
+#!   CONTENTS="42 8 19 6 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -1032,7 +1032,7 @@ DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_P-T_ABBR
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT1645116368 Input Splitter"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT1645120996 Input Splitter"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
 MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
@@ -1073,13 +1073,13 @@ FACTORY_DEF * TeeFactory FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAM
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TestFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_Unknown<space>Error"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"@EvaluateExpression(FDIV,STRING_ENCODED,Translation<space>Terminated.<space>Unknown<space>error.<space><space>Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Terminator)")       @SupplyAttributes(_wb_termination_xformer,"$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,Translation<space>Terminated.<space>Unknown<space>error.<space><space>Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Terminator)")
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_Server<space>Error<space>300-399"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME<closeparen>_Logger_5xx:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code:<space><at>Value<openparen>_http_status_code<closeparen>0:<space>Bad<space>request<space><openparen>server<space>side<closeparen>.<space><space>Verify<space>URL<space>syntax.<space><space>Geoportal<space>Weblink<space>not<space>created.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx)","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx_5e9ca257_53eb_454b_ad0a_ff356e4c363b1)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_Server<space>Error<space>300-399"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME<closeparen>_Logger_5xx:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code:<space><at>Value<openparen>_http_status_code<closeparen>0:<space>Bad<space>request<space><openparen>server<space>side<closeparen>.<space><space>Verify<space>URL<space>syntax.<space><space>Geoportal<space>Weblink<space>not<space>created.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx)","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx_670b5e32_8d06_4c23_9b9f_c40c4a89f29f0)
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_Client<space>Error<space>300-399"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME<closeparen>_Logger_4xx:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code:<space><at>Value<openparen>_http_status_code<closeparen>0:<space>Bad<space>request<space><openparen>client<space>side<closeparen>.<space><space>Verify<space>URL<space>syntax.<space><space>Geoportal<space>Weblink<space>not<space>created.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx)","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx_e64494e9_06fe_4b1b_8f76_2ac5976b56841)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_Client<space>Error<space>300-399"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME<closeparen>_Logger_4xx:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code:<space><at>Value<openparen>_http_status_code<closeparen>0:<space>Bad<space>request<space><openparen>client<space>side<closeparen>.<space><space>Verify<space>URL<space>syntax.<space><space>Geoportal<space>Weblink<space>not<space>created.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx)","20","20","",WARN,LOG_RECORD,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx_7d4acff6_21c6_4f4a_bac1_8fe3ecc211160)
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_Redirection<space>300-399"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME<closeparen>_Logger_3xx:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>:<space><space>Should<space>not<space>happen.<space><space>Geoportal<space>Weblink<space>created.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx)","<Unused>","20","",INFO,NONE,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx_3952a43f_9e4f_4faa_aac0_f13c5fe80dcc1)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_Redirection<space>300-399"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME<closeparen>_Logger_3xx:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>:<space><space>Should<space>not<space>happen.<space><space>Geoportal<space>Weblink<space>created.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx)","<Unused>","20","",INFO,NONE,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx_8b31bc3c_9294_4a51_951b_eed48259b93b0)
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_OK<space>201-299"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME<closeparen>_Logger_2xx:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>:<space>Should<space>not<space>happen.<space><space>Verify<space>URL.<space><space>Geoportal<space>Weblink<space>created.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx)","<Unused>","20","",INFO,NONE,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx_aa102513_17f6_4c91_b210_8a0337eabdb81)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx_Logger    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_OK<space>201-299"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME<closeparen>_Logger_2xx:<space>@EvaluateExpression(FDIV,STRING_ENCODED,Status<space>code<space><at>Value<openparen>_http_status_code<closeparen>:<space>Should<space>not<space>happen.<space><space>Verify<space>URL.<space><space>Geoportal<space>Weblink<space>created.,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx)","<Unused>","20","",INFO,NONE,$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx_239f5060_66f0_4d0c_874a_63df75b996cf0)
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Junction    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_4xx_LOGGED"    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_5xx_LOGGED"    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_TestFilter_OK<space>200"    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_3xx_LOGGED"    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Logger_2xx_LOGGED"    OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_Junction_Output"
 # -------------------------------------------------------------------------
@@ -1092,5 +1092,5 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(GEOPORTAL_WEBLINK_ADD
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_OUTPUT1645116368 Output Collector"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_OUTPUT1645120996 Output Collector"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME))}]
