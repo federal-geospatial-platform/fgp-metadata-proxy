@@ -12,9 +12,10 @@ Documentation du Custom Transformer FME
 Documentation du code METADATA_VALUE_MAPPER_NG.py
 #################################################
 
+   
 .. autosummary::
    METADATA_VALUE_MAPPER_NG.FeatureProcessor
- 
+   
 .. automodule:: METADATA_VALUE_MAPPER_NG
    :members:
    :private-members:

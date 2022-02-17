@@ -7,6 +7,7 @@ intégrés dans dans les PythonCaller de FME
 .. autosummary::
    FME_utils.CsvKeyValuePair
    FME_utils.CsvMetaDataValueMapper
+   FME_utils.CsvMetaDataValueMapper
    FME_utils.CsvGeoSpatialValidation
    FME_utils.FME_utils.create_session
    FME_utils.FME_utils.create_set_of_word

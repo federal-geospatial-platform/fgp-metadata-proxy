@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>METADATA_VALUE_MAPPER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>METADATA_FORMAT_MAPPER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -100,7 +100,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">Module code</a> &raquo;</li>
-      <li>METADATA_VALUE_MAPPER_NG</li>
+      <li>METADATA_FORMAT_MAPPER_NG</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -109,30 +109,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for METADATA_VALUE_MAPPER_NG</h1><div class="highlight"><pre>
+  <h1>Source code for METADATA_FORMAT_MAPPER_NG</h1><div class="highlight"><pre>
 <span></span><span class="c1">#</span>
 <span class="c1"># Ce fichier contient le ccode python appelé le Custom Transformer</span>
-<span class="c1"># METADATA_VALUE_MAPPER_NG</span>
+<span class="c1"># METADATA_FORMAT_MAPPER_NG</span>
 
 <span class="kn">import</span> <span class="nn">fme</span>
 <span class="kn">import</span> <span class="nn">fmeobjects</span>
-<span class="kn">from</span> <span class="nn">Python.FME_utils</span> <span class="kn">import</span> <span class="n">CsvMetaDataValueMapper</span>
+<span class="kn">from</span> <span class="nn">Python.FME_utils</span> <span class="kn">import</span> <span class="n">CsvMetaDataFormatMapper</span>
 <span class="kn">from</span> <span class="nn">Python.FME_utils</span> <span class="kn">import</span> <span class="n">FME_utils</span>
 
 <span class="c1"># Constants</span>
 
 <span class="c1"># FME attribute name</span>
-<span class="n">CODE_VALUE</span> <span class="o">=</span> <span class="s2">&quot;code_value&quot;</span>
+<span class="c1">##CODE_VALUE = &quot;code_value&quot;</span>
 <span class="n">ORDER</span> <span class="o">=</span> <span class="s2">&quot;_order&quot;</span>
 <span class="n">ORIGINAL_VALUE</span> <span class="o">=</span> <span class="s2">&quot;original_value&quot;</span>
-<span class="n">REAL_VALUE_ENGLISH</span> <span class="o">=</span> <span class="s2">&quot;real_value_english&quot;</span>
-<span class="n">REAL_VALUE_FRENCH</span> <span class="o">=</span> <span class="s2">&quot;real_value_french&quot;</span>
+<span class="n">REAL_VALUE</span> <span class="o">=</span> <span class="s2">&quot;real_value&quot;</span>
+<span class="n">REAL_VALUE_ENGLISH</span> <span class="o">=</span> <span class="s2">&quot;resource_type_en&quot;</span>
+<span class="n">REAL_VALUE_FRENCH</span> <span class="o">=</span> <span class="s2">&quot;resource_type_fr&quot;</span>
+<span class="n">RESOURCE_TYPE_EN</span> <span class="o">=</span> <span class="s2">&quot;resource_type_en&quot;</span>
+<span class="n">RESOURCE_TYPE_FR</span> <span class="o">=</span> <span class="s2">&quot;resource_type_fr&quot;</span>
 
 <span class="c1"># FME published parameter as attributes</span>
-<span class="n">CODE_REFRESH</span> <span class="o">=</span> <span class="s2">&quot;code_refresh&quot;</span>
-<span class="n">ENGLISH_REFRESH</span> <span class="o">=</span> <span class="s2">&quot;english_refresh&quot;</span>
 <span class="n">ERROR_NOT_MAPPED</span> <span class="o">=</span> <span class="s2">&quot;error_not_mapped&quot;</span>
-<span class="n">FRENCH_REFRESH</span> <span class="o">=</span> <span class="s2">&quot;french_refresh&quot;</span>
+<span class="n">REAL_VALUE_REFRESH</span> <span class="o">=</span> <span class="s2">&quot;real_value_refresh&quot;</span>
+<span class="n">RES_TYPE_EN_REFRESH</span> <span class="o">=</span> <span class="s2">&quot;res_type_en_refresh&quot;</span>
+<span class="n">RES_TYPE_FR_REFRESH</span> <span class="o">=</span> <span class="s2">&quot;res_type_fr_refresh&quot;</span>
 
 <span class="c1"># FME attribute value</span>
 <span class="n">YES</span> <span class="o">=</span> <span class="s2">&quot;yes&quot;</span>
@@ -143,16 +146,16 @@
     <span class="c1"># No problem if the package is not avalaible</span>
     <span class="k">pass</span>
 
-<div class="viewcode-block" id="FeatureProcessor"><a class="viewcode-back" href="../METADATA_VALUE_MAPPER_NG.html#METADATA_VALUE_MAPPER_NG.FeatureProcessor">[docs]</a><span class="k">class</span> <span class="nc">FeatureProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureProcessor"><a class="viewcode-back" href="../METADATA_FORMAT_MAPPER_NG.html#METADATA_FORMAT_MAPPER_NG.FeatureProcessor">[docs]</a><span class="k">class</span> <span class="nc">FeatureProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This class implement the design pattern: *Processing Composite Data*&quot;&quot;&quot;</span>
     
-<div class="viewcode-block" id="FeatureProcessor.__init__"><a class="viewcode-back" href="../METADATA_VALUE_MAPPER_NG.html#METADATA_VALUE_MAPPER_NG.FeatureProcessor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureProcessor.__init__"><a class="viewcode-back" href="../METADATA_FORMAT_MAPPER_NG.html#METADATA_FORMAT_MAPPER_NG.FeatureProcessor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This constructor method created a dictionary and a list to store the features.&quot;&quot;&quot;</span>
        
         <span class="bp">self</span><span class="o">.</span><span class="n">csv_features</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Create dictionary to load the CSV features</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">meta_features</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Create list to load the metadata features</span></div>
         
-<div class="viewcode-block" id="FeatureProcessor.input"><a class="viewcode-back" href="../METADATA_VALUE_MAPPER_NG.html#METADATA_VALUE_MAPPER_NG.FeatureProcessor.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureProcessor.input"><a class="viewcode-back" href="../METADATA_FORMAT_MAPPER_NG.html#METADATA_FORMAT_MAPPER_NG.FeatureProcessor.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Load the incoming features.</span>
 <span class="sd">        </span>
 <span class="sd">        The features from the CSV (_order=1) are stored in a dictionary according to the unique </span>
@@ -172,16 +175,17 @@
         <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="c1"># Read the attributes from the CSV features into a dictionary</span>
             <span class="n">original_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">ORIGINAL_VALUE</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-            <span class="n">value_english</span><span class="o">=</span><span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">REAL_VALUE_ENGLISH</span><span class="p">)</span>
-            <span class="n">value_french</span><span class="o">=</span><span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">REAL_VALUE_FRENCH</span><span class="p">)</span>
-            <span class="n">code_value</span><span class="o">=</span><span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">CODE_VALUE</span><span class="p">)</span>
-            <span class="n">csv_row</span> <span class="o">=</span> <span class="n">CsvMetaDataValueMapper</span><span class="p">(</span><span class="n">original_value</span><span class="p">,</span> <span class="n">value_english</span><span class="p">,</span> <span class="n">value_french</span><span class="p">,</span> <span class="n">code_value</span><span class="p">)</span>
+            <span class="n">real_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">REAL_VALUE</span><span class="p">)</span>
+            <span class="n">resource_type_en</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">RESOURCE_TYPE_EN</span><span class="p">)</span>
+            <span class="n">resource_type_fr</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">RESOURCE_TYPE_FR</span><span class="p">)</span>
+            <span class="n">csv_row</span> <span class="o">=</span> <span class="n">CsvMetaDataFormatMapper</span><span class="p">(</span><span class="n">original_value</span><span class="p">,</span> <span class="n">real_value</span><span class="p">,</span> <span class="n">resource_type_en</span><span class="p">,</span> 
+                                              <span class="n">resource_type_fr</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">csv_features</span><span class="p">[</span><span class="n">original_value</span><span class="p">]</span> <span class="o">=</span> <span class="n">csv_row</span>  <span class="c1"># Insert into the CSV dictionnary        </span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Load the metadata features</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">meta_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></div>
                     
-<div class="viewcode-block" id="FeatureProcessor.close"><a class="viewcode-back" href="../METADATA_VALUE_MAPPER_NG.html#METADATA_VALUE_MAPPER_NG.FeatureProcessor.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureProcessor.close"><a class="viewcode-back" href="../METADATA_FORMAT_MAPPER_NG.html#METADATA_FORMAT_MAPPER_NG.FeatureProcessor.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Map the requested attribute.</span>
 <span class="sd">        </span>
 <span class="sd">        The following tasks are performed:</span>
@@ -203,9 +207,9 @@
             <span class="n">att_2_map</span><span class="o">=</span><span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;att_2_map&#39;</span><span class="p">)</span>
             
             <span class="c1"># Extract the status of the published parameters (passed through attributes)</span>
-            <span class="n">bool_english_refresh</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">ENGLISH_REFRESH</span><span class="p">,</span> <span class="n">YES</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-            <span class="n">bool_french_refresh</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">FRENCH_REFRESH</span><span class="p">,</span> <span class="n">YES</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-            <span class="n">bool_code_refresh</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">CODE_REFRESH</span><span class="p">,</span> <span class="n">YES</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">bool_real_value_refresh</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">REAL_VALUE_REFRESH</span><span class="p">,</span> <span class="n">YES</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">bool_res_type_en_refresh</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">RES_TYPE_EN_REFRESH</span><span class="p">,</span> <span class="n">YES</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">bool_res_type_fr_refresh</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">RES_TYPE_FR_REFRESH</span><span class="p">,</span> <span class="n">YES</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="n">bool_error_not_mapped</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">ERROR_NOT_MAPPED</span><span class="p">,</span> <span class="n">YES</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
          
             <span class="c1"># Extract the attributes name to process.  Can be a list or a single attribute</span>
@@ -222,12 +226,12 @@
                     <span class="k">try</span><span class="p">:</span>
                         <span class="n">csv_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_features</span><span class="p">[</span><span class="n">att_value</span><span class="p">]</span>
                         <span class="c1"># Map the value according to the requirements</span>
-                        <span class="k">if</span> <span class="n">bool_english_refresh</span><span class="p">:</span>
-                            <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">att_name</span><span class="p">,</span> <span class="n">csv_row</span><span class="o">.</span><span class="n">value_english</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="n">bool_french_refresh</span><span class="p">:</span>
-                            <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">att_name</span><span class="o">+</span><span class="s2">&quot;_fr&quot;</span><span class="p">,</span> <span class="n">csv_row</span><span class="o">.</span><span class="n">value_french</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="n">bool_code_refresh</span><span class="p">:</span>
-                            <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">att_name</span><span class="o">+</span><span class="s2">&quot;_code&quot;</span><span class="p">,</span> <span class="n">csv_row</span><span class="o">.</span><span class="n">code_value</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">bool_real_value_refresh</span><span class="p">:</span>
+                            <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">att_name</span><span class="p">,</span> <span class="n">csv_row</span><span class="o">.</span><span class="n">real_value</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">bool_res_type_en_refresh</span><span class="p">:</span>
+                            <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">att_name</span><span class="o">+</span><span class="s1">&#39;_resourceType_en&#39;</span><span class="p">,</span> <span class="n">csv_row</span><span class="o">.</span><span class="n">resource_type_en</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">bool_res_type_fr_refresh</span><span class="p">:</span>
+                            <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">att_name</span><span class="o">+</span><span class="s1">&#39;_resourceType_fr&#39;</span><span class="p">,</span> <span class="n">csv_row</span><span class="o">.</span><span class="n">resource_type_fr</span><span class="p">)</span>
                     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                         <span class="c1"># Value not found in the dictionary. Add the error in the list</span>
                         <span class="n">str_error</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Unable to map value: </span><span class="si">{0}</span><span class="s2"> for attribute: </span><span class="si">{1}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_value</span><span class="p">,</span><span class="n">att_name</span><span class="p">))</span>
@@ -259,8 +263,32 @@
                 
         <span class="k">return</span></div></div>
                 
+<div class="viewcode-block" id="reset_format_no_value"><a class="viewcode-back" href="../METADATA_FORMAT_MAPPER_NG.html#METADATA_FORMAT_MAPPER_NG.reset_format_no_value">[docs]</a><span class="k">def</span> <span class="nf">reset_format_no_value</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reset the resources{}.format list.</span>
+
+<span class="sd">    If the the resources{}.format is equal to &quot;no_data&quot; set the value to &quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    feature: FMEObject</span>
+<span class="sd">        Feature object to process</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Extract all the resources{}.format</span>
+    <span class="n">ind_resources_formats</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s1">&#39;resources</span><span class="si">{}</span><span class="s1">.format&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Loop over all the resources{}.format</span>
+    <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">resources_format</span> <span class="ow">in</span> <span class="n">ind_resources_formats</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">resources_format</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;no_value&quot;</span><span class="p">:</span>
+            <span class="c1"># Reset the format value</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">resources_format</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
             
-            
+    <span class="k">return</span></div>
 </pre></div>
 
            </div>
