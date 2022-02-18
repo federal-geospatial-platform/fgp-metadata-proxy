@@ -129,12 +129,9 @@ class FeatureProcessor(object):
             if bool_error_not_mapped:
                 # Mapping errors are registered in FME attribute
                 if self.mapping_errors:
-                    index_mapping_error = FME_utils.extract_attribute_list(feature, "mapping_errors{}.error")
-                    if len(index_mapping_error) >= 1:
-                        # Extract the value of the last index which can be different from the lenght of the list index_att_error
-                        err_count = index_mapping_error[-1][0] + 1
-                    else:
-                        err_count = 0
+                    # Extract the number of existing error
+                    err_count = FME_utils.max_index_attribute_list(feature, "mapping_errors{}.error")
+                    err_count += 1
                     for i, mapping_error in enumerate(self.mapping_errors):
                         # Append the error to the existing list of error
                         feature.setAttribute("mapping_errors{%d}.error"%(i+err_count), mapping_error)

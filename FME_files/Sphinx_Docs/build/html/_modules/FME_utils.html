@@ -154,6 +154,26 @@
     <span class="n">value</span><span class="p">:</span> <span class="nb">str</span></div>
     
     
+<div class="viewcode-block" id="CsvMetaDataFormatMapper"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvMetaDataFormatMapper">[docs]</a><span class="k">class</span> <span class="nc">CsvMetaDataFormatMapper</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    original_value: str</span>
+<span class="sd">        Original value that can be found in the metadata record</span>
+<span class="sd">    real_value: str</span>
+<span class="sd">        Name that replace the original value</span>
+<span class="sd">    resource_type_en: str</span>
+<span class="sd">        Name of the English resource</span>
+<span class="sd">    resource_type_fr: str</span>
+<span class="sd">        Name of the French resource</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">original_value</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">real_value</span><span class="p">:</span> <span class="nb">str</span> 
+    <span class="n">resource_type_en</span><span class="p">:</span> <span class="nb">str</span> 
+    <span class="n">resource_type_fr</span><span class="p">:</span> <span class="nb">str</span></div>
+
 <div class="viewcode-block" id="CsvMetaDataValueMapper"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvMetaDataValueMapper">[docs]</a><span class="k">class</span> <span class="nc">CsvMetaDataValueMapper</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.</span>
 <span class="sd">    </span>
@@ -267,7 +287,8 @@
 <span class="sd">        This method only works with a FME attribute list and returns the maximum index</span>
 <span class="sd">        for an attribute list even if there is hole in the list it will return the</span>
 <span class="sd">        maximum index number. So for the list name: att{} if the feature has the following</span>
-<span class="sd">        attribute: att{0}.name and att{3}.value. The method will return 3.</span>
+<span class="sd">        attribute: att{0}.name and att{3}.value. The method will return 3. If there is no</span>
+<span class="sd">        list, the returned value is -1.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>

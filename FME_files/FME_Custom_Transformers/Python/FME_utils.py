@@ -175,7 +175,8 @@ class FME_utils:
         This method only works with a FME attribute list and returns the maximum index
         for an attribute list even if there is hole in the list it will return the
         maximum index number. So for the list name: att{} if the feature has the following
-        attribute: att{0}.name and att{3}.value. The method will return 3.
+        attribute: att{0}.name and att{3}.value. The method will return 3. If there is no
+        list, the returned value is -1.
         
         Parameters
         ----------

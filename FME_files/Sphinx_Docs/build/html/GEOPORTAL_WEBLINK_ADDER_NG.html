@@ -120,6 +120,35 @@
 <div class="section" id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
 <p><strong>Description </strong></p>
+<p>This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding a new ressources{} attribute list containing the web link and the other information contained in the CSV file.  Unvalid web links are log in the FME logger.</p>
+<p>Note: The web link to test is build from the <em>default key</em> <strong>url</strong> contained in the CSV and the attribute value from the <em>WEBLINK_WILDCARD</em> parameter.</p>
+<p><strong>Input Ports </strong></p>
+<ul>
+<li>DATA_INPUT: The input metadata records to process.</li>
+</ul>
+<p><strong>Output Ports </strong></p>
+<ul>
+<li>OUTPUT: The process output metdata records with the added web link resource.</li>
+</ul>
+<p><strong>Parameters</strong> </p>
+<ul>
+<li>
+<p>WEBLINK_WILDCARD: Name of the attribute containing the information to add to the web link in order to retreive the metadata record from the P-T portal</p>
+</li>
+<li>
+<p>URL_VALIDATION: Flag use to validate if the web link is well formed, online and responding. Can take 2 values: YES: validate the web link; NO: Do not validate th web link. Note: During testing, it is interesting to use NO as the validation is very slow;</p>
+</li>
+<li>
+<p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+</li>
+<li>
+<p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+</li>
+<li>
+<p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+</li>
+</ul>
+<p><strong>Description </strong></p>
 <p>This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding this web link at the end of the resources{} list of the  metadata record.  Unvalid web links are log in the FME logger.</p>
 <p><strong>Input Ports </strong></p>
 <ul>

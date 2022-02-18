@@ -69,6 +69,7 @@
 <li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">METADATA_FORMAT_MAPPER_NG</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-python-metadata-format-mapper-ng-py">Documentation du code Python METADATA_FORMAT_MAPPER_NG.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
@@ -119,7 +120,8 @@
 <div class="section" id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
 <p><strong>Description</strong> </p>
-<p>This custom transformer updates (nap) data format values to valid data format values and associate the French and English 'Resource Type' attribute to each data format type. It accesses a lookup table to fetch the correct values.</p>
+<p>This custom transformer updates (map) data format values to valid data format values and associate the French and English 'Resource Type' attribute to each data format type. It accesses a lookup table to fetch the correct values.</p>
+<p>In order to map the data formats of the feature resources{} attribute list, this custom transformer uses a three steps process. The first step maps the data format according to the values contained in the CSV file.  The second step identify the features that were not correctly map and tries to guess the data format according to the url content and/or structure. The third step maps the data format according to the values contained in the CSV file for the features not correctly map in the second pass.</p>
 <p><strong>Input Ports</strong> </p>
 <p>DATA_INPUT: The metadata record to process</p>
 <p><strong>Output Ports </strong></p>
@@ -151,6 +153,84 @@
 <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
 </li>
 </ul>
+</div>
+<div class="section" id="documentation-du-code-python-metadata-format-mapper-ng-py">
+<h2>Documentation du code Python METADATA_FORMAT_MAPPER_NG.py<a class="headerlink" href="#documentation-du-code-python-metadata-format-mapper-ng-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#METADATA_FORMAT_MAPPER_NG.FeatureProcessor" title="METADATA_FORMAT_MAPPER_NG.FeatureProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">METADATA_FORMAT_MAPPER_NG.FeatureProcessor</span></code></a>()</p></td>
+<td><p>This class implement the design pattern: <em>Processing Composite Data</em></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#METADATA_FORMAT_MAPPER_NG.reset_format_no_value" title="METADATA_FORMAT_MAPPER_NG.reset_format_no_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">METADATA_FORMAT_MAPPER_NG.reset_format_no_value</span></code></a>(feature)</p></td>
+<td><p>Reset the resources{}.format list.</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-METADATA_FORMAT_MAPPER_NG"></span><dl class="py class">
+<dt class="sig sig-object py" id="METADATA_FORMAT_MAPPER_NG.FeatureProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">METADATA_FORMAT_MAPPER_NG.</span></span><span class="sig-name descname"><span class="pre">FeatureProcessor</span></span><a class="reference internal" href="_modules/METADATA_FORMAT_MAPPER_NG.html#FeatureProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#METADATA_FORMAT_MAPPER_NG.FeatureProcessor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class implement the design pattern: <em>Processing Composite Data</em></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="METADATA_FORMAT_MAPPER_NG.FeatureProcessor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/METADATA_FORMAT_MAPPER_NG.html#FeatureProcessor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#METADATA_FORMAT_MAPPER_NG.FeatureProcessor.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>This constructor method created a dictionary and a list to store the features.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="METADATA_FORMAT_MAPPER_NG.FeatureProcessor.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/METADATA_FORMAT_MAPPER_NG.html#FeatureProcessor.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#METADATA_FORMAT_MAPPER_NG.FeatureProcessor.close" title="Permalink to this definition"></a></dt>
+<dd><p>Map the requested attribute.</p>
+<p>The following tasks are performed:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Extract boolean information on how to map values;</p></li>
+<li><p>Extract the value of the attribute or attribute list to map</p></li>
+<li><p>Map the values according to which value to map (Feanch value,
+English value, code value)</p></li>
+<li><p>Append the error to the mapping_errors{}.error attribute list</p></li>
+<li><p>Output the FME feature</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="METADATA_FORMAT_MAPPER_NG.FeatureProcessor.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/METADATA_FORMAT_MAPPER_NG.html#FeatureProcessor.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#METADATA_FORMAT_MAPPER_NG.FeatureProcessor.input" title="Permalink to this definition"></a></dt>
+<dd><p>Load the incoming features.</p>
+<p>The features from the CSV (_order=1) are stored in a dictionary according to the unique
+format name. The  metadata features (_order=2) or stored in a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="METADATA_FORMAT_MAPPER_NG.reset_format_no_value">
+<span class="sig-prename descclassname"><span class="pre">METADATA_FORMAT_MAPPER_NG.</span></span><span class="sig-name descname"><span class="pre">reset_format_no_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/METADATA_FORMAT_MAPPER_NG.html#reset_format_no_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#METADATA_FORMAT_MAPPER_NG.reset_format_no_value" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the resources{}.format list.</p>
+<p>If the the resources{}.format is equal to “no_data” set the value to “”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FMEObject</em>) – Feature object to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 
