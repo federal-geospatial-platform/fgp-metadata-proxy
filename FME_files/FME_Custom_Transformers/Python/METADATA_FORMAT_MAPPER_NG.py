@@ -43,7 +43,6 @@ class FeatureProcessor(object):
         self.csv_features = {}  # Create dictionary to load the CSV features
         self.meta_features = []  # Create list to load the metadata features
 
-        
     def input(self,feature):
         """Load the incoming features.
         
@@ -73,7 +72,6 @@ class FeatureProcessor(object):
         else:
             # Load the metadata features
             self.meta_features.append(feature)
-
                     
     def close(self):
         """Map the requested attribute.
@@ -152,7 +150,6 @@ class FeatureProcessor(object):
             self.pyoutput(feature)
                 
         return
-
                 
 def reset_format_no_value(feature):
     """Reset the resources{}.format list.
