@@ -20,6 +20,7 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
  - [Nom du transformer](#Nom-du-transformer)
  - [Patron de conception](#Patron-de-conception)
    - [Traitement d'une liste](#Traitement-d'une-liste)
+   - [Traitementde données composites](#Traitement-de-données-composites)
  - [Résillience](#Résillience)
  - [Terminator](#Terminator)
  - [Tester ou TestFilter](#Tester-ou-TestFilter)
@@ -171,7 +172,45 @@ Bien que le logiciel FME soit capable de gérer des listes d'attributs, il est s
 
 La figure ci-dessous décrit le patron de conception *Traitement d'une liste*. 
 
-![img.png](images/img_8.png)
+![Traitement liste](images/pc_traitement_liste.png)
+
+## Traitement de données composites
+
+Ce patron de conception utilisé en tandem avec du code Python (via un PythonCaller) permet de gérer des entités (*features*) FME de sources ou d'origines différentes.  La première étape consiste à attribuer à chaque source de données un attribut (AttributeCreator ex.: _order=1 ou _order=2,...) avec une valeur différente qui permettra alors au code Python de distingués les différentes sources de données.
+
+Dans le code Python chacune des méthodes: *\_\_init\_\_* , *inputs* et *close* de la classe FeatureProcessor possèdent chacune une tâche particulière.  La méthobe *\_\_init\_\_* (appelé avant le transfert de la première entité FME) sert à définir les variable qui seront utilisées pour emmagasiner et assurer la persistence de ces entités tout au long du processus.  La méthode *input* (appelée à chaque fois qu'une entité est appelée) sert à emmagasiner chaque entité  dans la ou la bonne variable globales défini lors de l'appel de la méthode *\_\_init\_\_*.  Finalement, la méthode *close* (appelé après la lecture de la dernière entité) exécute le traitement demandé et *renvoie* les entités désirées (ex.: self.pyoutput(feature)) pour la suite des traitement.
+
+L'image ci dessous montre le code FME pour le patron de conception: Traitement de données composites.  On remarque trois source données distinctes pour lesquelles on attribue à chaque type de source un attribut (identifiant) différent (_order) qui servira à les distinguer dans le PythonCaller.
+
+![Gestion composites](images/pc_gestion_composite.png)
+
+L'extrait ci-dessous montre le code Python dans le PythonCaller.  On remarque que la méthode *\_\_init\_\_* sert à définir les variables *globales*, la méthode *process* à emmagasiner les entités et la méthode *close* à traiter et sortir les entités.
+
+<pre>
+class FeatureProcessor(object):
+    def __init__(self):
+        self.source_csv1 = []  # Create list for first CSV file
+        self.source_csv2 = []  # Create list for second CSV file
+        self.source_features = []  # Create list for feature entities
+        
+    def input(self,feature):
+         #Load features
+   
+         order = feature.getAttribute('order'))
+         if order == 1:
+             self.source_csv1.append(feature)
+         elif order == 1:
+             self.source_csv2.append(feature)
+         else:
+             self.features.append(feature)
+
+    def close(self):
+        "Process the features and output it
+
+        for feature in self.features:
+            ... Manipulate the features as desired...
+            self.pyoutput(feature)  # Ouput the fe3ature
+</pre>
 
 # Résillience
 

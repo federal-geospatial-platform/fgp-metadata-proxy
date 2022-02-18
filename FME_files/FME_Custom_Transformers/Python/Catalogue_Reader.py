@@ -161,19 +161,26 @@ class ManageHttpCall(object):
         Returns
         -------
         List of tuple (int,int)
-            For each tuple, the first value is the position to read; the second value, the number of record to read.
+            For each tuple, the first value is the position to read; the second value, 
+            the number of record to read. If there is no record to read it returns an empty list []
         """
     
-        nbr_loops = nbr_records//MAX_RECORD_READ
-        remaining = nbr_records%MAX_RECORD_READ
+        if nbr_records == 0:
+           # There is no records to read
+           lst_start_max = []
         
-        lst_start_max = [(i*MAX_RECORD_READ, MAX_RECORD_READ) for i in range(nbr_loops)]
-        
-        if remaining != 0:
-           lst_start_max.append((nbr_loops*MAX_RECORD_READ, remaining))
-           
-        if len(lst_start_max) == 0:
-            lst_start_max = [(0,0)]
+        else:
+            # There is one or more record to read        
+            nbr_loops = nbr_records//MAX_RECORD_READ
+            remaining = nbr_records%MAX_RECORD_READ
+            
+            lst_start_max = [(i*MAX_RECORD_READ, MAX_RECORD_READ) for i in range(nbr_loops)]
+            
+            if remaining != 0:
+               lst_start_max.append((nbr_loops*MAX_RECORD_READ, remaining))
+               
+            if len(lst_start_max) == 0:
+                lst_start_max = [(0,0)]
 
         return lst_start_max
             

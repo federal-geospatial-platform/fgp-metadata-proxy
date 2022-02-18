@@ -8,7 +8,6 @@ Documentation du Custom Transformer FME
 .. raw:: html
    :file: ./html_FME_Doc/*.html
 
-| 
 
 Documentation du code module.py
 ###############################

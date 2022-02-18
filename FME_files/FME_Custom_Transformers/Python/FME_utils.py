@@ -9,6 +9,9 @@ import urllib3
 import urllib.parse
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
+from datetime import datetime
+import fme
+
 
 try:
     import web_pdb
@@ -24,11 +27,67 @@ STATUS_CODE_DESCRIPTION = "_status_code_description"
 # Define HTTP OK return code
 HTTP_OK = 200
 
+class CsvKeyValuePair(NamedTuple):
+    """Class containing one row from a CSV defining a key-Value pair.
+    
+    Attributes:
+    
+    key: str
+        Key name of a Key-Value pair
+    value: str
+        Value name of a Key-Value pair
+    """
+    
+    key: str
+    value: str
+    
+    
+class CsvMetaDataFormatMapper(NamedTuple):
+    """Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.
+    
+    Attributes:
+    
+    original_value: str
+        Original value that can be found in the metadata record
+    real_value: str
+        Name that replace the original value
+    resource_type_en: str
+        Name of the English resource
+    resource_type_fr: str
+        Name of the French resource
+        
+    """
+    original_value: str
+    real_value: str 
+    resource_type_en: str 
+    resource_type_fr: str
+
+class CsvMetaDataValueMapper(NamedTuple):
+    """Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.
+    
+    Attributes:
+    
+    original_value: str
+        Original value that can be found in the metadata record
+    value_english: str
+        English value that replace the original value
+    value_french: str
+        French value that replace the original value
+    code_valueL str
+        Code value for this value
+    """
+    
+    original_value: str
+    value_english: str
+    value_french: str
+    code_value: str
+    
+  
 class CsvGeoSpatialValidation(NamedTuple):
     """Class containing one row from the CSV GeoSpatialValidation.
     
-    Attributes
-    ----------
+    Attributes:
+    
     fgp_publish: str
         Flag (oui/non) indicating if this format is published in the FGP
     format: str
@@ -42,7 +101,7 @@ class CsvGeoSpatialValidation(NamedTuple):
     spatial_type: str
 
 class FME_utils:
-
+    
     @staticmethod
     def extract_attribute_list(feature, att_name):
         """This method extracts a subset of the attributes of a feature.
@@ -53,7 +112,7 @@ class FME_utils:
         If the attribute name to extract is a list (ex.: ressources{}.name) than all the
         attributes of the list is extrated.
         
-        The method returns a list of tuple one tuplee for each attribute to extract. The 
+        The method returns a list of tuple one tuple for each attribute to extract. The 
         tuple is composed of 2 values the first is the complete attribute name: 
         ex.: value for none list attribute or ressources{1}.name for list attribute.  The 
         seconde value of the list is the index value: None for non list attribute or "1" for 
@@ -69,7 +128,7 @@ class FME_utils:
         Returns
         -------
         list
-            a list of FME attribute
+            A list of FME attribute.  
         """
 
 #        web_pdb.set_trace()
@@ -108,6 +167,63 @@ class FME_utils:
         atts.sort()
 
         return atts
+        
+    @staticmethod
+    def max_index_attribute_list(feature, list_name):
+        """This method returns the maximum index number of an attribute list.
+        
+        This method only works with a FME attribute list and returns the maximum index
+        for an attribute list even if there is hole in the list it will return the
+        maximum index number. So for the list name: att{} if the feature has the following
+        attribute: att{0}.name and att{3}.value. The method will return 3. If there is no
+        list, the returned value is -1.
+        
+        Parameters
+        ----------
+        feature: FME Feature
+            FME feature to process
+        list_name: str
+            The name of the list to search including the "{}" characters (ex.: "att{}")
+        
+        Returns
+        -------
+        Int
+            Maximum index number in the list.  
+        """
+
+#        web_pdb.set_trace()
+        count = -1
+        feature_atts = feature.getAllAttributeNames()  # Extract all attribute names
+        logger = fmeobjects.FMELogFile()
+        regex_list = "\{\d+\}"
+        regex_index = "\d+"
+
+        att_name = list_name
+        if att_name.find("{}") != -1:
+            # The attribute to search is a list
+            att_name = "^" + att_name  # Regular expression exact match
+            regex_search = att_name.replace("{}", regex_list)
+            for feature_att in feature_atts:
+                att_lst = re.match(regex_search , feature_att)  # Check if attribute name is present
+                if att_lst is not None:
+                    index_lst = re.findall(regex_list, att_lst[0])  # Extract the index with "{}"
+                    if len(index_lst) == 1:
+                        index = re.findall(regex_index, index_lst[0])  # Extract the index number
+                        if len(index) == 1:
+                            if index[0].isdigit():  #Validate index is a number
+                                if int(index[0]) > count:
+                                    count = int(index[0])
+                            else:
+                                logger.logMessageString("List is not valid: {}".format(feature_att), fmeobjects.FME_WARN)
+                        else:
+                            logger.logMessageString("List is not valid: {}".format(feature_att), fmeobjects.FME_WARN)
+                    else:
+                        logger.logMessageString("List is not valid: {}".format(feature_att), fmeobjects.FME_WARN)
+        else:
+            # The attribute to search is not a list
+            logger.logMessageString("Not valid list name: {}".format(att_name), fmeobjects.FME_WARN)
+
+        return count
 
     @staticmethod
     def repair_attribute_list(feature, att_list_name, default_att_name=None):
@@ -305,7 +421,7 @@ class FME_utils:
         try:
             fme_self.logger.logMessageString("HTTP call: {0}".format(str_http), 
                                          fmeobjects.FME_INFORM)
-            response = session.get(str_http, verify=False, timeout=10)
+            response = session.head(str_http, verify=False, timeout=10,  allow_redirects=True)
             status_code = response.status_code
             description = requests.status_codes._codes[status_code][0]
             
@@ -325,7 +441,7 @@ class FME_utils:
             sys.exit(0)
 
         return response
-    
+            
     @staticmethod    
     def create_session():
         """This method creates an http session.
@@ -382,3 +498,88 @@ class FME_utils:
         fme_self.pyoutput(feature_out)      
         
         return
+        
+    @staticmethod
+    def convert_unix_time(feature, in_attr_name, out_attr_name='itemModif', out_format='%Y-%m-%d %H:%M:%S'):
+        """ This method unix time to a specified format.
+        
+        Parameters
+        ----------
+        feature FME Feature object
+            The FME feature used to read the attribute
+        
+        in_attr_name: str
+            The name of the FME attribute to convert.
+            
+        out_attr_name: str
+            The name of the FME attribute you want the conversion to be done.
+        
+        out_format: str
+            String containing the wanted output format for the date.
+            
+        Returns
+        -------
+        str
+            A string representing the time in the specified format.
+            
+        """
+        #web_pdb.set_trace()
+        
+        #Managing empty attributes
+        if not feature.getAttribute(in_attr_name):
+            pass
+        
+        else:
+            #Get the attribute value
+            attr_value = feature.getAttribute(in_attr_name)
+            
+            #Converting the attribute value to string
+            attr_value_str = str(attr_value)
+            
+            #Converting the length adjusted attribute value to integer
+            attr_value_cut = int(attr_value_str[0:10:1])
+
+
+            feature.setAttribute(out_attr_name, datetime.fromtimestamp(attr_value_cut).strftime(out_format))
+            
+        return
+        
+    @staticmethod
+    def test_attribute_value(feature, att_name, target_value, check_case):
+        """Test if a feature has a specific atttribute and a specific attribute value.
+        
+        Parameters
+        ----------
+        feature FMEFeature
+            Feature object containing the attribute to test_attribute
+        att_name String
+            Attribute name to test
+        target_value
+            Value to test
+        check_case Bool
+            Flag for the string case. True: Check the string case; False: string 
+            case is not important
+            
+        Returns
+        Bool
+            True: The attribute is present and the value is good; 
+            False: The attribute is not there or the value is different
+        """
+        
+        att_value = FME_utils.feature_get_attribute(feature, att_name, True)
+        
+        if check_case:
+            # Nothing to do
+            pass
+        else:
+            # Adjust the case
+            target_value = target_value.lower()
+            att_value = att_value.lower()
+        
+        if att_value == target_value:
+            match = True
+        else:
+            match = False
+            
+        return match    
+        

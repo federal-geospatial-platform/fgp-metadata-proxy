@@ -54,7 +54,7 @@ set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
 
 IF EXIST %log% del %log%
-IF EXIST met\resultat.ffs DEL met\resultat.ffs
+REM IF EXIST met\resultat.ffs DEL met\resultat.ffs
 %fme% met\metrique_ab_data_reader.fmw ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
