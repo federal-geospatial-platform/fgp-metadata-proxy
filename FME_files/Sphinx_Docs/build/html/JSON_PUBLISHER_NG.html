@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>JSON_PUBLISHER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,10 +15,10 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LICENSE_FILTER" href="LICENSE_FILTER.html" />
+    <link rel="prev" title="JSON_PUBLISHER" href="JSON_PUBLISHER.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,14 +30,14 @@
             <img src="_static/Canada.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
@@ -58,7 +57,10 @@
 <li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER_NG.html">GEOPORTAL_WEBLINK_ADDER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">JSON_PUBLISHER_NG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER.html">LICENSE_FILTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
@@ -104,8 +106,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Search</li>
+      <li>JSON_PUBLISHER_NG</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/JSON_PUBLISHER_NG.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -113,22 +116,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="json-publisher-ng">
+<h1>JSON_PUBLISHER_NG<a class="headerlink" href="#json-publisher-ng" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description </strong></p>
+<p>This custom transformer is translating the input CKAN metadata model into the JSON TBS model.  The rules on how to map the input CKAN features attributes into the TBS attributes are stored in the JSON configuration file. The JSON templates used to create the JSON file are supplied with the input parameters of the custom transformers.  The mapping into JSON file is done with FME JSON Templater transformer.</p>
+<p><strong>Input Ports</strong> </p>
+<ul>
+<li>Input: The input metadata records to translate into the JSON TBS model.</li>
+</ul>
+<p><strong>Output Ports</strong> </p>
+<ul>
+<li>OUTPUT_LOCAL: The output metdata records translated into the JSON TBS model.</li>
+</ul>
+<p><strong>Parameters</strong> </p>
+<ul>
+<li>JSON_ROOT_TEMPLATE: File system address containing the root section of the TBS model in JSON format.</li>
+<li>JSON_RESOURCE_TEMPLATE: File system address containing the resources section of the TBS model in JSON format.</li>
+</ul>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="JSON_PUBLISHER.html" class="btn btn-neutral float-left" title="JSON_PUBLISHER" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LICENSE_FILTER.html" class="btn btn-neutral float-right" title="LICENSE_FILTER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
@@ -150,14 +166,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>

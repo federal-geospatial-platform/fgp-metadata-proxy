@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>XML_PUBLISHER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,10 +15,10 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="WMS_REST_LANGUAGE_FORMATTER" href="WMS_REST_LANGUAGE_FORMATTER.html" />
+    <link rel="prev" title="XML_PUBLISHER" href="XML_PUBLISHER.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,14 +30,14 @@
             <img src="_static/Canada.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
@@ -81,7 +80,10 @@
 <li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER_NG.html">XML_PUBLISHER_NG</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">XML_PUBLISHER_NG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="WMS_REST_LANGUAGE_FORMATTER.html">WMS_REST_LANGUAGE_FORMATTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="YT_CONTACTS_MERGER.html">YT_CONTACTS_MERGER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
@@ -104,8 +106,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Search</li>
+      <li>XML_PUBLISHER_NG</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/XML_PUBLISHER_NG.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -113,22 +116,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="xml-publisher-ng">
+<h1>XML_PUBLISHER_NG<a class="headerlink" href="#xml-publisher-ng" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description </strong></p>
+<p>This custom transformer is translating the input spatial metadata records into the XML HNAP model.  The rules on how to map the input features attributes (records) into the HNAP attributes are stored in the XML configuration file. The XML templates used to create the output HNAP XML file are supplied with the input published parameters of the custom transformers.  The mapping into XML file is done with FME XML Templater transformer.  If the publish parameter LOCAL_WRITER is set to NO, the custom tranformer will insert or update the records in thePyCSW.</p>
+<p>Note: Because of a problem with the PyCSW server, record update are done in 2 steps: first the record is deleted; secondly the record is inserted.</p>
+<p><strong>Input Ports </strong></p>
+<ul>
+<li>Input: The input metadata records to translate and write into the XML HNAP model.</li>
+</ul>
+<p><strong>Output Ports </strong></p>
+<ul>
+<li>INSERT_PASSED: The HNAP metdata records that are inserted (new records)</li>
+<li>UPDATE_PASSED: The HNAP metdata records that area updated (edited records)</li>
+<li>INSERT_FAILED: The HNAP metdata records that are inserted (new records) but which failed the PyCSW insert process</li>
+<li>UPDATE_FAILED: The HNAP metdata records that are updated (edited records) but which failed the PyCSW update process</li>
+<li>LOCAL: All HNAP metadata records (insert and iupdate) if LOCAL_WRITER (published parameter) is set to YES</li>
+<li>InvalidMetadata: HNAP metadata records that failed a validation</li>
+</ul>
+<p><strong>Parameters </strong></p>
+<ul>
+<li>TEMPLATE_GMD_CITERESPONSIBILITYPARTY: File system address containing the template section of the CITERESPONSABILITYPARTY of the HNAP model</li>
+<li>TEMPLATE_GMD_CONTACT: File system address containing the template section of the CONTACT of the HNAP model</li>
+<li>TEMPLATE_GMD_DISTRIBUTIONFORMAT: File system address containing the template section of the DISTRIBUTIONFORMAT of the HNAP model</li>
+<li>TEMPLATE_GMD_KEYWORDS: File system address containing the template section of the KEYWORDS of the HNAP model</li>
+<li>TEMPLATE_GMD_MDMETADATA: File system address containing the METADATA root template of the HNAP model</li>
+<li>TEMPLATE_GMD_REFERENCESYSTEMINFO: File system address containing the template section of the REFERENCESYSTEMINFO of the HNAP model</li>
+<li>TEMPLATE_GMD_RESOURCESMAINTENANCE: File system address containing the template section of the RESOURCEMAINTENANCE of the HNAP model</li>
+<li>TEMPLATE_GMD_TOPICCATEGORY: File system address containing the template section of the TOPICCATEGORY of the HNAP model</li>
+<li>TEMPLATE_GMD_TRANSFEROPTION: File system address containing the template section of the TRANSFEROPTION of the HNAP model</li>
+<li>LOCAL_WRITER: Flag indicating if the output records must be written or not to the PyCSW server. YES: Write to the PyCSW server; NO: Do not write to the PyCSW server.</li>
+</ul>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="XML_PUBLISHER.html" class="btn btn-neutral float-left" title="XML_PUBLISHER" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="WMS_REST_LANGUAGE_FORMATTER.html" class="btn btn-neutral float-right" title="WMS_REST_LANGUAGE_FORMATTER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
@@ -150,14 +180,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>
