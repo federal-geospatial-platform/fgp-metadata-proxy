@@ -53,6 +53,28 @@ LOG_ERROR = "log_error"
 NOT_FOUND_ERR_MSG = "_not_found_err_msg"
 FORMAT = "format"
 
+def lower_resources_format(feature):
+    """This method puts in lower case the content of the attribute resources{}.format
+    
+    Parameters
+    ----------
+    feature FMEObject
+        the FME feature to process
+        
+    Returns
+    -------
+    None
+    
+    """
+    
+    # Loop over each attribute
+    for dummy, att_name in FME_utils.extract_attribute_list(feature, "resources{}.format"):
+        value = feature.getAttribute(att_name)
+        value = value.lower()
+        feature.setAttribute(att_name, value)
+        
+    return
+
 class GeoNoneGeoSelector(object):
     def __init__(self):
         """Creates some instance variables before processing the FME features.
@@ -198,13 +220,11 @@ class GeoNoneGeoSelector(object):
         if domain == LOOKUP_TABLE_FORMAT:
             # Extract the format values from the CSV and create a set
             domain_lst = [item.format for item in self.csv_features.values()]
-            domain_set = set(domain_lst)
         else:
             # Create a set from the list of domain values
             domain_lst = [item.lower() for item in domain]  # Lower case
-            domain_set = set(domain_lst)
             
-        return domain_set
+        return domain_lst
     
     def _output_feature(self, feature, geo, not_found_err):
         """Add some attributes to the FME feature and output the FME feature.
@@ -276,12 +296,13 @@ class GeoNoneGeoSelector(object):
                     att_value_set = FME_utils.create_set_of_word(att_value, separator = " ", lower = True)
                    
                 # Create the domain values to validate
-                domain_set = self._create_domain(directives)
-                domain_intersection = att_value_set.intersection(domain_set)  # Set intersection
-                if len(domain_intersection) == 1:
+                domain_lst = self._create_domain(directives)
+                # Check if value exist in domain list
+                domain_match = [domain for domain in domain_lst if domain in att_value]
+                if len(domain_match) >= 1:
                     # Match found
                     found = True
-                    value = list(domain_intersection)[0]  # Extract the element from the intersection
+                    value = domain_match[0]  # Extract the element from the intersection
                     if directives[DOMAIN] in [LOOKUP_TABLE_FORMAT]:
                         # Validate that fgp_publish == oui in the CSV file
                         csv_feature = self.csv_features[value]
