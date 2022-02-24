@@ -61,11 +61,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER.html">LICENSE_FILTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
@@ -78,11 +78,14 @@
 <li class="toctree-l1"><a class="reference internal" href="MORE_INFO_MANAGER.html">MORE_INFO_MANAGER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PYCSW_URL_MAPPER_NG.html">PYCSW_URL_MAPPER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ON_CKAN_CONTACT_FORM_EXTRACTOR.html">ON_CKAN_CONTACT_FORM_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QC_MISSING_EMAIL_SETTER.html">QC_MISSING_EMAIL_SETTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER_NG.html">XML_PUBLISHER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WMS_REST_LANGUAGE_FORMATTER.html">WMS_REST_LANGUAGE_FORMATTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="YT_CONTACTS_MERGER.html">YT_CONTACTS_MERGER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
@@ -148,34 +151,6 @@
 <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
 </li>
 </ul>
-<p><strong>Description </strong></p>
-<p>This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding this web link at the end of the resources{} list of the  metadata record.  Unvalid web links are log in the FME logger.</p>
-<p><strong>Input Ports </strong></p>
-<ul>
-<li>DATA_INPUT: The input metadata records to process.</li>
-</ul>
-<p><strong>Output Ports </strong></p>
-<ul>
-<li>OUTPUT: The process output metdata records with the added web link resource.</li>
-</ul>
-<p><strong>Parameters</strong> </p>
-<ul>
-<li>
-<p>WEBLINK_WILDCARD: Name of the attribute containing the information to add to the web link in order to retreive the metadata record from the portal of the province;</p>
-</li>
-<li>
-<p>URL_VALIDATION: Flag use to validate if the web link is well formed, online and responding. Can take 2 values: YES: validate the web link; NO: Do not validate th web link. Note: During testing, it is interesting to use NO as the validation is slow;</p>
-</li>
-<li>
-<p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
-</li>
-<li>
-<p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
-</li>
-<li>
-<p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
-</li>
-</ul>
 </div>
 <div class="section" id="documentation-du-code-geoportal-weblink-adder-ng-py">
 <h2>Documentation du code GEOPORTAL_WEBLINK_ADDER_NG.py<a class="headerlink" href="#documentation-du-code-geoportal-weblink-adder-ng-py" title="Permalink to this headline"></a></h2>
@@ -192,7 +167,7 @@
 </table>
 <span class="target" id="module-GEOPORTAL_WEBLINK_ADDER_NG"></span><dl class="py class">
 <dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GEOPORTAL_WEBLINK_ADDER_NG.</span></span><span class="sig-name descname"><span class="pre">FeatureProcessor</span></span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">GEOPORTAL_WEBLINK_ADDER_NG.</span></span><span class="sig-name descname"><span class="pre">FeatureProcessor</span></span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This class implement the design pattern: <em>Processing Composite Data</em></p>
 <dl class="py method">
@@ -214,8 +189,11 @@ is added as the value of the URL</p>
 <li><p><strong>test_url</strong> (<em>String</em>) – The URL address to add</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -247,8 +225,11 @@ format name. The  metadata features (_order=2) or stored in a list.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>

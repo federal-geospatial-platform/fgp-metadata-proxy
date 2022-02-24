@@ -140,7 +140,7 @@ class FeatureProcessor(object):
                 test_url = url_value + "/" + suffix  # Build the http request
 
             if bool_url_validation:
-                # Test if the url link is responding with a http head call (faster than get)
+                # Test if the url link is responding with a http head call (faster than get request)
                 response = self.session.head(test_url, verify=False, timeout=10, 
                                              allow_redirects=True)
                 status_code = str(response.status_code)

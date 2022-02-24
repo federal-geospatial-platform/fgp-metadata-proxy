@@ -12,6 +12,7 @@ Documentation du code GEO_NONE_GEO_SELECTOR.py
 
 .. autosummary::
    GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector
+   GEO_NONE_GEO_SELECTOR.lower_resources_format
  
 .. automodule:: GEO_NONE_GEO_SELECTOR
    :members:

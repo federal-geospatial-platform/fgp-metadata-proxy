@@ -421,7 +421,7 @@ class FME_utils:
         try:
             fme_self.logger.logMessageString("HTTP call: {0}".format(str_http), 
                                          fmeobjects.FME_INFORM)
-            response = session.head(str_http, verify=False, timeout=10,  allow_redirects=True)
+            response = session.get(str_http, verify=False, timeout=10,  allow_redirects=True)
             status_code = response.status_code
             description = requests.status_codes._codes[status_code][0]
             
