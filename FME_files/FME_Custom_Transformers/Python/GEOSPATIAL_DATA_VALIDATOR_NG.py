@@ -68,7 +68,36 @@ class FeatureProcessor(object):
             # Load the metadata features
             self.meta_features.append(feature)
         
-
+    def _copy_attributes_in_resources(self, feature):
+        """Copy the attributes notes, titles and id in the attribute resources list.
+        
+        Parameters
+        ----------
+        feature: FMEObject
+           The FME feature to processs
+           
+        Returns
+        -------
+        None
+        """
+        
+        # Extract the original attribute
+#        web_pdb.set_trace()
+        id = FME_utils.feature_get_attribute(feature, "id", False)
+        notes = FME_utils.feature_get_attribute(feature, "notes", False)
+        title = FME_utils.feature_get_attribute(feature, "title", False)
+        
+        # extract the number of resources
+        max_index_resources = FME_utils.max_index_attribute_list(feature, "resources{}")
+        
+        # For each resources add the attribute
+        for i in range(max_index_resources+1):
+            feature.setAttribute("resources{%d}.orig_id"%i, id)
+            feature.setAttribute("resources{%d}.notes"%i, notes)
+            feature.setAttribute("resources{%d}.title"%i, title)
+            
+        return        
+    
     def close(self):
         """Determine if the metadata feature is geospatial or non-geospatial.
         
@@ -91,6 +120,10 @@ class FeatureProcessor(object):
         for feature in self.meta_features:
             geo_record = False  # Flag reset
             err_format_features = []  # Reset error format list
+            
+            # Copy some attributes in the atrribute list resources
+            self._copy_attributes_in_resources(feature)
+            
             # Loop over each resources{}.format
             index_attributes = FME_utils.extract_attribute_list(feature, "resources{}.format")
             for ind, attribute in index_attributes:
