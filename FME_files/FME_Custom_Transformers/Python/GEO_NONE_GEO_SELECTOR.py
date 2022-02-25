@@ -119,7 +119,6 @@ class GeoNoneGeoSelector(object):
         """
     
         self.csv_features ={}
-        self.logger = fmeobjects.FMELogFile()
         
     def _load_csv_feature(self, feature):
         """ Load a feature from the CSV lookup table
@@ -357,8 +356,6 @@ class GeoNoneGeoSelector(object):
                            (directives[SPATIAL_TYPE] == IF_NULL_OVERWRITE and spatial_type_value in [None,""]):
                             # Add the spatial type
                             feature.setAttribute(spatial_type_name, csv_feature.spatial_type)
-                            self.logger.logMessageString("Added attribute: {} Value: ".format(spatial_type_name, 
-                                                          csv_feature.spatial_type), fmeobjects.FME_INFORM)
                         
                 # Manage the LOG directive when the FME attribute is not found
                 if not found:
