@@ -53,6 +53,36 @@ LOG_ERROR = "log_error"
 NOT_FOUND_ERR_MSG = "_not_found_err_msg"
 FORMAT = "format"
 
+def copy_attributes_in_resources(feature):
+    """Copy the attributes notes, titles and id in the attribute resources list.
+    
+    Parameters
+    ----------
+    feature: FMEObject
+       The FME feature to processs
+       
+    Returns
+    -------
+    None
+    """
+    
+    # Extract the original attribute
+#        web_pdb.set_trace()
+    id = FME_utils.feature_get_attribute(feature, "id", False)
+    notes = FME_utils.feature_get_attribute(feature, "notes", False)
+    title = FME_utils.feature_get_attribute(feature, "title", False)
+    
+    # extract the number of resources
+    max_index_resources = FME_utils.max_index_attribute_list(feature, "resources{}")
+    
+    # For each resources add the attribute
+    for i in range(max_index_resources+1):
+        feature.setAttribute("resources{%d}.orig_id"%i, id)
+        feature.setAttribute("resources{%d}.notes"%i, notes)
+        feature.setAttribute("resources{%d}.title"%i, title)
+        
+    return 
+
 def lower_resources_format(feature):
     """This method puts in lower case the content of the attribute resources{}.format
     
@@ -89,7 +119,6 @@ class GeoNoneGeoSelector(object):
         """
     
         self.csv_features ={}
-        self.logger = fmeobjects.FMELogFile()
         
     def _load_csv_feature(self, feature):
         """ Load a feature from the CSV lookup table
@@ -327,8 +356,6 @@ class GeoNoneGeoSelector(object):
                            (directives[SPATIAL_TYPE] == IF_NULL_OVERWRITE and spatial_type_value in [None,""]):
                             # Add the spatial type
                             feature.setAttribute(spatial_type_name, csv_feature.spatial_type)
-                            self.logger.logMessageString("Added attribute: {} Value: ".format(spatial_type_name, 
-                                                          csv_feature.spatial_type), fmeobjects.FME_INFORM)
                         
                 # Manage the LOG directive when the FME attribute is not found
                 if not found:
