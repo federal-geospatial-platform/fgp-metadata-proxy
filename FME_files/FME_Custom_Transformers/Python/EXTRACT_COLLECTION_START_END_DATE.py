@@ -16,6 +16,8 @@ class collection_end_start_date_extractor(object):
         Liste des expressions régulières:
         
         1. ^[1-2][0-9][0-9][0-9]$  --> 2001
+		
+        1.b	^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$  --> 2001-12-18
         
         2. ^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$  --> 2001-2002
         
@@ -92,7 +94,11 @@ class collection_end_start_date_extractor(object):
                     if re.match('^[1-2][0-9][0-9][0-9]$',date_extent):
                         start_date=date_extent
                         end_date=start_date
-                    
+                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$',date_extent):
+                        start_date=date_extent
+                        end_date=start_date
+                     
+                     
                     # 2. De type 1999-2000
                     elif re.match('^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$',date_extent):
                         
