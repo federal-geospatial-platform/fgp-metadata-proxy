@@ -1,8 +1,9 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN GEO_NONE_GEO_SELECTOR,1,"FGP Tools",39e0c00b-d2b6-47d5-88f9-e285c33082f0,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# TRANSFORMER_BEGIN GEO_NONE_GEO_SELECTOR,1,"FGP Tools",f9c11725-8631-4beb-b1c4-507ccbc62cb6,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
 # <p><strong>Description </strong></p>
 # <p>This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial). When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives. See the section Content of the YAML directives below for a complete description of the YAML directives.</p>
+# <p>This custom transformer also adds the attribute _<em>typedatasets</em> which contains the value <em>geo</em> for the geospatial features and <em>nonegeo</em> for the none geospatial features.</p>
 # <p><strong>Input Ports </strong></p>
 # <ul>
 # <li>DATA_INPUT: The input metadata records to process.</li>
@@ -49,13 +50,13 @@
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="FGP Tools"
-#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial). When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives. See the section Content of the YAML directives below for a complete description of the YAML directives.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;GEOSPATIAL: Output port for all gepspatial metadata records;&lt;/li&gt;&#10;&lt;li&gt;NON-GEOSPATIAL: Output port for all none geospatial metadata records;&lt;/li&gt;&#10;&lt;li&gt;ERROR_LOG: Output port for metadata records that need to be logged according to the YAML directives.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;Note: All the input records will go through either the GeoSpatial the None GeoSpatial port. Some input records may be duplicated and sent through the LOG_ERROR port if requested by the YAML directives.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;CSV_FILE_NAME: Name lookup table file name in CSV format. &lt;/li&gt;&#10;&lt;li&gt;CSV_PATH: File path of the CSV file. &lt;/li&gt;&#10;&lt;li&gt;CSV_PROVINCE: Code of the province (two letters) . &lt;/li&gt;&#10;&lt;li&gt;YAML_DIRECTIVES: YAML directives for determining the Geospatial and None Geospatial records. See the section Content of the YAML directives below for a description of the YAML directives.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;Content of the YAML directives &lt;/p&gt;&#10;&lt;p&gt;The YAML directives are used by the custom transformer to decide the type of the metadata records: GeoSpatial or None GeoSpatial. Here&apos;s an exemple of a YAML directives:&lt;/p&gt;&#10;&lt;pre&gt;&#10;resources{}.format:  &#10;domain: lookup_table_format  &#10;spatial_type: overwrite  &#10;not_found: log  &#10;search_type: equals  &#10;#  &#10;description:  &#10;domain: [spatial, geographic]  &#10;spatial_type: no_overwrite  &#10;not_found: no_log  &#10;search_type: contains &#10;&lt;/pre&gt;&#10;&#10;&lt;p&gt;&lt;strong&gt;Description of the YAML directives&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;The first part of the YAML is the name of the FME attribute to use to validate the record, it can be a list attribute (ex.: resources{}..format) or a simple attribute (ex.: description). If it&apos;s a list attribute,the name must contain the 2 characters:&quot;{}&quot;. The content of that attribute will be used to determine if the record is GeoSpatial or None GeoSpatial.&lt;/p&gt;&#10;&lt;p&gt;Following the FME attribute to validate, there are 4 keywords: domain, spatial_type, not_found and search_type.&lt;/p&gt;&#10;&lt;p&gt;The first keyword domain defines the domain of values that are used to determine if a metadata record is GeoSpatial or None GeoSpatial. Two values are possible: lookup_table_format or a list of word defining the domain between brackets (ex.: [point, line, poygone]). When using the keyword lookup_table_format, the custom transformer will use the content of the column name format of the CSV fileto define the domain of values. The record type will be GeoSpatial if the column fgp_publish is set to &quot;oui&quot;. When using a domain list, the metadata record will be GeoSpatial if the value of the FME attribute is contained in the domain list.&lt;/p&gt;&#10;&lt;p&gt;The second keyword spatial_type defines how to set the spatial type when there is a domain match of the FME attribute. Three values are possible: no_overwite, overwrite and if_null_overwrite. no_overwite means that even if there is a match do not try to overwrite the spatial type. overwite means that if there is a match, take the spatial type value associated in the CSV file (column name: spatial_type) and assign it (or create it if empty) to the corresponding FME attribute. if_null_overwite as the same meaning as overwrite but only when the content of the spatial type is empty or missing. The values overwrite and if_null_overwrite can only be used when the domain keyword value is lookup_table_format.&lt;/p&gt;&#10;&lt;p&gt;The third keyword not_found defines how the custom transformer behaves when an FME attribute is not found in the domain of values. Two values are possible: log and no_log. log means create a duplicate (clone) of the record and send it through the LOG_ERROR output port. no_log means do not log any error when the FME attribute is not found in the domain of values.&lt;/p&gt;&#10;&lt;p&gt;The fourth keyword search type defines how to search the content of the FME attribute. Two values are possible: equals or contains. equals means that the value of the FME attribute must be exactly the same. contains means that one of the word the FME attribute must be in the domain values (usefull when we search for one word in a sentence).&lt;/p&gt;&#10;&lt;p&gt;You can define more than one FME attribute to search. Do not duplicate the FME attribute name because the last one will overwrite the others.&lt;/p&gt;"
-#!   DOC_EXTENTS="9802.03 2496.41"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial). When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives. See the section Content of the YAML directives below for a complete description of the YAML directives.&lt;/p&gt;&#10;&lt;p&gt;This custom transformer also adds the attribute _&lt;em&gt;typedatasets&lt;/em&gt; which contains the value &lt;em&gt;geo&lt;/em&gt; for the geospatial features and &lt;em&gt;nonegeo&lt;/em&gt; for the none geospatial features.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;GEOSPATIAL: Output port for all gepspatial metadata records;&lt;/li&gt;&#10;&lt;li&gt;NON-GEOSPATIAL: Output port for all none geospatial metadata records;&lt;/li&gt;&#10;&lt;li&gt;ERROR_LOG: Output port for metadata records that need to be logged according to the YAML directives.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;Note: All the input records will go through either the GeoSpatial the None GeoSpatial port. Some input records may be duplicated and sent through the LOG_ERROR port if requested by the YAML directives.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;CSV_FILE_NAME: Name lookup table file name in CSV format. &lt;/li&gt;&#10;&lt;li&gt;CSV_PATH: File path of the CSV file. &lt;/li&gt;&#10;&lt;li&gt;CSV_PROVINCE: Code of the province (two letters) . &lt;/li&gt;&#10;&lt;li&gt;YAML_DIRECTIVES: YAML directives for determining the Geospatial and None Geospatial records. See the section Content of the YAML directives below for a description of the YAML directives.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;Content of the YAML directives &lt;/p&gt;&#10;&lt;p&gt;The YAML directives are used by the custom transformer to decide the type of the metadata records: GeoSpatial or None GeoSpatial. Here&apos;s an exemple of a YAML directives:&lt;/p&gt;&#10;&lt;pre&gt;&#10;resources{}.format:  &#10;domain: lookup_table_format  &#10;spatial_type: overwrite  &#10;not_found: log  &#10;search_type: equals  &#10;#  &#10;description:  &#10;domain: [spatial, geographic]  &#10;spatial_type: no_overwrite  &#10;not_found: no_log  &#10;search_type: contains &#10;&lt;/pre&gt;&#10;&#10;&lt;p&gt;&lt;strong&gt;Description of the YAML directives&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;The first part of the YAML is the name of the FME attribute to use to validate the record, it can be a list attribute (ex.: resources{}..format) or a simple attribute (ex.: description). If it&apos;s a list attribute,the name must contain the 2 characters:&quot;{}&quot;. The content of that attribute will be used to determine if the record is GeoSpatial or None GeoSpatial.&lt;/p&gt;&#10;&lt;p&gt;Following the FME attribute to validate, there are 4 keywords: domain, spatial_type, not_found and search_type.&lt;/p&gt;&#10;&lt;p&gt;The first keyword domain defines the domain of values that are used to determine if a metadata record is GeoSpatial or None GeoSpatial. Two values are possible: lookup_table_format or a list of word defining the domain between brackets (ex.: [point, line, poygone]). When using the keyword lookup_table_format, the custom transformer will use the content of the column name format of the CSV fileto define the domain of values. The record type will be GeoSpatial if the column fgp_publish is set to &quot;oui&quot;. When using a domain list, the metadata record will be GeoSpatial if the value of the FME attribute is contained in the domain list.&lt;/p&gt;&#10;&lt;p&gt;The second keyword spatial_type defines how to set the spatial type when there is a domain match of the FME attribute. Three values are possible: no_overwite, overwrite and if_null_overwrite. no_overwite means that even if there is a match do not try to overwrite the spatial type. overwite means that if there is a match, take the spatial type value associated in the CSV file (column name: spatial_type) and assign it (or create it if empty) to the corresponding FME attribute. if_null_overwite as the same meaning as overwrite but only when the content of the spatial type is empty or missing. The values overwrite and if_null_overwrite can only be used when the domain keyword value is lookup_table_format.&lt;/p&gt;&#10;&lt;p&gt;The third keyword not_found defines how the custom transformer behaves when an FME attribute is not found in the domain of values. Two values are possible: log and no_log. log means create a duplicate (clone) of the record and send it through the LOG_ERROR output port. no_log means do not log any error when the FME attribute is not found in the domain of values.&lt;/p&gt;&#10;&lt;p&gt;The fourth keyword search type defines how to search the content of the FME attribute. Two values are possible: equals or contains. equals means that the value of the FME attribute must be exactly the same. contains means that one of the word the FME attribute must be in the domain values (usefull when we search for one word in a sentence).&lt;/p&gt;&#10;&lt;p&gt;You can define more than one FME attribute to search. Do not duplicate the FME attribute name because the last one will overwrite the others.&lt;/p&gt;"
+#!   DOC_EXTENTS="9562.18 2496.41"
 #!   DOC_TOP_LEFT="-1293.75 -1756.27"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="39e0c00b-d2b6-47d5-88f9-e285c33082f0"
-#!   FME_DOCUMENT_PRIORGUID="7e3165bd-8558-47f0-9f4f-c499a562e028,f280b5aa-959e-4c65-a934-80c0163c627b"
+#!   FME_DOCUMENT_GUID="f9c11725-8631-4beb-b1c4-507ccbc62cb6"
+#!   FME_DOCUMENT_PRIORGUID="7e3165bd-8558-47f0-9f4f-c499a562e028,f280b5aa-959e-4c65-a934-80c0163c627b,39e0c00b-d2b6-47d5-88f9-e285c33082f0"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -67,8 +68,8 @@
 #!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,10&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added,15&lt;solidus&gt;11&lt;solidus&gt;2021,Daiel&lt;space&gt;Pilon,Adding&lt;space&gt;YAML&lt;space&gt;directives&lt;space&gt;"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-02-24T22:43:40"
-#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial). When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives. See the section Content of the YAML directives below for a complete description of the YAML directives.&#10;&#10;**Input Ports **&#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports **&#10;&#10;- GEOSPATIAL: Output port for all gepspatial metadata records;&#10;- NON-GEOSPATIAL: Output port for all none geospatial metadata records;&#10;- ERROR_LOG: Output port for metadata records that need to be logged according to the YAML directives.&#10;&#10;Note: All the input records will go through either the GeoSpatial the None GeoSpatial port. Some input records may be duplicated and sent through the LOG_ERROR port if requested by the YAML directives.&#10;&#10;**Parameters **&#10;&#10;- CSV_FILE_NAME: Name lookup table file name in CSV format. &#10;- CSV_PATH: File path of the CSV file. &#10;- CSV_PROVINCE: Code of the province (two letters) . &#10;- YAML_DIRECTIVES: YAML directives for determining the Geospatial and None Geospatial records. See the section Content of the YAML directives below for a description of the YAML directives.&#10;&#10;Content of the YAML directives &#10;&#10;The YAML directives are used by the custom transformer to decide the type of the metadata records: GeoSpatial or None GeoSpatial. Here&apos;s an exemple of a YAML directives:&#10;&#10;&lt;pre&gt;&#10;resources{}.format:  &#10;domain: lookup_table_format  &#10;spatial_type: overwrite  &#10;not_found: log  &#10;search_type: equals  &#10;#  &#10;description:  &#10;domain: [spatial, geographic]  &#10;spatial_type: no_overwrite  &#10;not_found: no_log  &#10;search_type: contains &#10;&lt;/pre&gt;&#10;&#10;**Description of the YAML directives**&#10;&#10;The first part of the YAML is the name of the FME attribute to use to validate the record, it can be a list attribute (ex.: resources{}..format) or a simple attribute (ex.: description). If it&apos;s a list attribute,the name must contain the 2 characters:&quot;{}&quot;. The content of that attribute will be used to determine if the record is GeoSpatial or None GeoSpatial.&#10;&#10;Following the FME attribute to validate, there are 4 keywords: domain, spatial_type, not_found and search_type.&#10;&#10;The first keyword domain defines the domain of values that are used to determine if a metadata record is GeoSpatial or None GeoSpatial. Two values are possible: lookup_table_format or a list of word defining the domain between brackets (ex.: [point, line, poygone]). When using the keyword lookup_table_format, the custom transformer will use the content of the column name format of the CSV fileto define the domain of values. The record type will be GeoSpatial if the column fgp_publish is set to &quot;oui&quot;. When using a domain list, the metadata record will be GeoSpatial if the value of the FME attribute is contained in the domain list.&#10;&#10;The second keyword spatial_type defines how to set the spatial type when there is a domain match of the FME attribute. Three values are possible: no_overwite, overwrite and if_null_overwrite. no_overwite means that even if there is a match do not try to overwrite the spatial type. overwite means that if there is a match, take the spatial type value associated in the CSV file (column name: spatial_type) and assign it (or create it if empty) to the corresponding FME attribute. if_null_overwite as the same meaning as overwrite but only when the content of the spatial type is empty or missing. The values overwrite and if_null_overwrite can only be used when the domain keyword value is lookup_table_format.&#10;&#10;The third keyword not_found defines how the custom transformer behaves when an FME attribute is not found in the domain of values. Two values are possible: log and no_log. log means create a duplicate (clone) of the record and send it through the LOG_ERROR output port. no_log means do not log any error when the FME attribute is not found in the domain of values.&#10;&#10;The fourth keyword search type defines how to search the content of the FME attribute. Two values are possible: equals or contains. equals means that the value of the FME attribute must be exactly the same. contains means that one of the word the FME attribute must be in the domain values (usefull when we search for one word in a sentence).&#10;&#10;You can define more than one FME attribute to search. Do not duplicate the FME attribute name because the last one will overwrite the others.&#10;&#10;"
+#!   LAST_SAVE_DATE="2022-03-09T08:32:09"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial). When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives. See the section Content of the YAML directives below for a complete description of the YAML directives.&#10;&#10;This custom transformer also adds the attribute \__typedatasets_ which contains the value _geo_ for the geospatial features and _nonegeo_ for the none geospatial features.&#10;&#10;**Input Ports **&#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;**Output Ports **&#10;&#10;- GEOSPATIAL: Output port for all gepspatial metadata records;&#10;- NON-GEOSPATIAL: Output port for all none geospatial metadata records;&#10;- ERROR_LOG: Output port for metadata records that need to be logged according to the YAML directives.&#10;&#10;Note: All the input records will go through either the GeoSpatial the None GeoSpatial port. Some input records may be duplicated and sent through the LOG_ERROR port if requested by the YAML directives.&#10;&#10;**Parameters **&#10;&#10;- CSV_FILE_NAME: Name lookup table file name in CSV format. &#10;- CSV_PATH: File path of the CSV file. &#10;- CSV_PROVINCE: Code of the province (two letters) . &#10;- YAML_DIRECTIVES: YAML directives for determining the Geospatial and None Geospatial records. See the section Content of the YAML directives below for a description of the YAML directives.&#10;&#10;Content of the YAML directives &#10;&#10;The YAML directives are used by the custom transformer to decide the type of the metadata records: GeoSpatial or None GeoSpatial. Here&apos;s an exemple of a YAML directives:&#10;&#10;&lt;pre&gt;&#10;resources{}.format:  &#10;domain: lookup_table_format  &#10;spatial_type: overwrite  &#10;not_found: log  &#10;search_type: equals  &#10;#  &#10;description:  &#10;domain: [spatial, geographic]  &#10;spatial_type: no_overwrite  &#10;not_found: no_log  &#10;search_type: contains &#10;&lt;/pre&gt;&#10;&#10;**Description of the YAML directives**&#10;&#10;The first part of the YAML is the name of the FME attribute to use to validate the record, it can be a list attribute (ex.: resources{}..format) or a simple attribute (ex.: description). If it&apos;s a list attribute,the name must contain the 2 characters:&quot;{}&quot;. The content of that attribute will be used to determine if the record is GeoSpatial or None GeoSpatial.&#10;&#10;Following the FME attribute to validate, there are 4 keywords: domain, spatial_type, not_found and search_type.&#10;&#10;The first keyword domain defines the domain of values that are used to determine if a metadata record is GeoSpatial or None GeoSpatial. Two values are possible: lookup_table_format or a list of word defining the domain between brackets (ex.: [point, line, poygone]). When using the keyword lookup_table_format, the custom transformer will use the content of the column name format of the CSV fileto define the domain of values. The record type will be GeoSpatial if the column fgp_publish is set to &quot;oui&quot;. When using a domain list, the metadata record will be GeoSpatial if the value of the FME attribute is contained in the domain list.&#10;&#10;The second keyword spatial_type defines how to set the spatial type when there is a domain match of the FME attribute. Three values are possible: no_overwite, overwrite and if_null_overwrite. no_overwite means that even if there is a match do not try to overwrite the spatial type. overwite means that if there is a match, take the spatial type value associated in the CSV file (column name: spatial_type) and assign it (or create it if empty) to the corresponding FME attribute. if_null_overwite as the same meaning as overwrite but only when the content of the spatial type is empty or missing. The values overwrite and if_null_overwrite can only be used when the domain keyword value is lookup_table_format.&#10;&#10;The third keyword not_found defines how the custom transformer behaves when an FME attribute is not found in the domain of values. Two values are possible: log and no_log. log means create a duplicate (clone) of the record and send it through the LOG_ERROR output port. no_log means do not log any error when the FME attribute is not found in the domain of values.&#10;&#10;The fourth keyword search type defines how to search the content of the FME attribute. Two values are possible: equals or contains. equals means that the value of the FME attribute must be exactly the same. contains means that one of the word the FME attribute must be in the domain values (usefull when we search for one word in a sentence).&#10;&#10;You can define more than one FME attribute to search. Do not duplicate the FME attribute name because the last one will overwrite the others.&#10;&#10;"
 #!   MARKDOWN_USAGE="&#10;"
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
@@ -79,7 +80,7 @@
 #!   TITLE="GEO_NONE_GEO_SELECTOR"
 #!   USAGE="&#10;"
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="2523.46 949.228"
+#!   VIEW_POSITION="1496.11 949.228"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -181,10 +182,10 @@
 #! <COMMENT
 #!   IDENTIFIER="45"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Remove unnecessary attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="5888.3090561324771 -238.10982495789852"
-#!   TOP_LEFT="5888.3090561324771 -238.10982495789852"
-#!   BOTTOM_RIGHT="6470.6652417401374 -405.61119997164866"
-#!   BOUNDING_RECT="5888.3090561324771 -238.10982495789852 582.35618560766034 167.50137501375013"
+#!   POSITION="5884.4027670695868 -292.79787183836726"
+#!   TOP_LEFT="5884.4027670695868 -292.79787183836726"
+#!   BOTTOM_RIGHT="6466.7589526772472 -460.29924685211739"
+#!   BOUNDING_RECT="5884.4027670695868 -292.79787183836726 582.35618560766034 167.50137501375013"
 #!   ORDER="500000000001694"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -313,6 +314,36 @@
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="58"
 #! />
+#! <COMMENT
+#!   IDENTIFIER="69"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Add geo attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="6649.1355394335988 79.406039060390569"
+#!   TOP_LEFT="6649.1355394335988 79.406039060390569"
+#!   BOTTOM_RIGHT="7103.1355394335988 78.406039060390569"
+#!   BOUNDING_RECT="6649.1355394335988 79.406039060390569 454 1"
+#!   ORDER="500000000001709"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="62"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="70"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Add nonegeo attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="6645.2242859957087 -313.90553905539048"
+#!   TOP_LEFT="6645.2242859957087 -313.90553905539048"
+#!   BOTTOM_RIGHT="7191.4781647816462 -425.15635156351556"
+#!   BOUNDING_RECT="6645.2242859957087 -313.90553905539048 546.25387878593756 111.25081250812508"
+#!   ORDER="500000000001710"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="63"
+#! />
 #! </COMMENTS>
 #! <CONSTANTS>
 #! </CONSTANTS>
@@ -328,7 +359,7 @@
 #!   BOUNDING_RECT="-150 644.17226336006036 1110.1375403242316 874.20928595250848"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="41 23 7 49 8 "
+#!   CONTENTS="7 41 8 23 49 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -338,8 +369,8 @@
 #!   TOP_LEFT="-646.93629392434275 740.1389803371718"
 #!   ORDER="500000000001697"
 #!   PALETTE_COLOR="Color2"
-#!   BOTTOM_RIGHT="7402.4177741777412 -1756.2675626756263"
-#!   BOUNDING_RECT="-646.93629392434275 740.1389803371718 8049.3540681020841 2496.406543012798"
+#!   BOTTOM_RIGHT="7324.2919929199279 -1756.2675626756263"
+#!   BOUNDING_RECT="-646.93629392434275 740.1389803371718 7971.2282868442708 2496.406543012798"
 #!   STICKY="false"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
 #!   CONTENTS=""
@@ -578,8 +609,8 @@
 #!   IDENTIFIER="16"
 #!   TYPE="AttributeRemover"
 #!   VERSION="1"
-#!   POSITION="5931.7915670979364 -446.09371093710911"
-#!   BOUNDING_RECT="5931.7915670979364 -446.09371093710911 454 71"
+#!   POSITION="5927.8852780350462 -500.78175781757784"
+#!   BOUNDING_RECT="5927.8852780350462 -500.78175781757784 454 71"
 #!   ORDER="500000000001673"
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
@@ -597,8 +628,8 @@
 #!   IDENTIFIER="17"
 #!   TYPE="Logger"
 #!   VERSION="4"
-#!   POSITION="6000 -1038.281132811328"
-#!   BOUNDING_RECT="6000 -1038.281132811328 454 71"
+#!   POSITION="6000 -999.21824218242159"
+#!   BOUNDING_RECT="6000 -999.21824218242159 454 71"
 #!   ORDER="500000000001644"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -625,8 +656,8 @@
 #!   IDENTIFIER="18"
 #!   TYPE="AttributeExposer"
 #!   VERSION="1"
-#!   POSITION="6000 -746.09371093710911"
-#!   BOUNDING_RECT="6000 -746.09371093710911 454 71"
+#!   POSITION="5929.686796867968 -750"
+#!   BOUNDING_RECT="5929.686796867968 -750 454 71"
 #!   ORDER="500000000001671"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -641,31 +672,6 @@
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id,_not_found_err_msg,format"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="19"
-#!   TYPE="VariableRetriever"
-#!   VERSION="3"
-#!   POSITION="6796.9456199285341 -832.72502169466179"
-#!   BOUNDING_RECT="6796.9456199285341 -832.72502169466179 454 71"
-#!   ORDER="500000000001687"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="19238"
-#! >
-#!     <OUTPUT_FEAT NAME="OUTPUT"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="_geo_none_geo_status" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_not_found_err_msg" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="format" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_timestamp" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="PARAMETER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="SCOPE" PARM_VALUE="Global"/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="VALUE_ATTR" PARM_VALUE="_timestamp"/>
-#!     <XFORM_PARM PARM_NAME="VARNAME" PARM_VALUE="_timestamp"/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="VariableRetriever_3"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="20"
@@ -773,6 +779,56 @@
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_3"/>
 #! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="62"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="6675.4166722449272 -93.407539075390787"
+#!   BOUNDING_RECT="6675.4166722449272 -93.407539075390787 454 71"
+#!   ORDER="500000000001702"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19238"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_typedatasets" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _typedatasets SET_TO geo"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_11"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="63"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="6698.8494422472713 -504.68804688046873"
+#!   BOUNDING_RECT="6698.8494422472713 -504.68804688046873 454 71"
+#!   ORDER="500000000001702"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_typedatasets" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _typedatasets SET_TO nongeo"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_12"/>
+#! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <SUBDOCUMENT_IOS>
 #! <SUBDOCUMENT_IO
@@ -789,8 +845,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="3"
 #!   NAME="GEOSPATIAL"
-#!   POSITION="7739.8521485214851 -150"
-#!   BOUNDING_RECT="7739.8521485214851 -150 768.42477091437831 71"
+#!   POSITION="7500 -150"
+#!   BOUNDING_RECT="7500 -150 768.42477091437831 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -799,8 +855,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="4"
 #!   NAME="NONE_GEOSPATIAL"
-#!   POSITION="7880.4785547855463 -500.44146674035335"
-#!   BOUNDING_RECT="7880.4785547855463 -500.44146674035335 534.00106825772946 71"
+#!   POSITION="7500 -531.69177924347878"
+#!   BOUNDING_RECT="7500 -531.69177924347878 534.00106825772946 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -809,8 +865,8 @@
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="5"
 #!   NAME="LOG_ERROR"
-#!   POSITION="7908.4584857476484 -900"
-#!   BOUNDING_RECT="7908.4584857476484 -900 430 71"
+#!   POSITION="7500 -806.24906249062496"
+#!   BOUNDING_RECT="7500 -806.24906249062496 430 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -969,11 +1025,11 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="32"
+#!   IDENTIFIER="66"
 #!   SOURCE_NODE="15"
-#!   TARGET_NODE="3"
+#!   TARGET_NODE="62"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -984,11 +1040,11 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="33"
+#!   IDENTIFIER="64"
 #!   SOURCE_NODE="16"
-#!   TARGET_NODE="4"
+#!   TARGET_NODE="63"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -1014,28 +1070,13 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="35"
+#!   IDENTIFIER="68"
 #!   SOURCE_NODE="18"
-#!   TARGET_NODE="19"
-#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 "
-#!   ENABLED="true"
-#!   EXECUTION_IDX="1"
-#!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
-#!   PEN_WIDTH="4"
-#!   PEN_STYLE="1"
-#!   LINK_STYLE_NAME="&lt;Default&gt;"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="36"
-#!   SOURCE_NODE="19"
 #!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
-#!   EXECUTION_IDX="0"
+#!   EXECUTION_IDX="1"
 #!   HIDDEN="false"
 #!   COLOUR="0,0,0,1"
 #!   PEN_WIDTH="4"
@@ -1079,6 +1120,36 @@
 #!   TARGET_NODE="14"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="67"
+#!   SOURCE_NODE="62"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="65"
+#!   SOURCE_NODE="63"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -1155,7 +1226,7 @@ DEFAULT_MACRO $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_YAML_DIRECTIVES
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_INPUT1645760620 Input Splitter"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_INPUT1646832729 Input Splitter"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
 MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
@@ -1224,20 +1295,19 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_TestFilter_LOG_ERROR"    OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2 OUTPUT Splitter"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_0_VdJzkJk4N9E="   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_1_sr1uaxY3iU0="
 # -------------------------------------------------------------------------
-DEFAULT_MACRO WB_CURRENT_CONTEXT
-MACRO $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_VariableRetriever_3_VAR _timestamp
-INCLUDE [if {{Global} == {Local}} {   puts {MACRO $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_VariableRetriever_3_VAR $(WB_CURRENT_CONTEXT)__timestamp}; };
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_VariableRetriever_3    INPUT  FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_1_sr1uaxY3iU0="    OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_VariableRetriever_3_OUTPUT"        @GlobalVariable(fme_encoded,$($(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_VariableRetriever_3_VAR),fme_result_attribute,_timestamp)
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_0_VdJzkJk4N9E="    OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,ERROR<space>in<space>GEOSPATIAL_DATA_VALIDATOR<space>transforme:<space><at>value<openparen>_not_found_err_msg<closeparen><space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_ONLY,$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger_0bca6a4e_f7f7_4e6d_a7a8_ddecfb1914780)
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_0_VdJzkJk4N9E="    OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME<closeparen>_Logger:<space>@EvaluateExpression(FDIV,STRING_ENCODED,ERROR<space>in<space>GEOSPATIAL_DATA_VALIDATOR<space>transforme:<space><at>value<openparen>_not_found_err_msg<closeparen><space><space>See<space>PROCESS_REPORT_MANUAL_TASKS.xls<space>file<space>in<space>XLS<space>directory<space>for<space>details.,$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger)","20","20","",WARN,LOG_ONLY,$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger_22a7ffda_75c4_49a6_aad4_41d65fdbdfcc0)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_Logger_LOGGED"
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_3    INPUT  FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_TestFilter_NONE_GEO"    OUTPUT { FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,_geo_none_geo_status)        @RemoveAttributes(fme_pcre_match"$($(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_3_LIST_EXP)")         }
 # -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeCreator_12    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_typedatasets" "SET_TO" "nongeo" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeCreator_12_OUTPUT"
+# -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_TestFilter_GEO"    OUTPUT { FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_geo_none_geo_status)        @RemoveAttributes(fme_pcre_match"$($(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_GEOSPATIAL1645760620 Output Collector"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_GEOSPATIAL"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_NONE_GEOSPATIAL1645760620 Output Collector"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_NONE_GEOSPATIAL"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_LOG_ERROR1645760620 Output Collector"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_VariableRetriever_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_LOG_ERROR"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeCreator_11    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_typedatasets" "SET_TO" "geo" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeCreator_11_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_GEOSPATIAL1646832729 Output Collector"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeCreator_11_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_GEOSPATIAL"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_NONE_GEOSPATIAL1646832729 Output Collector"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeCreator_12_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_NONE_GEOSPATIAL"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_LOG_ERROR1646832729 Output Collector"   INPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT_1_sr1uaxY3iU0="   OUTPUT FEATURE_TYPE "$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME)_LOG_ERROR"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(GEO_NONE_GEO_SELECTOR_WORKSPACE_NAME))}]
