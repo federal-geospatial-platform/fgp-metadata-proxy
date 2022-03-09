@@ -168,6 +168,36 @@
 <span class="n">NOT_FOUND_ERR_MSG</span> <span class="o">=</span> <span class="s2">&quot;_not_found_err_msg&quot;</span>
 <span class="n">FORMAT</span> <span class="o">=</span> <span class="s2">&quot;format&quot;</span>
 
+<div class="viewcode-block" id="copy_attributes_in_resources"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.copy_attributes_in_resources">[docs]</a><span class="k">def</span> <span class="nf">copy_attributes_in_resources</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Copy the attributes notes, titles and id in the attribute resources list.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    feature: FMEObject</span>
+<span class="sd">       The FME feature to processs</span>
+<span class="sd">       </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Extract the original attribute</span>
+<span class="c1">#        web_pdb.set_trace()</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">notes</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;notes&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># extract the number of resources</span>
+    <span class="n">max_index_resources</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">max_index_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;resources</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># For each resources add the attribute</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_index_resources</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%d</span><span class="s2">}.orig_id&quot;</span><span class="o">%</span><span class="n">i</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%d</span><span class="s2">}.notes&quot;</span><span class="o">%</span><span class="n">i</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%d</span><span class="s2">}.title&quot;</span><span class="o">%</span><span class="n">i</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+        
+    <span class="k">return</span> </div>
+
 <div class="viewcode-block" id="lower_resources_format"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.lower_resources_format">[docs]</a><span class="k">def</span> <span class="nf">lower_resources_format</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This method puts in lower case the content of the attribute resources{}.format</span>
 <span class="sd">    </span>
@@ -203,8 +233,7 @@
 <span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     
-        <span class="bp">self</span><span class="o">.</span><span class="n">csv_features</span> <span class="o">=</span><span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">csv_features</span> <span class="o">=</span><span class="p">{}</span></div>
         
 <div class="viewcode-block" id="GeoNoneGeoSelector._load_csv_feature"><a class="viewcode-back" href="../GEO_NONE_GEO_SELECTOR.html#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._load_csv_feature">[docs]</a>    <span class="k">def</span> <span class="nf">_load_csv_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Load a feature from the CSV lookup table</span>
@@ -442,8 +471,6 @@
                            <span class="p">(</span><span class="n">directives</span><span class="p">[</span><span class="n">SPATIAL_TYPE</span><span class="p">]</span> <span class="o">==</span> <span class="n">IF_NULL_OVERWRITE</span> <span class="ow">and</span> <span class="n">spatial_type_value</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">]):</span>
                             <span class="c1"># Add the spatial type</span>
                             <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">spatial_type_name</span><span class="p">,</span> <span class="n">csv_feature</span><span class="o">.</span><span class="n">spatial_type</span><span class="p">)</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Added attribute: </span><span class="si">{}</span><span class="s2"> Value: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spatial_type_name</span><span class="p">,</span> 
-                                                          <span class="n">csv_feature</span><span class="o">.</span><span class="n">spatial_type</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
                         
                 <span class="c1"># Manage the LOG directive when the FME attribute is not found</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
