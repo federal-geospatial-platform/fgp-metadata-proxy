@@ -332,6 +332,11 @@ class LoadValidateYaml(object):
         """
         
 #        web_pdb.set_trace()  # Breakpoint
+
+        if len(self.features) == 0:
+            # There is no features. The CSV file is empty. Nothing to process
+            return
+        
         # Read and validate the schema record
         dict_directives = self._process_yaml()
         if self.directive_errors != "":
@@ -339,7 +344,7 @@ class LoadValidateYaml(object):
             self.yaml.setAttribute(CSV_ERROR, self.directive_errors)
             self.pyoutput(self.yaml)
             
-        else:
+        elif len(self.features) >= 1:
             
             # Only process the CSV if the schema is valid
             # Process the CSV_COLUMNS directives
@@ -383,3 +388,4 @@ class LoadValidateYaml(object):
                 # Add the variable containing the errors
                 feature.setAttribute(CSV_ERROR, self.directive_errors)
                 self.pyoutput(feature)
+        return

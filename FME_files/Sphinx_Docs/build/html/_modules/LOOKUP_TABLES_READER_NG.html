@@ -447,6 +447,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         
 <span class="c1">#        web_pdb.set_trace()  # Breakpoint</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># There is no features. The CSV file is empty. Nothing to process</span>
+            <span class="k">return</span>
+        
         <span class="c1"># Read and validate the schema record</span>
         <span class="n">dict_directives</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_yaml</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
@@ -454,7 +459,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">CSV_ERROR</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaml</span><span class="p">)</span>
             
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
             
             <span class="c1"># Only process the CSV if the schema is valid</span>
             <span class="c1"># Process the CSV_COLUMNS directives</span>
@@ -497,7 +502,8 @@
             <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
                 <span class="c1"># Add the variable containing the errors</span>
                 <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">CSV_ERROR</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">directive_errors</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></div></div>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+        <span class="k">return</span></div></div>
 </pre></div>
 
            </div>
