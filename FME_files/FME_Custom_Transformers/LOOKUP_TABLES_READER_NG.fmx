@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN LOOKUP_TABLES_READER_NG,1,"FGP Tools",50d4cb10-709e-4ac1-88d4-0671661923d0,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# TRANSFORMER_BEGIN LOOKUP_TABLES_READER_NG,1,"FGP Tools",dc9e158d-144d-4423-9e22-e64946226026,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
 # <p><strong>Description </strong></p>
 # <p>This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.</p>
 # <p><strong>Input Ports</strong></p>
@@ -13,7 +13,7 @@
 # </ul>
 # <p><strong>Parameters </strong></p>
 # <ul>
-# <li>FEATURE_TYPE: File name of the lookup table without the .csv extension</li>
+# <li>FEATURE_TYPE: File name of the lookup table without the .csv extension. If this parameter is empty than no CSV file is read and the process continue</li>
 # <li>CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into CSV_PATH\shared when it is a lookup table shared between PT and secondly in CSV_PATH\PT when the lookup table is specific to a PT</li>
 # <li>PT: Two letter code of the province or territory to process (ex.: ON, QC, AB...)</li>
 # <li>CSV_ENCODING: Type of encoding of the lookup tale</li>
@@ -54,13 +54,13 @@
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
 #!   CATEGORY="FGP Tools"
-#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;This custom transformer has no Input Port&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT_LOCAL: The content of the lookup table (one record by row in the CSV file)&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;FEATURE_TYPE: File name of the lookup table without the .csv extension&lt;/li&gt;&#10;&lt;li&gt;CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into CSV_PATH\shared when it is a lookup table shared between PT and secondly in CSV_PATH\PT when the lookup table is specific to a PT&lt;/li&gt;&#10;&lt;li&gt;PT: Two letter code of the province or territory to process (ex.: ON, QC, AB...)&lt;/li&gt;&#10;&lt;li&gt;CSV_ENCODING: Type of encoding of the lookup tale&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Content of the YAML file &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file.&lt;/p&gt;&#10;&lt;pre&gt;&#10;CSV_COLUMNS:&#10;  original_value: [trim, lower, no_null, explode]&#10;  real_value_english: [trim, upper, no_null, explode]&#10;  real_value_french: [no_null_err, explode]&#10;  code_value: [upper, explode]&#10;#&#10;CREATE_KEY_VALUE:&#10;  code_value: original_value&#10;#&#10;NO_DUPLICATE:&#10;  DUP_1: [code_value]&#10;  DUP_2: [original_value, real_value_english]&#10;#&#10;CHECK_DOMAIN&#10;  original_value: [year, yearly]&#10;&lt;/pre&gt;&#10;&#10;&lt;p&gt;&lt;strong&gt;Description of the three sections of a YAML file&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &quot;CSV_COLUMNS:&quot; you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon &quot;:&quot;; followed by the list of actions separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;.  Here&apos;s the list of possible actions:&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &quot;   a   test&quot; ==­&amp;gt; &quot;a test&quot;);&lt;/li&gt;&#10;&lt;li&gt;lower: Put the column value in lower case;&lt;/li&gt;&#10;&lt;li&gt;upper: Put the column value in upper case;&lt;/li&gt;&#10;&lt;li&gt;no_null: Check that the column is not empty or null; it terminates execution if not null;&#10;explode: Duplicate the row if the column contains values separated by semicolumn &quot;;&quot;.  The line is exploded by the number of values in the column (ex: &quot;QC;ON;MB&quot;, will duplicate all the content of the line 2 times, the first line will contain &quot;QC&quot;; the second &quot;ON&quot; and the third &quot;MB&quot;.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &quot;CREATE_KEY_VALUE:&quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon &quot;:&quot;; followed by the name of the column containing the value of the attribute;&lt;/p&gt;&#10;&lt;p&gt;The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following &quot;NO_DUPLICATE:&quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon &quot;:&quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. &lt;/p&gt;&#10;&lt;p&gt;The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following &quot;CHECK_DUPLICATE:&quot; you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon &quot;:&quot;; followed by the domain values separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;. If you want to check for empty value &quot;&quot;, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.&lt;/p&gt;"
-#!   DOC_EXTENTS="9775.74 1839.07"
-#!   DOC_TOP_LEFT="-3718.79 -789.07"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;This custom transformer has no Input Port&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT_LOCAL: The content of the lookup table (one record by row in the CSV file)&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;FEATURE_TYPE: File name of the lookup table without the .csv extension. If this parameter is empty than no CSV file is read and the process continue&lt;/li&gt;&#10;&lt;li&gt;CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into CSV_PATH\shared when it is a lookup table shared between PT and secondly in CSV_PATH\PT when the lookup table is specific to a PT&lt;/li&gt;&#10;&lt;li&gt;PT: Two letter code of the province or territory to process (ex.: ON, QC, AB...)&lt;/li&gt;&#10;&lt;li&gt;CSV_ENCODING: Type of encoding of the lookup tale&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Content of the YAML file &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file.&lt;/p&gt;&#10;&lt;pre&gt;&#10;CSV_COLUMNS:&#10;  original_value: [trim, lower, no_null, explode]&#10;  real_value_english: [trim, upper, no_null, explode]&#10;  real_value_french: [no_null_err, explode]&#10;  code_value: [upper, explode]&#10;#&#10;CREATE_KEY_VALUE:&#10;  code_value: original_value&#10;#&#10;NO_DUPLICATE:&#10;  DUP_1: [code_value]&#10;  DUP_2: [original_value, real_value_english]&#10;#&#10;CHECK_DOMAIN&#10;  original_value: [year, yearly]&#10;&lt;/pre&gt;&#10;&#10;&lt;p&gt;&lt;strong&gt;Description of the three sections of a YAML file&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &quot;CSV_COLUMNS:&quot; you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon &quot;:&quot;; followed by the list of actions separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;.  Here&apos;s the list of possible actions:&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &quot;   a   test&quot; ==­&amp;gt; &quot;a test&quot;);&lt;/li&gt;&#10;&lt;li&gt;lower: Put the column value in lower case;&lt;/li&gt;&#10;&lt;li&gt;upper: Put the column value in upper case;&lt;/li&gt;&#10;&lt;li&gt;no_null: Check that the column is not empty or null; it terminates execution if not null;&#10;explode: Duplicate the row if the column contains values separated by semicolumn &quot;;&quot;.  The line is exploded by the number of values in the column (ex: &quot;QC;ON;MB&quot;, will duplicate all the content of the line 2 times, the first line will contain &quot;QC&quot;; the second &quot;ON&quot; and the third &quot;MB&quot;.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &quot;CREATE_KEY_VALUE:&quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon &quot;:&quot;; followed by the name of the column containing the value of the attribute;&lt;/p&gt;&#10;&lt;p&gt;The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following &quot;NO_DUPLICATE:&quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon &quot;:&quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. &lt;/p&gt;&#10;&lt;p&gt;The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following &quot;CHECK_DUPLICATE:&quot; you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon &quot;:&quot;; followed by the domain values separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;. If you want to check for empty value &quot;&quot;, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list.&lt;/p&gt;"
+#!   DOC_EXTENTS="10813 1839.07"
+#!   DOC_TOP_LEFT="-4310.56 -789.07"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="50d4cb10-709e-4ac1-88d4-0671661923d0"
-#!   FME_DOCUMENT_PRIORGUID="b36564f4-477f-49cb-8ae9-e2e12f075e70,f4dacf0f-5b76-44cd-90f9-67a610908356,0ba69025-acf1-4148-9ca5-1549644b315f"
+#!   FME_DOCUMENT_GUID="dc9e158d-144d-4423-9e22-e64946226026"
+#!   FME_DOCUMENT_PRIORGUID="ea1e6c9f-a25d-4d39-bc1e-6e5c16855d72"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -69,11 +69,11 @@
 #!   FME_SERVER_SERVICES=""
 #!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
 #!   FMX_INSERT_MODE="Linked by Default"
-#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,12&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added,20&lt;solidus&gt;10&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Generic&lt;space&gt;LookUp&lt;space&gt;Tables&lt;space&gt;Reader,02&lt;solidus&gt;11&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Added&lt;space&gt;CHECK_DOMAIN&lt;space&gt;option"
+#!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,12&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added,20&lt;solidus&gt;10&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Generic&lt;space&gt;LookUp&lt;space&gt;Tables&lt;space&gt;Reader,02&lt;solidus&gt;11&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Added&lt;space&gt;CHECK_DOMAIN&lt;space&gt;option,03&lt;solidus&gt;0922021,Daniel&lt;space&gt;Pilon,Add&lt;space&gt;the&lt;space&gt;possibility&lt;space&gt;of&lt;space&gt;empty&lt;space&gt;FEATURE_TYPE"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-01-20T16:55:56"
-#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.&#10;&#10;**Input Ports**&#10;&#10;- This custom transformer has no Input Port&#10;&#10;**Output Ports **&#10;&#10;- OUTPUT_LOCAL: The content of the lookup table (one record by row in the CSV file)&#10;&#10;**Parameters **&#10;&#10;- FEATURE_TYPE: File name of the lookup table without the .csv extension&#10;- CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into CSV_PATH\shared when it is a lookup table shared between PT and secondly in CSV_PATH\PT when the lookup table is specific to a PT&#10;- PT: Two letter code of the province or territory to process (ex.: ON, QC, AB...)&#10;- CSV_ENCODING: Type of encoding of the lookup tale&#10;&#10;**Content of the YAML file **&#10;&#10;The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file.&#10;&#10;&lt;pre&gt;&#10;CSV_COLUMNS:&#10;  original_value: [trim, lower, no_null, explode]&#10;  real_value_english: [trim, upper, no_null, explode]&#10;  real_value_french: [no_null_err, explode]&#10;  code_value: [upper, explode]&#10;#&#10;CREATE_KEY_VALUE:&#10;  code_value: original_value&#10;#&#10;NO_DUPLICATE:&#10;  DUP_1: [code_value]&#10;  DUP_2: [original_value, real_value_english]&#10;#&#10;CHECK_DOMAIN&#10;  original_value: [year, yearly]&#10;&lt;/pre&gt;&#10;&#10;**Description of the three sections of a YAML file**&#10;&#10;The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &quot;CSV_COLUMNS:&quot; you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon &quot;:&quot;; followed by the list of actions separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;.  Here&apos;s the list of possible actions:&#10;&#10;- trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &quot;   a   test&quot; ==­&gt; &quot;a test&quot;);&#10;- lower: Put the column value in lower case;&#10;- upper: Put the column value in upper case;&#10;- no_null: Check that the column is not empty or null; it terminates execution if not null;&#10;explode: Duplicate the row if the column contains values separated by semicolumn &quot;;&quot;.  The line is exploded by the number of values in the column (ex: &quot;QC;ON;MB&quot;, will duplicate all the content of the line 2 times, the first line will contain &quot;QC&quot;; the second &quot;ON&quot; and the third &quot;MB&quot;.&#10;&#10;The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &quot;CREATE_KEY_VALUE:&quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon &quot;:&quot;; followed by the name of the column containing the value of the attribute;&#10;&#10;The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following &quot;NO_DUPLICATE:&quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon &quot;:&quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. &#10;&#10;The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following &quot;CHECK_DUPLICATE:&quot; you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon &quot;:&quot;; followed by the domain values separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;. If you want to check for empty value &quot;&quot;, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list."
+#!   LAST_SAVE_DATE="2022-03-10T08:18:27"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer reads and manipulates the content of a lookup table. The lookup table must be a coma separated value (CSV) file.  The manipulation directives are contained in a YAML file located in the same directory as the CSV file. The YAML file must bear the same name that the CSV file. (ex.: Province.csv and Province.yaml). See section below for a description of the YAML file.&#10;&#10;**Input Ports**&#10;&#10;- This custom transformer has no Input Port&#10;&#10;**Output Ports **&#10;&#10;- OUTPUT_LOCAL: The content of the lookup table (one record by row in the CSV file)&#10;&#10;**Parameters **&#10;&#10;- FEATURE_TYPE: File name of the lookup table without the .csv extension. If this parameter is empty than no CSV file is read and the process continue&#10;- CSV_PATH: Name of the root directory containing the lookup table.  The custom transformer will try to find the lookup table in two directories: firstly into CSV_PATH\shared when it is a lookup table shared between PT and secondly in CSV_PATH\PT when the lookup table is specific to a PT&#10;- PT: Two letter code of the province or territory to process (ex.: ON, QC, AB...)&#10;- CSV_ENCODING: Type of encoding of the lookup tale&#10;&#10;**Content of the YAML file **&#10;&#10;The YAML file is used by the custom transformer for manipulating (editing, cloning lines, create key/value attributes and validate unicity) the CSV file.  Below is an example of a YAML file.&#10;&#10;&lt;pre&gt;&#10;CSV_COLUMNS:&#10;  original_value: [trim, lower, no_null, explode]&#10;  real_value_english: [trim, upper, no_null, explode]&#10;  real_value_french: [no_null_err, explode]&#10;  code_value: [upper, explode]&#10;#&#10;CREATE_KEY_VALUE:&#10;  code_value: original_value&#10;#&#10;NO_DUPLICATE:&#10;  DUP_1: [code_value]&#10;  DUP_2: [original_value, real_value_english]&#10;#&#10;CHECK_DOMAIN&#10;  original_value: [year, yearly]&#10;&lt;/pre&gt;&#10;&#10;**Description of the three sections of a YAML file**&#10;&#10;The first section CSV_COLUMNS defines the actions to perform on the column of the CSV file.  Following the &quot;CSV_COLUMNS:&quot; you list on separate line the name of the column as defined in the header (first line) of the CSV file (an error is raised if the column name is mispelled); Followed by a colon &quot;:&quot;; followed by the list of actions separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;.  Here&apos;s the list of possible actions:&#10;&#10;- trim: Remove front and trailing whitespcaes; it also remove extra white spces in the interior of the column value (ex.: &quot;   a   test&quot; ==­&gt; &quot;a test&quot;);&#10;- lower: Put the column value in lower case;&#10;- upper: Put the column value in upper case;&#10;- no_null: Check that the column is not empty or null; it terminates execution if not null;&#10;explode: Duplicate the row if the column contains values separated by semicolumn &quot;;&quot;.  The line is exploded by the number of values in the column (ex: &quot;QC;ON;MB&quot;, will duplicate all the content of the line 2 times, the first line will contain &quot;QC&quot;; the second &quot;ON&quot; and the third &quot;MB&quot;.&#10;&#10;The second section CREATE_KEY_VALUE creates of FME key/value attributes.  Following the &quot;CREATE_KEY_VALUE:&quot; you list on separate line all key: value pair that will create an FME attribute.  The key is the name of the column containing the attribute name to create; followed by a colon &quot;:&quot;; followed by the name of the column containing the value of the attribute;&#10;&#10;The third section NO_DUPLICATE defines the column that are used for checking the unicity of one or more columns. Following &quot;NO_DUPLICATE:&quot; you list on separate line the duplication to check.  You write the name of the duplication (name is not important but must be unique); follwed by colon &quot;:&quot;; followed by the list of name of the column to check for unicity separated by a coma and enclosed between bracket. &#10;&#10;The fourth section CHECK_DOMAIN defines the domain of values to check for a specific column(s). Following &quot;CHECK_DUPLICATE:&quot; you list on separate line the domain validation to check.  You write the name of the column to check; followed by a colon &quot;:&quot;; followed by the domain values separated by a coma &quot;,&quot; and enclosed between brackets &quot;[]&quot;. If you want to check for empty value &quot;&quot;, you place an extra coma at the end of the list: ex: [A,B,].  Important: do not place extra whitespaces in the list."
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
@@ -84,11 +84,11 @@
 #!   TITLE="LOOKUP_TABLES_READER_NG"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="-4543.31 3693.95"
+#!   VIEW_POSITION="-4910.76 1309.54"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="39"
+#!   ZOOM_SCALE="63"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -124,12 +124,12 @@
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
-#!   IDENTIFIER="43"
+#!   IDENTIFIER="48"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Create attribute from the publish parameters&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-2580.8403890338122 798.87012928461922"
-#!   TOP_LEFT="-2580.8403890338122 798.87012928461922"
-#!   BOTTOM_RIGHT="-2126.8403890338122 797.87012928461922"
-#!   BOUNDING_RECT="-2580.8403890338122 798.87012928461922 454 1"
+#!   POSITION="-3245.5295756082182 808.7908634125954"
+#!   TOP_LEFT="-3245.5295756082182 808.7908634125954"
+#!   BOTTOM_RIGHT="-2791.5295756082182 807.7908634125954"
+#!   BOUNDING_RECT="-3245.5295756082182 808.7908634125954 454 1"
 #!   ORDER="500000000000037"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -139,7 +139,7 @@
 #!   ANCHORED_NODE="8"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="44"
+#!   IDENTIFIER="49"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Check if the file is present in the pt or shared directory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-1967.3612847239581 854.16770834375006"
 #!   TOP_LEFT="-1967.3612847239581 854.16770834375006"
@@ -154,7 +154,7 @@
 #!   ANCHORED_NODE="7"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="45"
+#!   IDENTIFIER="50"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Expose attribute from the PythonCaller&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-1300.5006250062502 788.19717641620855"
 #!   TOP_LEFT="-1300.5006250062502 788.19717641620855"
@@ -169,7 +169,7 @@
 #!   ANCHORED_NODE="17"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="46"
+#!   IDENTIFIER="51"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Check if file exists&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-662.50062500625017 795.97353195754192"
 #!   TOP_LEFT="-662.50062500625017 795.97353195754192"
@@ -184,7 +184,7 @@
 #!   ANCHORED_NODE="4"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="47"
+#!   IDENTIFIER="52"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Read the lookup table file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="201.78623214803565 882.14267856964295"
 #!   TOP_LEFT="201.78623214803565 882.14267856964295"
@@ -199,7 +199,7 @@
 #!   ANCHORED_NODE="6"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="48"
+#!   IDENTIFIER="53"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Read the yaml file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="229.5642877063691 241.17004662110116"
 #!   TOP_LEFT="229.5642877063691 241.17004662110116"
@@ -214,7 +214,7 @@
 #!   ANCHORED_NODE="18"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="49"
+#!   IDENTIFIER="54"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Schema information&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="949.49937499374983 730.00065000650011"
 #!   TOP_LEFT="949.49937499374983 730.00065000650011"
@@ -229,7 +229,7 @@
 #!   ANCHORED_NODE="10"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="50"
+#!   IDENTIFIER="55"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;CSV content&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="1057.1393402822914 408.33291666249994"
 #!   TOP_LEFT="1057.1393402822914 408.33291666249994"
@@ -244,7 +244,7 @@
 #!   ANCHORED_NODE="11"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="51"
+#!   IDENTIFIER="56"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;YAML content&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="1039.5832291656247 71.749365892893294"
 #!   TOP_LEFT="1039.5832291656247 71.749365892893294"
@@ -259,7 +259,7 @@
 #!   ANCHORED_NODE="19"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="52"
+#!   IDENTIFIER="57"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Unexpose all attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="4800 450"
 #!   TOP_LEFT="4800 450"
@@ -269,12 +269,12 @@
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="20"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="53"
+#!   IDENTIFIER="58"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Validate the content of the YAML file and validate the CSV file againsts the YAML file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="1789.7705554833324 544.5851291846252"
 #!   TOP_LEFT="1789.7705554833324 544.5851291846252"
@@ -289,7 +289,7 @@
 #!   ANCHORED_NODE="9"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="54"
+#!   IDENTIFIER="59"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Remove unecessary attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="3920.3729170625043 516.66818334850018"
 #!   TOP_LEFT="3920.3729170625043 516.66818334850018"
@@ -304,7 +304,7 @@
 #!   ANCHORED_NODE="21"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="55"
+#!   IDENTIFIER="60"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test the status of the validation of the YMAL and CSV file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="3094.7304225423213 502.81115466832318"
 #!   TOP_LEFT="3094.7304225423213 502.81115466832318"
@@ -318,22 +318,37 @@
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="13"
 #! />
+#! <COMMENT
+#!   IDENTIFIER="61"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;If _feature_type has value read the CSV; otherwise do not read CSV and continue&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2700 845.42001351861984"
+#!   TOP_LEFT="-2700 845.42001351861984"
+#!   BOTTOM_RIGHT="-2045.2022540472867 621.66807599924459"
+#!   BOUNDING_RECT="-2700 845.42001351861984 654.79774595271329 223.75193751937519"
+#!   ORDER="500000000000054"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="22"
+#! />
 #! </COMMENTS>
 #! <CONSTANTS>
 #! </CONSTANTS>
 #! <BOOKMARKS>
 #! <BOOKMARK
-#!   IDENTIFIER="56"
+#!   IDENTIFIER="62"
 #!   NAME="Read and validate the YAML and loopup table"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="-3718.7871878718784 1050"
+#!   TOP_LEFT="-4310.5589786056589 1050"
 #!   ORDER="500000000000051"
 #!   PALETTE_COLOR="Color6"
-#!   BOTTOM_RIGHT="4656.2965629656228 -789.07039070390692"
-#!   BOUNDING_RECT="-3718.7871878718784 1050 8375.0837508375007 1839.0703907039069"
+#!   BOTTOM_RIGHT="5535.7696434107202 -789.07039070390692"
+#!   BOUNDING_RECT="-4310.5589786056589 1050 9846.3286220163791 1839.0703907039069"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="27 51 31 47 5 55 13 23 18 44 32 16 40 41 10 9 42 26 21 34 25 19 8 46 7 45 54 48 43 24 17 3 49 6 39 30 33 28 4 22 29 11 12 15 38 37 14 53 50 "
+#!   CONTENTS="60 51 25 38 33 39 6 15 3 23 34 35 26 20 14 43 47 55 63 19 48 49 57 54 53 27 13 9 41 32 12 44 56 18 4 10 58 17 8 31 59 50 30 52 11 22 61 16 28 7 46 21 24 5 36 29 42 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -342,8 +357,8 @@
 #!   IDENTIFIER="3"
 #!   TYPE="Creator"
 #!   VERSION="5"
-#!   POSITION="-3172.460800003827 557.63996528854182"
-#!   BOUNDING_RECT="-3172.460800003827 557.63996528854182 430 71"
+#!   POSITION="-3961.1591631779356 552.6795982245535"
+#!   BOUNDING_RECT="-3961.1591631779356 552.6795982245535 430 71"
 #!   ORDER="500000000000001"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -587,8 +602,8 @@
 #!   IDENTIFIER="8"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="-2567.1461876473541 544.00711954341068"
-#!   BOUNDING_RECT="-2567.1461876473541 544.00711954341068 430 71"
+#!   POSITION="-3231.83537422176 553.92785367138686"
+#!   BOUNDING_RECT="-3231.83537422176 553.92785367138686 430 71"
 #!   ORDER="500000000000017"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1115,13 +1130,79 @@
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
 #! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="22"
+#!   TYPE="Tester"
+#!   VERSION="3"
+#!   POSITION="-2591.0238374199776 559.72406211466125"
+#!   BOUNDING_RECT="-2591.0238374199776 559.72406211466125 454 71"
+#!   ORDER="500000000000053"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_csv_path" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_pt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_feature_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_fme_home" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_csv_path" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_pt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_feature_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_fme_home" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST _feature_type ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="23"
+#!   TYPE="Logger"
+#!   VERSION="4"
+#!   POSITION="-2013.7046132366083 0"
+#!   BOUNDING_RECT="-2013.7046132366083 0 454 71"
+#!   ORDER="500000000000055"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_csv_path" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_pt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_feature_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_fme_home" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_ONLY"/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="***********************************************************&lt;lf&gt;***********************************************************&lt;lf&gt;Published&lt;space&gt;parameter:&lt;space&gt;FEATURE_TYPE&lt;space&gt;is&lt;space&gt;empty.&lt;space&gt;No&lt;space&gt;CSV&lt;space&gt;file&lt;space&gt;read.&lt;lf&gt;***********************************************************&lt;lf&gt;***********************************************************&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MSG_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEVERITY" PARM_VALUE="INFO"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <SUBDOCUMENT_IOS>
 #! <SUBDOCUMENT_IO
 #!   IDENTIFIER="2"
 #!   NAME="Output"
-#!   POSITION="5602.9519184080727 195.26607292934969"
-#!   BOUNDING_RECT="5602.9519184080727 195.26607292934969 454 71"
+#!   POSITION="6048.4146825595226 -504.76845244642925"
+#!   BOUNDING_RECT="6048.4146825595226 -504.76845244642925 454 71"
 #!   COLLAPSED="true"
 #!   IS_SOURCE="false"
 #!   ATTR_MODE="0"
@@ -1130,7 +1211,7 @@
 #! </SUBDOCUMENT_IOS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="22"
+#!   IDENTIFIER="24"
 #!   SOURCE_NODE="3"
 #!   TARGET_NODE="8"
 #!   SOURCE_PORT_DESC="fo 0 CREATED"
@@ -1145,7 +1226,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="23"
+#!   IDENTIFIER="25"
 #!   SOURCE_NODE="4"
 #!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
@@ -1160,7 +1241,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="24"
+#!   IDENTIFIER="26"
 #!   SOURCE_NODE="4"
 #!   TARGET_NODE="18"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
@@ -1175,7 +1256,7 @@
 #!   EXTRA_POINTS="64 457"
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="25"
+#!   IDENTIFIER="27"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 0 &lt;lt&gt;SCHEMA&lt;gt&gt;"
@@ -1190,7 +1271,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="26"
+#!   IDENTIFIER="28"
 #!   SOURCE_NODE="7"
 #!   TARGET_NODE="17"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1205,9 +1286,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="27"
+#!   IDENTIFIER="29"
 #!   SOURCE_NODE="8"
-#!   TARGET_NODE="7"
+#!   TARGET_NODE="22"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -1220,7 +1301,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="28"
+#!   IDENTIFIER="30"
 #!   SOURCE_NODE="9"
 #!   TARGET_NODE="14"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1235,7 +1316,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="29"
+#!   IDENTIFIER="31"
 #!   SOURCE_NODE="10"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1250,7 +1331,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="30"
+#!   IDENTIFIER="32"
 #!   SOURCE_NODE="11"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1265,7 +1346,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="31"
+#!   IDENTIFIER="33"
 #!   SOURCE_NODE="13"
 #!   TARGET_NODE="21"
 #!   SOURCE_PORT_DESC="fo 0 CSV&lt;lt&gt;space&lt;gt&gt;OK"
@@ -1280,7 +1361,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="32"
+#!   IDENTIFIER="34"
 #!   SOURCE_NODE="14"
 #!   TARGET_NODE="13"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1295,7 +1376,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="33"
+#!   IDENTIFIER="35"
 #!   SOURCE_NODE="17"
 #!   TARGET_NODE="4"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1310,7 +1391,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="34"
+#!   IDENTIFIER="36"
 #!   SOURCE_NODE="19"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1325,7 +1406,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="35"
+#!   IDENTIFIER="37"
 #!   SOURCE_NODE="20"
 #!   TARGET_NODE="2"
 #!   SOURCE_PORT_DESC="fo 0 Output"
@@ -1340,7 +1421,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="36"
+#!   IDENTIFIER="38"
 #!   SOURCE_NODE="21"
 #!   TARGET_NODE="20"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -1355,7 +1436,22 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="37"
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="22"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
 #!   SOURCE_NODE="4"
 #!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="fo 1 FAILED"
@@ -1370,7 +1466,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="38"
+#!   IDENTIFIER="42"
 #!   SOURCE_NODE="6"
 #!   TARGET_NODE="11"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;OTHER&lt;gt&gt;"
@@ -1385,7 +1481,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="39"
+#!   IDENTIFIER="43"
 #!   SOURCE_NODE="13"
 #!   TARGET_NODE="12"
 #!   SOURCE_PORT_DESC="fo 1 CSV&lt;lt&gt;space&lt;gt&gt;ERROR"
@@ -1400,7 +1496,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="40"
+#!   IDENTIFIER="44"
 #!   SOURCE_NODE="18"
 #!   TARGET_NODE="19"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;OTHER&lt;gt&gt;"
@@ -1415,7 +1511,22 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="41"
+#!   IDENTIFIER="63"
+#!   SOURCE_NODE="22"
+#!   TARGET_NODE="23"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="46"
 #!   SOURCE_NODE="13"
 #!   TARGET_NODE="15"
 #!   SOURCE_PORT_DESC="fo 2 YAML&lt;lt&gt;space&lt;gt&gt;ERROR"
@@ -1430,7 +1541,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="42"
+#!   IDENTIFIER="47"
 #!   SOURCE_NODE="13"
 #!   TARGET_NODE="16"
 #!   SOURCE_PORT_DESC="fo 3 OTHER"
@@ -1479,14 +1590,19 @@ INCLUDE [ if { {Geometry Object} == {2D Min/Max Box} } {            set comment 
 FACTORY_DEF $($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_XML) CreationFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_XML_Creator    CREATE_AT_END no    OUTPUT FEATURE_TYPE _____CREATED______        @Geometry(FROM_ENCODED_STRING,<lt>?xml<space>version=<quote>1.0<quote><space>encoding=<quote>US_ASCII<quote><space>standalone=<quote>no<quote><space>?<gt><lt>geometry<space>dimension=<quote>2<quote><gt><lt>null<solidus><gt><lt><solidus>geometry<gt>)
 FACTORY_DEF $($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CLASSIC) CreationFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CLASSIC_Creator    $($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_2D3D) $($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_COORDS)    CREATE_AT_END no    OUTPUT FEATURE_TYPE _____CREATED______
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_Cloner    INPUT FEATURE_TYPE _____CREATED______        @Tcl2($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CoordSysRemover)        @CoordSys()    NUMBER_OF_COPIES 1    COPY_NUMBER_ATTRIBUTE "_creation_instance"    OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED"        fme_feature_type $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator
-FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED Brancher -1 22"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED Brancher -1 24"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_1    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Creator_CREATED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_csv_path" "SET_TO" "$($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH)" }      ATTR_ACTION { "" "_pt" "SET_TO" "$($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT)" }      ATTR_ACTION { "" "_feature_type" "SET_TO" "$($(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE$encode)" }      ATTR_ACTION { "" "_fme_home" "SET_TO" "$(FME_HOME_USERTYPED$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_1_OUTPUT"
 # -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_1_OUTPUT"    TEST _feature_type ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Tester_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Tester_FAILED"    OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Logger_LOGGED"                  @Log(ENCODED, "<dollar><openparen>LOOKUP_TABLES_READER_NG_WORKSPACE_NAME<closeparen>_Logger:<space>***********************************************************<lf>***********************************************************<lf>Published<space>parameter:<space>FEATURE_TYPE<space>is<space>empty.<space>No<space>CSV<space>file<space>read.<lf>***********************************************************<lf>***********************************************************<lf>","20","20","",INFO,LOG_ONLY,$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Logger_03d8c997_0ec7_4847_84c4_2e63fedbbc152)
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Logger LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Logger_LOGGED"
+# -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeCreator_1_OUTPUT"    SYMBOL_NAME check_file_present    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.LOOKUP_TABLES_READER_NG<space>import<space>check_file_present    OUTPUT PYOUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1_OUTPUT"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Tester_PASSED"    SYMBOL_NAME check_file_present    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.LOOKUP_TABLES_READER_NG<space>import<space>check_file_present    OUTPUT PYOUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1_OUTPUT"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_1    INPUT  FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PythonCaller_1_OUTPUT"    OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_AttributeExposer_1_OUTPUT"
 # -------------------------------------------------------------------------
@@ -1571,5 +1687,5 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(LOOKUP_TABLES_READER_
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output1642715756 Output Collector"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output1646918307 Output Collector"   INPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_Output"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME))}]

@@ -131,6 +131,8 @@
 <span class="sd">        Liste des expressions régulières:</span>
 <span class="sd">        </span>
 <span class="sd">        1. ^[1-2][0-9][0-9][0-9]$  --&gt; 2001</span>
+<span class="sd">		</span>
+<span class="sd">        1.b	^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$  --&gt; 2001-12-18</span>
 <span class="sd">        </span>
 <span class="sd">        2. ^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$  --&gt; 2001-2002</span>
 <span class="sd">        </span>
@@ -207,7 +209,11 @@
                     <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^[1-2][0-9][0-9][0-9]$&#39;</span><span class="p">,</span><span class="n">date_extent</span><span class="p">):</span>
                         <span class="n">start_date</span><span class="o">=</span><span class="n">date_extent</span>
                         <span class="n">end_date</span><span class="o">=</span><span class="n">start_date</span>
-                    
+                    <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$&#39;</span><span class="p">,</span><span class="n">date_extent</span><span class="p">):</span>
+                        <span class="n">start_date</span><span class="o">=</span><span class="n">date_extent</span>
+                        <span class="n">end_date</span><span class="o">=</span><span class="n">start_date</span>
+                     
+                     
                     <span class="c1"># 2. De type 1999-2000</span>
                     <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$&#39;</span><span class="p">,</span><span class="n">date_extent</span><span class="p">):</span>
                         
