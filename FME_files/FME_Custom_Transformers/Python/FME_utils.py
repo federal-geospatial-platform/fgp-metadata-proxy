@@ -582,4 +582,28 @@ class FME_utils:
             match = False
             
         return match    
+
+    @staticmethod
+    def remove_mailto(feature, att_name, separator=":"):
+        """Removes the first part of an attribute string where it is not part of the email address
+        
+        Parameters
+        ----------
+        feature FMEFeature
+            Feature object containing the attribute to test_attribute
+
+        att_name str
+            Attribute string containing the email address
+
+        separator str
+            String for the separator
+
+        action:
+            Replaces the attribute for the second part of itself after the separator
+        """
+        
+        mail_to = feature.getAttribute(att_name)
+        _mail = mail_to.split(separator)
+        contact_email =_mail[1]
+        feature.setAttribute(att_name,contact_email)
         
