@@ -500,7 +500,7 @@ class FME_utils:
         return
         
     @staticmethod
-    def convert_unix_time(feature, in_attr_name, out_attr_name='itemModif', out_format='%Y-%m-%d %H:%M:%S'):
+    def convert_unix_time(feature, in_att_name, out_att_name='itemModif', out_format='%Y-%m-%d %H:%M:%S'):
         """ This method unix time to a specified format.
         
         Parameters
@@ -508,10 +508,10 @@ class FME_utils:
         feature FME Feature object
             The FME feature used to read the attribute
         
-        in_attr_name: str
+        in_att_name: str
             The name of the FME attribute to convert.
             
-        out_attr_name: str
+        out_att_name: str
             The name of the FME attribute you want the conversion to be done.
         
         out_format: str
@@ -526,21 +526,21 @@ class FME_utils:
         #web_pdb.set_trace()
         
         #Managing empty attributes
-        if not feature.getAttribute(in_attr_name):
+        if not feature.getAttribute(in_att_name):
             pass
         
         else:
             #Get the attribute value
-            attr_value = feature.getAttribute(in_attr_name)
+            att_value = feature.getAttribute(in_att_name)
             
             #Converting the attribute value to string
-            attr_value_str = str(attr_value)
+            att_value_str = str(att_value)
             
             #Converting the length adjusted attribute value to integer
-            attr_value_cut = int(attr_value_str[0:10:1])
+            att_value_cut = int(att_value_str[0:10:1])
 
 
-            feature.setAttribute(out_attr_name, datetime.fromtimestamp(attr_value_cut).strftime(out_format))
+            feature.setAttribute(out_att_name, datetime.fromtimestamp(att_value_cut).strftime(out_format))
             
         return
         
@@ -582,4 +582,42 @@ class FME_utils:
             match = False
             
         return match    
+
+    @staticmethod
+    def remove_mailto(feature, in_att_name, out_att_name="", remove_in_att=False, separator=":"):
+        """Removes the first part of an attribute string where it is not part of the email address
+        
+        Parameters
+        ----------
+        feature FMEFeature
+            Feature object containing the attribute to transform
+
+        in_att_name str
+            The name of the FME attribute containing the email Address
+
+        out_att_name: str
+            The name of the FME attribute you want the transformation to be saved to.
+            if this parameter is nor specified the transformation will be applied the attribute source
+        
+        separator str
+            String for the separator
+
+        remove_in_att
+            When True and out_att_name is specified the source attribute is removed from the feature
+
+        action:
+            Replaces the attribute for the second part of itself after the separator
+        """
+
+        try:
+            splitted_mail = feature.getAttribute(in_att_name).split(separator)[1]
+        except:
+            pass
+        else:
+            if out_att_name=="":
+                feature.setAttribute(in_att_name,splitted_mail.strip())
+            else:
+                feature.setAttribute(out_att_name,splitted_mail.strip())
+                if remove_in_att:
+                    feature.removeAttribute(in_att_name)
         
