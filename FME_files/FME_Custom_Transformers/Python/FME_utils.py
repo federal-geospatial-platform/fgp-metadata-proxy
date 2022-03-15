@@ -609,14 +609,15 @@ class FME_utils:
             Replaces the attribute for the second part of itself after the separator
         """
 
-        if not feature.getAttribute(in_att_name):
+        try:
+            splitted_mail = feature.getAttribute(in_att_name).split(separator)[1]
+        except:
             pass
         else:
-            splitted_mail = feature.getAttribute(in_att_name).split(separator)
             if out_att_name=="":
-                feature.setAttribute(in_att_name,splitted_mail[1])
+                feature.setAttribute(in_att_name,splitted_mail.strip())
             else:
-                feature.setAttribute(out_att_name,splitted_mail[1])
+                feature.setAttribute(out_att_name,splitted_mail.strip())
                 if remove_in_att:
                     feature.removeAttribute(in_att_name)
         
