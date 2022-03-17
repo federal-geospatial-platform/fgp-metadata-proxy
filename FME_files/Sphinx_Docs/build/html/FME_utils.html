@@ -147,6 +147,30 @@ intégrés dans dans les PythonCaller de FME</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#FME_utils.FME_utils.feature_get_attribute" title="FME_utils.FME_utils.feature_get_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.feature_get_attribute</span></code></a>(...)</p></td>
 <td><p>Read an attribute from a FME feature.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FME_utils.FME_utils.ftp_check_file_dir_exists" title="FME_utils.FME_utils.ftp_check_file_dir_exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.ftp_check_file_dir_exists</span></code></a>(...)</p></td>
+<td><p>Uses the given ftp instance connection to browse to the base_path and check the existance of either a directory or a file name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FME_utils.FME_utils.ftp_check_url" title="FME_utils.FME_utils.ftp_check_url"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.ftp_check_url</span></code></a>(url)</p></td>
+<td><p>Parses the given url to retrieve the base directory and the directory/file to check for existence.A connection using TLS is tried first and if it fails a connection without TLS is attempted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FME_utils.FME_utils.go_url" title="FME_utils.FME_utils.go_url"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.go_url</span></code></a>(url)</p></td>
+<td><p>Verifies if the provided url is valid and responds to a request, whether it's a http or ftp url.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FME_utils.FME_utils.http_check_url_request_options" title="FME_utils.FME_utils.http_check_url_request_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.http_check_url_request_options</span></code></a>(url)</p></td>
+<td><p>Makes a call on the provided url using the OPTIONS method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FME_utils.FME_utils.http_check_url" title="FME_utils.FME_utils.http_check_url"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.http_check_url</span></code></a>(url)</p></td>
+<td><p>Checks if the http url responds to a request.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FME_utils.FME_utils.http_check_url_request_head" title="FME_utils.FME_utils.http_check_url_request_head"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.http_check_url_request_head</span></code></a>(url)</p></td>
+<td><p>Makes a call on the provided url using the HEAD method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils._http_check_url_rec</span></code>(url, ...)</p></td>
+<td><p>Checks if the url responds to a request and recursively follows redirections when any.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils._http_check_url_rec_handle_redir</span></code>(r, ...)</p></td>
+<td><p>Handles the request being redirected in order to loop back in the recursion with the redirected url.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#FME_utils.FME_utils.load_yaml_document" title="FME_utils.FME_utils.load_yaml_document"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.load_yaml_document</span></code></a>(...)</p></td>
 <td><p>This method loads a YMAL document from a string.</p></td>
 </tr>
@@ -159,10 +183,13 @@ intégrés dans dans les PythonCaller de FME</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#FME_utils.FME_utils.pyoutput_feature" title="FME_utils.FME_utils.pyoutput_feature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.pyoutput_feature</span></code></a>(...[, ...])</p></td>
 <td><p>Set attributes to the FME feature and output he feature through the FME pyoutput</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#FME_utils.FME_utils.repair_attribute_list" title="FME_utils.FME_utils.repair_attribute_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.repair_attribute_list</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FME_utils.FME_utils.remove_mailto" title="FME_utils.FME_utils.remove_mailto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.remove_mailto</span></code></a>(feature, ...)</p></td>
+<td><p>Removes the first part of an attribute string where it is not part of the email address</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#FME_utils.FME_utils.repair_attribute_list" title="FME_utils.FME_utils.repair_attribute_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.repair_attribute_list</span></code></a>(...)</p></td>
 <td><p>This method repairs a list by creating the missing attribute in a list.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#FME_utils.FME_utils.test_attribute_value" title="FME_utils.FME_utils.test_attribute_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.test_attribute_value</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#FME_utils.FME_utils.test_attribute_value" title="FME_utils.FME_utils.test_attribute_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FME_utils.FME_utils.test_attribute_value</span></code></a>(...)</p></td>
 <td><p>Test if a feature has a specific atttribute and a specific attribute value.</p></td>
 </tr>
 </tbody>
@@ -175,11 +202,11 @@ intégrés dans dans les PythonCaller de FME</p>
 <blockquote>
 <div><p>Attributes:</p>
 <dl class="simple">
-<dt>fgp_publish: str</dt><dd><p>Flag (oui/non) indicating if this format is published in the FGP</p>
+<dt>fgp_publish<span class="classifier">str</span></dt><dd><p>Flag (oui/non) indicating if this format is published in the FGP</p>
 </dd>
-<dt>format: str</dt><dd><p>Name of the format</p>
+<dt>format<span class="classifier">str</span></dt><dd><p>Name of the format</p>
 </dd>
-<dt>spatial_type: str</dt><dd><p>Spatial type code</p>
+<dt>spatial_type<span class="classifier">str</span></dt><dd><p>Spatial type code</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -202,9 +229,9 @@ intégrés dans dans les PythonCaller de FME</p>
 <blockquote>
 <div><p>Attributes:</p>
 <dl class="simple">
-<dt>key: str</dt><dd><p>Key name of a Key-Value pair</p>
+<dt>key<span class="classifier">str</span></dt><dd><p>Key name of a Key-Value pair</p>
 </dd>
-<dt>value: str</dt><dd><p>Value name of a Key-Value pair</p>
+<dt>value<span class="classifier">str</span></dt><dd><p>Value name of a Key-Value pair</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -226,13 +253,13 @@ intégrés dans dans les PythonCaller de FME</p>
 <blockquote>
 <div><p>Attributes:</p>
 <dl class="simple">
-<dt>original_value: str</dt><dd><p>Original value that can be found in the metadata record</p>
+<dt>original_value<span class="classifier">str</span></dt><dd><p>Original value that can be found in the metadata record</p>
 </dd>
-<dt>real_value: str</dt><dd><p>Name that replace the original value</p>
+<dt>real_value<span class="classifier">str</span></dt><dd><p>Name that replace the original value</p>
 </dd>
-<dt>resource_type_en: str</dt><dd><p>Name of the English resource</p>
+<dt>resource_type_en<span class="classifier">str</span></dt><dd><p>Name of the English resource</p>
 </dd>
-<dt>resource_type_fr: str</dt><dd><p>Name of the French resource</p>
+<dt>resource_type_fr<span class="classifier">str</span></dt><dd><p>Name of the French resource</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -256,13 +283,13 @@ intégrés dans dans les PythonCaller de FME</p>
 <blockquote>
 <div><p>Attributes:</p>
 <dl class="simple">
-<dt>original_value: str</dt><dd><p>Original value that can be found in the metadata record</p>
+<dt>original_value<span class="classifier">str</span></dt><dd><p>Original value that can be found in the metadata record</p>
 </dd>
-<dt>value_english: str</dt><dd><p>English value that replace the original value</p>
+<dt>value_english<span class="classifier">str</span></dt><dd><p>English value that replace the original value</p>
 </dd>
-<dt>value_french: str</dt><dd><p>French value that replace the original value</p>
+<dt>value_french<span class="classifier">str</span></dt><dd><p>French value that replace the original value</p>
 </dd>
-<dt>code_valueL str</dt><dd><p>Code value for this value</p>
+<dt>code_value<span class="classifier">str</span></dt><dd><p>Code value for this value</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -284,14 +311,14 @@ intégrés dans dans les PythonCaller de FME</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="FME_utils.FME_utils.convert_unix_time">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">convert_unix_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_attr_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_attr_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'itemModif'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.convert_unix_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.convert_unix_time" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">convert_unix_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_att_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_att_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'itemModif'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.convert_unix_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.convert_unix_time" title="Permalink to this definition"></a></dt>
 <dd><p>This method unix time to a specified format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>object</strong> (<em>feature FME Feature</em>) – The FME feature used to read the attribute</p></li>
-<li><p><strong>in_attr_name</strong> (<em>str</em>) – The name of the FME attribute to convert.</p></li>
-<li><p><strong>out_attr_name</strong> (<em>str</em>) – The name of the FME attribute you want the conversion to be done.</p></li>
+<li><p><strong>feature</strong> (<em>FME Feature object</em>) – The FME feature used to read the attribute</p></li>
+<li><p><strong>in_att_name</strong> (<em>str</em>) – The name of the FME attribute to convert.</p></li>
+<li><p><strong>out_att_name</strong> (<em>str</em>) – The name of the FME attribute you want the conversion to be done.</p></li>
 <li><p><strong>out_format</strong> (<em>str</em>) – String containing the wanted output format for the date.</p></li>
 </ul>
 </dd>
@@ -379,9 +406,9 @@ ressources{1}.name for list attribute.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>object</strong> (<em>feature FME Feature</em>) – The FME feature used to read the attribute</p></li>
-<li><p><strong>String</strong> (<em>attribute_key</em>) – Name of the attribute to read</p></li>
-<li><p><strong>Bool</strong> (<em>error_if_none</em>) – True: Raise exception if the FME attribute is missing;
+<li><p><strong>feature</strong> (<em>FME Feature object</em>) – The FME feature used to read the attribute</p></li>
+<li><p><strong>attribute_key</strong> (<em>String</em>) – Name of the attribute to read</p></li>
+<li><p><strong>error_if_none</strong> (<em>Bool</em>) – True: Raise exception if the FME attribute is missing;
 False: write emtpty string if attribute is missing</p></li>
 </ul>
 </dd>
@@ -390,6 +417,110 @@ False: write emtpty string if attribute is missing</p></li>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>String</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FME_utils.FME_utils.ftp_check_file_dir_exists">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ftp_check_file_dir_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ftp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_file_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.ftp_check_file_dir_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.ftp_check_file_dir_exists" title="Permalink to this definition"></a></dt>
+<dd><p>Uses the given ftp instance connection to browse to the base_path and check the existance of either a directory or a file name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ftp</strong> (<em>String</em>) – The current ftp (ftplib) instance.</p></li>
+<li><p><strong>base_path</strong> (<em>String</em>) – The base path to browse into.</p></li>
+<li><p><strong>dir_file_name</strong> (<em>String</em>) – The name of the directory or the file to search for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True when found; False otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FME_utils.FME_utils.ftp_check_url">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ftp_check_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.ftp_check_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.ftp_check_url" title="Permalink to this definition"></a></dt>
+<dd><p>Parses the given url to retrieve the base directory and the directory/file to check for existence.A connection using TLS is tried first and if it fails a connection without TLS is attempted.
+Prints Found or Not Found with the tested url.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>String</em>) – The current url to check.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary with “found”, “url” properties.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dicstionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FME_utils.FME_utils.go_url">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">go_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.go_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.go_url" title="Permalink to this definition"></a></dt>
+<dd><p>Verifies if the provided url is valid and responds to a request, whether it’s a http or ftp url.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>String</em>) – The current url to check.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FME_utils.FME_utils.http_check_url">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">http_check_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.http_check_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.http_check_url" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the http url responds to a request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>String</em>) – The current url to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary with “found”, “url” and “redirects” properties.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FME_utils.FME_utils.http_check_url_request_head">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">http_check_url_request_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.http_check_url_request_head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.http_check_url_request_head" title="Permalink to this definition"></a></dt>
+<dd><p>Makes a call on the provided url using the HEAD method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>String</em>) – The current url to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The request object when successfully got a response of any kind or None when the request failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Request object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FME_utils.FME_utils.http_check_url_request_options">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">http_check_url_request_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.http_check_url_request_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.http_check_url_request_options" title="Permalink to this definition"></a></dt>
+<dd><p>Makes a call on the provided url using the OPTIONS method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>String</em>) – The current url to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The request object when successfully got a response of any kind or None when the request failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Request object or None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -472,10 +603,31 @@ list, the returned value is -1.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>me_self</strong> (<em>FME session object</em>) – FME session object the “self”</p></li>
-<li><p><strong>object</strong> (<em>feature FME Feature</em>) – FME feature used to output a feature</p></li>
-<li><p><strong>tuples</strong> (<em>lst_key_value_att List of</em>) – Each tuple contains 2 values: first the name of the key; second the value of the attribute</p></li>
-<li><p><strong>Bool</strong> (<em>clone</em>) – True: Clone the feature before output it;
+<li><p><strong>feature</strong> (<em>FME Feature object</em>) – FME feature used to output a feature</p></li>
+<li><p><strong>lst_key_value_att</strong> (<em>List of tuple</em>) – Each tuple contains 2 values: first the name of the key; second the value of the attribute</p></li>
+<li><p><strong>clone</strong> (<em>Bool</em>) – True: Clone the feature before output it;
 False: do not clone feature before outputit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FME_utils.FME_utils.remove_mailto">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_mailto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_att_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_att_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_in_att</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#FME_utils.remove_mailto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.FME_utils.remove_mailto" title="Permalink to this definition"></a></dt>
+<dd><p>Removes the first part of an attribute string where it is not part of the email address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<em>FMEFeature</em>) – Feature object containing the attribute to transform</p></li>
+<li><p><strong>in_att_name</strong> (<em>str</em>) – The name of the FME attribute containing the email Address</p></li>
+<li><p><strong>out_att_name</strong> (<em>str</em>) – The name of the FME attribute you want the transformation to be saved to.
+if this parameter is nor specified the transformation will be applied the attribute source</p></li>
+<li><p><strong>separator</strong> (<em>str</em>) – String for the separator</p></li>
+<li><p><strong>remove_in_att</strong> (<em>Boolean</em>) – When True and out_att_name is specified the source attribute is removed from the feature</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -527,19 +679,29 @@ False: do not clone feature before outputit.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>FMEFeature</strong> (<em>feature</em>) – Feature object containing the attribute to test_attribute</p></li>
-<li><p><strong>String</strong> (<em>att_name</em>) – Attribute name to test</p></li>
-<li><p><strong>target_value</strong> – Value to test</p></li>
-<li><p><strong>Bool</strong> (<em>check_case</em>) – Flag for the string case. True: Check the string case; False: string
+<li><p><strong>feature</strong> (<em>FMEFeature</em>) – Feature object containing the attribute to test_attribute</p></li>
+<li><p><strong>att_name</strong> (<em>String</em>) – Attribute name to test</p></li>
+<li><p><strong>target_value</strong> (<em>str</em>) – Value to test</p></li>
+<li><p><strong>check_case</strong> (<em>Bool</em>) – Flag for the string case. True: Check the string case; False: string
 case is not important</p></li>
-<li><p><strong>Returns</strong> – </p></li>
-<li><p><strong>Bool</strong> – True: The attribute is present and the value is good;
-False: The attribute is not there or the value is different</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True: The attribute is present and the value is good;
+False: The attribute is not there or the value is different</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Bool</p>
 </dd>
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="FME_utils.main">
+<span class="sig-prename descclassname"><span class="pre">FME_utils.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/FME_utils.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FME_utils.main" title="Permalink to this definition"></a></dt>
+<dd><p>Main function used when called without any parameters to run a couple test cases.</p>
 </dd></dl>
 
 </div>
