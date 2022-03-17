@@ -1,16 +1,22 @@
 import re
-import fmeobjects
-import yaml
-import traceback
-from typing import NamedTuple
 import requests
-import sys
+import sys, os
+import traceback
 import urllib3
-import urllib.parse
+import yaml
+from ftplib import FTP, FTP_TLS
+from typing import NamedTuple
+from urllib.parse import urlparse
+from urllib.parse import unquote
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 from datetime import datetime
-import fme
+try:
+    import fme
+    import fmeobjects
+except:
+    pass
+    
 
 
 try:
@@ -27,14 +33,17 @@ STATUS_CODE_DESCRIPTION = "_status_code_description"
 # Define HTTP OK return code
 HTTP_OK = 200
 
+# The general timeout used by the http requests
+TIMEOUT = 5
+
 class CsvKeyValuePair(NamedTuple):
     """Class containing one row from a CSV defining a key-Value pair.
     
     Attributes:
     
-    key: str
+    key : str
         Key name of a Key-Value pair
-    value: str
+    value : str
         Value name of a Key-Value pair
     """
     
@@ -47,13 +56,13 @@ class CsvMetaDataFormatMapper(NamedTuple):
     
     Attributes:
     
-    original_value: str
+    original_value : str
         Original value that can be found in the metadata record
-    real_value: str
+    real_value : str
         Name that replace the original value
-    resource_type_en: str
+    resource_type_en : str
         Name of the English resource
-    resource_type_fr: str
+    resource_type_fr : str
         Name of the French resource
         
     """
@@ -67,13 +76,13 @@ class CsvMetaDataValueMapper(NamedTuple):
     
     Attributes:
     
-    original_value: str
+    original_value : str
         Original value that can be found in the metadata record
-    value_english: str
+    value_english : str
         English value that replace the original value
-    value_french: str
+    value_french : str
         French value that replace the original value
-    code_valueL str
+    code_value : str
         Code value for this value
     """
     
@@ -88,11 +97,11 @@ class CsvGeoSpatialValidation(NamedTuple):
     
     Attributes:
     
-    fgp_publish: str
+    fgp_publish : str
         Flag (oui/non) indicating if this format is published in the FGP
-    format: str
+    format : str
         Name of the format
-    spatial_type: str
+    spatial_type : str
         Spatial type code
     """
     
@@ -120,9 +129,9 @@ class FME_utils:
         
         Parameters
         ----------
-        feature: FME Feature
+        feature : FME Feature
             FME feature to process
-        att_name: str
+        att_name : str
             The name of the attribute to extract
         
         Returns
@@ -180,9 +189,9 @@ class FME_utils:
         
         Parameters
         ----------
-        feature: FME Feature
+        feature : FME Feature
             FME feature to process
-        list_name: str
+        list_name : str
             The name of the list to search including the "{}" characters (ex.: "att{}")
         
         Returns
@@ -309,7 +318,7 @@ class FME_utils:
         
         Parameters
         ----------
-        str_yaml: str
+        str_yaml : str
             String containing a YAML document
             
         Returns
@@ -340,9 +349,9 @@ class FME_utils:
         
         Parameters
         ----------
-        str_words: str
+        str_words : str
             A string of words
-        separator: str
+        separator : str
             A character that delimits word in a string (default is space " ")
         lower: bool
             If set to True the result will be transformed in lower case; If flase no action is taken
@@ -368,11 +377,11 @@ class FME_utils:
         
         Parameters
         ----------
-        feature FME Feature object
+        feature : FME Feature object
             The FME feature used to read the attribute
-        attribute_key String
+        attribute_key : String
             Name of the attribute to read
-        error_if_none Bool
+        error_if_none : Bool
             True: Raise exception if the FME attribute is missing; 
             False: write emtpty string if attribute is missing
         
@@ -400,15 +409,15 @@ class FME_utils:
         
         Parameters
         ----------
-        fme_self: FME session object
+        fme_self : FME session object
             FME session object the "self"
-        feature: FME Feature object
+        feature : FME Feature object
             FME feature used to output a feature
-        session: Session object
+        session : Session object
             Used to make the http call
-        str_http: str
+        str_http : str
             Http string used for the http call
-        output_fme: Bool
+        output_fme : Bool
             True: output an FME feature; False: do not output an FME feature
         
         Returns
@@ -471,13 +480,13 @@ class FME_utils:
         
         Parameters
         ----------
-        me_self: FME session object
+        me_self : FME session object
             FME session object the "self"
-        feature FME Feature object
+        feature : FME Feature object
             FME feature used to output a feature
-        lst_key_value_att List of tuples
+        lst_key_value_att : List of tuple
             Each tuple contains 2 values: first the name of the key; second the value of the attribute
-        clone Bool
+        clone : Bool
             True: Clone the feature before output it; 
             False: do not clone feature before outputit.
         
@@ -505,16 +514,13 @@ class FME_utils:
         
         Parameters
         ----------
-        feature FME Feature object
+        feature : FME Feature object
             The FME feature used to read the attribute
-        
-        in_att_name: str
+        in_att_name : str
             The name of the FME attribute to convert.
-            
-        out_att_name: str
+        out_att_name : str
             The name of the FME attribute you want the conversion to be done.
-        
-        out_format: str
+        out_format : str
             String containing the wanted output format for the date.
             
         Returns
@@ -550,17 +556,18 @@ class FME_utils:
         
         Parameters
         ----------
-        feature FMEFeature
+        feature : FMEFeature
             Feature object containing the attribute to test_attribute
-        att_name String
+        att_name : String
             Attribute name to test
-        target_value
+        target_value : str
             Value to test
-        check_case Bool
+        check_case : Bool
             Flag for the string case. True: Check the string case; False: string 
             case is not important
             
         Returns
+        -------
         Bool
             True: The attribute is present and the value is good; 
             False: The attribute is not there or the value is different
@@ -589,24 +596,21 @@ class FME_utils:
         
         Parameters
         ----------
-        feature FMEFeature
+        feature : FMEFeature
             Feature object containing the attribute to transform
-
-        in_att_name str
+        in_att_name : str
             The name of the FME attribute containing the email Address
-
-        out_att_name: str
+        out_att_name : str
             The name of the FME attribute you want the transformation to be saved to.
             if this parameter is nor specified the transformation will be applied the attribute source
-        
-        separator str
+        separator : str
             String for the separator
-
-        remove_in_att
+        remove_in_att : Boolean
             When True and out_att_name is specified the source attribute is removed from the feature
-
-        action:
-            Replaces the attribute for the second part of itself after the separator
+        
+        Returns
+        -------
+        None
         """
 
         try:
@@ -621,3 +625,312 @@ class FME_utils:
                 if remove_in_att:
                     feature.removeAttribute(in_att_name)
         
+    @staticmethod
+    def go_url(url):
+        """
+        Verifies if the provided url is valid and responds to a request, whether it's a http or ftp url.
+        
+        Parameters
+        ----------
+        url: String
+            The current url to check.
+        
+        Returns
+        -------
+        None
+        """
+
+        # Depending if checking a ftp or http url
+        if url.lower().startswith("ftp"):
+            result = FME_utils.ftp_check_url(url)
+
+        else:
+            result = FME_utils.http_check_url(url)
+
+        # If found
+        if result["found"]:
+            # If redirects happened
+            if "redirects" in result and len(result["redirects"]) > 0:
+                print("Found! | " + result["url"] + " --> " + ' --> '.join(result["redirects"]))
+
+            else:
+                print("Found! | " + result["url"])
+
+        else:
+            print("Not found | " + result["url"])
+
+    @staticmethod
+    def http_check_url(url):
+        """
+        Checks if the http url responds to a request.
+        
+        Parameters
+        ----------
+        url : String
+            The current url to check
+        
+        Returns
+        -------
+        Dictionary
+            A dictionary with "found", "url" and "redirects" properties.
+        """
+
+        redirects = []
+        url_redir = None
+        found_flag = FME_utils._http_check_url_rec(url, redirects)
+
+        # Return information
+        return {
+            "found": found_flag,
+            "url": url,
+            "redirects": redirects
+        }
+
+    @staticmethod
+    def _http_check_url_rec(url, redirects):
+        """
+        Checks if the url responds to a request and recursively follows redirections when any. The redirects used are added to the redirects parameter to be provided back to the caller.
+        
+        Parameters
+        ----------
+        url : String
+            The current url to check
+        redirects : List
+            The total redirect urls processed
+            
+        Returns
+        -------
+        Boolean
+            True if the url responded successfully (200 response); False otherwise
+        """
+
+        # Do the request using HEAD method
+        r = FME_utils.http_check_url_request_head(url)
+
+        # If a 200
+        if r is not None and r.status_code == 200:
+            return True
+
+        elif r is not None and (r.status_code == 301 or r.status_code == 302 or r.status_code == 303 or r.status_code == 307 or r.status_code == 308):
+            # Handle the redirects
+            return FME_utils._http_check_url_rec_handle_redir(r, redirects)
+
+        elif r is not None and (r.status_code == 400 or r.status_code == 405):
+            # Do the request using OPTIONS method
+            r = FME_utils.http_check_url_request_options(url)
+
+            if r is not None and r.status_code == 200:
+                return True
+
+            elif r is not None and (r.status_code == 301 or r.status_code == 302 or r.status_code == 303 or r.status_code == 307 or r.status_code == 308):
+                # Handle the redirects
+                return FME_utils._http_check_url_rec_handle_redir(r, redirects)
+
+        # Couldn't
+        return False
+
+    @staticmethod
+    def http_check_url_request_head(url):
+        """
+        Makes a call on the provided url using the HEAD method.
+        
+        Parameters
+        ----------
+        url : String
+            The current url to check
+        
+        Returns
+        -------
+        Request object
+            The request object when successfully got a response of any kind or None when the request failed.
+        """
+
+        try:
+            # Requests the head of the url
+            r = requests.head(url, timeout=TIMEOUT)
+            r.close()
+            return r
+
+        except Exception as err:
+            return None
+
+    @staticmethod
+    def http_check_url_request_options(url):
+        """
+        Makes a call on the provided url using the OPTIONS method.
+        
+        Parameters
+        ----------
+        url : String
+            The current url to check
+            
+        Returns
+        -------
+        Request object or None
+            The request object when successfully got a response of any kind or None when the request failed.
+        """
+
+        try:
+            # Requests the head of the url
+            r = requests.options(url, timeout=TIMEOUT)
+            r.close()
+            return r
+
+        except Exception as err:
+            return None
+
+    @staticmethod
+    def _http_check_url_rec_handle_redir(r, redirects):
+        """
+        Handles the request being redirected in order to loop back in the recursion with the redirected url.
+        
+        Parameters
+        ----------
+        r : String
+            The current request that got a redirected status.
+        redirects : List
+            The total redirect urls processed.
+            
+        Returns
+        -------
+        Boolean
+            True if the url responded successfully (200 response); False otherwise.
+        """
+
+        # If Location is in the headers
+        if "Location" in r.headers:
+            url_redir = r.headers["Location"]
+            redirects.append(url_redir)
+
+            # Loop back in the recursion
+            return FME_utils._http_check_url_rec(url_redir, redirects)
+
+        return False
+
+    @staticmethod
+    def ftp_check_url(url):
+        """
+        Parses the given url to retrieve the base directory and the directory/file to check for existence.\\
+        A connection using TLS is tried first and if it fails a connection without TLS is attempted.
+        Prints Found or Not Found with the tested url.
+        
+        Parameters
+        ----------
+        url : String
+            The current url to check.
+        
+        Returns
+        -------
+        Dicstionary
+            A dictionary with "found", "url" properties.
+        """
+
+        # Parse the url to get the base path and ignoring the extremities "/"
+        o = urlparse(url)
+        directories = o.path.strip('/').split('/')
+        base_path = "/".join(directories[:-1])
+        dir_file_name = directories[-1:][0]
+
+        # Decode back to regular text (as urlparse also encodes the path)
+        base_path = unquote(base_path)
+        dir_file_name = unquote(dir_file_name)
+
+        found_flag = False
+        try:
+            # Try with TLS
+            with FTP_TLS(o.netloc) as ftp:
+                found_flag = FME_utils.ftp_check_file_dir_exists(ftp, base_path, dir_file_name)
+
+        except Exception as e:
+            #print("FTP connection with TLS failed, trying without TLS")
+            try:
+                # Try without TLS
+                with FTP(o.netloc) as ftp:
+                    found_flag = FME_utils.ftp_check_file_dir_exists(ftp, base_path, dir_file_name)
+
+            except Exception as e:
+                print("Failed", e)
+
+        # If found a file
+        return {
+            "found": found_flag,
+            "url": url
+        }
+
+    @staticmethod
+    def ftp_check_file_dir_exists(ftp, base_path, dir_file_name):
+        """
+        Uses the given ftp instance connection to browse to the base_path and check the existance of either a directory or a file name.
+        
+        Parameters
+        ----------
+        ftp : String
+            The current ftp (ftplib) instance.
+        base_path : String
+            The base path to browse into.
+        dir_file_name : String
+            The name of the directory or the file to search for.
+        
+        Returns
+        -------
+        Boolean 
+           True when found; False otherwise
+        """
+
+        ftp.encoding = "utf-8" # To support accented characters
+        ftp.login()
+        ftp.cwd(base_path)
+        
+        # List the files/directories
+        filelist = ftp.nlst()
+
+        # Return True if item is in the list
+        return dir_file_name in filelist
+
+
+def main():
+    """
+    Main function used when called without any parameters to run a couple test cases.
+    """
+
+    # Good tough examples:
+    # - (with spaces and accents in url): "ftp://transfert.mern.gouv.qc.ca/public/diffusion/RGQ/Documentation/BDAT(FTP)/Index_Nord du 53e parallèle.pdf"
+    # - (with redirection(s)): "http://rds.ca" (2 sequentional redirects!) or "https://www.donneesquebec.ca/recherche/fr/dataset/6d080ad9-3823-4bfd-8c61-32594f11bc83" (real case)
+    # - (HEAD not working (error 400, use OPTIONS) "https://data.princeedwardisland.ca/api/views/4bk3-u3rm/rows.rdf?accessType=DOWNLOAD"
+    # - (HEAD not working (error 405, use OPTIONS) "https://data.princeedwardisland.ca/api/geospatial/u8pp-dvp4?method=export&format=GeoJSON"
+    # - (invalid SSL certificate): "https://jaymze.org/proglang/windows/unofficial_Guide_URL_File_Format_.pdf"
+
+    url = ["ftp://transfert.mern.gouv.qc.ca/public/diffusion/RGQ/Documentation/BDAT(FTP)/Index_Nord du 53e parallèle.pdf",
+           "https://jaymze.org/proglang/windows/unofficial_Guide_URL_File_Format_.pdf",
+           "http://rds.ca",
+           "https://www.donneesquebec.ca/recherche/fr/dataset/6d080ad9-3823-4bfd-8c61-32594f11bc83",
+           "https://gnb.socrata.com/datasets/rzzg-85tb",
+           "http://www.gov.pe.ca/photos/original/1900_forest.MIF.zip",
+           "https://www.gov.pe.ca/photos/original/Wetlands09.DXF.zip",
+           "https://www.gov.pe.ca/photos/original/wildlife2011.SHP.zip",
+           "https://data.princeedwardisland.ca/api/geospatial/4zg3-he2k?method=export&format=GeoJSON",
+           "https://data.princeedwardisland.ca/api/geospatial/4zg3-he2k?method=export&format=KML",
+           "https://data.princeedwardisland.ca/api/geospatial/4zg3-he2k?method=export&format=KMZ",
+           "https://data.princeedwardisland.ca/api/geospatial/4zg3-he2k?method=export&format=Shapefile",
+           "https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.csv?accessType=DOWNLOAD",
+           "https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.csv?accessType=DOWNLOAD&bom=true&format=true",
+           "https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.csv?accessType=DOWNLOAD&bom=true&format=true&delimiter=%3B",
+           "https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.rdf?accessType=DOWNLOAD",
+           "https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.rss?accessType=DOWNLOAD",
+           "https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.tsv?accessType=DOWNLOAD&bom=true&format=true&delimiter=%3B",
+           "https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.xml?accessType=DOWNLOAD",
+           "https://data.princeedwardisland.ca/api/views/cgzy-bim6/files/689546cd-afbe-45f4-ae04-cb41a5c82c6a?download=true&filename=PEI%20Groundwater%20Well%20Information%20Mar2021.xlsx",
+           "https://data.princeedwardisland.ca/datasets/2arv-as4n",
+           "https://data.princeedwardisland.ca/datasets/y58z-nyfh",
+           "https://data.princeedwardisland.ca/datasets/yhvv-wi8v"]
+
+    # If url is a list of urls
+    if isinstance(url, list):
+        for u in url:
+            FME_utils.go_url(u)
+
+    else:
+        FME_utils.go_url(url)
+
+# Start the url check
+#main()

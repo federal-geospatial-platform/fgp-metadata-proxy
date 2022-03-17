@@ -4,6 +4,7 @@ from flask import request
 
 app = Flask(__name__)
 
+# Code for testing DCAT reader primary
 @app.route("/primary/catalogue/data.json")
 def primary_server():
     with open ('./data/primary_server_data.json', encoding="utf8") as json_input:
@@ -14,6 +15,7 @@ def primary_server():
 
     return resp
     
+# Code for testing DCAT reader secondary
 @app.route("/secondary/catalogue")
 def secondary_server():
     args = request.args
@@ -33,6 +35,38 @@ def secondary_server():
 
     return resp
 
+# Code for testing Socrata reader api/views
+@app.route("/socrata/api/views")
+def socrata_server_1():
+    with open ('./data/socrata/api_views.json', encoding="utf8") as json_input:
+        json_str = json_input.read()
+    resp = Response(response=json_str,
+                    status=200,
+                    mimetype="application/json")
+
+    return resp
+    
+# Code for testing Socrata reader api/views/3ctu-s8ip
+@app.route("/socrata/api/views/3ctu-s8ip")
+def socrata_server_2():
+    with open ('./data/socrata/api_views_3ctu_s8ip.json', encoding="utf8") as json_input:
+        json_str = json_input.read()
+    resp = Response(response=json_str,
+                    status=200,
+                    mimetype="application/json")
+
+    return resp
+    
+# Code for testing Socrata reader api/views/dq5v-qjry
+@app.route("/socrata/api/views/dq5v-qjry")
+def socrata_server_3():
+    with open ('./data/socrata/api_views_dq5v_qjry.json', encoding="utf8") as json_input:
+        json_str = json_input.read()
+    resp = Response(response=json_str,
+                    status=200,
+                    mimetype="application/json")
+
+    return resp
     
 @app.route("/testing")
 def testView1():
