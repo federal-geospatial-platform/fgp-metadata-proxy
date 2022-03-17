@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Module Index &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>SOCRATA_READER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,14 +16,7 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
- 
-
-    <script>
-      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
-    </script>
-
-
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -83,7 +76,6 @@
 <li class="toctree-l1"><a class="reference internal" href="REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SOCRATA_READER_NG.html">SOCRATA_READER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
@@ -110,8 +102,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Python Module Index</li>
+      <li>SOCRATA_READER_NG</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/SOCRATA_READER_NG.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -119,125 +112,107 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
+  <div class="section" id="socrata-reader-ng">
+<h1>SOCRATA_READER_NG<a class="headerlink" href="#socrata-reader-ng" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description</strong></p>
+<p>This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.</p>
+<p><strong>Input Ports</strong></p>
+<ul>
+<li>Input: One feature needed to start the reading of the Socrata server.</li>
+</ul>
+<p><strong>Output Ports</strong></p>
+<ul>
+<li>Output: One feature for each metadata record read from the Socrata server.</li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>Domain: The url of the Socrata server.</li>
+</ul>
+</div>
+<div class="section" id="documentation-du-code-socrata-reader-ng-py">
+<h2>Documentation du code SOCRATA_READER_NG.py<a class="headerlink" href="#documentation-du-code-socrata-reader-ng-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-SOCRATA_READER_NG" title="SOCRATA_READER_NG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SOCRATA_READER_NG</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-SOCRATA_READER_NG"></span><dl class="py class">
+<dt class="sig sig-object py" id="SOCRATA_READER_NG.ManageHttpCall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SOCRATA_READER_NG.</span></span><span class="sig-name descname"><span class="pre">ManageHttpCall</span></span><a class="reference internal" href="_modules/SOCRATA_READER_NG.html#ManageHttpCall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SOCRATA_READER_NG.ManageHttpCall" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class enables the call to Socrata GeoHub servers and the creation of FME features with Socrata information.</p>
+<p>To extract all the information the Socrata reader makes a first http call to extract all the IDs then a second
+http call is done to extract the information of each ID.  The information is finally stored in FME attributes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="SOCRATA_READER_NG.ManageHttpCall.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SOCRATA_READER_NG.html#ManageHttpCall.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SOCRATA_READER_NG.ManageHttpCall.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor of the class.</p>
+<p>Creates the logger to log information in FME log.</p>
+</dd></dl>
 
-   <h1>Python Module Index</h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="SOCRATA_READER_NG.ManageHttpCall.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/SOCRATA_READER_NG.html#ManageHttpCall.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SOCRATA_READER_NG.ManageHttpCall.close" title="Permalink to this definition"></a></dt>
+<dd><p>Unused method</p>
+</dd></dl>
 
-   <div class="modindex-jumpbox">
-   <a href="#cap-a"><strong>a</strong></a> | 
-   <a href="#cap-c"><strong>c</strong></a> | 
-   <a href="#cap-d"><strong>d</strong></a> | 
-   <a href="#cap-e"><strong>e</strong></a> | 
-   <a href="#cap-f"><strong>f</strong></a> | 
-   <a href="#cap-g"><strong>g</strong></a> | 
-   <a href="#cap-l"><strong>l</strong></a> | 
-   <a href="#cap-m"><strong>m</strong></a> | 
-   <a href="#cap-s"><strong>s</strong></a>
-   </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="SOCRATA_READER_NG.ManageHttpCall.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SOCRATA_READER_NG.html#ManageHttpCall.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SOCRATA_READER_NG.ManageHttpCall.input" title="Permalink to this definition"></a></dt>
+<dd><p>Main routine call be the FME software</p>
+<p>Manage the reading of Socrata server for all the records</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FME Feature object</em>) – FME Feature to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
-   <table class="indextable modindextable">
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-a"><td></td><td>
-       <strong>a</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="ATTRIBUTE_MANAGER_NG.html#module-ATTRIBUTE_MANAGER_NG"><code class="xref">ATTRIBUTE_MANAGER_NG</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="ATTRIBUTE_VALUE_TEXT_CLEANER.html#module-ATTRIBUTE_VALUE_TEXT_CLEANER"><code class="xref">ATTRIBUTE_VALUE_TEXT_CLEANER</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-c"><td></td><td>
-       <strong>c</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="Catalogue_Reader.html#module-Catalogue_Reader"><code class="xref">Catalogue_Reader</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-d"><td></td><td>
-       <strong>d</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="DCAT_Reader.html#module-DCAT_Reader"><code class="xref">DCAT_Reader</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-e"><td></td><td>
-       <strong>e</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="EXTRACT_COLLECTION_START_END_DATE.html#module-EXTRACT_COLLECTION_START_END_DATE"><code class="xref">EXTRACT_COLLECTION_START_END_DATE</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-f"><td></td><td>
-       <strong>f</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="FME_utils.html#module-FME_utils"><code class="xref">FME_utils</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-g"><td></td><td>
-       <strong>g</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="GEO_NONE_GEO_SELECTOR.html#module-GEO_NONE_GEO_SELECTOR"><code class="xref">GEO_NONE_GEO_SELECTOR</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="GEOPORTAL_WEBLINK_ADDER_NG.html#module-GEOPORTAL_WEBLINK_ADDER_NG"><code class="xref">GEOPORTAL_WEBLINK_ADDER_NG</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="GEOSPATIAL_DATA_VALIDATOR_NG.html#module-GEOSPATIAL_DATA_VALIDATOR_NG"><code class="xref">GEOSPATIAL_DATA_VALIDATOR_NG</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-l"><td></td><td>
-       <strong>l</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="LOOKUP_TABLES_READER_NG.html#module-LOOKUP_TABLES_READER_NG"><code class="xref">LOOKUP_TABLES_READER_NG</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-m"><td></td><td>
-       <strong>m</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html#module-MAP_RESOURCE_ATTRIBUTION_REMOVER_NG"><code class="xref">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="METADATA_FORMAT_MAPPER_NG.html#module-METADATA_FORMAT_MAPPER_NG"><code class="xref">METADATA_FORMAT_MAPPER_NG</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="METADATA_VALUE_MAPPER_NG.html#module-METADATA_VALUE_MAPPER_NG"><code class="xref">METADATA_VALUE_MAPPER_NG</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-s"><td></td><td>
-       <strong>s</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="SOCRATA_READER_NG.html#module-SOCRATA_READER_NG"><code class="xref">SOCRATA_READER_NG</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="SPATIAL_TYPE_MAPPER_NG.html#module-SPATIAL_TYPE_MAPPER_NG"><code class="xref">SPATIAL_TYPE_MAPPER_NG</code></a></td><td>
-       <em></em></td></tr>
-   </table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SOCRATA_READER_NG.ManageHttpCall.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#SOCRATA_READER_NG.ManageHttpCall.logger" title="Permalink to this definition"></a></dt>
+<dd><p>Read the JSON metadata record from the secondary DCAT server and output the JSON in FME feature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>object</strong> (<em>feature FME Feature</em>) – The FME feature to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SOCRATA_READER_NG.ManageHttpCall.read_socrata">
+<span class="sig-name descname"><span class="pre">read_socrata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/SOCRATA_READER_NG.html#ManageHttpCall.read_socrata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#SOCRATA_READER_NG.ManageHttpCall.read_socrata" title="Permalink to this definition"></a></dt>
+<dd><p>Read the JSON metadata record from the Socrata server and output the JSON in FME feature.</p>
+<p>In order to read the metadata record a first http call is done to extract all the identifiers (id)
+then a second Socrata read is done to read the fulle content of each id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>object</strong> (<em>feature FME Feature</em>) – The FME feature to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
 
 
            </div>

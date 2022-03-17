@@ -728,14 +728,15 @@
 <span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">splitted_mail</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">splitted_mail</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">out_att_name</span><span class="o">==</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
-                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">,</span><span class="n">splitted_mail</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">,</span><span class="n">splitted_mail</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">out_att_name</span><span class="p">,</span><span class="n">splitted_mail</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">out_att_name</span><span class="p">,</span><span class="n">splitted_mail</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
                 <span class="k">if</span> <span class="n">remove_in_att</span><span class="p">:</span>
                     <span class="n">feature</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">)</span></div>
         

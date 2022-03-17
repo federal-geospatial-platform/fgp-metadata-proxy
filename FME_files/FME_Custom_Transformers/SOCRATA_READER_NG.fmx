@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN SOCRATA_READER_NG,1,,5ee18223-2c5a-4516-9e9a-2fc77f04464b,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# TRANSFORMER_BEGIN SOCRATA_READER_NG,1,,17b787c8-9927-429e-a248-34c1ec691c32,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
 # <p><strong>Description</strong></p>
 # <p>This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.</p>
 # <p><strong>Input Ports</strong></p>
@@ -24,8 +24,8 @@
 #!   DOC_TOP_LEFT="-2850 -1533.22"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="5ee18223-2c5a-4516-9e9a-2fc77f04464b"
-#!   FME_DOCUMENT_PRIORGUID="2723e4aa-c36c-4f7a-a891-ef9dae487226,6357b9d3-73a9-4b85-9093-c4dc4a15fdcf"
+#!   FME_DOCUMENT_GUID="17b787c8-9927-429e-a248-34c1ec691c32"
+#!   FME_DOCUMENT_PRIORGUID="2723e4aa-c36c-4f7a-a891-ef9dae487226,6357b9d3-73a9-4b85-9093-c4dc4a15fdcf,5ee18223-2c5a-4516-9e9a-2fc77f04464b"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -37,7 +37,7 @@
 #!   HISTORY="14&lt;solidus&gt;03&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Original&lt;space&gt;Version"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-03-15T17:49:59"
+#!   LAST_SAVE_DATE="2022-03-17T13:37:08"
 #!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This Custom Transformer read the content of a Socrata server.  All the information is read and all the information is transformed into FME attributes.&#10;&#10;**Input Ports**&#10;&#10;  - Input: One feature needed to start the reading of the Socrata server.&#10;&#10;**Output Ports**&#10;&#10;  - Output: One feature for each metadata record read from the Socrata server.&#10;&#10;**Parameters**&#10; &#10;  - Domain: The url of the Socrata server."
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -148,7 +148,7 @@
 #!   BOUNDING_RECT="-2000 -48.82861328613285 4382.8363283632825 1484.3898438984386"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="36 37 40 47 21 43 46 35 44 45 42 18 19 33 38 20 39 "
+#!   CONTENTS="44 35 19 40 38 18 39 45 43 33 21 20 42 37 36 47 46 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -200,7 +200,7 @@
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_response_body _status_code id"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;&lt;lf&gt;from&lt;space&gt;Python.SOCRATA_READER&lt;space&gt;import&lt;space&gt;ManageHttpCall"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;&lt;lf&gt;from&lt;space&gt;Python.SOCRATA_READER_NG&lt;space&gt;import&lt;space&gt;ManageHttpCall"/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="ManageHttpCall"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller"/>
@@ -498,15 +498,15 @@ DEFAULT_MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_DOMAIN
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO SOCRATA_READER_NG_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SOCRATA_READER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SOCRATA_READER_NG_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input1647380999 Input Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input1647538628 Input Splitter"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_url_socrata" "SET_TO" "$($(SOCRATA_READER_NG_WORKSPACE_NAME)_DOMAIN$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    SYMBOL_NAME ManageHttpCall    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf><lf>from<space>Python.SOCRATA_READER<space>import<space>ManageHttpCall    OUTPUT PYOUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_OUTPUT"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    SYMBOL_NAME ManageHttpCall    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf><lf>from<space>Python.SOCRATA_READER_NG<space>import<space>ManageHttpCall    OUTPUT PYOUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_OUTPUT"
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_95b28fd9_8deb_41d3_9eaa_1d5c078331260_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,id,_response_body,_status_code,fme_pcre_match,"^fme_$($(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_95b28fd9_8deb_41d3_9eaa_1d5c078331260_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_77cdaf24_6a1f_4c11_9af3_7482b890016d0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_PythonCaller_OUTPUT"    OUTPUT { FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,id,_response_body,_status_code,fme_pcre_match,"^fme_$($(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_77cdaf24_6a1f_4c11_9af3_7482b890016d0_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * JSONQueryFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    MODE FLATTEN    JSON_DOCUMENT "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2)"    READ_FROM_FILE NO    FILEPATH_OR_URL "<Unused>"    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN YES    ERROR_LIST_ATTR "_json_error"    OUTPUT EXPLODED FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"    OUTPUT REJECTED FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"
 # -------------------------------------------------------------------------
@@ -520,7 +520,7 @@ FACTORY_DEF * TestFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_Te
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
 # -------------------------------------------------------------------------
-Tcl2 proc $(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_21fb8e9d_6e51_483a_96b6_7f4cf0d489b20_null_replacer { otherValue newValue regExp } {    set attrs [split {licenseId} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {SETNULL}] != -1} {                 set act {SETVALUE};             };          }          elseif { [string first {EMPTY} {SETNULL}] != -1 && $attrVal == {}} {             set act {SETVALUE};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {SETVALUE};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {SETVALUE};             }          };      }      elseif {[string first {MISSINGATTR} {SETNULL}] != -1} {             set act {SETVALUE};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_OUTPUT"         @Tcl2("$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_21fb8e9d_6e51_483a_96b6_7f4cf0d489b20_null_replacer {} {none} {}")
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Output1647380999 Output Collector"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Output"
+Tcl2 proc $(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_69a4399b_c1ea_4e7a_ae53_d9ed4888a6ed0_null_replacer { otherValue newValue regExp } {    set attrs [split {licenseId} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {SETNULL}] != -1} {                 set act {SETVALUE};             };          }          elseif { [string first {EMPTY} {SETNULL}] != -1 && $attrVal == {}} {             set act {SETVALUE};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {SETVALUE};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {SETVALUE};             }          };      }      elseif {[string first {MISSINGATTR} {SETNULL}] != -1} {             set act {SETVALUE};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2    INPUT  FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_OUTPUT"         @Tcl2("$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_69a4399b_c1ea_4e7a_ae53_d9ed4888a6ed0_null_replacer {} {none} {}")
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Output1647538628 Output Collector"   INPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_NullAttributeMapper_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(SOCRATA_READER_NG_WORKSPACE_NAME)_Output"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SOCRATA_READER_NG_WORKSPACE_NAME))}]
