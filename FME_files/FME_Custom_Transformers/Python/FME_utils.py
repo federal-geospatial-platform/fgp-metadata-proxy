@@ -626,6 +626,22 @@ class FME_utils:
                     feature.removeAttribute(in_att_name)
         
     @staticmethod
+    def attribute_replacer_from_list(feature, att_to_replace, search_list):
+
+        found=False
+        list_name = feature.getAttribute('_list{}.original_value')
+        list_search = feature.getAttribute(search_list)
+        for keyword in list_name:
+            for item in list_search:
+                if item.lower() == keyword.lower():
+                    found=True
+                    break
+            if found:
+                feature.setAttribute(att_to_replace, keyword)
+                break
+            
+        
+    @staticmethod
     def go_url(url):
         """
         Verifies if the provided url is valid and responds to a request, whether it's a http or ftp url.
