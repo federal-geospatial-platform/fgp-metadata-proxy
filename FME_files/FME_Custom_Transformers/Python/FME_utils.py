@@ -603,10 +603,10 @@ class FME_utils:
         out_att_name : str
             The name of the FME attribute you want the transformation to be saved to.
             if this parameter is nor specified the transformation will be applied the attribute source
-        separator : str
-            String for the separator
         remove_in_att : Boolean
-            When True and out_att_name is specified the source attribute is removed from the feature
+            When True the source attribute is removed leaving only the new one.
+        separator : str
+            String for the separator. Default ':'
         
         Returns
         -------
@@ -624,22 +624,6 @@ class FME_utils:
                 feature.setAttribute(out_att_name,splitted_mail.strip())
                 if remove_in_att:
                     feature.removeAttribute(in_att_name)
-        
-    @staticmethod
-    def attribute_replacer_from_list(feature, att_to_replace, search_list):
-
-        found=False
-        list_name = feature.getAttribute('_list{}.original_value')
-        list_search = feature.getAttribute(search_list)
-        for keyword in list_name:
-            for item in list_search:
-                if item.lower() == keyword.lower():
-                    found=True
-                    break
-            if found:
-                feature.setAttribute(att_to_replace, keyword)
-                break
-            
         
     @staticmethod
     def go_url(url):
