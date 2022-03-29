@@ -314,7 +314,7 @@ class GeoNoneGeoSelector(object):
             # Loop over each attribute to process it
             for index, att_name in attributes:
                 found = False
-                att_value = feature.getAttribute(att_name)
+                att_value = feature.getAttributeAsType(att_name, fmeobjects.FME_ATTR_STRING)
                 att_value = att_value.lower()
                
                 # Extract the value(s) to search. Create a set to enable set intersection
