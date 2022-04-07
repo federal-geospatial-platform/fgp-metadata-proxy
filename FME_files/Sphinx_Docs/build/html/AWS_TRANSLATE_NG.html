@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS_TRANSLATE_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CatalogueReader" href="CatalogueReader.html" />
+    <link rel="prev" title="ATTRIBUTE_VALUE_TEXT_CLEANER" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> fme_python_pt_harvester
+            <img src="_static/Canada.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AWS_TRANSLATE_NG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-aws-translate-py">Documentation du code AWS_TRANSLATE.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CatalogueReader.html">CatalogueReader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DCAT_Reader.html">DCAT_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER_NG.html">GEO_EXTENTS_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR_NG.html">GEOSPATIAL_DATA_VALIDATOR_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER_NG.html">GEOPORTAL_WEBLINK_ADDER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER.html">LICENSE_FILTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER_NG.html">MANUAL_GEOSPATIAL_SETTER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER_NG.html">METADATA_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_NG.html">METADATA_VALUE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_ERROR_MANAGER.html">METADATA_VALUE_MAPPER_ERROR_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MORE_INFO_MANAGER.html">MORE_INFO_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PYCSW_URL_MAPPER_NG.html">PYCSW_URL_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ON_CKAN_CONTACT_FORM_EXTRACTOR.html">ON_CKAN_CONTACT_FORM_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QC_MISSING_EMAIL_SETTER.html">QC_MISSING_EMAIL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SECTOR_MAPPER_NG.html">SECTOR_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SOCRATA_READER_NG.html">SOCRATA_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER_NG.html">XML_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WMS_REST_LANGUAGE_FORMATTER.html">WMS_REST_LANGUAGE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YT_CONTACTS_MERGER.html">YT_CONTACTS_MERGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">FME_utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fme_python_pt_harvester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>AWS_TRANSLATE_NG</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/AWS_TRANSLATE_NG.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="aws-translate-ng">
+<h1>AWS_TRANSLATE_NG<a class="headerlink" href="#aws-translate-ng" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description</strong></p>
+<p>This custom transformers translates FME attributes and/or lists in either English or French using AWS translation services.</p>
+<p><strong>Note1</strong>: Before translating an attribute the CT will verify if the destination attribute name exists. When the name exists, if the destination attribute value is different from the source attribute value to translate, the CT considers that the translation is done and the process stops for this attribute.  If destination attribute value is the same, the CT will try to guess (using AWS translation service) the language of the source attribute value to translate and adjust the translation accordignly.</p>
+<p><strong>Note2:</strong>: When an attribute and or list is translated, the CT always creates 2 new attributes with the suffix <em>fr</em> and <em>en</em>.  It keeps the original attribute name as is.</p>
+<p><strong>Input Ports</strong></p>
+<ul>
+<li>Input: The features to translate.</li>
+</ul>
+<p><strong>Output Ports</strong></p>
+<ul>
+<li>OUTPUT: The features with translated attributes and/or lists</li>
+<li>TRANSLATION_PROBLEM: The features with a translation problem.</li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>ACTIVATE_TRANSLATION: Flag to enable or disable the translation. Ca take 2 values: <em>Yes</em>: Translate the attributes; <em>No</em>: Do not translate the attributes.  If the flag is set to <em>No</em>, the transformer will copy the text to translate in the output attribute and add the prefix: <em>Translation of</em>.</li>
+<li>MODE: Flag for the direction of the translation. can take 2 values: <em>English--&gt;French</em> for an English to French translation; <em>Franch--&gt;English</em> for a French to English translation;</li>
+<li>ATTR_2_TRANSLATE: Coma separated list of FME attribute to translate;</li>
+<li>ATTR_LIST_2_TRANSLATE: Coma separated list of FME lists to translate.</li>
+</ul>
+</div>
+<div class="section" id="documentation-du-code-aws-translate-py">
+<h2>Documentation du code AWS_TRANSLATE.py<a class="headerlink" href="#documentation-du-code-aws-translate-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-AWS_TRANSLATE" title="AWS_TRANSLATE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AWS_TRANSLATE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-AWS_TRANSLATE"></span><dl class="py function">
+<dt class="sig sig-object py" id="AWS_TRANSLATE.aws_guess_translation">
+<span class="sig-prename descclassname"><span class="pre">AWS_TRANSLATE.</span></span><span class="sig-name descname"><span class="pre">aws_guess_translation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">att_value_in_lang</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/AWS_TRANSLATE.html#aws_guess_translation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#AWS_TRANSLATE.aws_guess_translation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_TRANSLATE.aws_translate">
+<span class="sig-prename descclassname"><span class="pre">AWS_TRANSLATE.</span></span><span class="sig-name descname"><span class="pre">aws_translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aws_activation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inText</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inlang</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outlang</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/AWS_TRANSLATE.html#aws_translate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#AWS_TRANSLATE.aws_translate" title="Permalink to this definition"></a></dt>
+<dd><p>This translates string using AWS translation service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aws_activate</strong> (<em>Boolean</em>) – Flag to activate the AWS translation. True: Translate the attributes;
+False do not translate the strings</p></li>
+<li><p><strong>inText</strong> (<em>String</em>) – String to translate</p></li>
+<li><p><strong>inLang</strong> (<em>String</em>) – Language of the input string to translate. Can take 2 values: en or fr</p></li>
+<li><p><strong>outLang</strong> (<em>String</em>) – Language of the translated string. Can take 2 values: en or fr</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Translated string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>String</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_TRANSLATE.get_translation_direction">
+<span class="sig-prename descclassname"><span class="pre">AWS_TRANSLATE.</span></span><span class="sig-name descname"><span class="pre">get_translation_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aws_activation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">att_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_mode</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/AWS_TRANSLATE.html#get_translation_direction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#AWS_TRANSLATE.get_translation_direction" title="Permalink to this definition"></a></dt>
+<dd><p>This method validates the direction of the translation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p></li>
+<li><p><strong>aws_activate</strong> (<em>Boolean</em>) – Flag to activate the AWS translation. True: Translate the attributes;
+False do not translate the strings</p></li>
+<li><p><strong>att_name</strong> (<em>String</em>) – </p></li>
+<li><p><strong>translation_mode</strong> (<em>String</em>) – Flag to indicate the type of translation. Can take two values:
+English–&gt;French for an English to French tranlation; French–&gt;English for a French to English translation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Tuple of 2 strings. First string input language; second string output language.
+If both string are equal no translation is needed and the value is the value of
+the input language.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_TRANSLATE.manage_translation">
+<span class="sig-prename descclassname"><span class="pre">AWS_TRANSLATE.</span></span><span class="sig-name descname"><span class="pre">manage_translation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_att_2_translate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aws_activation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_mode</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/AWS_TRANSLATE.html#manage_translation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#AWS_TRANSLATE.manage_translation" title="Permalink to this definition"></a></dt>
+<dd><p>This method iterates a list of FME attributes to trasnlate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p></li>
+<li><p><strong>lst_att_2_translate</strong> (<em>List</em>) – List of FME attributes to translate</p></li>
+<li><p><strong>aws_activate</strong> (<em>Boolean</em>) – Flag to activate the AWS translation. True: Translate the attributes;
+False do not translate the strings</p></li>
+<li><p><strong>translation_mode</strong> (<em>String</em>) – Flag to indicate the type of translation. Can take two values:
+English–&gt;French for an English to French tranlation; French–&gt;English for a French to English translation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True: The translation was successful; False the translation was in error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_TRANSLATE.process_feature">
+<span class="sig-prename descclassname"><span class="pre">AWS_TRANSLATE.</span></span><span class="sig-name descname"><span class="pre">process_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/AWS_TRANSLATE.html#process_feature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#AWS_TRANSLATE.process_feature" title="Permalink to this definition"></a></dt>
+<dd><p>This method translate string using AWS translate tools.</p>
+<p>The FME attributes to translate are stored in the FME attribute: <em>_attr2translate</em>
+The FME list to translate are stored in the FME attribute: <em>_attr2translate</em>.
+The translation mode in contained in the attribute: _mode. If mode equals: English–&gt;French
+An english to Frech is done if the value equals: French–&gt;English a French to English
+translation is done.
+The FME attribute _aws_activation contains the translation flag. If set to Yes the translation is done;
+if set to No the translation is not done.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ATTRIBUTE_VALUE_TEXT_CLEANER.html" class="btn btn-neutral float-left" title="ATTRIBUTE_VALUE_TEXT_CLEANER" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CatalogueReader.html" class="btn btn-neutral float-right" title="CatalogueReader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, FGP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

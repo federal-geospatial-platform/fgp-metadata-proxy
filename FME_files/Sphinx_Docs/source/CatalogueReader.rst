@@ -1,17 +1,17 @@
-Catalogue_Reader
-================
+CatalogueReader
+===============
 
 Documentation du Custom Transformer FME
 #######################################
 
 
 .. raw:: html
-   :file: ./html_FME_Doc/Catalogue_Reader.html
+   :file: ./html_FME_Doc/Catalogue Reader.html
 
 | 
 
-Documentation du code Catalogue_Reader.py
-#########################################
+Documentation du code CatalogueReader.py
+########################################
    
 .. autosummary::
    Catalogue_Reader
