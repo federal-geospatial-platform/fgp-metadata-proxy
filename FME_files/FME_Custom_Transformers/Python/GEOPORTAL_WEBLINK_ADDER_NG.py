@@ -149,6 +149,7 @@ class FeatureProcessor(object):
             else:
                 # Do not test if the link is valid and simulate a valid request
                 status_code = HTTP_OK
+                self.logger.logMessageString("No URL validation: {}".format(test_url), fmeobjects.FME_INFORM)
             
             # Set the status code attribute
             feature.setAttribute(HTTP_STATUS_CODE, status_code)    
