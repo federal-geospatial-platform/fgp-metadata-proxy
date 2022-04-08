@@ -75,6 +75,8 @@ def aws_translate(aws_activation, inText, inlang, outlang):
 def aws_guess_translation(att_value_in_lang):
     """
     """
+    # Message à imprimer dans le log si on change la direction de la traduction pour un attribut
+    print ("log: Correction de la traduction. Changement de la langue pour @Value(name) @Value(name_fr)")
     raise
 
 
