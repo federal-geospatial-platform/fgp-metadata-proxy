@@ -47,7 +47,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-04-14T15:26:20"
+#!   LAST_SAVE_DATE="2022-04-14T15:42:42"
 #!   LOG_FILE="$(LOG_FILE)"
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -66,10 +66,10 @@
 #!   TITLE=""
 #!   USAGE=""
 #!   USE_MARKDOWN=""
-#!   VIEW_POSITION="-11929.9 1162.29"
+#!   VIEW_POSITION="-18834.5 719.811"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
-#!   ZOOM_SCALE="57"
+#!   ZOOM_SCALE="89"
 #! >
 #! <DATASETS>
 #! <DATASET
@@ -1495,6 +1495,311 @@
 #! </FEATURE_TYPE>
 #! </FEATURE_TYPES>
 #! <FMESERVER>
+#! <SERVICES>
+#! <SERVICE
+#!   NAME="fmejobsubmitter"
+#! >
+#! <PROPERTIES>
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="ADVANCED"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="FAILURE_TOPICS"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="HTTP_DATASET"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="NOTIFICATION_WRITER"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="SUCCESS_TOPICS"
+#!   VALUE=""
+#! />
+#! </PROPERTIES>
+#! </SERVICE>
+#! </SERVICES>
+#! <REPOSITORY
+#!   NAME="PT_Harvester"
+#! />
+#! <ITEM
+#!   NAME="NS_FGP_XML_BUILDER_PROD.fmw"
+#! />
+#! <MODIFICATIONS>
+#! <MODIFICATION
+#!   UID=":DatasetMgr_TEXTLINE_1:DestDataset_TEXTLINE_1"
+#!   VALUE="$(OUT_XML_PASSED_DIR)"
+#! />
+#! <MODIFICATION
+#!   UID=":DatasetMgr_TEXTLINE_2:DestDataset_TEXTLINE_2"
+#!   VALUE="$(OUT_XML_FAILED_DIR)"
+#! />
+#! <MODIFICATION
+#!   UID=":DatasetMgr_TEXTLINE_3:DestDataset_TEXTLINE_3"
+#!   VALUE="$(OUT_XML_LOCAL_DIR)"
+#! />
+#! <MODIFICATION
+#!   UID=":DatasetMgr_TEXTLINE_4:DestDataset_TEXTLINE_4"
+#!   VALUE="$(OUT_JSON_LOCAL_DIR)"
+#! />
+#! <MODIFICATION
+#!   UID=":DatasetMgr_XLSXW_1:DestDataset_XLSXW_1"
+#!   VALUE="$(OUT_XLS_NOTIFICATION_DIR)"
+#! />
+#! <MODIFICATION
+#!   UID=":DatasetMgr_XLSXW_1:XLSXW_OUT_TEMPLATEFILE_XLSXW_1"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SERVER_DEST_DIR"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_BACKUP"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_DASHBOARD"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_DATA"
+#!   VALUE="C:\Data"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_ENGINE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_LOG"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_SYSTEM"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_TEMP"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_TOPIC_MESSAGE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:IN_CSV_LOOKUPTABLES_DIR"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\LOOKUP_TABLES"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:IN_FFS_TESTING_FILE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:IN_GMD_XML_TEMPLATE_DIR"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\XML_TEMPLATES"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:IN_TBS_JSON_TEMPLATE_DIR"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\JSON_TEMPLATES"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:LOG_FILE"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\NS\LOG\NS.log"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:OUT_JSON_LOCAL_DIR"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\NS\JSON_LOCAL"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:OUT_XLS_NOTIFICATION_DIR"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\NS\XLS"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:OUT_XML_FAILED_DIR"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\NS\XML_FAILED"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:OUT_XML_LOCAL_DIR"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\NS\XML_LOCAL"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:OUT_XML_PASSED_DIR"
+#!   VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\NS\XML_PASSED"
+#! />
+#! <MODIFICATION
+#!   UID=":WBDoc:DESTINATION_ROUTING_FILE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":WBDoc:LOG_FILE"
+#!   VALUE="$(LOG_FILE)"
+#! />
+#! <MODIFICATION
+#!   UID=":WBDoc:SOURCE_ROUTING_FILE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_150:LOCAL_SOURCE_DIR"
+#!   VALUE="$(OUT_JSON_LOCAL_DIR)"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_35:LOCAL_SOURCE_DIR"
+#!   VALUE="$(OUT_XML_LOCAL_DIR)"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_CITEDRESPONSIBLEPARTY"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)//GMD_CITEDRESPONSIBLEPARTY.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_CONTACT"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_CONTACT.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_DISTRIBUTIONFORMAT"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_DISTRIBUTIONFORMAT.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_DISTRIBUTOR"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_DISTRIBUTOR.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_KEYWORDS"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_KEYWORDS.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_MDMETADATA"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_MDMETADATA.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_REFERENCESYSTEMINFO"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_REFERENCESYSTEMINFO.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_RESOURCEMAINTENANCE"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_RESOURCEMAINTENANCE.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_TOPICCATEGORY"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_TOPICCATEGORY.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_416:TEMPLATE_GMD_TRANSFEROPTIONS"
+#!   VALUE="$(IN_GMD_XML_TEMPLATE_DIR)/GMD_TRANSFEROPTIONS.xml"
+#! />
+#! <MODIFICATION
+#!   UID=":WBParameterNode_54:DATASET"
+#!   VALUE="$(IN_FFS_TESTING_FILE)"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_10:FILE_XML"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_14:OUTPUT_DIRNAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_14:OUTPUT_FILENAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_14:UPLOAD_FILE"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_16:OUTPUT_DIRNAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_16:OUTPUT_FILENAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_16:UPLOAD_FILE"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_17:FILE_XML"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_29:OUTPUT_DIRNAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_29:OUTPUT_FILENAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_29:UPLOAD_FILE"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_30:FILEPATH_OR_URL"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_32:OUTPUT_DIRNAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_32:OUTPUT_FILENAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_32:UPLOAD_FILE"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_33:FILEPATH_OR_URL"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_38:OUTPUT_DIRNAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_38:OUTPUT_FILENAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_38:UPLOAD_FILE"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_39:FILEPATH_OR_URL"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_6:OUTPUT_DIRNAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_6:OUTPUT_FILENAME"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_6:UPLOAD_FILE"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_7:FILE_XML"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! <MODIFICATION
+#!   UID="Catalogue Reader:WBParameterNode_80:FILE_XML"
+#!   VALUE="&lt;Unused&gt;"
+#! />
+#! </MODIFICATIONS>
 #! <READER_DATASETS>
 #! <DATASET
 #!   NAME="FeatureReader_2"
@@ -2451,7 +2756,7 @@
 #!   BOUNDING_RECT="-18857.812308798646 272.79403634875547 4259.0143600348456 2207.0454050062326"
 #!   STICKY="true"
 #!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
-#!   CONTENTS="86 78 54 95 216 223 251 422 178 217 570 322 12 10 225 77 85 57 66 577 319 64 118 87 235 558 502 56 325 560 52 242 236 "
+#!   CONTENTS="86 78 54 95 216 251 380 178 217 570 322 379 12 10 225 77 85 57 66 577 319 64 118 235 558 502 56 325 560 52 242 236 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -3709,10 +4014,9 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="socrataDomainURL" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRCHOICE" PARM_VALUE="Selected Attributes"/>
@@ -3740,10 +4044,9 @@
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="socrataDomainURL" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
@@ -3915,10 +4218,9 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="socrataDomainURL" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id"/>
@@ -3954,30 +4256,6 @@
 #!     <XFORM_PARM PARM_NAME="DOMAIN" PARM_VALUE="https://data.novascotia.ca"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Socrata_MetadataMerger"/>
-#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
-#! </TRANSFORMER>
-#! <TRANSFORMER
-#!   IDENTIFIER="87"
-#!   TYPE="SOCRATA_READER"
-#!   VERSION="1"
-#!   POSITION="-17889.125831822937 -326.79147127477592"
-#!   BOUNDING_RECT="-17889.125831822937 -326.79147127477592 431 71"
-#!   ORDER="500000000002186"
-#!   PARMS_EDITED="true"
-#!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
-#! >
-#!     <OUTPUT_FEAT NAME="Output"/>
-#!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="socrataDomainURL" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="DOMAIN" PARM_VALUE="http://data.novascotia.ca"/>
-#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Socrata_Reader"/>
 #!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
@@ -4160,10 +4438,9 @@
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="socrataDomainURL" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -4431,10 +4708,9 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="socrataDomainURL" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -5623,10 +5899,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <OUTPUT_FEAT NAME="LICENSE_FILTER_UNPASSED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="socrataDomainURL" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -5635,10 +5910,9 @@
 #!     <OUTPUT_FEAT NAME="UNKNOWN_LICENSE"/>
 #!     <FEAT_COLLAPSED COLLAPSED="2"/>
 #!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="socrataDomainURL" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -6726,6 +7000,29 @@
 #!     <XFORM_PARM PARM_NAME="YAML_DIRECTIVES" PARM_VALUE="tags&lt;opencurly&gt;&lt;closecurly&gt;.display_name:&lt;lf&gt;&lt;space&gt;domain:&lt;space&gt;&lt;openbracket&gt;lidar&lt;comma&gt;elevation&lt;comma&gt;geoscientific&lt;comma&gt;topography&lt;closebracket&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;spatial_type:&lt;space&gt;no_overwrite&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;not_found:&lt;space&gt;no_log&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;search_type:&lt;space&gt;equals&lt;space&gt;"/>
 #!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
 #! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="379"
+#!   TYPE="SOCRATA_READER_NG"
+#!   VERSION="1"
+#!   POSITION="-17929.626365951808 -165.9507357286017"
+#!   BOUNDING_RECT="-17929.626365951808 -165.9507357286017 499.00106825772946 71"
+#!   ORDER="500000000002559.38"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="licenseId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="assetType" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="DOMAIN" PARM_VALUE="http://data.novascotia.ca"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SOCRATA_READER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
@@ -7164,9 +7461,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="223"
+#!   IDENTIFIER="380"
 #!   SOURCE_NODE="64"
-#!   TARGET_NODE="87"
+#!   TARGET_NODE="379"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
@@ -7439,21 +7736,6 @@
 #!   TARGET_NODE="580"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="fi 0 INPUT"
-#!   ENABLED="true"
-#!   EXECUTION_IDX="0"
-#!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
-#!   PEN_WIDTH="4"
-#!   PEN_STYLE="1"
-#!   LINK_STYLE_NAME="&lt;Default&gt;"
-#!   EXTRA_POINTS=""
-#! />
-#! <FEAT_LINK
-#!   IDENTIFIER="422"
-#!   SOURCE_NODE="87"
-#!   TARGET_NODE="78"
-#!   SOURCE_PORT_DESC="fo 0 Output"
-#!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -7979,6 +8261,21 @@
 #!   TARGET_NODE="160"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="381"
+#!   SOURCE_NODE="379"
+#!   TARGET_NODE="78"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -15580,7 +15877,7 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeStamper    INPUT  FEATURE_TYPE 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 MACRO VariableSetter_VAR _timestamp
 INCLUDE [    if {{Global} == {Local}} {       puts {MACRO VariableSetter_VAR $(WB_CURRENT_CONTEXT)__timestamp};    };    proc stripEvaluateExpression {val} {       if [regexp {@EvaluateExpression\([^)]*STRING_ENCODED,([^,]*),.+\)} $val -> unwrapped] {          return $unwrapped       } else {          return $val       };    };    set strippedValue [stripEvaluateExpression {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_toto<closeparen>,VariableSetter)}];    puts "MACRO VariableSetter_VALUE $strippedValue"; ]
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME VariableSetter    INPUT  FEATURE_TYPE DateTimeStamper_OUTPUT    ATTR_ACTION { "" VariableSetter_53a83586_b829_45d1_b815_5dca402cdfed1 SET_TO "$(VariableSetter_VALUE)" }    OUTPUT OUTPUT FEATURE_TYPE VariableSetter_OUTPUT        @GlobalVariable($(VariableSetter_VAR),fme_attribute_name,VariableSetter_53a83586_b829_45d1_b815_5dca402cdfed1)        @RemoveAttributes(VariableSetter_53a83586_b829_45d1_b815_5dca402cdfed1)
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME VariableSetter    INPUT  FEATURE_TYPE DateTimeStamper_OUTPUT    ATTR_ACTION { "" VariableSetter_53a83586_b829_45d1_b815_5dca402cdfed3 SET_TO "$(VariableSetter_VALUE)" }    OUTPUT OUTPUT FEATURE_TYPE VariableSetter_OUTPUT        @GlobalVariable($(VariableSetter_VAR),fme_attribute_name,VariableSetter_53a83586_b829_45d1_b815_5dca402cdfed3)        @RemoveAttributes(VariableSetter_53a83586_b829_45d1_b815_5dca402cdfed3)
 # -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME Tester_6    INPUT  FEATURE_TYPE VariableSetter_OUTPUT    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,$(CATALOGUE_READER_SELECT$encode),Tester_6)" = Yes ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE Tester_6_PASSED    OUTPUT FAILED FEATURE_TYPE Tester_6_FAILED
 # -------------------------------------------------------------------------
@@ -15596,16 +15893,16 @@ FACTORY_DEF {*} QueryFactory    FACTORY_NAME FeatureReader_2    INPUT  FEATURE_T
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TeeFactory FACTORY_NAME FeatureReader_2_<Rejected> INPUT FEATURE_TYPE FeatureReader_2_<REJECTED>  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, FeatureReader_2<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory   FACTORY_NAME "Socrata_Reader Input Input Collector"   INPUT FEATURE_TYPE Tester_6_PASSED   OUTPUT FEATURE_TYPE Socrata_Reader_Input
-MACRO SOCRATA_READER_WORKSPACE_NAME Socrata_Reader
-MACRO $(SOCRATA_READER_WORKSPACE_NAME)_XFORMER_NAME Socrata_Reader
-MACRO $(SOCRATA_READER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
-MACRO $(SOCRATA_READER_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
-MACRO $(SOCRATA_READER_WORKSPACE_NAME)_DOMAIN http://data.novascotia.ca
-INCLUDE_CUSTOM_TRANSFORMER_VER SOCRATA_READER:1
-FACTORY_DEF * TeeFactory   FACTORY_NAME "Socrata_Reader Output Output Renamer/Nuker"   INPUT FEATURE_TYPE Socrata_Reader_Output   OUTPUT FEATURE_TYPE Socrata_Reader_Output
+FACTORY_DEF * TeeFactory   FACTORY_NAME "SOCRATA_READER_NG Input Input Collector"   INPUT FEATURE_TYPE Tester_6_PASSED   OUTPUT FEATURE_TYPE SOCRATA_READER_NG_Input
+MACRO SOCRATA_READER_NG_WORKSPACE_NAME SOCRATA_READER_NG
+MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_XFORMER_NAME SOCRATA_READER_NG
+MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(SOCRATA_READER_NG_WORKSPACE_NAME)_DOMAIN http://data.novascotia.ca
+INCLUDE_CUSTOM_TRANSFORMER_VER SOCRATA_READER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "SOCRATA_READER_NG Output Output Renamer/Nuker"   INPUT FEATURE_TYPE SOCRATA_READER_NG_Output   OUTPUT FEATURE_TYPE SOCRATA_READER_NG_Output
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory   FACTORY_NAME "ATTRIBUTE_VALUE_TEXT_CLEANER Input Input Collector"   INPUT FEATURE_TYPE Socrata_Reader_Output   INPUT FEATURE_TYPE FeatureReader_2_<OTHER>   OUTPUT FEATURE_TYPE ATTRIBUTE_VALUE_TEXT_CLEANER_Input
+FACTORY_DEF * TeeFactory   FACTORY_NAME "ATTRIBUTE_VALUE_TEXT_CLEANER Input Input Collector"   INPUT FEATURE_TYPE FeatureReader_2_<OTHER>   INPUT FEATURE_TYPE SOCRATA_READER_NG_Output   OUTPUT FEATURE_TYPE ATTRIBUTE_VALUE_TEXT_CLEANER_Input
 MACRO ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME ATTRIBUTE_VALUE_TEXT_CLEANER
 MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_XFORMER_NAME ATTRIBUTE_VALUE_TEXT_CLEANER
 MACRO $(ATTRIBUTE_VALUE_TEXT_CLEANER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
@@ -15614,8 +15911,8 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "ATTRIBUTE_VALUE_TEXT_CLEANER Output Out
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_3    INPUT  FEATURE_TYPE ATTRIBUTE_VALUE_TEXT_CLEANER_Output    OUTPUT FEATURE_TYPE AttributeExposer_3_OUTPUT
 # -------------------------------------------------------------------------
-Tcl2 proc NullAttributeMapper_28fd75d6_7ee5_40b8_927a_7b81dc415b361_null_replacer { otherValue newValue regExp } {    set attrs [split {licenseId} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {SETNULL EMPTY MISSINGATTR}] != -1} {                 set act {SETVALUE};             };          }          elseif { [string first {EMPTY} {SETNULL EMPTY MISSINGATTR}] != -1 && $attrVal == {}} {             set act {SETVALUE};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {SETVALUE};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {SETVALUE};             }          };      }      elseif {[string first {MISSINGATTR} {SETNULL EMPTY MISSINGATTR}] != -1} {             set act {SETVALUE};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME NullAttributeMapper    INPUT  FEATURE_TYPE AttributeExposer_3_OUTPUT    OUTPUT FEATURE_TYPE NullAttributeMapper_OUTPUT         @Tcl2("NullAttributeMapper_28fd75d6_7ee5_40b8_927a_7b81dc415b361_null_replacer {} {none} {}")
+Tcl2 proc NullAttributeMapper_28fd75d6_7ee5_40b8_927a_7b81dc415b363_null_replacer { otherValue newValue regExp } {    set attrs [split {licenseId} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {SETNULL EMPTY MISSINGATTR}] != -1} {                 set act {SETVALUE};             };          }          elseif { [string first {EMPTY} {SETNULL EMPTY MISSINGATTR}] != -1 && $attrVal == {}} {             set act {SETVALUE};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {SETVALUE};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {SETVALUE};             }          };      }      elseif {[string first {MISSINGATTR} {SETNULL EMPTY MISSINGATTR}] != -1} {             set act {SETVALUE};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME NullAttributeMapper    INPUT  FEATURE_TYPE AttributeExposer_3_OUTPUT    OUTPUT FEATURE_TYPE NullAttributeMapper_OUTPUT         @Tcl2("NullAttributeMapper_28fd75d6_7ee5_40b8_927a_7b81dc415b363_null_replacer {} {none} {}")
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_11    INPUT  FEATURE_TYPE NullAttributeMapper_OUTPUT    OUTPUT FEATURE_TYPE AttributeExposer_11_OUTPUT
 # -------------------------------------------------------------------------
@@ -15668,8 +15965,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_14    INPUT  FEATURE_T
 # -------------------------------------------------------------------------
 DEFAULT_MACRO DateTimeConverter_EXPRESSION_LIST
 INCLUDE [    set repairInput {};    if {{YES} eq {YES}} {       set repairInput "<comma>repair";    };    set inFormat {FME|ISO};    if { {%s<dollar>} ne {} } {       set inFormat {%s<dollar>};       if { [string first "<quote>" $inFormat] != -1 } {          set inFormat [string map {"<quote>" "<backslash><quote>"} $inFormat];       };    };    set outFormat {%Y-%m-%d};    if { [string first "<quote>" $outFormat] != -1 } {       set outFormat [string map {"<quote>" "<backslash><quote>"} $outFormat];    };    set parmList {};    set attrs {viewLastModified createdAt publicationDate};    foreach attr $attrs {       lappend parmList $attr;       set funcAttr $attr;       if { [string first "<quote>" $attr] != -1 }       {          set funcAttr [string map {"<quote>" "<backslash><quote>"} $attr];          append funcAttr "<quote>";          set funcAttr "<quote>$funcAttr";       };       lappend parmList <at>DateTimeFormat<openparen><at>DateTimeParse<openparen><at>Value<openparen>$funcAttr<closeparen><comma><quote>$inFormat<quote>$repairInput<closeparen><comma><quote>$outFormat<quote><closeparen>;    };    puts "MACRO DateTimeConverter_EXPRESSION_LIST [join $parmList { }]"; ]
-Tcl2 proc DateTimeConverter_11d74b46_18bb_48fd_ae97_000a4e2cdd741_DateTimeConverter {} {    set attrs {viewLastModified createdAt publicationDate};    set decodedAttrs {};    set attrVals {};    set attrNulls {};    set attrMissings {};    foreach attr $attrs {       set decodedAttr [FME_DecodeText $attr];       lappend decodedAttrs $decodedAttr;       lappend attrVals [FME_GetAttribute $decodedAttr];       lappend attrNulls [FME_IsAttributeNull $decodedAttr];       lappend attrExists [FME_AttributeExists $decodedAttr];    };    FME_Execute EvaluateExpression ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV $(DateTimeConverter_EXPRESSION_LIST) DateTimeConverter;    foreach attr $decodedAttrs oldAttrVal $attrVals oldAttrExists $attrExists oldAttrNull $attrNulls {       set newAttrVal [FME_GetAttribute $attr];       if {[string length $newAttrVal] == 0} {          if {{NO} eq {NO} || [string length $oldAttrVal] > 0} {             FME_SetAttribute fme_rejection_code "INVALID_INPUT";             break;          } elseif {!$oldAttrExists} {             FME_UnsetAttributes $attr;          } elseif {!$oldAttrNull} {             FME_SetAttribute $attr {};          };       }    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeConverter_1    INPUT  FEATURE_TYPE AttributeExposer_14_OUTPUT    OUTPUT FEATURE_TYPE ___TOREJECTOR___       @RenameAttributes(FME_STRICT, ___fme_rejection_code___,fme_rejection_code)       @Tcl2(DateTimeConverter_11d74b46_18bb_48fd_ae97_000a4e2cdd741_DateTimeConverter)
+Tcl2 proc DateTimeConverter_11d74b46_18bb_48fd_ae97_000a4e2cdd743_DateTimeConverter {} {    set attrs {viewLastModified createdAt publicationDate};    set decodedAttrs {};    set attrVals {};    set attrNulls {};    set attrMissings {};    foreach attr $attrs {       set decodedAttr [FME_DecodeText $attr];       lappend decodedAttrs $decodedAttr;       lappend attrVals [FME_GetAttribute $decodedAttr];       lappend attrNulls [FME_IsAttributeNull $decodedAttr];       lappend attrExists [FME_AttributeExists $decodedAttr];    };    FME_Execute EvaluateExpression ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV $(DateTimeConverter_EXPRESSION_LIST) DateTimeConverter;    foreach attr $decodedAttrs oldAttrVal $attrVals oldAttrExists $attrExists oldAttrNull $attrNulls {       set newAttrVal [FME_GetAttribute $attr];       if {[string length $newAttrVal] == 0} {          if {{NO} eq {NO} || [string length $oldAttrVal] > 0} {             FME_SetAttribute fme_rejection_code "INVALID_INPUT";             break;          } elseif {!$oldAttrExists} {             FME_UnsetAttributes $attr;          } elseif {!$oldAttrNull} {             FME_SetAttribute $attr {};          };       }    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeConverter_1    INPUT  FEATURE_TYPE AttributeExposer_14_OUTPUT    OUTPUT FEATURE_TYPE ___TOREJECTOR___       @RenameAttributes(FME_STRICT, ___fme_rejection_code___,fme_rejection_code)       @Tcl2(DateTimeConverter_11d74b46_18bb_48fd_ae97_000a4e2cdd743_DateTimeConverter)
 FACTORY_DEF * TestFactory    FACTORY_NAME DateTimeConverter_Rejector    INPUT FEATURE_TYPE ___TOREJECTOR___    TEST @Value(fme_rejection_code) != ""    OUTPUT PASSED FEATURE_TYPE DateTimeConverter_<REJECTED>       @RemoveAttributes(___fme_rejection_code___)    OUTPUT FAILED FEATURE_TYPE DateTimeConverter_OUTPUT       @RenameAttributes(FME_STRICT, fme_rejection_code,___fme_rejection_code___)
 # -------------------------------------------------------------------------
 DEFAULT_MACRO WB_CURRENT_CONTEXT
@@ -16268,8 +16565,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer    INPUT  FEATURE_TYPE
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeFilter    INPUT  FEATURE_TYPE AttributeExposer_OUTPUT    OUTPUT FEATURE_TYPE AttributeFilter_FILTER
 FACTORY_DEF * AttributeFilterFactory FACTORY_NAME AttributeFilter_Filter COMMAND_PARM_EVALUATION SINGLE_PASS INPUT FEATURE_TYPE AttributeFilter_FILTER FILTER_ATTRIBUTE PyCSW_Transaction FILTER_VALUES <lt>EMPTY<gt> <lt>MISSING<gt> <lt>NULL<gt> <lt>UNFILTERED<gt> No<space>change Update Insert Delete PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT <lt>EMPTY<gt> FEATURE_TYPE AttributeFilter_<lt>EMPTY<gt> OUTPUT <lt>MISSING<gt> FEATURE_TYPE AttributeFilter_<lt>MISSING<gt> OUTPUT <lt>NULL<gt> FEATURE_TYPE AttributeFilter_<lt>NULL<gt> OUTPUT <lt>UNFILTERED<gt> FEATURE_TYPE AttributeFilter_<lt>UNFILTERED<gt> OUTPUT No<space>change FEATURE_TYPE AttributeFilter_No<space>change OUTPUT Update FEATURE_TYPE AttributeFilter_Update OUTPUT Insert FEATURE_TYPE AttributeFilter_Insert OUTPUT Delete FEATURE_TYPE AttributeFilter_Delete
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_35761de0_29b7_4675_8f14_ff7772a928ec1_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE AttributeFilter_Delete    OUTPUT { FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,id,fme_pcre_match,"^fme_$(AttributeKeeper_35761de0_29b7_4675_8f14_ff7772a928ec1_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_35761de0_29b7_4675_8f14_ff7772a928ec3_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE AttributeFilter_Delete    OUTPUT { FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,id,fme_pcre_match,"^fme_$(AttributeKeeper_35761de0_29b7_4675_8f14_ff7772a928ec3_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 MACRO VariableRetriever_9_VAR _timestamp
@@ -16388,16 +16685,16 @@ MACRO VariableRetriever_VAR _timestamp
 INCLUDE [if {{Global} == {Local}} {   puts {MACRO VariableRetriever_VAR $(WB_CURRENT_CONTEXT)__timestamp}; };
 FACTORY_DEF * TeeFactory    FACTORY_NAME VariableRetriever    INPUT  FEATURE_TYPE SPATIAL_TYPE_MAPPER_NG_DATA_OUTPUT_FAILED    OUTPUT FEATURE_TYPE VariableRetriever_OUTPUT        @GlobalVariable(fme_encoded,$(VariableRetriever_VAR),fme_result_attribute,_timestamp)
 # -------------------------------------------------------------------------
-DEFAULT_MACRO __StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2571_GROUP_BY
+DEFAULT_MACRO __StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2573_GROUP_BY
 # If the cumulative port is connected, the _PORT_SPECIFIED macro
-MACRO StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2571_PORT_SPECIFIED no
+MACRO StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2573_PORT_SPECIFIED no
 # Force splitting of feature tables when the CUMULATIVE port is connected
-MACRO StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2571_SPLIT_FEATURE_TABLES Yes
-INCLUDE [if { {$(StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2571_PORT_SPECIFIED)} == "no" } {     puts {MACRO StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2571_SPLIT_FEATURE_TABLES No} }
+MACRO StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2573_SPLIT_FEATURE_TABLES Yes
+INCLUDE [if { {$(StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2573_PORT_SPECIFIED)} == "no" } {     puts {MACRO StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2573_SPLIT_FEATURE_TABLES No} }
 DYNAMIC_FUNCTION_CONFIGURATION Python FMEOBJECTS
 DYNAMIC_FUNCTION_CONFIGURATION Python import StatisticsCalculator
-DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    'StatisticsCalculator',{     'GROUP_BY_MACRO':'__StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2571_GROUP_BY',     'STATS_ATTRS':'id',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$(StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2571_PORT_SPECIFIED)',     None:None})"
-FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_InputProcessor    INPUT  FEATURE_TYPE Creator_2_CREATED    INPUT  FEATURE_TYPE AttributeExposer_10_OUTPUT    SPLIT_FEATURE_TABLES $(StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2571_SPLIT_FEATURE_TABLES)    OUTPUT FEATURE_TYPE __ORIGINAL__       @Python(StatisticsCalculator.recordFeature,StatisticsCalculator)
+DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    'StatisticsCalculator',{     'GROUP_BY_MACRO':'__StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2573_GROUP_BY',     'STATS_ATTRS':'id',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$(StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2573_PORT_SPECIFIED)',     None:None})"
+FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_InputProcessor    INPUT  FEATURE_TYPE Creator_2_CREATED    INPUT  FEATURE_TYPE AttributeExposer_10_OUTPUT    SPLIT_FEATURE_TABLES $(StatisticsCalculator_e470e5da_3826_4b70_af09_91106ac1b2573_SPLIT_FEATURE_TABLES)    OUTPUT FEATURE_TYPE __ORIGINAL__       @Python(StatisticsCalculator.recordFeature,StatisticsCalculator)
 FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_UnneededInputNuker    INPUT FEATURE_TYPE __ORIGINAL__
 FACTORY_DEF * SortFactory    FACTORY_NAME StatisticsCalculator_CompleteOutputter    INPUT FEATURE_TYPE __UNUSED_INPUT_TO_GUARANTEE_FACTORY_DOESNT_CONSUME_EVERYTHING__
 FACTORY_DEF * CreationFactory    FACTORY_NAME StatisticsCalculator_SummaryCreator    CREATE_AT_END    NUMBER_TO_CREATE 1    OUTPUT FEATURE_TYPE StatisticsCalculator_SUMMARY
@@ -16405,7 +16702,7 @@ FACTORY_DEF * ElementFactory    FACTORY_NAME StatisticsCalculator_SummaryExplode
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE StatisticsCalculator_SUMMARY    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_real_count" "SET_TO" "<at>Evaluate<openparen><at>Value<openparen>_count<closeparen>-1<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_2_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_Logger    INPUT  FEATURE_TYPE AttributeCreator_2_OUTPUT    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_f84fec3b_2588_4926_8f87_01838d0cc3131)
+FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_Logger    INPUT  FEATURE_TYPE AttributeCreator_2_OUTPUT    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_f84fec3b_2588_4926_8f87_01838d0cc3133)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "StatisticsCalculator_Summary LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE StatisticsCalculator_Summary_LOGGED
 # -------------------------------------------------------------------------
 
