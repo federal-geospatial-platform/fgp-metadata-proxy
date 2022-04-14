@@ -158,7 +158,7 @@ class ManageHttpCall(object):
     def input(self,feature):
         """Main routine call be the FME software
         
-        Manage the reading of DCAT server for all the records.
+        Manage the reading of CKAN server for all or by id (one record only)
         
         Parameters
         ----------

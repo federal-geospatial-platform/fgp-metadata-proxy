@@ -38,8 +38,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AWS_TRANSLATE_NG.html">AWS_TRANSLATE_NG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CatalogueReader.html">CatalogueReader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DCAT_Reader.html">DCAT_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
@@ -62,7 +61,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MANUAL_GEOSPATIAL_SETTER_NG.html">MANUAL_GEOSPATIAL_SETTER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
@@ -78,8 +76,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../SECTOR_MAPPER_NG.html">SECTOR_MAPPER_NG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../SOCRATA_READER_NG.html">SOCRATA_READER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../XML_PUBLISHER.html">XML_PUBLISHER</a></li>
@@ -135,7 +131,7 @@
 <span class="sd">        Liste des expressions régulières:</span>
 <span class="sd">        </span>
 <span class="sd">        1. ^[1-2][0-9][0-9][0-9]$  --&gt; 2001</span>
-<span class="sd">        </span>
+<span class="sd">		</span>
 <span class="sd">        1.b	^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$  --&gt; 2001-12-18</span>
 <span class="sd">        </span>
 <span class="sd">        2. ^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$  --&gt; 2001-2002</span>
@@ -147,8 +143,6 @@
 <span class="sd">        5. ^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]/[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$ --&gt; 2017-2018/2019-2020 </span>
 <span class="sd">        </span>
 <span class="sd">        6. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ --&gt; 2012-09/2020-06</span>
-<span class="sd">        </span>
-<span class="sd">        6.b 6. ^[1-2][0-9][0-9][0-9]-[0-1][0-9] - [1-2][0-9][0-9][0-9]-[0-1][0-9]$ --&gt; 2012-09 - 2020-06</span>
 <span class="sd">        </span>
 <span class="sd">        7. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ --&gt; 2018-04-01 to 2021-06-24</span>
 <span class="sd">        </span>
@@ -247,13 +241,7 @@
                     <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$&#39;</span><span class="p">,</span><span class="n">date_extent</span><span class="p">):</span>
                         <span class="n">start_date</span><span class="o">=</span><span class="n">date_extent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                         <span class="n">end_date</span><span class="o">=</span><span class="n">date_extent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-                    
-                    <span class="c1"># 6.b De type 2012-09 - 2020-06</span>
-                    <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^[1-2][0-9][0-9][0-9]-[0-1][0-9] - [1-2][0-9][0-9][0-9]-[0-1][0-9]$&#39;</span><span class="p">,</span><span class="n">date_extent</span><span class="p">):</span>
-                        <span class="n">start_date</span><span class="o">=</span><span class="n">date_extent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; - &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-                        <span class="n">end_date</span><span class="o">=</span><span class="n">date_extent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; - &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-                    
-
+                        
                     <span class="c1">#7. De type 2018-04-01 to 2021-06-24</span>
                     <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$&#39;</span><span class="p">,</span><span class="n">date_extent</span><span class="p">):</span>
                         <span class="n">start_date</span><span class="o">=</span><span class="n">date_extent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; to &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>

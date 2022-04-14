@@ -1,0 +1,1925 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN TerminatorMinMax,1,CITS,cfc1e0cd-b499-4969-928a-f67301697777,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,35,No
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Ce custom transformer est utilisé pour vérifier si le nombre d'entités traitées est acceptable. </p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Si le nombre d'entités n'est pas respecté, le programme génère une erreur. &lt;br/&gt;</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Le custom ne génère pas d'erreur si : </p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Seuil minimal &lt;= Nombre d'entités traitées &lt;=Seuil maximal&lt;br/&gt;</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Documentation : &lt;a href="\\dfscitsh\cits\envcits\applications\cits\pro\doc\TerminatorMinMax.doc"&gt;TerminatorMinMax.doc&lt;/a&gt;&lt;br/&gt;</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Note : Les données entrantes ressortent intactes du transformer afin de pouvoir au besoin mettre</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">le transformer au milieu d'une chaine de traitement, mais le transformer peut aussi être utilisé en fin</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">de traitement</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;h2&gt;Paramètres : &lt;/h2&gt;</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;p&gt;Termination message  : &lt;/p&gt; &lt;li/&gt;Message d'erreur à inscrire dans le log. </p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;li/&gt;Le nombre d'élément trouvé / nombre d'élément attendu sera automatiquement ajouté au message&lt;br/&gt;</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Nombre minimal d'entités :</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;li/&gt;Nombre minimal d'entité attendu. Si le nombre d'entités trouvées  est plus petit (&lt;) que le nombre attendu, le programme génère une erreur. </p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;li/&gt;Mettre un chiffre ou utiliser * pour indiquer qu'il n'y a pas de minimum</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;li/&gt;Toute valeur autre qu'un nombre entier est traité comme * &lt;br/&gt;</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Nombre maximal d'entités :</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;li/&gt;Nombre maximal d'entité attendu. Si le nombre d'entités trouvées  est plus grand (&gt;) que le nombre attendu, le programme génère une erreur.</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;li/&gt;Mettre un chiffre ou utiliser * pour indiquer qu'il n'y a pas de maximum </p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;li/&gt;Toute valeur autre qu'un nombre entier est traité comme *&lt;br/&gt;</p>
+# <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;br/&gt;</p>
+# <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+#     <br/>
+# </p>
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="CITS"
+#!   DESCRIPTION="&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ce custom transformer est utilisé pour vérifier si le nombre d&apos;entités traitées est acceptable. &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Si le nombre d&apos;entités n&apos;est pas respecté, le programme génère une erreur. &amp;lt;br/&amp;gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Le custom ne génère pas d&apos;erreur si : &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Seuil minimal &amp;lt;= Nombre d&apos;entités traitées &amp;lt;=Seuil maximal&amp;lt;br/&amp;gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Documentation : &amp;lt;a href=&quot;\\dfscitsh\cits\envcits\applications\cits\pro\doc\TerminatorMinMax.doc&quot;&amp;gt;TerminatorMinMax.doc&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Note : Les données entrantes ressortent intactes du transformer afin de pouvoir au besoin mettre&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;le transformer au milieu d&apos;une chaine de traitement, mais le transformer peut aussi être utilisé en fin&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;de traitement&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;h2&amp;gt;Paramètres : &amp;lt;/h2&amp;gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;p&amp;gt;Termination message  : &amp;lt;/p&amp;gt; &amp;lt;li/&amp;gt;Message d&apos;erreur à inscrire dans le log. &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;li/&amp;gt;Le nombre d&apos;élément trouvé / nombre d&apos;élément attendu sera automatiquement ajouté au message&amp;lt;br/&amp;gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Nombre minimal d&apos;entités :&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;li/&amp;gt;Nombre minimal d&apos;entité attendu. Si le nombre d&apos;entités trouvées  est plus petit (&amp;lt;) que le nombre attendu, le programme génère une erreur. &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;li/&amp;gt;Mettre un chiffre ou utiliser * pour indiquer qu&apos;il n&apos;y a pas de minimum&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;li/&amp;gt;Toute valeur autre qu&apos;un nombre entier est traité comme * &amp;lt;br/&amp;gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Nombre maximal d&apos;entités :&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;li/&amp;gt;Nombre maximal d&apos;entité attendu. Si le nombre d&apos;entités trouvées  est plus grand (&amp;gt;) que le nombre attendu, le programme génère une erreur.&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;li/&amp;gt;Mettre un chiffre ou utiliser * pour indiquer qu&apos;il n&apos;y a pas de maximum &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;li/&amp;gt;Toute valeur autre qu&apos;un nombre entier est traité comme *&amp;lt;br/&amp;gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;br/&amp;gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&#10;    &lt;br/&gt;&#10;&lt;/p&gt;&#10;"
+#!   DOC_EXTENTS="12354.1 2288.39"
+#!   DOC_TOP_LEFT="64.932 -2488.39"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19238"
+#!   FME_DOCUMENT_GUID="cfc1e0cd-b499-4969-928a-f67301697777"
+#!   FME_DOCUMENT_PRIORGUID="19066992-5b4d-4413-a81a-6015227216c1,f24ce2a2-fb6e-49a0-8878-e389a4af24b1"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
+#!   LAST_SAVE_DATE="2020-02-21T11:00:54"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="35"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="TerminatorMinMax"
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="-567.36 242.721"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="103"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT Message Termination message:"
+#!   DEFAULT_VALUE="ERREUR : Aucune entité traitée"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR NombreEntitesMinimal Nombre minimal d&apos;entités:"
+#!   DEFAULT_VALUE="1"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI TEXT_OR_ATTR NombreEntitesMaximal Nombre maximal d&apos;entités:"
+#!   DEFAULT_VALUE="*"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="73"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Bogus entity to ensure &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;that the code is always executed&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1990.4926249262494 -277.85731187408965"
+#!   TOP_LEFT="1990.4926249262494 -277.85731187408965"
+#!   BOTTOM_RIGHT="2774.8749687496875 -451.60874938846479"
+#!   BOUNDING_RECT="1990.4926249262494 -277.85731187408965 784.38234382343819 173.75143751437514"
+#!   ORDER="43"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="12"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="74"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Phoney attribute to allow &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;the calculation of the number of entities&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3389.3334647909592 -1154.8158677703282"
+#!   TOP_LEFT="3389.3334647909592 -1154.8158677703282"
+#!   BOTTOM_RIGHT="4342.4674961312721 -1328.5673052847033"
+#!   BOUNDING_RECT="3389.3334647909592 -1154.8158677703282 953.13403134031341 173.75143751437514"
+#!   ORDER="44"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="75"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Count the number &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;of entities&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4022.745437454375 -437.24856248562492"
+#!   TOP_LEFT="4022.745437454375 -437.24856248562492"
+#!   BOTTOM_RIGHT="4516.4998749987508 -611"
+#!   BOUNDING_RECT="4022.745437454375 -437.24856248562492 493.75443754437543 173.75143751437514"
+#!   ORDER="45"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="11"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="76"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Subtract 1 to eliminate &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;the phony entity&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4528.115716011529 -1103.4417476213596"
+#!   TOP_LEFT="4528.115716011529 -1103.4417476213596"
+#!   BOTTOM_RIGHT="5118.7461223155924 -1277.1931851357347"
+#!   BOUNDING_RECT="4528.115716011529 -1103.4417476213596 590.63040630406306 173.75143751437514"
+#!   ORDER="46"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="77"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aller chercher le message &lt;br /&gt;de l&apos;utilisateur&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="10181.49812498125 -350.47654728974464"
+#!   TOP_LEFT="10181.49812498125 -350.47654728974464"
+#!   BOTTOM_RIGHT="10822.129031290313 -524.22798480411984"
+#!   BOUNDING_RECT="10181.49812498125 -350.47654728974464 640.63090630906311 173.75143751437514"
+#!   ORDER="47"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="14"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="78"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Identify the source &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;of entities&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2930.6258798510307 -277.85731187408965"
+#!   TOP_LEFT="2930.6258798510307 -277.85731187408965"
+#!   BOTTOM_RIGHT="3433.7554111463437 -451.60874938846479"
+#!   BOUNDING_RECT="2930.6258798510307 -277.85731187408965 503.12953129531297 173.75143751437514"
+#!   ORDER="50"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="79"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attribute cleanup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="10369 -1227.9811459279645"
+#!   TOP_LEFT="10369 -1227.9811459279645"
+#!   BOTTOM_RIGHT="10822.129031290313 -1342.3569896864021"
+#!   BOUNDING_RECT="10369 -1227.9811459279645 453.12903129031292 114.37584375843758"
+#!   ORDER="51"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="13"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="80"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Y ajouter les statistiques &lt;br /&gt;calculées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="10734.49437494375 -619.4354975588592"
+#!   TOP_LEFT="10734.49437494375 -619.4354975588592"
+#!   BOTTOM_RIGHT="11347 -793.18693507323428"
+#!   BOUNDING_RECT="10734.49437494375 -619.4354975588592 612.50562505625055 173.75143751437514"
+#!   ORDER="52"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="81"
+#!   COMMENT_VALUE="&lt;html&gt;&lt;body&gt;Ménage&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="11414 -794"
+#!   TOP_LEFT="11414 -794"
+#!   BOTTOM_RIGHT="11414 -794"
+#!   BOUNDING_RECT="11414 -794 0 0"
+#!   ORDER="53"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="82"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Separate real data &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;from bogus data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="9802 -591.23437923699635"
+#!   TOP_LEFT="9802 -591.23437923699635"
+#!   BOTTOM_RIGHT="10289.504375043751 -764.98581675137143"
+#!   BOUNDING_RECT="9802 -591.23437923699635 487.50437504375043 173.75143751437514"
+#!   ORDER="54"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="15"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="83"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Separate real data &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;from bogus data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="8980.5772508210503 -1377"
+#!   TOP_LEFT="8980.5772508210503 -1377"
+#!   BOTTOM_RIGHT="9468.081625864801 -1550.7514375143751"
+#!   BOUNDING_RECT="8980.5772508210503 -1377 487.50437504375043 173.75143751437514"
+#!   ORDER="55"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="17"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="84"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Decision&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="9240.2517597020633 -735"
+#!   TOP_LEFT="9240.2517597020633 -735"
+#!   BOTTOM_RIGHT="9499.6288534730011 -849.37584375843755"
+#!   BOUNDING_RECT="9240.2517597020633 -735 259.37709377093768 114.37584375843758"
+#!   ORDER="58"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="16"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="85"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Normally we would take a SAMPLER but it crashes &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;if the minimum number is not a number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1294 -826"
+#!   TOP_LEFT="1294 -826"
+#!   BOTTOM_RIGHT="2497.1365313653137 -999.75143751437508"
+#!   BOUNDING_RECT="1294 -826 1203.1365313653137 173.75143751437514"
+#!   ORDER="63"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.37647058823529411,0.12941176470588237,0.57647058823529407,0.39215686274509803"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="19"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="86"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Valid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="7468 -1183.775606785194"
+#!   TOP_LEFT="7468 -1183.775606785194"
+#!   BOTTOM_RIGHT="7652.3763437634379 -1298.1514505436317"
+#!   BOUNDING_RECT="7468 -1183.775606785194 184.37634376343763 114.37584375843758"
+#!   ORDER="70"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="25"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="87"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Invalid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="7468 -564.62415624156245"
+#!   TOP_LEFT="7468 -564.62415624156245"
+#!   BOTTOM_RIGHT="7693.0017500174999 -679"
+#!   BOUNDING_RECT="7468 -564.62415624156245 225.00175001750017 114.37584375843758"
+#!   ORDER="71"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="26"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="88"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Determine the type of test &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Any value other than a number &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;is interpreted as *&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="4993.0750606535194 -357.37559375593753"
+#!   TOP_LEFT="4993.0750606535194 -357.37559375593753"
+#!   BOTTOM_RIGHT="5774.3323732266454 -590.50262502625026"
+#!   BOUNDING_RECT="4993.0750606535194 -357.37559375593753 781.25731257312577 233.1270312703127"
+#!   ORDER="73"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="21"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="89"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Register the type &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;test in an attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5942.4218143152293 -271.97967232099501"
+#!   TOP_LEFT="5942.4218143152293 -271.97967232099501"
+#!   BOTTOM_RIGHT="6420.5510956080425 -445.73110983537015"
+#!   BOUNDING_RECT="5942.4218143152293 -271.97967232099501 478.12928129281295 173.75143751437514"
+#!   ORDER="75"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.12549019607843137,0.20392156862745098,0.40392156862745099,0.39215686274509803"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="27"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="90"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;By definition it is valid!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="6481.8776395530949 -1449.2720873810681"
+#!   TOP_LEFT="6481.8776395530949 -1449.2720873810681"
+#!   BOTTOM_RIGHT="7056.8828896055957 -1563.6479311395058"
+#!   BOUNDING_RECT="6481.8776395530949 -1449.2720873810681 575.00525005250051 114.37584375843758"
+#!   ORDER="79"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.12549019607843137,0.20392156862745098,0.40392156862745099,0.39215686274509803"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="67"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="91"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Check if the number &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;of entity respects &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;the corresponding thresholds &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;the type of test requested&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="7302.3326760452064 -225.18373785679609"
+#!   TOP_LEFT="7302.3326760452064 -225.18373785679609"
+#!   BOTTOM_RIGHT="8036.7145198636445 -517.68636288304629"
+#!   BOUNDING_RECT="7302.3326760452064 -225.18373785679609 734.38184381843814 292.50262502625026"
+#!   ORDER="88"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="22"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="92"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Since the max is *, we don&apos;t care about the exact number of entities &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;as long as we have the minimum. To speed up processing, only the following are sent to the &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;calculation only the&apos;n&apos; first entities. All entities that exceed the threshold &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;are not sent in the calculation so the calculation will be &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;accelerated. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1294 -2108.5981189908989"
+#!   TOP_LEFT="1294 -2108.5981189908989"
+#!   BOTTOM_RIGHT="3434.6459064590645 -2460.4763377730869"
+#!   BOUNDING_RECT="1294 -2108.5981189908989 2140.6459064590645 351.87821878218779"
+#!   ORDER="89"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="20"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="93"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;IMPORTANT: The counter must &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;be LOCAL because if the program &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;contains 2 TerminatorsMinMax, &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;the number must be restarted &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;to 1 for each use, which is not &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;not the case if you have a counter &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;GLOBAL&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="141.08874389714788 -2017.7611347958141"
+#!   TOP_LEFT="141.08874389714788 -2017.7611347958141"
+#!   BOTTOM_RIGHT="978.59661897589865 -2488.3905410898769"
+#!   BOUNDING_RECT="141.08874389714788 -2017.7611347958141 837.50787507875077 470.62940629406296"
+#!   ORDER="95"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="8"
+#!   ANCHORED_NODE="19"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="96"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tip to speed up the most common case requested, i. e. : n,*&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="679 -747"
+#!   TOP_LEFT="679 -747"
+#!   BOTTOM_RIGHT="2283 -746"
+#!   BOUNDING_RECT="679 -747 1604 -1"
+#!   ORDER="62"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.37647058823529411,0.12941176470588237,0.57647058823529407,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="95"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="94"
+#!   NAME="Understand the number of elements at the set thresholds"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="5914 -200"
+#!   ORDER="500000000000000"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="7205 -1588"
+#!   BOUNDING_RECT="5914 -200 1291 1388"
+#!   STICKY="true"
+#!   COLOUR="0.12549019607843137,0.20392156862745098,0.40392156862745099,0.39215686274509803"
+#!   CONTENTS="28 22 63 89 90 27 29 24 23 65 30 61 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="95"
+#!   NAME="Accelerate processing n,*"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="659 -662"
+#!   ORDER="500000000000000"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="2303 -1851"
+#!   BOUNDING_RECT="659 -662 1644 1189"
+#!   STICKY="true"
+#!   COLOUR="0.37647058823529411,0.12941176470588237,0.57647058823529407,0.39215686274509803"
+#!   CONTENTS="96 49 50 85 19 18 20 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="97"
+#!   NAME="ERREUR"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="11789 -845"
+#!   ORDER="500000000000000"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="12419 -1160"
+#!   BOUNDING_RECT="11789 -845 630 315"
+#!   STICKY="true"
+#!   COLOUR="0.80000000000000004,0,0,0.39215686274509803"
+#!   CONTENTS="7 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="98"
+#!   NAME="Trace dans le logger"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="10369 -1699"
+#!   ORDER="500000000000000"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="11932 -2119"
+#!   BOUNDING_RECT="10369 -1699 1563 420"
+#!   STICKY="true"
+#!   COLOUR="0.80000000000000004,0.53333333333333333,0,0.39215686274509803"
+#!   CONTENTS="31 33 32 71 72 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="ExpressionEvaluator"
+#!   VERSION="2"
+#!   POSITION="4613 -756"
+#!   BOUNDING_RECT="4613 -756 0 0"
+#!   ORDER="59"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="EXPRESSION" PARM_VALUE="@Value(_TMinNbElementsAvecBidon) - 1"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="_TMNbElements"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ExpressionEvaluator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="StringConcatenator"
+#!   VERSION="6"
+#!   POSITION="10804 -902"
+#!   BOUNDING_RECT="10804 -902 0 0"
+#!   ORDER="48"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMMessageUtilisateur" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinMessagePersonalisé" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="PARM_LINE" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_TMMessageUtilisateur&lt;closeparen&gt;&lt;space&gt;&lt;openparen&gt;Type&lt;space&gt;de&lt;space&gt;test&lt;space&gt;:&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_TMTypeTest&lt;closeparen&gt;&lt;space&gt;&lt;semicolon&gt;&lt;space&gt;Nombre&lt;space&gt;d&lt;apos&gt;entit&lt;u00e9&gt;s&lt;space&gt;trouv&lt;u00e9&gt;&lt;space&gt;:&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_TMNbElements&lt;closeparen&gt;&lt;space&gt;&lt;solidus&gt;&lt;space&gt;Valeur&lt;space&gt;attendue&lt;space&gt;:&lt;space&gt;&lt;openparen&gt;$(NombreEntitesMinimal)&lt;comma&gt;$(NombreEntitesMaximal)&lt;closeparen&gt;&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="_TMinMessagePersonalisé"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringConcatenator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="0"
+#!   POSITION="11301 -909"
+#!   BOUNDING_RECT="11301 -909 0 0"
+#!   ORDER="49"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinMessagePersonalisé" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="_TMNbElements,_TMTypeTest,_TMValide,_TMinMessagePersonalisé"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="Terminator"
+#!   VERSION="1"
+#!   POSITION="11869 -925"
+#!   BOUNDING_RECT="11869 -925 0 0"
+#!   ORDER="83"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="@Value(_TMinMessagePersonalisé)"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeCreator"
+#!   VERSION="2"
+#!   POSITION="2899 -596"
+#!   BOUNDING_RECT="2899 -596 0 0"
+#!   ORDER="61"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMSource,EntiteBidon"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="AttributeCreator"
+#!   VERSION="2"
+#!   POSITION="2879 -929"
+#!   BOUNDING_RECT="2879 -929 0 0"
+#!   ORDER="90"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMSource,VraiesDonnees"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeCreator"
+#!   VERSION="2"
+#!   POSITION="3570 -755"
+#!   BOUNDING_RECT="3570 -755 0 0"
+#!   ORDER="60"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMinAttributBidon,bidon"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="StatisticsCalculator"
+#!   VERSION="2"
+#!   POSITION="4099 -753"
+#!   BOUNDING_RECT="4099 -753 0 0"
+#!   ORDER="66"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="STATISTICS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="COUNT_ATTR" PARM_VALUE="_TMinNbElementsAvecBidon"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MAX_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MEAN_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MEDIAN_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MIN_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MODE_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NUMERIC_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="PASS_THROUGH" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="RANGE_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="STATS_ATTR" PARM_VALUE="_TMinAttributBidon"/>
+#!     <XFORM_PARM PARM_NAME="STDEV_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SUM_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StatisticsCalculator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="Creator"
+#!   VERSION="5"
+#!   POSITION="2348 -595"
+#!   BOUNDING_RECT="2348 -595 0 0"
+#!   ORDER="62"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="CREATED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATEND" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="COORDS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CRE_ATTR" PARM_VALUE="_TMcreation_instance"/>
+#!     <XFORM_PARM PARM_NAME="GEOM" PARM_VALUE="&lt;lt&gt;?xml&lt;space&gt;version=&lt;quote&gt;1.0&lt;quote&gt;&lt;space&gt;encoding=&lt;quote&gt;US_ASCII&lt;quote&gt;&lt;space&gt;standalone=&lt;quote&gt;no&lt;quote&gt;&lt;space&gt;?&lt;gt&gt;&lt;lt&gt;geometry&lt;space&gt;dimension=&lt;quote&gt;2&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;null&lt;solidus&gt;&lt;gt&gt;&lt;lt&gt;&lt;solidus&gt;geometry&lt;gt&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOMTYPE" PARM_VALUE="Geometry Object"/>
+#!     <XFORM_PARM PARM_NAME="NUM" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Creator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="AttributeRemover"
+#!   VERSION="0"
+#!   POSITION="10360 -1410"
+#!   BOUNDING_RECT="10360 -1410 0 0"
+#!   ORDER="82"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_TMSource,_TMcreation_instance,_TMCount,_TMinAttributBidon,_TMinNbElementsAvecBidon,_TMNbElements,_TMTypeTest,_TMValide"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="ParameterFetcher"
+#!   VERSION="1"
+#!   POSITION="10302 -900"
+#!   BOUNDING_RECT="10302 -900 0 0"
+#!   ORDER="56"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMMessageUtilisateur" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="PARM_NAME" PARM_VALUE="$(Message)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="_TMMessageUtilisateur"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ParameterFetcher_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="TestFilter"
+#!   VERSION="0"
+#!   POSITION="9802 -900"
+#!   BOUNDING_RECT="9802 -900 0 0"
+#!   ORDER="84"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="EntiteBidon"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="VraiesEntites"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="VraiesEntites"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_TMSource&lt;closeparen&gt;&lt;space&gt;=&lt;space&gt;EntiteBidon&lt;quote&gt;&lt;comma&gt;TEST_LIST&lt;comma&gt;&lt;quote&gt;&lt;amp&gt;_TMSource&lt;comma&gt;=&lt;comma&gt;EntiteBidon&lt;quote&gt;&lt;comma&gt;TEST_MODE&lt;comma&gt;Automatic&lt;comma&gt;BOOL_OP&lt;comma&gt;OR,EntiteBidon"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="TestFilter"
+#!   VERSION="1"
+#!   POSITION="9173 -1041"
+#!   BOUNDING_RECT="9173 -1041 0 0"
+#!   ORDER="85"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="INVALIDE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="VALIDE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="VALIDE"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="BOOL_OP&lt;comma&gt;OR&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_TMValide&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;NON&lt;quote&gt;,INVALIDE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="TestFilter"
+#!   VERSION="0"
+#!   POSITION="9814 -1410"
+#!   BOUNDING_RECT="9814 -1410 0 0"
+#!   ORDER="57"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="EntiteBidon"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="VraiesEntites"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="VraiesEntites"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_TMSource&lt;closeparen&gt;&lt;space&gt;=&lt;space&gt;EntiteBidon&lt;quote&gt;&lt;comma&gt;TEST_LIST&lt;comma&gt;&lt;quote&gt;&lt;amp&gt;_TMSource&lt;comma&gt;=&lt;comma&gt;EntiteBidon&lt;quote&gt;&lt;comma&gt;TEST_MODE&lt;comma&gt;Automatic&lt;comma&gt;BOOL_OP&lt;comma&gt;OR,EntiteBidon"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="TestFilter"
+#!   VERSION="1"
+#!   POSITION="787.54417476213609 -896.98631675637148"
+#!   BOUNDING_RECT="787.54417476213609 -896.98631675637148 0 0"
+#!   ORDER="67"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="TEST&lt;space&gt;EST&lt;space&gt;n&lt;comma&gt;*"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="TEST&lt;space&gt;PAS&lt;space&gt;n&lt;comma&gt;*"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="TEST&lt;space&gt;PAS&lt;space&gt;n&lt;comma&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="BOOL_OP&lt;comma&gt;AND&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;$(NombreEntitesMinimal)&lt;space&gt;MATCHES_REGEX&lt;space&gt;^&lt;lt&gt;openbracket&lt;gt&gt;0-9&lt;lt&gt;closebracket&lt;gt&gt;+&lt;lt&gt;dollar&lt;gt&gt;&lt;lf&gt;TEST&lt;space&gt;$(NombreEntitesMaximal)&lt;space&gt;NOT_MATCHES_REGEX&lt;space&gt;^&lt;lt&gt;openbracket&lt;gt&gt;0-9&lt;lt&gt;closebracket&lt;gt&gt;+&lt;lt&gt;dollar&lt;gt&gt;&lt;quote&gt;,TEST&lt;space&gt;EST&lt;space&gt;n&lt;comma&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_6"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="19"
+#!   TYPE="Counter"
+#!   VERSION="2"
+#!   POSITION="1294 -1201"
+#!   BOUNDING_RECT="1294 -1201 0 0"
+#!   ORDER="64"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="CNT_ATTR" PARM_VALUE="_TMCount"/>
+#!     <XFORM_PARM PARM_NAME="DOMAIN" PARM_VALUE="_TMCounter"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SCOPE" PARM_VALUE="Local"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Counter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="20"
+#!   TYPE="TestFilter"
+#!   VERSION="1"
+#!   POSITION="1780 -1202"
+#!   BOUNDING_RECT="1780 -1202 0 0"
+#!   ORDER="65"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="NB_MINIMAL"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="SURPLUS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="SURPLUS"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="BOOL_OP&lt;comma&gt;OR&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_TMCount&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;&lt;lt&gt;=&lt;space&gt;$(NombreEntitesMinimal)&lt;quote&gt;,NB_MINIMAL"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_7"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="21"
+#!   TYPE="TestFilter"
+#!   VERSION="1"
+#!   POSITION="5314 -758"
+#!   BOUNDING_RECT="5314 -758 0 0"
+#!   ORDER="80"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="Test&lt;space&gt;n&lt;comma&gt;n"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="Test&lt;space&gt;*&lt;comma&gt;n"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="Test&lt;space&gt;n&lt;comma&gt;*"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="Test&lt;space&gt;*&lt;comma&gt;*"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="Test&lt;space&gt;*&lt;comma&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="BOOL_OP&lt;comma&gt;AND&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;$(NombreEntitesMinimal)&lt;space&gt;MATCHES_REGEX&lt;space&gt;^&lt;lt&gt;openbracket&lt;gt&gt;0-9&lt;lt&gt;closebracket&lt;gt&gt;+&lt;lt&gt;dollar&lt;gt&gt;&lt;lf&gt;TEST&lt;space&gt;$(NombreEntitesMaximal)&lt;space&gt;MATCHES_REGEX&lt;space&gt;^&lt;lt&gt;openbracket&lt;gt&gt;0-9&lt;lt&gt;closebracket&lt;gt&gt;+&lt;lt&gt;dollar&lt;gt&gt;&lt;quote&gt;,Test&lt;space&gt;n&lt;comma&gt;n,BOOL_OP&lt;comma&gt;AND&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;$(NombreEntitesMaximal)&lt;space&gt;MATCHES_REGEX&lt;space&gt;^&lt;lt&gt;openbracket&lt;gt&gt;0-9&lt;lt&gt;closebracket&lt;gt&gt;+&lt;lt&gt;dollar&lt;gt&gt;&lt;lf&gt;TEST&lt;space&gt;$(NombreEntitesMinimal)&lt;space&gt;NOT_MATCHES_REGEX&lt;space&gt;^&lt;lt&gt;openbracket&lt;gt&gt;0-9&lt;lt&gt;closebracket&lt;gt&gt;+&lt;lt&gt;dollar&lt;gt&gt;&lt;quote&gt;,Test&lt;space&gt;*&lt;comma&gt;n,BOOL_OP&lt;comma&gt;AND&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;$(NombreEntitesMinimal)&lt;space&gt;MATCHES_REGEX&lt;space&gt;^&lt;lt&gt;openbracket&lt;gt&gt;0-9&lt;lt&gt;closebracket&lt;gt&gt;+&lt;lt&gt;dollar&lt;gt&gt;&lt;lf&gt;TEST&lt;space&gt;$(NombreEntitesMaximal)&lt;space&gt;NOT_MATCHES_REGEX&lt;space&gt;^&lt;lt&gt;openbracket&lt;gt&gt;0-9&lt;lt&gt;closebracket&lt;gt&gt;+&lt;lt&gt;dollar&lt;gt&gt;&lt;quote&gt;,Test&lt;space&gt;n&lt;comma&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_8"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="22"
+#!   TYPE="TestFilter"
+#!   VERSION="1"
+#!   POSITION="6537 -488"
+#!   BOUNDING_RECT="6537 -488 0 0"
+#!   ORDER="87"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="INVALIDE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="VALIDE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="VALIDE"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="BOOL_OP&lt;comma&gt;OR&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_TMNbElements&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;&lt;lt&gt;&lt;space&gt;$(NombreEntitesMinimal)&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_TMNbElements&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;&lt;gt&gt;&lt;space&gt;$(NombreEntitesMaximal)&lt;quote&gt;,INVALIDE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_9"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="23"
+#!   TYPE="TestFilter"
+#!   VERSION="1"
+#!   POSITION="6527 -762"
+#!   BOUNDING_RECT="6527 -762 0 0"
+#!   ORDER="68"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="INVALIDE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="VALIDE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="VALIDE"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="BOOL_OP&lt;comma&gt;OR&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_TMNbElements&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;&lt;gt&gt;&lt;space&gt;$(NombreEntitesMaximal)&lt;quote&gt;,INVALIDE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_10"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="24"
+#!   TYPE="TestFilter"
+#!   VERSION="1"
+#!   POSITION="6542 -1037"
+#!   BOUNDING_RECT="6542 -1037 0 0"
+#!   ORDER="69"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="INVALIDE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="VALIDE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="VALIDE"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="BOOL_OP&lt;comma&gt;OR&lt;comma&gt;COMPOSITE_TEST&lt;comma&gt;&lt;lt&gt;Unused&lt;gt&gt;&lt;comma&gt;TEST_CLAUSE&lt;comma&gt;&lt;quote&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_TMNbElements&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;&lt;lt&gt;&lt;space&gt;$(NombreEntitesMinimal)&lt;quote&gt;,INVALIDE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_11"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="25"
+#!   TYPE="AttributeCreator"
+#!   VERSION="2"
+#!   POSITION="7363 -1353"
+#!   BOUNDING_RECT="7363 -1353 0 0"
+#!   ORDER="81"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMValide,OUI"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="AttributeCreator"
+#!   VERSION="2"
+#!   POSITION="7367 -735"
+#!   BOUNDING_RECT="7367 -735 0 0"
+#!   ORDER="72"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMValide,NON"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_7"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="27"
+#!   TYPE="AttributeCreator"
+#!   VERSION="3"
+#!   POSITION="6003 -480"
+#!   BOUNDING_RECT="6003 -480 0 0"
+#!   ORDER="74"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMTypeTest,n&lt;comma&gt;n"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="Use Empty String"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_8"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="28"
+#!   TYPE="AttributeCreator"
+#!   VERSION="3"
+#!   POSITION="6014 -749"
+#!   BOUNDING_RECT="6014 -749 0 0"
+#!   ORDER="76"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMTypeTest,*&lt;comma&gt;n"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="Use Empty String"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_9"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="29"
+#!   TYPE="AttributeCreator"
+#!   VERSION="3"
+#!   POSITION="6008 -1035"
+#!   BOUNDING_RECT="6008 -1035 0 0"
+#!   ORDER="77"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMTypeTest,n&lt;comma&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="Use Empty String"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_10"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="30"
+#!   TYPE="AttributeCreator"
+#!   VERSION="3"
+#!   POSITION="6029 -1293"
+#!   BOUNDING_RECT="6029 -1293 0 0"
+#!   ORDER="78"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMcreation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMSource" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMCount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinAttributBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMinNbElementsAvecBidon" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_TMTypeTest,*&lt;comma&gt;*"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="Use Empty String"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_11"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="31"
+#!   TYPE="Logger"
+#!   VERSION="3"
+#!   POSITION="11404 -1820"
+#!   BOUNDING_RECT="11404 -1820 0 0"
+#!   ORDER="91"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="LOGGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMMessagePersonalisé" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="@Value(_TMMessagePersonalisé)"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="32"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="2"
+#!   POSITION="10449 -1823"
+#!   BOUNDING_RECT="10449 -1823 0 0"
+#!   ORDER="86"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE="_TMNbElements,_TMTypeTest,_TMValide"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="33"
+#!   TYPE="StringConcatenator"
+#!   VERSION="6"
+#!   POSITION="10938 -1821"
+#!   BOUNDING_RECT="10938 -1821 0 0"
+#!   ORDER="92"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="13448"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_TMNbElements" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMTypeTest" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMValide" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_TMMessagePersonalisé" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="PARM_LINE" PARM_VALUE="Type&lt;space&gt;de&lt;space&gt;test&lt;space&gt;:&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_TMTypeTest&lt;closeparen&gt;&lt;space&gt;&lt;semicolon&gt;&lt;space&gt;Nombre&lt;space&gt;d&lt;apos&gt;entit&lt;u00e9&gt;&lt;space&gt;:&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_TMNbElements&lt;closeparen&gt;&lt;space&gt;&lt;semicolon&gt;&lt;space&gt;Seuils&lt;space&gt;:&lt;space&gt;&lt;openparen&gt;$(NombreEntitesMinimal)&lt;comma&gt;$(NombreEntitesMaximal)&lt;closeparen&gt;&lt;space&gt;&lt;semicolon&gt;&lt;space&gt;Valide&lt;space&gt;:&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;_TMValide&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="VAL_ATTR" PARM_VALUE="_TMMessagePersonalisé"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringConcatenator_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="OUTPUT"
+#!   POSITION="10917 -1377"
+#!   BOUNDING_RECT="10917 -1377 0 0"
+#!   COLLAPSED="false"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="INPUT"
+#!   POSITION="64.931978154733031 -826"
+#!   BOUNDING_RECT="64.931978154733031 -826 0 0"
+#!   COLLAPSED="false"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="46"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 CREATED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="53"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="21"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="47"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="45"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="40"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 STATISTICS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="39"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="43"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 EntiteBidon"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 INVALIDE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="50"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="19"
+#!   SOURCE_PORT_DESC="fo 0 TEST&lt;lt&gt;space&lt;gt&gt;EST&lt;lt&gt;space&lt;gt&gt;n&lt;lt&gt;comma&lt;gt&gt;*"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="49"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="51"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 NB_MINIMAL"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="60"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="27"
+#!   SOURCE_PORT_DESC="fo 0 Test&lt;lt&gt;space&lt;gt&gt;n&lt;lt&gt;comma&lt;gt&gt;n"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="54"
+#!   SOURCE_NODE="22"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 INVALIDE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="55"
+#!   SOURCE_NODE="23"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 INVALIDE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="56"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 0 INVALIDE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="69"
+#!   SOURCE_NODE="25"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="68"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="61"
+#!   SOURCE_NODE="27"
+#!   TARGET_NODE="22"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="63"
+#!   SOURCE_NODE="28"
+#!   TARGET_NODE="23"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="65"
+#!   SOURCE_NODE="29"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="67"
+#!   SOURCE_NODE="30"
+#!   TARGET_NODE="25"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="71"
+#!   SOURCE_NODE="32"
+#!   TARGET_NODE="33"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="72"
+#!   SOURCE_NODE="33"
+#!   TARGET_NODE="31"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 1 VALIDE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 VraiesEntites"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="70"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="32"
+#!   SOURCE_PORT_DESC="fo 1 VraiesEntites"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="48"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 1 TEST&lt;lt&gt;space&lt;gt&gt;PAS&lt;lt&gt;space&lt;gt&gt;n&lt;lt&gt;comma&lt;gt&gt;*"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="52"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 1 SURPLUS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS="3137 -1778 10186 -1781"
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="62"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="28"
+#!   SOURCE_PORT_DESC="fo 1 Test&lt;lt&gt;space&lt;gt&gt;*&lt;lt&gt;comma&lt;gt&gt;n"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="57"
+#!   SOURCE_NODE="22"
+#!   TARGET_NODE="25"
+#!   SOURCE_PORT_DESC="fo 1 VALIDE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="58"
+#!   SOURCE_NODE="23"
+#!   TARGET_NODE="25"
+#!   SOURCE_PORT_DESC="fo 1 VALIDE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="59"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="25"
+#!   SOURCE_PORT_DESC="fo 1 VALIDE"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="64"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="29"
+#!   SOURCE_PORT_DESC="fo 2 Test&lt;lt&gt;space&lt;gt&gt;n&lt;lt&gt;comma&lt;gt&gt;*"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="66"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="30"
+#!   SOURCE_PORT_DESC="fo 3 Test&lt;lt&gt;space&lt;gt&gt;*&lt;lt&gt;comma&lt;gt&gt;*"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+DEFAULT_MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Message ERREUR : Aucune entité traitée
+DEFAULT_MACRO $(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal 1
+DEFAULT_MACRO $(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal *
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO TerminatorMinMax_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(TerminatorMinMax_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(TerminatorMinMax_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TerminatorMinMax_WORKSPACE_NAME)_INPUT1582300854 Input Splitter"   INPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CoordSysRemover {} {   global FME_CoordSys;   set FME_CoordSys {}; }
+MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_XML     NOT_ACTIVATED
+MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CLASSIC NOT_ACTIVATED
+MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_2D3D    2D_GEOMETRY
+MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_COORDS  <Unused>
+INCLUDE [ if { {Geometry Object} == {Geometry Object} } {            puts {MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_XML *} } ]
+INCLUDE [ if { {Geometry Object} == {2D Coordinate List} } {            puts {MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_2D3D 2D_GEOMETRY};            puts {MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CLASSIC *} } ]
+INCLUDE [ if { {Geometry Object} == {3D Coordinate List} } {            puts {MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_2D3D 3D_GEOMETRY};            puts {MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CLASSIC *} } ]
+INCLUDE [ if { {Geometry Object} == {2D Min/Max Box} } {            set comment {                We need to turn the COORDS which are                    minX minY maxX maxY                into a full polygon list of coordinates            };            set splitCoords [split [string trim {<Unused>}]];            if { [llength $splitCoords] > 4} {               set trimmedCoords {};               foreach item $splitCoords { if { $item != {} } {lappend trimmedCoords $item} };               set splitCoords $trimmedCoords;            };            if { [llength $splitCoords] != 4 } {                error {$(TerminatorMinMax_WORKSPACE_NAME)_Creator_2: Coordinate list is expected to be a space delimited list of four numbers as 'minx miny maxx maxy' - `<Unused>' is invalid};            };            set minX [lindex $splitCoords 0];            set minY [lindex $splitCoords 1];            set maxX [lindex $splitCoords 2];            set maxY [lindex $splitCoords 3];            puts "MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_COORDS $minX $minY $minX $maxY $maxX $maxY $maxX $minY $minX $minY";            puts {MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_2D3D 2D_GEOMETRY};            puts {MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CLASSIC *} } ]
+FACTORY_DEF $($(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_XML) CreationFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_XML_Creator    CREATE_AT_END no    OUTPUT FEATURE_TYPE _____CREATED______        @Geometry(FROM_ENCODED_STRING,<lt>?xml<space>version=<quote>1.0<quote><space>encoding=<quote>US_ASCII<quote><space>standalone=<quote>no<quote><space>?<gt><lt>geometry<space>dimension=<quote>2<quote><gt><lt>null<solidus><gt><lt><solidus>geometry<gt>)
+FACTORY_DEF $($(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CLASSIC) CreationFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CLASSIC_Creator    $($(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_2D3D) $($(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_COORDS)    CREATE_AT_END no    OUTPUT FEATURE_TYPE _____CREATED______
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_Cloner    INPUT FEATURE_TYPE _____CREATED______        @Tcl2($(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CoordSysRemover)        @CoordSys()    NUMBER_OF_COPIES 1    COPY_NUMBER_ATTRIBUTE "_TMcreation_instance"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CREATED"        fme_feature_type $(TerminatorMinMax_WORKSPACE_NAME)_Creator_2
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CREATED Brancher -1 37"   INPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CREATED"   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_2_9c7c85b1_d6a0_4484_a2ab_dd2d34ac45830_attrSetter { attrList } {     set attrList [string trim $attrList {()}];     set attrs [split $attrList {,} ];     foreach {attrName attrVal} $attrs {         if { [string match {*<at>*} $attrName] == 1 } {             set attrName [FME_Execute EvaluateExpression {STRING} $attrName {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_2}];         } else {             set attrName [FME_DecodeText $attrName];         };         if { [string match {*<at>*} $attrVal] == 1 } {             set attrVal [FME_Execute EvaluateExpression {STRING_ENCODED} $attrVal {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_2}];         };         FME_SetAttribute $attrName [FME_DecodeText $attrVal];     }; };
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_2    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Creator_2_CREATED"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"         "@Tcl2( $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_2_9c7c85b1_d6a0_4484_a2ab_dd2d34ac45830_attrSetter {(_TMSource,EntiteBidon)} )"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6) MATCHES_REGEX ^<openbracket>0-9<closebracket>+<dollar> ENCODED TEST @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6) NOT_MATCHES_REGEX ^<openbracket>0-9<closebracket>+<dollar> ENCODED BOOLEAN_OPERATOR AND COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TEST<space>EST<space>n<comma>* OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TEST<space>PAS<space>n<comma>* INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TEST<space>PAS<space>n<comma>*
+# -------------------------------------------------------------------------
+# Create the DomainName that this transformer will use.
+# Because @Count itself will evalute the expression to calculate the
+# domain, we don't need to do anything in Tcl per feature going by
+INCLUDE [    set domainPrefix {};    if { {Local} == {Local} }    {       set domainPrefix [FME_EncodeText {$(TerminatorMinMax_WORKSPACE_NAME)_Counter_}];    };    puts "MACRO $(TerminatorMinMax_WORKSPACE_NAME)_Counter_FULL_DOMAIN ${domainPrefix}_TMCounter"; ]
+FACTORY_DEF * ExecuteFunctionFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_Counter_Rejector    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TEST<space>EST<space>n<comma>*"    FUNCTION_DEFINITION @Count(REJECTABLE_WITH_FLAG,fme_encoded,$($(TerminatorMinMax_WORKSPACE_NAME)_Counter_FULL_DOMAIN),"1")    RESULT_ATTRIBUTE "_TMCount"    OUTPUT COMPLETE FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Counter_OUTPUT"    OUTPUT REJECTED FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Counter_<REJECTED>"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TerminatorMinMax_WORKSPACE_NAME)_Counter <REJECTED> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Counter_<REJECTED>"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Counter_OUTPUT"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMCount<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7) <= @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7) ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_NB_MINIMAL OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_SURPLUS INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_SURPLUS
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_3_46aa03dc_4e29_4f41_aa4d_c53bb9267bea0_attrSetter { attrList } {     set attrList [string trim $attrList {()}];     set attrs [split $attrList {,} ];     foreach {attrName attrVal} $attrs {         if { [string match {*<at>*} $attrName] == 1 } {             set attrName [FME_Execute EvaluateExpression {STRING} $attrName {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_3}];         } else {             set attrName [FME_DecodeText $attrName];         };         if { [string match {*<at>*} $attrVal] == 1 } {             set attrVal [FME_Execute EvaluateExpression {STRING_ENCODED} $attrVal {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_3}];         };         FME_SetAttribute $attrName [FME_DecodeText $attrVal];     }; };
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_3    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_NB_MINIMAL"    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_6_TEST<space>PAS<space>n<comma>*"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"         "@Tcl2( $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_3_46aa03dc_4e29_4f41_aa4d_c53bb9267bea0_attrSetter {(_TMSource,VraiesDonnees)} )"
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_ebdc786c_2a67_4922_a6d7_3d243b5d48050_attrSetter { attrList } {     set attrList [string trim $attrList {()}];     set attrs [split $attrList {,} ];     foreach {attrName attrVal} $attrs {         if { [string match {*<at>*} $attrName] == 1 } {             set attrName [FME_Execute EvaluateExpression {STRING} $attrName {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator}];         } else {             set attrName [FME_DecodeText $attrName];         };         if { [string match {*<at>*} $attrVal] == 1 } {             set attrVal [FME_Execute EvaluateExpression {STRING_ENCODED} $attrVal {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator}];         };         FME_SetAttribute $attrName [FME_DecodeText $attrVal];     }; };
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_OUTPUT"         "@Tcl2( $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_ebdc786c_2a67_4922_a6d7_3d243b5d48050_attrSetter {(_TMinAttributBidon,bidon)} )"
+# -------------------------------------------------------------------------
+Tcl2 set $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_noinput 1;
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_groupKey {} {     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_groupCount;     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_noinput;     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data;     set key {};     set COMMENT { Initialize structures if this is the first time we've seen this group key.  };     upvar 0 $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_groupCount($key) groupCount;     if [info exists groupCount] {         incr groupCount;     } else {         set groupCount 0;         if { ![info exists $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_noinput($key)] } {             if {{} != {}} {set dolist 1} else {set dolist 0};             set "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $key sum])"      0.0;             set "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $key sumsq])"    0.0;             set "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $key count])"    0;             set "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $key numcount])" 0;             set "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $key firstin])"  1;             set "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $key firstout])" 1;             set "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $key dolist])"   $dolist;         };     };     return $key; }
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_input {} {     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_noinput;     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data;     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_histo;     set groupKey [$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_groupKey];     upvar 0 $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_histo   histo;     upvar 0 $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_noinput noinput;     foreach element {firstin list dolist sum sumsq count numcount min max mode} {         upvar 0 "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $groupKey $element])" $element;     };     set noinput 0;     if {[catch {set val [FME_GetAttribute "_TMinAttributBidon"]}]} {       set val {};     };     if {$firstin} {       set min $val;       set max $val;       set firstin 0;     } else {       if {$val < $min} {set min $val};       if {$val > $max} {set max $val};     };     if {$dolist} {lappend list $val};     incr count;     catch {       if {[string is double -strict $val]} {         set sum [expr $sum + $val];         set sumsq [expr $sumsq + double($val * $val)];         incr numcount;       }     };     if {{} != {}} {       set histoKey [list $groupKey $val];       if {[info exists histo($histoKey)]} {         incr histo($histoKey);       } else {         set histo($histoKey) 1;       };     }; }
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_output {outputType} {     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_noinput;     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data;     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_histo;     global $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_groupCount;     upvar 0 $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_histo histo;     upvar 0 $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_noinput noinput;     if {$noinput == 1} {         return;     };     if { \"$outputType\" == \"__SINGLE_GUY__\" } {         set groupKeys [array names $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_groupCount];     } else {         set groupKeys [list [$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_groupKey]];     };     set attrPrefix     {};     set minAttr        {};     set maxAttr        {};     set countAttr      {_TMinNbElementsAvecBidon};     set numericAttr    {};     set sumAttr        {};     set rangeAttr      {};     set meanAttr       {};     set medianAttr     {};     set stdevAttr      {};     set modeAttr       {};     set groupnum -1;     foreach groupKey [lsort $groupKeys] {         foreach element {firstout list dolist sum sumsq count numcount min max range mean median stdev mode} {             upvar 0 "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_data([list $groupKey $element])" $element ;         };         if {$firstout} {             if {{} != {}} {                 if {$numcount == $count} {                     set list [lsort -real $list];                     if {$count % 2 == 1} {                         set median [lindex $list [expr $count / 2]];                     }                     else {                         set half [expr $count / 2];                         set first [lindex $list [expr $half - 1]];                         set second [lindex $list $half];                         set median [expr double($first + $second) / 2];                     };                 }                 else {                     set median [lindex [lsort $list] [expr int(ceil(double($count) / 2) - 1)]];                 };             };             set range {};             catch {                 set range [expr $max - $min];             };             set mean {};             set stdev {};             if {$numcount > 0} {                 set mean [expr double($sum) / double($numcount)];             };             if {( {} != {} ) && ($numcount > 1)} {                 set tmp [expr double($sumsq * double($numcount)) - double($sum * $sum)];                 if {$tmp >= 0} {                   set stdev [expr sqrt($tmp / double($numcount * double($numcount - 1)))];                 } else {                   set stdev -1;                   FME_LogMessage fme_warn 917353 $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator ;                 };             };             if {{} != {}} {                 set maxHisto 0;                 foreach {name hcount} [array get histo] {                     set histKey [lindex $name 0];                     if { ($histKey == $groupKey) && ($hcount >= $maxHisto) } {                       set maxHisto $hcount;                       set mode [lindex $name end];                      };                 };             };             set firstout 0;         };         if { "(\"$outputType\" == \"__SINGLE_GUY__\")" } {             set attrPrefix \"$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_stats{[incr groupnum]}.\";             set groupAttrs {};             foreach attr $groupAttrs val $groupKey {                FME_SetAttribute "$attrPrefix$attr" $val;             };         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$minAttr" $min;         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$maxAttr" $max;         };         if {{_TMinNbElementsAvecBidon} != {}} {             FME_SetAttribute "$attrPrefix$countAttr" $count;         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$numericAttr" $numcount;         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$sumAttr" $sum;         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$rangeAttr" $range;         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$meanAttr" $mean;         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$medianAttr" $median;         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$stdevAttr" $stdev;         };         if {{} != {}} {             FME_SetAttribute "$attrPrefix$modeAttr" $mode;         };     }; };
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_Processor    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    OUTPUT FEATURE_TYPE __ORIGINAL__         @Tcl2($(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_input)
+FACTORY_DEF * CreationFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_Creator     CREATE_AT_END     NUMBER_TO_CREATE 1     OUTPUT FEATURE_TYPE __SINGLE_GUY__        @SupplyAttributes($(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_SUMMARY_STATS,True)
+FACTORY_DEF * SortFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_Outputter    INPUT FEATURE_TYPE __ORIGINAL__    OUTPUT SORTED FEATURE_TYPE __ORIGINAL__         @Tcl2("$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_output __ORIGINAL__")
+FACTORY_DEF * ElementFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_Exploder    INPUT FEATURE_TYPE __ORIGINAL__        $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_SUMMARY_STATS True        @RemoveAttributes($(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_SUMMARY_STATS)    LIST_NAME $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_stats{}    MODE LEAN_AND_MEAN    CLONE_GEOMETRY no    OUTPUT ELEMENT FEATURE_TYPE __ORIGINAL__
+FACTORY_DEF * TestFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_FinalJudge    INPUT FEATURE_TYPE __ORIGINAL__    INPUT FEATURE_TYPE __SINGLE_GUY__    TEST @FeatureType() == __ORIGINAL__    OUTPUT PASSED FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_STATISTICS"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_ExpressionEvaluator    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_StatisticsCalculator_STATISTICS"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_ExpressionEvaluator_OUTPUT"         "_TMNbElements" "@EvaluateExpression(FLOAT,<at>Value<openparen>_TMinNbElementsAvecBidon<closeparen><space>-<space>1,$(TerminatorMinMax_WORKSPACE_NAME)_ExpressionEvaluator)"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_ExpressionEvaluator_OUTPUT"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8) MATCHES_REGEX ^<openbracket>0-9<closebracket>+<dollar> ENCODED TEST @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8) MATCHES_REGEX ^<openbracket>0-9<closebracket>+<dollar> ENCODED BOOLEAN_OPERATOR AND COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>n<comma>n OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Condition_2 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_TESTFILTERINPUTLINE_1 TEST @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8) MATCHES_REGEX ^<openbracket>0-9<closebracket>+<dollar> ENCODED TEST @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8) NOT_MATCHES_REGEX ^<openbracket>0-9<closebracket>+<dollar> ENCODED BOOLEAN_OPERATOR AND COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>*<comma>n OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_TESTFILTERINPUTLINE_2
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Condition_3 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_TESTFILTERINPUTLINE_2 TEST @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8) MATCHES_REGEX ^<openbracket>0-9<closebracket>+<dollar> ENCODED TEST @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8) NOT_MATCHES_REGEX ^<openbracket>0-9<closebracket>+<dollar> ENCODED BOOLEAN_OPERATOR AND COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>n<comma>* OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_TESTFILTERINPUTLINE_3
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>*<comma>* INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_TESTFILTERINPUTLINE_3 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>*<comma>*
+# -------------------------------------------------------------------------
+FACTORY_DEF * AttrSetFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_11 NULL_ATTR_MODE EMPTY MULTI_FEATURE_MODE YES  NUM_PRIOR_FEATURES 0 NUM_SUBSEQUENT_FEATURES 0 NULL_ATTR_VALUE_PROMPT "Attribute Replacement Value:" NULL_ATTR_VALUE "" INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>*<comma>*" ATTR _TMTypeTest *<comma>*    OUTPUT OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_11_OUTPUT" 
+# -------------------------------------------------------------------------
+FACTORY_DEF * AttrSetFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_10 NULL_ATTR_MODE EMPTY MULTI_FEATURE_MODE YES  NUM_PRIOR_FEATURES 0 NUM_SUBSEQUENT_FEATURES 0 NULL_ATTR_VALUE_PROMPT "Attribute Replacement Value:" NULL_ATTR_VALUE "" INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>n<comma>*" ATTR _TMTypeTest n<comma>*    OUTPUT OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_10_OUTPUT" 
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_10_OUTPUT"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMNbElements<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11) < @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11) ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_INVALIDE OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_VALIDE INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_VALIDE
+# -------------------------------------------------------------------------
+FACTORY_DEF * AttrSetFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_9 NULL_ATTR_MODE EMPTY MULTI_FEATURE_MODE YES  NUM_PRIOR_FEATURES 0 NUM_SUBSEQUENT_FEATURES 0 NULL_ATTR_VALUE_PROMPT "Attribute Replacement Value:" NULL_ATTR_VALUE "" INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>*<comma>n" ATTR _TMTypeTest *<comma>n    OUTPUT OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_9_OUTPUT" 
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_9_OUTPUT"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMNbElements<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10) > @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10) ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_INVALIDE OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_VALIDE INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_VALIDE
+# -------------------------------------------------------------------------
+FACTORY_DEF * AttrSetFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_8 NULL_ATTR_MODE EMPTY MULTI_FEATURE_MODE YES  NUM_PRIOR_FEATURES 0 NUM_SUBSEQUENT_FEATURES 0 NULL_ATTR_VALUE_PROMPT "Attribute Replacement Value:" NULL_ATTR_VALUE "" INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_8_Test<space>n<comma>n" ATTR _TMTypeTest n<comma>n    OUTPUT OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT" 
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMNbElements<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9) < @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9) ENCODED TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMNbElements<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9) > @EvaluateExpression(STRING_ENCODED,$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal$encode),$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9) ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_INVALIDE OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_VALIDE INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_VALIDE
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_4_1dcc4d36_fc54_4d54_a726_595ec7f039280_attrSetter { attrList } {     set attrList [string trim $attrList {()}];     set attrs [split $attrList {,} ];     foreach {attrName attrVal} $attrs {         if { [string match {*<at>*} $attrName] == 1 } {             set attrName [FME_Execute EvaluateExpression {STRING} $attrName {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_4}];         } else {             set attrName [FME_DecodeText $attrName];         };         if { [string match {*<at>*} $attrVal] == 1 } {             set attrVal [FME_Execute EvaluateExpression {STRING_ENCODED} $attrVal {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_4}];         };         FME_SetAttribute $attrName [FME_DecodeText $attrVal];     }; };
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_4    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_11_OUTPUT"    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_VALIDE"    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_VALIDE"    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_VALIDE"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"         "@Tcl2( $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_4_1dcc4d36_fc54_4d54_a726_595ec7f039280_attrSetter {(_TMValide,OUI)} )"
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_7_cb8605dc_bad3_49a3_af3b_5bac2874799f0_attrSetter { attrList } {     set attrList [string trim $attrList {()}];     set attrs [split $attrList {,} ];     foreach {attrName attrVal} $attrs {         if { [string match {*<at>*} $attrName] == 1 } {             set attrName [FME_Execute EvaluateExpression {STRING} $attrName {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_7}];         } else {             set attrName [FME_DecodeText $attrName];         };         if { [string match {*<at>*} $attrVal] == 1 } {             set attrVal [FME_Execute EvaluateExpression {STRING_ENCODED} $attrVal {$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_7}];         };         FME_SetAttribute $attrName [FME_DecodeText $attrVal];     }; };
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_7    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_9_INVALIDE"    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_10_INVALIDE"    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_11_INVALIDE"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_7_OUTPUT"         "@Tcl2( $(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_7_cb8605dc_bad3_49a3_af3b_5bac2874799f0_attrSetter {(_TMValide,NON)} )"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeCreator_7_OUTPUT"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMValide<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4) = NON ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR <Unused> OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_INVALIDE OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_VALIDE INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_VALIDE
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_VALIDE"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMSource<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5) = EntiteBidon ENCODED BOOLEAN_OPERATOR OR OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_EntiteBidon OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_VraiesEntites INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_VraiesEntites
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5 EntiteBidon Transformer Output Nuker"   INPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_EntiteBidon"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5 VraiesEntites Splitter"   INPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_VraiesEntites"   OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_VraiesEntites_0_//tknW/E8HI="   OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_VraiesEntites_1_2giuXTa9fTI="
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(TerminatorMinMax_WORKSPACE_NAME)_AttributeKeeper_2_ff6321bf_3dac_4d2e_a13e_e6d9ef581aa30_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "{\[0-9\]+}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_VraiesEntites_1_2giuXTa9fTI="    OUTPUT { FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(_TMNbElements,_TMTypeTest,_TMValide,fme_regexp_match,"^fme_$($(TerminatorMinMax_WORKSPACE_NAME)_AttributeKeeper_2_ff6321bf_3dac_4d2e_a13e_e6d9ef581aa30_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_2_67cfa82c_6c60_4d68_83bb_ad890fc7dbdf0_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {_TMMessagePersonalisé}] [FME_DecodeText $attrText] }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_2    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_2_OUTPUT"        @Tcl2("$(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_2_67cfa82c_6c60_4d68_83bb_ad890fc7dbdf0_doSetAttr {@EvaluateExpression(STRING_ENCODED,Type<space>de<space>test<space>:<space><at>Value<openparen>_TMTypeTest<closeparen><space><semicolon><space>Nombre<space>d<apos>entit<u00e9><space>:<space><at>Value<openparen>_TMNbElements<closeparen><space><semicolon><space>Seuils<space>:<space><openparen>$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode)<comma>$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal$encode)<closeparen><space><semicolon><space>Valide<space>:<space><at>Value<openparen>_TMValide<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_2)} ")
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_Logger_Logger    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Logger_LOGGED"                  @Log("$(TerminatorMinMax_WORKSPACE_NAME)_Logger: @EvaluateExpression(STRING,<at>Value<openparen>_TMMessagePersonalis<u00e9><closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_Logger)","0","1")                  @FeatureType("$(TerminatorMinMax_WORKSPACE_NAME)_Logger_LOGGED")
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TerminatorMinMax_WORKSPACE_NAME)_Logger LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_Logger_LOGGED"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(TerminatorMinMax_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "{\[0-9\]+}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_5_VraiesEntites_0_//tknW/E8HI="    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_7_SURPLUS"    OUTPUT { FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(_TMSource,_TMcreation_instance,_TMCount,_TMinAttributBidon,_TMinNbElementsAvecBidon,_TMNbElements,_TMTypeTest,_TMValide)        @RemoveAttributes(fme_regexp_match"$($(TerminatorMinMax_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_4_INVALIDE"    OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0
+FACTORY_DEF * TestFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_Condition_1 INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMSource<closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter) = EntiteBidon ENCODED BOOLEAN_OPERATOR OR OUTPUT PASSED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_EntiteBidon OUTPUT FAILED FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_VraiesEntites INPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_VraiesEntites
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter VraiesEntites Transformer Output Nuker"   INPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_VraiesEntites"
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_ParameterFetcher_2_doFetch {} {     FME_SetAttribute {_TMMessageUtilisateur} [FME_DecodeText {$($(TerminatorMinMax_WORKSPACE_NAME)_Message)}] }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_ParameterFetcher_2    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_TestFilter_EntiteBidon"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_ParameterFetcher_2_OUTPUT"         @Tcl2($(TerminatorMinMax_WORKSPACE_NAME)_ParameterFetcher_2_doFetch)
+# -------------------------------------------------------------------------
+Tcl2 proc $(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_52e184ce_c9b7_44d1_9a39_fcbf5da8b0590_doSetAttr {attrText} {    FME_SetAttribute [FME_DecodeText {_TMinMessagePersonalisé}] [FME_DecodeText $attrText] }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_ParameterFetcher_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_OUTPUT"        @Tcl2("$(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_52e184ce_c9b7_44d1_9a39_fcbf5da8b0590_doSetAttr {@EvaluateExpression(STRING_ENCODED,<at>Value<openparen>_TMMessageUtilisateur<closeparen><space><openparen>Type<space>de<space>test<space>:<space><at>Value<openparen>_TMTypeTest<closeparen><space><semicolon><space>Nombre<space>d<apos>entit<u00e9>s<space>trouv<u00e9><space>:<space><at>Value<openparen>_TMNbElements<closeparen><space><solidus><space>Valeur<space>attendue<space>:<space><openparen>$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMinimal$encode)<comma>$($(TerminatorMinMax_WORKSPACE_NAME)_NombreEntitesMaximal$encode)<closeparen><closeparen>,$(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator)} ")
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_StringConcatenator_OUTPUT"    OUTPUT { FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(_TMNbElements,_TMTypeTest,_TMValide,_TMinMessagePersonalisé,fme_regexp_match,^fme_)         }
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TestFactory    FACTORY_NAME $(TerminatorMinMax_WORKSPACE_NAME)_Terminator    INPUT  FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(_wb_termination_message,"@Value(_TMinMessagePersonalisé)")       @SupplyAttributes(_wb_termination_xformer,"$(TerminatorMinMax_WORKSPACE_NAME)_Terminator")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort("@Value(_TMinMessagePersonalisé)")
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(TerminatorMinMax_WORKSPACE_NAME)_OUTPUT1582300854 Output Collector"   INPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(TerminatorMinMax_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(TerminatorMinMax_WORKSPACE_NAME))}]

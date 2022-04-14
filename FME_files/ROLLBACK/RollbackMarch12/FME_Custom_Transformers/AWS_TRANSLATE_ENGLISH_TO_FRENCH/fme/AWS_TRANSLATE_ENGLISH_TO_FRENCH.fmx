@@ -1,0 +1,638 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN AWS_TRANSLATE_ENGLISH_TO_FRENCH,1,"Federal Geo Platform",0dd5c50b-a2e9-4db1-90a2-52523c2b5ac8,"Linked by Default",No,NO_PARALLELISM,,No,19238,YES,No,37,No
+# 
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="Federal Geo Platform"
+#!   DESCRIPTION=""
+#!   DOC_EXTENTS="9656.47 2023.11"
+#!   DOC_TOP_LEFT="-9321.89 12053.7"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19238"
+#!   FME_DOCUMENT_GUID="0dd5c50b-a2e9-4db1-90a2-52523c2b5ac8"
+#!   FME_DOCUMENT_PRIORGUID="7bc24f1f-b816-4717-aa37-b9de1a33a95e,95b274ed-0486-41aa-9606-b518b6c82af5,842969f8-1ed3-4dd6-8d19-35abe82a7688,a70f97fb-9a52-4c51-86f7-d93459b60b64,a3d1ba75-5b42-4075-872e-3bd70748a55f,b5869d5e-c29b-46c6-90df-a315272c9085,40c92456-2a35-4a13-aa90-e75cb19c5b46,ffbad7ba-b821-4c64-a856-2f485da857c0,f155ee5e-39ad-49c6-b6e0-77f82e2a579b,7f74b402-6a50-46b6-81a9-4d5a20b2dfe3,af27d88e-3ea0-4c4f-82a7-d994bd3170e8,73c9e56a-dfcb-49de-8d5d-59e164c6c7c7,cb4e7a03-6a19-4579-b0b2-a6721d371ae0,05d03c40-0717-487e-96fc-cc570e5d819a,1946d117-fdbf-4818-bbab-e1fdc9e792e6,72a7b628-430f-4598-9885-5e90b015307c,20f7174e-d755-4d6b-b006-096051c014cc,096f5dd3-8b60-41dd-91b6-59d91943206c,9372cada-30ca-44f2-8250-4bdcea6248f3,e0a57cdd-06d1-4482-a52d-a82074d3d700,d2fa9f13-b165-4c59-bf95-15ebce065879,216f398d-9cbd-4f00-9a7d-1764c89c2bbd,94581106-d9b4-4ebd-b00f-de5f0b36c0f1,90803cc8-33c5-4db6-a180-f1a830de3678,c3294647-fecc-4f5a-8e09-37d7fb04f289,610e0fa8-75f4-4900-b116-41eb47354f22,200e1c52-c13a-4212-9e2b-e4608a4231cd,2ce90d8f-89dd-4558-ba6c-ef9de3351f6a,f6e8f974-0288-4dec-a91f-7b1e04d5e85e,127def9a-58f2-4acc-9d33-67d0e281d961,0ad1b410-dfa5-4448-85b6-ed4aa71c749b"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.0 (20190328 - Build 19238 - WIN32)"
+#!   LAST_SAVE_DATE="2020-02-21T11:02:18"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="AWS_TRANSLATE_ENGLISH_TO_FRENCH"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-9236.2 14277.9"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="90"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="24"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;This custom transformer sends API queries with English language attribute text and returns and extracts French translations from JSON response string.  Also tests for empty strings in some attributes, that would cause translation to fail.  It is universal to all workspaces.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-7777.6400935973943 14076.798926627747"
+#!   TOP_LEFT="-7777.6400935973943 14076.798926627747"
+#!   BOTTOM_RIGHT="-3971.515197893018 13865.547114109622"
+#!   BOUNDING_RECT="-7777.6400935973943 14076.798926627747 3806.1248957043763 211.25181251812518"
+#!   ORDER="500000000000106"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="31"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="25"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Replaces &amp;amp;#39; returned by translator with apostrophe&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-2511.2447471722485 13231.274490313926"
+#!   TOP_LEFT="-2511.2447471722485 13231.274490313926"
+#!   BOTTOM_RIGHT="-1803.5233262080392 13057.523052799552"
+#!   BOUNDING_RECT="-2511.2447471722485 13231.274490313926 707.72142096420919 173.75143751437514"
+#!   ORDER="500000000000363"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="26"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Removes out of scope attributes from datasets&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-1271.7816990286003 13509.272308057938"
+#!   TOP_LEFT="-1271.7816990286003 13509.272308057938"
+#!   BOTTOM_RIGHT="-841.78169902860031 13510.272308057938"
+#!   BOUNDING_RECT="-1271.7816990286003 13509.272308057938 430 -1"
+#!   ORDER="500000000000816"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="27"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Remove undesired space right/left&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-8276.7674207660384 13305.084449382737"
+#!   TOP_LEFT="-8276.7674207660384 13305.084449382737"
+#!   BOTTOM_RIGHT="-7437.5743757437585 13190.708605624299"
+#!   BOUNDING_RECT="-8276.7674207660384 13305.084449382737 839.19304502227988 114.37584375843758"
+#!   ORDER="500000000000930"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="6"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="28"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Calculates string length of notes attribute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-7525.4933049898673 12621.158057449267"
+#!   TOP_LEFT="-7525.4933049898673 12621.158057449267"
+#!   BOTTOM_RIGHT="-7043.4933049898673 12622.158057449267"
+#!   BOUNDING_RECT="-7525.4933049898673 12621.158057449267 482 -1"
+#!   ORDER="500000000000943"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="8"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="29"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Filters &apos;notes&apos; attribute for string length &amp;lt;= 4950 characters - approximate max allowed for AWS Translate&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-7017.7568062549281 13481.709592257537"
+#!   TOP_LEFT="-7017.7568062549281 13481.709592257537"
+#!   BOTTOM_RIGHT="-6317.6136811873139 13248.582560987224"
+#!   BOUNDING_RECT="-7017.7568062549281 13481.709592257537 700.14312506761416 233.1270312703127"
+#!   ORDER="500000000000944"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="30"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Extracts first 4950 characters of filtered out &apos;notes&apos; attribute to become &apos;notes_temp&apos;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-6071.3990978293587 12492.658647707696"
+#!   TOP_LEFT="-6071.3990978293587 12492.658647707696"
+#!   BOTTOM_RIGHT="-5279.9943116224058 12318.907210193322"
+#!   BOUNDING_RECT="-6071.3990978293587 12492.658647707696 791.40478620695319 173.75143751437514"
+#!   ORDER="500000000000945"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="31"
+#!   NAME="DeepL Translate"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-8764.2921883764266 13902.916806945845"
+#!   ORDER="500000000000101"
+#!   PALETTE_COLOR=""
+#!   BOTTOM_RIGHT="-281.25281252812601 12053.691965491083"
+#!   BOUNDING_RECT="-8764.2921883764266 13902.916806945845 8483.0393758483006 1849.2248414547612"
+#!   STICKY="true"
+#!   COLOUR="0.59999999999999998,0.054901960784313725,0.25490196078431371,0.39215686274509803"
+#!   CONTENTS="25 29 19 12 17 20 5 4 27 10 23 16 11 18 21 26 22 30 14 6 9 28 8 7 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="StringReplacer"
+#!   VERSION="4"
+#!   POSITION="-2383.3051434924078 12969.830123462856"
+#!   BOUNDING_RECT="-2383.3051434924078 12969.830123462856 431 71"
+#!   ORDER="500000000000095"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="CASE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FIND_TEXT" PARM_VALUE="&lt;amp&gt;#39&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH" PARM_VALUE="_FME_NO_OP_"/>
+#!     <XFORM_PARM PARM_NAME="NO_MATCH_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE="&lt;apos&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="tags{63}.display_name_fr,tags{5}.display_name_fr,tags{47}.display_name_fr,tags{2}.display_name_fr,tags{88}.display_name_fr,tags{35}.display_name_fr,tags{60}.display_name_fr,tags{17}.display_name_fr,tags{76}.display_name_fr,tags{95}.display_name_fr,tags{91}.display_name_fr,tags{20}.display_name_fr,tags{22}.display_name_fr,tags{67}.display_name_fr,resources{9}.name_fr,tags{77}.display_name_fr,tags{83}.display_name_fr,resources{4}.name_fr,tags{52}.display_name_fr,tags{71}.display_name_fr,tags{72}.display_name_fr,tags{21}.display_name_fr,tags{27}.display_name_fr,tags{49}.display_name_fr,tags{89}.display_name_fr,tags{53}.display_name_fr,tags{98}.display_name_fr,tags{79}.display_name_fr,tags{61}.display_name_fr,tags{16}.display_name_fr,tags{23}.display_name_fr,tags{97}.display_name_fr,tags{18}.display_name_fr,tags{32}.display_name_fr,tags{19}.display_name_fr,tags{55}.display_name_fr,tags{80}.display_name_fr,tags{8}.display_name_fr,tags{78}.display_name_fr,tags{29}.display_name_fr,tags{12}.display_name_fr,tags{43}.display_name_fr,tags{9}.display_name_fr,tags{34}.display_name_fr,tags{65}.display_name_fr,tags{90}.display_name_fr,resources{10}.name_fr,tags{42}.display_name_fr,tags{56}.display_name_fr,tags{31}.display_name_fr,tags{99}.display_name_fr,resources{7}.name_fr,tags{15}.display_name_fr,tags{84}.display_name_fr,tags{37}.display_name_fr,resources{0}.name_fr,tags{10}.display_name_fr,tags{46}.display_name_fr,tags{54}.display_name_fr,tags{66}.display_name_fr,tags{69}.display_name_fr,tags{14}.display_name_fr,tags{24}.display_name_fr,tags{25}.display_name_fr,tags{30}.display_name_fr,tags{92}.display_name_fr,tags{93}.display_name_fr,tags{33}.display_name_fr,tags{57}.display_name_fr,tags{86}.display_name_fr,tags{100}.display_name_fr,tags{64}.display_name_fr,tags{0}.display_name_fr,tags{44}.display_name_fr,tags{74}.display_name_fr,tags{70}.display_name_fr,tags{82}.display_name_fr,tags{48}.display_name_fr,tags{51}.display_name_fr,tags{68}.display_name_fr,resources{2}.name_fr,resources{3}.name_fr,tags{58}.display_name_fr,tags{81}.display_name_fr,tags{6}.display_name_fr,resources{1}.name_fr,tags{13}.display_name_fr,tags{7}.display_name_fr,notes_fr,sector_fr,tags{62}.display_name_fr,tags{94}.display_name_fr,tags{4}.display_name_fr,tags{85}.display_name_fr,tags{1}.display_name_fr,tags{50}.display_name_fr,tags{26}.display_name_fr,tags{59}.display_name_fr,tags{41}.display_name_fr,tags{11}.display_name_fr,tags{45}.display_name_fr,tags{96}.display_name_fr,tags{73}.display_name_fr,resources{6}.name_fr,tags{39}.display_name_fr,tags{3}.display_name_fr,resources{8}.name_fr,tags{75}.display_name_fr,tags{36}.display_name_fr,tags{28}.display_name_fr,title_fr,tags{87}.display_name_fr,resources{5}.name_fr,tags{38}.display_name_fr,tags{40}.display_name_fr"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ApostropheRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-1271.7816990286003 12969.830123462856"
+#!   BOUNDING_RECT="-1271.7816990286003 12969.830123462856 431 71"
+#!   ORDER="500000000000815"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_length"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-8074.6000546767928 13001.080435965978"
+#!   BOUNDING_RECT="-8074.6000546767928 13001.080435965978 431 71"
+#!   ORDER="500000000000062"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;import&lt;space&gt;six&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;list_att=feature.getAllAttributeNames&lt;openparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;atts&lt;space&gt;in&lt;space&gt;list_att:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;val=feature.getAttribute&lt;openparen&gt;atts&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;isinstance&lt;openparen&gt;val&lt;comma&gt;&lt;space&gt;six.string_types&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;atts&lt;comma&gt;val.lstrip&lt;openparen&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;.rstrip&lt;openparen&gt;&lt;apos&gt;&lt;space&gt;&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_7"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-8670.5412508670524 13001.080435965978"
+#!   BOUNDING_RECT="-8670.5412508670524 13001.080435965978 431 71"
+#!   ORDER="500000000000933"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="title,notes,sector,tags{}.display_name,resources{}.name"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="StringLengthCalculator"
+#!   VERSION="0"
+#!   POSITION="-7474.5065632474498 13001.080435965978"
+#!   BOUNDING_RECT="-7474.5065632474498 13001.080435965978 431 71"
+#!   ORDER="500000000000939"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LENGTH_ATTR" PARM_VALUE="_length"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTR" PARM_VALUE="notes"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringLengthCalculator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="-6865.9146187421438 13001.080435965978"
+#!   BOUNDING_RECT="-6865.9146187421438 13001.080435965978 431 71"
+#!   ORDER="500000000000940"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;_length&lt;closeparen&gt; &lt;= 4950"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="SubstringExtractor"
+#!   VERSION="2"
+#!   POSITION="-5887.3694797554026 12725.104803987442"
+#!   BOUNDING_RECT="-5887.3694797554026 12725.104803987442 431 71"
+#!   ORDER="500000000000942"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes_temp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="END" PARM_VALUE="4949"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_ATTR" PARM_VALUE="notes_temp"/>
+#!     <XFORM_PARM PARM_NAME="SRC_STRING" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;notes&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="START" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SubstringExtractor"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="-5156.3015630156278 12725.104803987442"
+#!   BOUNDING_RECT="-5156.3015630156278 12725.104803987442 431 71"
+#!   ORDER="500000000000954"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="notes_temp notes RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="PythonCaller"
+#!   VERSION="4"
+#!   POSITION="-3562.5330890148743 13010.525440300031"
+#!   BOUNDING_RECT="-3562.5330890148743 13010.525440300031 431 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="18586"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_length" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sector_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="tags{}.display_name_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.name_fr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="title_fr sector_fr notes_fr tags&lt;opencurly&gt;&lt;closecurly&gt;.display_name_fr resources&lt;opencurly&gt;&lt;closecurly&gt;.name_fr"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;import&lt;space&gt;boto3&lt;lf&gt;&lt;lf&gt;def&lt;space&gt;translate_attributes&lt;openparen&gt;inText&lt;closeparen&gt;:&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;translate&lt;space&gt;=&lt;space&gt;boto3.client&lt;openparen&gt;&lt;apos&gt;translate&lt;apos&gt;&lt;comma&gt;&lt;space&gt;&lt;apos&gt;ca-central-1&lt;apos&gt;&lt;comma&gt;&lt;space&gt;use_ssl=True&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;result&lt;space&gt;=&lt;space&gt;translate.translate_text&lt;openparen&gt;Text=inText&lt;comma&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;SourceLanguageCode=&lt;quote&gt;en&lt;quote&gt;&lt;comma&gt;&lt;space&gt;TargetLanguageCode=&lt;quote&gt;fr&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;return&lt;space&gt;result&lt;lf&gt;&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;pass&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;class&lt;space&gt;FeatureProcessor&lt;openparen&gt;object&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;__init__&lt;openparen&gt;self&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.attributestranslation=&lt;openbracket&gt;r&lt;apos&gt;title&lt;apos&gt;&lt;comma&gt;r&lt;apos&gt;notes&lt;apos&gt;&lt;comma&gt;r&lt;apos&gt;sector&lt;apos&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.list_atttranslation=&lt;openbracket&gt;&lt;openbracket&gt;r&lt;apos&gt;tags&lt;apos&gt;&lt;comma&gt;r&lt;apos&gt;display_name&lt;apos&gt;&lt;closebracket&gt;&lt;comma&gt;&lt;openbracket&gt;r&lt;apos&gt;resources&lt;apos&gt;&lt;comma&gt;r&lt;apos&gt;name&lt;apos&gt;&lt;closebracket&gt;&lt;closebracket&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;def&lt;space&gt;input&lt;openparen&gt;self&lt;comma&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;i&lt;space&gt;in&lt;space&gt;self.attributestranslation:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;text&lt;space&gt;=&lt;space&gt;feature.getAttribute&lt;openparen&gt;i&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;text:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;translated_text&lt;space&gt;=&lt;space&gt;translate_attributes&lt;openparen&gt;text&lt;closeparen&gt;.get&lt;openparen&gt;&lt;apos&gt;TranslatedText&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#translated_text=&lt;apos&gt;francais&lt;space&gt;de&lt;space&gt;&lt;apos&gt;+text&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;translated_text:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;i+r&lt;apos&gt;_fr&lt;apos&gt;&lt;comma&gt;translated_text&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;j&lt;space&gt;in&lt;space&gt;self.list_atttranslation:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Evaluation&lt;space&gt;list&lt;space&gt;length&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;list_length=len&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;j&lt;openbracket&gt;0&lt;closebracket&gt;+r&lt;apos&gt;&lt;opencurly&gt;&lt;closecurly&gt;.&lt;apos&gt;+j&lt;openbracket&gt;1&lt;closebracket&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;for&lt;space&gt;k&lt;space&gt;in&lt;space&gt;range&lt;openparen&gt;int&lt;openparen&gt;list_length&lt;closeparen&gt;&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;text&lt;space&gt;=&lt;space&gt;feature.getAttribute&lt;openparen&gt;j&lt;openbracket&gt;0&lt;closebracket&gt;+r&lt;apos&gt;&lt;opencurly&gt;&lt;apos&gt;+str&lt;openparen&gt;k&lt;closeparen&gt;+r&lt;apos&gt;&lt;closecurly&gt;.&lt;apos&gt;+j&lt;openbracket&gt;1&lt;closebracket&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;text:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#translated_text=&lt;apos&gt;francais&lt;space&gt;de&lt;space&gt;&lt;apos&gt;+text&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;translated_text&lt;space&gt;=&lt;space&gt;translate_attributes&lt;openparen&gt;text&lt;closeparen&gt;.get&lt;openparen&gt;&lt;apos&gt;TranslatedText&lt;apos&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;translated_text:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;j&lt;openbracket&gt;0&lt;closebracket&gt;+r&lt;apos&gt;&lt;opencurly&gt;&lt;apos&gt;+str&lt;openparen&gt;k&lt;closeparen&gt;+r&lt;apos&gt;&lt;closecurly&gt;.&lt;apos&gt;+j&lt;openbracket&gt;1&lt;closebracket&gt;+r&lt;apos&gt;_fr&lt;apos&gt;&lt;comma&gt;translated_text&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;self.pyoutput&lt;openparen&gt;feature&lt;closeparen&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_2"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="INPUT"
+#!   POSITION="-9321.8946287789895 13001.080435965978"
+#!   BOUNDING_RECT="-9321.8946287789895 13001.080435965978 431 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="OUTPUT"
+#!   POSITION="-96.428082895036596 12909.830123462856"
+#!   BOUNDING_RECT="-96.428082895036596 12909.830123462856 431 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="17"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="18"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="22"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_INPUT1582300938 Input Splitter"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_INPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_INPUT"    OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_PythonCaller_7    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>import<space>six<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>list_att=feature.getAllAttributeNames<openparen><closeparen><lf><space><space><space><space>for<space>atts<space>in<space>list_att:<lf><space><space><space><space><space><space><space><space>val=feature.getAttribute<openparen>atts<closeparen><lf><space><space><space><space><space><space><space><space>if<space>isinstance<openparen>val<comma><space>six.string_types<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>atts<comma>val.lstrip<openparen><apos><space><apos><closeparen>.rstrip<openparen><apos><space><apos><closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space><lf><lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_PythonCaller_7_OUTPUT"
+# -------------------------------------------------------------------------
+Tcl2 proc $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_StringLengthCalculator_calc_len {} {     FME_SetAttribute {"_length"} [string length [FME_GetAttribute {"notes"}]]     }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_StringLengthCalculator    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_PythonCaller_7_OUTPUT"    OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_StringLengthCalculator_OUTPUT"         @Tcl2($(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_StringLengthCalculator_calc_len)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_StringLengthCalculator_OUTPUT"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_length<closeparen>,$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_Tester) <= 4950 ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "<Unused>"    OUTPUT PASSED FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_Tester_FAILED"
+# -------------------------------------------------------------------------
+# Since the Tcl "END" index specification starts at -1 for the second
+# last character, and we've defined -1 to be the last charater, we've got
+# small bit of fiddling to do
+Tcl2 proc $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor_fixLastIndex {lastValue} {     if {$lastValue < -1} {         incr lastValue;         return "end$lastValue";     }     elseif {$lastValue == -1} {         return "end";     }     else {         return $lastValue;     } }
+Tcl2 proc $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor_extract {startIdx endIdx} {     FME_SetAttribute [FME_DecodeText notes_temp]         [string range [FME_DecodeTextOrAttr @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>notes<closeparen>,$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor)]                       [$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor_fixLastIndex $startIdx]                       [$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor_fixLastIndex $endIdx]]     }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_Tester_FAILED"    OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor_OUTPUT"         @Tcl2("$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor_extract 0 4949")
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeRenamer    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_SubstringExtractor_OUTPUT" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "notes_temp" "notes" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF * PythonFactory    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_PythonCaller_2    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_Tester_PASSED"    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeRenamer_OUTPUT"    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>import<space>boto3<lf><lf>def<space>translate_attributes<openparen>inText<closeparen>:<lf><lf><space><space><space><space>translate<space>=<space>boto3.client<openparen><apos>translate<apos><comma><space><apos>ca-central-1<apos><comma><space>use_ssl=True<closeparen><lf><space><space><space><space>result<space>=<space>translate.translate_text<openparen>Text=inText<comma><lf><space><space><space><space>SourceLanguageCode=<quote>en<quote><comma><space>TargetLanguageCode=<quote>fr<quote><closeparen><lf><space><space><space><space><lf><space><space><space><space>return<space>result<lf><lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space>pass<lf><space><space><space><space><lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space><lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>self.attributestranslation=<openbracket>r<apos>title<apos><comma>r<apos>notes<apos><comma>r<apos>sector<apos><closebracket><lf><space><space><space><space><space><space><space><space>self.list_atttranslation=<openbracket><openbracket>r<apos>tags<apos><comma>r<apos>display_name<apos><closebracket><comma><openbracket>r<apos>resources<apos><comma>r<apos>name<apos><closebracket><closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space>def<space>input<openparen>self<comma>feature<closeparen>:<lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>for<space>i<space>in<space>self.attributestranslation:<lf><space><space><space><space><space><space><space><space><space><space><space><space>text<space>=<space>feature.getAttribute<openparen>i<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space>if<space>text:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>translated_text<space>=<space>translate_attributes<openparen>text<closeparen>.get<openparen><apos>TranslatedText<apos><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#translated_text=<apos>francais<space>de<space><apos>+text<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>translated_text:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>i+r<apos>_fr<apos><comma>translated_text<closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>for<space>j<space>in<space>self.list_atttranslation:<lf><space><space><space><space><space><space><space><space><space><space><space><space>#Evaluation<space>list<space>length<lf><space><space><space><space><space><space><space><space><space><space><space><space>list_length=len<openparen>feature.getAttribute<openparen>j<openbracket>0<closebracket>+r<apos><opencurly><closecurly>.<apos>+j<openbracket>1<closebracket><closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space>for<space>k<space>in<space>range<openparen>int<openparen>list_length<closeparen><closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>text<space>=<space>feature.getAttribute<openparen>j<openbracket>0<closebracket>+r<apos><opencurly><apos>+str<openparen>k<closeparen>+r<apos><closecurly>.<apos>+j<openbracket>1<closebracket><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>text:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>#translated_text=<apos>francais<space>de<space><apos>+text<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>translated_text<space>=<space>translate_attributes<openparen>text<closeparen>.get<openparen><apos>TranslatedText<apos><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>if<space>translated_text:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>j<openbracket>0<closebracket>+r<apos><opencurly><apos>+str<openparen>k<closeparen>+r<apos><closecurly>.<apos>+j<openbracket>1<closebracket>+r<apos>_fr<apos><comma>translated_text<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"
+# -------------------------------------------------------------------------
+MACRO casemac
+INCLUDE [ if { {NO} == {NO} } { puts {MACRO casemac -nocase}} ]
+Tcl2 proc $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_ApostropheRemover_2743bcbf_2ce1_4975_9e85_7c1e9724f7c10_replacer { findText replaceText invalidValue} {     set attrs [split \"tags{63}.display_name_fr,tags{5}.display_name_fr,tags{47}.display_name_fr,tags{2}.display_name_fr,tags{88}.display_name_fr,tags{35}.display_name_fr,tags{60}.display_name_fr,tags{17}.display_name_fr,tags{76}.display_name_fr,tags{95}.display_name_fr,tags{91}.display_name_fr,tags{20}.display_name_fr,tags{22}.display_name_fr,tags{67}.display_name_fr,resources{9}.name_fr,tags{77}.display_name_fr,tags{83}.display_name_fr,resources{4}.name_fr,tags{52}.display_name_fr,tags{71}.display_name_fr,tags{72}.display_name_fr,tags{21}.display_name_fr,tags{27}.display_name_fr,tags{49}.display_name_fr,tags{89}.display_name_fr,tags{53}.display_name_fr,tags{98}.display_name_fr,tags{79}.display_name_fr,tags{61}.display_name_fr,tags{16}.display_name_fr,tags{23}.display_name_fr,tags{97}.display_name_fr,tags{18}.display_name_fr,tags{32}.display_name_fr,tags{19}.display_name_fr,tags{55}.display_name_fr,tags{80}.display_name_fr,tags{8}.display_name_fr,tags{78}.display_name_fr,tags{29}.display_name_fr,tags{12}.display_name_fr,tags{43}.display_name_fr,tags{9}.display_name_fr,tags{34}.display_name_fr,tags{65}.display_name_fr,tags{90}.display_name_fr,resources{10}.name_fr,tags{42}.display_name_fr,tags{56}.display_name_fr,tags{31}.display_name_fr,tags{99}.display_name_fr,resources{7}.name_fr,tags{15}.display_name_fr,tags{84}.display_name_fr,tags{37}.display_name_fr,resources{0}.name_fr,tags{10}.display_name_fr,tags{46}.display_name_fr,tags{54}.display_name_fr,tags{66}.display_name_fr,tags{69}.display_name_fr,tags{14}.display_name_fr,tags{24}.display_name_fr,tags{25}.display_name_fr,tags{30}.display_name_fr,tags{92}.display_name_fr,tags{93}.display_name_fr,tags{33}.display_name_fr,tags{57}.display_name_fr,tags{86}.display_name_fr,tags{100}.display_name_fr,tags{64}.display_name_fr,tags{0}.display_name_fr,tags{44}.display_name_fr,tags{74}.display_name_fr,tags{70}.display_name_fr,tags{82}.display_name_fr,tags{48}.display_name_fr,tags{51}.display_name_fr,tags{68}.display_name_fr,resources{2}.name_fr,resources{3}.name_fr,tags{58}.display_name_fr,tags{81}.display_name_fr,tags{6}.display_name_fr,resources{1}.name_fr,tags{13}.display_name_fr,tags{7}.display_name_fr,notes_fr,sector_fr,tags{62}.display_name_fr,tags{94}.display_name_fr,tags{4}.display_name_fr,tags{85}.display_name_fr,tags{1}.display_name_fr,tags{50}.display_name_fr,tags{26}.display_name_fr,tags{59}.display_name_fr,tags{41}.display_name_fr,tags{11}.display_name_fr,tags{45}.display_name_fr,tags{96}.display_name_fr,tags{73}.display_name_fr,resources{6}.name_fr,tags{39}.display_name_fr,tags{3}.display_name_fr,resources{8}.name_fr,tags{75}.display_name_fr,tags{36}.display_name_fr,tags{28}.display_name_fr,title_fr,tags{87}.display_name_fr,resources{5}.name_fr,tags{38}.display_name_fr,tags{40}.display_name_fr\" {,}];     set findValue [FME_DecodeText $findText];     set replaceValue [FME_DecodeText $replaceText];     foreach attr $attrs {       set attrVal [FME_GetAttribute $attr];       set noMatch true;       if {{NO} == {YES}} {         set newAttrVal [FME_ReplaceRegex $(casemac) $findValue $attrVal $replaceValue];       } else {         set newAttrVal [string map $(casemac) [list $findValue $replaceValue] $attrVal];       };       if { $newAttrVal ne $attrVal } {         set noMatch false;         FME_SetAttribute $attr $newAttrVal;       };       if {$noMatch} {          if { $invalidValue == {FME_NULL_VALUE} } {             FME_SetAttributeNull $attr;          } elseif { $invalidValue != {_FME_NO_OP_} }  {             FME_SetAttribute $attr [FME_DecodeText $invalidValue];          };       };     }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_ApostropheRemover    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_ApostropheRemover_OUTPUT"         @Tcl2("$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_ApostropheRemover_2743bcbf_2ce1_4975_9e85_7c1e9724f7c10_replacer {<amp>#39<semicolon>} {<apos>} {_FME_NO_OP_}")
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeRemover_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_ApostropheRemover_OUTPUT"    OUTPUT { FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_length)        @RemoveAttributes(fme_pcre_match"$($(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeRemover_LIST_EXP)")         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_OUTPUT1582300938 Output Collector"   INPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME)_OUTPUT"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(AWS_TRANSLATE_ENGLISH_TO_FRENCH_WORKSPACE_NAME))}]

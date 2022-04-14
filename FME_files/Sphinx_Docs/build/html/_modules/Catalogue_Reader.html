@@ -38,8 +38,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AWS_TRANSLATE_NG.html">AWS_TRANSLATE_NG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CatalogueReader.html">CatalogueReader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DCAT_Reader.html">DCAT_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
@@ -62,7 +61,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MANUAL_GEOSPATIAL_SETTER_NG.html">MANUAL_GEOSPATIAL_SETTER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
@@ -78,8 +76,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../SECTOR_MAPPER_NG.html">SECTOR_MAPPER_NG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../SOCRATA_READER_NG.html">SOCRATA_READER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../XML_PUBLISHER.html">XML_PUBLISHER</a></li>
@@ -178,7 +174,7 @@
 <span class="c1"># Template Class Interface:</span>
 <span class="c1"># When using this class, make sure its name is set as the value of</span>
 <span class="c1"># the &#39;Class or Function to Process Features&#39; transformer parameter</span>
-<div class="viewcode-block" id="ManageHttpCall"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall">[docs]</a><span class="k">class</span> <span class="nc">ManageHttpCall</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall">[docs]</a><span class="k">class</span> <span class="nc">ManageHttpCall</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This class enables the call to CKAN servers and the creation of FME features with CKAN information.</span>
 <span class="sd">    </span>
 <span class="sd">    The results from the CKAN servers are stored in the FME Feature attribute (*_response_body*).</span>
@@ -198,7 +194,7 @@
 <span class="sd">      </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="ManageHttpCall.__init__"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.__init__"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor of the class.</span>
 <span class="sd">        </span>
 <span class="sd">        Creates the logger to log information in FME log.</span>
@@ -206,7 +202,7 @@
         
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span></div>
         
-<div class="viewcode-block" id="ManageHttpCall.build_csw_request"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.build_csw_request">[docs]</a>    <span class="k">def</span> <span class="nf">build_csw_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_url</span><span class="p">,</span> <span class="n">csw_output_schema</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">csw_request</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<div class="viewcode-block" id="ManageHttpCall.build_csw_request"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.build_csw_request">[docs]</a>    <span class="k">def</span> <span class="nf">build_csw_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_url</span><span class="p">,</span> <span class="n">csw_output_schema</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">csw_request</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
                           <span class="n">csw_typenames</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">csw_version</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">csw_id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
                           <span class="n">csw_constraint</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">csw_start_position</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">csw_max_records</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
                           <span class="n">csw_constraint_language</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">csw_result_type</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
@@ -269,7 +265,7 @@
         
         <span class="k">return</span> <span class="n">http_csw_request</span>           </div>
         
-<div class="viewcode-block" id="ManageHttpCall.calculate_start_max_record"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.calculate_start_max_record">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_start_max_record</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbr_records</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.calculate_start_max_record"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.calculate_start_max_record">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_start_max_record</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbr_records</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method calculates the number and the start position of the records to read for each iteration.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -303,7 +299,7 @@
 
         <span class="k">return</span> <span class="n">lst_start_max</span></div>
             
-<div class="viewcode-block" id="ManageHttpCall.extract_xml_response"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.extract_xml_response">[docs]</a>    <span class="k">def</span> <span class="nf">extract_xml_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.extract_xml_response"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.extract_xml_response">[docs]</a>    <span class="k">def</span> <span class="nf">extract_xml_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert to UTF-8 and strip leading and ending white spaces.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -323,7 +319,7 @@
         
         <span class="k">return</span> <span class="n">xml_str</span></div>
 
-<div class="viewcode-block" id="ManageHttpCall.read_csw_records"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.read_csw_records">[docs]</a>    <span class="k">def</span> <span class="nf">read_csw_records</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">first_id</span><span class="p">,</span> <span class="n">number_to_read</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.read_csw_records"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.read_csw_records">[docs]</a>    <span class="k">def</span> <span class="nf">read_csw_records</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">first_id</span><span class="p">,</span> <span class="n">number_to_read</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method reads the requested records from a CSW web site and output FME Feature.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -368,7 +364,7 @@
                 
         <span class="k">return</span></div>
     
-<div class="viewcode-block" id="ManageHttpCall.read_csw"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.read_csw">[docs]</a>    <span class="k">def</span> <span class="nf">read_csw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.read_csw"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.read_csw">[docs]</a>    <span class="k">def</span> <span class="nf">read_csw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method read one record from the CKAN web site</span>
 <span class="sd">    </span>
 <span class="sd">        Parameters</span>
@@ -426,7 +422,7 @@
                                    <span class="p">(</span><span class="n">RESPONSE_BODY</span><span class="p">,</span> <span class="n">xml_str</span><span class="p">)]</span>
                 <span class="n">FME_utils</span><span class="o">.</span><span class="n">pyoutput_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">lst_key_val_att</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="ManageHttpCall.read_ckan_all_records"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.read_ckan_all_records">[docs]</a>    <span class="k">def</span> <span class="nf">read_ckan_all_records</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">first_id</span><span class="p">,</span> <span class="n">number_to_read</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.read_ckan_all_records"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.read_ckan_all_records">[docs]</a>    <span class="k">def</span> <span class="nf">read_ckan_all_records</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">first_id</span><span class="p">,</span> <span class="n">number_to_read</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method reads the requested records from a CKAN web site and output FME Feature.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -476,7 +472,7 @@
                 
         <span class="k">return</span></div>
 
-<div class="viewcode-block" id="ManageHttpCall.read_ckan"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.read_ckan">[docs]</a>    <span class="k">def</span> <span class="nf">read_ckan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.read_ckan"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.read_ckan">[docs]</a>    <span class="k">def</span> <span class="nf">read_ckan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method read one record from the CKAN web site</span>
 <span class="sd">    </span>
 <span class="sd">        Parameters</span>
@@ -519,7 +515,7 @@
                                    <span class="p">(</span><span class="n">RESPONSE_BODY</span><span class="p">,</span> <span class="n">str_json</span><span class="p">)]</span>
                 <span class="n">FME_utils</span><span class="o">.</span><span class="n">pyoutput_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">lst_key_val_att</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="ManageHttpCall.input"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.input"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Main routine call be the FME software</span>
 <span class="sd">        </span>
 <span class="sd">        Manage the reading of CKAN server for all or by id (one record only)</span>
@@ -565,7 +561,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">pass</span></div>
  
-<div class="viewcode-block" id="ManageHttpCall.close"><a class="viewcode-back" href="../CatalogueReader.html#Catalogue_Reader.ManageHttpCall.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ManageHttpCall.close"><a class="viewcode-back" href="../Catalogue_Reader.html#Catalogue_Reader.ManageHttpCall.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Mandatory but unused method</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
