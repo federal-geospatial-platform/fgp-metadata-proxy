@@ -23,7 +23,7 @@ SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
-SET NomApp=QC_XML_BUILDER_PROD_7
+SET NomApp=QC_XML_BUILDER_PROD_08
 SET fme=%FME2020%
 
 REM ===========================================================================
@@ -67,8 +67,9 @@ set in_ffs_testing_file=%source%
 set local_source_metadata_delta_finder=Yes
 set local_writer=Yes
 set pt_abbr=QC
-set pycsw_ckan_overwrite=No
+set metadata_overwrite=No
 set in_out_working_dir=met\PT_HARVESTER
+set url_validation=No
 set sample_size=0
 
 IF EXIST %log% del %log%
@@ -83,9 +84,10 @@ IF EXIST %resultat%.ffs DEL %resultat%.ffs
 --LOCAL_SOURCE_METADATA_DELTA_FINDER %local_source_metadata_delta_finder% ^
 --LOCAL_WRITER %local_writer% ^
 --P-T_ABBR %pt_abbr% ^
---PYCSW_CKAN_OVERWRITE %pycsw_ckan_overwrite% ^
+--METADATA_OVERWRITE %metadata_overwrite% ^
 --IN_OUT_WORKING_DIR %in_out_working_dir% ^
---SAMPLE_SIZE %sample_size%
+--SAMPLE_SIZE %sample_size% ^
+--URL_VALIDATION %url_validation%
 SET Statut=%Statut%%ERRORLEVEL%
 
 REM Comparison with the standard
