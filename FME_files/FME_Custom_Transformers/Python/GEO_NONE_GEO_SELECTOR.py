@@ -303,7 +303,6 @@ class GeoNoneGeoSelector(object):
         None
         """
     
-#        web_pdb.set_trace()
         # Process each entry in the YAML
         geo = False
         not_found_err = []
@@ -315,6 +314,13 @@ class GeoNoneGeoSelector(object):
             for index, att_name in attributes:
                 found = False
                 att_value = feature.getAttribute(att_name)
+                
+                if isinstance(att_value, bool):
+                    # Transform the boolean value into a string. True ==> Yes and False ==> No
+                    if att_value:
+                        att_value = "Yes"
+                    else:
+                        att_value = "No"
                 att_value = att_value.lower()
                
                 # Extract the value(s) to search. Create a set to enable set intersection
