@@ -1,7 +1,6 @@
 #
 # Ce fichier contient le ccode python appelé le Custom Transformer AWS_TRANSLATE
 #
-import web_pdb
 import time
 import json
 import fme
