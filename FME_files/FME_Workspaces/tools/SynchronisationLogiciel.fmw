@@ -13,7 +13,7 @@
 #!   BEGIN_PYTHON=""
 #!   BEGIN_TCL=""
 #!   CATEGORY="FGP_TOOLS"
-#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Logiciel permettant la gestion et la synchronisation des versions des logiciels/configuration pour PT afin d&apos;éviter les erreurs d&apos;exécution suite à l&apos;utilisation d&apos;une version périmiée d&apos;une composante logicielle. Le programme est en mesure de comparer le contenu du github avec le log des version (stocké sur FME Server) et ainsi déterminer les éléments périmiés ou tout simplement absente.&lt;/p&gt;&#10;&lt;p&gt;Le programme est en mesure de synchroniser les éléments suivants:&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Custom Transformer (.fmx)&lt;/li&gt;&#10;&lt;li&gt;Workspaces (.fmw)&lt;/li&gt;&#10;&lt;li&gt;Script Python&lt;/li&gt;&#10;&lt;li&gt;JSON Templates&lt;/li&gt;&#10;&lt;li&gt;XML Templates&lt;/li&gt;&#10;&lt;li&gt;Lookup Tables&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Mode de fonctionnement&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Le programme a 2 modes fonctionnement. Le premier CHANGE_DETECTION effectue la comparaison et produit un fichier csv contenant la liste de tous les éléments demandant un synchronisation. Le second mode UPLOAD, lit le fichier CSV produit par le programme en mode CHANGE_DETECTION et transfert vers FME SERVER les dernières versions des éléments. Le programme est fait ainsi afin de ne pas transférer à l&apos;aveugle les éléments vers FME SERVER. Il est donc important pour l&apos;utilisateur de réviser le contenu du fichier csv issu de la détection de changement et d&apos;y enlever les élements qu&apos;on ne veut pas transférer i.e. version Dev ou temp de logiciel.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt; Paramètres du programme&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;FME_SERVER_USERNAME: Nom d&apos;usager pour se connecter au FME Server&lt;/li&gt;&#10;&lt;li&gt;FME_SERVER_PASWORD: Mot de passe pour se connecter au FME Server&lt;/li&gt;&#10;&lt;li&gt;ENV: Environnement vers lequel déployer les éléments (Stage ou Prod)&#10;-OUT_CSV_FILE_DIR: Endroit vers lequel on écrit le fichier CSV de la détection de changement ainsi que des fichiers CSV temporaires pour la gestion du log&lt;/li&gt;&#10;&lt;li&gt;MODE: Mode de fonctionnement (CHANGE_DETECTION ou UPLOAD)&lt;/li&gt;&#10;&lt;li&gt;IN_CSV_UPLOAD_FILE: Fichier CSV contenant les changements à pousser. (Résultat du change detection)&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Log de version&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Pour garder la trace des versions des composantes déployées ,le programme utilise le fichier csv versionning_log.csv disponible sur le FME Server dans Data/PT_Harverster/Versionning et contient le nom des fichiers, la date de transfert, le SHA de github ainsi que la personne ayant fait le transfert.&lt;/p&gt;&#10;&lt;p&gt;path,sha,timestamp,user&#10;FME_Custom_Transformers/Python/ATTRIBUTE_MANAGER_NG.py,9b5c1123c93ea89c2fd2045e7b19c1f150b57ed7,20220516125934.4179465,nicolas-gariepy&lt;/p&gt;"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Logiciel permettant la gestion et la synchronisation des versions des logiciels/configuration pour PT afin d&apos;éviter les erreurs d&apos;exécution suite à l&apos;utilisation d&apos;une version périmiée d&apos;une composante logicielle. Le programme est en mesure de comparer le contenu du github avec le log des version (stocké sur FME Server) et ainsi déterminer les éléments périmiés ou tout simplement absente.&lt;/p&gt;&#10;&lt;p&gt;Le programme est en mesure de synchroniser les éléments suivants:&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Custom Transformer (.fmx)&lt;/li&gt;&#10;&lt;li&gt;Workspaces (.fmw)&lt;/li&gt;&#10;&lt;li&gt;Script Python&lt;/li&gt;&#10;&lt;li&gt;JSON Templates&lt;/li&gt;&#10;&lt;li&gt;XML Templates&lt;/li&gt;&#10;&lt;li&gt;Lookup Tables&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Mode de fonctionnement&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Le programme a 2 modes fonctionnement. Le premier CHANGE_DETECTION effectue la comparaison et produit un fichier csv contenant la liste de tous les éléments demandant un synchronisation. Le second mode UPLOAD, lit le fichier CSV produit par le programme en mode CHANGE_DETECTION et transfert vers FME SERVER les dernières versions des éléments. Le programme est fait ainsi afin de ne pas transférer à l&apos;aveugle les éléments vers FME SERVER. Il est donc important pour l&apos;utilisateur de réviser le contenu du fichier csv issu de la détection de changement et d&apos;y enlever les élements qu&apos;on ne veut pas transférer i.e. version Dev ou temp de logiciel.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt; Paramètres du programme&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;FME_SERVER_USERNAME: Nom d&apos;usager pour se connecter au FME Server&lt;/li&gt;&#10;&lt;li&gt;FME_SERVER_PASWORD: Mot de passe pour se connecter au FME Server&lt;/li&gt;&#10;&lt;li&gt;ENV: Environnement vers lequel déployer les éléments (Stage ou Prod)&#10;-OUT_CSV_FILE_DIR: Endroit vers lequel on écrit le fichier CSV de la détection de changement ainsi que des fichiers CSV temporaires pour la gestion du log&lt;/li&gt;&#10;&lt;li&gt;MODE: Mode de fonctionnement (CHANGE_DETECTION ou UPLOAD)&lt;/li&gt;&#10;&lt;li&gt;IN_CSV_UPLOAD_FILE: Fichier CSV contenant les changements à pousser. (Résultat du change detection)&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Log de version&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Pour garder la trace des versions des composantes déployées ,le programme utilise le fichier csv versionning_log.csv disponible sur le FME Server dans Data/PT_Harverster/Versionning et contient le nom des fichiers, la date de transfert, le SHA de github ainsi que la personne ayant fait le transfert.&lt;/p&gt;&#10;&lt;p&gt;path,sha,timestamp,user&#10;FME_Custom_Transformers/Python/ATTRIBUTE_MANAGER_NG.py,9b5c1123c93ea89c2fd2045e7b19c1f150b57ed7,20220516125934.4179465,nicolas-gariepy&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Répertoire de déploiement&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;En fonction du type de fichier à déployer , les endroits sur le FME server sont variables.&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;FME_files/FME_Custom_Transformers/*.fmx --&amp;gt; Les Custom Transformers sont déployés dans Workspaces/PT_Harvester à l&apos;exception de&lt;strong&gt; CatalogueReader,Attribute_unexposer,  AWS_Translate, METADATA_VALUE_MAPPER, METADATA_VALUE_MAPPER_NG, METADATA_VALUE_MAPPER_ERROR_MANAGER &lt;/strong&gt;qui se font déployer dans SHARED_RESOURCES_DATA/ENGINE/Transformers&lt;/li&gt;&#10;&lt;li&gt;FME_files/FME_Custom_Transformers/Python --&amp;gt; Le répertoire Python est transféré dans FME_SHAREDRESOURCE_ENGINE/Plugins/Python/python37 &lt;/li&gt;&#10;&lt;li&gt;FME_files/FME_Workspaces/*.fmw --&amp;gt; Les workspaces sont transférés dans Workspaces/PT_Harvester&lt;/li&gt;&#10;&lt;li&gt;FME_files/XML_TEMPLATES et JSON_TEMPLATES et LOOKUP_TABLES --&amp;gt; Transéférés dans FME_SHAREDRESOURCE_DATA/PT_Harvester&lt;/li&gt;&#10;&lt;/ul&gt;"
 #!   DESTINATION="NONE"
 #!   DESTINATION_ROUTING_FILE=""
 #!   DOC_EXTENTS="26367.6 5881.78"
@@ -22,8 +22,8 @@
 #!   END_TCL=""
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="b3688485-58c9-484a-8a4c-edbef9e535ae"
-#!   FME_DOCUMENT_PRIORGUID="9944ecc6-239f-4d28-a1ae-aa7e8ea47d2e,483a6360-8645-494d-bbd3-9bd87ca5c343,96f90026-0d59-4c81-b721-b3efa37ad773,196a4212-9168-42d7-8f06-9e64708ebfb2,3734b7e5-d5d0-4b7d-9244-78c95862e384,35e949fb-426a-4786-87db-a5a27ac4b0c0,a51bb218-e0a9-430b-a6a7-aa170e368f4b,4d8e6d0f-cddb-4b9e-9287-1589a1991ae8"
+#!   FME_DOCUMENT_GUID="b595aa55-97c0-4f00-aa32-716821cf55ad"
+#!   FME_DOCUMENT_PRIORGUID="9944ecc6-239f-4d28-a1ae-aa7e8ea47d2e,483a6360-8645-494d-bbd3-9bd87ca5c343,96f90026-0d59-4c81-b721-b3efa37ad773,196a4212-9168-42d7-8f06-9e64708ebfb2,3734b7e5-d5d0-4b7d-9244-78c95862e384,35e949fb-426a-4786-87db-a5a27ac4b0c0,a51bb218-e0a9-430b-a6a7-aa170e368f4b,4d8e6d0f-cddb-4b9e-9287-1589a1991ae8,b3688485-58c9-484a-8a4c-edbef9e535ae"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_REPROJECTION_ENGINE="FME"
@@ -32,10 +32,10 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-05-16T15:38:37"
+#!   LAST_SAVE_DATE="2022-05-17T09:48:01"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
-#!   MARKDOWN_DESCRIPTION="**Description:**&#10;&#10;Logiciel permettant la gestion et la synchronisation des versions des logiciels/configuration pour PT afin d&apos;éviter les erreurs d&apos;exécution suite à l&apos;utilisation d&apos;une version périmiée d&apos;une composante logicielle. Le programme est en mesure de comparer le contenu du github avec le log des version (stocké sur FME Server) et ainsi déterminer les éléments périmiés ou tout simplement absente.&#10;&#10;&#10;Le programme est en mesure de synchroniser les éléments suivants:&#10;&#10;- Custom Transformer (.fmx)&#10;- Workspaces (.fmw)&#10;- Script Python&#10;- JSON Templates&#10;- XML Templates&#10;- Lookup Tables&#10;&#10;&#10;&#10;**Mode de fonctionnement**&#10;&#10;Le programme a 2 modes fonctionnement. Le premier CHANGE_DETECTION effectue la comparaison et produit un fichier csv contenant la liste de tous les éléments demandant un synchronisation. Le second mode UPLOAD, lit le fichier CSV produit par le programme en mode CHANGE_DETECTION et transfert vers FME SERVER les dernières versions des éléments. Le programme est fait ainsi afin de ne pas transférer à l&apos;aveugle les éléments vers FME SERVER. Il est donc important pour l&apos;utilisateur de réviser le contenu du fichier csv issu de la détection de changement et d&apos;y enlever les élements qu&apos;on ne veut pas transférer i.e. version Dev ou temp de logiciel.&#10;&#10;** Paramètres du programme**&#10;&#10;- FME_SERVER_USERNAME: Nom d&apos;usager pour se connecter au FME Server&#10;- FME_SERVER_PASWORD: Mot de passe pour se connecter au FME Server&#10;- ENV: Environnement vers lequel déployer les éléments (Stage ou Prod)&#10;-OUT_CSV_FILE_DIR: Endroit vers lequel on écrit le fichier CSV de la détection de changement ainsi que des fichiers CSV temporaires pour la gestion du log&#10;- MODE: Mode de fonctionnement (CHANGE_DETECTION ou UPLOAD)&#10;- IN_CSV_UPLOAD_FILE: Fichier CSV contenant les changements à pousser. (Résultat du change detection)&#10;&#10;**Log de version**&#10;&#10;Pour garder la trace des versions des composantes déployées ,le programme utilise le fichier csv versionning_log.csv disponible sur le FME Server dans Data/PT_Harverster/Versionning et contient le nom des fichiers, la date de transfert, le SHA de github ainsi que la personne ayant fait le transfert.&#10;&#10;path,sha,timestamp,user&#10;FME_Custom_Transformers/Python/ATTRIBUTE_MANAGER_NG.py,9b5c1123c93ea89c2fd2045e7b19c1f150b57ed7,20220516125934.4179465,nicolas-gariepy&#10;&#10;&#10;"
+#!   MARKDOWN_DESCRIPTION="**Description:**&#10;&#10;Logiciel permettant la gestion et la synchronisation des versions des logiciels/configuration pour PT afin d&apos;éviter les erreurs d&apos;exécution suite à l&apos;utilisation d&apos;une version périmiée d&apos;une composante logicielle. Le programme est en mesure de comparer le contenu du github avec le log des version (stocké sur FME Server) et ainsi déterminer les éléments périmiés ou tout simplement absente.&#10;&#10;&#10;Le programme est en mesure de synchroniser les éléments suivants:&#10;&#10;- Custom Transformer (.fmx)&#10;- Workspaces (.fmw)&#10;- Script Python&#10;- JSON Templates&#10;- XML Templates&#10;- Lookup Tables&#10;&#10;&#10;&#10;**Mode de fonctionnement**&#10;&#10;Le programme a 2 modes fonctionnement. Le premier CHANGE_DETECTION effectue la comparaison et produit un fichier csv contenant la liste de tous les éléments demandant un synchronisation. Le second mode UPLOAD, lit le fichier CSV produit par le programme en mode CHANGE_DETECTION et transfert vers FME SERVER les dernières versions des éléments. Le programme est fait ainsi afin de ne pas transférer à l&apos;aveugle les éléments vers FME SERVER. Il est donc important pour l&apos;utilisateur de réviser le contenu du fichier csv issu de la détection de changement et d&apos;y enlever les élements qu&apos;on ne veut pas transférer i.e. version Dev ou temp de logiciel.&#10;&#10;** Paramètres du programme**&#10;&#10;- FME_SERVER_USERNAME: Nom d&apos;usager pour se connecter au FME Server&#10;- FME_SERVER_PASWORD: Mot de passe pour se connecter au FME Server&#10;- ENV: Environnement vers lequel déployer les éléments (Stage ou Prod)&#10;-OUT_CSV_FILE_DIR: Endroit vers lequel on écrit le fichier CSV de la détection de changement ainsi que des fichiers CSV temporaires pour la gestion du log&#10;- MODE: Mode de fonctionnement (CHANGE_DETECTION ou UPLOAD)&#10;- IN_CSV_UPLOAD_FILE: Fichier CSV contenant les changements à pousser. (Résultat du change detection)&#10;&#10;**Log de version**&#10;&#10;Pour garder la trace des versions des composantes déployées ,le programme utilise le fichier csv versionning_log.csv disponible sur le FME Server dans Data/PT_Harverster/Versionning et contient le nom des fichiers, la date de transfert, le SHA de github ainsi que la personne ayant fait le transfert.&#10;&#10;path,sha,timestamp,user&#10;FME_Custom_Transformers/Python/ATTRIBUTE_MANAGER_NG.py,9b5c1123c93ea89c2fd2045e7b19c1f150b57ed7,20220516125934.4179465,nicolas-gariepy&#10;&#10;**Répertoire de déploiement**&#10;&#10;En fonction du type de fichier à déployer , les endroits sur le FME server sont variables.&#10;&#10;- FME_files/FME_Custom_Transformers/*.fmx --&gt; Les Custom Transformers sont déployés dans Workspaces/PT_Harvester à l&apos;exception de** CatalogueReader,Attribute_unexposer,  AWS_Translate, METADATA_VALUE_MAPPER, METADATA_VALUE_MAPPER_NG, METADATA_VALUE_MAPPER_ERROR_MANAGER **qui se font déployer dans SHARED_RESOURCES_DATA/ENGINE/Transformers&#10;- FME_files/FME_Custom_Transformers/Python --&gt; Le répertoire Python est transféré dans FME_SHAREDRESOURCE_ENGINE/Plugins/Python/python37 &#10;- FME_files/FME_Workspaces/*.fmw --&gt; Les workspaces sont transférés dans Workspaces/PT_Harvester&#10;- FME_files/XML_TEMPLATES et JSON_TEMPLATES et LOOKUP_TABLES --&gt; Transéférés dans FME_SHAREDRESOURCE_DATA/PT_Harvester&#10;&#10;"
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOG_FEATURES="200"
 #!   MULTI_WRITER_DATASET_ORDER="BY_ID"
@@ -51,10 +51,10 @@
 #!   TITLE="SynchronisationLogiciel"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="3893.89 -3526.82"
+#!   VIEW_POSITION="4511.76 -3170.6"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
-#!   ZOOM_SCALE="63"
+#!   ZOOM_SCALE="48"
 #! >
 #! <DATASETS>
 #! <DATASET
@@ -70,7 +70,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="csv_existing_file_handling Yes csv_write_field_names firstrow"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_type string fme_secondary_axis string fme_feature_type string fme_text_size string csv_type string fme_sweep_angle string fme_rotation string fme_text_string string fme_geometry string fme_color string fme_fill_color string fme_basename string fme_dataset string fme_start_angle string fme_primary_axis string"
+#!   EXPOSABLE_ATTRS="fme_sweep_angle string fme_color string fme_primary_axis string fme_start_angle string fme_text_string string fme_dataset string fme_type string fme_text_size string fme_rotation string fme_fill_color string fme_feature_type string csv_type string fme_secondary_axis string fme_geometry string fme_basename string"
 #!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP csv_dataset_group csv_existing_file_handling Dataset&quot; &quot;&quot; &quot;GUI CHOICE csv_existing_file_handling Yes%No Overwrite Existing File&quot; Yes &quot;GUI OPTIONAL NAMEDGROUP csv_fields_group csv_write_field_names Fields&quot; &quot;&quot; &quot;GUI LOOKUP_CHOICE csv_write_field_names If&lt;space&gt;Writing&lt;space&gt;First&lt;space&gt;Row,firstrow%Yes,yes%No,no Write Field Names Row&quot; firstrow "
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS="&quot;*{}$"
@@ -510,7 +510,7 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI PASSWORD_OR_ATTR FME_SERVER_PASSWORD FME_SERVER_PASSWORD:"
-#!   DEFAULT_VALUE="fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMszu+XyYitrQWmSUI+9RuGkfLcr2Pjw/yMjwC9WdmlFU95jyp5zkZuI5yhLnvRaZ24m1H4KKfE2Qwf9GFHaCQD07STy8NEJ1Vrh//aeFkrBzZWCdccEpG+MWqdUsqba02FZNT/sGkTDHsR4A7CWWY+ZhEjlsaL0D3k0DWbxCHkc2K5TGSFrQX9dRr3c7Zbe1ZvxT8u/v30WUitSE91qEhSwRINCQjGamdPvtJFpPF54O5bWEHf+bIdnS9jHx9IbG6o+c5hQClCpD0YlOc/5bI2I9Y+CuRmHWQyVMlro68+EM1xll+7Xqv1oaWIFte+2HbKsbanoHobBEXF+Djuezav1wqb7w7jvgVYR)"
+#!   DEFAULT_VALUE=""
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
@@ -536,6 +536,11 @@
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI IGNORE OPTIONAL TEXT_OR_ATTR GITHUB_REPO GITHUB_REPO:"
 #!   DEFAULT_VALUE="federal-geospatial-platform/fgp-metadata-proxy"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE OPTIONAL TEXT_OR_ATTR SHARED_CUSTOMS SHARED_CUSTOMS:"
+#!   DEFAULT_VALUE="ATTRIBUTE_UNEXPOSER.fmx,AWS_TRANSLATE.fmx,Catalogue_Reader.fmx,METADATA_VALUE_MAPPER_ERROR_MANAGER.fmx,METADATA_VALUE_MAPPER_NG.fmx,METADATA_VALUE_MAPPER.fmx"
 #!   IS_STAND_ALONE="true"
 #! />
 #! </GLOBAL_PARAMETERS>
@@ -798,10 +803,10 @@
 #! <COMMENT
 #!   IDENTIFIER="232"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Uniquement les éléments qu&apos;on veut envoyer au niveau du FME Server&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="4274.2120119696428 -3706.180659036987"
-#!   TOP_LEFT="4274.2120119696428 -3706.180659036987"
-#!   BOTTOM_RIGHT="4728.2120119696428 -3707.180659036987"
-#!   BOUNDING_RECT="4274.2120119696428 -3706.180659036987 454 1"
+#!   POSITION="3788.7209595172853 -3605.2181109499675"
+#!   TOP_LEFT="3788.7209595172853 -3605.2181109499675"
+#!   BOTTOM_RIGHT="4242.7209595172853 -3606.2181109499675"
+#!   BOUNDING_RECT="3788.7209595172853 -3605.2181109499675 454 1"
 #!   ORDER="500000000000123"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -828,10 +833,10 @@
 #! <COMMENT
 #!   IDENTIFIER="249"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Voir&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://ddr-stage.services.geo.ca/fmerest/apidoc/v3/#!/resources/add_post_14&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600; text-decoration: underline;&quot;&gt;post&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;https://ddr-stage.services.geo.ca/fmerest/apidoc/v3/#!/resources/add_post_14&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600; text-decoration: underline;&quot;&gt;/resources/connections/&amp;lt; resour&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://ddr-stage.services.geo.ca/fmerest/apidoc/v3/#!/resources/add_post_14&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600; text-decoration: underline;&quot;&gt;ce &amp;gt;/filesys/&amp;lt; path &amp;gt;&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:large; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:large; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="6839.235517960482 -3335.0861865116935"
-#!   TOP_LEFT="6839.235517960482 -3335.0861865116935"
-#!   BOTTOM_RIGHT="7356.5736091792305 -3336.0861865116935"
-#!   BOUNDING_RECT="6839.235517960482 -3335.0861865116935 517.33809121874856 1"
+#!   POSITION="6872.8897006561547 -2936.0437345487126"
+#!   TOP_LEFT="6872.8897006561547 -2936.0437345487126"
+#!   BOTTOM_RIGHT="7390.2277918749032 -2937.0437345487126"
+#!   BOUNDING_RECT="6872.8897006561547 -2936.0437345487126 517.33809121874856 1"
 #!   ORDER="500000000000170"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -842,11 +847,11 @@
 #! />
 #! <COMMENT
 #!   IDENTIFIER="250"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Écriture dans &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Plugins/Python/python37/Python&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="5925.4896182347175 -3363.0618892416946"
-#!   TOP_LEFT="5925.4896182347175 -3363.0618892416946"
-#!   BOTTOM_RIGHT="6379.4896182347175 -3364.0618892416946"
-#!   BOUNDING_RECT="5925.4896182347175 -3363.0618892416946 454 1"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Écriture dans FME_SHAREDRESOURCE_ENGINE&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Plugins/Python/python37/Python&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5950.6640250684422 -2800.5562641854444"
+#!   TOP_LEFT="5950.6640250684422 -2800.5562641854444"
+#!   BOTTOM_RIGHT="6404.6640250684422 -2801.5562641854444"
+#!   BOUNDING_RECT="5950.6640250684422 -2800.5562641854444 454 1"
 #!   ORDER="500000000000171"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -858,10 +863,10 @@
 #! <COMMENT
 #!   IDENTIFIER="251"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Écriture dans&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;LOOKUP_TABLES/&amp;lt;XY&amp;gt;/&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="5916.9689600889469 -3815.7146864373931"
-#!   TOP_LEFT="5916.9689600889469 -3815.7146864373931"
-#!   BOTTOM_RIGHT="6370.9689600889469 -3816.7146864373931"
-#!   BOUNDING_RECT="5916.9689600889469 -3815.7146864373931 454 1"
+#!   POSITION="5950.6231427846196 -3416.6722344744121"
+#!   TOP_LEFT="5950.6231427846196 -3416.6722344744121"
+#!   BOTTOM_RIGHT="6404.6231427846196 -3417.6722344744121"
+#!   BOUNDING_RECT="5950.6231427846196 -3416.6722344744121 454 1"
 #!   ORDER="500000000000172"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -873,10 +878,10 @@
 #! <COMMENT
 #!   IDENTIFIER="252"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Écriture dans&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;JSON_TEMPLATES &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ou XML_TEMPLATES&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;selon le cas&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="5946.489184226999 -4230.7526206005141"
-#!   TOP_LEFT="5946.489184226999 -4230.7526206005141"
-#!   BOTTOM_RIGHT="6400.489184226999 -4231.7526206005141"
-#!   BOUNDING_RECT="5946.489184226999 -4230.7526206005141 454 1"
+#!   POSITION="5980.1433669226717 -3806.372077418785"
+#!   TOP_LEFT="5980.1433669226717 -3806.372077418785"
+#!   BOTTOM_RIGHT="6434.1433669226717 -3807.372077418785"
+#!   BOUNDING_RECT="5980.1433669226717 -3806.372077418785 454 1"
 #!   ORDER="500000000000173"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -884,6 +889,21 @@
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,0.78431372549019607"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="236"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="275"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Écriture dans FME_SHAREDRESOURCE_ENGINE &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Transformers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5988.6640250684422 -4283.120404280965"
+#!   TOP_LEFT="5988.6640250684422 -4283.120404280965"
+#!   BOTTOM_RIGHT="6442.6640250684422 -4284.120404280965"
+#!   BOUNDING_RECT="5988.6640250684422 -4283.120404280965 454 1"
+#!   ORDER="500000000000171"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="273"
 #! />
 #! </COMMENTS>
 #! <CONSTANTS>
@@ -900,7 +920,7 @@
 #!   BOUNDING_RECT="-12043.93715148621 -1676.5370356406265 4013.5831405245799 902.77930812393674"
 #!   STICKY="true"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
-#!   CONTENTS="46 36 38 31 216 37 32 45 217 39 219 35 41 33 40 28 218 34 "
+#!   CONTENTS="219 34 35 41 31 45 32 216 33 40 38 46 36 218 217 28 37 39 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -914,7 +934,7 @@
 #!   BOUNDING_RECT="-7683.3383911907395 -2345.4574829490516 4293.8380998853008 542.37421075325187"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="94 71 72 86 93 67 70 95 105 87 106 83 78 69 61 "
+#!   CONTENTS="93 86 87 71 106 69 67 61 83 72 78 105 70 95 94 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -928,7 +948,7 @@
 #!   BOUNDING_RECT="-7584.4758084472633 -848.82605582812585 4605.5133468254608 1248.0699131315639"
 #!   STICKY="true"
 #!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="12 9 6 15 222 221 225 223 19 220 228 227 10 18 8 90 224 7 13 17 14 226 3 20 "
+#!   CONTENTS="19 8 226 18 10 9 221 224 12 220 17 227 7 6 13 14 223 225 20 15 3 228 90 222 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -942,7 +962,7 @@
 #!   BOUNDING_RECT="3527.3976707952907 -5112.2169391933176 2356.1005985559632 362.37421075325187"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="141 143 142 134 140 130 111 "
+#!   CONTENTS="141 142 130 111 134 143 140 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -956,7 +976,7 @@
 #!   BOUNDING_RECT="-2709.6750205268763 -1312.4838127713217 2770.0561704877291 1726.8465769515685"
 #!   STICKY="true"
 #!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
-#!   CONTENTS="64 29 98 60 116 99 97 77 172 63 "
+#!   CONTENTS="60 97 116 99 63 98 29 172 77 64 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -970,7 +990,7 @@
 #!   BOUNDING_RECT="-3191.5949494378665 -3573.0954084060454 4663.1810809374283 660.82068575489529"
 #!   STICKY="true"
 #!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="190 178 193 186 184 196 182 188 185 183 181 191 192 180 179 195 189 "
+#!   CONTENTS="181 192 183 179 180 191 189 185 193 196 184 178 188 190 186 195 182 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -984,21 +1004,21 @@
 #!   BOUNDING_RECT="1826.9053553985259 -3702.772727499811 1041.2010417073884 608.13151054243326"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="125 129 23 "
+#!   CONTENTS="23 125 129 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
 #!   IDENTIFIER="199"
 #!   NAME="Transfert des éléments vers FME Server. On utilise l&apos;API pour intéragir avec les ressources ainsi que les repository"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="3364.0042282775767 -3146.146326328128"
+#!   TOP_LEFT="3364.0042282775767 -2677.9113944985597"
 #!   ORDER="500000000000143"
 #!   PALETTE_COLOR="Color5"
 #!   BOTTOM_RIGHT="9614.6794801281339 -6730.609758927777"
-#!   BOUNDING_RECT="3364.0042282775767 -3146.146326328128 6250.6752518505573 3584.463432599649"
+#!   BOUNDING_RECT="3364.0042282775767 -2677.9113944985597 6250.6752518505573 4052.6983644292172"
 #!   STICKY="true"
 #!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
-#!   CONTENTS="249 205 253 44 232 131 204 203 123 150 132 56 144 134 208 234 100 141 248 147 140 207 250 156 235 206 236 130 237 254 145 247 252 255 157 258 133 262 151 238 143 231 142 263 259 251 138 111 "
+#!   CONTENTS="205 232 265 151 251 250 236 138 259 258 268 141 203 133 157 234 266 150 231 56 130 134 237 238 267 273 156 255 123 44 144 252 100 143 206 140 269 145 254 262 111 264 142 208 253 275 263 132 247 249 235 131 204 207 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -1026,7 +1046,7 @@
 #!   BOUNDING_RECT="8696.0831803042493 -3533.6891830456757 634 2504.3129961394575"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.75294117647058822,0.90980392156862744,1"
-#!   CONTENTS="44 207 150 208 206 156 "
+#!   CONTENTS="207 150 206 44 208 156 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -1040,21 +1060,21 @@
 #!   BOUNDING_RECT="10515.848096881968 -4273.222161651046 1244.349878209965 1012.5162383202851"
 #!   STICKY="true"
 #!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
-#!   CONTENTS="51 136 113 112 101 168 135 137 "
+#!   CONTENTS="51 135 101 136 168 137 112 113 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
 #!   IDENTIFIER="248"
 #!   NAME="Création des urls pour uploader une ressource sur FME Server"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="5837.4078536670722 -3239.0526607968782"
+#!   TOP_LEFT="5871.0620363627449 -2663.4881733432712"
 #!   ORDER="500000000000169"
 #!   PALETTE_COLOR="Color9"
-#!   BOTTOM_RIGHT="6454.7459448858208 -4742.4460731093795"
-#!   BOUNDING_RECT="5837.4078536670722 -3239.0526607968782 617.33809121874856 1503.3934123125014"
+#!   BOTTOM_RIGHT="6488.4001275814935 -4711.585577394234"
+#!   BOUNDING_RECT="5871.0620363627449 -2663.4881733432712 617.33809121874856 2048.0974040509627"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="123 250 56 251 236 252 "
+#!   CONTENTS="252 251 275 273 250 56 236 123 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -1419,8 +1439,8 @@
 #!   IDENTIFIER="29"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="-1884.3273539118372 -1887.2088822442386"
-#!   BOUNDING_RECT="-1884.3273539118372 -1887.2088822442386 454 71"
+#!   POSITION="-2661.2378028162875 -1905.7088822442386"
+#!   BOUNDING_RECT="-2661.2378028162875 -1905.7088822442386 454 71"
 #!   ORDER="500000000000032"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1774,6 +1794,10 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -1786,6 +1810,10 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADDITIONAL_PARAMETERS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
@@ -1835,8 +1863,8 @@
 #!   IDENTIFIER="56"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="5954.9689600889469 -4036.9662489530183"
-#!   BOUNDING_RECT="5954.9689600889469 -4036.9662489530183 454 71"
+#!   POSITION="5988.6231427846196 -3637.9237969900373"
+#!   BOUNDING_RECT="5988.6231427846196 -3637.9237969900373 454 71"
 #!   ORDER="500000000000046"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1880,6 +1908,8 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1888,6 +1918,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="timestamp" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2351,8 +2382,8 @@
 #!   IDENTIFIER="98"
 #!   TYPE="AttributeKeeper"
 #!   VERSION="3"
-#!   POSITION="-1884.3273539118372 -2157.8882840343063"
-#!   BOUNDING_RECT="-1884.3273539118372 -2157.8882840343063 454 71"
+#!   POSITION="-2291.940125691729 -2297.314941691985"
+#!   BOUNDING_RECT="-2291.940125691729 -2297.314941691985 454 71"
 #!   ORDER="500000000000071"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -2716,8 +2747,8 @@
 #!   IDENTIFIER="123"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="5925.4487359508948 -3592.6901139023194"
-#!   BOUNDING_RECT="5925.4487359508948 -3592.6901139023194 454 71"
+#!   POSITION="5950.6231427846196 -3193.6476619393384"
+#!   BOUNDING_RECT="5950.6231427846196 -3193.6476619393384 454 71"
 #!   ORDER="500000000000089"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -2750,8 +2781,8 @@
 #!   IDENTIFIER="133"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="4931.4034672829139 -4671.4366201453995"
-#!   BOUNDING_RECT="4931.4034672829139 -4671.4366201453995 454 71"
+#!   POSITION="4532.3610153199334 -4253.1632066420298"
+#!   BOUNDING_RECT="4532.3610153199334 -4253.1632066420298 454 71"
 #!   ORDER="500000000000092"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -2761,6 +2792,8 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2771,7 +2804,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; filename SET_TO &lt;at&gt;Value&lt;openparen&gt;_list&lt;opencurly&gt;1&lt;closecurly&gt;&lt;closeparen&gt;  url SET_TO $(ENV)&lt;solidus&gt;fmerest&lt;solidus&gt;v3&lt;solidus&gt;repositories&lt;solidus&gt;PT_Harvester&lt;solidus&gt;items"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; filename SET_TO &lt;at&gt;Value&lt;openparen&gt;_list&lt;opencurly&gt;1&lt;closecurly&gt;&lt;closeparen&gt;  url SET_TO $(ENV)&lt;solidus&gt;fmerest&lt;solidus&gt;v3&lt;solidus&gt;repositories&lt;solidus&gt;PT_Harvester&lt;solidus&gt;items  _shared_customs SET_TO &lt;at&gt;LowerCase&lt;openparen&gt;$(SHARED_CUSTOMS)&lt;closeparen&gt;  filename_lower SET_TO &lt;at&gt;LowerCase&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_list&lt;opencurly&gt;1&lt;closecurly&gt;&lt;closeparen&gt;&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
@@ -2947,6 +2980,8 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2955,11 +2990,14 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2968,6 +3006,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
 #!     <FEAT_COLLAPSED COLLAPSED="2"/>
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2979,6 +3018,8 @@
 #!     <FEAT_COLLAPSED COLLAPSED="4"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2987,6 +3028,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
@@ -3029,6 +3071,8 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -3037,12 +3081,15 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="NOT_FOUND"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -3051,6 +3098,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_VALUE" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;filename&lt;closeparen&gt;"/>
@@ -3079,6 +3127,8 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -3087,12 +3137,15 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -3101,6 +3154,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -3163,6 +3217,8 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -3171,11 +3227,14 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -3184,6 +3243,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -3706,6 +3766,8 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -3714,10 +3776,11 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="items{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LOG_FEATURE" PARM_VALUE="LOG_RECORD"/>
 #!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
@@ -3781,13 +3844,13 @@
 #!   IDENTIFIER="231"
 #!   TYPE="TestFilter"
 #!   VERSION="2"
-#!   POSITION="4302.8369182187053 -3971.1826590569872"
-#!   BOUNDING_RECT="4302.8369182187053 -3971.1826590569872 454 71"
+#!   POSITION="3817.3458657663477 -3870.2201109699677"
+#!   BOUNDING_RECT="3817.3458657663477 -3870.2201109699677 454 71"
 #!   ORDER="500000000000028"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
-#!   OUTPUT_FT_ORDER="Python%csv&lt;solidus&gt;yaml%json_Templates%xml_Templates%Workspace%Custom%&lt;lt&gt;UNFILTERED&lt;gt&gt;"
+#!   OUTPUT_FT_ORDER="Python%csv&lt;solidus&gt;yaml%Templates&lt;space&gt;XML&lt;solidus&gt;JSON%Custom%Workspace%&lt;lt&gt;UNFILTERED&lt;gt&gt;"
 #! >
 #!     <OUTPUT_FEAT NAME="Python"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -3819,7 +3882,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <OUTPUT_FEAT NAME="Workspace"/>
+#!     <OUTPUT_FEAT NAME="Custom"/>
 #!     <FEAT_COLLAPSED COLLAPSED="3"/>
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -3829,7 +3892,7 @@
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <OUTPUT_FEAT NAME="Custom"/>
+#!     <OUTPUT_FEAT NAME="Workspace"/>
 #!     <FEAT_COLLAPSED COLLAPSED="4"/>
 #!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -3861,8 +3924,8 @@
 #!   IDENTIFIER="236"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="5954.9689600889469 -4514.1669669061412"
-#!   BOUNDING_RECT="5954.9689600889469 -4514.1669669061412 454 71"
+#!   POSITION="5988.6231427846196 -4115.1245149431606"
+#!   BOUNDING_RECT="5988.6231427846196 -4115.1245149431606 454 71"
 #!   ORDER="500000000000046"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -4007,8 +4070,8 @@
 #!   IDENTIFIER="258"
 #!   TYPE="Terminator"
 #!   VERSION="3"
-#!   POSITION="3817.3458657663477 -4591.3920677668311"
-#!   BOUNDING_RECT="3817.3458657663477 -4591.3920677668311 454 71"
+#!   POSITION="3657.3976707952907 -4548.1224043009652"
+#!   BOUNDING_RECT="3657.3976707952907 -4548.1224043009652 454 71"
 #!   ORDER="500000000000178"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -4034,6 +4097,183 @@
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_11"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="264"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="4422.0845059160902 -4694.744360530497"
+#!   BOUNDING_RECT="4422.0845059160902 -4694.744360530497 454 71"
+#!   ORDER="500000000000092"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sha" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; filename SET_TO &lt;at&gt;Value&lt;openparen&gt;_list&lt;opencurly&gt;1&lt;closecurly&gt;&lt;closeparen&gt;  url SET_TO $(ENV)&lt;solidus&gt;fmerest&lt;solidus&gt;v3&lt;solidus&gt;repositories&lt;solidus&gt;PT_Harvester&lt;solidus&gt;items"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_8"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="265"
+#!   TYPE="AttributeSplitter"
+#!   VERSION="4"
+#!   POSITION="4601.0075485370216 -4420.7031585800123"
+#!   BOUNDING_RECT="4601.0075485370216 -4420.7031585800123 454 71"
+#!   ORDER="500000000000182"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sha" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_NAME" PARM_VALUE="_shared_customs"/>
+#!     <XFORM_PARM PARM_NAME="DELIMITER" PARM_VALUE="&lt;comma&gt;"/>
+#!     <XFORM_PARM PARM_NAME="DROP_EMPTY_PARTS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="_shared_customs"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRIM_OPTION" PARM_VALUE="Both"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeSplitter_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="268"
+#!   TYPE="ListSearcher"
+#!   VERSION="7"
+#!   POSITION="5163.5131735932719 -4581.7765869966379"
+#!   BOUNDING_RECT="5163.5131735932719 -4581.7765869966379 454 71"
+#!   ORDER="500000000000185"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="FOUND"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sha" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="NOT_FOUND"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="sha" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUE" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;filename_lower&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_list_index"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="_shared_customs&lt;opencurly&gt;&lt;closecurly&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MATCHTYPE" PARM_VALUE="FIRST_MATCHED_ENCODED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListSearcher_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="273"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="5988.6231427846196 -4548.1224043009652"
+#!   BOUNDING_RECT="5988.6231427846196 -4548.1224043009652 454 71"
+#!   ORDER="500000000000089"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filename_lower" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url_raw" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_uuid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="token" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="sha" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_list{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_shared_customs{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; url SET_TO $(ENV)&lt;solidus&gt;fmerest&lt;solidus&gt;v3&lt;solidus&gt;resources&lt;solidus&gt;connections&lt;solidus&gt;FME_SHAREDRESOURCE_ENGINE&lt;solidus&gt;filesys&lt;solidus&gt;Transformers"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_9"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="271"
+#!   TYPE="Terminator"
+#!   VERSION="3"
+#!   POSITION="13631.893075687512 -5067.6182437500047"
+#!   BOUNDING_RECT="13631.893075687512 -5067.6182437500047 454 71"
+#!   ORDER="500000000000187"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="ERREUR:&lt;space&gt;Transfert&lt;space&gt;du&lt;space&gt;log&lt;space&gt;vers&lt;space&gt;FME&lt;space&gt;Server&lt;space&gt;impossible"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Terminator_8"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <FEAT_LINKS>
@@ -4668,11 +4908,11 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="147"
+#!   IDENTIFIER="266"
 #!   SOURCE_NODE="133"
-#!   TARGET_NODE="131"
+#!   TARGET_NODE="265"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -4833,7 +5073,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="187"
+#!   IDENTIFIER="278"
 #!   SOURCE_NODE="193"
 #!   TARGET_NODE="23"
 #!   SOURCE_PORT_DESC="fo 0 MERGED"
@@ -4866,7 +5106,7 @@
 #!   IDENTIFIER="247"
 #!   SOURCE_NODE="231"
 #!   TARGET_NODE="133"
-#!   SOURCE_PORT_DESC="fo 4 Custom"
+#!   SOURCE_PORT_DESC="fo 3 Custom"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
@@ -4897,6 +5137,66 @@
 #!   SOURCE_NODE="240"
 #!   TARGET_NODE="29"
 #!   SOURCE_PORT_DESC="fo 4 Custom"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="270"
+#!   SOURCE_NODE="264"
+#!   TARGET_NODE="131"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="269"
+#!   SOURCE_NODE="265"
+#!   TARGET_NODE="268"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="276"
+#!   SOURCE_NODE="268"
+#!   TARGET_NODE="273"
+#!   SOURCE_PORT_DESC="fo 0 FOUND"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="277"
+#!   SOURCE_NODE="273"
+#!   TARGET_NODE="44"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
@@ -5032,6 +5332,21 @@
 #!   SOURCE_NODE="83"
 #!   TARGET_NODE="86"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;OTHER&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="272"
+#!   SOURCE_NODE="102"
+#!   TARGET_NODE="271"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
@@ -5223,6 +5538,21 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
+#!   IDENTIFIER="267"
+#!   SOURCE_NODE="268"
+#!   TARGET_NODE="131"
+#!   SOURCE_PORT_DESC="fo 1 NOT_FOUND"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
 #!   IDENTIFIER="177"
 #!   SOURCE_NODE="160"
 #!   TARGET_NODE="176"
@@ -5285,8 +5615,8 @@
 #! <FEAT_LINK
 #!   IDENTIFIER="255"
 #!   SOURCE_NODE="231"
-#!   TARGET_NODE="133"
-#!   SOURCE_PORT_DESC="fo 3 Workspace"
+#!   TARGET_NODE="264"
+#!   SOURCE_PORT_DESC="fo 4 Workspace"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
@@ -5402,7 +5732,7 @@ FME_PYTHON_VERSION 37
 GUI IGNORE DestDataset_CSV2_1,CSV2_OUT_DATASET_GROUP_CSV2_1,CSV2_OUT_EXTENSION_CSV2_1,CSV2_OUT_FIELDS_GROUP_CSV2_1,CSV2_OUT_DELIMITER_CSV2_1,CSV2_OUT_ENCODING_GROUP_CSV2_1,CSV2_OUT_ENCODING_CSV2_1,CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1,CSV2_OUT_ADVANCED_GROUP_CSV2_1,CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1,CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1,CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1,CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1,CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1,CSV2_OUT_ROW_TERMINATION_CSV2_1,CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1,CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1
 DEFAULT_MACRO FME_SERVER_USERNAME 
 GUI TEXT FME_SERVER_USERNAME FME_SERVER_USERNAME:
-DEFAULT_MACRO FME_SERVER_PASSWORD fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMszu+XyYitrQWmSUI+9RuGkfLcr2Pjw/yMjwC9WdmlFU95jyp5zkZuI5yhLnvRaZ24m1H4KKfE2Qwf9GFHaCQD07STy8NEJ1Vrh//aeFkrBzZWCdccEpG+MWqdUsqba02FZNT/sGkTDHsR4A7CWWY+ZhEjlsaL0D3k0DWbxCHkc2K5TGSFrQX9dRr3c7Zbe1ZvxT8u/v30WUitSE91qEhSwRINCQjGamdPvtJFpPF54O5bWEHf+bIdnS9jHx9IbG6o+c5hQClCpD0YlOc/5bI2I9Y+CuRmHWQyVMlro68+EM1xll+7Xqv1oaWIFte+2HbKsbanoHobBEXF+Djuezav1wqb7w7jvgVYR)
+DEFAULT_MACRO FME_SERVER_PASSWORD 
 GUI PASSWORD FME_SERVER_PASSWORD FME_SERVER_PASSWORD:
 DEFAULT_MACRO OUT_CSV_FILE_DIR 
 GUI DIRNAME_SRC OUT_CSV_FILE_DIR OUT_CSV_FILE_DIR:
@@ -5414,6 +5744,8 @@ DEFAULT_MACRO IN_CSV_UPLOAD_FILE
 GUI OPTIONAL FILENAME_EXISTING IN_CSV_UPLOAD_FILE CSV|*.csv IN_CSV_UPLOAD_FILE:
 DEFAULT_MACRO GITHUB_REPO federal-geospatial-platform/fgp-metadata-proxy
 GUI IGNORE OPTIONAL TEXT GITHUB_REPO GITHUB_REPO:
+DEFAULT_MACRO SHARED_CUSTOMS ATTRIBUTE_UNEXPOSER.fmx,AWS_TRANSLATE.fmx,Catalogue_Reader.fmx,METADATA_VALUE_MAPPER_ERROR_MANAGER.fmx,METADATA_VALUE_MAPPER_NG.fmx,METADATA_VALUE_MAPPER.fmx
+GUI IGNORE OPTIONAL TEXT SHARED_CUSTOMS SHARED_CUSTOMS:
 INCLUDE [ if {{$(FME_SERVER_USERNAME)} == {}} { puts_real {Parameter 'FME_SERVER_USERNAME' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(FME_SERVER_PASSWORD)} == {}} { puts_real {Parameter 'FME_SERVER_PASSWORD' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(OUT_CSV_FILE_DIR)} == {}} { puts_real {Parameter 'OUT_CSV_FILE_DIR' must be given a value.}; exit 1; }; ]
@@ -5610,8 +5942,8 @@ FACTORY_DEF * TeeFactory FACTORY_NAME JSONFlattener_2_<Rejected> INPUT FEATURE_T
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_2    INPUT  FEATURE_TYPE JSONFlattener_2_OUTPUT    OUTPUT FEATURE_TYPE AttributeExposer_2_OUTPUT
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_2_e360a299_af5f_467b_87ab_0e7e6c21b2e02_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_2    INPUT  FEATURE_TYPE AttributeExposer_2_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_2_OUTPUT        @KeepAttributes(fme_encoded,token,_uuid,fme_pcre_match,"^fme_$(AttributeKeeper_2_e360a299_af5f_467b_87ab_0e7e6c21b2e02_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_2_1ae412a7_180a_409c_bbb6_8e7a58f2589321_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_2    INPUT  FEATURE_TYPE AttributeExposer_2_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_2_OUTPUT        @KeepAttributes(fme_encoded,token,_uuid,fme_pcre_match,"^fme_$(AttributeKeeper_2_1ae412a7_180a_409c_bbb6_8e7a58f2589321_LIST_EXP)")         }
 FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeKeeper_2 OUTPUT Splitter"   INPUT FEATURE_TYPE AttributeKeeper_2_OUTPUT   OUTPUT FEATURE_TYPE AttributeKeeper_2_OUTPUT_0_muAz4GqwTdk=   OUTPUT FEATURE_TYPE AttributeKeeper_2_OUTPUT_1_eKOY+pR0mH0=   OUTPUT FEATURE_TYPE AttributeKeeper_2_OUTPUT_2_IJuEPHV00PQ=
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller       INPUT  FEATURE_TYPE AttributeKeeper_2_OUTPUT_2_IJuEPHV00PQ=    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,https:<solidus><solidus>api.github.com<solidus>repos<solidus>$(GITHUB_REPO$encode)<solidus>contents<solidus>,HTTPCaller)"    HTTP_METHOD GET    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE HTTPCaller_Output    OUTPUT REJECTED FEATURE_TYPE HTTPCaller_<REJECTED>
@@ -5628,8 +5960,8 @@ FACTORY_DEF * TestFactory    FACTORY_NAME Terminator_4    INPUT  FEATURE_TYPE HT
 # -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME Tester    INPUT  FEATURE_TYPE JSONFragmenter_FRAGMENTS    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>name<closeparen>,Tester)" = FME_files ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE Tester_PASSED
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_34570da7_1ca1_421b_a7f6_50b9dfa0a1462_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE Tester_PASSED    OUTPUT { FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,git_url,token,_uuid,fme_pcre_match,"^fme_$(AttributeKeeper_34570da7_1ca1_421b_a7f6_50b9dfa0a1462_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_0a53a6b8_0c35_46ec_bf38_3e954986978821_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper    INPUT  FEATURE_TYPE Tester_PASSED    OUTPUT { FEATURE_TYPE AttributeKeeper_OUTPUT        @KeepAttributes(fme_encoded,git_url,token,_uuid,fme_pcre_match,"^fme_$(AttributeKeeper_0a53a6b8_0c35_46ec_bf38_3e954986978821_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller_2       INPUT  FEATURE_TYPE AttributeKeeper_OUTPUT    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>git_url<closeparen>?recursive=True,HTTPCaller_2)"    HTTP_METHOD GET    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE HTTPCaller_2_Output    OUTPUT REJECTED FEATURE_TYPE HTTPCaller_2_<REJECTED>
 # -------------------------------------------------------------------------
@@ -5666,8 +5998,8 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter_3 <lt>UNFILTERED<gt> Transfo
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE TestFilter_3_Custom    INPUT  FEATURE_TYPE TestFilter_3_Python    INPUT  FEATURE_TYPE TestFilter_3_csv<solidus>yaml    INPUT  FEATURE_TYPE TestFilter_3_Workspace    INPUT  FEATURE_TYPE TestFilter_3_Templates<space>XML<solidus>JSON    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "url_raw" "SET_TO" "https:<solidus><solidus>raw.githubusercontent.com<solidus>$(GITHUB_REPO$encode)<solidus>master<solidus>FME_files<solidus><at>Value<openparen>path<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_OUTPUT
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_4_9222cef7_7f61_4515_a20f_16d7865cf8ee2_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_4    INPUT  FEATURE_TYPE AttributeCreator_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_4_OUTPUT        @KeepAttributes(fme_encoded,path,sha,token,url_raw,_uuid,fme_pcre_match,"^fme_$(AttributeKeeper_4_9222cef7_7f61_4515_a20f_16d7865cf8ee2_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_4_e09b4458_e5b9_4299_adf7_1881f85d992621_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_4    INPUT  FEATURE_TYPE AttributeCreator_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_4_OUTPUT        @KeepAttributes(fme_encoded,path,sha,token,url_raw,_uuid,fme_pcre_match,"^fme_$(AttributeKeeper_4_e09b4458_e5b9_4299_adf7_1881f85d992621_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME Junction    INPUT  FEATURE_TYPE AttributeKeeper_2_OUTPUT_1_eKOY+pR0mH0=    OUTPUT FEATURE_TYPE Junction_Output
 # -------------------------------------------------------------------------
@@ -5681,16 +6013,16 @@ FACTORY_DEF * TeeFactory FACTORY_NAME JSONFlattener_3_<Rejected> INPUT FEATURE_T
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_5    INPUT  FEATURE_TYPE JSONFlattener_3_OUTPUT    OUTPUT FEATURE_TYPE AttributeExposer_5_OUTPUT
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_6_b69fee6d_abff_4370_93a6_70c91c3e38d92_LIST_EXP ";    foreach attr [split "items<opencurly><closecurly>.name"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_6    INPUT  FEATURE_TYPE AttributeExposer_5_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_6_OUTPUT        @KeepAttributes(fme_encoded,,fme_pcre_match,"^fme_$(AttributeKeeper_6_b69fee6d_abff_4370_93a6_70c91c3e38d92_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_6_34dce693_6d34_4879_83c6_50a9932d2b1b21_LIST_EXP ";    foreach attr [split "items<opencurly><closecurly>.name"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_6    INPUT  FEATURE_TYPE AttributeExposer_5_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_6_OUTPUT        @KeepAttributes(fme_encoded,,fme_pcre_match,"^fme_$(AttributeKeeper_6_34dce693_6d34_4879_83c6_50a9932d2b1b21_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller_6       INPUT  FEATURE_TYPE AttributeKeeper_2_OUTPUT_0_muAz4GqwTdk=    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,$(ENV)<solidus>fmerest<solidus>v3<solidus>resources<solidus>connections<solidus>FME_SHAREDRESOURCE_DATA<solidus>filesys<solidus>PT_Harvester<solidus>Versionning<solidus>versionning_log.csv,HTTPCaller_6)"    HTTP_METHOD GET    SAVE_FILE YES    OUTPUT_FILENAME "@EvaluateExpression(FDIV,STRING,$(OUT_CSV_FILE_DIR$encode)<backslash><at>Value<openparen>_uuid<closeparen>.csv,HTTPCaller_6)"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "<Unused>"    FILE_PATH_ATTR "_response_file_path"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE Authorization;@EvaluateExpression(FDIV,STRING_ENCODED,fmetoken<space>token=<at>Value<openparen>token<closeparen>,HTTPCaller_6) Accept;application<solidus>octet-stream    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_USERNAME$encode),HTTPCaller_6)"    AUTH_PASSWORD "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_PASSWORD$encode),HTTPCaller_6)"    AUTH_METHOD "BASIC"    TARGET_ATTRIBUTE_ENCODING <Unused>    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE HTTPCaller_6_Output    OUTPUT REJECTED FEATURE_TYPE HTTPCaller_6_<REJECTED>
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME SystemCaller    INPUT  FEATURE_TYPE HTTPCaller_6_<REJECTED>    OUTPUT FEATURE_TYPE SystemCaller_OUTPUT         @System(LOG_PREFIX,SystemCaller,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,DEL<space>$(OUT_CSV_FILE_DIR$encode)<backslash><at>Value<openparen>_uuid<closeparen>.csv,SystemCaller)")
 FACTORY_DEF * TeeFactory   FACTORY_NAME "SystemCaller OUTPUT Transformer Output Nuker"   INPUT FEATURE_TYPE SystemCaller_OUTPUT
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_3_ca6b8aa3_35a5_471b_a91c_567fb84173742_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_3    INPUT  FEATURE_TYPE HTTPCaller_6_Output    OUTPUT { FEATURE_TYPE AttributeKeeper_3_OUTPUT        @KeepAttributes(fme_encoded,_uuid,fme_pcre_match,"^fme_$(AttributeKeeper_3_ca6b8aa3_35a5_471b_a91c_567fb84173742_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_3_f464a9af_0ebb_40ee_a763_c1bb59b4283c21_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_3    INPUT  FEATURE_TYPE HTTPCaller_6_Output    OUTPUT { FEATURE_TYPE AttributeKeeper_3_OUTPUT        @KeepAttributes(fme_encoded,_uuid,fme_pcre_match,"^fme_$(AttributeKeeper_3_f464a9af_0ebb_40ee_a763_c1bb59b4283c21_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 MACRO FeatureReader_OUTPUT_PORTS_ENCODED 
 MACRO FeatureReader_DIRECTIVES PRESERVE_SOURCE_ENCODING,Yes,DATA_START_LINE,2,TRIM_FIELD_VALUE_QUALIFIERS,Yes,FEATURE_TYPE_NAME,FORMAT_NAME,SCAN_TYPES,Yes,DELIMITER,auto,FIELD_QUALIFIER_CHARACTER,<lt>quote<gt>,READ_SKIPPED_LINES,No,ADVANCED_GROUP,FME_DISCLOSURE_OPEN,SKIP_DUPLICATE_DELIMITERS,No,EXPOSE_ATTRS_GROUP,FME_DISCLOSURE_CLOSED,TRIM_FIELD_NAME_QUALIFIERS,Yes,ENCODING,utf-8,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,FIELD_QUALIFIER_ESCAPE_CHARACTER,<lt>quote<gt>,USE_CUSTOM_SCHEMA,NO,CASE_SENSITIVE_FIELD_NAMES,Yes,SCAN_ADDITIONAL_FIELDS,No,SCAN_MAX_ROWS,10000,FIELD_NAMES_LINE,1,ENFORCE_STRICT_SCHEMA,No,ENCODING_GROUP,FME_DISCLOSURE_OPEN
@@ -5756,8 +6088,8 @@ FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller_3       INPUT  FEATURE_TYPE
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TeeFactory FACTORY_NAME HTTPCaller_3_<Rejected> INPUT FEATURE_TYPE HTTPCaller_3_<REJECTED>  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, HTTPCaller_3<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
 # -------------------------------------------------------------------------
-Tcl2 proc AttributeSplitter_a58f8248_9651_4f72_bbd3_16f5cbd6b29c2_doSplit {} {    set splitDelimiter [FME_DecodeTextOrAttr {<solidus>}];    if { [regexp {^([1-9][0-9]*s)+$} $splitDelimiter] }    {       set splitWidths [split [regsub -all {s$} $splitDelimiter {}] s];       set source [FME_GetAttribute [FME_DecodeText {path}]];       set attrNum 0;       set listName [FME_DecodeText {_list}];       set attrPos 0;       set keepEmptyParts [string equal {No} {No}];       foreach width $splitWidths       {          set endPos [expr $attrPos + $width - 1];          set bit [string range $source $attrPos $endPos];          set part [string trim $bit];          if { $keepEmptyParts || $part != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $part;             incr attrNum;          };          incr attrPos $width;       };    }    else    {       set delimLength [string length $splitDelimiter];       set source [FME_GetAttribute [FME_DecodeText {path}]];       set keepEmptyParts [string equal {No} {No}];       set bits {};       set startIndex 0;       set nextIndex [string first $splitDelimiter $source $startIndex];       while {$nextIndex >= 0} {          lappend bits [string range $source $startIndex [expr $nextIndex-1]];          set startIndex [expr $nextIndex + $delimLength];          set nextIndex [string first $splitDelimiter $source $startIndex];       };       lappend bits [string range $source $startIndex end];       set listName [FME_DecodeText {_list}];       set attrNum 0;       foreach bit $bits       {          set trimmedPart [string trim $bit];          if { $keepEmptyParts || $trimmedPart != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $trimmedPart;             incr attrNum;          };       }    } }
-FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeSplitter    INPUT  FEATURE_TYPE HTTPCaller_3_Output    OUTPUT FEATURE_TYPE AttributeSplitter_OUTPUT         @Tcl2(AttributeSplitter_a58f8248_9651_4f72_bbd3_16f5cbd6b29c2_doSplit)
+Tcl2 proc AttributeSplitter_e97a6cc1_f9a9_4309_9298_3e3232b45f3c21_doSplit {} {    set splitDelimiter [FME_DecodeTextOrAttr {<solidus>}];    if { [regexp {^([1-9][0-9]*s)+$} $splitDelimiter] }    {       set splitWidths [split [regsub -all {s$} $splitDelimiter {}] s];       set source [FME_GetAttribute [FME_DecodeText {path}]];       set attrNum 0;       set listName [FME_DecodeText {_list}];       set attrPos 0;       set keepEmptyParts [string equal {No} {No}];       foreach width $splitWidths       {          set endPos [expr $attrPos + $width - 1];          set bit [string range $source $attrPos $endPos];          set part [string trim $bit];          if { $keepEmptyParts || $part != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $part;             incr attrNum;          };          incr attrPos $width;       };    }    else    {       set delimLength [string length $splitDelimiter];       set source [FME_GetAttribute [FME_DecodeText {path}]];       set keepEmptyParts [string equal {No} {No}];       set bits {};       set startIndex 0;       set nextIndex [string first $splitDelimiter $source $startIndex];       while {$nextIndex >= 0} {          lappend bits [string range $source $startIndex [expr $nextIndex-1]];          set startIndex [expr $nextIndex + $delimLength];          set nextIndex [string first $splitDelimiter $source $startIndex];       };       lappend bits [string range $source $startIndex end];       set listName [FME_DecodeText {_list}];       set attrNum 0;       foreach bit $bits       {          set trimmedPart [string trim $bit];          if { $keepEmptyParts || $trimmedPart != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $trimmedPart;             incr attrNum;          };       }    } }
+FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeSplitter    INPUT  FEATURE_TYPE HTTPCaller_3_Output    OUTPUT FEATURE_TYPE AttributeSplitter_OUTPUT         @Tcl2(AttributeSplitter_e97a6cc1_f9a9_4309_9298_3e3232b45f3c21_doSplit)
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME TestFilter_5    INPUT  FEATURE_TYPE AttributeSplitter_OUTPUT    OUTPUT FEATURE_TYPE TestFilter_5_TESTFILTERINPUTLINE_0
 FACTORY_DEF * TestFactory FACTORY_NAME TestFilter_5_Condition_1 INPUT FEATURE_TYPE TestFilter_5_TESTFILTERINPUTLINE_0 CASE_INSENSITIVE_TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>path<closeparen>,TestFilter_5) BEGINS_WITH FME_Custom_Transformers<solidus> ENCODED CASE_INSENSITIVE_TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>path<closeparen>,TestFilter_5) ENDS_WITH .fmx ENCODED BOOLEAN_OPERATOR AND COMPOSITE_TEST_EXPR "1 AND 2" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE TestFilter_5_Custom OUTPUT FAILED FEATURE_TYPE TestFilter_5_TESTFILTERINPUTLINE_1
@@ -5775,10 +6107,23 @@ FACTORY_DEF * TeeFactory FACTORY_NAME TestFilter_5_<lt>UNFILTERED<gt> INPUT FEAT
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TestFactory    FACTORY_NAME Terminator_10    INPUT  FEATURE_TYPE TestFilter_5_<lt>UNFILTERED<gt>    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"ERREUR:<space>Perte<space>de<space>donn<u00e9>es<space>dans<space>le<space>second<space>filtre<space>sur<space>le<space>type<space>d<apos><u00e9>l<u00e9>ments<space><u00e0><space>transf<u00e9>rer<lf>")       @SupplyAttributes(_wb_termination_xformer,"Terminator_10")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"ERREUR:<space>Perte<space>de<space>donn<u00e9>es<space>dans<space>le<space>second<space>filtre<space>sur<space>le<space>type<space>d<apos><u00e9>l<u00e9>ments<space><u00e0><space>transf<u00e9>rer<lf>")
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_5    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE TestFilter_5_Custom    INPUT  FEATURE_TYPE TestFilter_5_Workspace    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "filename" "SET_TO" "<at>Value<openparen>_list<opencurly>1<closecurly><closeparen>" }      ATTR_ACTION { "" "url" "SET_TO" "$(ENV)<solidus>fmerest<solidus>v3<solidus>repositories<solidus>PT_Harvester<solidus>items" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_5_OUTPUT
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_8    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE TestFilter_5_Workspace    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "filename" "SET_TO" "<at>Value<openparen>_list<opencurly>1<closecurly><closeparen>" }      ATTR_ACTION { "" "url" "SET_TO" "$(ENV)<solidus>fmerest<solidus>v3<solidus>repositories<solidus>PT_Harvester<solidus>items" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_8_OUTPUT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_5    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE TestFilter_5_Custom    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "filename" "SET_TO" "<at>Value<openparen>_list<opencurly>1<closecurly><closeparen>" }      ATTR_ACTION { "" "url" "SET_TO" "$(ENV)<solidus>fmerest<solidus>v3<solidus>repositories<solidus>PT_Harvester<solidus>items" }      ATTR_ACTION { "" "_shared_customs" "SET_TO" "<at>LowerCase<openparen>$(SHARED_CUSTOMS$encode)<closeparen>" }      ATTR_ACTION { "" "filename_lower" "SET_TO" "<at>LowerCase<openparen><at>Value<openparen>_list<opencurly>1<closecurly><closeparen><closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_5_OUTPUT
+# -------------------------------------------------------------------------
+Tcl2 proc AttributeSplitter_2_3faea6ba_42a4_4abc_a560_a4bd882de45916_doSplit {} {    set splitDelimiter [FME_DecodeTextOrAttr {<comma>}];    if { [regexp {^([1-9][0-9]*s)+$} $splitDelimiter] }    {       set splitWidths [split [regsub -all {s$} $splitDelimiter {}] s];       set source [FME_GetAttribute [FME_DecodeText {_shared_customs}]];       set attrNum 0;       set listName [FME_DecodeText {_shared_customs}];       set attrPos 0;       set keepEmptyParts [string equal {No} {No}];       foreach width $splitWidths       {          set endPos [expr $attrPos + $width - 1];          set bit [string range $source $attrPos $endPos];          set part [string trim $bit];          if { $keepEmptyParts || $part != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $part;             incr attrNum;          };          incr attrPos $width;       };    }    else    {       set delimLength [string length $splitDelimiter];       set source [FME_GetAttribute [FME_DecodeText {_shared_customs}]];       set keepEmptyParts [string equal {No} {No}];       set bits {};       set startIndex 0;       set nextIndex [string first $splitDelimiter $source $startIndex];       while {$nextIndex >= 0} {          lappend bits [string range $source $startIndex [expr $nextIndex-1]];          set startIndex [expr $nextIndex + $delimLength];          set nextIndex [string first $splitDelimiter $source $startIndex];       };       lappend bits [string range $source $startIndex end];       set listName [FME_DecodeText {_shared_customs}];       set attrNum 0;       foreach bit $bits       {          set trimmedPart [string trim $bit];          if { $keepEmptyParts || $trimmedPart != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $trimmedPart;             incr attrNum;          };       }    } }
+FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeSplitter_2    INPUT  FEATURE_TYPE AttributeCreator_5_OUTPUT    OUTPUT FEATURE_TYPE AttributeSplitter_2_OUTPUT         @Tcl2(AttributeSplitter_2_3faea6ba_42a4_4abc_a560_a4bd882de45916_doSplit)
+# -------------------------------------------------------------------------
+# most of this is close to the code from listindexer but not exact beucase
+# we have a type LIST_ATTR rather than type LIST_NAME so need
+# to figure out the list name
+Tcl2 proc ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12_indexer {index prefix} {    set fullListAttrName [FME_DecodeText _shared_customs<opencurly><closecurly>];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME ListSearcher_2    INPUT  FEATURE_TYPE AttributeSplitter_2_OUTPUT    OUTPUT FEATURE_TYPE ListSearcher_2__IndexedFeatures___         "ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12" @SearchList(fme_encoded,"_shared_customs<opencurly><closecurly>","@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>filename_lower<closeparen>,ListSearcher_2)",FIRST_MATCHED_ENCODED)
+FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher_2__Tester    INPUT FEATURE_TYPE ListSearcher_2__IndexedFeatures___    TEST @Value(ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12) == "-1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_2_NOT_FOUND @RemoveAttributes(ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12)    OUTPUT FAILED FEATURE_TYPE  ListSearcher_2__IndexFound__
+FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher_2__Tester2    INPUT FEATURE_TYPE ListSearcher_2__IndexFound__    TEST NO == "NO"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_2_FOUND @CopyAttributes(_list_index, ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12) @RemoveAttributes(ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12)    OUTPUT FAILED FEATURE_TYPE  ListSearcher_2_FOUND  @Tcl2("ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12_indexer {@Value(ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12)} {<Unused>}") @CopyAttributes(_list_index, ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12) @RemoveAttributes(ListSearcher_2_6e82244e_0411_45d4_b344_b26654fba09f12)
 # -------------------------------------------------------------------------
 INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
-FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE AttributeCreator_5_OUTPUT    INPUT REFERENCEE FEATURE_TYPE AttributeKeeper_6_OUTPUT    REFERENCE_INFO $(FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE 1 1 AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE FeatureMerger_MERGED    OUTPUT INCOMPLETE FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR    OUTPUT REJECTED FEATURE_TYPE FeatureMerger_<REJECTED>
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE ListSearcher_2_NOT_FOUND    INPUT REFERENCER FEATURE_TYPE AttributeCreator_8_OUTPUT    INPUT REFERENCEE FEATURE_TYPE AttributeKeeper_6_OUTPUT    REFERENCE_INFO $(FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE 1 1 AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE FeatureMerger_MERGED    OUTPUT INCOMPLETE FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR    OUTPUT REJECTED FEATURE_TYPE FeatureMerger_<REJECTED>
 # -------------------------------------------------------------------------
 # The default behaviour is to abort on any feature entering the transformer.
 # If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
@@ -5791,14 +6136,16 @@ FACTORY_DEF * TestFactory    FACTORY_NAME Terminator_7    INPUT  FEATURE_TYPE Fe
 # most of this is close to the code from listindexer but not exact beucase
 # we have a type LIST_ATTR rather than type LIST_NAME so need
 # to figure out the list name
-Tcl2 proc ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2_indexer {index prefix} {    set fullListAttrName [FME_DecodeText items<opencurly><closecurly>.name];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME ListSearcher    INPUT  FEATURE_TYPE FeatureMerger_MERGED    INPUT  FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR    OUTPUT FEATURE_TYPE ListSearcher__IndexedFeatures___         "ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2" @SearchList(fme_encoded,"items<opencurly><closecurly>.name","@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>filename<closeparen>,ListSearcher)",FIRST_MATCHED_ENCODED)
-FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher__Tester    INPUT FEATURE_TYPE ListSearcher__IndexedFeatures___    TEST @Value(ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2) == "-1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_NOT_FOUND @RemoveAttributes(ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2)    OUTPUT FAILED FEATURE_TYPE  ListSearcher__IndexFound__
-FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher__Tester2    INPUT FEATURE_TYPE ListSearcher__IndexFound__    TEST NO == "NO"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_FOUND @CopyAttributes(_list_index, ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2) @RemoveAttributes(ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2)    OUTPUT FAILED FEATURE_TYPE  ListSearcher_FOUND  @Tcl2("ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2_indexer {@Value(ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2)} {<Unused>}") @CopyAttributes(_list_index, ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2) @RemoveAttributes(ListSearcher_250cdad3_b43d_4867_a6d0_068f55b7177d2)
+Tcl2 proc ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021_indexer {index prefix} {    set fullListAttrName [FME_DecodeText items<opencurly><closecurly>.name];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME ListSearcher    INPUT  FEATURE_TYPE FeatureMerger_MERGED    INPUT  FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR    OUTPUT FEATURE_TYPE ListSearcher__IndexedFeatures___         "ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021" @SearchList(fme_encoded,"items<opencurly><closecurly>.name","@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>filename<closeparen>,ListSearcher)",FIRST_MATCHED_ENCODED)
+FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher__Tester    INPUT FEATURE_TYPE ListSearcher__IndexedFeatures___    TEST @Value(ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021) == "-1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_NOT_FOUND @RemoveAttributes(ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021)    OUTPUT FAILED FEATURE_TYPE  ListSearcher__IndexFound__
+FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher__Tester2    INPUT FEATURE_TYPE ListSearcher__IndexFound__    TEST NO == "NO"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_FOUND @CopyAttributes(_list_index, ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021) @RemoveAttributes(ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021)    OUTPUT FAILED FEATURE_TYPE  ListSearcher_FOUND  @Tcl2("ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021_indexer {@Value(ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021)} {<Unused>}") @CopyAttributes(_list_index, ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021) @RemoveAttributes(ListSearcher_9e6d4bce_f2d7_46d1_909d_3c603670666021)
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller_10       INPUT  FEATURE_TYPE ListSearcher_NOT_FOUND    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,HTTPCaller_10)"    HTTP_METHOD POST    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,HTTPCaller_10)"    MULTIPART_UPLOAD NO    UPLOAD_CONTENT_TYPE "application/octet-stream"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE Authorization;@EvaluateExpression(FDIV,STRING_ENCODED,fmetoken<space>token=<at>Value<openparen>token<closeparen>,HTTPCaller_10) Content-Disposition;@EvaluateExpression(FDIV,STRING_ENCODED,attachment<semicolon><space>filename=<quote><at>Value<openparen>filename<closeparen><quote>,HTTPCaller_10) Content-Type;application<solidus>octet-stream    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_USERNAME$encode),HTTPCaller_10)"    AUTH_PASSWORD "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_PASSWORD$encode),HTTPCaller_10)"    AUTH_METHOD "BASIC"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE HTTPCaller_10_Output    OUTPUT REJECTED FEATURE_TYPE HTTPCaller_10_<REJECTED>
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller_8       INPUT  FEATURE_TYPE ListSearcher_FOUND    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen><solidus><at>Value<openparen>filename<closeparen>,HTTPCaller_8)"    HTTP_METHOD PUT    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,HTTPCaller_8)"    MULTIPART_UPLOAD NO    UPLOAD_CONTENT_TYPE "application/octet-stream"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE Authorization;@EvaluateExpression(FDIV,STRING_ENCODED,fmetoken<space>token=<at>Value<openparen>token<closeparen>,HTTPCaller_8) Content-Type;application<solidus>octet-stream    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_USERNAME$encode),HTTPCaller_8)"    AUTH_PASSWORD "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_PASSWORD$encode),HTTPCaller_8)"    AUTH_METHOD "BASIC"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE HTTPCaller_8_Output    OUTPUT REJECTED FEATURE_TYPE HTTPCaller_8_<REJECTED>
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_9    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE ListSearcher_2_FOUND    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "url" "SET_TO" "$(ENV)<solidus>fmerest<solidus>v3<solidus>resources<solidus>connections<solidus>FME_SHAREDRESOURCE_ENGINE<solidus>filesys<solidus>Transformers" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_9_OUTPUT
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_7    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE TestFilter_5_Templates<space>XML<solidus>JSON    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "filename" "SET_TO" "<at>Value<openparen>_list<opencurly>1<closecurly><closeparen>" }      ATTR_ACTION { "" "url" "SET_TO" "$(ENV)<solidus>fmerest<solidus>v3<solidus>resources<solidus>connections<solidus>FME_SHAREDRESOURCE_DATA<solidus>filesys<solidus>PT_Harvester<solidus><at>Value<openparen>_list<opencurly>0<closecurly><closeparen>?" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_7_OUTPUT
 # -------------------------------------------------------------------------
@@ -5806,17 +6153,17 @@ FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_3    COMMAND_PAR
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE TestFilter_5_Python    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "filename" "SET_TO" "<at>Value<openparen>_list<opencurly>2<closecurly><closeparen>" }      ATTR_ACTION { "" "url" "SET_TO" "$(ENV)<solidus>fmerest<solidus>v3<solidus>resources<solidus>connections<solidus>FME_SHAREDRESOURCE_ENGINE<solidus>filesys<solidus>Plugins<solidus>Python<solidus>python37<solidus>Python?" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_4_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller_5       INPUT  FEATURE_TYPE AttributeCreator_3_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_4_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_7_OUTPUT    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,HTTPCaller_5)"    HTTP_METHOD POST    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,HTTPCaller_5)"    MULTIPART_UPLOAD NO    UPLOAD_CONTENT_TYPE "application/octet-stream"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE Authorization;@EvaluateExpression(FDIV,STRING_ENCODED,fmetoken<space>token=<at>Value<openparen>token<closeparen>,HTTPCaller_5) Content-Disposition;@EvaluateExpression(FDIV,STRING_ENCODED,attachment<semicolon><space>filename=<quote><at>Value<openparen>filename<closeparen><quote>,HTTPCaller_5)    ADDITIONAL_URL_PARAMETERS createDirectories;true overwrite;true    AUTH_USERNAME "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_USERNAME$encode),HTTPCaller_5)"    AUTH_PASSWORD "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_PASSWORD$encode),HTTPCaller_5)"    AUTH_METHOD "BASIC"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE HTTPCaller_5_Output    OUTPUT REJECTED FEATURE_TYPE HTTPCaller_5_<REJECTED>
+FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller_5       INPUT  FEATURE_TYPE AttributeCreator_3_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_4_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_7_OUTPUT    INPUT  FEATURE_TYPE AttributeCreator_9_OUTPUT    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>url<closeparen>,HTTPCaller_5)"    HTTP_METHOD POST    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,HTTPCaller_5)"    MULTIPART_UPLOAD NO    UPLOAD_CONTENT_TYPE "application/octet-stream"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE Authorization;@EvaluateExpression(FDIV,STRING_ENCODED,fmetoken<space>token=<at>Value<openparen>token<closeparen>,HTTPCaller_5) Content-Disposition;@EvaluateExpression(FDIV,STRING_ENCODED,attachment<semicolon><space>filename=<quote><at>Value<openparen>filename<closeparen><quote>,HTTPCaller_5)    ADDITIONAL_URL_PARAMETERS createDirectories;true overwrite;true    AUTH_USERNAME "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_USERNAME$encode),HTTPCaller_5)"    AUTH_PASSWORD "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_PASSWORD$encode),HTTPCaller_5)"    AUTH_METHOD "BASIC"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE HTTPCaller_5_Output    OUTPUT REJECTED FEATURE_TYPE HTTPCaller_5_<REJECTED>
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME Logger_Logger    INPUT  FEATURE_TYPE HTTPCaller_5_<REJECTED>    INPUT  FEATURE_TYPE HTTPCaller_8_<REJECTED>    INPUT  FEATURE_TYPE HTTPCaller_10_<REJECTED>    OUTPUT FEATURE_TYPE Logger_LOGGED                  @Log(ENCODED, "Logger:<space>Transfert<space>vers<space>FME<space>Server<space>Impossible","20","20","",INFO,LOG_RECORD,Logger_5443c576_cff4_43e5_abc3_4c8fc16c9fb02)
+FACTORY_DEF * TeeFactory    FACTORY_NAME Logger_Logger    INPUT  FEATURE_TYPE HTTPCaller_5_<REJECTED>    INPUT  FEATURE_TYPE HTTPCaller_8_<REJECTED>    INPUT  FEATURE_TYPE HTTPCaller_10_<REJECTED>    OUTPUT FEATURE_TYPE Logger_LOGGED                  @Log(ENCODED, "Logger:<space>Transfert<space>vers<space>FME<space>Server<space>Impossible","20","20","",INFO,LOG_RECORD,Logger_04630d9a_6c87_4902_9678_8929528fb60721)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Logger LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE Logger_LOGGED
 # -------------------------------------------------------------------------
 DEFAULT_MACRO DateTimeStamper_EXPRESSION
 INCLUDE [    set expression {<at>DateTimeCast<openparen><at>DateTimeNow<openparen>local<closeparen><comma>datetime<closeparen>};    if { "NO" eq "NO" } {        set expression <at>TimeZoneRemove<openparen>$expression<closeparen>;    };    puts "MACRO DateTimeStamper_EXPRESSION $expression"; ]
 FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeStamper    INPUT  FEATURE_TYPE HTTPCaller_5_Output    INPUT  FEATURE_TYPE HTTPCaller_8_Output    INPUT  FEATURE_TYPE HTTPCaller_10_Output    OUTPUT FEATURE_TYPE DateTimeStamper_OUTPUT       @EvaluateExpression(ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV, timestamp, $(DateTimeStamper_EXPRESSION), DateTimeStamper)
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_5_829ee33a_e162_47d2_a7d9_597e051333612_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_5    INPUT  FEATURE_TYPE DateTimeStamper_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_5_OUTPUT        @KeepAttributes(fme_encoded,_uuid,path,sha,timestamp,token,fme_pcre_match,"^fme_$(AttributeKeeper_5_829ee33a_e162_47d2_a7d9_597e051333612_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_5_babd7a7d_efa2_4c1a_8283_4d56554cd84f21_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_5    INPUT  FEATURE_TYPE DateTimeStamper_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_5_OUTPUT        @KeepAttributes(fme_encoded,_uuid,path,sha,timestamp,token,fme_pcre_match,"^fme_$(AttributeKeeper_5_babd7a7d_efa2_4c1a_8283_4d56554cd84f21_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_6    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE AttributeKeeper_5_OUTPUT    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "user" "SET_TO" "$(FME_SERVER_USERNAME$encode)" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_6_OUTPUT
 # -------------------------------------------------------------------------
@@ -5844,8 +6191,14 @@ FACTORY_DEF * TestFactory    FACTORY_NAME Terminator_11    INPUT  FEATURE_TYPE F
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_4    INPUT  FEATURE_TYPE FeatureReader_2_<OTHER>    OUTPUT FEATURE_TYPE AttributeExposer_4_OUTPUT
 # -------------------------------------------------------------------------
 FACTORY_DEF * HTTPFactory    FACTORY_NAME HTTPCaller_7       INPUT  FEATURE_TYPE AttributeExposer_4_OUTPUT    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,$(ENV)<solidus>fmerest<solidus>v3<solidus>resources<solidus>connections<solidus>FME_SHAREDRESOURCE_DATA<solidus>filesys<solidus>PT_Harvester<solidus>Versionning,HTTPCaller_7)"    HTTP_METHOD POST    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>text_line_data<closeparen>,HTTPCaller_7)"    MULTIPART_UPLOAD NO    UPLOAD_CONTENT_TYPE "application/octet-stream"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE Authorization;@EvaluateExpression(FDIV,STRING_ENCODED,fmetoken<space>token=<at>Value<openparen>_feature_type<opencurly>0<closecurly>.token<closeparen>,HTTPCaller_7) Content-Disposition;attachment<semicolon><space>filename=<quote>versionning_log.csv<quote>    ADDITIONAL_URL_PARAMETERS createDirectories;true overwrite;true    AUTH_USERNAME "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_USERNAME$encode),HTTPCaller_7)"    AUTH_PASSWORD "@EvaluateExpression(FDIV,STRING,$(FME_SERVER_PASSWORD$encode),HTTPCaller_7)"    AUTH_METHOD "BASIC"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES Yes    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE HTTPCaller_7_Output    OUTPUT REJECTED FEATURE_TYPE HTTPCaller_7_<REJECTED>
+# -------------------------------------------------------------------------
+# The default behaviour is to abort on any feature entering the transformer.
+# If Workbench has set the _WB_BYPASS_TERMINATION macro to a value of "Yes",
+# then the features will instead be passed through with a feature type of
+# __WB_BYPASS_TERMINATOR__, which Workbench will send to a visualizer or
+# somesuch.
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
-FACTORY_DEF * TeeFactory FACTORY_NAME HTTPCaller_7_<Rejected> INPUT FEATURE_TYPE HTTPCaller_7_<REJECTED>  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, HTTPCaller_7<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+FACTORY_DEF * TestFactory    FACTORY_NAME Terminator_8    INPUT  FEATURE_TYPE HTTPCaller_7_<REJECTED>    TEST "$(_WB_BYPASS_TERMINATION)" == Yes    OUTPUT PASSED FEATURE_TYPE __WB_BYPASS_TERMINATOR__       @SupplyAttributes(_wb_termination_feature_type,@FeatureType())       @SupplyAttributes(ENCODED,_wb_termination_message,"ERREUR:<space>Transfert<space>du<space>log<space>vers<space>FME<space>Server<space>impossible")       @SupplyAttributes(_wb_termination_xformer,"Terminator_8")       @SupplyAttributes(_wb_termination_feature,Yes)    OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED,"ERREUR:<space>Transfert<space>du<space>log<space>vers<space>FME<space>Server<space>impossible")
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME SystemCaller_2    INPUT  FEATURE_TYPE HTTPCaller_7_Output    OUTPUT FEATURE_TYPE SystemCaller_2_OUTPUT         "toto"         @System(LOG_PREFIX,SystemCaller_2,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,DEL<space><space><solidus>F<space>$(OUT_CSV_FILE_DIR$encode)<backslash><at>Value<openparen>_feature_type<opencurly>0<closecurly>._uuid<closeparen>.csv,SystemCaller_2)")
 FACTORY_DEF * TeeFactory   FACTORY_NAME "SystemCaller_2 OUTPUT Transformer Output Nuker"   INPUT FEATURE_TYPE SystemCaller_2_OUTPUT
