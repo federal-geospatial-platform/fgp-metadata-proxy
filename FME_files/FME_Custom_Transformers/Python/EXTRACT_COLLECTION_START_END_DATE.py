@@ -2,6 +2,7 @@ import fme
 import fmeobjects
 import re
 from dateutil.parser import parse
+import datetime
 
 # Template Class Interface:
 # When using this class, make sure its name is set as the value of
@@ -29,7 +30,7 @@ class collection_end_start_date_extractor(object):
         
         6. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ --> 2012-09/2020-06
         
-        6.b 6. ^[1-2][0-9][0-9][0-9]-[0-1][0-9] - [1-2][0-9][0-9][0-9]-[0-1][0-9]$ --> 2012-09 - 2020-06
+        6.b ^[1-2][0-9][0-9][0-9]-[0-1][0-9] - [1-2][0-9][0-9][0-9]-[0-1][0-9]$ --> 2012-09 - 2020-06
         
         7. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ --> 2018-04-01 to 2021-06-24
         
@@ -39,13 +40,23 @@ class collection_end_start_date_extractor(object):
         
         10. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/present$ --> 2000-01-01/present
         
-        11. ^[1-2][0-9][0-9][0-9]-present$ -->  2000-present
+        11. ^[1-2][0-9][0-9][0-9]-present$ -->  2000-present or 2000 - present
         
         12. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]; [1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ -->2012-09/2016-06; 2018-09/2019-06
         
         13. ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9], [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ --> 1995-01-01, 2000-01-01/2006-12-31
         
-        14. ^([1-2][0-9][0-9][0-9],)+ ==> 2001,2002,2003 ...
+        14. ^([1-2][0-9][0-9][0-9],)+$ ==> 2001,2002,2003 ...
+        
+        15. ^[A-Z,a-z]* [1-2][0-9][0-9][0-9]$ ===> March 2010
+        
+        16. ^[A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9]$ ===> March 31, 2010
+        
+        17. ^[A-Z,a-z]* [1-2][0-9][0-9][0-9] - [A-Z,a-z]* [1-2][0-9][0-9][0-9]$ ====> March 2020 - April 2021
+        
+        18. ^[A-Z,a-z]* [1-2][0-9][0-9][0-9] to [A-Z,a-z]* [1-2][0-9][0-9][0-9]$ ====> March 2020 to April 2021
+        
+        19. ^[A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9] - [A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9]$ ====> March 31, 2020 to April 15, 2021
         
     """    
     
@@ -77,21 +88,15 @@ class collection_end_start_date_extractor(object):
                 date_extent_copy=date_extent
                 #Définir une de liste de chaine de caracètre à remplacer
                 remplacement_string=[[' through ',r'/'],[' onward',''],[' and on',''],[' and ',r'-'],[' census','']]
-                
-                
-                
                 date_extent=date_extent.lower()
                 for elem in remplacement_string:
                     date_extent=date_extent.replace(elem[0],elem[1])
-                    
-                    
-                
+
                 start_date=''
                 end_date=''
                 
                 if date_extent:
-                
-                    
+                                    
                     # 1. De type 2000
                     if re.match('^[1-2][0-9][0-9][0-9]$',date_extent):
                         start_date=date_extent
@@ -99,8 +104,7 @@ class collection_end_start_date_extractor(object):
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$',date_extent):
                         start_date=date_extent
                         end_date=start_date
-                     
-                     
+                          
                     # 2. De type 1999-2000
                     elif re.match('^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$',date_extent):
                         
@@ -123,7 +127,6 @@ class collection_end_start_date_extractor(object):
                         start_date=date_extent.split(r'-')[0]
                         end_date=date_extent.split(r'-')[-1]
                     
-                    
                     # 6. De type 2012-09/2020-06
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$',date_extent):
                         start_date=date_extent.split(r'/')[0]
@@ -134,7 +137,6 @@ class collection_end_start_date_extractor(object):
                         start_date=date_extent.split(r' - ')[0]
                         end_date=date_extent.split(r' - ')[1]
                     
-
                     #7. De type 2018-04-01 to 2021-06-24
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$',date_extent):
                         start_date=date_extent.split(r' to ')[0]
@@ -149,14 +151,12 @@ class collection_end_start_date_extractor(object):
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to present$',date_extent):
                         start_date=date_extent.replace(' to present','')
                     
-                    
                     #10. De type 2000-01-01/present
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/present$',date_extent):
                         start_date=date_extent.split(r'/')[0]
                     
-                    
                     #11.  De type 2000-present
-                    elif re.match('^[1-2][0-9][0-9][0-9]-present$',date_extent):
+                    elif re.match('^[1-2][0-9][0-9][0-9]\s*-\s*present$',date_extent):
                         start_date=date_extent.split('-')[0]
                     
                     #12. De type 2012-09/2016-06; 2018-09/2019-06
@@ -169,12 +169,60 @@ class collection_end_start_date_extractor(object):
                         start_date=date_extent.split(r',')[0]
                         end_date=date_extent.split(r'/')[1]
                     
-                    
                     #14. De type 2010, 2015, 2017, 2019
                    
-                    elif  re.match('^([1-2][0-9][0-9][0-9],)+',date_extent):
+                    elif re.match('^([1-2][0-9][0-9][0-9],)+',date_extent):
                         start_date=date_extent.split(r',')[0]
                         end_date=date_extent.split(r',')[-1]
+                    
+                    #15 de Type March 2020
+                    elif  re.match('^[A-Z,a-z]* [1-2][0-9][0-9][0-9]$',date_extent):
+                        try:
+                            datem = datetime.datetime.strptime(date_extent, "%B %Y")
+                            start_date = datem.strftime("%Y-%m-%d")
+                        except ValueError:
+                            feature.setAttribute('unmatched_date_extent',date_extent)
+                        
+                    #16 De type March 31, 2020
+                    elif  re.match('^[A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9]$',date_extent):
+                        try:
+                            datem = datetime.datetime.strptime(date_extent, "%B %d, %Y")
+                            start_date = datem.strftime("%Y-%m-%d")
+                        except ValueError:
+                            feature.setAttribute('unmatched_date_extent',date_extent)
+                        
+                    #17 de Type March 2020 - April 2021
+                    elif  re.match('^[A-Z,a-z]* [1-2][0-9][0-9][0-9] - [A-Z,a-z]* [1-2][0-9][0-9][0-9]$',date_extent):
+                        try:
+                            date_split = date_extent.split(' - ')
+                            datem = datetime.datetime.strptime(date_split[0], "%B %Y")
+                            start_date = datem.strftime("%Y-%m-%d")
+                            datem = datetime.datetime.strptime(date_split[1], "%B %Y")
+                            end_date = datem.strftime("%Y-%m-%d")
+                        except ValueError:
+                            feature.setAttribute('unmatched_date_extent',date_extent)
+                        
+                    #18 de Type March 2020 to April 2021
+                    elif  re.match('^[A-Z,a-z]* [1-2][0-9][0-9][0-9] to [A-Z,a-z]* [1-2][0-9][0-9][0-9]$',date_extent):
+                        try:
+                            date_split = date_extent.split(' to ')
+                            datem = datetime.datetime.strptime(date_split[0], "%B %Y")
+                            start_date = datem.strftime("%Y-%m-%d")
+                            datem = datetime.datetime.strptime(date_split[1], "%B %Y")
+                            end_date = datem.strftime("%Y-%m-%d")
+                        except ValueError:
+                            feature.setAttribute('unmatched_date_extent',date_extent)
+                        
+                    #19 de Type March 31, 2020 - April 15, 2021
+                    elif  re.match('^[A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9] - [A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9]$',date_extent):
+                        try:
+                            date_split = date_extent.split(' - ')
+                            datem = datetime.datetime.strptime(date_split[0], "%B %d, %Y")
+                            start_date = datem.strftime("%Y-%m-%d")
+                            datem = datetime.datetime.strptime(date_split[1], "%B %d, %Y")
+                            end_date = datem.strftime("%Y-%m-%d")
+                        except ValueError:
+                            feature.setAttribute('unmatched_date_extent',date_extent)
                     
                     else:
                         
@@ -198,12 +246,7 @@ class collection_end_start_date_extractor(object):
                     parse(end_date)
                 except:
                     feature.setAttribute('unmatched_date_extent',date_extent_copy)
-            
-            
-            
-            
-            
-            
+                       
             if re.match('^[1-2][0-9][0-9][0-9]$',start_date):
                start_date='%s-01-01'%(start_date)
             
