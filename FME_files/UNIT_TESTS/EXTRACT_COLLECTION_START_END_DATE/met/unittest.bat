@@ -54,12 +54,18 @@ set etalon=met\etalon%test_number%.ffs
 set resultat=met\resultat%test_number%.ffs
 set log=met\log_%test_number%.log
 set log_comp=met\log_comp_%test_number%.log
+SET feature_type=Manual_end_start_collection_date_NL
+SET csv_path=.\met
+SET pt_abbr=NL
 
 IF EXIST %log% del %log%
 IF EXIST %resultat%.ffs DEL %resultat%.ffs
 %fme% met\metrique_extract_collection_start_end_date.fmw ^
 --IN_FFS_FILE %source% ^
 --OUT_FFS_FILE %resultat% ^
+--FEATURE_TYPE %feature_type% ^
+--CSV_PATH %csv_path% ^
+--PT_ABBR %pt_abbr% ^
 --LOG_FILE %log% 
 SET Statut=%Statut%%ERRORLEVEL%
 
@@ -71,88 +77,7 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM ============================================================================
-REM ========================== TEST  #2   ======================================
-REM ============================================================================
-REM Second FME call with partially conformed records obtain only start date
-set test_number=2
-SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat%test_number%.ffs
-set log=met\log_%test_number%.log
-set log_comp=met\log_comp_%test_number%.log
-
-IF EXIST %log% del %log%
-IF EXIST %resultat%.ffs DEL %resultat%.ffs
-%fme% met\metrique_extract_collection_start_end_date.fmw ^
---IN_FFS_FILE %source% ^
---OUT_FFS_FILE %resultat% ^
---LOG_FILE %log% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison with the standard
-IF EXIST %log_comp% del %log_comp%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
---LOG_FILE %log_comp% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM ============================================================================
-REM ========================== TEST  #3   ======================================
-REM ============================================================================
-REM Third FME call with non conformed records where neither start date nor end date is obtained
-set test_number=3
-SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat%test_number%.ffs
-set log=met\log_%test_number%.log
-set log_comp=met\log_comp_%test_number%.log
-
-IF EXIST %log% del %log%
-IF EXIST %resultat%.ffs DEL %resultat%.ffs
-%fme% met\metrique_extract_collection_start_end_date.fmw ^
---IN_FFS_FILE %source% ^
---OUT_FFS_FILE %resultat% ^
---LOG_FILE %log% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison with the standard
-IF EXIST %log_comp% del %log_comp%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
---LOG_FILE %log_comp% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM ============================================================================
-REM ========================== TEST  #4   ======================================
-REM ============================================================================
-REM Third FME call with non conformed records where neither start date nor end date is obtained
-set test_number=4
-SET source=met\source%test_number%.ffs
-set etalon=met\etalon%test_number%.ffs
-set resultat=met\resultat%test_number%.ffs
-set log=met\log_%test_number%.log
-set log_comp=met\log_comp_%test_number%.log
-
-IF EXIST %log% del %log%
-IF EXIST %resultat%.ffs DEL %resultat%.ffs
-%fme% met\metrique_extract_collection_start_end_date.fmw ^
---IN_FFS_FILE %source% ^
---OUT_FFS_FILE %resultat% ^
---LOG_FILE %log% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-REM Comparison with the standard
-IF EXIST %log_comp% del %log_comp%
-%fme% met\Comparateur.fmw ^
---IN_ETALON_FILE %etalon% ^
---IN_RESULTAT_FILE %resultat% ^
---LOG_FILE %log_comp% 
-SET Statut=%Statut%%ERRORLEVEL%
-
-@IF [%Statut%] EQU [0000000001] (
+@IF [%Statut%] EQU [0000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
