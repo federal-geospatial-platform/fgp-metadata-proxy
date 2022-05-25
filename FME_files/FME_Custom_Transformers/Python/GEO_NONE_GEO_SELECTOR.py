@@ -67,7 +67,7 @@ def copy_attributes_in_resources(feature):
     """
     
     # Extract the original attribute
-#        web_pdb.set_trace()
+    #web_pdb.set_trace()
     id = FME_utils.feature_get_attribute(feature, "id", False)
     notes = FME_utils.feature_get_attribute(feature, "notes", False)
     title = FME_utils.feature_get_attribute(feature, "title", False)
@@ -304,6 +304,7 @@ class GeoNoneGeoSelector(object):
         """
     
         # Process each entry in the YAML
+#        web_pdb.set_trace()
         geo = False
         not_found_err = []
         for fme_att, directives in self.yaml_document.items():
@@ -323,21 +324,28 @@ class GeoNoneGeoSelector(object):
                         att_value = "No"
                 att_value = att_value.lower()
                
-                # Extract the value(s) to search. Create a set to enable set intersection
+                # Extract the value(s) to search. Create a list to help the search 
                 if directives[SEARCH_TYPE] == EQUALS:
-                    att_value_set = set([att_value])
+                    # A list with a unique value
+                    att_value_lst = [att_value]
                 else:
-                    # Extract the words from the attribute and create a set (words are separated by " ")
-                    att_value_set = FME_utils.create_set_of_word(att_value, separator = " ", lower = True)
+                    # A list where each word is an element of the list
+                    att_value_lst = att_value.split(" ")
                    
-                # Create the domain values to validate
+                # Create a list of taget domain values
                 domain_lst = self._create_domain(directives)
+                
                 # Check if value exist in domain list
-                domain_match = [domain for domain in domain_lst if domain in att_value]
-                if len(domain_match) >= 1:
+                for att_value in att_value_lst:
+                    if not found:
+                        for domain in domain_lst:
+                            if domain == att_value:
+                               found = True
+                               value = domain
+                               break
+                
+                if found:
                     # Match found
-                    found = True
-                    value = domain_match[0]  # Extract the element from the intersection
                     if directives[DOMAIN] in [LOOKUP_TABLE_FORMAT]:
                         # Validate that fgp_publish == oui in the CSV file
                         csv_feature = self.csv_features[value]
