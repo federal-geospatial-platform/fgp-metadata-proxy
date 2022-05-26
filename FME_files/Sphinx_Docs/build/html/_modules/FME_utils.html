@@ -38,6 +38,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AWS_TRANSLATE.html">AWS_TRANSLATE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DCAT_Reader.html">DCAT_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
@@ -60,6 +61,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_ATTRIBUTE_EXTRACTOR.html">NL_ATTRIBUTE_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_CATALOGUE_READER.html">NL_CATALOGUE_READER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
@@ -119,6 +122,8 @@
 <span class="kn">import</span> <span class="nn">traceback</span>
 <span class="kn">import</span> <span class="nn">urllib3</span>
 <span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">lxml</span>
 <span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span><span class="p">,</span> <span class="n">FTP_TLS</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NamedTuple</span>
 <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
@@ -126,6 +131,7 @@
 <span class="kn">from</span> <span class="nn">urllib3.util.retry</span> <span class="kn">import</span> <span class="n">Retry</span>
 <span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="kn">import</span> <span class="n">HTTPAdapter</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">fme</span>
     <span class="kn">import</span> <span class="nn">fmeobjects</span>
@@ -225,6 +231,49 @@
     <span class="n">spatial_type</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="FME_utils"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils">[docs]</a><span class="k">class</span> <span class="nc">FME_utils</span><span class="p">:</span>
+    
+<div class="viewcode-block" id="FME_utils.extract_url_html"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.extract_url_html">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">extract_url_html</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method reads the html source code from a website.</span>
+<span class="sd">        </span>
+<span class="sd">        The method will also pass the html source code into BeautifulSoup</span>
+<span class="sd">        in order to correct badly (when possible) badly formed html source code.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url_to_read : str</span>
+<span class="sd">            URL address to read.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The html source code read from the url.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;HTTP call: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">)</span>
+            <span class="n">html_str</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Unable to read the URL: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span>
+            
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># First try to parse the html code with html.parser</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_str</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+            <span class="n">xhtml_str</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Second try to parse the html with lxml</span>
+                <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_str</span><span class="p">,</span> <span class="s2">&quot;lxml&quot;</span><span class="p">)</span>
+                <span class="n">xhtml_str</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Unable to parse the html source code from: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+                <span class="n">xhtml_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                
+        <span class="k">return</span> <span class="n">xhtml_str</span></div>
     
 <div class="viewcode-block" id="FME_utils.extract_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.extract_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_name</span><span class="p">):</span>

@@ -38,6 +38,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AWS_TRANSLATE.html">AWS_TRANSLATE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DCAT_Reader.html">DCAT_Reader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
@@ -60,6 +61,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_ATTRIBUTE_EXTRACTOR.html">NL_ATTRIBUTE_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_CATALOGUE_READER.html">NL_CATALOGUE_READER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
@@ -182,7 +185,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="c1"># Extract the original attribute</span>
-<span class="c1">#        web_pdb.set_trace()</span>
+    <span class="c1">#web_pdb.set_trace()</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="n">notes</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;notes&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
@@ -418,8 +421,8 @@
 <span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     
-<span class="c1">#        web_pdb.set_trace()</span>
         <span class="c1"># Process each entry in the YAML</span>
+<span class="c1">#        web_pdb.set_trace()</span>
         <span class="n">geo</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">not_found_err</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">fme_att</span><span class="p">,</span> <span class="n">directives</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">yaml_document</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -430,23 +433,37 @@
             <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">att_name</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
                 <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">att_name</span><span class="p">)</span>
+                
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">att_value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                    <span class="c1"># Transform the boolean value into a string. True ==&gt; Yes and False ==&gt; No</span>
+                    <span class="k">if</span> <span class="n">att_value</span><span class="p">:</span>
+                        <span class="n">att_value</span> <span class="o">=</span> <span class="s2">&quot;Yes&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">att_value</span> <span class="o">=</span> <span class="s2">&quot;No&quot;</span>
                 <span class="n">att_value</span> <span class="o">=</span> <span class="n">att_value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
                
-                <span class="c1"># Extract the value(s) to search. Create a set to enable set intersection</span>
+                <span class="c1"># Extract the value(s) to search. Create a list to help the search </span>
                 <span class="k">if</span> <span class="n">directives</span><span class="p">[</span><span class="n">SEARCH_TYPE</span><span class="p">]</span> <span class="o">==</span> <span class="n">EQUALS</span><span class="p">:</span>
-                    <span class="n">att_value_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">att_value</span><span class="p">])</span>
+                    <span class="c1"># A list with a unique value</span>
+                    <span class="n">att_value_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">att_value</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="c1"># Extract the words from the attribute and create a set (words are separated by &quot; &quot;)</span>
-                    <span class="n">att_value_set</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">create_set_of_word</span><span class="p">(</span><span class="n">att_value</span><span class="p">,</span> <span class="n">separator</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+                    <span class="c1"># A list where each word is an element of the list</span>
+                    <span class="n">att_value_lst</span> <span class="o">=</span> <span class="n">att_value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
                    
-                <span class="c1"># Create the domain values to validate</span>
+                <span class="c1"># Create a list of taget domain values</span>
                 <span class="n">domain_lst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_domain</span><span class="p">(</span><span class="n">directives</span><span class="p">)</span>
+                
                 <span class="c1"># Check if value exist in domain list</span>
-                <span class="n">domain_match</span> <span class="o">=</span> <span class="p">[</span><span class="n">domain</span> <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">domain_lst</span> <span class="k">if</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">att_value</span><span class="p">]</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain_match</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">att_value</span> <span class="ow">in</span> <span class="n">att_value_lst</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">domain_lst</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">domain</span> <span class="o">==</span> <span class="n">att_value</span><span class="p">:</span>
+                               <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+                               <span class="n">value</span> <span class="o">=</span> <span class="n">domain</span>
+                               <span class="k">break</span>
+                
+                <span class="k">if</span> <span class="n">found</span><span class="p">:</span>
                     <span class="c1"># Match found</span>
-                    <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">domain_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Extract the element from the intersection</span>
                     <span class="k">if</span> <span class="n">directives</span><span class="p">[</span><span class="n">DOMAIN</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="n">LOOKUP_TABLE_FORMAT</span><span class="p">]:</span>
                         <span class="c1"># Validate that fgp_publish == oui in the CSV file</span>
                         <span class="n">csv_feature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csv_features</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>

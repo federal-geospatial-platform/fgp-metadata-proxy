@@ -42,6 +42,8 @@ autosummary_generate = True
 # Nom des classes à usurper 
 autodoc_mock_imports = ["fme", 
                         "fmeobjects",
+                        "BeautifulSoup",
+                        "lxml",
                         "yaml",
                         "dateutil",
                         "Python"]

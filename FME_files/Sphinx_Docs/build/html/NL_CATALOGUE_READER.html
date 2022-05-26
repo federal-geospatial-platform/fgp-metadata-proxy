@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GEOPORTAL_WEBLINK_ADDER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>NL_CATALOGUE_READER &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,8 +17,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="GMD_SECTION_DATA_EXTRACTION" href="GMD_SECTION_DATA_EXTRACTION.html" />
-    <link rel="prev" title="GEOPORTAL_WEBLINK_ADDER" href="GEOPORTAL_WEBLINK_ADDER.html" /> 
+    <link rel="next" title="MANUAL_GEOSPATIAL_SETTER" href="MANUAL_GEOSPATIAL_SETTER.html" />
+    <link rel="prev" title="NL_ATTRIBUTE_EXTRACTOR" href="NL_ATTRIBUTE_EXTRACTOR.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,11 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR_NG.html">GEOSPATIAL_DATA_VALIDATOR_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">GEOPORTAL_WEBLINK_ADDER_NG</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-geoportal-weblink-adder-ng-py">Documentation du code GEOPORTAL_WEBLINK_ADDER_NG.py</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER_NG.html">GEOPORTAL_WEBLINK_ADDER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
@@ -68,7 +64,11 @@
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NL_ATTRIBUTE_EXTRACTOR.html">NL_ATTRIBUTE_EXTRACTOR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="NL_CATALOGUE_READER.html">NL_CATALOGUE_READER</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NL_CATALOGUE_READER</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-nl-catalogue-reader-py">Documentation du code NL_CATALOGUE_READER.py</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
@@ -111,9 +111,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>GEOPORTAL_WEBLINK_ADDER_NG</li>
+      <li>NL_CATALOGUE_READER</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/GEOPORTAL_WEBLINK_ADDER_NG.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/NL_CATALOGUE_READER.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -121,76 +121,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="geoportal-weblink-adder-ng">
-<h1>GEOPORTAL_WEBLINK_ADDER_NG<a class="headerlink" href="#geoportal-weblink-adder-ng" title="Permalink to this headline"></a></h1>
+  <div class="section" id="nl-catalogue-reader">
+<h1>NL_CATALOGUE_READER<a class="headerlink" href="#nl-catalogue-reader" title="Permalink to this headline"></a></h1>
 <div class="section" id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
-<p><strong>Description </strong></p>
-<p>This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding a new ressources{} attribute list containing the web link and the other information contained in the CSV file.  Unvalid web links are log in the FME logger.</p>
-<p>Note: The web link to test is build from the <em>default key</em> <strong>url</strong> contained in the CSV and the attribute value from the <em>WEBLINK_WILDCARD</em> parameter.</p>
-<p><strong>Input Ports </strong></p>
+<p><strong>Description</strong></p>
+<p>This Custom Transformer is used to read the metadata of the NewFoundLand &amp; Labrador open data portal.  The portal is not offering a public APi to access the metdata information so, this custom transformer is reading all the XHTML code and flatten it in order to parse it and extract the needed metadata information.  The metadata extraction is done is two passes. The first passes to extrat the name and the url of each dataset.  A second pass is done to read the complete set of  metadata of each url (one url per dataset).</p>
+<p>Note: There is no option to read only one record with a specific identifier.</p>
+<p><strong>Input Ports</strong></p>
 <ul>
-<li>DATA_INPUT: The input metadata records to process.</li>
+<li>Input: One feature to start the extraction of all the records from the NewFoundLand &amp; Labrador open data portal.</li>
 </ul>
-<p><strong>Output Ports </strong></p>
+<p><strong>Output Ports</strong></p>
 <ul>
-<li>OUTPUT: The process output metdata records with the added web link resource.</li>
+<li>Résultats: All the records read from the NewFoundLand &amp; Labrador open data portal</li>
 </ul>
-<p><strong>Parameters</strong> </p>
+<p><strong>Parameters</strong></p>
 <ul>
-<li>
-<p>WEBLINK_WILDCARD: Name of the attribute containing the information to add to the web link in order to retreive the metadata record from the P-T portal</p>
-</li>
-<li>
-<p>URL_VALIDATION: Flag use to validate if the web link is well formed, online and responding. Can take 2 values: YES: validate the web link; NO: Do not validate th web link. Note: During testing, it is interesting to use NO as the validation is very slow;</p>
-</li>
-<li>
-<p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
-</li>
-<li>
-<p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
-</li>
-<li>
-<p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
-</li>
+<li>URL_ROOT: URL of the  NewFoundLand &amp; Labrador open data portal.</li>
+<li>URL_DATASET_GEO: URL prefix of the metadata of the geospatial datasets.</li>
+<li>URL_DATASET_NON_GEO: URL prefix of the metadata of the non geospatial datasets.</li>
 </ul>
 </div>
-<div class="section" id="documentation-du-code-geoportal-weblink-adder-ng-py">
-<h2>Documentation du code GEOPORTAL_WEBLINK_ADDER_NG.py<a class="headerlink" href="#documentation-du-code-geoportal-weblink-adder-ng-py" title="Permalink to this headline"></a></h2>
+<div class="section" id="documentation-du-code-nl-catalogue-reader-py">
+<h2>Documentation du code NL_CATALOGUE_READER.py<a class="headerlink" href="#documentation-du-code-nl-catalogue-reader-py" title="Permalink to this headline"></a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor" title="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor</span></code></a>()</p></td>
-<td><p>This class implement the design pattern: <em>Processing Composite Data</em></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#NL_CATALOGUE_READER.catalogue_reader_primary" title="NL_CATALOGUE_READER.catalogue_reader_primary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NL_CATALOGUE_READER.catalogue_reader_primary</span></code></a>(feature)</p></td>
+<td><p>This method reads the pimary catalogue of Newfoundland and Labrador</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#NL_CATALOGUE_READER.CatalogueReaderSecondary" title="NL_CATALOGUE_READER.CatalogueReaderSecondary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NL_CATALOGUE_READER.CatalogueReaderSecondary</span></code></a>()</p></td>
+<td><p>This class reads the html code of each datasets.</p></td>
 </tr>
 </tbody>
 </table>
-<span class="target" id="module-GEOPORTAL_WEBLINK_ADDER_NG"></span><dl class="py class">
-<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GEOPORTAL_WEBLINK_ADDER_NG.</span></span><span class="sig-name descname"><span class="pre">FeatureProcessor</span></span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor" title="Permalink to this definition"></a></dt>
+<span class="target" id="module-NL_CATALOGUE_READER"></span><dl class="py class">
+<dt class="sig sig-object py" id="NL_CATALOGUE_READER.CatalogueReaderSecondary">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">NL_CATALOGUE_READER.</span></span><span class="sig-name descname"><span class="pre">CatalogueReaderSecondary</span></span><a class="reference internal" href="_modules/NL_CATALOGUE_READER.html#CatalogueReaderSecondary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NL_CATALOGUE_READER.CatalogueReaderSecondary" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>This class implement the design pattern: <em>Processing Composite Data</em></p>
+<p>This class reads the html code of each datasets.</p>
+<p>Reading of the NL datasets.</p>
+<p>For NL there is no API to extract the information in JSON and/or XML like format.
+So we must read all the HTML code and perform HTML tag extraction to get the metadata.
+The <em>Requests</em> is not working properly so we implemented the standard library urllib.request
+to read the HTML code (used in the method FME_utils.extract_url_html)</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>This constructor method created a dictionary and a list to store the features.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor._add_resources">
-<span class="sig-name descname"><span class="pre">_add_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor._add_resources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor._add_resources" title="Permalink to this definition"></a></dt>
-<dd><p>Add the key value pair of the CSV into an extra resources{} list.</p>
-<p>Key-Value pair are added as is except if the key is URL than the web link
-is added as the value of the URL</p>
+<dt class="sig sig-object py" id="NL_CATALOGUE_READER.CatalogueReaderSecondary.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NL_CATALOGUE_READER.html#CatalogueReaderSecondary.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NL_CATALOGUE_READER.CatalogueReaderSecondary.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor of the method.</p>
+<p>Creates an empy self.feature to prevent a crash when there is no feature to process</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>feature</strong> (<em>FmeFeature</em>) – Feature object to process</p></li>
-<li><p><strong>test_url</strong> (<em>String</em>) – The URL address to add</p></li>
-</ul>
+<dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>None</p>
@@ -199,31 +185,12 @@ is added as the value of the URL</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.close" title="Permalink to this definition"></a></dt>
-<dd><p>Map the requested attribute.</p>
-<p>The following tasks are performed:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Extract the url to test (attribute test_url)</p></li>
-<li><p>Extract the flag for the URL validation</p></li>
-<li><p>Build the http to validate</p></li>
-<li><p>Add an extra resource at the end of the ressources{} list with the
-values from the CSV file and change the value of the URL with the
-url used to test the link</p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.input">
-<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEOPORTAL_WEBLINK_ADDER_NG.html#FeatureProcessor.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEOPORTAL_WEBLINK_ADDER_NG.FeatureProcessor.input" title="Permalink to this definition"></a></dt>
-<dd><p>Load the incoming features.</p>
-<p>The features from the CSV (_order=1) are stored in a dictionary according to the unique
-format name. The  metadata features (_order=2) or stored in a list.</p>
+<dt class="sig sig-object py" id="NL_CATALOGUE_READER.CatalogueReaderSecondary.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NL_CATALOGUE_READER.html#CatalogueReaderSecondary.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NL_CATALOGUE_READER.CatalogueReaderSecondary.close" title="Permalink to this definition"></a></dt>
+<dd><p>Read  the HTML code for each dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feature</strong> (<em>FmeFeature object</em>) – Feature object to process</p>
+<dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>None</p>
@@ -231,6 +198,34 @@ format name. The  metadata features (_order=2) or stored in a list.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="NL_CATALOGUE_READER.CatalogueReaderSecondary.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NL_CATALOGUE_READER.html#CatalogueReaderSecondary.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NL_CATALOGUE_READER.CatalogueReaderSecondary.input" title="Permalink to this definition"></a></dt>
+<dd><p>Stores the incoming attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FME Feature object</em>) – FME Feature to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NL_CATALOGUE_READER.catalogue_reader_primary">
+<span class="sig-prename descclassname"><span class="pre">NL_CATALOGUE_READER.</span></span><span class="sig-name descname"><span class="pre">catalogue_reader_primary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NL_CATALOGUE_READER.html#catalogue_reader_primary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NL_CATALOGUE_READER.catalogue_reader_primary" title="Permalink to this definition"></a></dt>
+<dd><p>This method reads the pimary catalogue of Newfoundland and Labrador</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FME Feature</em>) – FME feature to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -240,8 +235,8 @@ format name. The  metadata features (_order=2) or stored in a list.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="GEOPORTAL_WEBLINK_ADDER.html" class="btn btn-neutral float-left" title="GEOPORTAL_WEBLINK_ADDER" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="GMD_SECTION_DATA_EXTRACTION.html" class="btn btn-neutral float-right" title="GMD_SECTION_DATA_EXTRACTION" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="NL_ATTRIBUTE_EXTRACTOR.html" class="btn btn-neutral float-left" title="NL_ATTRIBUTE_EXTRACTOR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MANUAL_GEOSPATIAL_SETTER.html" class="btn btn-neutral float-right" title="MANUAL_GEOSPATIAL_SETTER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
