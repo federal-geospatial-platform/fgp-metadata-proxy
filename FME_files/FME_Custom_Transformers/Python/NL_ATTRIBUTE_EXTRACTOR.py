@@ -53,6 +53,7 @@ def extract_html_tags(feature):
     #web_pdb.set_trace()
     logger = fmeobjects.FMELogFile()
     ind = 0
+    # Loop over the flatten XHTML document in order to extract specific tags into FME attribute
     while ind != -1:
         tag = feature.getAttribute("_html_s_body.div{2}.div.dl.dt{%i}.strong" %ind)
         if tag is None:
