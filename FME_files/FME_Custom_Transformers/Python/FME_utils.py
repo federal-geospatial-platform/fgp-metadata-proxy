@@ -4,6 +4,8 @@ import sys, os
 import traceback
 import urllib3
 import yaml
+import urllib.request
+import lxml
 from ftplib import FTP, FTP_TLS
 from typing import NamedTuple
 from urllib.parse import urlparse
@@ -11,6 +13,7 @@ from urllib.parse import unquote
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 from datetime import datetime
+from bs4 import BeautifulSoup
 try:
     import fme
     import fmeobjects
@@ -110,6 +113,49 @@ class CsvGeoSpatialValidation(NamedTuple):
     spatial_type: str
 
 class FME_utils:
+    
+    @staticmethod
+    def extract_url_html(url_to_read):
+        """This method reads the html source code from a website.
+        
+        The method will also pass the html source code into BeautifulSoup
+        in order to correct badly (when possible) badly formed html source code.
+        
+        Parameters
+        ----------
+        url_to_read : str
+            URL address to read.
+        
+        Returns
+        -------
+        str
+            The html source code read from the url.
+        """
+        
+        logger = fmeobjects.FMELogFile()
+        try:
+            logger.logMessageString("HTTP call: {0}".format(url_to_read), fmeobjects.FME_INFORM)
+            response = urllib.request.urlopen(url_to_read)
+            html_str = response.read()
+        except:
+            logger.logMessageString("Unable to read the URL: {}".format(url_to_read), fmeobjects.FME_ERROR)
+            raise Exception
+            
+
+        try:
+            # First try to parse the html code with html.parser
+            soup = BeautifulSoup(html_str, "html.parser")
+            xhtml_str = soup.prettify()
+        except:
+            try:
+                # Second try to parse the html with lxml
+                soup = BeautifulSoup(html_str, "lxml")
+                xhtml_str = soup.prettify()
+            except:
+                logger.logMessageString("Unable to parse the html source code from: {}".format(url_to_read), fmeobjects.FME_ERROR)
+                xhtml_str = ""
+                
+        return xhtml_str
     
     @staticmethod
     def extract_attribute_list(feature, att_name):
