@@ -14,15 +14,16 @@ except:
 # Define FME attribute names
 
 ATT_URL_DETAIL = "_html_p_div{}.a.href"
+ATT_URL_DATASET_GEO = "_url_dataset_geo"
+ATT_URL_DATASET_NON_GEO = "_url_dataset_non_geo"
+ATT_URL_ERR = "_url_error"
 ATT_URL_ROOT = "_url_root"
 ATT_URL_SECONDARY_1 = "_html_p_div{}.a.href"
 ATT_URL_SECONDARY_2 = "_html_p_div{}.br.a.href"
-ATT_URL_DATASET_GEO = "_url_dataset_geo"
-ATT_URL_ERR = "_url_error"
-ATT_URL_DATASET_NON_GEO = "_url_dataset_non_geo"
 ATT_HTML_GEO_FULL = "_html_geo_full"
 ATT_HTML_NON_GEO_FULL = "_html_non_geo_full"
 ATT_HTML_DETAIL = "_html_detail"
+ATT_URL_METADATA = "url_metadata"
 
 
 
@@ -136,6 +137,7 @@ class CatalogueReaderSecondary(object):
             try:
                 xhtml = FME_utils.extract_url_html(web_url)
                 feature_cloned.setAttribute(ATT_HTML_DETAIL, xhtml)  # Set the HTML code
+                feature_cloned.setAttribute(ATT_URL_METADATA, web_url)
             except:
                 # Error occured during the url reading
                 feature_cloned.setAttribute(ATT_URL_ERR, web_url)  # Set an error code
