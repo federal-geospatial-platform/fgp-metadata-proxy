@@ -72,7 +72,7 @@ def extract_html_tags(feature):
                 att_fme = "sector"
                 
             elif tag == "Contact Email:":
-                att_fme = "org_contact.en"
+                att_fme = "contacts{0}.email"
                 
             elif tag == "Geographical Coverage:":
                 att_fme = "geographical_coverage"
