@@ -194,8 +194,12 @@ class FME_utils:
         regex_index = "\d+"
 
         if att_name.find("{}") != -1:
-            # The attribute to search is a list
-            att_name = "^" + att_name + "$"  # Regular expression exact match
+            if att_name.endswith("{}"):
+                # Search for all the attributes of a list (ex.: resources{})
+                att_name = "^" + att_name
+            else:
+                # Search for specific attributes of a list (ex.: resources{}.name)
+                att_name = "^" + att_name + "$"
             regex_search = att_name.replace("{}", regex_list)
             for feature_att in feature_atts:
                 att_lst = re.match(regex_search , feature_att)  # Check if attribute name is present
