@@ -7,6 +7,7 @@ from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 import json
 import sys
+import re
 from Python.FME_utils import FME_utils
 
 try:
@@ -36,6 +37,10 @@ SLUG_ID_UNKNOWN = "SLUG_id_unknown"
 
 # Define http return code
 HTTP_OK = 200
+
+# Define regex expresion
+REGEX_PATTERN = 'https://(.*?)/[a-z]+/'
+
 
 
 # Template Class Interface:
@@ -132,15 +137,8 @@ class ManageHttpCall(object):
         for json_dataset in datasets:
             try:
                 id = json_dataset["identifier"]
-                if "datasets/" in id:
-                   splitter = "datasets/"
-                else:
-                   splitter = "maps/"
-                txt_split = id.split(splitter)
-                if len(txt_split) == 2:
-                   dcat_id = txt_split[1]
-                else:
-                   dcat_id = DCAT_ID_UNKNOWN  # Unable to extract the ID
+                dcat_id = re.sub(REGEX_PATTERN, '', id)
+
                 str_json_dataset = json.dumps(json_dataset)  # From JSON to string
                 lst_key_val_att = [(DCAT_P_IDENTIFIER, dcat_id), 
                                    (STATUS_CODE, HTTP_OK), 
