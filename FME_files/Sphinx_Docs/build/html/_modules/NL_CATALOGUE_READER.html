@@ -45,6 +45,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMPTY_FORMAT_MAPPER.html">EMPTY_FORMAT_MAPPER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
@@ -132,15 +133,16 @@
 <span class="c1"># Define FME attribute names</span>
 
 <span class="n">ATT_URL_DETAIL</span> <span class="o">=</span> <span class="s2">&quot;_html_p_div</span><span class="si">{}</span><span class="s2">.a.href&quot;</span>
+<span class="n">ATT_URL_DATASET_GEO</span> <span class="o">=</span> <span class="s2">&quot;_url_dataset_geo&quot;</span>
+<span class="n">ATT_URL_DATASET_NON_GEO</span> <span class="o">=</span> <span class="s2">&quot;_url_dataset_non_geo&quot;</span>
+<span class="n">ATT_URL_ERR</span> <span class="o">=</span> <span class="s2">&quot;_url_error&quot;</span>
 <span class="n">ATT_URL_ROOT</span> <span class="o">=</span> <span class="s2">&quot;_url_root&quot;</span>
 <span class="n">ATT_URL_SECONDARY_1</span> <span class="o">=</span> <span class="s2">&quot;_html_p_div</span><span class="si">{}</span><span class="s2">.a.href&quot;</span>
 <span class="n">ATT_URL_SECONDARY_2</span> <span class="o">=</span> <span class="s2">&quot;_html_p_div</span><span class="si">{}</span><span class="s2">.br.a.href&quot;</span>
-<span class="n">ATT_URL_DATASET_GEO</span> <span class="o">=</span> <span class="s2">&quot;_url_dataset_geo&quot;</span>
-<span class="n">ATT_URL_ERR</span> <span class="o">=</span> <span class="s2">&quot;_url_error&quot;</span>
-<span class="n">ATT_URL_DATASET_NON_GEO</span> <span class="o">=</span> <span class="s2">&quot;_url_dataset_non_geo&quot;</span>
 <span class="n">ATT_HTML_GEO_FULL</span> <span class="o">=</span> <span class="s2">&quot;_html_geo_full&quot;</span>
 <span class="n">ATT_HTML_NON_GEO_FULL</span> <span class="o">=</span> <span class="s2">&quot;_html_non_geo_full&quot;</span>
 <span class="n">ATT_HTML_DETAIL</span> <span class="o">=</span> <span class="s2">&quot;_html_detail&quot;</span>
+<span class="n">ATT_URL_METADATA</span> <span class="o">=</span> <span class="s2">&quot;url_metadata&quot;</span>
 
 
 
@@ -254,6 +256,7 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">xhtml</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">extract_url_html</span><span class="p">(</span><span class="n">web_url</span><span class="p">)</span>
                 <span class="n">feature_cloned</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">ATT_HTML_DETAIL</span><span class="p">,</span> <span class="n">xhtml</span><span class="p">)</span>  <span class="c1"># Set the HTML code</span>
+                <span class="n">feature_cloned</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">ATT_URL_METADATA</span><span class="p">,</span> <span class="n">web_url</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="c1"># Error occured during the url reading</span>
                 <span class="n">feature_cloned</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">ATT_URL_ERR</span><span class="p">,</span> <span class="n">web_url</span><span class="p">)</span>  <span class="c1"># Set an error code</span>
