@@ -1,17 +1,17 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <WORKSPACE
 #    Command-line to run this workspace:
-#        "C:\Program Files (x86)\fme\fme2020.0_b20200\fme.exe" C:\Users\ngariepy\Documents\GitHub\fgp-metadata-proxy\FME_files\FME_Workspaces\Synchronisation_CKAN.fmw
+#        "C:\Program Files (x86)\fme\fme2020.0_b20200\fme.exe" C:\DATA\FGP_GITHUB\fgp-metadata-proxy\FME_files\FME_Workspaces\Synchronisation_CKAN.fmw
 #              --CKAN_KEY "********"
 #              --ENV "https:<solidus><solidus>staging.open.canada.ca<solidus>data<solidus>api<solidus>action"
-#              --P-T_ABBR ""
-#              --IN_OUT_WORKING_DIR "C:\Data/PT_Harvester"
+#              --P-T_ABBR "NL"
+#              --IN_OUT_WORKING_DIR "C:\Data\PT_Harvester"
 #    
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BEGIN_PYTHON=""
 #!   BEGIN_TCL=""
-#!   CATEGORY=""
-#!   DESCRIPTION=""
+#!   CATEGORY="FGP_TOOLS"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;Ce workbench permet de synchroniser le dépôt CKAN avec des fichiers CKAN en format JSON pour une province données. Le workbench lit le contenu du fichier CKAN et vérifie que la date de création des fichiers est ultérieur à la date des fichiers lus dans le dépôt CKAN. Si la date est ultérieure, les fichiers sont chargés dans le dépôt CKAN sinon les fichiers ne sont pas chargés dans le dépôt CKAN. Si durant le processus de chargement une erreur (format ou contenu) est détecté le fichier n&apos;est pas chargé et une description détaillée des erreurs est fournis.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&lt;em&gt;Aucun port d&apos;entrée&lt;/em&gt;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&lt;em&gt;Aucun port de sortie&lt;/em&gt;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;CKAN_KEY: La clé &lt;em&gt;secrète&lt;/em&gt; CKAN pour accéder au dépôt de de données CKAN.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ENV: L&apos;environnement CKAN pour lire et charger des données CKAN. Peut prendre deux valuers: OPENDATA-STAGING pour accéder à l&apos;environnement staging de CKAN; OPENDATA-PROD: pour accéder à l&apos;environnement de production de CKAN&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: L&apos;abbréviation de deux lettres de la province à traiter (ex.: ON pour Ontario)&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_OUT_WORKING_DIR: Le nom du répertoire de travail contenant les fichiers CKAN à charger. Ex.: si on inscrit &quot;C:\Data\PT_Harvester&quot; les fichiers CKAN doivent se trouver dans le répertoire: &quot;C:\DATA\PT_HARVESTER\xx\JSON_LOCAL&quot; ou &quot;xx&quot; est le code de deux lettres de la province.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
 #!   DESTINATION="NONE"
 #!   DESTINATION_ROUTING_FILE=""
 #!   DOC_EXTENTS="11049 2402.55"
@@ -20,20 +20,20 @@
 #!   END_TCL=""
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="2a0e740b-0488-4da1-b9ba-6755aacce3f1"
-#!   FME_DOCUMENT_PRIORGUID="114f6581-48c1-4c69-8f21-e4ad0de37d3d,cc078148-a516-4675-b4dc-f483c1967c57,8dabef09-e550-4e95-99d9-7b72c29945f1,9e5c819f-7ac5-4233-a8c3-cfb8a0d44af5,8574380c-1fc4-4043-8b61-d85fbd35e32e,a14bc780-2238-4c50-97ea-62b4d581e55d,1845f830-1e19-4f30-86ec-80045744d8eb,e186d031-90b3-4a6a-80a7-bf24a74499c9,973cc0ac-e43e-400e-941b-5d7e48ac014c,bdec3253-3b6a-4bf0-8407-a126b06a187e,005eccfd-5875-473f-a9f0-3b49566594a6,c8a41dcc-4ad1-46e6-897b-4ecda5516e47,52f8f61e-3941-4280-957f-c5566a211704,da7c0424-1109-475b-a06a-4fd5ca4be980,941e7781-b6db-4de8-946f-e87adb7b1968,f085514e-bf3e-46aa-9125-c6cf5ab0bf61,367aa134-0023-4508-8e10-1b01028404e4"
+#!   FME_DOCUMENT_GUID="a099667a-629a-4136-959e-1f67ceb9cc96"
+#!   FME_DOCUMENT_PRIORGUID="114f6581-48c1-4c69-8f21-e4ad0de37d3d,cc078148-a516-4675-b4dc-f483c1967c57,8dabef09-e550-4e95-99d9-7b72c29945f1,9e5c819f-7ac5-4233-a8c3-cfb8a0d44af5,8574380c-1fc4-4043-8b61-d85fbd35e32e,a14bc780-2238-4c50-97ea-62b4d581e55d,1845f830-1e19-4f30-86ec-80045744d8eb,e186d031-90b3-4a6a-80a7-bf24a74499c9,973cc0ac-e43e-400e-941b-5d7e48ac014c,bdec3253-3b6a-4bf0-8407-a126b06a187e,005eccfd-5875-473f-a9f0-3b49566594a6,c8a41dcc-4ad1-46e6-897b-4ecda5516e47,52f8f61e-3941-4280-957f-c5566a211704,da7c0424-1109-475b-a06a-4fd5ca4be980,941e7781-b6db-4de8-946f-e87adb7b1968,f085514e-bf3e-46aa-9125-c6cf5ab0bf61,367aa134-0023-4508-8e10-1b01028404e4,2a0e740b-0488-4da1-b9ba-6755aacce3f1,5f31cf55-d1af-46c3-8efb-18f436cbd9c1"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_REPROJECTION_ENGINE="FME"
 #!   FME_SERVER_SERVICES=""
 #!   FME_STROKE_MAX_DEVIATION="0"
-#!   HISTORY=""
+#!   HISTORY="Unknown,Unknown,Initial&lt;space&gt;version,21&lt;solidus&gt;06&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Added&lt;space&gt;documentation"
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-05-05T14:37:42"
+#!   LAST_SAVE_DATE="2022-06-21T13:13:07"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
-#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;Ce workbench permet de synchroniser le dépôt CKAN avec des fichiers CKAN en format JSON pour une province données. Le workbench lit le contenu du fichier CKAN et vérifie que la date de création des fichiers est ultérieur à la date des fichiers lus dans le dépôt CKAN. Si la date est ultérieure, les fichiers sont chargés dans le dépôt CKAN sinon les fichiers ne sont pas chargés dans le dépôt CKAN. Si durant le processus de chargement une erreur (format ou contenu) est détecté le fichier n&apos;est pas chargé et une description détaillée des erreurs est fournis.&#10;&#10;**Input Ports**&#10;&#10;  - _Aucun port d&apos;entrée_&#10;&#10;**Output Ports**&#10;&#10;  - _Aucun port de sortie_&#10;&#10;**Parameters**&#10; &#10;  - CKAN_KEY: La clé _secrète_ CKAN pour accéder au dépôt de de données CKAN.&#10;&#10;  - ENV: L&apos;environnement CKAN pour lire et charger des données CKAN. Peut prendre deux valuers: OPENDATA-STAGING pour accéder à l&apos;environnement staging de CKAN; OPENDATA-PROD: pour accéder à l&apos;environnement de production de CKAN&#10;&#10;  - P-T_ABBR: L&apos;abbréviation de deux lettres de la province à traiter (ex.: ON pour Ontario)&#10;&#10;  - IN_OUT_WORKING_DIR: Le nom du répertoire de travail contenant les fichiers CKAN à charger. Ex.: si on inscrit &quot;C:\Data\PT_Harvester&quot; les fichiers CKAN doivent se trouver dans le répertoire: &quot;C:\DATA\PT_HARVESTER\xx\JSON_LOCAL&quot; ou &quot;xx&quot; est le code de deux lettres de la province."
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOG_FEATURES="200"
 #!   MULTI_WRITER_DATASET_ORDER="BY_ID"
@@ -46,10 +46,10 @@
 #!   SOURCE="NONE"
 #!   SOURCE_ROUTING_FILE=""
 #!   TERMINATE_REJECTED="YES"
-#!   TITLE=""
+#!   TITLE="Synchronisation_CKAN"
 #!   USAGE=""
-#!   USE_MARKDOWN=""
-#!   VIEW_POSITION="-5322.8 -968.247"
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-7997.01 -814.557"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   ZOOM_SCALE="61"
@@ -68,7 +68,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="xlsx_drop_sheet No xlsx_trunc_sheet No xlsx_sheet_order &quot;&quot; xlsx_freeze_end_row &quot;&quot; xlsx_names_are_positions No xlsx_field_names_out Yes xlsx_start_col &quot;&quot; xlsx_start_row &quot;&quot; xlsx_offset_col &quot;&quot; xlsx_offset_row &quot;&quot; xlsx_raster_type PNG xlsx_table_writer_mode Insert xlsx_row_id_column &quot;&quot; xlsx_protect_sheet &quot;NO&quot; xlsx_protect_sheet_level &quot;&lt;Unused&gt;&quot; xlsx_protect_sheet_password &quot;&lt;Unused&gt;&quot; xlsx_protect_sheet_permissions &quot;&lt;Unused&gt;&quot;"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_dataset string(50) fme_db_operation string(width,xlsx_col_props) fme_sweep_angle number(width,xlsx_col_props) xlsx_row_id number(width,xlsx_col_props) xlsx_raster_height number(width,xlsx_col_props) fme_geometry string(50) fme_secondary_axis number(width,xlsx_col_props) fme_feature_type string(50) fme_color string(50) fme_type string(50) fme_primary_axis number(width,xlsx_col_props) xlsx_raster_scale_factor number(width,xlsx_col_props) fme_text_string string(50) fme_text_size number(width,xlsx_col_props) xlsx_raster_width number(width,xlsx_col_props) fme_fill_color string(50) xlsx_col_id number(width,xlsx_col_props) fme_start_angle number(width,xlsx_col_props) fme_basename string(50) fme_rotation number(width,xlsx_col_props) xlsx_row_formatting string(width,xlsx_col_props)"
+#!   EXPOSABLE_ATTRS="fme_type string(50) fme_start_angle number(width,xlsx_col_props) fme_secondary_axis number(width,xlsx_col_props) fme_dataset string(50) xlsx_raster_width number(width,xlsx_col_props) xlsx_col_id number(width,xlsx_col_props) fme_text_string string(50) fme_basename string(50) fme_color string(50) xlsx_raster_height number(width,xlsx_col_props) fme_feature_type string(50) fme_fill_color string(50) fme_primary_axis number(width,xlsx_col_props) xlsx_raster_scale_factor number(width,xlsx_col_props) fme_sweep_angle number(width,xlsx_col_props) fme_db_operation string(width,xlsx_col_props) xlsx_row_formatting string(width,xlsx_col_props) fme_rotation number(width,xlsx_col_props) xlsx_row_id number(width,xlsx_col_props) fme_geometry string(50) fme_text_size number(width,xlsx_col_props)"
 #!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP xlsx_layer_group xlsx_table_writer_mode%xlsx_field_names_out%xlsx_names_are_positions%xlsx_row_id_column%xlsx_truncate_group%xlsx_table_group%xlsx_rowcolumn_group%xlsx_protect_sheet%xlsx_advanced_group Sheet Settings&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_truncate_group xlsx_row_id%xlsx_drop_sheet%xlsx_trunc_sheet Drop/Truncate&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_rowcolumn_group xlsx_start_col%xlsx_start_row%xlsx_offset_col%xlsx_offset_row Start Position&quot; &quot;&quot; &quot;GUI ACTIVEDISCLOSUREGROUP xlsx_protect_sheet xlsx_protect_sheet_password%xlsx_protect_sheet_level%xlsx_protect_sheet_permissions Protect Sheet&quot; NO &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_advanced_group xlsx_sheet_order%xlsx_freeze_end_row%xlsx_raster_type Advanced&quot; &quot;&quot; &quot;GUI CHOICE xlsx_drop_sheet Yes%No Drop Existing Sheet/Named Range:&quot; No &quot;GUI CHOICE xlsx_trunc_sheet Yes%No Truncate Existing Sheet/Named Range:&quot; No &quot;GUI OPTIONAL RANGE_SLIDER xlsx_sheet_order 1%MAX Sheet Order (1 - n):&quot; &quot;&quot; &quot;GUI OPTIONAL RANGE_SLIDER xlsx_freeze_end_row 1%MAX Freeze First Row(s) (1 - n):&quot; &quot;&quot; &quot;GUI CHOICE xlsx_field_names_out Yes%No Output Field Names:&quot; Yes &quot;GUI CHOICE xlsx_names_are_positions Yes%No Use Attribute Names As Column Positions:&quot; No &quot;GUI OPTIONAL TEXT xlsx_start_col Named Range Start Column:&quot; &quot;&quot; &quot;GUI OPTIONAL INTEGER xlsx_start_row Named Range Start Row:&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT xlsx_offset_col Start Column:&quot; &quot;&quot; &quot;GUI OPTIONAL INTEGER xlsx_offset_row Start Row:&quot; &quot;&quot; &quot;GUI CHOICE xlsx_raster_type BMP%JPEG%PNG Raster Format:&quot; PNG &quot;GUI OPTIONAL PASSWORD_ENCODED xlsx_protect_sheet_password Password:&quot; &lt;Unused&gt; &quot;GUI ACTIVECHOICE_LOOKUP xlsx_protect_sheet_level Select&lt;space&gt;Only&lt;space&gt;Permissions,PROT_DEFAULT,xlsx_protect_sheet_permissions%View&lt;space&gt;Only&lt;space&gt;Permissions,PROT_ALL,xlsx_protect_sheet_permissions%Specific&lt;space&gt;Permissions Protection Level:&quot; &lt;Unused&gt; &quot;GUI OPTIONAL LOOKUP_LISTBOX xlsx_protect_sheet_permissions Select&lt;space&gt;locked&lt;space&gt;cells,PROT_SEL_LOCKED_CELLS%Select&lt;space&gt;unlocked&lt;space&gt;cells,PROT_SEL_UNLOCKED_CELLS%Format&lt;space&gt;cells,PROT_FORMAT_CELLS%Format&lt;space&gt;columns,PROT_FORMAT_COLUMNS%Format&lt;space&gt;rows,PROT_FORMAT_ROWS%Insert&lt;space&gt;columns,PROT_INSERT_COLUMNS%Insert&lt;space&gt;rows,PROT_INSERT_ROWS%Add&lt;space&gt;hyperlinks&lt;space&gt;to&lt;space&gt;unlocked&lt;space&gt;cells,PROT_INSERT_HYPERLINKS%Delete&lt;space&gt;unlocked&lt;space&gt;columns,PROT_DELETE_COLUMNS%Delete&lt;space&gt;unlocked&lt;space&gt;rows,PROT_DELETE_ROWS%Sort&lt;space&gt;unlocked&lt;space&gt;cells/rows/columns\,PROT_SORT%Use&lt;space&gt;Autofilter&lt;space&gt;on&lt;space&gt;unlocked&lt;space&gt;cells,PROT_AUTOFILTER%Use&lt;space&gt;PivotTable&lt;space&gt;&amp;&lt;space&gt;PivotChart&lt;space&gt;on&lt;space&gt;unlocked&lt;space&gt;cells,PROT_PIVOTTABLES%Edit&lt;space&gt;unlocked&lt;space&gt;objects,PROT_OBJECTS%Edit&lt;space&gt;unprotected&lt;space&gt;scenarios,PROT_SCENARIOS Specific Permissions:&quot; &lt;Unused&gt; &quot;GUI ACTIVECHOICE xlsx_table_writer_mode Insert,+xlsx_row_id_column+%Update,+xlsx_row_id_column+xlsx_row_id%Delete,+xlsx_row_id_column+xlsx_row_id Writer Mode:&quot; Insert &quot;GUI OPTIONAL ATTR xlsx_row_id_column ALLOW_NEW Row Number Attribute:&quot; &quot;&quot; "
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS="\\&quot;*{}$"
@@ -380,7 +380,7 @@
 #!   FEAT_GEOMTYPE="All"
 #!   POSITION="-1592.5608843352607 -2058.3508301296288"
 #!   BOUNDING_RECT="-1592.5608843352607 -2058.3508301296288 575.00106825772946 71"
-#!   ORDER="500000000000000"
+#!   ORDER="500000000001780"
 #!   COLLAPSED="false"
 #!   KEYWORD="XLSXW_1"
 #!   PARMS_EDITED="false"
@@ -530,21 +530,21 @@
 #! <DATASET
 #!   NAME="FeatureReader_4"
 #!   OVERRIDE="--FeatureReaderDataset_FeatureReader_4"
-#!   DATASET="$(FME_SHAREDRESOURCE_DATA)/PT_Harvester//JSON_LOCAL/*.json"
+#!   DATASET="FeatureReader_4/*.json"
 #! />
 #! </READER_DATASETS>
 #! <WRITER_DATASETS>
 #! <DATASET
 #!   NAME="XLSXW_1"
 #!   OVERRIDE="-XLSXW_1_DATASET{*}"
-#!   DATASET="$(FME_SHAREDRESOURCE_DATA)/PT_Harvester\\XLS"
+#!   DATASET="XLSXW_1/XLS"
 #! />
 #! </WRITER_DATASETS>
 #! </FMESERVER>
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI PASSWORD_OR_ATTR CKAN_KEY CKAN_KEY:"
-#!   DEFAULT_VALUE=""
+#!   DEFAULT_VALUE="fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMszeE//tgfUF+WT7DUHqAiiJ0GQHfida+/1HxIA/VFuAM0NYorl0F/LL50QSWlKe1p9DHWQAGiJ4Y9aoqvJM13D8yfKs4CPBl7w7ZigQ9/6FdcU91cwPUFS4sDazO9ehHnTcOEquLntGOQPckXpP7js5zWHMehCqJQlnt+9/JCnZ1iypvZXsnT+gYEYO4Eb5JBGOWuyIKAge+Zx0H7vIEX7v+eaa9U+jBlXbDRfLqe2kcilYSekisqwv28TTFxG+AT4JY2hZGjkjk962RNkrx9/JAZogaA13SYZw7XQYJCr3yt7rMhMHPgoaSws6m3TnMuSBF/IemC5SkpiGXS8UV0Eofxhsen8LHEm)"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
@@ -554,12 +554,12 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
-#!   DEFAULT_VALUE=""
+#!   DEFAULT_VALUE="NL"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME_SRC IN_OUT_WORKING_DIR IN_OUT_WORKING_DIR:"
-#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)/PT_Harvester"
+#!   DEFAULT_VALUE="C:\Data\PT_Harvester"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
@@ -734,7 +734,7 @@
 #!   BOUNDING_RECT="-7760.8322348383426 -1235.9019240698749 1801.383761969777 788.73953446592282"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="144 116 145 143 98 107 136 "
+#!   CONTENTS="144 98 116 143 145 136 107 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -748,7 +748,7 @@
 #!   BOUNDING_RECT="-8767.7869930500965 -2866.2133581885132 1707.936830532477 281.41722704254607"
 #!   STICKY="true"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
-#!   CONTENTS="170 152 154 153 135 "
+#!   CONTENTS="135 154 153 170 152 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -762,7 +762,7 @@
 #!   BOUNDING_RECT="-4549.0953355910378 -2421.7282158328826 1317.7135753249722 519.30975383573013"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="163 59 167 58 165 61 "
+#!   CONTENTS="59 61 167 163 58 165 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -776,7 +776,7 @@
 #!   BOUNDING_RECT="-10299.865756233314 -1472.4945490870339 2390.8140626860804 385.71640625497139"
 #!   STICKY="true"
 #!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="140 139 129 100 142 138 141 "
+#!   CONTENTS="140 139 129 138 100 142 141 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -790,7 +790,7 @@
 #!   BOUNDING_RECT="-5896.2238218906268 -1574.3640834202422 1072.6461743494456 616.83429915181864"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="155 158 148 "
+#!   CONTENTS="148 155 158 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -935,7 +935,7 @@
 #!   TYPE="Catalogue Reader"
 #!   VERSION="1"
 #!   POSITION="-7710.8322348383426 -1610.9039240898751"
-#!   BOUNDING_RECT="-7710.8322348383426 -1610.9039240898751 601 71"
+#!   BOUNDING_RECT="-7710.8322348383426 -1610.9039240898751 589.85938576559056 71"
 #!   ORDER="500000000001714"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -1526,7 +1526,7 @@
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="error"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;import&lt;space&gt;ckanapi&lt;lf&gt;import&lt;space&gt;json&lt;lf&gt;import&lt;space&gt;time&lt;lf&gt;import&lt;space&gt;sys&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#time.sleep&lt;openparen&gt;15&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Generate&lt;space&gt;payload&lt;space&gt;from&lt;space&gt;file&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;payload=json.load&lt;openparen&gt;open&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;path_to_file&lt;apos&gt;&lt;closeparen&gt;&lt;comma&gt;&lt;apos&gt;r&lt;apos&gt;&lt;comma&gt;encoding=&lt;apos&gt;utf-8&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Connection&lt;space&gt;to&lt;space&gt;TBS&lt;space&gt;Portal&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;ckanportal=ckanapi.RemoteCKAN&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;ckan_root&lt;apos&gt;&lt;closeparen&gt;&lt;comma&gt;apikey=feature.getAttribute&lt;openparen&gt;&lt;apos&gt;ckan_key&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;try:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Ajout&lt;space&gt;du&lt;space&gt;dataset&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;ckanportal.call_action&lt;openparen&gt;&lt;apos&gt;package_update&lt;apos&gt;&lt;comma&gt;payload&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;except:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;exc_type&lt;comma&gt;&lt;space&gt;exc&lt;comma&gt;&lt;space&gt;trace&lt;space&gt;=&lt;space&gt;sys.exc_info&lt;openparen&gt;&lt;closeparen&gt;&lt;space&gt;#&lt;space&gt;trace&lt;space&gt;is&lt;space&gt;the&lt;space&gt;traceback&lt;space&gt;object&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;r&lt;apos&gt;Package&lt;space&gt;was&lt;space&gt;not&lt;space&gt;found&lt;apos&gt;&lt;space&gt;in&lt;space&gt;str&lt;openparen&gt;exc&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;try:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;ckanportal.call_action&lt;openparen&gt;&lt;apos&gt;package_create&lt;apos&gt;&lt;comma&gt;payload&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;except:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;exc_type&lt;comma&gt;&lt;space&gt;exc&lt;comma&gt;&lt;space&gt;trace&lt;space&gt;=&lt;space&gt;sys.exc_info&lt;openparen&gt;&lt;closeparen&gt;&lt;space&gt;#&lt;space&gt;trace&lt;space&gt;is&lt;space&gt;the&lt;space&gt;traceback&lt;space&gt;object&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;error&lt;apos&gt;&lt;comma&gt;str&lt;openparen&gt;exc&lt;closeparen&gt;&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;else:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;error&lt;apos&gt;&lt;comma&gt;str&lt;openparen&gt;exc&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="import&lt;space&gt;fme&lt;lf&gt;import&lt;space&gt;fmeobjects&lt;lf&gt;import&lt;space&gt;ckanapi&lt;lf&gt;import&lt;space&gt;json&lt;lf&gt;import&lt;space&gt;time&lt;lf&gt;import&lt;space&gt;sys&lt;lf&gt;#&lt;space&gt;Template&lt;space&gt;Function&lt;space&gt;interface:&lt;lf&gt;#&lt;space&gt;When&lt;space&gt;using&lt;space&gt;this&lt;space&gt;function&lt;comma&gt;&lt;space&gt;make&lt;space&gt;sure&lt;space&gt;its&lt;space&gt;name&lt;space&gt;is&lt;space&gt;set&lt;space&gt;as&lt;space&gt;the&lt;space&gt;value&lt;space&gt;of&lt;lf&gt;#&lt;space&gt;the&lt;space&gt;&lt;apos&gt;Class&lt;space&gt;or&lt;space&gt;Function&lt;space&gt;to&lt;space&gt;Process&lt;space&gt;Features&lt;apos&gt;&lt;space&gt;transformer&lt;space&gt;parameter&lt;lf&gt;def&lt;space&gt;processFeature&lt;openparen&gt;feature&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#time.sleep&lt;openparen&gt;15&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Generate&lt;space&gt;payload&lt;space&gt;from&lt;space&gt;file&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;payload=json.load&lt;openparen&gt;open&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;path_to_file&lt;apos&gt;&lt;closeparen&gt;&lt;comma&gt;&lt;apos&gt;r&lt;apos&gt;&lt;comma&gt;encoding=&lt;apos&gt;utf-8&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Connection&lt;space&gt;to&lt;space&gt;TBS&lt;space&gt;Portal&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;ckanportal=ckanapi.RemoteCKAN&lt;openparen&gt;feature.getAttribute&lt;openparen&gt;&lt;apos&gt;ckan_root&lt;apos&gt;&lt;closeparen&gt;&lt;comma&gt;apikey=feature.getAttribute&lt;openparen&gt;&lt;apos&gt;ckan_key&lt;apos&gt;&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;try:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;#Ajout&lt;space&gt;du&lt;space&gt;dataset&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;ckanportal.call_action&lt;openparen&gt;&lt;apos&gt;package_update&lt;apos&gt;&lt;comma&gt;payload&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;except:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;exc_type&lt;comma&gt;&lt;space&gt;exc&lt;comma&gt;&lt;space&gt;trace&lt;space&gt;=&lt;space&gt;sys.exc_info&lt;openparen&gt;&lt;closeparen&gt;&lt;space&gt;#&lt;space&gt;trace&lt;space&gt;is&lt;space&gt;the&lt;space&gt;traceback&lt;space&gt;object&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;if&lt;space&gt;r&lt;apos&gt;Package&lt;space&gt;was&lt;space&gt;not&lt;space&gt;found&lt;apos&gt;&lt;space&gt;in&lt;space&gt;str&lt;openparen&gt;exc&lt;closeparen&gt;:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;try:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;ckanportal.call_action&lt;openparen&gt;&lt;apos&gt;package_create&lt;apos&gt;&lt;comma&gt;payload&lt;closeparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;except:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;exc_type&lt;comma&gt;&lt;space&gt;exc&lt;comma&gt;&lt;space&gt;trace&lt;space&gt;=&lt;space&gt;sys.exc_info&lt;openparen&gt;&lt;closeparen&gt;&lt;space&gt;#&lt;space&gt;trace&lt;space&gt;is&lt;space&gt;the&lt;space&gt;traceback&lt;space&gt;object&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;error&lt;apos&gt;&lt;comma&gt;str&lt;openparen&gt;exc&lt;closeparen&gt;&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;else:&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;feature.setAttribute&lt;openparen&gt;&lt;apos&gt;error&lt;apos&gt;&lt;comma&gt;str&lt;openparen&gt;exc&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt;"/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="processFeature"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PythonCaller_3"/>
@@ -2053,15 +2053,13 @@
 
 FME_PYTHON_VERSION 37
 GUI IGNORE DestDataset_XLSXW_1,XLSXW_OUT_FME_GROUP_NAMED1_XLSXW_1,XLSXW_OUT_OVERWRITE_FILE_XLSXW_1,XLSXW_OUT_TEMPLATEFILE_XLSXW_1,XLSXW_OUT_TEMPLATE_SHEET_XLSXW_1
-DEFAULT_MACRO FME_SHAREDRESOURCE_DATA C:\Data
-GUI IGNORE OPTIONAL DIRNAME_SRC FME_SHAREDRESOURCE_DATA FME Server Data Directory:
-DEFAULT_MACRO CKAN_KEY 
+DEFAULT_MACRO CKAN_KEY fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMszeE//tgfUF+WT7DUHqAiiJ0GQHfida+/1HxIA/VFuAM0NYorl0F/LL50QSWlKe1p9DHWQAGiJ4Y9aoqvJM13D8yfKs4CPBl7w7ZigQ9/6FdcU91cwPUFS4sDazO9ehHnTcOEquLntGOQPckXpP7js5zWHMehCqJQlnt+9/JCnZ1iypvZXsnT+gYEYO4Eb5JBGOWuyIKAge+Zx0H7vIEX7v+eaa9U+jBlXbDRfLqe2kcilYSekisqwv28TTFxG+AT4JY2hZGjkjk962RNkrx9/JAZogaA13SYZw7XQYJCr3yt7rMhMHPgoaSws6m3TnMuSBF/IemC5SkpiGXS8UV0Eofxhsen8LHEm)
 GUI PASSWORD CKAN_KEY CKAN_KEY:
 DEFAULT_MACRO ENV https:<solidus><solidus>staging.open.canada.ca<solidus>data<solidus>api<solidus>action
 GUI LOOKUP_CHOICE ENV OPENDATA-STAGING,https:<solidus><solidus>staging.open.canada.ca<solidus>data<solidus>api<solidus>action%OPENDATA-PROD,https:<solidus><solidus>open.canada.ca<solidus>data<solidus>api<solidus>action ENV:
-DEFAULT_MACRO P-T_ABBR 
+DEFAULT_MACRO P-T_ABBR NL
 GUI TEXT P-T_ABBR P-T_ABBR:
-DEFAULT_MACRO IN_OUT_WORKING_DIR $(FME_SHAREDRESOURCE_DATA)/PT_Harvester
+DEFAULT_MACRO IN_OUT_WORKING_DIR C:\Data\PT_Harvester
 GUI DIRNAME_SRC IN_OUT_WORKING_DIR IN_OUT_WORKING_DIR:
 DEFAULT_MACRO IN_JSON_DIR $(IN_OUT_WORKING_DIR)/$(P-T_ABBR)/JSON_LOCAL
 GUI IGNORE OPTIONAL MULTIDIRECTORY IN_JSON_DIR INCLUDE_WEB_BROWSER% IN_JSON_DIR:
@@ -2069,6 +2067,8 @@ DEFAULT_MACRO OUT_XLS_SYNCH_ISSUE_DIR $(IN_OUT_WORKING_DIR)\$(P-T_ABBR)\XLS
 GUI IGNORE OPTIONAL DIRNAME_SRC OUT_XLS_SYNCH_ISSUE_DIR OUT_XLS_SYNCH_ISSUE_DIR:
 DEFAULT_MACRO IN_CSV_LOOKUP_TABLES_DIR $(IN_OUT_WORKING_DIR)<solidus>LOOKUP_TABLES
 GUI IGNORE OPTIONAL TEXT_EDIT_OR_NUM_MULTI_FEATURE IN_CSV_LOOKUP_TABLES_DIR MAX%MAX IN_CSV_LOOKUP_TABLES_DIR:
+DEFAULT_MACRO FME_SHAREDRESOURCE_DATA C:\Data
+GUI IGNORE OPTIONAL DIRNAME_SRC FME_SHAREDRESOURCE_DATA FME Server Data Directory:
 INCLUDE [ if {{$(CKAN_KEY)} == {}} { puts_real {Parameter 'CKAN_KEY' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(ENV)} == {}} { puts_real {Parameter 'ENV' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(P-T_ABBR)} == {}} { puts_real {Parameter 'P-T_ABBR' must be given a value.}; exit 1; }; ]
@@ -2171,13 +2171,14 @@ XLSXW_1_FANOUT_EXPRESSION @EvaluateExpression(FDIV,STRING_ENCODED,$(OUT_XLS_SYNC
 
 LOG_FILENAME "$(FME_MF_DIR)Synchronisation_CKAN.log"
 LOG_APPEND NO
-LOG_FILTER_MASK -19
+LOG_FILTER_MASK -1
 LOG_MAX_FEATURES 200
 LOG_MAX_RECORDED_FEATURES 200
 FME_REPROJECTION_ENGINE FME
 FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
 FME_GEOMETRY_HANDLING Enhanced
 FME_STROKE_MAX_DEVIATION 0
+MAPPING_FILE_ID Synchronisation_CKAN
 DEFAULT_MACRO DATASET_KEYWORD_XLSXW_1 XLSXW_1
 FME_PASSWORD_PARAMETER_LIST CKAN_KEY
 # -------------------------------------------------------------------------
@@ -2250,8 +2251,8 @@ FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator    COMMAND_PARM_
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME StringReplacer    INPUT  FEATURE_TYPE AttributeCreator_OUTPUT    USE_REGEX NO    CASE_SENSITIVE NO    SOURCE_ATTRIBUTES { ckan_root }    FIND_TEXT { "<solidus>api<solidus>action" }    REPLACE_TEXT { "" }    REPLACE_NO_MATCH { "_FME_NO_OP_" }    OUTPUT OUTPUT FEATURE_TYPE StringReplacer_OUTPUT
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_6_cedcd908_66cb_4a61_839c_c37d36f04ec40_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_6    INPUT  FEATURE_TYPE StringReplacer_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_6_OUTPUT        @KeepAttributes(fme_encoded,id,local_date,path_to_file,ckan_root,ckan_key,fme_pcre_match,"^fme_$(AttributeKeeper_6_cedcd908_66cb_4a61_839c_c37d36f04ec40_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_6_f70f6f18_a2cc_4065_9da6_08c9030c077e0_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_6    INPUT  FEATURE_TYPE StringReplacer_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_6_OUTPUT        @KeepAttributes(fme_encoded,id,local_date,path_to_file,ckan_root,ckan_key,fme_pcre_match,"^fme_$(AttributeKeeper_6_f70f6f18_a2cc_4065_9da6_08c9030c077e0_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer    INPUT  FEATURE_TYPE LOOKUP_TABLES_READER_NG_Output    OUTPUT FEATURE_TYPE AttributeExposer_OUTPUT
 # -------------------------------------------------------------------------
@@ -2294,8 +2295,8 @@ FACTORY_DEF * TestFactory    FACTORY_NAME Tester_6    INPUT  FEATURE_TYPE Attrib
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_10    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE Tester_6_PASSED    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "server_date" "SET_TO" "<at>Value<openparen>metadata_modified<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_10_OUTPUT
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO AttributeKeeper_2_d9ae78a0_835b_4acf_93bd_94f316c22fa20_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_2    INPUT  FEATURE_TYPE AttributeCreator_10_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_2_OUTPUT        @KeepAttributes(fme_encoded,id,server_date,fme_pcre_match,"^fme_$(AttributeKeeper_2_d9ae78a0_835b_4acf_93bd_94f316c22fa20_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO AttributeKeeper_2_c5c2ec55_a0aa_4c32_94e2_a61b237f02560_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME AttributeKeeper_2    INPUT  FEATURE_TYPE AttributeCreator_10_OUTPUT    OUTPUT { FEATURE_TYPE AttributeKeeper_2_OUTPUT        @KeepAttributes(fme_encoded,id,server_date,fme_pcre_match,"^fme_$(AttributeKeeper_2_c5c2ec55_a0aa_4c32_94e2_a61b237f02560_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
 FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME FeatureMerger    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE AttributeKeeper_6_OUTPUT    INPUT REFERENCEE FEATURE_TYPE AttributeKeeper_2_OUTPUT    REFERENCE_INFO $(FeatureMerger_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>id<closeparen>,FeatureMerger) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES NO    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE <Unused>    OUTPUT COMPLETE FEATURE_TYPE FeatureMerger_MERGED    OUTPUT INCOMPLETE FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR    OUTPUT REJECTED FEATURE_TYPE FeatureMerger_<REJECTED>
@@ -2310,8 +2311,8 @@ FACTORY_DEF * TestFactory    FACTORY_NAME Terminator_2    INPUT  FEATURE_TYPE Fe
 # -------------------------------------------------------------------------
 DEFAULT_MACRO DateTimeConverter_2_EXPRESSION_LIST
 INCLUDE [    set repairInput {};    if {{YES} eq {YES}} {       set repairInput "<comma>repair";    };    set inFormat {FME|ISO};    if { {} ne {} } {       set inFormat {};       if { [string first "<quote>" $inFormat] != -1 } {          set inFormat [string map {"<quote>" "<backslash><quote>"} $inFormat];       };    };    set outFormat {%Y%m%d%H%M%S};    if { [string first "<quote>" $outFormat] != -1 } {       set outFormat [string map {"<quote>" "<backslash><quote>"} $outFormat];    };    set parmList {};    set attrs {local_date server_date};    foreach attr $attrs {       lappend parmList $attr;       set funcAttr $attr;       if { [string first "<quote>" $attr] != -1 }       {          set funcAttr [string map {"<quote>" "<backslash><quote>"} $attr];          append funcAttr "<quote>";          set funcAttr "<quote>$funcAttr";       };       lappend parmList <at>DateTimeFormat<openparen><at>DateTimeParse<openparen><at>Value<openparen>$funcAttr<closeparen><comma><quote>$inFormat<quote>$repairInput<closeparen><comma><quote>$outFormat<quote><closeparen>;    };    puts "MACRO DateTimeConverter_2_EXPRESSION_LIST [join $parmList { }]"; ]
-Tcl2 proc DateTimeConverter_2_afe89635_6740_49c8_b388_32411d255b000_DateTimeConverter {} {    set attrs {local_date server_date};    set decodedAttrs {};    set attrVals {};    set attrNulls {};    set attrMissings {};    foreach attr $attrs {       set decodedAttr [FME_DecodeText $attr];       lappend decodedAttrs $decodedAttr;       lappend attrVals [FME_GetAttribute $decodedAttr];       lappend attrNulls [FME_IsAttributeNull $decodedAttr];       lappend attrExists [FME_AttributeExists $decodedAttr];    };    FME_Execute EvaluateExpression ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV $(DateTimeConverter_2_EXPRESSION_LIST) DateTimeConverter_2;    foreach attr $decodedAttrs oldAttrVal $attrVals oldAttrExists $attrExists oldAttrNull $attrNulls {       set newAttrVal [FME_GetAttribute $attr];       if {[string length $newAttrVal] == 0} {          if {{NO} eq {NO} || [string length $oldAttrVal] > 0} {             FME_SetAttribute fme_rejection_code "INVALID_INPUT";             break;          } elseif {!$oldAttrExists} {             FME_UnsetAttributes $attr;          } elseif {!$oldAttrNull} {             FME_SetAttribute $attr {};          };       }    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeConverter_2_1    INPUT  FEATURE_TYPE FeatureMerger_MERGED    OUTPUT FEATURE_TYPE ___TOREJECTOR___       @RenameAttributes(FME_STRICT, ___fme_rejection_code___,fme_rejection_code)       @Tcl2(DateTimeConverter_2_afe89635_6740_49c8_b388_32411d255b000_DateTimeConverter)
+Tcl2 proc DateTimeConverter_2_38140b59_7495_4a71_a50d_57b95ddf3ae00_DateTimeConverter {} {    set attrs {local_date server_date};    set decodedAttrs {};    set attrVals {};    set attrNulls {};    set attrMissings {};    foreach attr $attrs {       set decodedAttr [FME_DecodeText $attr];       lappend decodedAttrs $decodedAttr;       lappend attrVals [FME_GetAttribute $decodedAttr];       lappend attrNulls [FME_IsAttributeNull $decodedAttr];       lappend attrExists [FME_AttributeExists $decodedAttr];    };    FME_Execute EvaluateExpression ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV $(DateTimeConverter_2_EXPRESSION_LIST) DateTimeConverter_2;    foreach attr $decodedAttrs oldAttrVal $attrVals oldAttrExists $attrExists oldAttrNull $attrNulls {       set newAttrVal [FME_GetAttribute $attr];       if {[string length $newAttrVal] == 0} {          if {{NO} eq {NO} || [string length $oldAttrVal] > 0} {             FME_SetAttribute fme_rejection_code "INVALID_INPUT";             break;          } elseif {!$oldAttrExists} {             FME_UnsetAttributes $attr;          } elseif {!$oldAttrNull} {             FME_SetAttribute $attr {};          };       }    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeConverter_2_1    INPUT  FEATURE_TYPE FeatureMerger_MERGED    OUTPUT FEATURE_TYPE ___TOREJECTOR___       @RenameAttributes(FME_STRICT, ___fme_rejection_code___,fme_rejection_code)       @Tcl2(DateTimeConverter_2_38140b59_7495_4a71_a50d_57b95ddf3ae00_DateTimeConverter)
 FACTORY_DEF * TestFactory    FACTORY_NAME DateTimeConverter_2_Rejector    INPUT FEATURE_TYPE ___TOREJECTOR___    TEST @Value(fme_rejection_code) != ""    FEATURE_TABLE_SHIM_SUPPORT Yes    OUTPUT PASSED FEATURE_TYPE DateTimeConverter_2_<REJECTED>       @RemoveAttributes(___fme_rejection_code___)    OUTPUT FAILED FEATURE_TYPE DateTimeConverter_2_OUTPUT       @RenameAttributes(FME_STRICT, fme_rejection_code,___fme_rejection_code___)
 # -------------------------------------------------------------------------
 # The default behaviour is to abort on any feature entering the transformer.
@@ -2325,20 +2326,20 @@ FACTORY_DEF * TestFactory    FACTORY_NAME Terminator    INPUT  FEATURE_TYPE Date
 FACTORY_DEF * TestFactory    FACTORY_NAME Tester_7    INPUT  FEATURE_TYPE DateTimeConverter_2_OUTPUT    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>local_date<closeparen>,Tester_7)" > "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>server_date<closeparen>,Tester_7)" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE Tester_7_PASSED
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME PythonCaller_3    INPUT  FEATURE_TYPE Tester_7_PASSED    INPUT  FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>import<space>ckanapi<lf>import<space>json<lf>import<space>time<lf>import<space>sys<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space><lf><space><space><space><space>#time.sleep<openparen>15<closeparen><lf><space><space><space><space>#Generate<space>payload<space>from<space>file<lf><space><space><space><space><lf><space><space><space><space>payload=json.load<openparen>open<openparen>feature.getAttribute<openparen><apos>path_to_file<apos><closeparen><comma><apos>r<apos><comma>encoding=<apos>utf-8<apos><closeparen><closeparen><lf><space><space><space><space><lf><space><space><space><space>#Connection<space>to<space>TBS<space>Portal<lf><space><space><space><space><lf><space><space><space><space>ckanportal=ckanapi.RemoteCKAN<openparen>feature.getAttribute<openparen><apos>ckan_root<apos><closeparen><comma>apikey=feature.getAttribute<openparen><apos>ckan_key<apos><closeparen><closeparen><lf><space><space><space><space><lf><lf><space><space><space><space><lf><space><space><space><space><lf><space><space><space><space>try:<lf><space><space><space><space><space><space><space><space>#Ajout<space>du<space>dataset<lf><space><space><space><space><space><space><space><space>ckanportal.call_action<openparen><apos>package_update<apos><comma>payload<closeparen><space><space><space><space><space><space><space><lf><space><space><space><space>except:<lf><space><space><space><space><space><space><space><space>exc_type<comma><space>exc<comma><space>trace<space>=<space>sys.exc_info<openparen><closeparen><space>#<space>trace<space>is<space>the<space>traceback<space>object<lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>if<space>r<apos>Package<space>was<space>not<space>found<apos><space>in<space>str<openparen>exc<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>try:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>ckanportal.call_action<openparen><apos>package_create<apos><comma>payload<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space>except:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>exc_type<comma><space>exc<comma><space>trace<space>=<space>sys.exc_info<openparen><closeparen><space>#<space>trace<space>is<space>the<space>traceback<space>object<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>error<apos><comma>str<openparen>exc<closeparen><closeparen><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>error<apos><comma>str<openparen>exc<closeparen><closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><lf><lf>    OUTPUT PYOUTPUT FEATURE_TYPE PythonCaller_3_OUTPUT
+FACTORY_DEF * PythonFactory    FACTORY_NAME PythonCaller_3    INPUT  FEATURE_TYPE Tester_7_PASSED    INPUT  FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR    SYMBOL_NAME processFeature    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>import<space>ckanapi<lf>import<space>json<lf>import<space>time<lf>import<space>sys<lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>processFeature<openparen>feature<closeparen>:<lf><space><space><space><space><lf><space><space><space><space>#time.sleep<openparen>15<closeparen><lf><space><space><space><space>#Generate<space>payload<space>from<space>file<lf><space><space><space><space><lf><space><space><space><space>payload=json.load<openparen>open<openparen>feature.getAttribute<openparen><apos>path_to_file<apos><closeparen><comma><apos>r<apos><comma>encoding=<apos>utf-8<apos><closeparen><closeparen><lf><space><space><space><space><lf><space><space><space><space>#Connection<space>to<space>TBS<space>Portal<lf><space><space><space><space><lf><space><space><space><space>ckanportal=ckanapi.RemoteCKAN<openparen>feature.getAttribute<openparen><apos>ckan_root<apos><closeparen><comma>apikey=feature.getAttribute<openparen><apos>ckan_key<apos><closeparen><closeparen><lf><lf><space><space><space><space>try:<lf><space><space><space><space><space><space><space><space>#Ajout<space>du<space>dataset<lf><space><space><space><space><space><space><space><space>ckanportal.call_action<openparen><apos>package_update<apos><comma>payload<closeparen><space><space><space><space><space><space><space><lf><space><space><space><space>except:<lf><space><space><space><space><space><space><space><space>exc_type<comma><space>exc<comma><space>trace<space>=<space>sys.exc_info<openparen><closeparen><space>#<space>trace<space>is<space>the<space>traceback<space>object<lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>if<space>r<apos>Package<space>was<space>not<space>found<apos><space>in<space>str<openparen>exc<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>try:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>ckanportal.call_action<openparen><apos>package_create<apos><comma>payload<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space>except:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>exc_type<comma><space>exc<comma><space>trace<space>=<space>sys.exc_info<openparen><closeparen><space>#<space>trace<space>is<space>the<space>traceback<space>object<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>error<apos><comma>str<openparen>exc<closeparen><closeparen><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>error<apos><comma>str<openparen>exc<closeparen><closeparen><lf>    OUTPUT PYOUTPUT FEATURE_TYPE PythonCaller_3_OUTPUT
 # -------------------------------------------------------------------------
 FACTORY_DEF * TestFactory    FACTORY_NAME Tester_8    INPUT  FEATURE_TYPE PythonCaller_3_OUTPUT    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>error<closeparen>,Tester_8)" != "" ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    OUTPUT PASSED FEATURE_TYPE Tester_8_PASSED    OUTPUT FAILED FEATURE_TYPE Tester_8_FAILED
 # -------------------------------------------------------------------------
-DEFAULT_MACRO __StatisticsCalculator_7e4348ae_ef3b_4b36_ae9e_434e2b9e50b50_GROUP_BY
+DEFAULT_MACRO __StatisticsCalculator_58019902_2dec_4434_9772_ae4a27f239480_GROUP_BY
 # If the cumulative port is connected, the _PORT_SPECIFIED macro
-MACRO StatisticsCalculator_7e4348ae_ef3b_4b36_ae9e_434e2b9e50b50_PORT_SPECIFIED no
+MACRO StatisticsCalculator_58019902_2dec_4434_9772_ae4a27f239480_PORT_SPECIFIED no
 # Force splitting of feature tables when the CUMULATIVE port is connected
-MACRO StatisticsCalculator_7e4348ae_ef3b_4b36_ae9e_434e2b9e50b50_SPLIT_FEATURE_TABLES Yes
-INCLUDE [if { {$(StatisticsCalculator_7e4348ae_ef3b_4b36_ae9e_434e2b9e50b50_PORT_SPECIFIED)} == "no" } {     puts {MACRO StatisticsCalculator_7e4348ae_ef3b_4b36_ae9e_434e2b9e50b50_SPLIT_FEATURE_TABLES No} }
+MACRO StatisticsCalculator_58019902_2dec_4434_9772_ae4a27f239480_SPLIT_FEATURE_TABLES Yes
+INCLUDE [if { {$(StatisticsCalculator_58019902_2dec_4434_9772_ae4a27f239480_PORT_SPECIFIED)} == "no" } {     puts {MACRO StatisticsCalculator_58019902_2dec_4434_9772_ae4a27f239480_SPLIT_FEATURE_TABLES No} }
 DYNAMIC_FUNCTION_CONFIGURATION Python FMEOBJECTS
 DYNAMIC_FUNCTION_CONFIGURATION Python import StatisticsCalculator
-DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    'StatisticsCalculator',{     'GROUP_BY_MACRO':'__StatisticsCalculator_7e4348ae_ef3b_4b36_ae9e_434e2b9e50b50_GROUP_BY',     'STATS_ATTRS':'error',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$(StatisticsCalculator_7e4348ae_ef3b_4b36_ae9e_434e2b9e50b50_PORT_SPECIFIED)',     None:None})"
-FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_InputProcessor    INPUT  FEATURE_TYPE Creator_2_CREATED    INPUT  FEATURE_TYPE Tester_8_FAILED    SPLIT_FEATURE_TABLES $(StatisticsCalculator_7e4348ae_ef3b_4b36_ae9e_434e2b9e50b50_SPLIT_FEATURE_TABLES)    OUTPUT FEATURE_TYPE __ORIGINAL__       @Python(StatisticsCalculator.recordFeature,StatisticsCalculator)
+DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    'StatisticsCalculator',{     'GROUP_BY_MACRO':'__StatisticsCalculator_58019902_2dec_4434_9772_ae4a27f239480_GROUP_BY',     'STATS_ATTRS':'error',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$(StatisticsCalculator_58019902_2dec_4434_9772_ae4a27f239480_PORT_SPECIFIED)',     None:None})"
+FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_InputProcessor    INPUT  FEATURE_TYPE Creator_2_CREATED    INPUT  FEATURE_TYPE Tester_8_FAILED    SPLIT_FEATURE_TABLES $(StatisticsCalculator_58019902_2dec_4434_9772_ae4a27f239480_SPLIT_FEATURE_TABLES)    OUTPUT FEATURE_TYPE __ORIGINAL__       @Python(StatisticsCalculator.recordFeature,StatisticsCalculator)
 FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_UnneededInputNuker    INPUT FEATURE_TYPE __ORIGINAL__
 FACTORY_DEF * SortFactory    FACTORY_NAME StatisticsCalculator_CompleteOutputter    INPUT FEATURE_TYPE __UNUSED_INPUT_TO_GUARANTEE_FACTORY_DOESNT_CONSUME_EVERYTHING__
 FACTORY_DEF * CreationFactory    FACTORY_NAME StatisticsCalculator_SummaryCreator    CREATE_AT_END    NUMBER_TO_CREATE 1    OUTPUT FEATURE_TYPE StatisticsCalculator_SUMMARY
@@ -2346,7 +2347,7 @@ FACTORY_DEF * ElementFactory    FACTORY_NAME StatisticsCalculator_SummaryExplode
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_6    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE StatisticsCalculator_SUMMARY    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "nb_updates" "SET_TO" "<at>Evaluate<openparen><at>Value<openparen>_count<closeparen>-1<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_6_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME Logger_Logger    INPUT  FEATURE_TYPE AttributeCreator_6_OUTPUT    OUTPUT FEATURE_TYPE Logger_LOGGED                  @Log(ENCODED, "Logger:<space>Feature<space>updates:<space>","20","20","",INFO,LOG_RECORD,Logger_cfd76114_7b84_42bf_b30b_dcb42cd78f490)
+FACTORY_DEF * TeeFactory    FACTORY_NAME Logger_Logger    INPUT  FEATURE_TYPE AttributeCreator_6_OUTPUT    OUTPUT FEATURE_TYPE Logger_LOGGED                  @Log(ENCODED, "Logger:<space>Feature<space>updates:<space>","20","20","",INFO,LOG_RECORD,Logger_ee6bc537_ab6e_4c4f_a886_5f75da931fab0)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Logger LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE Logger_LOGGED
 # -------------------------------------------------------------------------
 
