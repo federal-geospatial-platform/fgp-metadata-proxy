@@ -130,7 +130,7 @@ Plus de détails sur web-pdb sont disponibles dans le [répertoire GitHub de web
 
 Toujours conserver le nom du *transformer* tel que donné par FME.  Si vous avez plus d'un *transformer* du même type dans votre *workbench* alors ajouter un suffixe numérique (ex pour le *transformer* Tester: Tester, Tester_1, Tester_2, ...).  Conserver le nom du *transformer* original permet d'identifier plus rapidement le type de *transformer* employé.  Si un nom plus représentatif vous semble important alors privilégier une annotation sur le *transformer*. 
 
-##Serveur web fantoche
+## Serveur web fantoche
 
 Certains *Custom Transformer* lisent de l'information sur un (ou plusieurs) sites web externes (ex.: les données d'une province).  Dans un tel contexte, la création de tests de métriques répétables devient très souvent difficilement implantables car ces sites web externes que requièrent ces Custom Transformer sont des sites de production qui changent ou peuvent changer régulièrement.  C'est dans un tel contexte qu'il devient nécessaire de créer des sites web fantoches (dummy web site) dont le seul but est de pouvoir simuler des requêtes web et produire toujours les mêmes résultats pour un test de métrique donné.
 
