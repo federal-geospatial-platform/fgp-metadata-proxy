@@ -20,7 +20,7 @@ Ce document adresse les éléments de *bonnes pratiques FME* suivants:
  - [Nom du transformer](#Nom-du-transformer)
  - [Patron de conception](#Patron-de-conception)
    - [Traitement d'une liste](#Traitement-d'une-liste)
-   - [Traitementde données composites](#Traitement-de-données-composites)
+   - [Traitement de données composites](#Traitement-de-données-composites)
  - [Résillience](#Résillience)
  - [Terminator](#Terminator)
  - [Tester ou TestFilter](#Tester-ou-TestFilter)
