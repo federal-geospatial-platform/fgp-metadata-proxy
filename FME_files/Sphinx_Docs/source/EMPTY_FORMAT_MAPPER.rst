@@ -18,4 +18,3 @@ Documentation du code EMPTY_FORMAT_MAPPER.py
    :private-members:
    :special-members: __init__
    :show-inheritance:
-    

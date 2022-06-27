@@ -6,7 +6,7 @@
 Bienvenue sur la page principale de PT Harvester!
 =================================================
 
-Documentation des Workbench FME par province
+Documentation des FME Workbench par province
 ============================================
    
 .. toctree::
@@ -14,8 +14,8 @@ Documentation des Workbench FME par province
    
    NL_FGP_BUILDER_PRO.rst
 
-Documentation des Workbench FME utilitaires
-===========================================
+Documentation de FME Workbench utilitaires
+==========================================
    
 .. toctree::
    :maxdepth: 1   
