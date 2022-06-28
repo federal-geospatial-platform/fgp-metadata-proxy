@@ -938,24 +938,26 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="n">content_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>  <span class="c1"># Create a logger</span>
         
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># Suppress only the single warning from urllib3 needed.</span>
             <span class="n">requests</span><span class="o">.</span><span class="n">packages</span><span class="o">.</span><span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">InsecureRequestWarning</span><span class="p">)</span>
-            
             <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">status_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;HTTP call -- Status code: </span><span class="si">{0}</span><span class="s2">; URL </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">status_code</span> <span class="ow">in</span> <span class="p">[</span><span class="n">HTTP_OK</span><span class="p">,</span> <span class="n">HTTP_MOVED</span><span class="p">,</span> <span class="n">HTTP_REDIRECTION</span><span class="p">]:</span>
                 <span class="n">headers</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span>
                 <span class="n">content_type</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content-type&quot;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">content_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;HTTP_1 status code: </span><span class="si">{0}</span><span class="s2">, URL: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>         
-            <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;HTTP_2 status code: </span><span class="si">{0}</span><span class="s2">, URL: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
+<span class="c1">#                if content_type is None:</span>
+<span class="c1">#                    print (&quot;HTTP_1 status code: {0}, URL: {1}&quot;.format(status_code, url))         </span>
+<span class="c1">#            else:</span>
+<span class="c1">#                print (&quot;HTTP_2 status code: {0}, URL: {1}&quot;.format(status_code, url))</span>
             
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span>
-            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Try...except error... </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+ <span class="c1">#           print (&quot;Try...except error... {0}&quot;.format(url))</span>
             
         <span class="k">return</span> <span class="n">content_type</span></div>
         
