@@ -11,6 +11,7 @@ from typing import NamedTuple
 from urllib.parse import urlparse
 from urllib.parse import unquote
 from urllib3.util.retry import Retry
+from urllib3.exceptions import InsecureRequestWarning
 from requests.adapters import HTTPAdapter
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -34,7 +35,9 @@ STATUS_CODE = "_status_code"
 STATUS_CODE_DESCRIPTION = "_status_code_description"
 
 # Define HTTP OK return code
-HTTP_OK = 200
+HTTP_OK = 200  # Satus OK
+HTTP_MOVED = 301  # Status moved permanetly
+HTTP_REDIRECTION = 302  # URL redirection
 
 # The general timeout used by the http requests
 TIMEOUT = 5
@@ -804,6 +807,66 @@ class FME_utils:
         except Exception as err:
             return None
 
+    @staticmethod
+    def http_get_url_mime_type(url):
+        """
+        Makes a requests on the header of the url address to extract the MIME-type.
+        
+        If the MIME-type is absent and the status code of the URL reuest is valid, a get request is done 
+        on the URL address and it validates if the URL content starts with '<!DOCTYPE html>' the MIME-type
+        is set to 'text/html'.
+        
+        The method will set the MIME-type to None if it cannot determine the MIME-type of the URL.
+        
+        Parameters
+        ----------
+        url : String
+            The current url to check
+        
+        Returns
+        -------
+        mime_type String
+            The MIME-type of the URL address or None if the MIME-type cannot be determined
+        """
+        
+        content_type = None  # Set default value
+        logger = fmeobjects.FMELogFile()  # Create a logger
+        
+        try:
+            # Suppress warning
+            requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+            
+            # Make a head request to get only the header (not the content)
+            response = requests.head(url, timeout=TIMEOUT, verify=False)
+            status_code = response.status_code
+            text = "HTTP call -- Status code: {0}; URL {1}".format(status_code, url)
+            logger.logMessageString(text, fmeobjects.FME_INFORM)
+            
+            if status_code in [HTTP_OK, HTTP_MOVED, HTTP_REDIRECTION]:
+                # Only process valid status code
+                headers = response.headers
+                content_type = headers.get("content-type")                
+                if content_type is None:
+                    # If content-type is empty try to read the data and check if it's an HTML document
+                    headers = {"Range": "bytes=0-25"}  # Request a range if server can handle it (faster)
+                    request = requests.get(url,headers=headers, timeout=TIMEOUT, verify=False)
+                    text = request.text
+                    if '<!DOCTYPE html>' in text[0:20]:
+                        content_type = "text/html"
+                    else:
+                        # Not an HTML document.
+                        pass
+            else:
+                # Cannot process http call with error status code
+                pass
+                        
+        except:
+            # An error has occured nothing to do 
+            pass
+            
+        return content_type
+        
+    
     @staticmethod
     def http_check_url_request_options(url):
         """
