@@ -27,6 +27,18 @@ OTHER = "other"
 class FeatureProcessor(object):
 
     def __init__(self):
+        """Contructor of the class.
+        
+        Create the necessary list and dictionary
+        
+        Parameters
+        ----------
+        None
+        
+        Returns
+        -------
+        None
+        """
     
         self.fme_features = []  # Create a list to load FME features
         self.csv_format = {}  # Create a dictionary to load CSV formats
@@ -35,13 +47,28 @@ class FeatureProcessor(object):
         return
         
     def input(self, feature):
+        """Method called for each FME feature.
+        
+        The method places each feature in the corresponding data structure depending 
+        on the order attribute
+        
+        Parameters
+        ----------
+        feature : FME_Feature
+            Feature to process
+        
+        Returns
+        -------
+        None
+        """
     
         order = feature.getAttribute(ORDER)
         if order == 1:
+            # Load the fromat
             original_value = feature.getAttribute(ORIGINAL_VALUE)
             self.csv_format[original_value] = None  # Only the key value is important
         elif order == 2:
-            # Load the CSV feature
+            # Load the CSV MIME-type
             mime_type = feature.getAttribute(MIME_TYPE)
             url_format = feature.getAttribute(FORMAT)
             self.csv_mime_types[mime_type] = url_format
@@ -49,23 +76,41 @@ class FeatureProcessor(object):
             # Load the FME feature
             self.fme_features.append(feature)
             
+        return
+            
     def close(self):
+        """Method call once all the feature are read.
+        
+        The method processes each FME feature to determine the format.
+        
+        Parameters
+        ----------
+        None
+        
+        Returns
+        -------
+        None
+        """
     
 #        web_pdb.set_trace()
         for fme_feature in self.fme_features:
             # Process the format of the feature
             self.process_feature(fme_feature)
             
-            # Output the FME feature to FME
- 
+            # Output the FME feature to FME 
             self.pyoutput(fme_feature)
+            
+        return
 
 
     def process_feature(self, feature):
         """This method add a format to ressources with empty format.
         
         This method is analysing the content of the url to determine the format.
-        It searches for substring (ex.: service=wms) or extensions (ex.: .shp)
+        It searches for substring (ex.: service=wms) or extensions (ex.: .shp).
+        
+        If the format is still unknown, it extracts the format from the MIME-type of
+        the HTTP URL call.
         
         Parameters
         ----------
