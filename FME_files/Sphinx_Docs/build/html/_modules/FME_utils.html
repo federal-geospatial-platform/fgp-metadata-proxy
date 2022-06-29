@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../EMPTY_FORMAT_MAPPER.html">EMPTY_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMPTY_FORMAT_MAPPER_NG.html">EMPTY_FORMAT_MAPPER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
@@ -935,29 +936,59 @@
 <div class="viewcode-block" id="FME_utils.http_get_url_mime_type"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.http_get_url_mime_type">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">http_get_url_mime_type</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Makes a requests on the header of the url address to extract the MIME-type.</span>
+<span class="sd">        </span>
+<span class="sd">        If the MIME-type is absent and the status code of the URL reuest is valid, a get request is done </span>
+<span class="sd">        on the URL address and it validates if the URL content starts with &#39;&lt;!DOCTYPE html&gt;&#39; the MIME-type</span>
+<span class="sd">        is set to &#39;text/html&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">        The method will set the MIME-type to None if it cannot determine the MIME-type of the URL.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url : String</span>
+<span class="sd">            The current url to check</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        mime_type String</span>
+<span class="sd">            The MIME-type of the URL address or None if the MIME-type cannot be determined</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
-        <span class="n">content_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">content_type</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Set default value</span>
         <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>  <span class="c1"># Create a logger</span>
         
         <span class="k">try</span><span class="p">:</span>
-            <span class="c1"># Suppress only the single warning from urllib3 needed.</span>
+            <span class="c1"># Suppress warning</span>
             <span class="n">requests</span><span class="o">.</span><span class="n">packages</span><span class="o">.</span><span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">InsecureRequestWarning</span><span class="p">)</span>
+            
+            <span class="c1"># Make a head request to get only the header (not the content)</span>
             <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">status_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
             <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;HTTP call -- Status code: </span><span class="si">{0}</span><span class="s2">; URL </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">status_code</span> <span class="ow">in</span> <span class="p">[</span><span class="n">HTTP_OK</span><span class="p">,</span> <span class="n">HTTP_MOVED</span><span class="p">,</span> <span class="n">HTTP_REDIRECTION</span><span class="p">]:</span>
-                <span class="n">headers</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span>
-                <span class="n">content_type</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content-type&quot;</span><span class="p">)</span>
-<span class="c1">#                if content_type is None:</span>
-<span class="c1">#                    print (&quot;HTTP_1 status code: {0}, URL: {1}&quot;.format(status_code, url))         </span>
-<span class="c1">#            else:</span>
-<span class="c1">#                print (&quot;HTTP_2 status code: {0}, URL: {1}&quot;.format(status_code, url))</span>
             
+            <span class="k">if</span> <span class="n">status_code</span> <span class="ow">in</span> <span class="p">[</span><span class="n">HTTP_OK</span><span class="p">,</span> <span class="n">HTTP_MOVED</span><span class="p">,</span> <span class="n">HTTP_REDIRECTION</span><span class="p">]:</span>
+                <span class="c1"># Only process valid status code</span>
+                <span class="n">headers</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span>
+                <span class="n">content_type</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content-type&quot;</span><span class="p">)</span>                
+                <span class="k">if</span> <span class="n">content_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># If content-type is empty try to read the data and check if it&#39;s an HTML document</span>
+                    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Range&quot;</span><span class="p">:</span> <span class="s2">&quot;bytes=0-25&quot;</span><span class="p">}</span>  <span class="c1"># Request a range if server can handle it (faster)</span>
+                    <span class="n">request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="n">text</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">text</span>
+                    <span class="k">if</span> <span class="s1">&#39;&lt;!DOCTYPE html&gt;&#39;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]:</span>
+                        <span class="n">content_type</span> <span class="o">=</span> <span class="s2">&quot;text/html&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># Not an HTML document.</span>
+                        <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Cannot process http call with error status code</span>
+                <span class="k">pass</span>
+                        
         <span class="k">except</span><span class="p">:</span>
+            <span class="c1"># An error has occured nothing to do </span>
             <span class="k">pass</span>
- <span class="c1">#           print (&quot;Try...except error... {0}&quot;.format(url))</span>
             
         <span class="k">return</span> <span class="n">content_type</span></div>
         
