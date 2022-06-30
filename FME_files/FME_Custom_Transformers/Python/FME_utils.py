@@ -842,24 +842,19 @@ class FME_utils:
             text = "HTTP call -- Status code: {0}; URL {1}".format(status_code, url)
             logger.logMessageString(text, fmeobjects.FME_INFORM)
             
-            if status_code in [HTTP_OK, HTTP_MOVED, HTTP_REDIRECTION]:
-                # Only process valid status code
-                headers = response.headers
-                content_type = headers.get("content-type")                
-                if content_type is None:
-                    # If content-type is empty try to read the data and check if it's an HTML document
-                    headers = {"Range": "bytes=0-25"}  # Request a range if server can handle it (faster)
-                    request = requests.get(url,headers=headers, timeout=TIMEOUT, verify=False)
-                    text = request.text
-                    if '<!DOCTYPE html>' in text[0:20]:
-                        content_type = "text/html"
-                    else:
-                        # Not an HTML document.
-                        pass
-            else:
-                # Cannot process http call with error status code
-                pass
-                        
+            headers = response.headers
+            content_type = headers.get("content-type")                
+            if content_type is None:
+                # If content-type is empty try to read the data and check if it's an HTML document
+                headers = {"Range": "bytes=0-25"}  # Request a range if server can handle it (faster)
+                request = requests.get(url,headers=headers, timeout=TIMEOUT, verify=False)
+                text = request.text
+                if '<!DOCTYPE html' in text[0:20]:
+                    content_type = "text/html"
+                else:
+                    # Not an HTML document.
+                    pass
+
         except:
             # An error has occured nothing to do 
             pass
