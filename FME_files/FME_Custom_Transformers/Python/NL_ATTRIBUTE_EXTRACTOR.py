@@ -78,7 +78,7 @@ def extract_html_tags(feature):
                 att_fme = "geographical_coverage"
                 
             elif tag == "Description:":
-                att_fme = "note"
+                att_fme = "notes"
                 
             elif tag == "Contributor:":
                 att_fme = "contributor"
