@@ -32,6 +32,7 @@ Documentation des Custom Transformers FME
    ATTRIBUTE_MANAGER_NG.rst
    ATTRIBUTE_VALUE_TEXT_CLEANER.rst
    AWS_TRANSLATE.rst
+   BC_ATTRIBUTE_FORMATTER.rst
    Catalogue_Reader.rst
    DCAT_Reader.rst
    DEFAULT_ATTRIBUTE_MAPPER.rst

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEFAULT_ATTRIBUTE_MAPPER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
+  <title>BC_ATTRIBUTE_FORMATTER &mdash; fme_python_pt_harvester 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,8 +17,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="DUPLICATE_SERVICE_REMOVER" href="DUPLICATE_SERVICE_REMOVER.html" />
-    <link rel="prev" title="DEFAULT_ATTRIBUTE_MAPPER" href="DEFAULT_ATTRIBUTE_MAPPER.html" /> 
+    <link rel="next" title="Catalogue_Reader" href="Catalogue_Reader.html" />
+    <link rel="prev" title="AWS_TRANSLATE" href="AWS_TRANSLATE.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,14 +47,14 @@
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AWS_TRANSLATE.html">AWS_TRANSLATE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="BC_ATTRIBUTE_FORMATTER.html">BC_ATTRIBUTE_FORMATTER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DCAT_Reader.html">DCAT_Reader</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">DEFAULT_ATTRIBUTE_MAPPER_NG</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BC_ATTRIBUTE_FORMATTER</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DCAT_Reader.html">DCAT_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EMPTY_FORMAT_MAPPER.html">EMPTY_FORMAT_MAPPER</a></li>
@@ -119,9 +119,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>DEFAULT_ATTRIBUTE_MAPPER_NG</li>
+      <li>BC_ATTRIBUTE_FORMATTER</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/DEFAULT_ATTRIBUTE_MAPPER_NG.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/BC_ATTRIBUTE_FORMATTER.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -129,31 +129,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="default-attribute-mapper-ng">
-<h1>DEFAULT_ATTRIBUTE_MAPPER_NG<a class="headerlink" href="#default-attribute-mapper-ng" title="Permalink to this headline"></a></h1>
+  <div class="section" id="bc-attribute-formatter">
+<h1>BC_ATTRIBUTE_FORMATTER<a class="headerlink" href="#bc-attribute-formatter" title="Permalink to this headline"></a></h1>
 <div class="section" id="documentation-du-custom-transformer-fme">
 <h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
-<p><strong>Description </strong></p>
-<p>This custom transformer maps each value pair (key, value) from the lookup table as attribute into each metadata record. If there are 25 value pairs in the lookup table each metadata records will have 25 new attributes. </p>
-<p><strong>Input Ports </strong></p>
+<p><strong>Description</strong> </p>
+<p>This custom transformer makes the following processes:
+  - If the attribute <em>record_create_date</em> is missing or empty it copies the value of the attribute <em>record_publish_date</em>;
+  - If a record has no resources it is outputted through the NO_RESOURCES port;
+  - It reformats the date of the attributes: <em>record_publish_date, record_last_modified, record_create_date</em>;
+  - It flattens the content of the JSON attibute: <em>contacts</em></p>
+<p><strong>Input Ports</strong> </p>
 <ul>
-<li>DATA_INPUT: The input metadata records to process.</li>
+<li>INPUT: The input metadata records to process.</li>
 </ul>
-<p><strong>Output Ports</strong></p>
+<p><strong>Output Ports</strong> </p>
 <ul>
-<li>OUTPUT: The process output metdata records with new attributes (key, value).</li>
+<li>
+<p>NO_RESOURCES: Output the records with no redources;</p>
+</li>
+<li>
+<p>INVALID_DATE:  Output the records with invalid date;</p>
+</li>
+<li>
+<p>INVALID_CONTACT: Output the record with invalid contacts (usually badly formed JSON document);</p>
+</li>
+<li>
+<p>OUTPUT: Output all the other records
+.</p>
+</li>
 </ul>
-<p><strong>Parameters </strong></p>
+<p><strong>Parameters</strong> </p>
 <ul>
-<li>
-<p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
-</li>
-<li>
-<p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
-</li>
-<li>
-<p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
-</li>
+<li><em>None</em></li>
 </ul>
 </div>
 </div>
@@ -162,8 +170,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="DEFAULT_ATTRIBUTE_MAPPER.html" class="btn btn-neutral float-left" title="DEFAULT_ATTRIBUTE_MAPPER" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="DUPLICATE_SERVICE_REMOVER.html" class="btn btn-neutral float-right" title="DUPLICATE_SERVICE_REMOVER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="AWS_TRANSLATE.html" class="btn btn-neutral float-left" title="AWS_TRANSLATE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Catalogue_Reader.html" class="btn btn-neutral float-right" title="Catalogue_Reader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
