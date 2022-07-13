@@ -877,10 +877,10 @@ class FME_utils:
         Request object or None
             The request object when successfully got a response of any kind or None when the request failed.
         """
-
+        #web_pdb.set_trace()
         try:
             # Requests the head of the url
-            r = requests.options(url, timeout=TIMEOUT)
+            r = requests.options(url, timeout=TIMEOUT, verify=False, allow_redirects=True)
             r.close()
             return r
 
