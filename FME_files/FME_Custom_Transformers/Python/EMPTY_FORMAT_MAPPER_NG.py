@@ -64,9 +64,15 @@ class FeatureProcessor(object):
     
         order = feature.getAttribute(ORDER)
         if order == 1:
-            # Load the fromat
+            # Load the format
             original_value = feature.getAttribute(ORIGINAL_VALUE)
-            self.csv_format[original_value] = None  # Only the key value is important
+            original_value = original_value.lower()
+            if original_value not in self.csv_format:
+                # Add the key in the dictionary
+                self.csv_format[original_value] = None  # Only the key value is important
+            else:
+                # Key is already in the dictionary
+                pass
         elif order == 2:
             # Load the CSV MIME-type
             mime_type = feature.getAttribute(MIME_TYPE)
@@ -128,14 +134,18 @@ class FeatureProcessor(object):
         nbr_resources = FME_utils.max_index_attribute_list(feature, "resources{}")
         
         for i in range(nbr_resources+1):
+            # Extract attribute
             format=feature.getAttribute('resources{%d}.format'%(i))
             url=feature.getAttribute('resources{%d}.url'%(i))
+            url_validation = feature.getAttribute(URL_VALIDATION)
             url_original = url
+            new_format = format
             
-            if not format:  # resources{i}.format is empty
-                if not url:  # resources{i}.url is empty
-                    new_format='other'
-                else:
+            if not url:
+                # resources{i}.url is empty
+                new_format = 'other'
+            else:
+                if not format:  # resources{i}.format is empty
                     # Try to guess the format based on the content of the url
                     if r'service=wms' in url.lower():
                         new_format='WMS'
@@ -170,7 +180,7 @@ class FeatureProcessor(object):
                                     pass
                                     
                             # Validate if the extracted format is a valid format
-                            if new_format not in self.csv_format:
+                            if new_format.lower() not in self.csv_format:
                                 # Unknown format. Set value to default: "other"
                                 new_format = OTHER
                 
@@ -178,26 +188,32 @@ class FeatureProcessor(object):
                             # In case of any error assign format "other"
                             new_format='other'  # Fallback format value
                             
-                    if new_format == "other":
-                        if url_original.endswith(".zip"):
-                            new_format = "zip"  # Set format to zip
-                        else:
-                            url_validation = feature.getAttribute(URL_VALIDATION)
-                            if url_validation.lower() == "yes":
-                                # Try to guess the format using the MIME-type of the url address
-                                mime_type = FME_utils.http_get_url_mime_type(url_original)
-                                if mime_type != None:
-                                    try:
-                                        new_format = self.csv_mime_types[mime_type]
-                                    except KeyError:
-                                        new_format = OTHER
-                                        feature.setAttribute(UNKNOWN_MIME_TYPE, mime_type)
-                                        
-                                else:
-                                    # Log an error
+                elif new_format == "other":
+                    # Try to guess the format
+                    if url_original.endswith(".zip"):
+                        # Set format to zip
+                        new_format = "zip"  
+                    else:
+                        # Extract the format using the MIME-type of the url request
+                        if url_validation.lower() == "yes":
+                            # Try to guess the format using the MIME-type of the url address
+                            mime_type = FME_utils.http_get_url_mime_type(url_original)
+                            if mime_type != None:
+                                try:
+                                    new_format = self.csv_mime_types[mime_type]
+                                except KeyError:
                                     new_format = OTHER
+                                    feature.setAttribute(UNKNOWN_MIME_TYPE, mime_type)
+                                    
                             else:
-                                # Do not extract the mime type with an http request
-                                pass
+                                # Log an error
+                                new_format = OTHER
+                        else:
+                            # Do not extract the mime type with an http request (validation is no)
+                            pass
+                else:
+                    # No other format are tested 
+                    pass
 
+                # Set the format
                 feature.setAttribute('resources{%d}.format'%(i),new_format)
