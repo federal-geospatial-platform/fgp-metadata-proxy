@@ -188,7 +188,7 @@ class FeatureProcessor(object):
                             # In case of any error assign format "other"
                             new_format='other'  # Fallback format value
                             
-                elif new_format == "other":
+                if new_format == "other":
                     # Try to guess the format
                     if url_original.endswith(".zip"):
                         # Set format to zip
