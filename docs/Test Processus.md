@@ -3,8 +3,8 @@
 - [Mise en contexte](#Mise-en-contexte)
 - [Le fichier de commandes](#Le-fichier-de-commandes)
 - [Pré-conditions aux tests de processus](#Pré-conditions-aux-tests-de-processus)
-- [Mise en place des répertoires](#Mise-en-place-des-repertoires)
-- [Exécution du test de processus](#Execution-du-test-de-processus)
+- [Mise en place des répertoires](#Mise-en-place-des-répertoires)
+- [Exécution du test de processus](#Exécution-du-test-de-processus)
 
 ## Mise en contexte
 
