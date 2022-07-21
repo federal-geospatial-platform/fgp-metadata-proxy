@@ -47,7 +47,7 @@ Le fichier sphinx-quickstart.exe se trouve dans le dossier Scripts de l'installa
 
 Répondre aux questions interactives:
 
-![quick-start.png](quick-start.png)
+![quick-start.png](images/quick-start.png)
 
 Ajustement du fichier de configuration en ajoutant ou modifiant les lignes suivants dans le fichier conf.py (situé dans le dossier source):
  
@@ -94,11 +94,11 @@ Afin de rendre accessible à Sphinx la documentation FME, il faut extraire la de
 
 Le répertoire *fgp-metadata-proxy\FME_files\Sphinx_Docs\source\html_FME_Doc* contient un fichier HTML pour chaque Workspace/Custom Transformer. Si aucune information n'est contenue dans l'onglet description du Workbench/Custom Transformers, alors aucun fichier ne sera présent. Le nom du fichiers HTML est le même que celui du Workbench/Custom auquel il se rapporte. Afin d'obtenir une documentation Sphinx dont la mise en forme est uniforme, il est important d'utiliser le language Markdown dans la section *Description* du Custom/Workspace.
 
-![description_markdown.png](description_markdown.png)
+![description_markdown.png](images/description_markdown.png)
 
 L'image suivante montre le fichier *read_fme_description.bat*. On y voit les chemins d'accès relatifs où sont situés les Workspaces/Customs à lire et le répertoire vers lesquel les descriptions en format html seront créées.
 
-![batchfile_reading_fme_description.png](batchfile_reading_fme_description.png)
+![batchfile_reading_fme_description.png](images/batchfile_reading_fme_description.png)
 
 # Mise à jour  et publication de la documentation
 
@@ -134,4 +134,4 @@ Pour ajouter un nouveau Workbench ou un nouveau Custom Transformer à la documen
     
 L'image ci-dessous illustre certaines des étapes dont il est mention ci-haut.
 
-![rst_files_description.png](rst_files_description.png)
+![rst_files_description.png](images/rst_files_description.png)
