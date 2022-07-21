@@ -3,7 +3,6 @@ REM Enable local variables
 REM ===========================================================================
 SETLOCAL ENABLEDELAYEDEXPANSION
 
- 
 REM ===========================================================================
 REM Allow accented characters
 REM ===========================================================================
@@ -14,16 +13,38 @@ REM Determine the directory where the.bat is located and place it
 REM in the directory above while keeping the original directory
 REM ===========================================================================
 SET Repertoire=%~dp0
-SET Ctfolder=%Repertoire%\..\..\..\FME_Custom_Transformers\
+SET Ctfolder=%Repertoire%\..\..\..\FME_Workspaces\
 PUSHD %Ctfolder%
 
 REM Define FME transformer path
 SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 
 REM ===========================================================================
+REM ================== Choose a PT to process =================================
+REM ===========================================================================
+
+echo off
+:begin
+echo - 
+echo Select a PT for the metric processus:
+echo ================================
+echo -
+echo 1) British Columbia (BC).
+echo 2) Newfound Land And Labrodor (NL)
+
+echo -
+set /p op=Select a PT (number):
+SET pt_abbr=""
+if "%op%"=="1" SET pt_abbr=BC
+if "%op%"=="2" SET pt_abbr=NL
+if "%pt_abbr%"=="" echo Invalid choice (select a number)
+if "%pt_abbr%"=="" goto begin
+echo on
+
+REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
-SET NomApp=QC_XML_BUILDER_PROD_08
+SET Nom_Pt_App=%pt_abbr%_PROD
 SET fme=%FME2020%
 
 REM ===========================================================================
@@ -32,65 +53,65 @@ REM ===========================================================================
 SET Statut=0
 
 REM ===========================================================================
-REM Copy FMX to Documents
+REM Copy FMW to Documents
 REM ===========================================================================
-REM COPY/Y %Ctfolder%\%NomApp%.fmx .\metrique_pt_harvester_del.fmw
-SET Statut=%Statut%%ERRORLEVEL%
-
 PUSHD %Repertoire%\..
-
+IF EXIST .\met\%Nom_Pt_App%.fmw del .\met\%Nom_Pt_App%.fmw
+COPY/Y %Ctfolder%%Nom_Pt_App%.fmw .\met\%Nom_Pt_App%.fmw
+SET Statut=%Statut%%ERRORLEVEL%
 REM Define sources
 
 REM ============================================================================
-REM ========================== TEST  #1   ======================================
+REM ========================== Set variables ===================================
 REM ============================================================================
 
-set test_number=1
-set source=met\QC_CKAN_READER_SUBSET.ffs
-set xml_etalon=met\ETALON\QC\XML_LOCAL\*.xml
-set xml_resultat=met\PT_HARVESTER\QC\XML_LOCAL\*.xml
-set json_etalon=met\ETALON\QC\JSON_LOCAL\*.json
-set json_resultat=met\PT_HARVESTER\QC\JSON_LOCAL\*.json
-set etalon_json=met\etalon_json.ffs
-set etalon_xml=met\etalon_xml.ffs
-set resultat_json=met\resultat_json.ffs
-set resultat_xml=met\resultat_xml.ffs
-set log=met\log_QC.log
-set log_comp=met\log_comp_QC.log
+set xml_etalon=met\ETALON\%pt_abbr%\XML_LOCAL\*.xml
+set xml_resultat=met\PT_HARVESTER\%pt_abbr%\XML_LOCAL\*.xml
+set json_etalon=met\ETALON\%pt_abbr%\JSON_LOCAL\*.json
+set json_resultat=met\PT_HARVESTER\%pt_abbr%\JSON_LOCAL\*.json
+set logs=met\PT_HARVESTER\%pt_abbr%\LOG\*.log
+set log=met\PT_HARVESTER\%pt_abbr%\LOG\%pt_abbr%.log
+set log_1=%pt_abbr%_1.log
+set log_2=%pt_abbr%_2.log
+set log_comp=met\PT_HARVESTER\%pt_abbr%\LOG\%pt_abbr%_comp.log
+set in_ffs_testing_file=.\met\SOURCE\%pt_abbr%_catalogue_subset.ffs
+set in_out_working_dir=.\met\PT_HARVESTER
 
-set activate_geo=Yes
-set activate_non_geo=Yes
-set activate_translation=No
-set catalogue_reader_select=No
-set forced_pycsw_url=""
-set in_ffs_testing_file=%source%
-set local_source_metadata_delta_finder=Yes
-set local_writer=Yes
-set pt_abbr=QC
-set metadata_overwrite=No
-set in_out_working_dir=met\PT_HARVESTER
-set url_validation=No
-set sample_size=0
+REM =============================================================================
+REM ======================== Delete files =======================================
+REM =============================================================================
+IF EXIST %xml_resultat% del %xml_resultat%
+IF EXIST %json_resultat% del %json_resultat%
+IF EXIST %logs% del %logs%
 
-IF EXIST %log% del %log%
-IF EXIST %resultat%.ffs DEL %resultat%.ffs
-%fme% met\metrique_pt_harvester.fmw ^
---LOG_FILE %log% ^
---ACTIVATE_GEO %activate_geo% ^
---ACTIVATE_NON_GEO %activate_non_geo% ^
---ACTIVATE_TRANSLATION %activate_translation% ^
---FORCED_PYCSW_URL %forced_pycsw_url% ^
+REM ============================================================================
+REM ========================== TEST # 1 Load XML and JSON files ================
+REM ============================================================================
+
+%fme% met\%Nom_Pt_App%.fmw ^
+--ACTIVATE_GEO Yes ^
+--ACTIVATE_NON_GEO Yes ^
+--ACTIVATE_TRANSLATION No ^
+--CATALOGUE_READER_SELECT No ^
+--FORCED_PYCSW_URL "" ^
 --IN_FFS_TESTING_FILE %in_ffs_testing_file% ^
---LOCAL_SOURCE_METADATA_DELTA_FINDER %local_source_metadata_delta_finder% ^
---LOCAL_WRITER %local_writer% ^
---P-T_ABBR %pt_abbr% ^
---METADATA_OVERWRITE %metadata_overwrite% ^
+--LOCAL_SOURCE_METADATA_DELTA_FINDER Yes ^
+--LOCAL_WRITER Yes ^
+--PT_ABBR %pt_abbr% ^
+--METADATA_OVERWRITE Yes ^
 --IN_OUT_WORKING_DIR %in_out_working_dir% ^
---SAMPLE_SIZE %sample_size% ^
---URL_VALIDATION %url_validation%
+--SAMPLE_SIZE 0 ^
+--URL_VALIDATION No
+
 SET Statut=%Statut%%ERRORLEVEL%
 
-REM Comparison with the standard
+REM Rename the FME log
+ren %log% %log_1%
+
+REM ===============================================================================
+REM ==================== Comparison with the standard =============================
+REM ===============================================================================
+
 IF EXIST %log_comp% del %log_comp%
 %fme% met\Comparateur.fmw ^
 --XML_ETALON %xml_etalon% ^
@@ -100,7 +121,43 @@ IF EXIST %log_comp% del %log_comp%
 --LOG_FILE %log_comp% 
 SET Statut=%Statut%%ERRORLEVEL%
 
-@IF [%Statut%] EQU [0000] (
+REM ============================================================================
+REM ========== TEST # 2 METADATA_OVERWRITE = No ==> No file written
+REM ============================================================================
+set xml_etalon=met\ETALON\%pt_abbr%\XML_LOCAL\*.xml
+set xml_resultat=met\PT_HARVESTER\%pt_abbr%\XML_LOCAL\*.xml
+set json_etalon=met\ETALON\%pt_abbr%\JSON_LOCAL\*.json
+set json_resultat=met\PT_HARVESTER\%pt_abbr%\JSON_LOCAL\*.json
+set log=met\PT_HARVESTER\%pt_abbr%\LOG\%pt_abbr%.log
+set log_comp=met\PT_HARVESTER\%pt_abbr%\LOG\%pt_abbr%_comp.log
+set in_ffs_testing_file=.\met\SOURCE\%pt_abbr%_catalogue_subset.ffs
+set in_out_working_dir=.\met\PT_HARVESTER
+
+
+%fme% met\%Nom_Pt_App%.fmw ^
+--ACTIVATE_GEO Yes ^
+--ACTIVATE_NON_GEO Yes ^
+--ACTIVATE_TRANSLATION No ^
+--CATALOGUE_READER_SELECT No ^
+--FORCED_PYCSW_URL "" ^
+--IN_FFS_TESTING_FILE %in_ffs_testing_file% ^
+--LOCAL_SOURCE_METADATA_DELTA_FINDER Yes ^
+--LOCAL_WRITER Yes ^
+--PT_ABBR %pt_abbr% ^
+--METADATA_OVERWRITE No ^
+--IN_OUT_WORKING_DIR %in_out_working_dir% ^
+--SAMPLE_SIZE 0 ^
+--URL_VALIDATION No
+
+SET Statut=%Statut%%ERRORLEVEL%
+
+FIND "Total Features Written                                                       0" %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Rename the FME log
+ren %log% %log_2%
+
+@IF [%Statut%] EQU [000000] (
  @ECHO INFORMATION : Metric test passed
  @COLOR A0
  @SET CodeSortie=999999
