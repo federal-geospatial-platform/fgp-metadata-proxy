@@ -12,36 +12,36 @@ Les tests de processus sont complémentaires aux [tests unitaires](https://githu
 
 ## Le fichier de commandes
 
-Le fichiers de commandes pour les tests de processus est similaires aux fichiers de commandes utilisés pour les tests unitaires. Le test de processus se trouve dans le répertoires ...\fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER. Il n'y qu'un seul répertoire de tests de processus (test de processus normalisé) et il est bon pour tous les PT ce qui permet de d'homogénéisé et de faciliter la maintenance des tests de processus.
+Le fichiers de commandes pour les tests de processus est similaires aux fichiers de commandes DOS utilisés pour les [tests unitaires](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/Tests%20Unitaires.md). Le test de processus se trouve dans le répertoires ...\fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER. Il n'y qu'un seul répertoire de tests de processus et il est bon pour tous les PT ce qui permet de de normaliser les test et de faciliter la maintenance des tests de processus.
 
 ## Pré-conditions aux tests de processus
 
-Voici quelques éléments obligatoires qui doivent être rencontrés avant de pouvoir intégrer un _Workbench FME_ dans le test de processus normalisés.
+Voici quelques éléments obligatoires qui doivent être faits avant de pouvoir intégrer un _Workbench FME_ dans le test de processus normalisés:
 
   - Le nom du _Workbench FME_ doit être sous la forme xx_PROD.fmw où xx est le code de province à deux lettres (ex.: NB_PROD.fmw)
-  - Le _Workbench FME_ doit contenir les Writer suivants et l'information suivante:
+  - Le _Workbench FME_ doit contenir les Writer et les paramètres suivants:
     - XML_PASSED lié au Private Parameter OUT_XML_PASSED_DIR
     - XML_FAILED lié au Private Parameter OUT_XML_FAILED_DIR
     - XML_LOCAL lié au Private Parameter OUT_XML_LOCAL_DIR
     - PROCESS_REPORT_MANUAL_TASKS lié au Private Parameter OUT_XLS_NOTIFICATION_DIR
     - OUT_JSON_LOCAL lié au Private Parameter OUT_JSON_LOCAL_DIR
-  - Le _Workbench FME_ doit contnir Log File (sous Worspace Parameters > Logging > Log file) qui doit être lié au Private parameter LOG_FILE
-  - Vous devez extraire un sous-ensemble d'enregistrements qui servira aux tests de processus. Habituellement il s'agit de la sortie du _Cutom Transformer_ Catalogue_Reader.  Dans tous les cas ce fichier doit pouvoir servir d'entrée lorsque l'on utilise Le _User Parameters_ IN_FFS_TESTING_FILE.  Ce fichier devrait contenir un sous-ensemble des des enregistrements de métadonnées de la province (environ 10 éléments), il devrait contenir des métadonnées valides géospatiales et non-géospatiales. Il est aussi suggérer d'éviter d'avoir le même nombre d'enregistrements afin de pouvoir plus facilement les discriminer dans les fichiers log.
+  - Le _Workbench FME_ doit définir un Log File (accessible sous Worspace Parameters > Logging > Log file) qui doit être lié au Private Parameter LOG_FILE
+  - Vous devez extraire un sous-ensemble de métadonnées qui serviront aux tests de processus. Habituellement il s'agit de la sortie du _Cutom Transformer_ Catalogue_Reader placée dans un fichier xx_catalogue_subset.ffs.  Dans tous les cas, ce fichier doit pouvoir servir d'entrée lorsqu'on utilise le _User Parameters_ IN_FFS_TESTING_FILE.  Ce fichier devrait contenir un sous-ensemble des enregistrements de métadonnées de la province (environ 10 éléments), il devrait contenir des métadonnées valides, géospatiales et non-géospatiales. Il est aussi suggérer d'éviter d'avoir le même nombre de métadonnées géo et non géospatiales afin de pouvoir plus facilement les discriminer dans les fichiers log.  Note: Un plus grand nombre de métadonées ne fera que ralentir le temps d'exécution du test de processus.
 
 ## Mise en place des répertoires
 
 Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER\met vous devez créer les répertoire suivantes:
 
-  - ..\met\ETALON\xx pour contenir les fichiers étalon utilisés par le comparateur
+  - ..\met\ETALON\xx pour contenir les fichiers étalons utilisés par le comparateur
   - ..\met\PT_HARVESTER\xx\JSON_LOCAL pour contenir les fichiers JSON
   - ..\met\PT_HARVESTER\xx\LOG pour contenir les fichiers LOG
   - ..\met\PT_HARVESTER\xx\XLS pour contenir les fichiers EXCEL
   - ..\met\PT_HARVESTER\xx\XML_FAILED pour contenir les fichiers XML en erreur
-  - ..\met\PT_HARVESTER\xx\XML_LOCAL pour contenir les fichiers XML créés
-  - ..\met\PT_HARVESTER\xx\XML_PASSED (à créer mais utilisé)
-  - ..\met\PT_HARVESTER\LOOKUP_TABLES\xx pour contenir les fichiers CSV/YAML de la PT
+  - ..\met\PT_HARVESTER\xx\XML_LOCAL pour contenir les fichiers XML
+  - ..\met\PT_HARVESTER\xx\XML_PASSED (à créer mais pas utilisé)
+  - ..\met\PT_HARVESTER\LOOKUP_TABLES\xx pour contenir les fichiers CSV et YAML de la PT
 
-Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER\met vous devez copier données suivantes:
+Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER\met vous devez copier les informations suivantes:
 
   - Dans ..\met\SOURCE\xx\ copier le fichier _xx_catalogue_subset.ffs_ contenant le sous-ensemble des métadonnées à traiter (créer à l'étape des Pré-conditons)
   - Dans ..\met\PT_HARVESTER\LOOKUP_TABLES\xx\ copier les fichiers CSV et YAML nécessaires pour l'exécution du processus
@@ -87,7 +87,7 @@ set /p op=Select a PT (number):
 SET pt_abbr=""
 if "%op%"=="1" SET pt_abbr=BC
 if "%op%"=="2" SET pt_abbr=NL
-if "%op%"=="2" SET pt_abbr=QC
+if "%op%"=="3" SET pt_abbr=QC
 if "%pt_abbr%"=="" echo Invalid choice (select a number)
 if "%pt_abbr%"=="" goto begin
 echo on
@@ -96,7 +96,7 @@ echo on
 ## Exécution du test de processus
 
 Pour exécuter le test de processus double cliquer sur le fichier \met\unittest.bat
-La première fois que le test de processus est exécuté, il ne fonctionne pas car les répertoires étalon sont vides. Il faut copier le contenu des répertoires
+La première fois que le test de processus est exécuté, il ne fonctionne pas car les répertoires étalons sont vides. Il faut copier le contenu des répertoires:
   - met\PT_HARVESTER\xx\JSON_LOCAL\*.json vers le répertoire met\ETALON\xx\JSON_LOCAL\*.json
   - met\PT_HARVESTER\xx\XML_LOCAL\*.xml vers le répertoire met\ETALON\xx\XML_LOCAL\*.xml
 La deuxième fois que le test est exécuté, il devrait povoir s'exécuter sans erreur.
