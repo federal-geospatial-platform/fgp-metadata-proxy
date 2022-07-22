@@ -22,25 +22,45 @@ SET FME_USER_RESOURCE_DIR=%USERPROFILE%\Documents\FME
 REM ===========================================================================
 REM ================== Choose a PT to process =================================
 REM ===========================================================================
-
 echo off
 :begin
 echo - 
 echo Select a PT for the metric processus:
 echo ================================
 echo -
-echo 1) British Columbia (BC).
-echo 2) Newfound Land And Labrodor (NL)
+echo 1)  Alberta (AB)
+echo 2)  British Columbia (BC)
+echo 3)  Manitoba (MB)
+echo 4)  New Brunswick (NB)
+echo 5)  Newfoundland and Labrodor (NL)
+echo 6)  Nothwest Territories (NT)
+echo 7)  Nova Scotia (NS)
+echo 8)  Nunavut (NU)
+echo 9)  Ontario (ON)
+echo 10) Prince Edward Island (PEI)
+echo 11) Québec (QC)
+echo 12) Saskatchewan (SK)
+echo 13) Yukon (YT) 
 
 echo -
 set /p op=Select a PT (number):
 SET pt_abbr=""
-if "%op%"=="1" SET pt_abbr=BC
-if "%op%"=="2" SET pt_abbr=NL
-if "%pt_abbr%"=="" echo Invalid choice (select a number)
-if "%pt_abbr%"=="" goto begin
+REM if "%op%"=="1" SET pt_abbr=AB
+if "%op%"=="2" SET pt_abbr=BC
+REM if "%op%"=="3" SET pt_abbr=MB
+REM if "%op%"=="4" SET pt_abbr=NB
+if "%op%"=="5" SET pt_abbr=NL
+REM if "%op%"=="6" SET pt_abbr=NT
+REM if "%op%"=="7" SET pt_abbr=NS
+REM if "%op%"=="8" SET pt_abbr=NU
+REM if "%op%"=="9" SET pt_abbr=ON
+REM if "%op%"=="10" SET pt_abbr=PEI
+REM if "%op%"=="11" SET pt_abbr=QC
+REM if "%op%"=="12" SET pt_abbr=SK
+REM if "%op%"=="13" SET pt_abbr=YT
+if %pt_abbr%=="" echo Invalid choice (select a number)
+if %pt_abbr%=="" goto begin
 echo on
-
 REM ===========================================================================
 REM Create file name variable in relative mode.
 REM ===========================================================================
