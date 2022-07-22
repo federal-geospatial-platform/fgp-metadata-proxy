@@ -5,6 +5,7 @@
 - [Pré-conditions aux tests de processus](#Pré-conditions-aux-tests-de-processus)
 - [Mise en place des répertoires](#Mise-en-place-des-répertoires)
 - [Exécution du test de processus](#Exécution-du-test-de-processus)
+- [Débuggage du test de processus](#Débuggage-du-test-de-processus)
 
 ## Mise en contexte
 
@@ -135,3 +136,11 @@ Le test de processus exécute deux vérifications ou tests.
 --SAMPLE_SIZE 0 ^
 --URL_VALIDATION No
 ```
+
+## Débuggage du test de processus
+
+Le débuggage d'un test de processus peut rapidement devenir très complexe car le _Worspace FME_ implique l'exécution de pluiseurs dizaine de _Custom Transformer_.  En conséquence trouver la cause des disparités (différences) entres les données sources et les données étalon peut rapidement devenir un casse-tête. 
+
+Dans un contexte de développement où plusieurs développeurs travaillent en même temps, il est possible que les différences soient causées par un changement de comportement d'un ou plusieurs _Custom Transformer_.  Dans ce cas, la solution la plus simple et la plus facile consiste à s'assurer que le contenu des fichiers XML et JSON sont valides, de recréer les fichiers étalon et de recopier les fichier CSV et YAML.  Il faudrait aussi recréer les fichiers sources dans l'éventualité ou que la structure ait changé.
+
+Dans un contexte de production et de maintennce, où le développement est pratiquemment terminé. Les modfications apportées au système seront majoritairement des correction de bug. Les disparités entre les données sources et les données étalons devraient être moins fréquentes et il pourrait être judicieux d'essayer de trouver la raison de la disparité plutôt que de simplement recopier les fichiers.       
