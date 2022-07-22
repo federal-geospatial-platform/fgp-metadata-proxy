@@ -14,7 +14,7 @@ Les tests de processus sont complémentaires aux [tests unitaires](https://githu
 
 ## Le fichier de commandes
 
-Le fichier de commandes pour les tests de processus est similaire aux fichiers de commandes DOS (.bat) utilisés pour les [tests unitaires](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/Tests%20Unitaires.md). Le test de processus se trouve dans le répertoires ...\fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER. Il n'y qu'un seul répertoire de tests de processus et il peut-être utilisé pour toutes les PT ce qui permet de normaliser les tests et de faciliter la maintenance du test de processus.
+Le fichier de commandes pour les tests de processus est similaire aux fichiers de commandes DOS (.bat) utilisés pour les [tests unitaires](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/Tests%20Unitaires.md). Le test de processus se trouve dans le répertoires ...\fgp-metadata-proxy\FME_files\UNIT_TESTS\TEST_PROCESSUS. Il n'y qu'un seul répertoire de tests de processus et il peut-être utilisé pour toutes les PT ce qui permet de normaliser les tests et de faciliter la maintenance du test de processus.
 
 ## Pré-conditions aux tests de processus
 
@@ -32,7 +32,7 @@ Voici quelques éléments obligatoires qui doivent être validés ou faits avant
 
 ## Mise en place des répertoires
 
-Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER\met vous devez créer les répertoire suivantes:
+Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\TEST_PROCESSUS\met vous devez créer les répertoire suivantes:
 
   - ...\ETALON\xx pour contenir les fichiers étalons utilisés par le comparateur
   - ...\PT_HARVESTER\xx\JSON_LOCAL pour contenir les fichiers JSON
@@ -43,7 +43,7 @@ Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER\met vo
   - ...\PT_HARVESTER\xx\XML_PASSED (à créer mais pas utilisé)
   - ...\PT_HARVESTER\LOOKUP_TABLES\xx pour contenir les fichiers CSV et YAML de la PT
 
-Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER\met vous devez copier les informations suivantes:
+Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\TEST_PROCESSUS\met vous devez copier les informations suivantes:
 
   - Dans ...\SOURCE\xx\ copier le fichier _xx_catalogue_subset.ffs_ contenant le sous-ensemble des métadonnées à traiter (créer à l'étape des Pré-conditons)
   - Dans ...\PT_HARVESTER\LOOKUP_TABLES\xx\ copier les fichiers CSV et YAML nécessaires pour l'exécution du PT
@@ -51,7 +51,7 @@ Dans le répertoire \fgp-metadata-proxy\FME_files\UNIT_TESTS\PT_HARVESTER\met vo
 
 ## Mise à jour du fichier DOS
 
-Dans le ...\PT_HARVESTER\met\fichier unittest.bat mettre à jour la partie interactive qui demande le nom de la PT à traiter tel que décrit ci-dessous:
+Dans le ...\TEST_PROCESSUS\met\fichier unittest.bat mettre à jour la partie interactive qui demande le nom de la PT à traiter tel que décrit ci-dessous:
 
 ```DOS
 :begin
@@ -97,7 +97,7 @@ echo on
 
 ## Exécution du test de processus
 
-Pour exécuter le test de processus double cliquer sur le fichier ...\PT_HARVESTER\met\unittest.bat. La première fois que le test de processus est exécuté, il ne fonctionnera pas car le répertoire étalon est vide. Il faut copier les resultats dans le répertoire étalon:
+Pour exécuter le test de processus double cliquer sur le fichier ...\TEST_PROCESSUS\met\unittest.bat. La première fois que le test de processus est exécuté, il ne fonctionnera pas car le répertoire étalon est vide. Il faut copier les resultats dans le répertoire étalon:
   - copier les résultats JSON de met\PT_HARVESTER\xx\JSON_LOCAL\*.json vers le répertoire étalon met\ETALON\xx\JSON_LOCAL\*.json
   - copier les résultats XML de met\PT_HARVESTER\xx\XML_LOCAL\*.xml vers le répertoire étalon met\ETALON\xx\XML_LOCAL\*.xml
 
