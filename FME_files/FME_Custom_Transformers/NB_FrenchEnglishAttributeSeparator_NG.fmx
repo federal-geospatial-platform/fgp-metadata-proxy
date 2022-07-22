@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN NB_FrenchEnglishAttributeSeparator_NG,1,,6f789cf8-44f9-44a1-9160-e56fc13712ad,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# TRANSFORMER_BEGIN NB_FrenchEnglishAttributeSeparator_NG,1,,4079f06c-aee3-43c8-b252-308d9081c3ab,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
 # 
 # TRANSFORMER_END
 #!   ATTR_TYPE_ENCODING="SDF"
@@ -11,8 +11,8 @@
 #!   DOC_TOP_LEFT="-3898.45 -1447.77"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="6f789cf8-44f9-44a1-9160-e56fc13712ad"
-#!   FME_DOCUMENT_PRIORGUID="f6fb973c-38b0-4b69-823c-74a7d56647b5,336d259b-b2d7-49e7-bb7a-47a4ce064ee3"
+#!   FME_DOCUMENT_GUID="4079f06c-aee3-43c8-b252-308d9081c3ab"
+#!   FME_DOCUMENT_PRIORGUID="f6fb973c-38b0-4b69-823c-74a7d56647b5,336d259b-b2d7-49e7-bb7a-47a4ce064ee3,6f789cf8-44f9-44a1-9160-e56fc13712ad"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -24,7 +24,7 @@
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-06-16T10:27:21"
+#!   LAST_SAVE_DATE="2022-07-22T12:53:20"
 #!   MARKDOWN_DESCRIPTION=""
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -36,7 +36,7 @@
 #!   TITLE="NB_FrenchEnglishAttributeSeparator_NG"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-4495.66 1041.68"
+#!   VIEW_POSITION="-4499.31 701.761"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -55,7 +55,7 @@
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI ATTR_OR_LIST_ATTR ATTRIBUTE_TO_SPLIT ALLOW_NEW%NO_ICON%INCLUDE_SRC_FORMAT%INCLUDE_SCR_USER%EXCLUDE_INCOMING%NO_EXPAND ATTRIBUTE_TO_SPLIT:"
-#!   DEFAULT_VALUE="description"
+#!   DEFAULT_VALUE=""
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
@@ -65,6 +65,11 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
 #!   DEFAULT_VALUE=""
 #!   IS_STAND_ALONE="true"
 #! />
@@ -130,7 +135,7 @@
 #!   BOUNDING_RECT="-3898.4530113839551 427.25362986906242 13226.031667287474 1875.0187501875016"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="59 49 55 50 30 48 69 41 46 57 4 24 17 37 53 40 56 27 29 35 3 14 71 7 66 39 31 18 21 19 58 20 13 33 63 43 9 25 64 51 10 61 65 8 47 22 62 72 11 52 2 36 15 38 16 42 44 23 67 28 54 32 45 12 6 26 60 "
+#!   CONTENTS="40 64 11 45 65 4 63 19 28 58 47 52 60 69 27 23 71 21 61 62 22 42 44 33 6 32 41 17 31 15 3 25 16 56 20 50 36 55 51 18 12 8 67 54 24 37 9 10 49 13 57 46 35 66 29 72 2 48 26 14 38 7 53 59 39 30 43 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -878,7 +883,7 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_PARM PARM_NAME="CSV_ENCODING" PARM_VALUE="utf-8"/>
 #!     <XFORM_PARM PARM_NAME="CSV_PATH" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
-#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="NB_SlashCountSeparatorForDesc"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
 #!     <XFORM_PARM PARM_NAME="PT" PARM_VALUE="$(P-T_ABBR)"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="LOOKUP_TABLES_READER_NG"/>
@@ -1441,22 +1446,23 @@
 #! </TRANSFORMER>
 
 FME_PYTHON_VERSION 37
-DEFAULT_MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_TO_SPLIT description
+DEFAULT_MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_TO_SPLIT 
 DEFAULT_MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
 DEFAULT_MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_P-T_ABBR 
+DEFAULT_MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FEATURE_TYPE 
 #! START_HEADER
 #! END_HEADER
 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Input1655389641 Input Splitter"   INPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Input"   OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Input"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Input1658508800 Input Splitter"   INPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Input"   OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Input"
 # -------------------------------------------------------------------------
 MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
-MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE NB_SlashCountSeparatorForDesc
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FEATURE_TYPE)
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_PT $($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_P-T_ABBR$encode)
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_ENCODING utf-8
@@ -1482,7 +1488,7 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_StringReplacer    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    USE_REGEX NO    CASE_SENSITIVE NO    SOURCE_ATTRIBUTES { $($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_TO_SPLIT$encode) }    FIND_TEXT { "<backslash>" }    REPLACE_TEXT { "<solidus>" }    REPLACE_NO_MATCH { "_FME_NO_OP_" }    OUTPUT OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_StringReplacer_OUTPUT"
 # -------------------------------------------------------------------------
-Tcl2 set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_88f2cc23_a403_40a3_ace1_9cc84f2a2aa20_splitDelim [FME_DecodeText {<solidus>}];      if { [regexp {^([1-9][0-9]*s)+$} [set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_88f2cc23_a403_40a3_ace1_9cc84f2a2aa20_splitDelim]] }      {         set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_88f2cc23_a403_40a3_ace1_9cc84f2a2aa20_splitWidths [split [regsub -all {s$} {<solidus>} {}] s];         proc $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_doSplit {}         {            global $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_88f2cc23_a403_40a3_ace1_9cc84f2a2aa20_splitWidths;            set source [FME_GetAttribute [FME_DecodeText {$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_TO_SPLIT$encode)}]];            set attrNum 0;            set listName [FME_DecodeText {att_list}];            set attrPos 0;            set keepEmptyParts [string equal {No} {No}];            foreach width [set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_88f2cc23_a403_40a3_ace1_9cc84f2a2aa20_splitWidths]            {               set endPos [expr $attrPos + $width - 1];               set bit [string range $source $attrPos $endPos];               set part [string trim $bit];               if { $keepEmptyParts || $part != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $part;                  incr attrNum;               };               incr attrPos $width;            };         };      }      else      {         proc $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_doSplit {}         {            global $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_88f2cc23_a403_40a3_ace1_9cc84f2a2aa20_splitDelim;            set delim [set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_88f2cc23_a403_40a3_ace1_9cc84f2a2aa20_splitDelim];            set delimLength [string length $delim];            set source [FME_GetAttribute [FME_DecodeText {$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_TO_SPLIT$encode)}]];            set keepEmptyParts [string equal {No} {No}];            set bits {};            set startIndex 0;            set nextIndex [string first $delim $source $startIndex];            while {$nextIndex >= 0} {              lappend bits [string range $source $startIndex [expr $nextIndex-1]];              set startIndex [expr $nextIndex + $delimLength];              set nextIndex [string first $delim $source $startIndex];            };            lappend bits [string range $source $startIndex end];            set listName [FME_DecodeText {att_list}];            set attrNum 0;            foreach bit $bits            {               set trimmedPart [string trim $bit];               if { $keepEmptyParts || $trimmedPart != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $trimmedPart;                  incr attrNum;               };            }          }       }
+Tcl2 set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_ba6c6ec2_4ac7_47d6_92af_08caca3ee4f30_splitDelim [FME_DecodeText {<solidus>}];      if { [regexp {^([1-9][0-9]*s)+$} [set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_ba6c6ec2_4ac7_47d6_92af_08caca3ee4f30_splitDelim]] }      {         set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_ba6c6ec2_4ac7_47d6_92af_08caca3ee4f30_splitWidths [split [regsub -all {s$} {<solidus>} {}] s];         proc $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_doSplit {}         {            global $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_ba6c6ec2_4ac7_47d6_92af_08caca3ee4f30_splitWidths;            set source [FME_GetAttribute [FME_DecodeText {$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_TO_SPLIT$encode)}]];            set attrNum 0;            set listName [FME_DecodeText {att_list}];            set attrPos 0;            set keepEmptyParts [string equal {No} {No}];            foreach width [set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_ba6c6ec2_4ac7_47d6_92af_08caca3ee4f30_splitWidths]            {               set endPos [expr $attrPos + $width - 1];               set bit [string range $source $attrPos $endPos];               set part [string trim $bit];               if { $keepEmptyParts || $part != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $part;                  incr attrNum;               };               incr attrPos $width;            };         };      }      else      {         proc $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_doSplit {}         {            global $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_ba6c6ec2_4ac7_47d6_92af_08caca3ee4f30_splitDelim;            set delim [set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_ba6c6ec2_4ac7_47d6_92af_08caca3ee4f30_splitDelim];            set delimLength [string length $delim];            set source [FME_GetAttribute [FME_DecodeText {$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_TO_SPLIT$encode)}]];            set keepEmptyParts [string equal {No} {No}];            set bits {};            set startIndex 0;            set nextIndex [string first $delim $source $startIndex];            while {$nextIndex >= 0} {              lappend bits [string range $source $startIndex [expr $nextIndex-1]];              set startIndex [expr $nextIndex + $delimLength];              set nextIndex [string first $delim $source $startIndex];            };            lappend bits [string range $source $startIndex end];            set listName [FME_DecodeText {att_list}];            set attrNum 0;            foreach bit $bits            {               set trimmedPart [string trim $bit];               if { $keepEmptyParts || $trimmedPart != \"\" } {                  FME_SetAttribute "$listName{$attrNum}" $trimmedPart;                  incr attrNum;               };            }          }       }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_StringReplacer_OUTPUT"    OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_OUTPUT"         @Tcl2($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_doSplit)
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListElementCounter_2    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeSplitter_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListElementCounter_2_OUTPUT"         "slash_count" @NumElements("att_list<opencurly><closecurly>",ENCODED)
@@ -1510,8 +1516,8 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NB_FrenchEnglishAttributeSeparator_NG
 INCLUDE [    set macroLine "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP ";    foreach attr [split "att_list<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_UUIDGenerator_2_OUTPUT_1_VQ9vpBo7wOM="    OUTPUT { FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,slash_count,sepidx,dataid,lang_sep_pos)        @RemoveAttributes(fme_pcre_match"$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeRemover_2_LIST_EXP)")         }
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2_e9627a40_cf83_4557_a5fa_15f27c74cfa60_LIST_EXP ";    foreach attr [split "att_list<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_UUIDGenerator_2_OUTPUT_0_9kx4xGVroZM="    OUTPUT { FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,slashuuid,sepidx,fme_pcre_match,"^fme_$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2_e9627a40_cf83_4557_a5fa_15f27c74cfa60_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2_34594a0d_8d02_4f18_b70f_ecbe1b5fbd110_LIST_EXP ";    foreach attr [split "att_list<opencurly><closecurly>"] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_UUIDGenerator_2_OUTPUT_0_9kx4xGVroZM="    OUTPUT { FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"        @KeepAttributes(fme_encoded,slashuuid,sepidx,fme_pcre_match,"^fme_$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2_34594a0d_8d02_4f18_b70f_ecbe1b5fbd110_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * ElementFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListExploder_2    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_2_OUTPUT"    LIST_NAME "att_list{}"    ELEMENT_NUMBER_FIELD "att_idx"    CLONE_GEOMETRY    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "INCOMING_IF_CONFLICT"    INCOMING_PREFIX "<Unused>"    OUTPUT ELEMENT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListExploder_2_ELEMENTS"         @RemoveAttributes(ElementFactory.baseCloned)    OUTPUT NOLIST FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListExploder_2_<REJECTED>"         @RemoveAttributes(ElementFactory.baseCloned)         fme_rejection_code MISSING_PARAMETER_LIST
 # -------------------------------------------------------------------------
@@ -1539,8 +1545,8 @@ Tcl2 set $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenato
 Tcl2 proc $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator__Concatenate {} {   upvar \#0 $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator__separator separator             $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator__listPattern listPattern;   set allAttrs [lsort -dictionary [FME_AttributeNames]];   set keepEmptyParts [string equal {No} {No}];   set result {};   foreach attrName $allAttrs {     if {[regexp $listPattern $attrName]} {       set attrValue [FME_GetAttribute $attrName];       if {$keepEmptyParts || $attrValue != {}} {         lappend result $attrValue;       };     };   };   FME_SetAttribute {"splited_attr_en"} [join $result $separator]; }
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListBuilder_OUTPUT"    OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator_OUTPUT"         @Tcl2($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator__Concatenate)
 # -------------------------------------------------------------------------
-INCLUDE [    set macroLine "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3_0aab87b2_7ee8_4763_ba13_f477ecfca0640_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator_OUTPUT"    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator_6_OUTPUT"    OUTPUT { FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3_OUTPUT"        @KeepAttributes(fme_encoded,slashuuid,splited_attr_en,splited_attr_fr,fme_pcre_match,"^fme_$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3_0aab87b2_7ee8_4763_ba13_f477ecfca0640_LIST_EXP)")         }
+INCLUDE [    set macroLine "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3_701d7389_b893_4d7a_a9d8_f8ce94c490a80_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator_OUTPUT"    INPUT  FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ListConcatenator_6_OUTPUT"    OUTPUT { FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3_OUTPUT"        @KeepAttributes(fme_encoded,slashuuid,splited_attr_en,splited_attr_fr,fme_pcre_match,"^fme_$($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3_701d7389_b893_4d7a_a9d8_f8ce94c490a80_LIST_EXP)")         }
 # -------------------------------------------------------------------------
 INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
 FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_AttributeKeeper_3_OUTPUT"    CONNECT_Z_MODE FIRST_WINS    REFERENCE_INFO $($(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>slashuuid<closeparen>,$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>slashuuid<closeparen>,$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES YES    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE AUTO    OUTPUT COMPLETE FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_MERGED"    OUTPUT INCOMPLETE FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_UNMERGED_REQUESTOR"    OUTPUT REJECTED FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_7_<REJECTED>"
@@ -1562,6 +1568,6 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(NB_FrenchEnglishAttri
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Output1655389641 Output Collector"   INPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_MULTIPLE_UNCAUGHT_SLASH_IN_ATT1655389641 Output Collector"   INPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"   OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_MULTIPLE_UNCAUGHT_SLASH_IN_ATT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Output1658508800 Output Collector"   INPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_Feature_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_MULTIPLE_UNCAUGHT_SLASH_IN_ATT1658508800 Output Collector"   INPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_FeatureMerger_UNMERGED_REQUESTOR"   OUTPUT FEATURE_TYPE "$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME)_MULTIPLE_UNCAUGHT_SLASH_IN_ATT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(NB_FrenchEnglishAttributeSeparator_NG_WORKSPACE_NAME))}]
