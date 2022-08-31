@@ -12,8 +12,8 @@ Documentation des FME Workbench par province
 .. toctree::
    :maxdepth: 1   
    
-   BC_FGP_BUILDER_PROD.rst
-   NL_FGP_BUILDER_PROD.rst
+   BC_PROD.rst
+   NL_PROD.rst
 
 Documentation de FME Workbench utilitaires
 ==========================================
