@@ -10,7 +10,7 @@
 
 ## Mise en contexte
 
-Les tests de processus sont complémentaires aux [tests unitaires](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/Tests%20Unitaires.md).  Ils servent à vérifier si un _Workbench FME_ fonctionne correctement pour une province ou un territoire (PT) donnée.  Les tests de processus n'ont pas pour but de tester tous les états, cas ou erreurs possibles qu'un _Workbench FME_ peut prendre car ceci reviendrait à dupliquer en grande partie les tests unitaires qui sont déjà faits pour les différents _Custom Transformers_.  Les tests de processus sont donc simples mais ils permettent de vérifier le bon fonctionnement global d'un _Workbench FME_ pour un sous-ensemble de métadonnées.
+Les tests de processus sont complémentaires aux [tests unitaires](https://github.com/federal-geospatial-platform/fgp-metadata-proxy/blob/master/docs/Tests%20Unitaires.md).  Ils servent à vérifier si un _Workbench FME_ fonctionne correctement pour une province ou un territoire (PT) donnée.  Les tests de processus n'ont pas pour but de tester tous les états, cas ou erreurs possibles qu'un _Workbench FME_ peut prendre car ceci reviendrait à dupliquer en grande partie les tests unitaires qui sont déjà faits pour les différents _Custom Transformers_.  Les tests de processus sont donc simples mais ils permettent de vérifier le bon fonctionnement global d'un _Workbench FME_ pour un sous-ensemble de métadonnées.  Finalement, les tests de processus ne font jamais appel à des serveurs web externes afin de toujours pouvoir contrôler les intrants dans le test de processus. 
 
 ## Le fichier de commandes
 
