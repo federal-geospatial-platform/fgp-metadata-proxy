@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EXTRACT_COLLECTION_START_END_DATE &mdash; fme_python_pt_harvester 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FORMAT_VALIDATOR" href="FORMAT_VALIDATOR.html" />
+    <link rel="prev" title="EMPTY_FORMAT_MAPPER_NG" href="EMPTY_FORMAT_MAPPER_NG.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> fme_python_pt_harvester
+            <img src="_static/Canada.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="BC_PROD.html">BC_FGP_BUILDER_PROD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_PROD.html">NL_FGP_BUILDER_PROD</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Synchronisation_CKAN.html">Synchronisation_CKAN</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AWS_TRANSLATE.html">AWS_TRANSLATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BC_ATTRIBUTE_FORMATTER.html">BC_ATTRIBUTE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DCAT_Reader.html">DCAT_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMPTY_FORMAT_MAPPER.html">EMPTY_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMPTY_FORMAT_MAPPER_NG.html">EMPTY_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">EXTRACT_COLLECTION_START_END_DATE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-module-py">Documentation du code module.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER_NG.html">GEO_EXTENTS_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR_NG.html">GEOSPATIAL_DATA_VALIDATOR_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER_NG.html">GEOPORTAL_WEBLINK_ADDER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER.html">LICENSE_FILTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_ATTRIBUTE_EXTRACTOR.html">NL_ATTRIBUTE_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_CATALOGUE_READER.html">NL_CATALOGUE_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER_NG.html">METADATA_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_NG.html">METADATA_VALUE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_ERROR_MANAGER.html">METADATA_VALUE_MAPPER_ERROR_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MORE_INFO_MANAGER.html">MORE_INFO_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PYCSW_URL_MAPPER_NG.html">PYCSW_URL_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ON_CKAN_CONTACT_FORM_EXTRACTOR.html">ON_CKAN_CONTACT_FORM_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QC_MISSING_EMAIL_SETTER.html">QC_MISSING_EMAIL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER_NG.html">XML_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WMS_REST_LANGUAGE_FORMATTER.html">WMS_REST_LANGUAGE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YT_CONTACTS_MERGER.html">YT_CONTACTS_MERGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">FME_utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fme_python_pt_harvester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>EXTRACT_COLLECTION_START_END_DATE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/EXTRACT_COLLECTION_START_END_DATE.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="extract-collection-start-end-date">
+<h1>EXTRACT_COLLECTION_START_END_DATE<a class="headerlink" href="#extract-collection-start-end-date" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description: </strong></p>
+<p>Custom transformer utilisé pour extraire une étendue temporelle lorsque possible dans une chaine de caractère. Le custom a 3 actions possibles à poser.</p>
+<ol>
+<li>Si la chaine de caractère est vide, on attribue la date de début à 0001-01-01. La date de fin est vide </li>
+<li>Si la chaine de caractère match une des expression régulière définies dans le code, le programme extrait la date de début et aussi de fin lorque présente </li>
+<li>Si la chaine de caractère ne matche pas l'expression régulière, il est possibile de définir manuellement les valeurs de début/fin grâce à une lookup table</li>
+</ol>
+<p>Dans le cas où aucune des trois actions n'est possible, la feature ressort par le port unworking_extraction. Dans ce cas, on doit mettre à jour la lookup table ou bien ajouter une regex dans le code python.</p>
+<p><strong>Définifition de la lookup table:</strong> </p>
+<p><strong>Input Ports</strong></p>
+<p>On utilise une lookup table selon template yaml suivant:</p>
+<pre>
+CSV_COLUMNS:
+
+source_date_extent: [trim, no_null]
+
+data_collection_start_date: [trim, no_null]
+
+data_collection_end_date: [trim] 
+
+#
+CREATE_KEY_VALUE:
+#
+NO_DUPLICATE:
+DUP_1: [source_date_extent]
+#
+CHECK_DOMAIN:
+</pre>
+
+<p><strong>Output Ports</strong></p>
+<p>Lorsque l'extraction fonctionne, on ajoute les attributs data_collection_start_date et data_collection_end_date. Lorsque ça ne fonctionne pas, l'attribut unmatched_date_extent contient la chaine de caractère non matchée.</p>
+</div>
+<div class="section" id="documentation-du-code-module-py">
+<h2>Documentation du code module.py<a class="headerlink" href="#documentation-du-code-module-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor" title="EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor</span></code></a>()</p></td>
+<td><p>Cette classe python permet d'extraire l'étendu temporel à partir d'expression régulière Quand c'est une date contenant juste une année, on ajout -01-01 lorsque date début et -12-31 quand fin</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-EXTRACT_COLLECTION_START_END_DATE"></span><dl class="py class">
+<dt class="sig sig-object py" id="EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EXTRACT_COLLECTION_START_END_DATE.</span></span><span class="sig-name descname"><span class="pre">collection_end_start_date_extractor</span></span><a class="reference internal" href="_modules/EXTRACT_COLLECTION_START_END_DATE.html#collection_end_start_date_extractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Cette classe python permet d’extraire l’étendu temporel à partir d’expression régulière
+Quand c’est une date contenant juste une année, on ajout -01-01 lorsque date début et -12-31 quand fin</p>
+<p class="rubric">Notes</p>
+<p>Liste des expressions régulières:</p>
+<ol class="arabic simple">
+<li><p>^[1-2][0-9][0-9][0-9]$  –&gt; 2001</p></li>
+</ol>
+<p>1.b     ^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$  –&gt; 2001-12-18</p>
+<ol class="arabic simple" start="2">
+<li><p>^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$  –&gt; 2001-2002</p></li>
+<li><p>^[1-2][0-9][0-9][0-9] - [1-2][0-9][0-9][0-9]$  –&gt; 2001 - 2002</p></li>
+<li><p>^[1-2][0-9][0-9][0-9] to [1-2][0-9][0-9][0-9]$ –&gt; 2002 to 2020</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]/[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$ –&gt; 2017-2018/2019-2020</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ –&gt; 2012-09/2020-06</p></li>
+</ol>
+<p>6.b ^[1-2][0-9][0-9][0-9]-[0-1][0-9] - [1-2][0-9][0-9][0-9]-[0-1][0-9]$ –&gt; 2012-09 - 2020-06</p>
+<ol class="arabic simple" start="7">
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 2018-04-01 to 2021-06-24</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 2018-04-01/2021-06-24</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to present$ –&gt;2000-01-01 to present</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/present$ –&gt; 2000-01-01/present</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-present$ –&gt;  2000-present or 2000 - present</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]; [1-2][0-9][0-9][0-9]-[0-1][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]$ –&gt;2012-09/2016-06; 2018-09/2019-06</p></li>
+<li><p>^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9], [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$ –&gt; 1995-01-01, 2000-01-01/2006-12-31</p></li>
+<li><p>^([1-2][0-9][0-9][0-9],)+$ ==&gt; 2001,2002,2003 …</p></li>
+<li><p>^[A-Z,a-z]* [1-2][0-9][0-9][0-9]$ ===&gt; March 2010</p></li>
+<li><p>^[A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9]$ ===&gt; March 31, 2010</p></li>
+<li><p>^[A-Z,a-z]* [1-2][0-9][0-9][0-9] - [A-Z,a-z]* [1-2][0-9][0-9][0-9]$ ====&gt; March 2020 - April 2021</p></li>
+<li><p>^[A-Z,a-z]* [1-2][0-9][0-9][0-9] to [A-Z,a-z]* [1-2][0-9][0-9][0-9]$ ====&gt; March 2020 to April 2021</p></li>
+<li><p>^[A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9] - [A-Z,a-z]* ([1-9]|[0-3][0-9]), [1-2][0-9][0-9][0-9]$ ====&gt; March 31, 2020 to April 15, 2021</p></li>
+</ol>
+<dl class="py method">
+<dt class="sig sig-object py" id="EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/EXTRACT_COLLECTION_START_END_DATE.html#collection_end_start_date_extractor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor call before any FME features are passed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/EXTRACT_COLLECTION_START_END_DATE.html#collection_end_start_date_extractor.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.close" title="Permalink to this definition"></a></dt>
+<dd><p>Method call when all the festures are passed, not used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/EXTRACT_COLLECTION_START_END_DATE.html#collection_end_start_date_extractor.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#EXTRACT_COLLECTION_START_END_DATE.collection_end_start_date_extractor.input" title="Permalink to this definition"></a></dt>
+<dd><p>Process each FME features.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="EMPTY_FORMAT_MAPPER_NG.html" class="btn btn-neutral float-left" title="EMPTY_FORMAT_MAPPER_NG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FORMAT_VALIDATOR.html" class="btn btn-neutral float-right" title="FORMAT_VALIDATOR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, FGP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

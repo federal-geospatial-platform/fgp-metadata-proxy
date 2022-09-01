@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FME_utils &mdash; fme_python_pt_harvester 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> fme_python_pt_harvester
+            <img src="../_static/Canada.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../BC_PROD.html">BC_FGP_BUILDER_PROD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_PROD.html">NL_FGP_BUILDER_PROD</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Synchronisation_CKAN.html">Synchronisation_CKAN</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AWS_TRANSLATE.html">AWS_TRANSLATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BC_ATTRIBUTE_FORMATTER.html">BC_ATTRIBUTE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DCAT_Reader.html">DCAT_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMPTY_FORMAT_MAPPER.html">EMPTY_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMPTY_FORMAT_MAPPER_NG.html">EMPTY_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEO_EXTENTS_MAPPER_NG.html">GEO_EXTENTS_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEOSPATIAL_DATA_VALIDATOR_NG.html">GEOSPATIAL_DATA_VALIDATOR_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEOPORTAL_WEBLINK_ADDER_NG.html">GEOPORTAL_WEBLINK_ADDER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE_FILTER.html">LICENSE_FILTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_ATTRIBUTE_EXTRACTOR.html">NL_ATTRIBUTE_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_CATALOGUE_READER.html">NL_CATALOGUE_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_FORMAT_MAPPER_NG.html">METADATA_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_VALUE_MAPPER_NG.html">METADATA_VALUE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_VALUE_MAPPER_ERROR_MANAGER.html">METADATA_VALUE_MAPPER_ERROR_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MORE_INFO_MANAGER.html">MORE_INFO_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYCSW_URL_MAPPER_NG.html">PYCSW_URL_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ON_CKAN_CONTACT_FORM_EXTRACTOR.html">ON_CKAN_CONTACT_FORM_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QC_MISSING_EMAIL_SETTER.html">QC_MISSING_EMAIL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../XML_PUBLISHER_NG.html">XML_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WMS_REST_LANGUAGE_FORMATTER.html">WMS_REST_LANGUAGE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../YT_CONTACTS_MERGER.html">YT_CONTACTS_MERGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FME_utils.html">FME_utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fme_python_pt_harvester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>FME_utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for FME_utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">urllib3</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">lxml</span>
+<span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span><span class="p">,</span> <span class="n">FTP_TLS</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NamedTuple</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">unquote</span>
+<span class="kn">from</span> <span class="nn">urllib3.util.retry</span> <span class="kn">import</span> <span class="n">Retry</span>
+<span class="kn">from</span> <span class="nn">urllib3.exceptions</span> <span class="kn">import</span> <span class="n">InsecureRequestWarning</span>
+<span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="kn">import</span> <span class="n">HTTPAdapter</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">fme</span>
+    <span class="kn">import</span> <span class="nn">fmeobjects</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span>
+    
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">web_pdb</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># No problem if the package is not avalaible</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># FME attribute name</span>
+<span class="n">STATUS_CODE</span> <span class="o">=</span> <span class="s2">&quot;_status_code&quot;</span>
+<span class="n">STATUS_CODE_DESCRIPTION</span> <span class="o">=</span> <span class="s2">&quot;_status_code_description&quot;</span>
+
+<span class="c1"># Define HTTP OK return code</span>
+<span class="n">HTTP_OK</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># Satus OK</span>
+<span class="n">HTTP_MOVED</span> <span class="o">=</span> <span class="mi">301</span>  <span class="c1"># Status moved permanetly</span>
+<span class="n">HTTP_REDIRECTION</span> <span class="o">=</span> <span class="mi">302</span>  <span class="c1"># URL redirection</span>
+
+<span class="c1"># The general timeout used by the http requests</span>
+<span class="n">TIMEOUT</span> <span class="o">=</span> <span class="mi">5</span>
+
+<div class="viewcode-block" id="CsvKeyValuePair"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvKeyValuePair">[docs]</a><span class="k">class</span> <span class="nc">CsvKeyValuePair</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class containing one row from a CSV defining a key-Value pair.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    key : str</span>
+<span class="sd">        Key name of a Key-Value pair</span>
+<span class="sd">    value : str</span>
+<span class="sd">        Value name of a Key-Value pair</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value</span><span class="p">:</span> <span class="nb">str</span></div>
+    
+    
+<div class="viewcode-block" id="CsvMetaDataFormatMapper"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvMetaDataFormatMapper">[docs]</a><span class="k">class</span> <span class="nc">CsvMetaDataFormatMapper</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    original_value : str</span>
+<span class="sd">        Original value that can be found in the metadata record</span>
+<span class="sd">    real_value : str</span>
+<span class="sd">        Name that replace the original value</span>
+<span class="sd">    resource_type_en : str</span>
+<span class="sd">        Name of the English resource</span>
+<span class="sd">    resource_type_fr : str</span>
+<span class="sd">        Name of the French resource</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">original_value</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">real_value</span><span class="p">:</span> <span class="nb">str</span> 
+    <span class="n">resource_type_en</span><span class="p">:</span> <span class="nb">str</span> 
+    <span class="n">resource_type_fr</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="CsvMetaDataValueMapper"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvMetaDataValueMapper">[docs]</a><span class="k">class</span> <span class="nc">CsvMetaDataValueMapper</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV used by METADATA_VALUE_MAPPER_NG.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    original_value : str</span>
+<span class="sd">        Original value that can be found in the metadata record</span>
+<span class="sd">    value_english : str</span>
+<span class="sd">        English value that replace the original value</span>
+<span class="sd">    value_french : str</span>
+<span class="sd">        French value that replace the original value</span>
+<span class="sd">    code_value : str</span>
+<span class="sd">        Code value for this value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">original_value</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value_english</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value_french</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">code_value</span><span class="p">:</span> <span class="nb">str</span></div>
+    
+  
+<div class="viewcode-block" id="CsvGeoSpatialValidation"><a class="viewcode-back" href="../FME_utils.html#FME_utils.CsvGeoSpatialValidation">[docs]</a><span class="k">class</span> <span class="nc">CsvGeoSpatialValidation</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class containing one row from the CSV GeoSpatialValidation.</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    fgp_publish : str</span>
+<span class="sd">        Flag (oui/non) indicating if this format is published in the FGP</span>
+<span class="sd">    format : str</span>
+<span class="sd">        Name of the format</span>
+<span class="sd">    spatial_type : str</span>
+<span class="sd">        Spatial type code</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">fgp_publish</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">spatial_type</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="FME_utils"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils">[docs]</a><span class="k">class</span> <span class="nc">FME_utils</span><span class="p">:</span>
+    
+<div class="viewcode-block" id="FME_utils.extract_url_html"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.extract_url_html">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">extract_url_html</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method reads the html source code from a website.</span>
+<span class="sd">        </span>
+<span class="sd">        The method will also pass the html source code into BeautifulSoup</span>
+<span class="sd">        in order to correct badly (when possible) badly formed html source code.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url_to_read : str</span>
+<span class="sd">            URL address to read.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The html source code read from the url.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;HTTP call: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">)</span>
+            <span class="n">html_str</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Unable to read the URL: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span>
+            
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># First try to parse the html code with html.parser</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_str</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+            <span class="n">xhtml_str</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Second try to parse the html with lxml</span>
+                <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_str</span><span class="p">,</span> <span class="s2">&quot;lxml&quot;</span><span class="p">)</span>
+                <span class="n">xhtml_str</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Unable to parse the html source code from: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+                <span class="n">xhtml_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                
+        <span class="k">return</span> <span class="n">xhtml_str</span></div>
+    
+<div class="viewcode-block" id="FME_utils.extract_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.extract_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method extracts a subset of the attributes of a feature.</span>
+<span class="sd">        </span>
+<span class="sd">        If the the attribute name to extract is not an FME list (ex.: value) than only one </span>
+<span class="sd">        attribute is extracted.</span>
+<span class="sd">        </span>
+<span class="sd">        If the attribute name to extract is a list (ex.: ressources{}.name) than all the</span>
+<span class="sd">        attributes of the list is extrated.</span>
+<span class="sd">        </span>
+<span class="sd">        The method returns a list of tuple one tuple for each attribute to extract. The </span>
+<span class="sd">        tuple is composed of 2 values the first is the complete attribute name: </span>
+<span class="sd">        ex.: value for none list attribute or ressources{1}.name for list attribute.  The </span>
+<span class="sd">        seconde value of the list is the index value: None for non list attribute or &quot;1&quot; for </span>
+<span class="sd">        ressources{1}.name for list attribute.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature</span>
+<span class="sd">            FME feature to process</span>
+<span class="sd">        att_name : str</span>
+<span class="sd">            The name of the attribute to extract</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            A list of FME attribute.  </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="c1">#        web_pdb.set_trace()</span>
+        <span class="n">atts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">feature_atts</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAllAttributeNames</span><span class="p">()</span>  <span class="c1"># Extract all attribute names</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="n">regex_list</span> <span class="o">=</span> <span class="s2">&quot;\{\d+\}&quot;</span>
+        <span class="n">regex_index</span> <span class="o">=</span> <span class="s2">&quot;\d+&quot;</span>
+
+        <span class="k">if</span> <span class="n">att_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">att_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">):</span>
+                <span class="c1"># Search for all the attributes of a list (ex.: resources{})</span>
+                <span class="n">att_name</span> <span class="o">=</span> <span class="s2">&quot;^&quot;</span> <span class="o">+</span> <span class="n">att_name</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Search for specific attributes of a list (ex.: resources{}.name)</span>
+                <span class="n">att_name</span> <span class="o">=</span> <span class="s2">&quot;^&quot;</span> <span class="o">+</span> <span class="n">att_name</span> <span class="o">+</span> <span class="s2">&quot;$&quot;</span>
+            <span class="n">regex_search</span> <span class="o">=</span> <span class="n">att_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regex_list</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">feature_att</span> <span class="ow">in</span> <span class="n">feature_atts</span><span class="p">:</span>
+                <span class="n">att_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regex_search</span> <span class="p">,</span> <span class="n">feature_att</span><span class="p">)</span>  <span class="c1"># Check if attribute name is present</span>
+                <span class="k">if</span> <span class="n">att_lst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">index_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_list</span><span class="p">,</span> <span class="n">att_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index with &quot;{}&quot;</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_lst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">index</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_index</span><span class="p">,</span> <span class="n">index_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index number</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>  <span class="c1">#Validate index is a number</span>
+                                <span class="n">atts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">feature_att</span><span class="p">))</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># The attribute to search is not a list</span>
+            <span class="k">for</span> <span class="n">feature_att</span> <span class="ow">in</span> <span class="n">feature_atts</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">att_name</span> <span class="o">==</span> <span class="n">feature_att</span><span class="p">:</span>
+                    <span class="n">atts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="kc">None</span><span class="p">,</span> <span class="n">att_name</span><span class="p">))</span>
+                    <span class="k">break</span>
+        <span class="c1"># Sort the list indexes as FME getAllAttributeNames break the order of the list</span>
+        <span class="n">atts</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">atts</span></div>
+        
+<div class="viewcode-block" id="FME_utils.max_index_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.max_index_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">max_index_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">list_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method returns the maximum index number of an attribute list.</span>
+<span class="sd">        </span>
+<span class="sd">        This method only works with a FME attribute list and returns the maximum index</span>
+<span class="sd">        for an attribute list even if there is hole in the list it will return the</span>
+<span class="sd">        maximum index number. So for the list name: att{} if the feature has the following</span>
+<span class="sd">        attribute: att{0}.name and att{3}.value. The method will return 3. If there is no</span>
+<span class="sd">        list, the returned value is -1.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature</span>
+<span class="sd">            FME feature to process</span>
+<span class="sd">        list_name : str</span>
+<span class="sd">            The name of the list to search including the &quot;{}&quot; characters (ex.: &quot;att{}&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Int</span>
+<span class="sd">            Maximum index number in the list.  </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="c1">#        web_pdb.set_trace()</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">feature_atts</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAllAttributeNames</span><span class="p">()</span>  <span class="c1"># Extract all attribute names</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="n">regex_list</span> <span class="o">=</span> <span class="s2">&quot;\{\d+\}&quot;</span>
+        <span class="n">regex_index</span> <span class="o">=</span> <span class="s2">&quot;\d+&quot;</span>
+
+        <span class="n">att_name</span> <span class="o">=</span> <span class="n">list_name</span>
+        <span class="k">if</span> <span class="n">att_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># The attribute to search is a list</span>
+            <span class="n">att_name</span> <span class="o">=</span> <span class="s2">&quot;^&quot;</span> <span class="o">+</span> <span class="n">att_name</span>  <span class="c1"># Regular expression exact match</span>
+            <span class="n">regex_search</span> <span class="o">=</span> <span class="n">att_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">regex_list</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">feature_att</span> <span class="ow">in</span> <span class="n">feature_atts</span><span class="p">:</span>
+                <span class="n">att_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regex_search</span> <span class="p">,</span> <span class="n">feature_att</span><span class="p">)</span>  <span class="c1"># Check if attribute name is present</span>
+                <span class="k">if</span> <span class="n">att_lst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">index_lst</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_list</span><span class="p">,</span> <span class="n">att_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index with &quot;{}&quot;</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_lst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">index</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_index</span><span class="p">,</span> <span class="n">index_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Extract the index number</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>  <span class="c1">#Validate index is a number</span>
+                                <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">count</span><span class="p">:</span>
+                                    <span class="n">count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;List is not valid: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature_att</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># The attribute to search is not a list</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Not valid list name: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_name</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">count</span></div>
+
+<div class="viewcode-block" id="FME_utils.repair_attribute_list"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.repair_attribute_list">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">repair_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">,</span> <span class="n">default_att_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method repairs a list by creating the missing attribute in a list.</span>
+<span class="sd">        </span>
+<span class="sd">        For example if the list resources{} contains the following attributes:</span>
+<span class="sd">        </span>
+<span class="sd">          - resources{0}.a</span>
+<span class="sd">          - resources{1}.a</span>
+<span class="sd">          - resources{1}.b</span>
+<span class="sd">          - resources{3}.a</span>
+<span class="sd">          </span>
+<span class="sd">        This method will create with empty values the following missing attribute:</span>
+<span class="sd">        </span>
+<span class="sd">          - resources{0}.b</span>
+<span class="sd">          - resources{2}.a</span>
+<span class="sd">          - resources{2}.b</span>
+<span class="sd">          - resources{3}.b</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature: FME feature</span>
+<span class="sd">            FME feature to process</span>
+<span class="sd">        att_list_name: list</span>
+<span class="sd">            Name of the attribute to extract (ex: values{})</span>
+<span class="sd">        default_att_name: list</span>
+<span class="sd">            List of attribute that will be added to the feature even if none is present</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Managing mutable default values</span>
+        <span class="k">if</span> <span class="n">default_att_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">att_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">att_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">default_att_name</span><span class="p">)</span>
+        <span class="n">max_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">regex_list</span> <span class="o">=</span> <span class="s2">&quot;\{\d+\}&quot;</span>
+        <span class="n">regex_index</span> <span class="o">=</span> <span class="s2">&quot;\d+&quot;</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        
+    <span class="c1">#    web_pdb.set_trace()</span>
+        <span class="k">if</span> <span class="n">att_list_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>    
+            <span class="c1"># Extract only the attribute to process</span>
+            <span class="n">attributes</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">)</span>
+            
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="n">max_index</span><span class="p">:</span>
+                    <span class="n">max_index</span> <span class="o">=</span> <span class="n">index</span>  <span class="c1"># Set the maximum index number</span>
+                    
+                <span class="c1"># Build the list of names (after the dot; ex: att{99}.name)</span>
+                <span class="n">att_split</span> <span class="o">=</span> <span class="n">attribute</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+                <span class="n">att_name</span> <span class="o">=</span> <span class="n">att_split</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">att_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">att_names</span><span class="p">:</span>
+                   <span class="n">att_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">att_name</span><span class="p">)</span>  <span class="c1"># Update the list</span>
+                   
+            <span class="c1"># Repair the missing attributes names in the attribute list</span>
+            <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_index</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">att_name</span> <span class="ow">in</span> <span class="n">att_names</span><span class="p">:</span>
+                    <span class="n">attribute</span> <span class="o">=</span> <span class="n">att_list_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;{</span><span class="si">%i</span><span class="s1">}&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">att_name</span>
+                    <span class="n">attribute</span> <span class="o">=</span> <span class="n">attribute</span><span class="o">%</span><span class="n">index</span>  <span class="c1"># Add the index number </span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">attribute</span><span class="p">):</span>
+                        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                        
+            <span class="c1"># Validate reparation</span>
+            <span class="n">attributes</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">extract_attribute_list</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_list_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">attributes</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">max_index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">att_names</span><span class="p">):</span>
+                <span class="c1"># Reparation works</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Internal error: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_list_name</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+                        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;Not a valid attribute list: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">att_list_name</span><span class="p">),</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_WARN</span><span class="p">)</span>    
+
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="FME_utils.load_yaml_document"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.load_yaml_document">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load_yaml_document</span><span class="p">(</span><span class="n">yaml_str_document</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; This method loads a YMAL document from a string.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        str_yaml : str</span>
+<span class="sd">            String containing a YAML document</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            YAML structure in dictionnaries</span>
+<span class="sd">            </span>
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        Exception </span>
+<span class="sd">            If the YAML is not well formed</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Load the YMAL directives into python dictionnaries</span>
+            <span class="n">yaml_document</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">yaml_str_document</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Error loading YAML document: </span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yaml_str_document</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">yaml_document</span></div>
+        
+<div class="viewcode-block" id="FME_utils.create_set_of_word"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.create_set_of_word">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_set_of_word</span><span class="p">(</span><span class="n">str_words</span><span class="p">,</span> <span class="n">separator</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a set of words from a string of words.</span>
+<span class="sd">        </span>
+<span class="sd">        A set will remove duplicate words</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        str_words : str</span>
+<span class="sd">            A string of words</span>
+<span class="sd">        separator : str</span>
+<span class="sd">            A character that delimits word in a string (default is space &quot; &quot;)</span>
+<span class="sd">        lower: bool</span>
+<span class="sd">            If set to True the result will be transformed in lower case; If flase no action is taken</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Set</span>
+<span class="sd">            A set of word</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">word_lst</span> <span class="o">=</span> <span class="n">str_words</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lower</span><span class="p">:</span>
+            <span class="n">word_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_lst</span><span class="p">]</span>
+             
+        <span class="c1"># Create the set of words    </span>
+        <span class="n">word_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">word_lst</span><span class="p">)</span>
+         
+        <span class="k">return</span> <span class="n">word_set</span></div>
+        
+<div class="viewcode-block" id="FME_utils.feature_get_attribute"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.feature_get_attribute">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">attribute_key</span><span class="p">,</span> <span class="n">error_if_none</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Read an attribute from a FME feature.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature object</span>
+<span class="sd">            The FME feature used to read the attribute</span>
+<span class="sd">        attribute_key : String</span>
+<span class="sd">            Name of the attribute to read</span>
+<span class="sd">        error_if_none : Bool</span>
+<span class="sd">            True: Raise exception if the FME attribute is missing; </span>
+<span class="sd">            False: write emtpty string if attribute is missing</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        String</span>
+<span class="sd">            Value of the attribute read</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">attribute_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">attribute_key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">attribute_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">error_if_none</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span> <span class="p">(</span><span class="s2">&quot;Error.  Attribute: </span><span class="si">{}</span><span class="s2"> is missing)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attribute_key</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">attribute_value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            
+        <span class="k">return</span> <span class="n">attribute_value</span> </div>
+
+<div class="viewcode-block" id="FME_utils.make_http_call"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.make_http_call">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make_http_call</span><span class="p">(</span><span class="n">fme_self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">str_http</span><span class="p">,</span> <span class="n">output_fme</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method makes an http call and manage the request response.</span>
+<span class="sd">        </span>
+<span class="sd">        If the response from the http request is not 200 (OK); an entry is made in the logger</span>
+<span class="sd">        and an FME feature is outputted with the status code and the description.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fme_self : FME session object</span>
+<span class="sd">            FME session object the &quot;self&quot;</span>
+<span class="sd">        feature : FME Feature object</span>
+<span class="sd">            FME feature used to output a feature</span>
+<span class="sd">        session : Session object</span>
+<span class="sd">            Used to make the http call</span>
+<span class="sd">        str_http : str</span>
+<span class="sd">            Http string used for the http call</span>
+<span class="sd">        output_fme : Bool</span>
+<span class="sd">            True: output an FME feature; False: do not output an FME feature</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Request object</span>
+<span class="sd">            Result from the get request</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+        <span class="c1">#web_pdb.set_trace()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fme_self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;HTTP call: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">str_http</span><span class="p">),</span> 
+                                         <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">str_http</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">status_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">status_codes</span><span class="o">.</span><span class="n">_codes</span><span class="p">[</span><span class="n">status_code</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="c1"># Manage if an FME feature need to be outputted</span>
+            <span class="k">if</span> <span class="n">status_code</span> <span class="o">!=</span> <span class="n">HTTP_OK</span> <span class="ow">and</span> <span class="n">output_fme</span><span class="p">:</span>
+                <span class="n">lst_key_val_att</span> <span class="o">=</span> <span class="p">[(</span><span class="n">STATUS_CODE</span><span class="p">,</span> <span class="s2">&quot;Status code: </span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="n">description</span><span class="p">)),</span>
+                                   <span class="p">(</span><span class="n">STATUS_CODE_DESCRIPTION</span><span class="p">,</span> <span class="n">description</span><span class="p">)]</span>
+                <span class="n">FME_utils</span><span class="o">.</span><span class="n">pyoutput_feature</span><span class="p">(</span><span class="n">fme_self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">lst_key_val_att</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="c1">#except Exception as err:</span>
+            <span class="c1"># Manage the case where an error occured during the reading of the CKAN server</span>
+            <span class="n">fme_self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="s2">&quot;HTTP call error: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">),</span> 
+                                         <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_ERROR</span><span class="p">)</span>
+            <span class="n">lst_key_val_att</span> <span class="o">=</span> <span class="p">[(</span><span class="n">STATUS_CODE</span><span class="p">,</span> <span class="s2">&quot;500&quot;</span><span class="p">),</span>
+                               <span class="p">(</span><span class="n">STATUS_CODE_DESCRIPTION</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">status_codes</span><span class="o">.</span><span class="n">_codes</span><span class="p">[</span><span class="mi">500</span><span class="p">][</span><span class="mi">0</span><span class="p">])]</span>
+            <span class="n">FME_utils</span><span class="o">.</span><span class="n">pyoutput_feature</span><span class="p">(</span><span class="n">fme_self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">lst_key_val_att</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span></div>
+            
+<div class="viewcode-block" id="FME_utils.create_session"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.create_session">[docs]</a>    <span class="nd">@staticmethod</span>    
+    <span class="k">def</span> <span class="nf">create_session</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;This method creates an http session.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Session</span>
+<span class="sd">            Session to be uses to make the http requests</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">(</span><span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">InsecureRequestWarning</span><span class="p">)</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+        <span class="n">retries</span> <span class="o">=</span> <span class="n">Retry</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                        <span class="n">backoff_factor</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                        <span class="n">status_forcelist</span><span class="o">=</span><span class="p">[</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">,</span> <span class="mi">504</span> <span class="p">])</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="n">retries</span><span class="p">))</span>
+        
+        <span class="k">return</span> <span class="n">session</span></div>
+        
+<div class="viewcode-block" id="FME_utils.pyoutput_feature"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.pyoutput_feature">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">pyoutput_feature</span><span class="p">(</span><span class="n">fme_self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">lst_key_value_att</span><span class="p">,</span> <span class="n">clone</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set attributes to the FME feature and output he feature through the FME pyoutput</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        me_self : FME session object</span>
+<span class="sd">            FME session object the &quot;self&quot;</span>
+<span class="sd">        feature : FME Feature object</span>
+<span class="sd">            FME feature used to output a feature</span>
+<span class="sd">        lst_key_value_att : List of tuple</span>
+<span class="sd">            Each tuple contains 2 values: first the name of the key; second the value of the attribute</span>
+<span class="sd">        clone : Bool</span>
+<span class="sd">            True: Clone the feature before output it; </span>
+<span class="sd">            False: do not clone feature before outputit.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+        <span class="k">if</span> <span class="n">clone</span><span class="p">:</span>
+            <span class="n">feature_out</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">feature_out</span> <span class="o">=</span> <span class="n">feature</span>
+            
+        <span class="k">for</span> <span class="n">key_att</span><span class="p">,</span> <span class="n">value_att</span> <span class="ow">in</span> <span class="n">lst_key_value_att</span><span class="p">:</span>
+            <span class="n">feature_out</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">key_att</span><span class="p">,</span> <span class="n">value_att</span><span class="p">)</span>
+            
+        <span class="c1"># Output FME feature</span>
+        <span class="n">fme_self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">feature_out</span><span class="p">)</span>      
+        
+        <span class="k">return</span></div>
+        
+<div class="viewcode-block" id="FME_utils.convert_unix_time"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.convert_unix_time">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">convert_unix_time</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">in_att_name</span><span class="p">,</span> <span class="n">out_att_name</span><span class="o">=</span><span class="s1">&#39;itemModif&#39;</span><span class="p">,</span> <span class="n">out_format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; This method unix time to a specified format.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature object</span>
+<span class="sd">            The FME feature used to read the attribute</span>
+<span class="sd">        in_att_name : str</span>
+<span class="sd">            The name of the FME attribute to convert.</span>
+<span class="sd">        out_att_name : str</span>
+<span class="sd">            The name of the FME attribute you want the conversion to be done.</span>
+<span class="sd">        out_format : str</span>
+<span class="sd">            String containing the wanted output format for the date.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            A string representing the time in the specified format.</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#web_pdb.set_trace()</span>
+        
+        <span class="c1">#Managing empty attributes</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">):</span>
+            <span class="k">pass</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1">#Get the attribute value</span>
+            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">)</span>
+            
+            <span class="c1">#Converting the attribute value to string</span>
+            <span class="n">att_value_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">att_value</span><span class="p">)</span>
+            
+            <span class="c1">#Converting the length adjusted attribute value to integer</span>
+            <span class="n">att_value_cut</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">att_value_str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">1</span><span class="p">])</span>
+
+
+            <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">out_att_name</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">att_value_cut</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">out_format</span><span class="p">))</span>
+            
+        <span class="k">return</span></div>
+        
+<div class="viewcode-block" id="FME_utils.test_attribute_value"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.test_attribute_value">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">test_attribute_value</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_name</span><span class="p">,</span> <span class="n">target_value</span><span class="p">,</span> <span class="n">check_case</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test if a feature has a specific atttribute and a specific attribute value.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FMEFeature</span>
+<span class="sd">            Feature object containing the attribute to test_attribute</span>
+<span class="sd">        att_name : String</span>
+<span class="sd">            Attribute name to test</span>
+<span class="sd">        target_value : str</span>
+<span class="sd">            Value to test</span>
+<span class="sd">        check_case : Bool</span>
+<span class="sd">            Flag for the string case. True: Check the string case; False: string </span>
+<span class="sd">            case is not important</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Bool</span>
+<span class="sd">            True: The attribute is present and the value is good; </span>
+<span class="sd">            False: The attribute is not there or the value is different</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">att_value</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">feature_get_attribute</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">att_name</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">check_case</span><span class="p">:</span>
+            <span class="c1"># Nothing to do</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Adjust the case</span>
+            <span class="n">target_value</span> <span class="o">=</span> <span class="n">target_value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">att_value</span> <span class="o">=</span> <span class="n">att_value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">att_value</span> <span class="o">==</span> <span class="n">target_value</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="kc">False</span>
+            
+        <span class="k">return</span> <span class="n">match</span>    </div>
+
+<div class="viewcode-block" id="FME_utils.remove_mailto"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.remove_mailto">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">remove_mailto</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">in_att_name</span><span class="p">,</span> <span class="n">out_att_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">remove_in_att</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Removes the first part of an attribute string where it is not part of the email address</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FMEFeature</span>
+<span class="sd">            Feature object containing the attribute to transform</span>
+<span class="sd">        in_att_name : str</span>
+<span class="sd">            The name of the FME attribute containing the email Address</span>
+<span class="sd">        out_att_name : str</span>
+<span class="sd">            The name of the FME attribute you want the transformation to be saved to.</span>
+<span class="sd">            if this parameter is nor specified the transformation will be applied the attribute source</span>
+<span class="sd">        separator : str</span>
+<span class="sd">            String for the separator</span>
+<span class="sd">        remove_in_att : Boolean</span>
+<span class="sd">            When True and out_att_name is specified the source attribute is removed from the feature</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">splitted_mail</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">out_att_name</span><span class="o">==</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">,</span><span class="n">splitted_mail</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">out_att_name</span><span class="p">,</span><span class="n">splitted_mail</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">remove_in_att</span><span class="p">:</span>
+                    <span class="n">feature</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="n">in_att_name</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="FME_utils.go_url"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.go_url">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">go_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Verifies if the provided url is valid and responds to a request, whether it&#39;s a http or ftp url.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url: String</span>
+<span class="sd">            The current url to check.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Depending if checking a ftp or http url</span>
+        <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;ftp&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">ftp_check_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">http_check_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="c1"># If found</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;found&quot;</span><span class="p">]:</span>
+            <span class="c1"># If redirects happened</span>
+            <span class="k">if</span> <span class="s2">&quot;redirects&quot;</span> <span class="ow">in</span> <span class="n">result</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;redirects&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found! | &quot;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; --&gt; &quot;</span> <span class="o">+</span> <span class="s1">&#39; --&gt; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;redirects&quot;</span><span class="p">]))</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found! | &quot;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not found | &quot;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="FME_utils.http_check_url"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.http_check_url">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">http_check_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks if the http url responds to a request.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url : String</span>
+<span class="sd">            The current url to check</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Dictionary</span>
+<span class="sd">            A dictionary with &quot;found&quot;, &quot;url&quot; and &quot;redirects&quot; properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">redirects</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">url_redir</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">found_flag</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">_http_check_url_rec</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">redirects</span><span class="p">)</span>
+
+        <span class="c1"># Return information</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;found&quot;</span><span class="p">:</span> <span class="n">found_flag</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s2">&quot;redirects&quot;</span><span class="p">:</span> <span class="n">redirects</span>
+        <span class="p">}</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_http_check_url_rec</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">redirects</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks if the url responds to a request and recursively follows redirections when any. The redirects used are added to the redirects parameter to be provided back to the caller.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url : String</span>
+<span class="sd">            The current url to check</span>
+<span class="sd">        redirects : List</span>
+<span class="sd">            The total redirect urls processed</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Boolean</span>
+<span class="sd">            True if the url responded successfully (200 response); False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Do the request using HEAD method</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">http_check_url_request_head</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="c1"># If a 200</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">elif</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">301</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">302</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">303</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">307</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">308</span><span class="p">):</span>
+            <span class="c1"># Handle the redirects</span>
+            <span class="k">return</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">_http_check_url_rec_handle_redir</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">redirects</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">405</span><span class="p">):</span>
+            <span class="c1"># Do the request using OPTIONS method</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">http_check_url_request_options</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+            <span class="k">elif</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">301</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">302</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">303</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">307</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">308</span><span class="p">):</span>
+                <span class="c1"># Handle the redirects</span>
+                <span class="k">return</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">_http_check_url_rec_handle_redir</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">redirects</span><span class="p">)</span>
+
+        <span class="c1"># Couldn&#39;t</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="FME_utils.http_check_url_request_head"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.http_check_url_request_head">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">http_check_url_request_head</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Makes a call on the provided url using the HEAD method.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url : String</span>
+<span class="sd">            The current url to check</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Request object</span>
+<span class="sd">            The request object when successfully got a response of any kind or None when the request failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Requests the head of the url</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">)</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">r</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="FME_utils.http_get_url_mime_type"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.http_get_url_mime_type">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">http_get_url_mime_type</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Makes a requests on the header of the url address to extract the MIME-type.</span>
+<span class="sd">        </span>
+<span class="sd">        If the MIME-type is absent and the status code of the URL reuest is valid, a get request is done </span>
+<span class="sd">        on the URL address and it validates if the URL content starts with &#39;&lt;!DOCTYPE html&gt;&#39; the MIME-type</span>
+<span class="sd">        is set to &#39;text/html&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">        The method will set the MIME-type to None if it cannot determine the MIME-type of the URL.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url : String</span>
+<span class="sd">            The current url to check</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        mime_type String</span>
+<span class="sd">            The MIME-type of the URL address or None if the MIME-type cannot be determined</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">content_type</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Set default value</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>  <span class="c1"># Create a logger</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Suppress warning</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">packages</span><span class="o">.</span><span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">InsecureRequestWarning</span><span class="p">)</span>
+            
+            <span class="c1"># Make a head request to get only the header (not the content)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">status_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;HTTP call -- Status code: </span><span class="si">{0}</span><span class="s2">; URL </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">logMessageString</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FME_INFORM</span><span class="p">)</span>
+            
+            <span class="n">headers</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span>
+            <span class="n">content_type</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content-type&quot;</span><span class="p">)</span>                
+            <span class="k">if</span> <span class="n">content_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># If content-type is empty try to read the data and check if it&#39;s an HTML document</span>
+                <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Range&quot;</span><span class="p">:</span> <span class="s2">&quot;bytes=0-25&quot;</span><span class="p">}</span>  <span class="c1"># Request a range if server can handle it (faster)</span>
+                <span class="n">request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">text</span>
+                <span class="k">if</span> <span class="s1">&#39;&lt;!DOCTYPE html&#39;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]:</span>
+                    <span class="n">content_type</span> <span class="o">=</span> <span class="s2">&quot;text/html&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Not an HTML document.</span>
+                    <span class="k">pass</span>
+
+        <span class="k">except</span><span class="p">:</span>
+            <span class="c1"># An error has occured nothing to do </span>
+            <span class="k">pass</span>
+            
+        <span class="k">return</span> <span class="n">content_type</span></div>
+        
+    
+<div class="viewcode-block" id="FME_utils.http_check_url_request_options"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.http_check_url_request_options">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">http_check_url_request_options</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Makes a call on the provided url using the OPTIONS method.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url : String</span>
+<span class="sd">            The current url to check</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Request object or None</span>
+<span class="sd">            The request object when successfully got a response of any kind or None when the request failed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#web_pdb.set_trace()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Requests the head of the url</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">r</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_http_check_url_rec_handle_redir</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">redirects</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles the request being redirected in order to loop back in the recursion with the redirected url.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        r : String</span>
+<span class="sd">            The current request that got a redirected status.</span>
+<span class="sd">        redirects : List</span>
+<span class="sd">            The total redirect urls processed.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Boolean</span>
+<span class="sd">            True if the url responded successfully (200 response); False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># If Location is in the headers</span>
+        <span class="k">if</span> <span class="s2">&quot;Location&quot;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+            <span class="n">url_redir</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Location&quot;</span><span class="p">]</span>
+            <span class="n">redirects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url_redir</span><span class="p">)</span>
+
+            <span class="c1"># Loop back in the recursion</span>
+            <span class="k">return</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">_http_check_url_rec</span><span class="p">(</span><span class="n">url_redir</span><span class="p">,</span> <span class="n">redirects</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="FME_utils.ftp_check_url"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.ftp_check_url">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">ftp_check_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parses the given url to retrieve the base directory and the directory/file to check for existence.\\</span>
+<span class="sd">        A connection using TLS is tried first and if it fails a connection without TLS is attempted.</span>
+<span class="sd">        Prints Found or Not Found with the tested url.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        url : String</span>
+<span class="sd">            The current url to check.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Dicstionary</span>
+<span class="sd">            A dictionary with &quot;found&quot;, &quot;url&quot; properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Parse the url to get the base path and ignoring the extremities &quot;/&quot;</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">directories</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="n">base_path</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directories</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">dir_file_name</span> <span class="o">=</span> <span class="n">directories</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:][</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Decode back to regular text (as urlparse also encodes the path)</span>
+        <span class="n">base_path</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
+        <span class="n">dir_file_name</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">dir_file_name</span><span class="p">)</span>
+
+        <span class="n">found_flag</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Try with TLS</span>
+            <span class="k">with</span> <span class="n">FTP_TLS</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="k">as</span> <span class="n">ftp</span><span class="p">:</span>
+                <span class="n">found_flag</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">ftp_check_file_dir_exists</span><span class="p">(</span><span class="n">ftp</span><span class="p">,</span> <span class="n">base_path</span><span class="p">,</span> <span class="n">dir_file_name</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1">#print(&quot;FTP connection with TLS failed, trying without TLS&quot;)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Try without TLS</span>
+                <span class="k">with</span> <span class="n">FTP</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="k">as</span> <span class="n">ftp</span><span class="p">:</span>
+                    <span class="n">found_flag</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">ftp_check_file_dir_exists</span><span class="p">(</span><span class="n">ftp</span><span class="p">,</span> <span class="n">base_path</span><span class="p">,</span> <span class="n">dir_file_name</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># If found a file</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;found&quot;</span><span class="p">:</span> <span class="n">found_flag</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="FME_utils.ftp_check_file_dir_exists"><a class="viewcode-back" href="../FME_utils.html#FME_utils.FME_utils.ftp_check_file_dir_exists">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">ftp_check_file_dir_exists</span><span class="p">(</span><span class="n">ftp</span><span class="p">,</span> <span class="n">base_path</span><span class="p">,</span> <span class="n">dir_file_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses the given ftp instance connection to browse to the base_path and check the existance of either a directory or a file name.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ftp : String</span>
+<span class="sd">            The current ftp (ftplib) instance.</span>
+<span class="sd">        base_path : String</span>
+<span class="sd">            The base path to browse into.</span>
+<span class="sd">        dir_file_name : String</span>
+<span class="sd">            The name of the directory or the file to search for.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Boolean </span>
+<span class="sd">           True when found; False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">ftp</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span> <span class="c1"># To support accented characters</span>
+        <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+        <span class="n">ftp</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span>
+        
+        <span class="c1"># List the files/directories</span>
+        <span class="n">filelist</span> <span class="o">=</span> <span class="n">ftp</span><span class="o">.</span><span class="n">nlst</span><span class="p">()</span>
+
+        <span class="c1"># Return True if item is in the list</span>
+        <span class="k">return</span> <span class="n">dir_file_name</span> <span class="ow">in</span> <span class="n">filelist</span></div></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../FME_utils.html#FME_utils.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main function used when called without any parameters to run a couple test cases.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Good tough examples:</span>
+    <span class="c1"># - (with spaces and accents in url): &quot;ftp://transfert.mern.gouv.qc.ca/public/diffusion/RGQ/Documentation/BDAT(FTP)/Index_Nord du 53e parallèle.pdf&quot;</span>
+    <span class="c1"># - (with redirection(s)): &quot;http://rds.ca&quot; (2 sequentional redirects!) or &quot;https://www.donneesquebec.ca/recherche/fr/dataset/6d080ad9-3823-4bfd-8c61-32594f11bc83&quot; (real case)</span>
+    <span class="c1"># - (HEAD not working (error 400, use OPTIONS) &quot;https://data.princeedwardisland.ca/api/views/4bk3-u3rm/rows.rdf?accessType=DOWNLOAD&quot;</span>
+    <span class="c1"># - (HEAD not working (error 405, use OPTIONS) &quot;https://data.princeedwardisland.ca/api/geospatial/u8pp-dvp4?method=export&amp;format=GeoJSON&quot;</span>
+    <span class="c1"># - (invalid SSL certificate): &quot;https://jaymze.org/proglang/windows/unofficial_Guide_URL_File_Format_.pdf&quot;</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ftp://transfert.mern.gouv.qc.ca/public/diffusion/RGQ/Documentation/BDAT(FTP)/Index_Nord du 53e parallèle.pdf&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://jaymze.org/proglang/windows/unofficial_Guide_URL_File_Format_.pdf&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;http://rds.ca&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://www.donneesquebec.ca/recherche/fr/dataset/6d080ad9-3823-4bfd-8c61-32594f11bc83&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://gnb.socrata.com/datasets/rzzg-85tb&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;http://www.gov.pe.ca/photos/original/1900_forest.MIF.zip&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://www.gov.pe.ca/photos/original/Wetlands09.DXF.zip&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://www.gov.pe.ca/photos/original/wildlife2011.SHP.zip&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/geospatial/4zg3-he2k?method=export&amp;format=GeoJSON&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/geospatial/4zg3-he2k?method=export&amp;format=KML&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/geospatial/4zg3-he2k?method=export&amp;format=KMZ&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/geospatial/4zg3-he2k?method=export&amp;format=Shapefile&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.csv?accessType=DOWNLOAD&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.csv?accessType=DOWNLOAD&amp;bom=true&amp;format=true&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.csv?accessType=DOWNLOAD&amp;bom=true&amp;format=true&amp;delimiter=%3B&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.rdf?accessType=DOWNLOAD&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.rss?accessType=DOWNLOAD&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.tsv?accessType=DOWNLOAD&amp;bom=true&amp;format=true&amp;delimiter=%3B&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/views/2ig2-djcy/rows.xml?accessType=DOWNLOAD&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/api/views/cgzy-bim6/files/689546cd-afbe-45f4-ae04-cb41a5c82c6a?download=true&amp;filename=PEI</span><span class="si">%20G</span><span class="s2">roundwater%20Well%20Information%20Mar2021.xlsx&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/datasets/2arv-as4n&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/datasets/y58z-nyfh&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;https://data.princeedwardisland.ca/datasets/yhvv-wi8v&quot;</span><span class="p">]</span>
+
+    <span class="c1"># If url is a list of urls</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+            <span class="n">FME_utils</span><span class="o">.</span><span class="n">go_url</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">FME_utils</span><span class="o">.</span><span class="n">go_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span></div>
+
+<span class="c1"># Start the url check</span>
+<span class="c1">#main()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, FGP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

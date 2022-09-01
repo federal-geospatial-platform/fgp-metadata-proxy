@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEO_NONE_GEO_SELECTOR &mdash; fme_python_pt_harvester 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GEOSPATIAL_DATA_VALIDATOR" href="GEOSPATIAL_DATA_VALIDATOR.html" />
+    <link rel="prev" title="GEO_EXTENTS_MAPPER_NG" href="GEO_EXTENTS_MAPPER_NG.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> fme_python_pt_harvester
+            <img src="_static/Canada.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="BC_PROD.html">BC_FGP_BUILDER_PROD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_PROD.html">NL_FGP_BUILDER_PROD</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Synchronisation_CKAN.html">Synchronisation_CKAN</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AWS_TRANSLATE.html">AWS_TRANSLATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BC_ATTRIBUTE_FORMATTER.html">BC_ATTRIBUTE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DCAT_Reader.html">DCAT_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMPTY_FORMAT_MAPPER.html">EMPTY_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMPTY_FORMAT_MAPPER_NG.html">EMPTY_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER_NG.html">GEO_EXTENTS_MAPPER_NG</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GEO_NONE_GEO_SELECTOR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-geo-none-geo-selector-py">Documentation du code GEO_NONE_GEO_SELECTOR.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR_NG.html">GEOSPATIAL_DATA_VALIDATOR_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER_NG.html">GEOPORTAL_WEBLINK_ADDER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER.html">LICENSE_FILTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_ATTRIBUTE_EXTRACTOR.html">NL_ATTRIBUTE_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_CATALOGUE_READER.html">NL_CATALOGUE_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER_NG.html">METADATA_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_NG.html">METADATA_VALUE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_ERROR_MANAGER.html">METADATA_VALUE_MAPPER_ERROR_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MORE_INFO_MANAGER.html">MORE_INFO_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PYCSW_URL_MAPPER_NG.html">PYCSW_URL_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ON_CKAN_CONTACT_FORM_EXTRACTOR.html">ON_CKAN_CONTACT_FORM_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QC_MISSING_EMAIL_SETTER.html">QC_MISSING_EMAIL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER_NG.html">XML_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WMS_REST_LANGUAGE_FORMATTER.html">WMS_REST_LANGUAGE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YT_CONTACTS_MERGER.html">YT_CONTACTS_MERGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">FME_utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fme_python_pt_harvester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>GEO_NONE_GEO_SELECTOR</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/GEO_NONE_GEO_SELECTOR.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="geo-none-geo-selector">
+<h1>GEO_NONE_GEO_SELECTOR<a class="headerlink" href="#geo-none-geo-selector" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description </strong></p>
+<p>This custom transformer fans out the metadata records between two types of metadata (GeoSpatial and None GeoSpatial). When a metadata record cannot be validates as GeoSpatial it is declared None Geospatial. In order to determine the type of metadata record, the transformer analyse attributes according to the YAML directives. See the section Content of the YAML directives below for a complete description of the YAML directives.</p>
+<p>This custom transformer also adds the attribute _<em>typedatasets</em> which contains the value <em>geo</em> for the geospatial features and <em>nonegeo</em> for the none geospatial features.</p>
+<p><strong>Input Ports </strong></p>
+<ul>
+<li>DATA_INPUT: The input metadata records to process.</li>
+</ul>
+<p><strong>Output Ports </strong></p>
+<ul>
+<li>GEOSPATIAL: Output port for all gepspatial metadata records;</li>
+<li>NON-GEOSPATIAL: Output port for all none geospatial metadata records;</li>
+<li>ERROR_LOG: Output port for metadata records that need to be logged according to the YAML directives.</li>
+</ul>
+<p>Note: All the input records will go through either the GeoSpatial the None GeoSpatial port. Some input records may be duplicated and sent through the LOG_ERROR port if requested by the YAML directives.</p>
+<p><strong>Parameters </strong></p>
+<ul>
+<li>CSV_FILE_NAME: Name lookup table file name in CSV format. </li>
+<li>CSV_PATH: File path of the CSV file. </li>
+<li>CSV_PROVINCE: Code of the province (two letters) . </li>
+<li>YAML_DIRECTIVES: YAML directives for determining the Geospatial and None Geospatial records. See the section Content of the YAML directives below for a description of the YAML directives.</li>
+</ul>
+<p>Content of the YAML directives </p>
+<p>The YAML directives are used by the custom transformer to decide the type of the metadata records: GeoSpatial or None GeoSpatial. Here's an exemple of a YAML directives:</p>
+<pre>
+resources{}.format:  
+domain: lookup_table_format  
+spatial_type: overwrite  
+not_found: log  
+search_type: equals  
+#  
+description:  
+domain: [spatial, geographic]  
+spatial_type: no_overwrite  
+not_found: no_log  
+search_type: contains 
+</pre>
+
+<p><strong>Description of the YAML directives</strong></p>
+<p>The first part of the YAML is the name of the FME attribute to use to validate the record, it can be a list attribute (ex.: resources{}..format) or a simple attribute (ex.: description). If it's a list attribute,the name must contain the 2 characters:"{}". The content of that attribute will be used to determine if the record is GeoSpatial or None GeoSpatial.</p>
+<p>Following the FME attribute to validate, there are 4 keywords: domain, spatial_type, not_found and search_type.</p>
+<p>The first keyword domain defines the domain of values that are used to determine if a metadata record is GeoSpatial or None GeoSpatial. Two values are possible: lookup_table_format or a list of word defining the domain between brackets (ex.: [point, line, poygone]). When using the keyword lookup_table_format, the custom transformer will use the content of the column name format of the CSV fileto define the domain of values. The record type will be GeoSpatial if the column fgp_publish is set to "oui". When using a domain list, the metadata record will be GeoSpatial if the value of the FME attribute is contained in the domain list.</p>
+<p>The second keyword spatial_type defines how to set the spatial type when there is a domain match of the FME attribute. Three values are possible: no_overwite, overwrite and if_null_overwrite. no_overwite means that even if there is a match do not try to overwrite the spatial type. overwite means that if there is a match, take the spatial type value associated in the CSV file (column name: spatial_type) and assign it (or create it if empty) to the corresponding FME attribute. if_null_overwite as the same meaning as overwrite but only when the content of the spatial type is empty or missing. The values overwrite and if_null_overwrite can only be used when the domain keyword value is lookup_table_format.</p>
+<p>The third keyword not_found defines how the custom transformer behaves when an FME attribute is not found in the domain of values. Two values are possible: log and no_log. log means create a duplicate (clone) of the record and send it through the LOG_ERROR output port. no_log means do not log any error when the FME attribute is not found in the domain of values.</p>
+<p>The fourth keyword search type defines how to search the content of the FME attribute. Two values are possible: equals or contains. equals means that the value of the FME attribute must be exactly the same. contains means that one of the word the FME attribute must be in the domain values (usefull when we search for one word in a sentence).</p>
+<p>You can define more than one FME attribute to search. Do not duplicate the FME attribute name because the last one will overwrite the others.</p>
+</div>
+<div class="section" id="documentation-du-code-geo-none-geo-selector-py">
+<h2>Documentation du code GEO_NONE_GEO_SELECTOR.py<a class="headerlink" href="#documentation-du-code-geo-none-geo-selector-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector" title="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#GEO_NONE_GEO_SELECTOR.lower_resources_format" title="GEO_NONE_GEO_SELECTOR.lower_resources_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GEO_NONE_GEO_SELECTOR.lower_resources_format</span></code></a>(feature)</p></td>
+<td><p>This method puts in lower case the content of the attribute resources{}.format</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-GEO_NONE_GEO_SELECTOR"></span><dl class="py class">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GEO_NONE_GEO_SELECTOR.</span></span><span class="sig-name descname"><span class="pre">GeoNoneGeoSelector</span></span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates some instance variables before processing the FME features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._create_domain">
+<span class="sig-name descname"><span class="pre">_create_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directives</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector._create_domain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._create_domain" title="Permalink to this definition"></a></dt>
+<dd><p>Extract the domain of possible values to test</p>
+<p>The method returns a set to enable intersection operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>directives</strong> (<em>Dictionary</em>) – Contain the YMAL directives</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Values of the DOMAIN directives in the YAML</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._load_csv_feature">
+<span class="sig-name descname"><span class="pre">_load_csv_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector._load_csv_feature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._load_csv_feature" title="Permalink to this definition"></a></dt>
+<dd><p>Load a feature from the CSV lookup table</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FME Feature object</em>) – Feature containing the attributes to read</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._load_yaml_document">
+<span class="sig-name descname"><span class="pre">_load_yaml_document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector._load_yaml_document"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._load_yaml_document" title="Permalink to this definition"></a></dt>
+<dd><p>Load the YAML document and validate the values of the document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Feature</strong> (<em>FME feature object</em>) – Feature containing in attribute the YAML document</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._output_feature">
+<span class="sig-name descname"><span class="pre">_output_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">not_found_err</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector._output_feature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._output_feature" title="Permalink to this definition"></a></dt>
+<dd><p>Add some attributes to the FME feature and output the FME feature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<em>FME Feature object</em>) – The FME feature to process</p></li>
+<li><p><strong>geo</strong> (<em>Bool</em>) – True: The metadata is geosptial
+False: The metadata is not geospatial</p></li>
+<li><p><strong>not_found_err</strong> (<em>List of tuple</em>) – The first element of the tuple contains the name of the atribute; the second element contains the value of the attribute</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._process_feature">
+<span class="sig-name descname"><span class="pre">_process_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector._process_feature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._process_feature" title="Permalink to this definition"></a></dt>
+<dd><p>Process each FME feature according to the directives in the YAML document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FME Feature object</em>) – The FME feature to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._validate_value_domain">
+<span class="sig-name descname"><span class="pre">_validate_value_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector._validate_value_domain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector._validate_value_domain" title="Permalink to this definition"></a></dt>
+<dd><p>Validates if a string value is contained in a list of strings.</p>
+<p>An exception is raised when the string is not contained in the list of strings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>String</em>) – The value to check</p></li>
+<li><p><strong>domain</strong> (<em>List of String</em>) – List of string used to make the domain validation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>None</em></p></li>
+<li><p><em>Exceptions</em></p></li>
+<li><p><em>———-</em></p></li>
+<li><p><em>Exception Exception</em> – Raised when the value is not in the domain</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.close" title="Permalink to this definition"></a></dt>
+<dd><p>No action needs to be done when all the FME features have been processed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#GeoNoneGeoSelector.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.GeoNoneGeoSelector.input" title="Permalink to this definition"></a></dt>
+<dd><p>Process the incoming FME features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>object</strong> (<em>feature FME Feature</em>) – The incoming FME feature to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.copy_attributes_in_resources">
+<span class="sig-prename descclassname"><span class="pre">GEO_NONE_GEO_SELECTOR.</span></span><span class="sig-name descname"><span class="pre">copy_attributes_in_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#copy_attributes_in_resources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.copy_attributes_in_resources" title="Permalink to this definition"></a></dt>
+<dd><p>Copy the attributes notes, titles and id in the attribute resources list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FMEObject</em>) – The FME feature to processs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="GEO_NONE_GEO_SELECTOR.lower_resources_format">
+<span class="sig-prename descclassname"><span class="pre">GEO_NONE_GEO_SELECTOR.</span></span><span class="sig-name descname"><span class="pre">lower_resources_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/GEO_NONE_GEO_SELECTOR.html#lower_resources_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GEO_NONE_GEO_SELECTOR.lower_resources_format" title="Permalink to this definition"></a></dt>
+<dd><p>This method puts in lower case the content of the attribute resources{}.format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>FMEObject</strong> (<em>feature</em>) – the FME feature to process</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="GEO_EXTENTS_MAPPER_NG.html" class="btn btn-neutral float-left" title="GEO_EXTENTS_MAPPER_NG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="GEOSPATIAL_DATA_VALIDATOR.html" class="btn btn-neutral float-right" title="GEOSPATIAL_DATA_VALIDATOR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, FGP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

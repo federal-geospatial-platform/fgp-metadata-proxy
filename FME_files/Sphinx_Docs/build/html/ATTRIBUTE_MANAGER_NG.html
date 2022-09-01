@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATTRIBUTE_MANAGER_NG &mdash; fme_python_pt_harvester 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ATTRIBUTE_VALUE_TEXT_CLEANER" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html" />
+    <link rel="prev" title="Synchronisation_CKAN" href="Synchronisation_CKAN.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> fme_python_pt_harvester
+            <img src="_static/Canada.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="BC_PROD.html">BC_FGP_BUILDER_PROD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_PROD.html">NL_FGP_BUILDER_PROD</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Synchronisation_CKAN.html">Synchronisation_CKAN</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ATTRIBUTE_MANAGER_NG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-custom-transformer-fme">Documentation du Custom Transformer FME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-du-code-module-py">Documentation du code module.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AWS_TRANSLATE.html">AWS_TRANSLATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BC_ATTRIBUTE_FORMATTER.html">BC_ATTRIBUTE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DCAT_Reader.html">DCAT_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMPTY_FORMAT_MAPPER.html">EMPTY_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EMPTY_FORMAT_MAPPER_NG.html">EMPTY_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_EXTENTS_MAPPER_NG.html">GEO_EXTENTS_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOSPATIAL_DATA_VALIDATOR_NG.html">GEOSPATIAL_DATA_VALIDATOR_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEOPORTAL_WEBLINK_ADDER_NG.html">GEOPORTAL_WEBLINK_ADDER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER.html">LICENSE_FILTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_ATTRIBUTE_EXTRACTOR.html">NL_ATTRIBUTE_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NL_CATALOGUE_READER.html">NL_CATALOGUE_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_FORMAT_MAPPER_NG.html">METADATA_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_NG.html">METADATA_VALUE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="METADATA_VALUE_MAPPER_ERROR_MANAGER.html">METADATA_VALUE_MAPPER_ERROR_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MORE_INFO_MANAGER.html">MORE_INFO_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PYCSW_URL_MAPPER_NG.html">PYCSW_URL_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ON_CKAN_CONTACT_FORM_EXTRACTOR.html">ON_CKAN_CONTACT_FORM_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QC_MISSING_EMAIL_SETTER.html">QC_MISSING_EMAIL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XML_PUBLISHER_NG.html">XML_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WMS_REST_LANGUAGE_FORMATTER.html">WMS_REST_LANGUAGE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YT_CONTACTS_MERGER.html">YT_CONTACTS_MERGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FME_utils.html">FME_utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fme_python_pt_harvester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>ATTRIBUTE_MANAGER_NG</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ATTRIBUTE_MANAGER_NG.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="attribute-manager-ng">
+<h1>ATTRIBUTE_MANAGER_NG<a class="headerlink" href="#attribute-manager-ng" title="Permalink to this headline"></a></h1>
+<div class="section" id="documentation-du-custom-transformer-fme">
+<h2>Documentation du Custom Transformer FME<a class="headerlink" href="#documentation-du-custom-transformer-fme" title="Permalink to this headline"></a></h2>
+<p><strong>Description</strong></p>
+<p>This custom Transformer allow the user to set a specified value for one or many attributes into a FME feature (attributes can be simple list i.e. with only one index). It can either overwrite the attribute value or set a specified value if the attribute is Null. The value can be set as text or as another attribute value from the same FME feature. In the case where the specified attribute is a list, the custom Transformer repairs it (it assures there is no missing index into the list). Attributes to process and actions to do are contained into input YAML directives.</p>
+<p><strong>Input Ports</strong></p>
+<ul>
+<li>DATA_INPUT : A FME feature.</li>
+</ul>
+<p><strong>Output Ports</strong></p>
+<ul>
+<li>OUTPUT : The FME feature for witch attributes have been modified according the YAML directives.</li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>IN_YAML_TEXT: YAML directives to determine the attribute and the action to be done on the FME feature. See the section Content of the YAML directives below for a description of the YAML directives.</li>
+</ul>
+<p><strong>Content of the YAML directives</strong></p>
+<p>The YAML directives are used by the custom transformer to decide the attribute to process and the process itself. Below is an example of YAML directives. Notice that there is 6 attributes, each of them has 2 keywords values: <em>action</em> and <em>attr2set</em> . In YAML syntax dictionnary, the colon must be followed by a SPACE --&gt; action: value .</p>
+<pre>
+notes:
+    action: attribute_not_null
+    attr2set: title
+
+iso_topic{}.:
+    action: attribute_not_null
+    attr2set: default_iso_topic
+
+publisher:
+    action: text_overwrite
+    attr2set: NRCan
+
+description:
+    action: text_not_null
+    attr2set: Description PGF
+
+maintainer:
+    action: attribute_overwrite
+    attr2set: description
+
+tags{}.name:
+    action: attribute_not_null
+    attr2set: default_tags_display_name
+</pre>
+
+<p><strong>Description of the YAML directives</strong></p>
+<p>The first part of the YAML is the name of the FME attribute on which we want to do an action, it can be a list with a specific attribute to access (e.g. <em>iso_topic{}.topic_value</em> ) or just a list (e.g.<em> iso_topic{}.</em> ). Note that if the FME feature being processed does not contain the specific attribute of the list you want to access, it will not be process. For example, if you want to do text_not_null on every feature for the list _ iso_topic {}.<em>,you need to specify the specific attribute of the list (_topic_value</em>) so that all feature will be affected, even those not containing <em>iso_topic{}.topic_value</em>.</p>
+<p>When referring to a list, it is important to write it with the following 3 characters "<em>{}.</em>". It can also be a single attribute (e.g. <em>description</em> ).</p>
+<p>Following the FME attribute to process, there are 2 keywords: <em>action</em> and <em>attr2set</em> . The keyword action defines the action to do with the attribute it relates to, 4 options are available. The keyword <em>attr2set</em> , defines either the attribute name or a text literal depending of the action selected. If the action name contains <em>attribute</em> , then it sets the value of the specified attribute. If the action name contains <em>text</em> then it sets the text written.</p>
+<p><strong>action :</strong></p>
+<ul>
+<li>
+<p><em>attribute_not_null</em>: This option verify if the attribute value is <em>Null</em> , if yes it sets the value of the attribute specified by the <em>attr2set</em> keyword.</p>
+</li>
+<li>
+<p><em>attribute_overwrite</em>: This option overwrite the attribute value by setting the value of the attribute specified by the <em>attr2set</em> keyword.</p>
+</li>
+<li>
+<p><em>text_not_null</em>: This option verify if the attribute value is <em>Null</em> , if yes it sets the text written into the <em>attr2set</em> keyword.</p>
+</li>
+<li>
+<p><em>text_overwrite</em>: This option overwrite the attribute value, it sets the text written into the <em>attr2set</em> keyword.</p>
+</li>
+</ul>
+<p><strong>attr2set:</strong></p>
+<ul>
+<li>
+<p><em>attribute_not_null</em> and <em>attribute_overwrite</em>: Sets the attribute value specified.</p>
+</li>
+<li>
+<p><em>text_not_null</em> and <em>text_overwrite</em>: Sets the literal text written.</p>
+</li>
+</ul>
+<p><strong>New attributes or list:</strong></p>
+<p>If the list or the attribute written into the YAML does not exist, it will be created. Lists will be set with an index <em>{0}</em>. Note that attributes or lists are processed in the YAML from top to bottom. Sometimes, it may be usefull to use 2 times the Custom Transformer to do many process on the same attribute.</p>
+</div>
+<div class="section" id="documentation-du-code-module-py">
+<h2>Documentation du code module.py<a class="headerlink" href="#documentation-du-code-module-py" title="Permalink to this headline"></a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-ATTRIBUTE_MANAGER_NG" title="ATTRIBUTE_MANAGER_NG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ATTRIBUTE_MANAGER_NG</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-ATTRIBUTE_MANAGER_NG"></span><dl class="py class">
+<dt class="sig sig-object py" id="ATTRIBUTE_MANAGER_NG.AttributeManagerNG">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ATTRIBUTE_MANAGER_NG.</span></span><span class="sig-name descname"><span class="pre">AttributeManagerNG</span></span><a class="reference internal" href="_modules/ATTRIBUTE_MANAGER_NG.html#AttributeManagerNG"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ATTRIBUTE_MANAGER_NG.AttributeManagerNG" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used by the ATTRIBUTE_MANAGER_NG custom transformer in a PythonCaller in order to
+to manage attribute values. It can overwrite any attribute (including list) or set a specific attribute value for null attributes.
+This class is reading YAML directives received as input from the costum transformer.</p>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Python modules:</dt><dd><ul class="simple">
+<li><p>yaml</p></li>
+<li><p>FME_utils</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ATTRIBUTE_MANAGER_NG.AttributeManagerNG.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ATTRIBUTE_MANAGER_NG.html#AttributeManagerNG.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ATTRIBUTE_MANAGER_NG.AttributeManagerNG.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor call before any FME features are passed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ATTRIBUTE_MANAGER_NG.AttributeManagerNG.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ATTRIBUTE_MANAGER_NG.html#AttributeManagerNG.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ATTRIBUTE_MANAGER_NG.AttributeManagerNG.close" title="Permalink to this definition"></a></dt>
+<dd><p>Method call when all the festures are passed, not used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ATTRIBUTE_MANAGER_NG.AttributeManagerNG.input">
+<span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ATTRIBUTE_MANAGER_NG.html#AttributeManagerNG.input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ATTRIBUTE_MANAGER_NG.AttributeManagerNG.input" title="Permalink to this definition"></a></dt>
+<dd><p>Process each FME features. Actions to be done on attributes are specified into the costum transformer YAML directives.
+More informations are available into the ATTRIBUTE_MANAGER_NG costum transformer.</p>
+<p>Example, the following actions can be done on attributes:</p>
+<p>-attribute_not_null
+-attribute_overwrite
+-text_not_null
+-text_overwrite</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feature</strong> (<em>FME feature</em>) – FME feature to process</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>feature</strong> – FME feature who’s attributes have been processed according to the yaml directives.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>FME feature</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Synchronisation_CKAN.html" class="btn btn-neutral float-left" title="Synchronisation_CKAN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ATTRIBUTE_VALUE_TEXT_CLEANER.html" class="btn btn-neutral float-right" title="ATTRIBUTE_VALUE_TEXT_CLEANER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, FGP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
