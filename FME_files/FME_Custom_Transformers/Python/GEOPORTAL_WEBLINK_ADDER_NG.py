@@ -117,7 +117,7 @@ class FeatureProcessor(object):
            
         """         
         
-#        web_pdb.set_trace()
+        #web_pdb.set_trace()
         # Extract the URL for testing
         try:
             url_value = self.csv_features["url"]
@@ -141,11 +141,14 @@ class FeatureProcessor(object):
 
             if bool_url_validation:
                 # Test if the url link is responding with a http head call (faster than get request)
-                response = self.session.head(test_url, verify=False, timeout=10, 
+                try:
+                    response = self.session.head(test_url, verify=False, timeout=30, 
                                              allow_redirects=True)
-                status_code = str(response.status_code)
-                self.logger.logMessageString("Status code: {0};  HTTP request head:   {1}"
+                    status_code = str(response.status_code)
+                    self.logger.logMessageString("Status code: {0};  HTTP request head:   {1}"
                                              .format(status_code, test_url), fmeobjects.FME_INFORM)
+                except requests.ConnectionError:   #Including if read timeout exceeds 30 seconds
+                    status_code = str(999) #random status_code so that the key-value pairs contained in the CSV in the ressources{} list is not added
             else:
                 # Do not test if the link is valid and simulate a valid request
                 status_code = HTTP_OK
@@ -162,6 +165,3 @@ class FeatureProcessor(object):
             self.pyoutput(feature)
                 
         return
-                
-            
-            
