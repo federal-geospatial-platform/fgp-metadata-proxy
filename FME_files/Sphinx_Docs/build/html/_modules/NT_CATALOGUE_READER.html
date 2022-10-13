@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NT_CATALOGUE_READER &mdash; fme_python_pt_harvester 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> fme_python_pt_harvester
+            <img src="../_static/Canada.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../BC_PROD.html">BC_FGP_BUILDER_PROD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_PROD.html">NL_FGP_BUILDER_PROD</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Synchronisation_CKAN.html">Synchronisation_CKAN</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_MANAGER_NG.html">ATTRIBUTE_MANAGER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ATTRIBUTE_VALUE_TEXT_CLEANER.html">ATTRIBUTE_VALUE_TEXT_CLEANER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AWS_TRANSLATE.html">AWS_TRANSLATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BC_ATTRIBUTE_FORMATTER.html">BC_ATTRIBUTE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Catalogue_Reader.html">Catalogue_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DCAT_Reader.html">DCAT_Reader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER.html">DEFAULT_ATTRIBUTE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DEFAULT_ATTRIBUTE_MAPPER_NG.html">DEFAULT_ATTRIBUTE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DUPLICATE_SERVICE_REMOVER.html">DUPLICATE_SERVICE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMAIL_FORMAT_TESTER.html">EMAIL_FORMAT_TESTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMPTY_FORMAT_MAPPER.html">EMPTY_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EMPTY_FORMAT_MAPPER_NG.html">EMPTY_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EXTRACT_COLLECTION_START_END_DATE.html">EXTRACT_COLLECTION_START_END_DATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FORMAT_VALIDATOR.html">FORMAT_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEO_EXTENTS_MAPPER.html">GEO_EXTENTS_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEO_EXTENTS_MAPPER_NG.html">GEO_EXTENTS_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEO_NONE_GEO_SELECTOR.html">GEO_NONE_GEO_SELECTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEOSPATIAL_DATA_VALIDATOR.html">GEOSPATIAL_DATA_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEOSPATIAL_DATA_VALIDATOR_NG.html">GEOSPATIAL_DATA_VALIDATOR_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEOPORTAL_WEBLINK_ADDER.html">GEOPORTAL_WEBLINK_ADDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GEOPORTAL_WEBLINK_ADDER_NG.html">GEOPORTAL_WEBLINK_ADDER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GMD_SECTION_DATA_EXTRACTION.html">GMD_SECTION_DATA_EXTRACTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JSON_PUBLISHER.html">JSON_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JSON_PUBLISHER_NG.html">JSON_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE_FILTER.html">LICENSE_FILTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE_FILTER_NG.html">LICENSE_FILTER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER.html">LOOKUP_TABLES_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LOOKUP_TABLES_READER_NG.html">LOOKUP_TABLES_READER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_ATTRIBUTE_EXTRACTOR.html">NL_ATTRIBUTE_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NL_CATALOGUE_READER.html">NL_CATALOGUE_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NT_CATALOGUE_READER.html">NT_CATALOGUE_READER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MANUAL_GEOSPATIAL_SETTER.html">MANUAL_GEOSPATIAL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER.html">MAP_RESOURCE_ATTRIBUTION_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MAP_RESOURCE_ATTRIBUTION_REMOVER_NG.html">MAP_RESOURCE_ATTRIBUTION_REMOVER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_DELTA_FINDER.html">METADATA_DELTA_FINDER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_FORMAT_MAPPER.html">METADATA_FORMAT_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_FORMAT_MAPPER_NG.html">METADATA_FORMAT_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_VALUE_MAPPER.html">METADATA_VALUE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_VALUE_MAPPER_NG.html">METADATA_VALUE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../METADATA_VALUE_MAPPER_ERROR_MANAGER.html">METADATA_VALUE_MAPPER_ERROR_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MORE_INFO_MANAGER.html">MORE_INFO_MANAGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYCSW_URL_MAPPER_NG.html">PYCSW_URL_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ON_CKAN_CONTACT_FORM_EXTRACTOR.html">ON_CKAN_CONTACT_FORM_EXTRACTOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QC_MISSING_EMAIL_SETTER.html">QC_MISSING_EMAIL_SETTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../REMOVE_BROKEN_URL_WMS_ESRI_REST.html">REMOVE_BROKEN_URL_WMS_ESRI_REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RESOURCE_NAME_UNDERSCORE_REMOVER.html">RESOURCE_NAME_UNDERSCORE_REMOVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RESOURCES_VALIDATOR.html">RESOURCES_VALIDATOR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SPATIAL_TYPE_MAPPER.html">SPATIAL_TYPE_MAPPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SPATIAL_TYPE_MAPPER_NG.html">SPATIAL_TYPE_MAPPER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../XML_PUBLISHER.html">XML_PUBLISHER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../XML_PUBLISHER_NG.html">XML_PUBLISHER_NG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WMS_REST_LANGUAGE_FORMATTER.html">WMS_REST_LANGUAGE_FORMATTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../YT_CONTACTS_MERGER.html">YT_CONTACTS_MERGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../YT_MISSING_ATTRIBUTE_MANAGER.html">YT_MISSING_ATTRIBUTE_MANAGER</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FME_utils.html">FME_utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fme_python_pt_harvester</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>NT_CATALOGUE_READER</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for NT_CATALOGUE_READER</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">fme</span>
+<span class="kn">import</span> <span class="nn">fmeobjects</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">Python.FME_utils</span> <span class="kn">import</span> <span class="n">FME_utils</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">web_pdb</span>  <span class="c1"># Web debug tool</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># No problem if the package is not avalaible</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Define FME attribute names</span>
+
+<span class="n">ROOT_URL</span> <span class="o">=</span> <span class="s2">&quot;https://www.geomatics.gov.nt.ca/&quot;</span>
+<span class="n">ATT_HTML_CODE</span> <span class="o">=</span> <span class="s2">&quot;_html_code&quot;</span>
+<span class="n">ATT_URL_ERR</span> <span class="o">=</span> <span class="s2">&quot;url_error&quot;</span>
+<span class="n">ATT_CATEGORY</span> <span class="o">=</span> <span class="s2">&quot;_category&quot;</span>
+<span class="n">WMS</span> <span class="o">=</span> <span class="s2">&quot;WMS&quot;</span>
+<span class="n">YES</span> <span class="o">=</span> <span class="s2">&quot;Yes&quot;</span>
+<span class="n">NO</span> <span class="o">=</span> <span class="s2">&quot;No&quot;</span>
+
+<div class="viewcode-block" id="CatalogueReader"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.CatalogueReader">[docs]</a><span class="k">class</span> <span class="nc">CatalogueReader</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CatalogueReader.__init__"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.CatalogueReader.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+<div class="viewcode-block" id="CatalogueReader.input"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.CatalogueReader.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span> <span class="o">=</span> <span class="n">feature</span></div>
+    
+<div class="viewcode-block" id="CatalogueReader._read_catalogue"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.CatalogueReader._read_catalogue">[docs]</a>    <span class="k">def</span> <span class="nf">_read_catalogue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category_name</span><span class="p">,</span> <span class="n">catalogue_status</span><span class="p">,</span> <span class="n">catalogue_url</span><span class="p">):</span>
+    
+        <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">catalogue_status</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">YES</span><span class="p">:</span>
+            <span class="n">url_datasets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="n">catalogue_url</span><span class="p">)</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;title=&quot;Go to page </span><span class="si">{0}</span><span class="s1">&quot;&#39;</span>
+            <span class="n">current_page</span> <span class="o">=</span> <span class="mi">1</span>
+            
+            <span class="n">url_datasets</span> <span class="o">+=</span> <span class="s2">&quot;?page=</span><span class="si">{0}</span><span class="s2">&quot;</span>
+            
+            <span class="n">next_page</span> <span class="o">=</span> <span class="kc">True</span>
+            
+            <span class="k">while</span> <span class="n">next_page</span><span class="p">:</span>
+                
+                <span class="n">cloned_feature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+                <span class="n">cloned_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">ATT_CATEGORY</span><span class="p">,</span> <span class="n">category_name</span><span class="p">)</span>
+                <span class="n">url_to_read</span> <span class="o">=</span> <span class="n">url_datasets</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_page</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                
+                <span class="c1"># Read the url</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">xhtml</span> <span class="o">=</span> <span class="n">FME_utils</span><span class="o">.</span><span class="n">extract_url_html</span><span class="p">(</span><span class="n">url_to_read</span><span class="p">)</span>
+                    <span class="n">cloned_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">ATT_HTML_CODE</span><span class="p">,</span> <span class="n">xhtml</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="n">cloned_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">ATT_URL_ERR</span><span class="p">,</span> <span class="n">url_to_read</span><span class="p">)</span>
+            
+                <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">cloned_feature</span><span class="p">)</span>
+                
+                <span class="n">target_tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_page</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">xhtml</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">target_tag</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">current_page</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># A &quot;next page&quot; is not found so there is no more page to read...</span>
+                    <span class="n">next_page</span> <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="k">return</span></div>
+    
+<div class="viewcode-block" id="CatalogueReader.close"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.CatalogueReader.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This method reads the pimary catalogue of Newfoundland and Labrador</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature</span>
+<span class="sd">            FME feature to process</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+<span class="c1">#        web_pdb.set_trace()</span>
+        <span class="n">category_name</span> <span class="o">=</span> <span class="s2">&quot;Data&quot;</span>
+        <span class="n">category_status</span> <span class="o">=</span> <span class="s2">&quot;_data_status&quot;</span>
+        <span class="n">category_url</span> <span class="o">=</span> <span class="s2">&quot;_data_url&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_catalogue</span><span class="p">(</span><span class="n">category_name</span><span class="p">,</span> <span class="n">category_status</span><span class="p">,</span> <span class="n">category_url</span><span class="p">)</span>
+
+        <span class="n">category_name</span> <span class="o">=</span> <span class="s2">&quot;Maps&quot;</span>
+        <span class="n">category_status</span> <span class="o">=</span> <span class="s2">&quot;_maps_status&quot;</span>
+        <span class="n">category_url</span> <span class="o">=</span> <span class="s2">&quot;_maps_url&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_catalogue</span><span class="p">(</span><span class="n">category_name</span><span class="p">,</span> <span class="n">category_status</span><span class="p">,</span> <span class="n">category_url</span><span class="p">)</span>
+
+        <span class="n">category_name</span> <span class="o">=</span> <span class="s2">&quot;WMS&quot;</span>
+        <span class="n">category_status</span> <span class="o">=</span> <span class="s2">&quot;_wms_status&quot;</span>
+        <span class="n">category_url</span> <span class="o">=</span> <span class="s2">&quot;_wms_url&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_catalogue</span><span class="p">(</span><span class="n">category_name</span><span class="p">,</span> <span class="n">category_status</span><span class="p">,</span> <span class="n">category_url</span><span class="p">)</span>
+        
+        <span class="n">category_name</span> <span class="o">=</span> <span class="s2">&quot;Reports&quot;</span>
+        <span class="n">category_status</span> <span class="o">=</span> <span class="s2">&quot;_reports_status&quot;</span>
+        <span class="n">category_url</span> <span class="o">=</span> <span class="s2">&quot;_reports_url&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_catalogue</span><span class="p">(</span><span class="n">category_name</span><span class="p">,</span> <span class="n">category_status</span><span class="p">,</span> <span class="n">category_url</span><span class="p">)</span>
+        
+        <span class="n">category_name</span> <span class="o">=</span> <span class="s2">&quot;Documents&quot;</span>
+        <span class="n">category_status</span> <span class="o">=</span> <span class="s2">&quot;_documents_status&quot;</span>
+        <span class="n">category_url</span> <span class="o">=</span> <span class="s2">&quot;_documents_url&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_catalogue</span><span class="p">(</span><span class="n">category_name</span><span class="p">,</span> <span class="n">category_status</span><span class="p">,</span> <span class="n">category_url</span><span class="p">)</span>
+        
+        <span class="n">category_name</span> <span class="o">=</span> <span class="s2">&quot;Map Viewers&quot;</span>
+        <span class="n">category_status</span> <span class="o">=</span> <span class="s2">&quot;_map_viewers_status&quot;</span>
+        <span class="n">category_url</span> <span class="o">=</span> <span class="s2">&quot;_map_viewers_url&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_catalogue</span><span class="p">(</span><span class="n">category_name</span><span class="p">,</span> <span class="n">category_status</span><span class="p">,</span> <span class="n">category_url</span><span class="p">)</span>
+                    
+        <span class="k">return</span></div></div>
+        
+<div class="viewcode-block" id="trim_text"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.trim_text">[docs]</a><span class="k">def</span> <span class="nf">trim_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This method remove extra spaces and carriage return to a text.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : str</span>
+<span class="sd">        Text to process</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    String</span>
+<span class="sd">        Text with white spaces removed</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">text</span>
+    <span class="k">if</span> <span class="n">text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">text</span></div>
+
+<div class="viewcode-block" id="ExtractWms"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractWms">[docs]</a><span class="k">class</span> <span class="nc">ExtractWms</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Class used to extract WMS metadata from the NWT open web site&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExtractWms.__init__"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractWms.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span> <span class="o">=</span> <span class="p">[]</span></div>
+    
+<div class="viewcode-block" id="ExtractWms.input"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractWms.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ExtractWms.close"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractWms.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;This extracts the metadata from the flatten XHTML and creates FME attributes and FME lists.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature</span>
+<span class="sd">            The feature to process</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">        --------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1">#web_pdb.set_trace()</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="p">:</span>
+            <span class="c1"># Loop over the flatten XHTML document in order to extract specific tags into FME attribute</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+                <span class="n">start_row</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.class&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;*** Start row&quot;</span><span class="p">,</span> <span class="n">ind</span><span class="p">,</span> <span class="n">start_row</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">start_row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># Find and extract the title of the dataset </span>
+                    <span class="n">att_title</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                    <span class="n">att_title</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_title</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">att_title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="c1"># Create a new feature for this new title</span>
+                        <span class="n">new_feature</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+                        <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span> <span class="c1"># Add the title</span>
+                                        
+                        <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                            <span class="c1"># Find and extract the resources of the dataset</span>
+                            <span class="n">att_key</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.div.a&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.div.a.href&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">att_key</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_key</span><span class="p">)</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_value</span><span class="p">)</span>    
+                            <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Metadata (REST Service)&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.url&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_value</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.format&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="s2">&quot;METADATA ESRI REST&quot;</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.name&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_title</span><span class="p">)</span>
+                                <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;OGC WMS Link&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.url&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_value</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.format&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="s2">&quot;WMS&quot;</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.name&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_title</span><span class="p">)</span>
+                                <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Google Earth (kmz file)&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.url&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_value</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.format&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="s2">&quot;KMZ&quot;</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.name&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_title</span><span class="p">)</span>
+                                <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;ArcGIS.com (Rest Service)&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.url&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_value</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.format&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="s2">&quot;ESRI REST&quot;</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.name&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_title</span><span class="p">)</span>
+                                <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;ArcGIS Map (lyr file)&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.url&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_value</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.format&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="s2">&quot;LYR&quot;</span><span class="p">)</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources{</span><span class="si">%i</span><span class="s2">}.name&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">att_title</span><span class="p">)</span>
+                                <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+                        
+                        <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                            <span class="n">att_key</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{0}</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">att_key</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_key</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Description:&quot;</span><span class="p">:</span>
+                                <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div.p&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_value</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Description:&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                            <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Resource Category:&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                            <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Type of resource:&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_type&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                            <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Data Category :&quot;</span><span class="p">:</span>
+                                <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;data category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                           
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">new_feature</span><span class="p">)</span></div></div>
+                    
+<div class="viewcode-block" id="ExtractMapViewers"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractMapViewers">[docs]</a><span class="k">class</span> <span class="nc">ExtractMapViewers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Class used to extract Map Viewers metadata from the NWT open web site&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExtractMapViewers.__init__"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractMapViewers.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span> <span class="o">=</span> <span class="p">[]</span></div>
+    
+<div class="viewcode-block" id="ExtractMapViewers.input"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractMapViewers.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ExtractMapViewers.close"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractMapViewers.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;This extracts the metadata from the flatten XHTML and creates FME attributes and FME lists.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature</span>
+<span class="sd">            The feature to process</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">        --------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1">#web_pdb.set_trace()</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="p">:</span>
+            <span class="c1"># Loop over the flatten XHTML document in order to extract specific tags into FME attribute</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+                <span class="c1"># Find and extract the title of the dataset </span>
+                <span class="n">att_title</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                <span class="n">add_tile</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">att_title</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_title</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">att_title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># Create a new feature for this new title</span>
+                    <span class="n">new_feature</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span> <span class="c1"># Add the title</span>
+                    
+                    <span class="c1"># Extract one ressource</span>
+                    <span class="n">ressource_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a.href&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                    <span class="n">ressource_value</span> <span class="o">=</span> <span class="n">ROOT_URL</span> <span class="o">+</span> <span class="n">ressource_value</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.url&quot;</span><span class="p">,</span> <span class="n">ressource_value</span><span class="p">)</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.format&quot;</span><span class="p">,</span> <span class="s2">&quot;ESRI REST&quot;</span><span class="p">)</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.name&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span>
+                    
+                    <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                        <span class="n">att_key</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{0}</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                        <span class="n">att_key</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_key</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Description:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div.p</span><span class="si">{0}</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                        <span class="n">att_value</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Description:&quot;</span><span class="p">:</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Resource Category:&quot;</span><span class="p">:</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Type of resource:&quot;</span><span class="p">:</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_type&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Data Category :&quot;</span><span class="p">:</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;data_category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">new_feature</span><span class="p">)</span></div></div>
+                        
+<div class="viewcode-block" id="ExtractReports"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractReports">[docs]</a><span class="k">class</span> <span class="nc">ExtractReports</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Class used to extract Reports metadata from the NWT open web site&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExtractReports.__init__"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractReports.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span> <span class="o">=</span> <span class="p">[]</span></div>
+    
+<div class="viewcode-block" id="ExtractReports.input"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractReports.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ExtractReports.close"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractReports.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;This extracts the metadata from the flatten XHTML and creates FME attributes and FME lists.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature</span>
+<span class="sd">            The feature to process</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">        --------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1">#web_pdb.set_trace()</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="p">:</span>
+            <span class="c1"># Loop over the flatten XHTML document in order to extract specific tags into FME attribute</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+                <span class="c1"># Find and extract the title of the dataset </span>
+                <span class="n">att_title</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                <span class="n">add_tile</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">att_title</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_title</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">att_title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># Create a new feature for this new title</span>
+                    <span class="n">new_feature</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span> <span class="c1"># Add the title</span>
+                    
+                    <span class="c1"># Extract one ressource</span>
+                    <span class="n">ressource_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a.href&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                    <span class="n">ressource_value</span> <span class="o">=</span> <span class="n">ROOT_URL</span> <span class="o">+</span> <span class="n">ressource_value</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.url&quot;</span><span class="p">,</span> <span class="n">ressource_value</span><span class="p">)</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.format&quot;</span><span class="p">,</span> <span class="s2">&quot;PDF&quot;</span><span class="p">)</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.name&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span>
+                    
+                    <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                        <span class="n">att_key</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{0}</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                        <span class="n">att_key</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_key</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Description:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div.p&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{1}</span><span class="s2">.div.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                        <span class="n">att_value</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Description:&quot;</span><span class="p">:</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Resource Category:&quot;</span><span class="p">:</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Type of resource:&quot;</span><span class="p">:</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_type&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Data Category :&quot;</span><span class="p">:</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;data_category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">new_feature</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="ExtractMaps"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractMaps">[docs]</a><span class="k">class</span> <span class="nc">ExtractMaps</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Class used to extract Maps metadata from the NWT open web site&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExtractMaps.__init__"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractMaps.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span> <span class="o">=</span> <span class="p">[]</span></div>
+    
+<div class="viewcode-block" id="ExtractMaps.input"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractMaps.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ExtractMaps.close"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractMaps.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;This extracts the metadata from the flatten XHTML and creates FME attributes and FME lists.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature : FME Feature</span>
+<span class="sd">            The feature to process</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">        --------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1">#web_pdb.set_trace()</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="p">:</span>
+            <span class="c1"># Loop over the flatten XHTML document in order to extract specific tags into FME attribute</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+                <span class="c1"># Find and extract the title of the dataset </span>
+                <span class="n">att_title</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                <span class="n">add_tile</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">att_title</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_title</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">att_title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># Create a new feature for this new title</span>
+                    <span class="n">new_feature</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span> <span class="c1"># Add the title</span>
+                    
+                    <span class="c1"># Extract one ressource</span>
+                    <span class="n">ressource_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a.href&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                    <span class="n">ressource_value</span> <span class="o">=</span> <span class="n">ROOT_URL</span> <span class="o">+</span> <span class="n">ressource_value</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.url&quot;</span><span class="p">,</span> <span class="n">ressource_value</span><span class="p">)</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.format&quot;</span><span class="p">,</span> <span class="s2">&quot;PDF&quot;</span><span class="p">)</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.name&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span>
+                    
+                    <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                        <span class="n">att_key</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{0}</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                        <span class="n">att_key</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_key</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Description:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div.p&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Publication date:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div.span&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>                              
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;publication_date&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Type of resource:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_type&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Data Category :&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;data_category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Resource Category:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_categgory&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">new_feature</span><span class="p">)</span></div></div>
+                        
+<div class="viewcode-block" id="ExtractData"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractData">[docs]</a><span class="k">class</span> <span class="nc">ExtractData</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ExtractData.__init__"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractData.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span> <span class="o">=</span> <span class="p">[]</span></div>
+    
+<div class="viewcode-block" id="ExtractData.input"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractData.input">[docs]</a>    <span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">feature</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ExtractData.close"><a class="viewcode-back" href="../NT_CATALOGUE_READER.html#NT_CATALOGUE_READER.ExtractData.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;This method extracts the NWT metadata category: Data.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">        --------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1">#web_pdb.set_trace()</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">fmeobjects</span><span class="o">.</span><span class="n">FMELogFile</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_feature</span><span class="p">:</span>
+            <span class="c1"># Loop over the flatten XHTML document in order to extract specific tags into FME attribute</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+                <span class="c1"># Find and extract the title of the dataset </span>
+                <span class="n">att_title</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                <span class="n">add_tile</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">att_title</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_title</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">att_title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># Create a new feature for this new title</span>
+                    <span class="n">new_feature</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span> <span class="c1"># Add the title</span>
+                    <span class="c1"># Extract one ressource</span>
+                    <span class="n">ressource_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{0}</span><span class="s2">.div.div.div.div.div.div.div.span.h3.a.href&quot;</span> <span class="o">%</span><span class="n">ind</span><span class="p">)</span>
+                    <span class="n">ressource_value</span> <span class="o">=</span> <span class="n">ROOT_URL</span> <span class="o">+</span> <span class="n">ressource_value</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.url&quot;</span><span class="p">,</span> <span class="n">ressource_value</span><span class="p">)</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.format&quot;</span><span class="p">,</span> <span class="s2">&quot;PDF&quot;</span><span class="p">)</span>
+                    <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resources</span><span class="si">{0}</span><span class="s2">.name&quot;</span><span class="p">,</span> <span class="n">att_title</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                        <span class="n">att_key</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{0}</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                        <span class="n">att_key</span> <span class="o">=</span> <span class="n">trim_text</span><span class="p">(</span><span class="n">att_key</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Description:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div.p&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Publication date:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div.span&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>                              
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;publication_date&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Type of resource:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div.div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_type&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Data Category :&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;data_category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">att_key</span> <span class="o">==</span> <span class="s2">&quot;Resource Category:&quot;</span><span class="p">:</span>
+                            <span class="n">att_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;_html_p_div</span><span class="si">{4}</span><span class="s2">.main.div.div</span><span class="si">{1}</span><span class="s2">.div</span><span class="si">{0}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div.span.div.div</span><span class="si">{1}</span><span class="s2">.div{</span><span class="si">%i</span><span class="s2">}.div</span><span class="si">{1}</span><span class="s2">.div&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">ind1</span><span class="p">))</span>
+                            <span class="n">new_feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;resource_category&quot;</span><span class="p">,</span> <span class="n">att_value</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pyoutput</span><span class="p">(</span><span class="n">new_feature</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, FGP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
