@@ -15,6 +15,8 @@ from urllib3.exceptions import InsecureRequestWarning
 from requests.adapters import HTTPAdapter
 from datetime import datetime
 from bs4 import BeautifulSoup
+import urllib.error
+
 try:
     import fme
     import fmeobjects
@@ -134,14 +136,15 @@ class FME_utils:
         str
             The html source code read from the url.
         """
-        
+        #web_pdb.set_trace()
         logger = fmeobjects.FMELogFile()
         try:
             logger.logMessageString("HTTP call: {0}".format(url_to_read), fmeobjects.FME_INFORM)
-            response = urllib.request.urlopen(url_to_read)
+            httprequest = urllib.request.Request(url_to_read, headers={"Accept": "text/html",'User-Agent': 'Mozilla/5.0'})
+            response=urllib.request.urlopen(httprequest)
             html_str = response.read()
         except:
-            logger.logMessageString("Unable to read the URL: {}".format(url_to_read), fmeobjects.FME_ERROR)
+            logger.logMessageString("Unable to read the URL: {}".format(url_to_read), fmeobjects.FME_ERROR)  
             raise Exception
             
 
@@ -189,7 +192,7 @@ class FME_utils:
             A list of FME attribute.  
         """
 
-#        web_pdb.set_trace()
+        #web_pdb.set_trace()
         atts = []
         feature_atts = feature.getAllAttributeNames()  # Extract all attribute names
         logger = fmeobjects.FMELogFile()
