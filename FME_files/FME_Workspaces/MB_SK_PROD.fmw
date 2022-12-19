@@ -1,7 +1,7 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <WORKSPACE
 #    Command-line to run this workspace:
-#        "C:\Program Files (x86)\fme\fme2020.0_b20200\fme.exe" C:\Users\gepotvin\Documents\GitHub\fgp-metadata-proxy\FME_files\FME_Workspaces\MB_SK_DEV.fmw
+#        "C:\Program Files (x86)\fme\fme2020.0_b20200\fme.exe" C:\Users\gepotvin\Documents\GitHub\fgp-metadata-proxy\FME_files\FME_Workspaces\MB_SK_PROD.fmw
 #              --ACTIVATE_GEO "Yes"
 #              --ACTIVATE_NON_GEO "Yes"
 #              --ACTIVATE_TRANSLATION "Yes"
@@ -25,14 +25,14 @@
 #!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt; &lt;/p&gt;&#10;&lt;p&gt;This workbench read and trasform all the metadata for the provinces of Manitoba (MB) and Saskatchewan (SK).&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;None&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;None&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ACTIVATE_GEO: Flag enabling the processing of the geospatial features. Can take two values: Yes: Process the geospatial features; No: Do not process the geospatial features.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ACTIVATE_NON_GEO: Flag enabling the processing of the none geospatial features. Can take two values: Yes: Process the none geospatial features; No: Do not process the none geospatial features.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ACTIVATE_TRANSLATION: Flag enabling the translation of the texts using AWS service. Can take two values: Yes: Translates the texts; No: Do not translate the texts.  The Yes flag can only be used in production mode.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;DCAT_READER_SELECT: Flag enabling the reading of the metadata from the P/T web service. Can take two values: Yes: Read the metadata from the P/T web service; No: Read the metadata from a local source on disk.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FORCED_PYCSW_URL: URL address of the PYCSW server used to update the metadata.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_FFS_TESTING_FILE: Name of a FFS file containing the metadata records read from the DCAT_READER. This file is used when the parameter: &lt;em&gt;DCAT_READER_SELECT&lt;/em&gt; is set to &lt;em&gt;No&lt;/em&gt;.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LOCAL_SOURCE_METADATA_DELTA_FINDER: Flag enabling the use of a local source for the metadata delta finder. Can take two values: Yes: Use a local source as defined by the parameter OUT_XML_LOCAL_DIR; No: use the content PyCSW server as defined by the parameter: FORCED_PYCSW_URL.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LOCAL_WRITER: Flag enabling to write the output locally or on the server.  Can take two values: Yes: Write the output locally as defined by the parameter:OUT_XML_LOCAL_DIR; No: Write the output in the PyCSW server as defined by the parameter: FORCEDS_PYCSW_URL.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two or three letter abbreviation code of the province or terrirtory (ex.: ON, QC, PEI, ...).&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;METADATA_OVERWRITE: Enable the overwite of the PyCSW.  Can take two values: Yes: Overwrite the contentof the PyCSW; No: Do no overwrite the content of the PyCSW.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_OUT_WORKING_DIR: Root working directory defined by default as: &lt;em&gt;(FME_SHAREDRESOURCE_DATA)&lt;/em&gt;\ &lt;em&gt;PT_Harvester&lt;/em&gt;.  Used to define the following &lt;em&gt;private parameters&lt;/em&gt;:&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Source directory of the root of the lookup table files. Defined as: (IN_OUT_WORKING_DIR)\ &lt;em&gt;LOOKUP_TABLES&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_GMD_XML_TEMPLATE_DIR: Source directory of the root XML templates. Defined as: (IN_OUT_WORKING_DIR)\ &lt;em&gt;XML_TEMPLATES&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_TBS_JSON_TEMPLATE_DIR: Source directory of the root JSON templates. Defined as: (IN_OUT_WORKING_DIR)\ &lt;em&gt;JSON_TEMPLATES&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;LOG_FILE: Output log file. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ &lt;em&gt;LOG&lt;/em&gt;\ (P-T_ABBR)&lt;em&gt;.log&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;OUT_JSON_LOCAL_DIR: Source directory to output JSON files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ &lt;em&gt;JSON_LOCAL&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;OUT_XLS_NOTIFICATION_DIR: Source directory to output excel files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ &lt;em&gt;XLS&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;OUT_XML_FAILED_DIR: Source directory to output failed XML files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ &lt;em&gt;XML_FAILED&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;OUT_XML_LOCAL_DIR: Source directory to output &lt;em&gt;Local Source&lt;/em&gt; XML files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ &lt;em&gt;XML_LOCAL&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;OUT_XML_PASSED_DIR: Source directory to output passedXML files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ &lt;em&gt;XML_PASSED&lt;/em&gt;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;URL_VALIDATION : Indicates to validate or not created URL. (Should be Yes for prod)&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
 #!   DESTINATION="NONE"
 #!   DESTINATION_ROUTING_FILE=""
-#!   DOC_EXTENTS="52449.2 3539.18"
+#!   DOC_EXTENTS="53386 3539.18"
 #!   DOC_TOP_LEFT="-28442 -1703.8"
 #!   END_PYTHON=""
 #!   END_TCL=""
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="6c8f156a-a478-4c11-9ce6-ba978be6feae"
-#!   FME_DOCUMENT_PRIORGUID="ad4b0256-7376-4e09-af79-d64f555cc706,90d69368-9c87-487f-89fb-2502b3146d69,54c61334-718e-4ece-93b6-0aaa1ee5147d,59adc049-8187-4171-8027-c3225239db67,105b49dc-cd61-425c-a81c-edcb8de2e460,e2e703b9-c5a6-4e77-a8c7-84a8d95ed3ed,9abaf2b3-3655-4711-b001-664ce9001e1e,2a765849-d3e6-47bf-bd28-7335af469ac3,3b0285c6-a633-404c-994f-fb04e75456ee,7a07e8ba-d1f8-44d0-a22d-8563348e6d2a,ec943591-4ebd-4f37-8d6b-1a62e2c32c24,0ce480e2-f1ad-43d0-a666-eea69ed286e3,1842818d-b1c1-4212-9b04-5a2c53b75eff,97e68576-e55c-4226-b7d8-512d1ce78484,ddcd505f-4740-427a-b835-3020f57bfb03,e87d6944-1acb-4265-8af3-7354d9eec5d8,32363160-7647-461f-bee3-86df3b174f76,854cc8be-1b69-4338-bac7-4e5cf2efd4b8,534e00db-3dfd-4f0f-94cc-89219e19aeb0,a9615397-ec70-407a-8f3a-2259efc3820e,3f11ff86-6300-4dcb-9651-c4f9a666fd29,bb00d190-a5d3-455b-bec5-f72ae3bdcbc3,76eda6c1-e45f-4b40-a909-dabda343f079,63090872-b477-4de1-8e0a-5fac5eb08e5d,ca9b9b4c-6572-4440-a814-4934d0934fb8,e1eb89d3-673b-4197-a3dc-dac33b1ab122,97f418a8-0d68-4ccc-940d-52507ecd1993,d50ea025-9fe6-4522-be20-0058d3043dd4,1d573ce6-d0e9-423d-a2e5-7099ed7c5a54,a28c4f87-066e-4408-876e-8911ae63456b,45973ca1-b309-4022-8ac3-1e4f7b958f57,ac3828c9-40a9-407d-92ba-d572ecf0421a,af890eec-807b-468a-aab8-435e6b17ec5e,5459ee8a-4afd-4375-af24-9d19882dbf0b,017ed090-28db-4844-a394-38169b129488,95f295a8-e671-4423-a5dd-a67065caf497,9803579e-191b-416a-bc8b-92153aecdcb3,41b87768-60cb-49c7-bd4e-0af7b1d954ea,8d3214a0-d5af-43be-8a89-1744165e462d,f81c788c-5f7d-40d6-bc80-f15c8b0e5e3f,254083a6-eb3d-4fae-b132-5455f0b691d0,26d9144d-2d37-4637-8bf1-e0c8a0c8424f,ee787fbb-1776-48f0-b179-ce12ecb8c779,40d8996d-565f-4d8a-a665-dba56b4c4757,b156e116-56fd-407f-92ef-06fcfe785f06,d051506f-cbbf-4b31-bce2-d0b67d79533a,520b3508-1011-4503-8f7c-0a0e2bb34392,66393d1d-dedb-4803-8eed-ab58676693e7,2c4204ee-bc5a-4217-a369-c01a8bca7f34,195a8d18-a5d3-4470-866b-965ec6a1cdce,ac5d5b87-326e-4dfa-867d-447aba4d7c32,e012a6cd-d4ab-4b8b-b6e1-bd6733a4f1c1,1c1d3ad3-85af-4a23-92db-34c48bba3b93,9d313190-bf1c-41ec-9469-3fad0ea1bc68,ac98f5a2-8405-4cc3-8ab5-7fc11324c7b9,c466c435-90d9-489b-8d94-6733dbbdf12d,7f5021c0-9753-4dda-8d84-590159a6b627,448b9dd8-05d0-4662-9364-117526d775d4,c128c1f4-38e6-4fc4-bae9-318a2401b388,1a19e6eb-ea83-4525-927a-2fc57fd430ed,29b19f88-0848-45d6-9d46-ae9f3f2d13df,8d450206-3262-4a69-a57d-9927999bf6b5,9820c899-4959-4eb8-8587-a57df6d021ec,a56972e4-e9bd-4ca0-9987-c7b219f69d1d,64f69b9e-9260-4153-a3f2-96647780749c,9c54416d-f82e-40c7-b2b4-5b80aa966ec3,7db93f72-0035-49be-b22d-2b64087e0b87,640dd932-fc7f-4425-937a-ed927fba796d,63ddf165-679d-493d-9db3-963b11b218c4,365ca331-cb7f-4a21-8789-57b1a871d603,4c4d5c5e-806b-4447-85bb-5b53484073e9,5e5ca3ab-a8d8-4c13-946f-ffa27c4aeabc,1b448264-c7ea-4839-bfd3-36968a46829f,0bc9e125-6129-4b9b-bb8a-3024d319ab98,0c758feb-046d-4f38-a24a-5452800bf6de,24b4a14f-ca4f-4aeb-b22a-d0eb18529e82,b9feed16-75fc-440c-ad70-4532d2c5d8bc,3b7527ff-e607-41ad-b5a8-c0e4202bf2ec,c4b4af6e-ceb6-4e55-9ba2-e9534903853c,129a1f81-2bfb-4992-b285-529cfc28a682,ffe675fc-b72e-466f-a96e-d25d7dab7c7b,30fe36f2-ecda-4ac7-9f58-404266625367,b3af3cf0-2ed7-4c08-a1e8-68c63b8fa802,48835c4d-3320-444e-976e-16f06aa063d3,78c39c6d-573c-4bbf-8383-f9236caa6d02,9e2a6e17-b6c3-4fca-be34-cda7b7433c89,63e71d83-f7e2-47d4-ae03-3e630eb857af,81834712-b3fe-4069-903d-77e89dc77a8c,d8c00acb-0c31-4cab-ad00-07739d0c1184,538f3190-910b-4e55-a196-e75a68e63016,7015108a-743a-46a5-a66b-b4bc1eb8a509,58084cf5-e076-42f8-9db7-472b7c05aca2,8c585741-ec70-442c-98be-91fa3331255e,2e898746-b89c-4a88-a24d-656176b331ed,aa059cab-9374-4a68-87d9-46904eaa986f,2b71f14d-1e18-4742-824b-ee8e90d32906,b5ed48ba-ae2f-4141-9e2c-afcb953b7b59,c080d330-770f-4c65-b06c-f41c7608c4e7,2361a3bb-8f4d-441f-babc-1ee6f756a3e8,c684153c-6ee1-401b-a49e-8b5e433acb03,a953daf5-035e-46ae-bfa1-2d7e30bbdd5d,30bde57a-c225-4d79-97be-6665fb471b51,12536f33-b05d-41de-825b-696c950bce34,e7581c38-5341-4007-a7ac-68bb0d03a9e7,0774f00b-86a3-4e84-b678-387ba9030b15,2339d132-307c-4a18-ac3e-64b5ca5fc092,51dc321c-334d-4ad6-92d8-a8d5283cf271,1a8d6231-3d90-4576-8462-83c2ba57e57b,5eaf3cc6-6b72-4dd2-aab6-37971f9a9d5a,153008c7-ac59-4884-833e-195d485660be,045c3d96-912d-47aa-a651-24c549cea7a8,1c7883c9-02e0-4ba5-82f4-a27db0aa9c78,f23490f1-7650-47a5-965d-668f13795ba6,345fc736-ae64-4cbd-b8eb-65aa1946dbb9,3ddad614-0761-43fd-b33d-931a0f14bfc8,d60660ea-68b0-4064-82b2-d0ee22207f51,d5003563-6757-4d0c-bd9d-d1b62d9430d6,5e5e8704-ca5b-4b09-88c7-ddf8617e4d00,fa106b9c-25a0-464c-a5a6-5ff5db59cec6,458e0a47-ff70-4eea-8710-50cfe1c46491,d437a5dd-0a59-49f3-8151-9127b7229127,4224ce93-1a7f-4967-a528-c4f48d1caf33,bc72a58e-bb8d-4158-a84b-cf100ce580ef,6779279f-db0f-46a5-a3ff-118a711443fb,a486c593-fd9f-4117-920c-88417261f328,0587f336-fead-4e98-95a0-09199b007a0c,db12d241-5f23-4c5c-b99b-224bcaa035aa,0c8728f5-1d9a-4015-92c1-7afac2fa5e25,c1aca69c-b66c-4ce2-ae79-99f5da810b8c,812965b8-025a-4829-a22f-9a10b37855ae,24de5570-32a5-486b-9370-1403d64943f1,95f81c74-89ef-4d22-b699-ee5a2774419e,b51897fe-0d17-4553-a118-0867a88c125a,289c04f0-496d-46de-b29e-ca7b976a2e47,a298f4aa-a7b9-45c0-8dab-77bbf97143cc,a3c3e5b2-5645-4782-913e-af8dd2b6c81b,053823c0-d64b-44ca-b3e7-0286f024ab30,49f4e109-35ec-44a8-8241-0e43be651131,1f26a27b-1357-441f-b3fd-828295097fa4,deb242cc-47b6-408f-a175-e03d296408d1,a6a3b429-c404-48ea-aa41-7c7f78c632cd,eddbc2de-d3bb-4304-81bd-143898d44d28,5c356aa3-bee0-4b07-9d5e-5f2c1263a42a,a4d585fe-134a-4dfa-8ef5-5418ce2fa922,68e89d6a-9dfb-4d11-b74f-9a9ac7974005,eb2f2259-c037-4219-bdee-aefeb5f83ad6,62c5fecd-eece-4471-9b2b-ed9b4b2d06a7,996f71ac-fc70-40b0-818c-6a2d7d2a336f,ded76157-dec1-441c-8bf2-fc386bae6044,6375b96a-710a-451a-bdd3-679b5be536c1,4bb0b6a5-29cf-43ff-993b-92f90ccded58,27adaddf-16dd-41d2-b4c7-fcd420d05172,0fdc4282-4ed2-400d-84d8-f4d802a58744,cf439077-8c7e-45b7-8d38-245540eb3652,03fdeff6-5a29-4d43-8d3d-9b9c5c9f87a3,4d7d5ebd-086f-4994-a09f-30b5514d990a,261ccc21-d490-4bb2-9c9b-31809da2f7c5,34e9e066-07d2-4c64-bc6b-d288d2389166,17b15f8f-84d0-415c-9566-ff7b221487c2,bddbd9bc-fb7a-4493-9f88-0ea8dd415e56,8c1f1a8c-248f-4ff8-b209-e420a373f661,e6ea4804-74f2-418c-b6cc-d17b73afad91,3257713f-7712-4ccb-a0bb-1aec3016e086,4c902798-6a1c-44b6-836f-3a0d8bed04ff,b0a968ed-8fe0-4557-9783-45d6e52d40b4,e84968ee-d8e8-4f67-9e98-23dece9c0454,67ca8ef0-a46c-472a-90ec-651782cfb73c,5d81fd33-b8bb-49b3-be28-b59e72fa894a,0a562d13-cd97-4195-99ba-d4cf22d00bd6"
+#!   FME_DOCUMENT_GUID="d6aba565-6b45-4517-9dd6-5a53e4e1e214"
+#!   FME_DOCUMENT_PRIORGUID="ad4b0256-7376-4e09-af79-d64f555cc706,90d69368-9c87-487f-89fb-2502b3146d69,54c61334-718e-4ece-93b6-0aaa1ee5147d,59adc049-8187-4171-8027-c3225239db67,105b49dc-cd61-425c-a81c-edcb8de2e460,e2e703b9-c5a6-4e77-a8c7-84a8d95ed3ed,9abaf2b3-3655-4711-b001-664ce9001e1e,2a765849-d3e6-47bf-bd28-7335af469ac3,3b0285c6-a633-404c-994f-fb04e75456ee,7a07e8ba-d1f8-44d0-a22d-8563348e6d2a,ec943591-4ebd-4f37-8d6b-1a62e2c32c24,0ce480e2-f1ad-43d0-a666-eea69ed286e3,1842818d-b1c1-4212-9b04-5a2c53b75eff,97e68576-e55c-4226-b7d8-512d1ce78484,ddcd505f-4740-427a-b835-3020f57bfb03,e87d6944-1acb-4265-8af3-7354d9eec5d8,32363160-7647-461f-bee3-86df3b174f76,854cc8be-1b69-4338-bac7-4e5cf2efd4b8,534e00db-3dfd-4f0f-94cc-89219e19aeb0,a9615397-ec70-407a-8f3a-2259efc3820e,3f11ff86-6300-4dcb-9651-c4f9a666fd29,bb00d190-a5d3-455b-bec5-f72ae3bdcbc3,76eda6c1-e45f-4b40-a909-dabda343f079,63090872-b477-4de1-8e0a-5fac5eb08e5d,ca9b9b4c-6572-4440-a814-4934d0934fb8,e1eb89d3-673b-4197-a3dc-dac33b1ab122,97f418a8-0d68-4ccc-940d-52507ecd1993,d50ea025-9fe6-4522-be20-0058d3043dd4,1d573ce6-d0e9-423d-a2e5-7099ed7c5a54,a28c4f87-066e-4408-876e-8911ae63456b,45973ca1-b309-4022-8ac3-1e4f7b958f57,ac3828c9-40a9-407d-92ba-d572ecf0421a,af890eec-807b-468a-aab8-435e6b17ec5e,5459ee8a-4afd-4375-af24-9d19882dbf0b,017ed090-28db-4844-a394-38169b129488,95f295a8-e671-4423-a5dd-a67065caf497,9803579e-191b-416a-bc8b-92153aecdcb3,41b87768-60cb-49c7-bd4e-0af7b1d954ea,8d3214a0-d5af-43be-8a89-1744165e462d,f81c788c-5f7d-40d6-bc80-f15c8b0e5e3f,254083a6-eb3d-4fae-b132-5455f0b691d0,26d9144d-2d37-4637-8bf1-e0c8a0c8424f,ee787fbb-1776-48f0-b179-ce12ecb8c779,40d8996d-565f-4d8a-a665-dba56b4c4757,b156e116-56fd-407f-92ef-06fcfe785f06,d051506f-cbbf-4b31-bce2-d0b67d79533a,520b3508-1011-4503-8f7c-0a0e2bb34392,66393d1d-dedb-4803-8eed-ab58676693e7,2c4204ee-bc5a-4217-a369-c01a8bca7f34,195a8d18-a5d3-4470-866b-965ec6a1cdce,ac5d5b87-326e-4dfa-867d-447aba4d7c32,e012a6cd-d4ab-4b8b-b6e1-bd6733a4f1c1,1c1d3ad3-85af-4a23-92db-34c48bba3b93,9d313190-bf1c-41ec-9469-3fad0ea1bc68,ac98f5a2-8405-4cc3-8ab5-7fc11324c7b9,c466c435-90d9-489b-8d94-6733dbbdf12d,7f5021c0-9753-4dda-8d84-590159a6b627,448b9dd8-05d0-4662-9364-117526d775d4,c128c1f4-38e6-4fc4-bae9-318a2401b388,1a19e6eb-ea83-4525-927a-2fc57fd430ed,29b19f88-0848-45d6-9d46-ae9f3f2d13df,8d450206-3262-4a69-a57d-9927999bf6b5,9820c899-4959-4eb8-8587-a57df6d021ec,a56972e4-e9bd-4ca0-9987-c7b219f69d1d,64f69b9e-9260-4153-a3f2-96647780749c,9c54416d-f82e-40c7-b2b4-5b80aa966ec3,7db93f72-0035-49be-b22d-2b64087e0b87,640dd932-fc7f-4425-937a-ed927fba796d,63ddf165-679d-493d-9db3-963b11b218c4,365ca331-cb7f-4a21-8789-57b1a871d603,4c4d5c5e-806b-4447-85bb-5b53484073e9,5e5ca3ab-a8d8-4c13-946f-ffa27c4aeabc,1b448264-c7ea-4839-bfd3-36968a46829f,0bc9e125-6129-4b9b-bb8a-3024d319ab98,0c758feb-046d-4f38-a24a-5452800bf6de,24b4a14f-ca4f-4aeb-b22a-d0eb18529e82,b9feed16-75fc-440c-ad70-4532d2c5d8bc,3b7527ff-e607-41ad-b5a8-c0e4202bf2ec,c4b4af6e-ceb6-4e55-9ba2-e9534903853c,129a1f81-2bfb-4992-b285-529cfc28a682,ffe675fc-b72e-466f-a96e-d25d7dab7c7b,30fe36f2-ecda-4ac7-9f58-404266625367,b3af3cf0-2ed7-4c08-a1e8-68c63b8fa802,48835c4d-3320-444e-976e-16f06aa063d3,78c39c6d-573c-4bbf-8383-f9236caa6d02,9e2a6e17-b6c3-4fca-be34-cda7b7433c89,63e71d83-f7e2-47d4-ae03-3e630eb857af,81834712-b3fe-4069-903d-77e89dc77a8c,d8c00acb-0c31-4cab-ad00-07739d0c1184,538f3190-910b-4e55-a196-e75a68e63016,7015108a-743a-46a5-a66b-b4bc1eb8a509,58084cf5-e076-42f8-9db7-472b7c05aca2,8c585741-ec70-442c-98be-91fa3331255e,2e898746-b89c-4a88-a24d-656176b331ed,aa059cab-9374-4a68-87d9-46904eaa986f,2b71f14d-1e18-4742-824b-ee8e90d32906,b5ed48ba-ae2f-4141-9e2c-afcb953b7b59,c080d330-770f-4c65-b06c-f41c7608c4e7,2361a3bb-8f4d-441f-babc-1ee6f756a3e8,c684153c-6ee1-401b-a49e-8b5e433acb03,a953daf5-035e-46ae-bfa1-2d7e30bbdd5d,30bde57a-c225-4d79-97be-6665fb471b51,12536f33-b05d-41de-825b-696c950bce34,e7581c38-5341-4007-a7ac-68bb0d03a9e7,0774f00b-86a3-4e84-b678-387ba9030b15,2339d132-307c-4a18-ac3e-64b5ca5fc092,51dc321c-334d-4ad6-92d8-a8d5283cf271,1a8d6231-3d90-4576-8462-83c2ba57e57b,5eaf3cc6-6b72-4dd2-aab6-37971f9a9d5a,153008c7-ac59-4884-833e-195d485660be,045c3d96-912d-47aa-a651-24c549cea7a8,1c7883c9-02e0-4ba5-82f4-a27db0aa9c78,f23490f1-7650-47a5-965d-668f13795ba6,345fc736-ae64-4cbd-b8eb-65aa1946dbb9,3ddad614-0761-43fd-b33d-931a0f14bfc8,d60660ea-68b0-4064-82b2-d0ee22207f51,d5003563-6757-4d0c-bd9d-d1b62d9430d6,5e5e8704-ca5b-4b09-88c7-ddf8617e4d00,fa106b9c-25a0-464c-a5a6-5ff5db59cec6,458e0a47-ff70-4eea-8710-50cfe1c46491,d437a5dd-0a59-49f3-8151-9127b7229127,4224ce93-1a7f-4967-a528-c4f48d1caf33,bc72a58e-bb8d-4158-a84b-cf100ce580ef,6779279f-db0f-46a5-a3ff-118a711443fb,a486c593-fd9f-4117-920c-88417261f328,0587f336-fead-4e98-95a0-09199b007a0c,db12d241-5f23-4c5c-b99b-224bcaa035aa,0c8728f5-1d9a-4015-92c1-7afac2fa5e25,c1aca69c-b66c-4ce2-ae79-99f5da810b8c,812965b8-025a-4829-a22f-9a10b37855ae,24de5570-32a5-486b-9370-1403d64943f1,95f81c74-89ef-4d22-b699-ee5a2774419e,b51897fe-0d17-4553-a118-0867a88c125a,289c04f0-496d-46de-b29e-ca7b976a2e47,a298f4aa-a7b9-45c0-8dab-77bbf97143cc,a3c3e5b2-5645-4782-913e-af8dd2b6c81b,053823c0-d64b-44ca-b3e7-0286f024ab30,49f4e109-35ec-44a8-8241-0e43be651131,1f26a27b-1357-441f-b3fd-828295097fa4,deb242cc-47b6-408f-a175-e03d296408d1,a6a3b429-c404-48ea-aa41-7c7f78c632cd,eddbc2de-d3bb-4304-81bd-143898d44d28,5c356aa3-bee0-4b07-9d5e-5f2c1263a42a,a4d585fe-134a-4dfa-8ef5-5418ce2fa922,68e89d6a-9dfb-4d11-b74f-9a9ac7974005,eb2f2259-c037-4219-bdee-aefeb5f83ad6,62c5fecd-eece-4471-9b2b-ed9b4b2d06a7,996f71ac-fc70-40b0-818c-6a2d7d2a336f,ded76157-dec1-441c-8bf2-fc386bae6044,6375b96a-710a-451a-bdd3-679b5be536c1,4bb0b6a5-29cf-43ff-993b-92f90ccded58,27adaddf-16dd-41d2-b4c7-fcd420d05172,0fdc4282-4ed2-400d-84d8-f4d802a58744,cf439077-8c7e-45b7-8d38-245540eb3652,03fdeff6-5a29-4d43-8d3d-9b9c5c9f87a3,4d7d5ebd-086f-4994-a09f-30b5514d990a,261ccc21-d490-4bb2-9c9b-31809da2f7c5,34e9e066-07d2-4c64-bc6b-d288d2389166,17b15f8f-84d0-415c-9566-ff7b221487c2,bddbd9bc-fb7a-4493-9f88-0ea8dd415e56,8c1f1a8c-248f-4ff8-b209-e420a373f661,e6ea4804-74f2-418c-b6cc-d17b73afad91,3257713f-7712-4ccb-a0bb-1aec3016e086,4c902798-6a1c-44b6-836f-3a0d8bed04ff,b0a968ed-8fe0-4557-9783-45d6e52d40b4,e84968ee-d8e8-4f67-9e98-23dece9c0454,67ca8ef0-a46c-472a-90ec-651782cfb73c,5d81fd33-b8bb-49b3-be28-b59e72fa894a,0a562d13-cd97-4195-99ba-d4cf22d00bd6,6c8f156a-a478-4c11-9ce6-ba978be6feae,b3633818-138c-46ee-9c0c-34305c47cf47,cc8c24c1-f7fa-4c86-af3d-a120f9f89682"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_REPROJECTION_ENGINE="FME"
@@ -41,7 +41,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2022-11-30T15:25:24"
+#!   LAST_SAVE_DATE="2022-12-19T10:55:47"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION="**Description** &#10;&#10;This workbench read and trasform all the metadata for the provinces of Manitoba (MB) and Saskatchewan (SK).&#10;&#10;&#10;**Input Ports** &#10;&#10;- None&#10;&#10;&#10;**Output Ports** &#10;&#10;- None&#10;&#10;**Parameters** &#10;&#10;  - ACTIVATE_GEO: Flag enabling the processing of the geospatial features. Can take two values: Yes: Process the geospatial features; No: Do not process the geospatial features.&#10;&#10;  - ACTIVATE_NON_GEO: Flag enabling the processing of the none geospatial features. Can take two values: Yes: Process the none geospatial features; No: Do not process the none geospatial features.&#10;&#10;  - ACTIVATE_TRANSLATION: Flag enabling the translation of the texts using AWS service. Can take two values: Yes: Translates the texts; No: Do not translate the texts.  The Yes flag can only be used in production mode.&#10;&#10;  - DCAT_READER_SELECT: Flag enabling the reading of the metadata from the P/T web service. Can take two values: Yes: Read the metadata from the P/T web service; No: Read the metadata from a local source on disk.&#10;&#10;  - FORCED_PYCSW_URL: URL address of the PYCSW server used to update the metadata.&#10;&#10;  - IN_FFS_TESTING_FILE: Name of a FFS file containing the metadata records read from the DCAT_READER. This file is used when the parameter: _DCAT_READER_SELECT_ is set to _No_.&#10;&#10; - LOCAL_SOURCE_METADATA_DELTA_FINDER: Flag enabling the use of a local source for the metadata delta finder. Can take two values: Yes: Use a local source as defined by the parameter OUT_XML_LOCAL_DIR; No: use the content PyCSW server as defined by the parameter: FORCED_PYCSW_URL.&#10;&#10; - LOCAL_WRITER: Flag enabling to write the output locally or on the server.  Can take two values: Yes: Write the output locally as defined by the parameter:OUT_XML_LOCAL_DIR; No: Write the output in the PyCSW server as defined by the parameter: FORCEDS_PYCSW_URL.&#10;&#10; - P-T_ABBR: Two or three letter abbreviation code of the province or terrirtory (ex.: ON, QC, PEI, ...).&#10;&#10; - METADATA_OVERWRITE: Enable the overwite of the PyCSW.  Can take two values: Yes: Overwrite the contentof the PyCSW; No: Do no overwrite the content of the PyCSW.&#10;&#10;  - IN_OUT_WORKING_DIR: Root working directory defined by default as: _(FME_SHAREDRESOURCE_DATA)_\ _PT_Harvester_.  Used to define the following _private parameters_:&#10;&#10;    - IN_CSV_LOOKUP_TABLES_DIR: Source directory of the root of the lookup table files. Defined as: (IN_OUT_WORKING_DIR)\ _LOOKUP_TABLES_&#10;&#10;    - IN_GMD_XML_TEMPLATE_DIR: Source directory of the root XML templates. Defined as: (IN_OUT_WORKING_DIR)\ _XML_TEMPLATES_&#10;&#10;    - IN_TBS_JSON_TEMPLATE_DIR: Source directory of the root JSON templates. Defined as: (IN_OUT_WORKING_DIR)\ _JSON_TEMPLATES_&#10;&#10;    - LOG_FILE: Output log file. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ _LOG_\ (P-T_ABBR)_.log_&#10;&#10;    - OUT_JSON_LOCAL_DIR: Source directory to output JSON files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ _JSON_LOCAL_&#10;&#10;    - OUT_XLS_NOTIFICATION_DIR: Source directory to output excel files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ _XLS_&#10;&#10;    - OUT_XML_FAILED_DIR: Source directory to output failed XML files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ _XML_FAILED_&#10;&#10;    - OUT_XML_LOCAL_DIR: Source directory to output _Local Source_ XML files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ _XML_LOCAL_&#10;&#10;    - OUT_XML_PASSED_DIR: Source directory to output passedXML files. Defined as: (IN_OUT_WORKING_DIR)\ (P-T_ABBR)\ _XML_PASSED_&#10;&#10; - URL_VALIDATION : Indicates to validate or not created URL. (Should be Yes for prod)&#10;"
@@ -60,10 +60,10 @@
 #!   TITLE="MB_SK_DEV"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="-29143.1 1758.95"
+#!   VIEW_POSITION="11027.6 1260.01"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
-#!   ZOOM_SCALE="70"
+#!   ZOOM_SCALE="100"
 #! >
 #! <DATASETS>
 #! <DATASET
@@ -79,7 +79,7 @@
 #!   WRITE_DEFS="false"
 #!   DEFLINE_TEMPLATE=""
 #!   DEFLINE_ATTRS="false"
-#!   EXPOSABLE_ATTRS="fme_fill_color char(50) fme_primary_axis number(31,15) fme_sweep_angle number(31,15) fme_secondary_axis number(31,15) fme_type char(50) fme_text_size number(31,15) fme_dataset char(50) fme_text_string char(50) fme_start_angle number(31,15) fme_geometry fme_char(50) fme_color char(50) fme_rotation number(31,15) fme_basename char(50) fme_feature_type char(50)"
+#!   EXPOSABLE_ATTRS="fme_color char(50) fme_text_size number(31,15) fme_sweep_angle number(31,15) fme_geometry fme_char(50) fme_start_angle number(31,15) fme_dataset char(50) fme_basename char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_feature_type char(50) fme_secondary_axis number(31,15) fme_fill_color char(50) fme_text_string char(50) fme_type char(50)"
 #!   DEFLINE_PARMS=""
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -111,7 +111,7 @@
 #!   WRITE_DEFS="false"
 #!   DEFLINE_TEMPLATE=""
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_fill_color char(50) fme_primary_axis number(31,15) fme_sweep_angle number(31,15) fme_secondary_axis number(31,15) fme_type char(50) fme_text_size number(31,15) fme_dataset char(50) fme_text_string char(50) fme_start_angle number(31,15) fme_geometry char(50) fme_color char(50) fme_rotation number(31,15) fme_basename char(50) text_line_eol char(10) fme_feature_type char(50)"
+#!   EXPOSABLE_ATTRS="fme_color char(50) text_line_eol char(10) fme_text_size number(31,15) fme_sweep_angle number(31,15) fme_geometry char(50) fme_start_angle number(31,15) fme_dataset char(50) fme_basename char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_feature_type char(50) fme_secondary_axis number(31,15) fme_fill_color char(50) fme_text_string char(50) fme_type char(50)"
 #!   DEFLINE_PARMS=""
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -167,7 +167,7 @@
 #!   WRITE_DEFS="false"
 #!   DEFLINE_TEMPLATE=""
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_fill_color char(50) fme_primary_axis number(31,15) fme_sweep_angle number(31,15) fme_secondary_axis number(31,15) fme_type char(50) fme_text_size number(31,15) fme_dataset char(50) fme_text_string char(50) fme_start_angle number(31,15) fme_geometry char(50) fme_color char(50) fme_rotation number(31,15) fme_basename char(50) text_line_eol char(10) fme_feature_type char(50)"
+#!   EXPOSABLE_ATTRS="fme_color char(50) text_line_eol char(10) fme_text_size number(31,15) fme_sweep_angle number(31,15) fme_geometry char(50) fme_start_angle number(31,15) fme_dataset char(50) fme_basename char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_feature_type char(50) fme_secondary_axis number(31,15) fme_fill_color char(50) fme_text_string char(50) fme_type char(50)"
 #!   DEFLINE_PARMS=""
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -223,7 +223,7 @@
 #!   WRITE_DEFS="true"
 #!   DEFLINE_TEMPLATE="xlsx_drop_sheet No xlsx_trunc_sheet No xlsx_sheet_order &quot;&quot; xlsx_freeze_end_row &quot;&quot; xlsx_names_are_positions No xlsx_field_names_out Yes xlsx_start_col &quot;&quot; xlsx_start_row &quot;&quot; xlsx_offset_col &quot;&quot; xlsx_offset_row &quot;&quot; xlsx_raster_type PNG xlsx_table_writer_mode Insert xlsx_row_id_column &quot;&quot; xlsx_protect_sheet &quot;NO&quot; xlsx_protect_sheet_level &quot;&lt;Unused&gt;&quot; xlsx_protect_sheet_password &quot;&lt;Unused&gt;&quot; xlsx_protect_sheet_permissions &quot;&lt;Unused&gt;&quot;"
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_primary_axis number(width,xlsx_col_props) xlsx_raster_scale_factor number(width,xlsx_col_props) fme_text_size number(width,xlsx_col_props) fme_text_string string(50) xlsx_row_id number(width,xlsx_col_props) fme_sweep_angle number(width,xlsx_col_props) fme_dataset string(50) xlsx_raster_height number(width,xlsx_col_props) fme_rotation number(width,xlsx_col_props) fme_secondary_axis number(width,xlsx_col_props) fme_geometry string(50) xlsx_raster_width number(width,xlsx_col_props) fme_feature_type string(50) fme_start_angle number(width,xlsx_col_props) fme_db_operation string(width,xlsx_col_props) xlsx_col_id number(width,xlsx_col_props) fme_basename string(50) fme_type string(50) fme_fill_color string(50) xlsx_row_formatting string(width,xlsx_col_props) fme_color string(50)"
+#!   EXPOSABLE_ATTRS="fme_color string(50) fme_feature_type string(50) fme_text_string string(50) fme_text_size number(width,xlsx_col_props) xlsx_row_id number(width,xlsx_col_props) xlsx_raster_width number(width,xlsx_col_props) fme_geometry string(50) xlsx_row_formatting string(width,xlsx_col_props) xlsx_col_id number(width,xlsx_col_props) fme_secondary_axis number(width,xlsx_col_props) fme_sweep_angle number(width,xlsx_col_props) fme_type string(50) fme_rotation number(width,xlsx_col_props) xlsx_raster_height number(width,xlsx_col_props) xlsx_raster_scale_factor number(width,xlsx_col_props) fme_db_operation string(width,xlsx_col_props) fme_fill_color string(50) fme_start_angle number(width,xlsx_col_props) fme_basename string(50) fme_primary_axis number(width,xlsx_col_props) fme_dataset string(50)"
 #!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP xlsx_layer_group xlsx_table_writer_mode%xlsx_field_names_out%xlsx_names_are_positions%xlsx_row_id_column%xlsx_truncate_group%xlsx_table_group%xlsx_rowcolumn_group%xlsx_protect_sheet%xlsx_advanced_group Sheet Settings&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_truncate_group xlsx_row_id%xlsx_drop_sheet%xlsx_trunc_sheet Drop/Truncate&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_rowcolumn_group xlsx_start_col%xlsx_start_row%xlsx_offset_col%xlsx_offset_row Start Position&quot; &quot;&quot; &quot;GUI ACTIVEDISCLOSUREGROUP xlsx_protect_sheet xlsx_protect_sheet_password%xlsx_protect_sheet_level%xlsx_protect_sheet_permissions Protect Sheet&quot; NO &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_advanced_group xlsx_sheet_order%xlsx_freeze_end_row%xlsx_raster_type Advanced&quot; &quot;&quot; &quot;GUI CHOICE xlsx_drop_sheet Yes%No Drop Existing Sheet/Named Range:&quot; No &quot;GUI CHOICE xlsx_trunc_sheet Yes%No Truncate Existing Sheet/Named Range:&quot; No &quot;GUI OPTIONAL RANGE_SLIDER xlsx_sheet_order 1%MAX Sheet Order (1 - n):&quot; &quot;&quot; &quot;GUI OPTIONAL RANGE_SLIDER xlsx_freeze_end_row 1%MAX Freeze First Row(s) (1 - n):&quot; &quot;&quot; &quot;GUI CHOICE xlsx_field_names_out Yes%No Output Field Names:&quot; Yes &quot;GUI CHOICE xlsx_names_are_positions Yes%No Use Attribute Names As Column Positions:&quot; No &quot;GUI OPTIONAL TEXT xlsx_start_col Named Range Start Column:&quot; &quot;&quot; &quot;GUI OPTIONAL INTEGER xlsx_start_row Named Range Start Row:&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT xlsx_offset_col Start Column:&quot; &quot;&quot; &quot;GUI OPTIONAL INTEGER xlsx_offset_row Start Row:&quot; &quot;&quot; &quot;GUI CHOICE xlsx_raster_type BMP%JPEG%PNG Raster Format:&quot; PNG &quot;GUI OPTIONAL PASSWORD_ENCODED xlsx_protect_sheet_password Password:&quot; &lt;Unused&gt; &quot;GUI ACTIVECHOICE_LOOKUP xlsx_protect_sheet_level Select&lt;space&gt;Only&lt;space&gt;Permissions,PROT_DEFAULT,xlsx_protect_sheet_permissions%View&lt;space&gt;Only&lt;space&gt;Permissions,PROT_ALL,xlsx_protect_sheet_permissions%Specific&lt;space&gt;Permissions Protection Level:&quot; &lt;Unused&gt; &quot;GUI OPTIONAL LOOKUP_LISTBOX xlsx_protect_sheet_permissions Select&lt;space&gt;locked&lt;space&gt;cells,PROT_SEL_LOCKED_CELLS%Select&lt;space&gt;unlocked&lt;space&gt;cells,PROT_SEL_UNLOCKED_CELLS%Format&lt;space&gt;cells,PROT_FORMAT_CELLS%Format&lt;space&gt;columns,PROT_FORMAT_COLUMNS%Format&lt;space&gt;rows,PROT_FORMAT_ROWS%Insert&lt;space&gt;columns,PROT_INSERT_COLUMNS%Insert&lt;space&gt;rows,PROT_INSERT_ROWS%Add&lt;space&gt;hyperlinks&lt;space&gt;to&lt;space&gt;unlocked&lt;space&gt;cells,PROT_INSERT_HYPERLINKS%Delete&lt;space&gt;unlocked&lt;space&gt;columns,PROT_DELETE_COLUMNS%Delete&lt;space&gt;unlocked&lt;space&gt;rows,PROT_DELETE_ROWS%Sort&lt;space&gt;unlocked&lt;space&gt;cells/rows/columns\,PROT_SORT%Use&lt;space&gt;Autofilter&lt;space&gt;on&lt;space&gt;unlocked&lt;space&gt;cells,PROT_AUTOFILTER%Use&lt;space&gt;PivotTable&lt;space&gt;&amp;&lt;space&gt;PivotChart&lt;space&gt;on&lt;space&gt;unlocked&lt;space&gt;cells,PROT_PIVOTTABLES%Edit&lt;space&gt;unlocked&lt;space&gt;objects,PROT_OBJECTS%Edit&lt;space&gt;unprotected&lt;space&gt;scenarios,PROT_SCENARIOS Specific Permissions:&quot; &lt;Unused&gt; &quot;GUI ACTIVECHOICE xlsx_table_writer_mode Insert,+xlsx_row_id_column+%Update,+xlsx_row_id_column+xlsx_row_id%Delete,+xlsx_row_id_column+xlsx_row_id Writer Mode:&quot; Insert &quot;GUI OPTIONAL ATTR xlsx_row_id_column ALLOW_NEW Row Number Attribute:&quot; &quot;&quot; "
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS="\\&quot;*{}$"
@@ -292,7 +292,7 @@
 #!   WRITE_DEFS="false"
 #!   DEFLINE_TEMPLATE=""
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_fill_color char(50) fme_primary_axis number(31,15) fme_sweep_angle number(31,15) fme_secondary_axis number(31,15) fme_type char(50) fme_text_size number(31,15) fme_dataset char(50) fme_text_string char(50) fme_start_angle number(31,15) fme_geometry char(50) fme_color char(50) fme_rotation number(31,15) fme_basename char(50) text_line_eol char(10) fme_feature_type char(50)"
+#!   EXPOSABLE_ATTRS="fme_color char(50) text_line_eol char(10) fme_text_size number(31,15) fme_sweep_angle number(31,15) fme_geometry char(50) fme_start_angle number(31,15) fme_dataset char(50) fme_basename char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_feature_type char(50) fme_secondary_axis number(31,15) fme_fill_color char(50) fme_text_string char(50) fme_type char(50)"
 #!   DEFLINE_PARMS=""
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -338,6 +338,150 @@
 #! </DATASET>
 #! </DATASETS>
 #! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="auto(width,xlsx_col_props)"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime(width,xlsx_col_props)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time(width,xlsx_col_props)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="date(width,xlsx_col_props)"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="boolean(width,xlsx_col_props)"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="XLSXW"
+#! />
 #! <DATA_TYPE
 #!   IS_SOURCE="false"
 #!   FORMAT_TYPE="char(width)"
@@ -488,242 +632,8 @@
 #!   FME_TYPE="fme_real32"
 #!   FORMAT="TEXTLINE"
 #! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="string(width,xlsx_col_props)"
-#!   FME_TYPE="fme_varchar(width)"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="string(width,xlsx_col_props)"
-#!   FME_TYPE="fme_varbinary(width)"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="string(width,xlsx_col_props)"
-#!   FME_TYPE="fme_char(width)"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="string(width,xlsx_col_props)"
-#!   FME_TYPE="fme_binary(width)"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="string(width,xlsx_col_props)"
-#!   FME_TYPE="fme_buffer"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="string(width,xlsx_col_props)"
-#!   FME_TYPE="fme_binarybuffer"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="string(width,xlsx_col_props)"
-#!   FME_TYPE="fme_xml"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="string(width,xlsx_col_props)"
-#!   FME_TYPE="fme_json"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="auto(width,xlsx_col_props)"
-#!   FME_TYPE="fme_buffer"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="datetime(width,xlsx_col_props)"
-#!   FME_TYPE="fme_datetime"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="time(width,xlsx_col_props)"
-#!   FME_TYPE="fme_time"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="date(width,xlsx_col_props)"
-#!   FME_TYPE="fme_date"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_decimal(width,decimal)"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_real64"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_real32"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_int32"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_uint32"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_int64"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_uint64"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_int16"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_uint16"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_int8"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="number(width,xlsx_col_props)"
-#!   FME_TYPE="fme_uint8"
-#!   FORMAT="XLSXW"
-#! />
-#! <DATA_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="boolean(width,xlsx_col_props)"
-#!   FME_TYPE="fme_boolean"
-#!   FORMAT="XLSXW"
-#! />
 #! </DATA_TYPES>
 #! <GEOM_TYPES>
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_no_geom"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_point"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_line"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_area"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_text"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_ellipse"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_arc"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_rectangle"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_rounded_rectangle"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_collection"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_raster"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_surface"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_solid"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_point_cloud"
-#!   FORMAT="TEXTLINE"
-#! />
-#! <GEOM_TYPE
-#!   IS_SOURCE="false"
-#!   FORMAT_TYPE="text_line_none"
-#!   FME_TYPE="fme_feature_table"
-#!   FORMAT="TEXTLINE"
-#! />
 #! <GEOM_TYPE
 #!   IS_SOURCE="false"
 #!   FORMAT_TYPE="xlsx_none"
@@ -819,6 +729,96 @@
 #!   FORMAT_TYPE="xlsx_none"
 #!   FME_TYPE="fme_feature_table"
 #!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="TEXTLINE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text_line_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="TEXTLINE"
 #! />
 #! </GEOM_TYPES>
 #! <FEATURE_TYPES>
@@ -954,8 +954,8 @@
 #!   IS_EDITABLE="false"
 #!   IDENTIFIER="5"
 #!   FEAT_GEOMTYPE="All"
-#!   POSITION="16265.889484420413 513.12118003109185"
-#!   BOUNDING_RECT="16265.889484420413 513.12118003109185 800.23399099858761 71"
+#!   POSITION="17197.148797013542 475.62080502734125"
+#!   BOUNDING_RECT="17197.148797013542 475.62080502734125 800.23399099858761 71"
 #!   ORDER="500000000000000"
 #!   COLLAPSED="true"
 #!   KEYWORD="XLSXW_1"
@@ -997,8 +997,8 @@
 #!   IS_EDITABLE="true"
 #!   IDENTIFIER="6"
 #!   FEAT_GEOMTYPE="All"
-#!   POSITION="19043.085310498565 480.03184110748271"
-#!   BOUNDING_RECT="19043.085310498565 480.03184110748271 545.99558388280821 71"
+#!   POSITION="19936.844248087938 442.5314661037321"
+#!   BOUNDING_RECT="19936.844248087938 442.5314661037321 545.99558388280821 71"
 #!   ORDER="500000000002906.38"
 #!   COLLAPSED="true"
 #!   KEYWORD="XLSXW_1"
@@ -1038,8 +1038,8 @@
 #!   IS_EDITABLE="false"
 #!   IDENTIFIER="7"
 #!   FEAT_GEOMTYPE="text_line_none"
-#!   POSITION="23261.44114442217 628.23861027620626"
-#!   BOUNDING_RECT="23261.44114442217 628.23861027620626 431 71"
+#!   POSITION="24180.200332014047 615.73848527495613"
+#!   BOUNDING_RECT="24180.200332014047 615.73848527495613 431 71"
 #!   ORDER="500000000000000"
 #!   COLLAPSED="true"
 #!   KEYWORD="TEXTLINE_2"
@@ -1057,8 +1057,8 @@
 #!   IS_EDITABLE="true"
 #!   IDENTIFIER="8"
 #!   FEAT_GEOMTYPE="All"
-#!   POSITION="23261.44114442217 923.48176749910999"
-#!   BOUNDING_RECT="23261.44114442217 923.48176749910999 430 71"
+#!   POSITION="24180.200332014047 910.98164249785987"
+#!   BOUNDING_RECT="24180.200332014047 910.98164249785987 430 71"
 #!   ORDER="500000000000483"
 #!   COLLAPSED="true"
 #!   KEYWORD="TEXTLINE_1"
@@ -1076,8 +1076,8 @@
 #!   IS_EDITABLE="false"
 #!   IDENTIFIER="9"
 #!   FEAT_GEOMTYPE="text_line_none"
-#!   POSITION="23261.44114442217 1226.9944837038461"
-#!   BOUNDING_RECT="23261.44114442217 1226.9944837038461 431 71"
+#!   POSITION="24180.200332014047 1214.4943587025959"
+#!   BOUNDING_RECT="24180.200332014047 1214.4943587025959 431 71"
 #!   ORDER="500000000000000"
 #!   COLLAPSED="true"
 #!   KEYWORD="TEXTLINE_3"
@@ -1095,8 +1095,8 @@
 #!   IS_EDITABLE="true"
 #!   IDENTIFIER="10"
 #!   FEAT_GEOMTYPE="All"
-#!   POSITION="20997.697737960894 679.8507567962979"
-#!   BOUNDING_RECT="20997.697737960894 679.8507567962979 515.58294422457766 71"
+#!   POSITION="21916.456925552768 558.35161455944922"
+#!   BOUNDING_RECT="21916.456925552768 558.35161455944922 515.58294422457766 71"
 #!   ORDER="500000000000000"
 #!   COLLAPSED="true"
 #!   KEYWORD="XLSXW_1"
@@ -1136,8 +1136,8 @@
 #!   IS_EDITABLE="true"
 #!   IDENTIFIER="11"
 #!   FEAT_GEOMTYPE="All"
-#!   POSITION="23266.787403866903 411.88659246861528"
-#!   BOUNDING_RECT="23266.787403866903 411.88659246861528 454 71"
+#!   POSITION="24185.54659145878 399.38646746736515"
+#!   BOUNDING_RECT="24185.54659145878 399.38646746736515 454 71"
 #!   ORDER="500000000000000"
 #!   COLLAPSED="true"
 #!   KEYWORD="XLSXW_1"
@@ -1695,10 +1695,10 @@
 #! <COMMENT
 #!   IDENTIFIER="176"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Writes XML to a local folder without publishing to PyCSW, and without the PyCSW transaction headers and footers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="22915.204447263553 1557.1081272429406"
-#!   TOP_LEFT="22915.204447263553 1557.1081272429406"
-#!   BOTTOM_RIGHT="23893.204447263553 1558.1081272429406"
-#!   BOUNDING_RECT="22915.204447263553 1557.1081272429406 978 -1"
+#!   POSITION="23833.96363485543 1544.6080022416904"
+#!   TOP_LEFT="23833.96363485543 1544.6080022416904"
+#!   BOTTOM_RIGHT="24811.96363485543 1545.6080022416904"
+#!   BOUNDING_RECT="23833.96363485543 1544.6080022416904 978 -1"
 #!   ORDER="500000000001036"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -2037,6 +2037,21 @@
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="40"
 #! />
+#! <COMMENT
+#!   IDENTIFIER="410"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If resources{}.url contains MapServer then do not add an ESRI REST protocol (cannot be visualized in the viewer)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="12934.582646692255 517.50452504525015"
+#!   TOP_LEFT="12934.582646692255 517.50452504525015"
+#!   BOTTOM_RIGHT="13525.135251352513 287.50252502524995"
+#!   BOUNDING_RECT="12934.582646692255 517.50452504525015 590.5526046602572 230.00200002000017"
+#!   ORDER="500000000003132.38"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="383"
+#! />
 #! </COMMENTS>
 #! <CONSTANTS>
 #! </CONSTANTS>
@@ -2052,7 +2067,7 @@
 #!   BOUNDING_RECT="-28441.951086177531 1355.9659406117867 2442.6308845398125 1176.7974822605365"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="17 392 15 77 81 16 147 391 393 146 390 "
+#!   CONTENTS="391 390 15 16 77 81 392 146 147 17 393 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2066,7 +2081,7 @@
 #!   BOUNDING_RECT="-9235.7931155069145 975.00975009750084 2602.2987502602336 1091.6775834425002"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="54 178 105 403 101 36 40 "
+#!   CONTENTS="178 403 36 54 40 101 105 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2080,21 +2095,21 @@
 #!   BOUNDING_RECT="1195.0193137230422 1634.4899079902746 8076.4846845417278 1571.9535904289419"
 #!   STICKY="true"
 #!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
-#!   CONTENTS="171 25 172 27 4 26 30 93 92 94 23 174 88 175 29 95 28 373 173 91 170 "
+#!   CONTENTS="171 88 28 95 373 173 93 25 30 27 23 170 26 92 29 174 172 175 4 94 91 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
 #!   IDENTIFIER="191"
 #!   NAME="Drop Broken Web Services"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="15964.99156145871 1475.6946613269909"
+#!   TOP_LEFT="16896.250874051839 1438.1942863232402"
 #!   ORDER="500000000003079.5"
 #!   PALETTE_COLOR="Color6"
-#!   BOTTOM_RIGHT="17175.352476073851 235.00284018995649"
-#!   BOUNDING_RECT="15964.99156145871 1475.6946613269909 1210.3609146151393 1240.6918211370344"
+#!   BOTTOM_RIGHT="18106.611788666978 197.50246518620588"
+#!   BOUNDING_RECT="16896.250874051839 1438.1942863232402 1210.3609146151393 1240.6918211370344"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="24 5 151 "
+#!   CONTENTS="5 151 24 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2115,56 +2130,56 @@
 #!   IDENTIFIER="193"
 #!   NAME="HNAP RULES"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="12345.605679511254 1211.7549509082362"
+#!   TOP_LEFT="12276.102502172638 1349.2563259219862"
 #!   ORDER="500000000003079.5"
 #!   PALETTE_COLOR="Color5"
-#!   BOTTOM_RIGHT="15682.84913618369 475.16138293258746"
-#!   BOUNDING_RECT="12345.605679511254 1211.7549509082362 3337.2434566724351 736.59356797564874"
+#!   BOTTOM_RIGHT="16777.589824738192 193.75193751937491"
+#!   BOUNDING_RECT="12276.102502172638 1349.2563259219862 4501.4873225655538 1155.5043884026113"
 #!   STICKY="true"
 #!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
-#!   CONTENTS="96 31 33 32 97 "
+#!   CONTENTS="31 383 96 409 97 386 32 398 359 410 33 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
 #!   IDENTIFIER="194"
 #!   NAME="Metadata_delta_finder"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="17324.864182707759 1475.6946613269909"
+#!   TOP_LEFT="18218.623120297132 1438.1942863232402"
 #!   ORDER="500000000003079.5"
 #!   PALETTE_COLOR="Color8"
-#!   BOTTOM_RIGHT="20408.377160694679 292.34949454199091"
-#!   BOUNDING_RECT="17324.864182707759 1475.6946613269909 3083.5129779869203 1183.3451667849999"
+#!   BOTTOM_RIGHT="21302.136098284052 254.8491195382403"
+#!   BOUNDING_RECT="18218.623120297132 1438.1942863232402 3083.5129779869203 1183.3451667849999"
 #!   STICKY="true"
 #!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
-#!   CONTENTS="167 145 110 47 6 165 112 51 49 162 45 48 "
+#!   CONTENTS="51 165 167 112 6 145 45 162 47 48 49 110 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
 #!   IDENTIFIER="195"
 #!   NAME="AWS Translation"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="20512.374401659967 1337.1247617375409"
+#!   TOP_LEFT="21431.13358925184 1215.6256195006922"
 #!   ORDER="500000000003079.5"
 #!   PALETTE_COLOR="Color3"
-#!   BOTTOM_RIGHT="21598.292906005991 476.05163976124925"
-#!   BOUNDING_RECT="20512.374401659967 1337.1247617375409 1085.9185043460238 861.07312197629165"
+#!   BOTTOM_RIGHT="22517.052093597864 354.55249752440056"
+#!   BOUNDING_RECT="21431.13358925184 1215.6256195006922 1085.9185043460238 861.07312197629165"
 #!   STICKY="true"
 #!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="35 152 10 "
+#!   CONTENTS="152 10 35 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
 #!   IDENTIFIER="196"
 #!   NAME="XML CREATION AND WRITING"
 #!   DESCRIPTION=""
-#!   TOP_LEFT="21693.005391592378 1661.3199027002886"
+#!   TOP_LEFT="22611.764579184255 1648.8197776990385"
 #!   ORDER="500000000003079.5"
 #!   PALETTE_COLOR="Color3"
-#!   BOTTOM_RIGHT="23944.727653578262 165.47161088403641"
-#!   BOUNDING_RECT="21693.005391592378 1661.3199027002886 2251.722261985884 1495.8482918162522"
+#!   BOTTOM_RIGHT="24863.486841170139 152.97148588278628"
+#!   BOUNDING_RECT="22611.764579184255 1648.8197776990385 2251.722261985884 1495.8482918162522"
 #!   STICKY="true"
 #!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="164 153 168 37 160 102 7 176 8 9 11 166 "
+#!   CONTENTS="102 164 8 11 37 7 166 176 168 153 9 160 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2178,7 +2193,7 @@
 #!   BOUNDING_RECT="-16613.74500649768 861.1100469603382 3038.6092551401671 869.44346362783813"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="400 396 103 154 107 387 399 42 397 53 38 394 395 378 104 39 "
+#!   CONTENTS="154 38 400 42 53 394 397 39 378 387 395 103 104 396 107 399 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2192,7 +2207,7 @@
 #!   BOUNDING_RECT="-6570.8990423237519 985.58677894471202 2789.0903909039089 1105.4597725464428"
 #!   STICKY="true"
 #!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
-#!   CONTENTS="374 230 260 13 156 57 226 55 370 372 "
+#!   CONTENTS="374 260 226 372 57 370 156 55 13 230 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2206,7 +2221,7 @@
 #!   BOUNDING_RECT="-3701.2285637009654 1255.1836827892087 3123.0977823931562 1760.7481965397783"
 #!   STICKY="true"
 #!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
-#!   CONTENTS="22 21 44 161 85 344 3 86 159 2 148 149 109 14 375 20 343 "
+#!   CONTENTS="343 161 109 44 2 20 14 149 3 21 344 375 85 159 148 22 86 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2220,7 +2235,7 @@
 #!   BOUNDING_RECT="-13482.233036616079 959.02744741733147 1523.45273452734 1116.5991030378593"
 #!   STICKY="true"
 #!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
-#!   CONTENTS="235 41 273 265 106 43 "
+#!   CONTENTS="41 273 235 265 106 43 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2234,7 +2249,7 @@
 #!   BOUNDING_RECT="-11877.350014481388 730.64988872886079 2508.119417413518 613.64250006136456"
 #!   STICKY="true"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
-#!   CONTENTS="215 121 62 217 157 116 61 120 60 59 "
+#!   CONTENTS="157 121 61 60 120 215 217 116 59 62 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2248,7 +2263,7 @@
 #!   BOUNDING_RECT="-25719.00719007189 173.47345365450116 2293.772937729369 494.30999535325151"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="249 268 263 266 241 264 78 186 "
+#!   CONTENTS="249 266 264 186 241 78 263 268 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2262,7 +2277,7 @@
 #!   BOUNDING_RECT="-25750.257502575016 726.93034622653897 2375.0237502375021 368.75368753687536"
 #!   STICKY="true"
 #!   COLOUR="0.62352941176470589,0.5725490196078431,0.8784313725490196,1"
-#!   CONTENTS="73 325 74 338 131 "
+#!   CONTENTS="74 338 325 131 73 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2276,7 +2291,7 @@
 #!   BOUNDING_RECT="-25787.757877578777 1257.9639186454297 2443.7744377443778 1621.2488014942578"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="74 186 263 70 325 249 131 264 340 71 66 268 205 234 406 78 338 138 73 241 207 266 "
+#!   CONTENTS="325 234 406 138 71 264 268 205 241 131 66 73 338 74 207 340 78 249 186 266 70 263 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2290,7 +2305,7 @@
 #!   BOUNDING_RECT="-25929.946799467991 1361.0694819069406 16642.353923539231 1782.9487006991283"
 #!   STICKY="true"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
-#!   CONTENTS="240 38 404 228 266 400 381 18 376 406 273 78 408 338 59 257 249 270 197 131 74 186 263 377 242 340 61 62 355 384 42 407 396 12 388 369 154 43 215 163 121 399 325 264 203 405 140 70 245 83 382 138 235 67 116 217 402 268 385 395 66 234 103 363 378 205 53 58 107 380 208 210 201 157 246 394 52 71 265 73 250 39 106 104 19 50 379 41 113 120 207 241 126 231 60 "
+#!   CONTENTS="131 404 78 257 396 384 215 203 39 266 407 234 387 120 388 325 73 41 103 273 395 201 235 163 66 217 138 207 264 71 249 263 382 377 378 380 12 59 246 340 250 52 157 228 106 83 369 70 74 53 62 197 140 116 270 405 355 245 60 408 338 205 381 67 240 50 19 397 126 399 242 268 38 121 231 385 402 241 265 104 363 113 107 58 43 154 42 210 400 376 18 394 379 61 208 406 186 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2304,7 +2319,7 @@
 #!   BOUNDING_RECT="-17638.489092465999 1246.6333446902026 898.48194880483425 1564.942963469422"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="163 52 58 113 83 18 12 "
+#!   CONTENTS="58 83 12 163 113 18 52 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2318,7 +2333,7 @@
 #!   BOUNDING_RECT="-21056.460564605652 1000.6968053820337 3265.0326503265096 1057.125941101963"
 #!   STICKY="true"
 #!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
-#!   CONTENTS="242 407 408 384 246 380 382 381 404 405 385 388 376 379 377 369 363 "
+#!   CONTENTS="381 388 382 404 407 380 379 385 369 384 246 377 405 363 408 242 376 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2332,7 +2347,7 @@
 #!   BOUNDING_RECT="9487.1788622672411 941.99561657556342 1274.4672157320092 723.29545142796178"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="232 233 225 258 "
+#!   CONTENTS="258 233 232 225 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2346,7 +2361,7 @@
 #!   BOUNDING_RECT="4556.7487487201415 -670.390268219326 2104.5780977042305 776.84937849233415"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="283 284 310 285 311 286 307 287 308 "
+#!   CONTENTS="285 308 307 283 286 284 287 310 311 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2360,7 +2375,7 @@
 #!   BOUNDING_RECT="6836.3679803621362 -671.52043083562728 2164.7156202174665 768.73759618847453"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="315 290 312 289 313 291 288 292 316 "
+#!   CONTENTS="313 292 312 288 291 315 289 290 316 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2388,7 +2403,7 @@
 #!   BOUNDING_RECT="182.94485527041024 1437.4573991886384 688.41268122826295 872.11017037706438"
 #!   STICKY="true"
 #!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
-#!   CONTENTS="346 347 348 "
+#!   CONTENTS="347 346 348 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2398,11 +2413,11 @@
 #!   TOP_LEFT="-90.761777182984588 1835.3866081798321"
 #!   ORDER="500000000003079.38"
 #!   PALETTE_COLOR="Color7"
-#!   BOTTOM_RIGHT="24007.228278584495 27.536317561333135"
-#!   BOUNDING_RECT="-90.761777182984588 1835.3866081798321 24097.990055767477 1807.850290618499"
+#!   BOTTOM_RIGHT="24943.999439994404 27.536317561333135"
+#!   BOUNDING_RECT="-90.761777182984588 1835.3866081798321 25034.761217177387 1807.850290618499"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.75294117647058822,0.90980392156862744,1"
-#!   CONTENTS="88 37 168 49 30 93 171 162 48 95 25 353 28 190 100 194 152 164 143 96 151 34 10 360 176 195 373 24 258 102 359 191 29 348 97 238 170 351 8 225 166 172 196 92 11 6 167 153 51 354 9 110 31 346 5 94 347 27 4 91 32 192 23 47 233 145 271 7 33 165 35 232 175 349 174 352 26 160 112 45 193 361 173 261 "
+#!   CONTENTS="26 410 24 9 151 143 49 190 174 94 100 167 258 353 361 351 162 225 93 409 352 145 34 166 35 29 88 30 191 110 5 386 95 195 31 164 359 102 10 91 176 97 170 48 238 4 401 25 168 194 28 27 192 193 232 47 171 233 152 11 92 173 398 112 7 360 348 346 33 373 354 349 347 153 160 8 23 37 96 383 261 32 175 6 165 196 172 271 45 51 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2416,7 +2431,7 @@
 #!   BOUNDING_RECT="-90.761777182984588 -384.20461044598039 16924.263445533004 1319.5925419586933"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="292 304 282 336 318 289 316 333 295 341 368 305 314 288 342 275 307 320 317 339 298 285 337 296 300 328 310 331 280 323 302 335 294 315 332 286 303 312 290 301 308 277 291 306 321 278 334 309 366 299 329 362 330 313 283 327 324 322 297 279 358 319 365 276 311 284 364 287 367 281 293 326 "
+#!   CONTENTS="297 288 305 307 300 280 287 290 327 289 314 302 333 276 362 319 330 275 323 329 366 278 299 309 303 277 311 294 365 286 284 310 279 293 306 328 367 281 295 312 313 336 301 320 316 298 315 341 358 282 304 342 332 322 321 334 318 331 283 368 326 324 364 285 317 335 308 339 292 296 337 291 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2430,7 +2445,7 @@
 #!   BOUNDING_RECT="10840.53530296074 -618.45493719833223 1977.7339053723663 970.14910558293536"
 #!   STICKY="true"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
-#!   CONTENTS="330 329 299 276 331 333 297 321 298 334 "
+#!   CONTENTS="321 334 276 330 333 298 297 329 331 299 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2444,7 +2459,7 @@
 #!   BOUNDING_RECT="13935.617188578872 -961.8319388058278 2779.2911687353881 306.83304166374978"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="275 295 320 296 318 294 319 "
+#!   CONTENTS="296 294 275 318 320 319 295 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -2458,7 +2473,7 @@
 #!   BOUNDING_RECT="2213.1173692689349 -586.44454383432515 2161.9263811685737 864.94564753633881"
 #!   STICKY="true"
 #!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="365 293 366 364 362 368 337 "
+#!   CONTENTS="362 364 337 293 366 368 365 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -2717,8 +2732,8 @@
 #!   IDENTIFIER="24"
 #!   TYPE="REMOVE_BROKEN_URL_WMS_ESRI_REST"
 #!   VERSION="1"
-#!   POSITION="16127.341787411906 1191.7707641307413"
-#!   BOUNDING_RECT="16127.341787411906 1191.7707641307413 861.85784184556087 71"
+#!   POSITION="17058.601100005035 1154.2703891269907"
+#!   BOUNDING_RECT="17058.601100005035 1154.2703891269907 861.85784184556087 71"
 #!   ORDER="500000000001781"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -2891,8 +2906,8 @@
 #!   IDENTIFIER="31"
 #!   TYPE="WMS_REST_LANGUAGE_FORMATTER"
 #!   VERSION="1"
-#!   POSITION="12458.106304517505 927.83105371198667"
-#!   BOUNDING_RECT="12458.106304517505 927.83105371198667 895.16928069391361 71"
+#!   POSITION="13720.348668088758 1077.8325537269866"
+#!   BOUNDING_RECT="13720.348668088758 1077.8325537269866 895.16928069391361 71"
 #!   ORDER="500000000001775"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -2907,8 +2922,8 @@
 #!   IDENTIFIER="32"
 #!   TYPE="DUPLICATE_SERVICE_REMOVER"
 #!   VERSION="1"
-#!   POSITION="13723.074141752981 927.83105371198667"
-#!   BOUNDING_RECT="13723.074141752981 927.83105371198667 784.05913588151452 71"
+#!   POSITION="14841.565067809852 696.57874118886139"
+#!   BOUNDING_RECT="14841.565067809852 696.57874118886139 784.05913588151452 71"
 #!   ORDER="500000000001779"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -2923,8 +2938,8 @@
 #!   IDENTIFIER="33"
 #!   TYPE="GMD_SECTION_DATA_EXTRACTION"
 #!   VERSION="1"
-#!   POSITION="14874.117493709937 930.84182795017182"
-#!   BOUNDING_RECT="14874.117493709937 930.84182795017182 729.00106825772946 71"
+#!   POSITION="15968.858182264439 1068.3432029639218"
+#!   BOUNDING_RECT="15968.858182264439 1068.3432029639218 729.00106825772946 71"
 #!   ORDER="500000000001998"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -2955,8 +2970,8 @@
 #!   IDENTIFIER="35"
 #!   TYPE="AWS_TRANSLATE"
 #!   VERSION="1"
-#!   POSITION="20601.281928857963 1186.1431887079007"
-#!   BOUNDING_RECT="20601.281928857963 1186.1431887079007 565.203125 71"
+#!   POSITION="21520.041116449836 1064.644046471052"
+#!   BOUNDING_RECT="21520.041116449836 1064.644046471052 565.203125 71"
 #!   ORDER="500000000001776"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -3003,8 +3018,8 @@
 #!   IDENTIFIER="37"
 #!   TYPE="XML_PUBLISHER_NG"
 #!   VERSION="1"
-#!   POSITION="21777.305545786323 1120.7157973676867"
-#!   BOUNDING_RECT="21777.305545786323 1120.7157973676867 461.00106825772946 71"
+#!   POSITION="22696.0647333782 1108.2156723664366"
+#!   BOUNDING_RECT="22696.0647333782 1108.2156723664366 461.00106825772946 71"
 #!   ORDER="500000000002509.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -3730,10 +3745,10 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -3783,9 +3798,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -3828,8 +3843,8 @@
 #!   IDENTIFIER="45"
 #!   TYPE="METADATA_DELTA_FINDER_NG"
 #!   VERSION="1"
-#!   POSITION="18705.063908124503 1135.4140715041642"
-#!   BOUNDING_RECT="18705.063908124503 1135.4140715041642 657.00106825772946 71"
+#!   POSITION="19598.822845713876 1097.9136965004136"
+#!   BOUNDING_RECT="19598.822845713876 1097.9136965004136 657.00106825772946 71"
 #!   ORDER="500000000002657.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -3890,8 +3905,8 @@
 #!   IDENTIFIER="47"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
-#!   POSITION="17394.230796753109 1221.6636587399032"
-#!   BOUNDING_RECT="17394.230796753109 1221.6636587399032 454 71"
+#!   POSITION="18287.989734342482 1184.1632837361526"
+#!   BOUNDING_RECT="18287.989734342482 1184.1632837361526 454 71"
 #!   ORDER="500000000002743.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -3915,8 +3930,8 @@
 #!   IDENTIFIER="48"
 #!   TYPE="Logger"
 #!   VERSION="4"
-#!   POSITION="19538.551731897416 1309.1259945044428"
-#!   BOUNDING_RECT="19538.551731897416 1309.1259945044428 718.44933503633365 71"
+#!   POSITION="20432.310669486789 1271.6256195006922"
+#!   BOUNDING_RECT="20432.310669486789 1271.6256195006922 718.44933503633365 71"
 #!   ORDER="500000000001463"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -3941,8 +3956,8 @@
 #!   IDENTIFIER="49"
 #!   TYPE="Junction"
 #!   VERSION="0"
-#!   POSITION="19941.446131445337 834.07531078354396"
-#!   BOUNDING_RECT="19941.446131445337 834.07531078354396 61 61"
+#!   POSITION="20835.20506903471 796.57493577979335"
+#!   BOUNDING_RECT="20835.20506903471 796.57493577979335 61 61"
 #!   ORDER="500000000002826.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -4000,8 +4015,8 @@
 #!   IDENTIFIER="51"
 #!   TYPE="AttributeExposer"
 #!   VERSION="1"
-#!   POSITION="18039.903597970311 979.07606079104403"
-#!   BOUNDING_RECT="18039.903597970311 979.07606079104403 454 71"
+#!   POSITION="18933.662535559684 941.57568578729342"
+#!   BOUNDING_RECT="18933.662535559684 941.57568578729342 454 71"
 #!   ORDER="500000000002000"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -4178,9 +4193,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -4191,9 +4206,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -4226,9 +4241,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -4261,9 +4276,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -4287,9 +4302,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -4864,9 +4879,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -4875,9 +4890,9 @@
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="UNIQUE_ATT" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -5895,10 +5910,10 @@
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_publish_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_create_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified2" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -6012,6 +6027,55 @@
 #!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="record_publish_date record_create_date COPY "/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCopier_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="383"
+#!   TYPE="ListSearcher"
+#!   VERSION="7"
+#!   POSITION="13020.083121697004 765.00765007650034"
+#!   BOUNDING_RECT="13020.083121697004 765.00765007650034 454 71"
+#!   ORDER="500000000003130.38"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#!   OUTPUT_FT_ORDER="NOT_FOUND%FOUND"
+#! >
+#!     <OUTPUT_FEAT NAME="NOT_FOUND"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FOUND"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_list_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUE" PARM_VALUE="MapServer"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_list_index"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="resources&lt;opencurly&gt;&lt;closecurly&gt;.url"/>
+#!     <XFORM_PARM PARM_NAME="MATCHTYPE" PARM_VALUE="REGULAR_EXPRESSION_ENCODED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListSearcher_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="359"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="12339.89614164751 908.75908759087565"
+#!   BOUNDING_RECT="12339.89614164751 908.75908759087565 454 71"
+#!   ORDER="500000000003131.38"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="resources{}.url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="resources{}.url"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_15"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <FEAT_LINKS>
@@ -6286,11 +6350,11 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="359"
+#!   IDENTIFIER="401"
 #!   SOURCE_NODE="34"
-#!   TARGET_NODE="31"
+#!   TARGET_NODE="359"
 #!   SOURCE_PORT_DESC="fo 0 DATA_OUTPUT"
-#!   TARGET_PORT_DESC="fi 0 INPUT"
+#!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -7336,6 +7400,21 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
+#!   IDENTIFIER="409"
+#!   SOURCE_NODE="359"
+#!   TARGET_NODE="383"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
 #!   IDENTIFIER="380"
 #!   SOURCE_NODE="363"
 #!   TARGET_NODE="377"
@@ -7446,6 +7525,21 @@
 #!   TARGET_NODE="400"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="398"
+#!   SOURCE_NODE="383"
+#!   TARGET_NODE="32"
+#!   SOURCE_PORT_DESC="fo 1 FOUND"
+#!   TARGET_PORT_DESC="fi 0 INPUT"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -7761,6 +7855,21 @@
 #!   TARGET_NODE="363"
 #!   SOURCE_PORT_DESC="fo 1 notes&lt;lt&gt;space&lt;gt&gt;=&lt;lt&gt;space&lt;gt&gt;notes1+notes2"
 #!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="386"
+#!   SOURCE_NODE="383"
+#!   TARGET_NODE="31"
+#!   SOURCE_PORT_DESC="fo 0 NOT_FOUND"
+#!   TARGET_PORT_DESC="fi 0 INPUT"
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -8478,7 +8587,7 @@ MULTI_READER_CONTINUE_ON_READER_FAILURE No
 
 # -------------------------------------------------------------------------
 
-MACRO WORKSPACE_NAME MB_SK_DEV
+MACRO WORKSPACE_NAME MB_SK_PROD
 MACRO FME_VIEWER_APP fmedatainspector
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 # -------------------------------------------------------------------------
@@ -8530,13 +8639,13 @@ FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME AttributeCopier    INPUT  FEATURE_TYPE AttributeRenamer_3_OUTPUT 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "id" "original_id" "COPY" "" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCopier_OUTPUT
 # -------------------------------------------------------------------------
-Tcl2 proc AttributeSplitter_6b02a4a5_4744_4b92_9c6b_e56da72d10392_doSplit {} {    set splitDelimiter [FME_DecodeTextOrAttr {<comma>}];    if { [regexp {^([1-9][0-9]*s)+$} $splitDelimiter] }    {       set splitWidths [split [regsub -all {s$} $splitDelimiter {}] s];       set source [FME_GetAttribute [FME_DecodeText {DCAT_P_spatial}]];       set attrNum 0;       set listName [FME_DecodeText {spatial_extent}];       set attrPos 0;       set keepEmptyParts [string equal {No} {No}];       foreach width $splitWidths       {          set endPos [expr $attrPos + $width - 1];          set bit [string range $source $attrPos $endPos];          set part [string trim $bit];          if { $keepEmptyParts || $part != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $part;             incr attrNum;          };          incr attrPos $width;       };    }    else    {       set delimLength [string length $splitDelimiter];       set source [FME_GetAttribute [FME_DecodeText {DCAT_P_spatial}]];       set keepEmptyParts [string equal {No} {No}];       set bits {};       set startIndex 0;       set nextIndex [string first $splitDelimiter $source $startIndex];       while {$nextIndex >= 0} {          lappend bits [string range $source $startIndex [expr $nextIndex-1]];          set startIndex [expr $nextIndex + $delimLength];          set nextIndex [string first $splitDelimiter $source $startIndex];       };       lappend bits [string range $source $startIndex end];       set listName [FME_DecodeText {spatial_extent}];       set attrNum 0;       foreach bit $bits       {          set trimmedPart [string trim $bit];          if { $keepEmptyParts || $trimmedPart != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $trimmedPart;             incr attrNum;          };       }    } }
-FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeSplitter    INPUT  FEATURE_TYPE AttributeCopier_OUTPUT    OUTPUT FEATURE_TYPE AttributeSplitter_OUTPUT         @Tcl2(AttributeSplitter_6b02a4a5_4744_4b92_9c6b_e56da72d10392_doSplit)
+Tcl2 proc AttributeSplitter_55f906f0_c918_4b85_9939_684bdd8947cb3_doSplit {} {    set splitDelimiter [FME_DecodeTextOrAttr {<comma>}];    if { [regexp {^([1-9][0-9]*s)+$} $splitDelimiter] }    {       set splitWidths [split [regsub -all {s$} $splitDelimiter {}] s];       set source [FME_GetAttribute [FME_DecodeText {DCAT_P_spatial}]];       set attrNum 0;       set listName [FME_DecodeText {spatial_extent}];       set attrPos 0;       set keepEmptyParts [string equal {No} {No}];       foreach width $splitWidths       {          set endPos [expr $attrPos + $width - 1];          set bit [string range $source $attrPos $endPos];          set part [string trim $bit];          if { $keepEmptyParts || $part != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $part;             incr attrNum;          };          incr attrPos $width;       };    }    else    {       set delimLength [string length $splitDelimiter];       set source [FME_GetAttribute [FME_DecodeText {DCAT_P_spatial}]];       set keepEmptyParts [string equal {No} {No}];       set bits {};       set startIndex 0;       set nextIndex [string first $splitDelimiter $source $startIndex];       while {$nextIndex >= 0} {          lappend bits [string range $source $startIndex [expr $nextIndex-1]];          set startIndex [expr $nextIndex + $delimLength];          set nextIndex [string first $splitDelimiter $source $startIndex];       };       lappend bits [string range $source $startIndex end];       set listName [FME_DecodeText {spatial_extent}];       set attrNum 0;       foreach bit $bits       {          set trimmedPart [string trim $bit];          if { $keepEmptyParts || $trimmedPart != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $trimmedPart;             incr attrNum;          };       }    } }
+FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeSplitter    INPUT  FEATURE_TYPE AttributeCopier_OUTPUT    OUTPUT FEATURE_TYPE AttributeSplitter_OUTPUT         @Tcl2(AttributeSplitter_55f906f0_c918_4b85_9939_684bdd8947cb3_doSplit)
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME AttributeRenamer_2    INPUT  FEATURE_TYPE AttributeSplitter_OUTPUT 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "spatial_extent<opencurly>0<closecurly>" "west_bound_longitude" "RENAME_SET_DEFAULT" "" }      ATTR_ACTION { "spatial_extent<opencurly>1<closecurly>" "south_bound_latitude" "RENAME_SET_DEFAULT" "" }      ATTR_ACTION { "spatial_extent<opencurly>2<closecurly>" "east_bound_longitude" "RENAME_SET_DEFAULT" "" }      ATTR_ACTION { "spatial_extent<opencurly>3<closecurly>" "north_bound_latitude" "RENAME_SET_DEFAULT" "" }    OUTPUT OUTPUT FEATURE_TYPE AttributeRenamer_2_OUTPUT
 # -------------------------------------------------------------------------
-Tcl2 proc NullAttributeMapper_2_e06e5230_2e8d_4367_8810_25fbc89c3fcf2_null_replacer { otherValue newValue regExp } {    set attrs [split {east_bound_longitude north_bound_latitude south_bound_latitude west_bound_longitude} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {EMPTY MISSINGATTR SETNULL}] != -1} {                 set act {DELETEATTR};             };          }          elseif { [string first {EMPTY} {EMPTY MISSINGATTR SETNULL}] != -1 && $attrVal == {}} {             set act {DELETEATTR};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {DELETEATTR};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {DELETEATTR};             }          };      }      elseif {[string first {MISSINGATTR} {EMPTY MISSINGATTR SETNULL}] != -1} {             set act {DELETEATTR};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME NullAttributeMapper_2    INPUT  FEATURE_TYPE AttributeRenamer_2_OUTPUT    OUTPUT FEATURE_TYPE NullAttributeMapper_2_OUTPUT         @Tcl2("NullAttributeMapper_2_e06e5230_2e8d_4367_8810_25fbc89c3fcf2_null_replacer {} {<Unused>} {^<openbracket>0<closebracket>}")
+Tcl2 proc NullAttributeMapper_2_e50580eb_7fc3_404b_8324_fbaef41aa6a83_null_replacer { otherValue newValue regExp } {    set attrs [split {east_bound_longitude north_bound_latitude south_bound_latitude west_bound_longitude} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {EMPTY MISSINGATTR SETNULL}] != -1} {                 set act {DELETEATTR};             };          }          elseif { [string first {EMPTY} {EMPTY MISSINGATTR SETNULL}] != -1 && $attrVal == {}} {             set act {DELETEATTR};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {DELETEATTR};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {DELETEATTR};             }          };      }      elseif {[string first {MISSINGATTR} {EMPTY MISSINGATTR SETNULL}] != -1} {             set act {DELETEATTR};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME NullAttributeMapper_2    INPUT  FEATURE_TYPE AttributeRenamer_2_OUTPUT    OUTPUT FEATURE_TYPE NullAttributeMapper_2_OUTPUT         @Tcl2("NullAttributeMapper_2_e50580eb_7fc3_404b_8324_fbaef41aa6a83_null_replacer {} {<Unused>} {^<openbracket>0<closebracket>}")
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
 FACTORY_DEF * PythonFactory    FACTORY_NAME PythonCaller_5    INPUT  FEATURE_TYPE NullAttributeMapper_2_OUTPUT    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>from<space>Python.FME_utils<space>import<space>FME_utils<lf><lf>#<space>Template<space>Function<space>interface:<lf>#<space>When<space>using<space>this<space>function<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>def<space>FeatureProcessor<openparen>feature<closeparen>:<lf><space><space><space><space>i=0<lf><lf><space><space><space><space>max_index=FME_utils.max_index_attribute_list<openparen>feature<comma><apos>DCAT_S_attributes.categories<opencurly><closecurly><apos><closeparen><lf><space><space><space><space>for<space>j<space>in<space>range<openparen>max_index+1<closeparen>:<lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>iso_topic<opencurly>%i<closecurly>.topic_value<apos>%<openparen>i<closeparen><comma>feature.getAttribute<openparen><apos>DCAT_S_attributes.categories<opencurly>%i<closecurly><apos>%<openparen>j<closeparen><closeparen><closeparen><lf><space><space><space><space><space><space><space><space>i=i+1    OUTPUT PYOUTPUT FEATURE_TYPE PythonCaller_5_OUTPUT
@@ -8586,8 +8695,8 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "ATTRIBUTE_UNEXPOSER Output Output Renam
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer    INPUT  FEATURE_TYPE ATTRIBUTE_UNEXPOSER_Output    OUTPUT FEATURE_TYPE AttributeExposer_OUTPUT
 # -------------------------------------------------------------------------
-Tcl2 proc NullAttributeMapper_13894717_5899_4be2_9679_1956cda3ba3e2_null_replacer { otherValue newValue regExp } {    set attrs [split {license} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {SETNULL EMPTY MISSINGATTR}] != -1} {                 set act {SETVALUE};             };          }          elseif { [string first {EMPTY} {SETNULL EMPTY MISSINGATTR}] != -1 && $attrVal == {}} {             set act {SETVALUE};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {SETVALUE};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {SETVALUE};             }          };      }      elseif {[string first {MISSINGATTR} {SETNULL EMPTY MISSINGATTR}] != -1} {             set act {SETVALUE};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME NullAttributeMapper    INPUT  FEATURE_TYPE AttributeExposer_OUTPUT    OUTPUT FEATURE_TYPE NullAttributeMapper_OUTPUT         @Tcl2("NullAttributeMapper_13894717_5899_4be2_9679_1956cda3ba3e2_null_replacer {} {unknown} {}")
+Tcl2 proc NullAttributeMapper_b795712b_64ee_46b2_a023_3a505d3571073_null_replacer { otherValue newValue regExp } {    set attrs [split {license} { }];    set decode true;    if { {SELECTED} == {ALL} } {       set attrs [FME_AttributeNames];       set decode false; 	 };    set decodedVal [FME_DecodeText $otherValue];    set decodedRegExp [FME_DecodeText $regExp];    foreach attr $attrs {      set act {NOOP};      if {$decode} {        set attr [FME_DecodeText $attr];      };      if {[FME_AttributeExists $attr]} {          set attrVal [FME_GetAttribute $attr];          if {[FME_IsAttributeNull $attr] } {             if {[string first {SETNULL} {SETNULL EMPTY MISSINGATTR}] != -1} {                 set act {SETVALUE};             };          }          elseif { [string first {EMPTY} {SETNULL EMPTY MISSINGATTR}] != -1 && $attrVal == {}} {             set act {SETVALUE};          }          elseif { $otherValue != {} && [string equal $attrVal $decodedVal]} {             set act {SETVALUE};          }          elseif { $decodedRegExp != {} }          {             set results [FME_GetRegex $decodedRegExp $attrVal];             if {[llength [lindex $results 0]] > 0}             {                set act {SETVALUE};             }          };      }      elseif {[string first {MISSINGATTR} {SETNULL EMPTY MISSINGATTR}] != -1} {             set act {SETVALUE};      };      if {$act == {DELETEATTR} } {         FME_UnsetAttributes $attr;      } elseif { $act == {SETVALUE} } {         FME_SetAttribute $attr [FME_DecodeText $newValue];      } elseif { $act == {SETNULL} } {         FME_SetAttributeNull $attr;      } elseif { $act == {EMPTY} }      {         FME_SetAttribute $attr {};      };   }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME NullAttributeMapper    INPUT  FEATURE_TYPE AttributeExposer_OUTPUT    OUTPUT FEATURE_TYPE NullAttributeMapper_OUTPUT         @Tcl2("NullAttributeMapper_b795712b_64ee_46b2_a023_3a505d3571073_null_replacer {} {unknown} {}")
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "LICENSE_FILTER_NG INPUT Input Collector"   INPUT FEATURE_TYPE NullAttributeMapper_OUTPUT   OUTPUT FEATURE_TYPE LICENSE_FILTER_NG_INPUT
 MACRO LICENSE_FILTER_NG_WORKSPACE_NAME LICENSE_FILTER_NG
@@ -8607,8 +8716,8 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_14    INPUT  FEATURE_T
 # -------------------------------------------------------------------------
 DEFAULT_MACRO DateTimeConverter_EXPRESSION_LIST
 INCLUDE [    set repairInput {};    if {{YES} eq {YES}} {       set repairInput "<comma>repair";    };    set inFormat {FME|ISO};    if { {} ne {} } {       set inFormat {};       if { [string first "<quote>" $inFormat] != -1 } {          set inFormat [string map {"<quote>" "<backslash><quote>"} $inFormat];       };    };    set outFormat {%Y-%m-%d};    if { [string first "<quote>" $outFormat] != -1 } {       set outFormat [string map {"<quote>" "<backslash><quote>"} $outFormat];    };    set parmList {};    set attrs {record_create_date record_last_modified record_publish_date data_collection_end_date data_collection_start_date record_last_modified2};    foreach attr $attrs {       lappend parmList $attr;       set funcAttr $attr;       if { [string first "<quote>" $attr] != -1 }       {          set funcAttr [string map {"<quote>" "<backslash><quote>"} $attr];          append funcAttr "<quote>";          set funcAttr "<quote>$funcAttr";       };       lappend parmList <at>DateTimeFormat<openparen><at>DateTimeParse<openparen><at>Value<openparen>$funcAttr<closeparen><comma><quote>$inFormat<quote>$repairInput<closeparen><comma><quote>$outFormat<quote><closeparen>;    };    puts "MACRO DateTimeConverter_EXPRESSION_LIST [join $parmList { }]"; ]
-Tcl2 proc DateTimeConverter_a7657bdd_ce2a_49ac_a09c_d20bd76522f43_DateTimeConverter {} {    set attrs {record_create_date record_last_modified record_publish_date data_collection_end_date data_collection_start_date record_last_modified2};    set decodedAttrs {};    set attrVals {};    set attrNulls {};    set attrMissings {};    foreach attr $attrs {       set decodedAttr [FME_DecodeText $attr];       lappend decodedAttrs $decodedAttr;       lappend attrVals [FME_GetAttribute $decodedAttr];       lappend attrNulls [FME_IsAttributeNull $decodedAttr];       lappend attrExists [FME_AttributeExists $decodedAttr];    };    FME_Execute EvaluateExpression ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV $(DateTimeConverter_EXPRESSION_LIST) DateTimeConverter;    foreach attr $decodedAttrs oldAttrVal $attrVals oldAttrExists $attrExists oldAttrNull $attrNulls {       set newAttrVal [FME_GetAttribute $attr];       if {[string length $newAttrVal] == 0} {          if {{NO} eq {NO} || [string length $oldAttrVal] > 0} {             FME_SetAttribute fme_rejection_code "INVALID_INPUT";             break;          } elseif {!$oldAttrExists} {             FME_UnsetAttributes $attr;          } elseif {!$oldAttrNull} {             FME_SetAttribute $attr {};          };       }    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeConverter_1    INPUT  FEATURE_TYPE AttributeExposer_14_OUTPUT    OUTPUT FEATURE_TYPE ___TOREJECTOR___       @RenameAttributes(FME_STRICT, ___fme_rejection_code___,fme_rejection_code)       @Tcl2(DateTimeConverter_a7657bdd_ce2a_49ac_a09c_d20bd76522f43_DateTimeConverter)
+Tcl2 proc DateTimeConverter_5c9a1316_97c3_4cac_86df_71a3f23778a83_DateTimeConverter {} {    set attrs {record_create_date record_last_modified record_publish_date data_collection_end_date data_collection_start_date record_last_modified2};    set decodedAttrs {};    set attrVals {};    set attrNulls {};    set attrMissings {};    foreach attr $attrs {       set decodedAttr [FME_DecodeText $attr];       lappend decodedAttrs $decodedAttr;       lappend attrVals [FME_GetAttribute $decodedAttr];       lappend attrNulls [FME_IsAttributeNull $decodedAttr];       lappend attrExists [FME_AttributeExists $decodedAttr];    };    FME_Execute EvaluateExpression ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV $(DateTimeConverter_EXPRESSION_LIST) DateTimeConverter;    foreach attr $decodedAttrs oldAttrVal $attrVals oldAttrExists $attrExists oldAttrNull $attrNulls {       set newAttrVal [FME_GetAttribute $attr];       if {[string length $newAttrVal] == 0} {          if {{NO} eq {NO} || [string length $oldAttrVal] > 0} {             FME_SetAttribute fme_rejection_code "INVALID_INPUT";             break;          } elseif {!$oldAttrExists} {             FME_UnsetAttributes $attr;          } elseif {!$oldAttrNull} {             FME_SetAttribute $attr {};          };       }    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME DateTimeConverter_1    INPUT  FEATURE_TYPE AttributeExposer_14_OUTPUT    OUTPUT FEATURE_TYPE ___TOREJECTOR___       @RenameAttributes(FME_STRICT, ___fme_rejection_code___,fme_rejection_code)       @Tcl2(DateTimeConverter_5c9a1316_97c3_4cac_86df_71a3f23778a83_DateTimeConverter)
 FACTORY_DEF * TestFactory    FACTORY_NAME DateTimeConverter_Rejector    INPUT FEATURE_TYPE ___TOREJECTOR___    TEST @Value(fme_rejection_code) != ""    OUTPUT PASSED FEATURE_TYPE DateTimeConverter_<REJECTED>       @RemoveAttributes(___fme_rejection_code___)    OUTPUT FAILED FEATURE_TYPE DateTimeConverter_OUTPUT       @RenameAttributes(FME_STRICT, fme_rejection_code,___fme_rejection_code___)
 # -------------------------------------------------------------------------
 INCLUDE [    set macroLine "MACRO AttributeRemover_2_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
@@ -8620,7 +8729,7 @@ FACTORY_DEF * TestFactory    FACTORY_NAME Tester_2    INPUT  FEATURE_TYPE Juncti
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME AttributeCopier_2    INPUT  FEATURE_TYPE Tester_2_PASSED 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "record_publish_date" "record_create_date" "COPY" "" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCopier_2_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME Junction_9    INPUT  FEATURE_TYPE Tester_2_FAILED    INPUT  FEATURE_TYPE AttributeCopier_2_OUTPUT    OUTPUT FEATURE_TYPE Junction_9_Output
+FACTORY_DEF * TeeFactory    FACTORY_NAME Junction_9    INPUT  FEATURE_TYPE AttributeCopier_2_OUTPUT    INPUT  FEATURE_TYPE Tester_2_FAILED    OUTPUT FEATURE_TYPE Junction_9_Output
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_4    INPUT  FEATURE_TYPE Junction_9_Output    OUTPUT FEATURE_TYPE AttributeExposer_4_OUTPUT
 # -------------------------------------------------------------------------
@@ -8640,10 +8749,10 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_2    INPUT  FEATURE_TY
 # most of this is close to the code from listindexer but not exact beucase
 # we have a type LIST_ATTR rather than type LIST_NAME so need
 # to figure out the list name
-Tcl2 proc ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.name];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
-FACTORY_DEF * TeeFactory    FACTORY_NAME ListSearcher    INPUT  FEATURE_TYPE AttributeExposer_2_OUTPUT    OUTPUT FEATURE_TYPE ListSearcher__IndexedFeatures___         "ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2" @SearchList(fme_encoded,"resources<opencurly><closecurly>.name","ArcGIS<space>Hub<space>Dataset",FIRST_MATCHED_ENCODED)
-FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher__Tester    INPUT FEATURE_TYPE ListSearcher__IndexedFeatures___    TEST @Value(ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2) == "-1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_NOT_FOUND @RemoveAttributes(ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2)    OUTPUT FAILED FEATURE_TYPE  ListSearcher__IndexFound__
-FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher__Tester2    INPUT FEATURE_TYPE ListSearcher__IndexFound__    TEST NO == "NO"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_FOUND @CopyAttributes(_index_Landing_page, ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2) @RemoveAttributes(ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2)    OUTPUT FAILED FEATURE_TYPE  ListSearcher_FOUND  @Tcl2("ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2_indexer {@Value(ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2)} {<Unused>}") @CopyAttributes(_index_Landing_page, ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2) @RemoveAttributes(ListSearcher_637fb7da_7c53_44ed_ac66_3759bb7584fd2)
+Tcl2 proc ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.name];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME ListSearcher    INPUT  FEATURE_TYPE AttributeExposer_2_OUTPUT    OUTPUT FEATURE_TYPE ListSearcher__IndexedFeatures___         "ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3" @SearchList(fme_encoded,"resources<opencurly><closecurly>.name","ArcGIS<space>Hub<space>Dataset",FIRST_MATCHED_ENCODED)
+FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher__Tester    INPUT FEATURE_TYPE ListSearcher__IndexedFeatures___    TEST @Value(ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3) == "-1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_NOT_FOUND @RemoveAttributes(ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3)    OUTPUT FAILED FEATURE_TYPE  ListSearcher__IndexFound__
+FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher__Tester2    INPUT FEATURE_TYPE ListSearcher__IndexFound__    TEST NO == "NO"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_FOUND @CopyAttributes(_index_Landing_page, ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3) @RemoveAttributes(ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3)    OUTPUT FAILED FEATURE_TYPE  ListSearcher_FOUND  @Tcl2("ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3_indexer {@Value(ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3)} {<Unused>}") @CopyAttributes(_index_Landing_page, ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3) @RemoveAttributes(ListSearcher_44c0f639_d05e_42e9_9b91_765cb6853a3c3)
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE ListSearcher_FOUND    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "resources<opencurly><at>Value<openparen>_index_Landing_page<closeparen><closecurly>.name" "SET_TO" "FME_CONDITIONAL:DEFAULT_VALUE'_FME_NO_OP_'BOOL_OP;OR;COMPOSITE_TEST;1;TEST $(P-T_ABBR$encode) = SK'original<space>metadata<space><openparen>http:<solidus><solidus>geohub.saskatchewan.ca<closeparen>'BOOL_OP;OR;COMPOSITE_TEST;1;TEST $(P-T_ABBR$encode) = MB'original<space>metadata<space><openparen>https:<solidus><solidus>geoportal.gov.mb.ca<closeparen>'FME_NUM_CONDITIONS3___" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_OUTPUT
 # -------------------------------------------------------------------------
@@ -8934,7 +9043,7 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_11    INPUT  FEATURE_T
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_6    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE AttributeExposer_11_OUTPUT    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "text_line_data" "SET_TO" "<at>Value<openparen>json_file<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_6_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_3_Logger    INPUT  FEATURE_TYPE METADATA_DELTA_FINDER_NG_2_Statistics    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_3_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary_3:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>NoneGeo<space>Features:<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary_3)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_3_8d1d05f2_31b4_4306_a864_ed69be1bb5cf3)
+FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_3_Logger    INPUT  FEATURE_TYPE METADATA_DELTA_FINDER_NG_2_Statistics    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_3_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary_3:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>NoneGeo<space>Features:<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary_3)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_3_916e89d1_24ee_4a27_abbb_d364acf7c9272)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "StatisticsCalculator_Summary_3 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE StatisticsCalculator_Summary_3_LOGGED
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "SPATIAL_TYPE_MAPPER_NG DATA_INPUT Input Collector"   INPUT FEATURE_TYPE GEO_NONE_GEO_SELECTOR_GEOSPATIAL   OUTPUT FEATURE_TYPE SPATIAL_TYPE_MAPPER_NG_DATA_INPUT
@@ -9085,14 +9194,24 @@ MACRO $(RESOURCE_NAME_UNDERSCORE_REMOVER_WORKSPACE_NAME)_TRANSFORMER_GROUP
 INCLUDE_CUSTOM_TRANSFORMER_VER RESOURCE_NAME_UNDERSCORE_REMOVER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "RESOURCE_NAME_UNDERSCORE_REMOVER DATA_OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE RESOURCE_NAME_UNDERSCORE_REMOVER_DATA_OUTPUT   OUTPUT FEATURE_TYPE RESOURCE_NAME_UNDERSCORE_REMOVER_DATA_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory   FACTORY_NAME "WMS_REST_LANGUAGE_FORMATTER INPUT Input Collector"   INPUT FEATURE_TYPE RESOURCE_NAME_UNDERSCORE_REMOVER_DATA_OUTPUT   OUTPUT FEATURE_TYPE WMS_REST_LANGUAGE_FORMATTER_INPUT
+FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer_15    INPUT  FEATURE_TYPE RESOURCE_NAME_UNDERSCORE_REMOVER_DATA_OUTPUT    OUTPUT FEATURE_TYPE AttributeExposer_15_OUTPUT
+# -------------------------------------------------------------------------
+# most of this is close to the code from listindexer but not exact beucase
+# we have a type LIST_ATTR rather than type LIST_NAME so need
+# to figure out the list name
+Tcl2 proc ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2_indexer {index prefix} {    set fullListAttrName [FME_DecodeText resources<opencurly><closecurly>.url];    set lastBrace [string last  \"{}\" $fullListAttrName];    set listAttr [string range $fullListAttrName 0 [expr $lastBrace+1]];    regsub \"{}\" $listAttr \"{$index}\" listWithIndex;    regsub \"{}\" $listAttr {} listBase;    set complexListExp "$listWithIndex\.";    set prefixLength [expr [string length $complexListExp]-1];    set prefix [FME_DecodeText $prefix];    foreach attr [FME_AttributeNames] {      set newAttr {};      if {$attr == $listWithIndex} {        set newAttr $listBase;      } elseif {[string first $complexListExp $attr] == 0} {        set newAttr [string replace $attr 0 $prefixLength];      };      if {$newAttr != {}} {          if {$prefix != {} } {            set newAttr $prefix$newAttr;          };          if {[string first {fme_} $newAttr] != 0} {              set first [string first {fme_} $newAttr];              lappend attrsToCopy $newAttr $attr;          };      };    };    if {[info exists attrsToCopy] && [llength $attrsToCopy] > 0} {      eval FME_Execute CopyAttributes $attrsToCopy;    }; }
+FACTORY_DEF * TeeFactory    FACTORY_NAME ListSearcher_2    INPUT  FEATURE_TYPE AttributeExposer_15_OUTPUT    OUTPUT FEATURE_TYPE ListSearcher_2__IndexedFeatures___         "ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2" @SearchList(fme_encoded,"resources<opencurly><closecurly>.url","MapServer",REGULAR_EXPRESSION_ENCODED)
+FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher_2__Tester    INPUT FEATURE_TYPE ListSearcher_2__IndexedFeatures___    TEST @Value(ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2) == "-1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_2_NOT_FOUND @RemoveAttributes(ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2)    OUTPUT FAILED FEATURE_TYPE  ListSearcher_2__IndexFound__
+FACTORY_DEF * TestFactory    FACTORY_NAME ListSearcher_2__Tester2    INPUT FEATURE_TYPE ListSearcher_2__IndexFound__    TEST NO == "NO"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE  ListSearcher_2_FOUND @CopyAttributes(_list_index, ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2) @RemoveAttributes(ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2)    OUTPUT FAILED FEATURE_TYPE  ListSearcher_2_FOUND  @Tcl2("ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2_indexer {@Value(ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2)} {<Unused>}") @CopyAttributes(_list_index, ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2) @RemoveAttributes(ListSearcher_2_39eca0ad_293b_456a_8cb7_e624be0cde5c2)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "WMS_REST_LANGUAGE_FORMATTER INPUT Input Collector"   INPUT FEATURE_TYPE ListSearcher_2_NOT_FOUND   OUTPUT FEATURE_TYPE WMS_REST_LANGUAGE_FORMATTER_INPUT
 MACRO WMS_REST_LANGUAGE_FORMATTER_WORKSPACE_NAME WMS_REST_LANGUAGE_FORMATTER
 MACRO $(WMS_REST_LANGUAGE_FORMATTER_WORKSPACE_NAME)_XFORMER_NAME WMS_REST_LANGUAGE_FORMATTER
 MACRO $(WMS_REST_LANGUAGE_FORMATTER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER WMS_REST_LANGUAGE_FORMATTER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "WMS_REST_LANGUAGE_FORMATTER OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE WMS_REST_LANGUAGE_FORMATTER_OUTPUT   OUTPUT FEATURE_TYPE WMS_REST_LANGUAGE_FORMATTER_OUTPUT
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory   FACTORY_NAME "DUPLICATE_SERVICE_REMOVER INPUT Input Collector"   INPUT FEATURE_TYPE WMS_REST_LANGUAGE_FORMATTER_OUTPUT   OUTPUT FEATURE_TYPE DUPLICATE_SERVICE_REMOVER_INPUT
+FACTORY_DEF * TeeFactory   FACTORY_NAME "DUPLICATE_SERVICE_REMOVER INPUT Input Collector"   INPUT FEATURE_TYPE WMS_REST_LANGUAGE_FORMATTER_OUTPUT   INPUT FEATURE_TYPE ListSearcher_2_FOUND   OUTPUT FEATURE_TYPE DUPLICATE_SERVICE_REMOVER_INPUT
 MACRO DUPLICATE_SERVICE_REMOVER_WORKSPACE_NAME DUPLICATE_SERVICE_REMOVER
 MACRO $(DUPLICATE_SERVICE_REMOVER_WORKSPACE_NAME)_XFORMER_NAME DUPLICATE_SERVICE_REMOVER
 MACRO $(DUPLICATE_SERVICE_REMOVER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
@@ -9195,38 +9314,38 @@ FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER_NG INSERT_FAILED Output R
 FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER_NG InvalidMetadata Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_NG_InvalidMetadata   OUTPUT FEATURE_TYPE XML_PUBLISHER_NG_InvalidMetadata
 FACTORY_DEF * TeeFactory   FACTORY_NAME "XML_PUBLISHER_NG UPDATE_FAILED Output Renamer/Nuker"   INPUT FEATURE_TYPE XML_PUBLISHER_NG_UPDATE_FAILED   OUTPUT FEATURE_TYPE XML_PUBLISHER_NG_UPDATE_FAILED
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_2_Logger    INPUT  FEATURE_TYPE METADATA_DELTA_FINDER_NG_Statistics    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_2_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary_2:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary_2)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_2_ca264d5b_70ba_4c5f_a2cd_35ae4412e0653)
+FACTORY_DEF * TeeFactory    FACTORY_NAME StatisticsCalculator_Summary_2_Logger    INPUT  FEATURE_TYPE METADATA_DELTA_FINDER_NG_Statistics    OUTPUT FEATURE_TYPE StatisticsCalculator_Summary_2_LOGGED                  @Log(ENCODED, "StatisticsCalculator_Summary_2:<space>@EvaluateExpression(FDIV,STRING_ENCODED,<lf>************************<lf>****<space>Unchanged<space>Report<space>****<lf>************************<lf><lf><at>Value<openparen>_real_count<closeparen><space>features<space>were<space>unchanged<lf><lf>************************<lf>************************<lf>************************<lf>,StatisticsCalculator_Summary_2)","<Unused>","20","",INFO,NONE,StatisticsCalculator_Summary_2_048cfd18_2d59_4def_843f_7aea60c5ac0c3)
 FACTORY_DEF * TeeFactory   FACTORY_NAME "StatisticsCalculator_Summary_2 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE StatisticsCalculator_Summary_2_LOGGED
 # -------------------------------------------------------------------------
 
-FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC GEO_NONE_GEO_SELECTOR_LOG_ERROR TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>unknown_format<closeparen> GEOMETRY    ROUTE FME_GENERIC SPATIAL_TYPE_MAPPER_NG_DATA_OUTPUT_FAILED TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>Spatial_Type_Mapper_Failed<closeparen> GEOMETRY    ROUTE FME_GENERIC METADATA_VALUE_MAPPER_ERROR_MANAGER_ERROR_OUTPUT TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>GEO_ATTRIBUTE_MAPPING_ERRORS<closeparen> GEOMETRY    ROUTE FME_GENERIC REMOVE_BROKEN_URL_WMS_ESRI_REST_FAULTY_URL_OUTPUT TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>MAP_SERVICE_URL_ERRORMAP<closeparen> GEOMETRY    ROUTE FME_GENERIC METADATA_DELTA_FINDER_NG_Delete TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>DELETEDRECORDS<closeparen> GEOMETRY    ROUTE FME_GENERIC AWS_TRANSLATE_2_TRANSLATION_PROBLEM TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>Translation_errors<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_InvalidMetadata TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>invalid_metadata<closeparen> GEOMETRY    ROUTE FME_GENERIC LICENSE_FILTER_NG_UNKNOWN_LICENSE TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>unknown_licence<closeparen> GEOMETRY    ROUTE FME_GENERIC EMPTY_FORMAT_MAPPER_NG_UNKNOWN_MIME_TYPE TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>unknown_mine_type<closeparen> GEOMETRY    ROUTE FME_GENERIC MANUAL_GEOSPATIAL_SETTER_NG_UNMAPPED_DATA TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>unmapped_data<closeparen> GEOMETRY    ROUTE FME_GENERIC METADATA_DELTA_FINDER_NG_2_Delete TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>DELETED_RECORDS_NONE_GEO<closeparen> GEOMETRY    ROUTE FME_GENERIC AWS_TRANSLATE_3_TRANSLATION_PROBLEM TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>translation_problems_NONE_GEO<closeparen> GEOMETRY    ROUTE FME_GENERIC METADATA_VALUE_MAPPER_ERROR_MANAGER_2_ERROR_OUTPUT TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>METADATA_MAPPING_ERRORS_NON_GEO<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_INSERT_FAILED TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_UPDATE_FAILED TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_LOCAL TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,2,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC AttributeCreator_6_OUTPUT TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,4,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_INSERT_PASSED TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_UPDATE_PASSED TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC XML_PUBLISHER_NG_INSERT_PASSED TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_UPDATE_PASSED TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_INSERT_FAILED TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_UPDATE_FAILED TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,1,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_LOCAL TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,2,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC AttributeCreator_6_OUTPUT TO TEXTLINE __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,4,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>text_line<closeparen> GEOMETRY    ROUTE FME_GENERIC GEO_NONE_GEO_SELECTOR_LOG_ERROR TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>unknown_format<closeparen> GEOMETRY    ROUTE FME_GENERIC SPATIAL_TYPE_MAPPER_NG_DATA_OUTPUT_FAILED TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>Spatial_Type_Mapper_Failed<closeparen> GEOMETRY    ROUTE FME_GENERIC METADATA_VALUE_MAPPER_ERROR_MANAGER_ERROR_OUTPUT TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>GEO_ATTRIBUTE_MAPPING_ERRORS<closeparen> GEOMETRY    ROUTE FME_GENERIC REMOVE_BROKEN_URL_WMS_ESRI_REST_FAULTY_URL_OUTPUT TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>MAP_SERVICE_URL_ERRORMAP<closeparen> GEOMETRY    ROUTE FME_GENERIC METADATA_DELTA_FINDER_NG_Delete TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>DELETEDRECORDS<closeparen> GEOMETRY    ROUTE FME_GENERIC AWS_TRANSLATE_2_TRANSLATION_PROBLEM TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>Translation_errors<closeparen> GEOMETRY    ROUTE FME_GENERIC XML_PUBLISHER_NG_InvalidMetadata TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>invalid_metadata<closeparen> GEOMETRY    ROUTE FME_GENERIC LICENSE_FILTER_NG_UNKNOWN_LICENSE TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>unknown_licence<closeparen> GEOMETRY    ROUTE FME_GENERIC EMPTY_FORMAT_MAPPER_NG_UNKNOWN_MIME_TYPE TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>unknown_mine_type<closeparen> GEOMETRY    ROUTE FME_GENERIC MANUAL_GEOSPATIAL_SETTER_NG_UNMAPPED_DATA TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>unmapped_data<closeparen> GEOMETRY    ROUTE FME_GENERIC METADATA_DELTA_FINDER_NG_2_Delete TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>DELETED_RECORDS_NONE_GEO<closeparen> GEOMETRY    ROUTE FME_GENERIC AWS_TRANSLATE_3_TRANSLATION_PROBLEM TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>translation_problems_NONE_GEO<closeparen> GEOMETRY    ROUTE FME_GENERIC METADATA_VALUE_MAPPER_ERROR_MANAGER_2_ERROR_OUTPUT TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,3,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>METADATA_MAPPING_ERRORS_NON_GEO<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
 # -------------------------------------------------------------------------
 
 FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
 
 # -------------------------------------------------------------------------
-XLSXW_1_DEF Spatial_Type_Mapper_Failed   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           string(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   title                        string(80,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   url                          string(80,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
-# -------------------------------------------------------------------------
-XLSXW_1_DEF translation_problems_NONE_GEO   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           auto(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
-# -------------------------------------------------------------------------
-XLSXW_1_DEF unknown_licence   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   license_id                   string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   title                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
-# -------------------------------------------------------------------------
 XLSXW_1_DEF MAP_SERVICE_URL_ERRORMAP   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   url                          string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   format                       string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   _url_failure_message         string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
 # -------------------------------------------------------------------------
-XLSXW_1_DEF unknown_mine_type   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   UNIQUE_ATT                   string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   resource.id                  string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   _unknown_mime_type           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
-# -------------------------------------------------------------------------
-XLSXW_1_DEF METADATA_MAPPING_ERRORS_NON_GEO   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   error                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   _element_index               string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
-# -------------------------------------------------------------------------
-XLSXW_1_DEF DELETED_RECORDS_NONE_GEO   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           auto(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
-# -------------------------------------------------------------------------
-XLSXW_1_DEF DELETEDRECORDS   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   _timestamp                   string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
-# -------------------------------------------------------------------------
-XLSXW_1_DEF GEO_ATTRIBUTE_MAPPING_ERRORS   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   error                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   _element_index               string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+XLSXW_1_DEF unmapped_data   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   notes                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   title                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   url                          string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
 # -------------------------------------------------------------------------
 XLSXW_1_DEF unknown_format   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   format                       auto(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
 # -------------------------------------------------------------------------
-XLSXW_1_DEF invalid_metadata   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           auto(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+XLSXW_1_DEF DELETEDRECORDS   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   _timestamp                   string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+# -------------------------------------------------------------------------
+XLSXW_1_DEF DELETED_RECORDS_NONE_GEO   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           auto(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
 # -------------------------------------------------------------------------
 XLSXW_1_DEF Translation_errors   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           string(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   _timestamp                   string(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
 # -------------------------------------------------------------------------
-XLSXW_1_DEF unmapped_data   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   notes                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   title                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   url                          string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+XLSXW_1_DEF unknown_licence   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   license_id                   string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   title                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+# -------------------------------------------------------------------------
+XLSXW_1_DEF unknown_mine_type   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   UNIQUE_ATT                   string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   resource.id                  string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   _unknown_mime_type           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+# -------------------------------------------------------------------------
+XLSXW_1_DEF GEO_ATTRIBUTE_MAPPING_ERRORS   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   error                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   _element_index               string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+# -------------------------------------------------------------------------
+XLSXW_1_DEF Spatial_Type_Mapper_Failed   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           string(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   title                        string(80,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   url                          string(80,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+# -------------------------------------------------------------------------
+XLSXW_1_DEF METADATA_MAPPING_ERRORS_NON_GEO   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   error                        string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   id                           string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)   _element_index               string(200,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+# -------------------------------------------------------------------------
+XLSXW_1_DEF translation_problems_NONE_GEO   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           auto(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
+# -------------------------------------------------------------------------
+XLSXW_1_DEF invalid_metadata   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   id                           auto(20,version<semicolon>1<semicolon>number_format_string<semicolon><semicolon>font<semicolon><semicolon>font_color<semicolon><semicolon>background_color<semicolon><semicolon>pattern_color<semicolon><semicolon>pattern_style<semicolon><semicolon>CELL_BORDER_FORMATTING<semicolon>NO<semicolon>CELL_BORDER_COLOR<semicolon><semicolon>CELL_BORDER_STYLE<semicolon><semicolon>text_alignment<semicolon>NO<semicolon>horizontal_alignment<semicolon><semicolon>vertical_alignment<semicolon><semicolon>indent<semicolon><semicolon>text_orientation<semicolon><semicolon>text_control<semicolon><semicolon>cell_protection<semicolon>NO<semicolon>hide_cells<semicolon><semicolon>lock_cells<semicolon>)
