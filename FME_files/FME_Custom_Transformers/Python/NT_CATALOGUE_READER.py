@@ -218,7 +218,7 @@ class ExtractWms(object):
                             elif att_key == "Type of resource:":
                                 new_feature.setAttribute("resource_type", att_value)
                             elif att_key == "Data Category :":
-                                new_feature.setAttribute("data category", att_value)
+                                new_feature.setAttribute("data_category", att_value)
                            
                     self.pyoutput(new_feature)
                     
@@ -412,7 +412,7 @@ class ExtractMaps(object):
                             new_feature.setAttribute("data_category", att_value)
                         elif att_key == "Resource Category:":
                             att_value = feature.getAttribute("_html_p_div{4}.main.div.div{1}.div{0}.div{%i}.div.span.div.div{1}.div{%i}.div{1}.div" %(ind, ind1))
-                            new_feature.setAttribute("resource_categgory", att_value)
+                            new_feature.setAttribute("resource_category", att_value)
 
                     self.pyoutput(new_feature)
                         
