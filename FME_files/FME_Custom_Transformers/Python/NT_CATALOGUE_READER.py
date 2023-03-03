@@ -24,6 +24,8 @@ class CatalogueReader(object):
 
     def __init__(self):
         pass
+        self.in_feature = None
+        
     def input(self,feature):
 
         self.in_feature = feature
@@ -78,36 +80,39 @@ class CatalogueReader(object):
         """
     
 #        web_pdb.set_trace()
-        category_name = "Data"
-        category_status = "_data_status"
-        category_url = "_data_url"
-        self._read_catalogue(category_name, category_status, category_url)
+        if self.in_feature is None:
+            return
+        else:    
+            category_name = "Data"
+            category_status = "_data_status"
+            category_url = "_data_url"
+            self._read_catalogue(category_name, category_status, category_url)
 
-        category_name = "Maps"
-        category_status = "_maps_status"
-        category_url = "_maps_url"
-        self._read_catalogue(category_name, category_status, category_url)
+            category_name = "Maps"
+            category_status = "_maps_status"
+            category_url = "_maps_url"
+            self._read_catalogue(category_name, category_status, category_url)
 
-        category_name = "WMS"
-        category_status = "_wms_status"
-        category_url = "_wms_url"
-        self._read_catalogue(category_name, category_status, category_url)
-        
-        category_name = "Reports"
-        category_status = "_reports_status"
-        category_url = "_reports_url"
-        self._read_catalogue(category_name, category_status, category_url)
-        
-        category_name = "Documents"
-        category_status = "_documents_status"
-        category_url = "_documents_url"
-        self._read_catalogue(category_name, category_status, category_url)
-        
-        category_name = "Map Viewers"
-        category_status = "_map_viewers_status"
-        category_url = "_map_viewers_url"
-        self._read_catalogue(category_name, category_status, category_url)
-                    
+            category_name = "WMS"
+            category_status = "_wms_status"
+            category_url = "_wms_url"
+            self._read_catalogue(category_name, category_status, category_url)
+            
+            category_name = "Reports"
+            category_status = "_reports_status"
+            category_url = "_reports_url"
+            self._read_catalogue(category_name, category_status, category_url)
+            
+            category_name = "Documents"
+            category_status = "_documents_status"
+            category_url = "_documents_url"
+            self._read_catalogue(category_name, category_status, category_url)
+            
+            category_name = "Map Viewers"
+            category_status = "_map_viewers_status"
+            category_url = "_map_viewers_url"
+            self._read_catalogue(category_name, category_status, category_url)
+                        
         return
         
 def trim_text(text):
