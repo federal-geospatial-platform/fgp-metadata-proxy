@@ -7,6 +7,7 @@ import fmeobjects
 from Python.FME_utils import FME_utils
 from Python.FME_utils import CsvGeoSpatialValidation
 from typing import NamedTuple
+import re
 
 try:
     import web_pdb
@@ -37,6 +38,7 @@ DOMAIN = "domain"
 # YAML keyword
 CONTAINS = "contains"
 EQUALS = "equals"
+CONTAINS_REGEX = "contains_regex"
 IF_NULL_OVERWRITE = "if_null_overwrite"
 LOOKUP_TABLE_FORMAT = "lookup_table_format"
 LOG = "log"
@@ -163,7 +165,6 @@ class GeoNoneGeoSelector(object):
         Exception Exception
             Raised when the value is not in the domain
         """
-    
         if value in domain:
             # Structure valid
             pass
@@ -197,7 +198,7 @@ class GeoNoneGeoSelector(object):
                NOT_FOUND in value and SEARCH_TYPE in value:
                
                 domain = value[DOMAIN]        
-                if domain == LOOKUP_TABLE_FORMAT or isinstance(domain, list):
+                if domain == LOOKUP_TABLE_FORMAT or isinstance(domain, list) or isinstance(domain, str):
                    # Structure valid
                    pass
                 else:
@@ -210,7 +211,7 @@ class GeoNoneGeoSelector(object):
                 self._validate_value_domain(value[NOT_FOUND], [LOG, NO_LOG] )
                     
                 # Validate SEARCH_TYPE
-                self._validate_value_domain(value[SEARCH_TYPE], [EQUALS, CONTAINS] )
+                self._validate_value_domain(value[SEARCH_TYPE], [EQUALS, CONTAINS, CONTAINS_REGEX] )
                 
                 # Validate invalid cross directives: Domain list and OVERWRITE or IF_NULL_OVERWRITE
                 if  isinstance(domain, list) and value[SPATIAL_TYPE] in [OVERWRITE, IF_NULL_OVERWRITE]:
@@ -243,7 +244,7 @@ class GeoNoneGeoSelector(object):
         Set
             Values of the DOMAIN directives in the YAML
         """
-        
+        #web_pdb.set_trace()
         # Extract the domain values to check
         domain = directives[DOMAIN]
         if domain == LOOKUP_TABLE_FORMAT:
@@ -304,7 +305,7 @@ class GeoNoneGeoSelector(object):
         """
     
         # Process each entry in the YAML
-#        web_pdb.set_trace()
+ #       web_pdb.set_trace()
         geo = False
         not_found_err = []
         for fme_att, directives in self.yaml_document.items():
@@ -323,12 +324,12 @@ class GeoNoneGeoSelector(object):
                     else:
                         att_value = "No"
                 att_value = att_value.lower()
-               
+                #web_pdb.set_trace()    
                 # Extract the value(s) to search. Create a list to help the search 
-                if directives[SEARCH_TYPE] == EQUALS:
+                if directives[SEARCH_TYPE] == EQUALS or directives[SEARCH_TYPE] == CONTAINS_REGEX:
                     # A list with a unique value
                     att_value_lst = [att_value]
-                else:
+                elif directives[SEARCH_TYPE] == CONTAINS:
                     # A list where each word is an element of the list
                     att_value_lst = att_value.split(" ")
                    
@@ -339,10 +340,16 @@ class GeoNoneGeoSelector(object):
                 for att_value in att_value_lst:
                     if not found:
                         for domain in domain_lst:
-                            if domain == att_value:
-                               found = True
-                               value = domain
-                               break
+                            if directives[SEARCH_TYPE] == EQUALS or directives[SEARCH_TYPE] == CONTAINS:
+                                if domain == att_value:
+                                   found = True
+                                   value = domain
+                                   break
+                            else:
+                                if re.search(domain, att_value):
+                                   found = True
+                                   value = domain
+                                   break
                 
                 if found:
                     # Match found
@@ -392,8 +399,7 @@ class GeoNoneGeoSelector(object):
         Returns
         -------
         None
-        """
-            
+        """  
         order = feature.getAttribute(ORDER)
         if order == 1:
             self._load_csv_feature(feature)
