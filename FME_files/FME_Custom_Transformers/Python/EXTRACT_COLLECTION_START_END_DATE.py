@@ -100,11 +100,19 @@ class collection_end_start_date_extractor(object):
                     # 1. De type 2000
                     if re.match('^[1-2][0-9][0-9][0-9]$',date_extent):
                         start_date=date_extent
-                        end_date=start_date
+                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]$',date_extent):
+                        start_date=date_extent						
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$',date_extent):
                         start_date=date_extent
-                        end_date=start_date
-                          
+
+                    # 1.a De type 2000/
+                    if re.match('^[1-2][0-9][0-9][0-9]/$',date_extent):
+                        start_date=date_extent.split(r'/')[0]
+                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]/$',date_extent):
+                        start_date=date_extent.split(r'/')[0]					
+                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/$',date_extent):
+                        start_date=date_extent.split(r'/')[0]
+                                                  
                     # 2. De type 1999-2000
                     elif re.match('^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$',date_extent):
                         
@@ -146,6 +154,16 @@ class collection_end_start_date_extractor(object):
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$',date_extent):
                         start_date=date_extent.split(r'/')[0]
                         end_date=date_extent.split(r'/')[1]
+
+                    #8.a De type 2018-04-01 / 2021-06-24
+                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] / [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$',date_extent):
+                        start_date=date_extent.split(r' / ')[0]
+                        end_date=date_extent.split(r' / ')[1]
+
+                    #8.b De type 2018-04-01 au 2021-06-24
+                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] au [1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$',date_extent):
+                        start_date=date_extent.split(r' au ')[0]
+                        end_date=date_extent.split(r' au ')[1]
                     
                     #9.  De type 2000-01-01 to present
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] to present$',date_extent):
@@ -153,6 +171,10 @@ class collection_end_start_date_extractor(object):
                     
                     #10. De type 2000-01-01/present
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/present$',date_extent):
+                        start_date=date_extent.split(r'/')[0]
+
+                    #10.b De type 2000-01-01/
+                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/$',date_extent):
                         start_date=date_extent.split(r'/')[0]
                     
                     #11.  De type 2000-present
