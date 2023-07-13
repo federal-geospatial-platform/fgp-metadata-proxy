@@ -101,24 +101,40 @@ class collection_end_start_date_extractor(object):
                     if re.match('^[1-2][0-9][0-9][0-9]$',date_extent):
                         start_date=date_extent
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]$',date_extent):
-                        start_date=date_extent						
+                        start_date=date_extent
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$',date_extent):
                         start_date=date_extent
-
+                    
                     # 1.a De type 2000/
-                    if re.match('^[1-2][0-9][0-9][0-9]/$',date_extent):
+                    elif re.match('^[1-2][0-9][0-9][0-9]/$',date_extent):
                         start_date=date_extent.split(r'/')[0]
-                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]/$',date_extent):
-                        start_date=date_extent.split(r'/')[0]					
-                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/$',date_extent):
-                        start_date=date_extent.split(r'/')[0]
-                                                  
+                    
+                    # 1.b De type 2000/01
+                    elif re.match('^[1-2][0-9][0-9][0-9]/[0-1][0-9]$',date_extent):
+                        start_date=date_extent	
+                    
+                    # 1.c De type 2000/01/06
+                    elif re.match('^[1-2][0-9][0-9][0-9]/[0-1][0-9]/[0-1][0-9]$',date_extent):
+                        start_date=date_extent	
+                    
                     # 2. De type 1999-2000
                     elif re.match('^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$',date_extent):
-                        
                         start_date=date_extent.split('-')[0]
                         end_date=date_extent.split('-')[1]
-                  
+                    
+                    # 2.b De type 1999/2000
+                    elif re.match('^[1-2][0-9][0-9][0-9]/[1-2][0-9][0-9][0-9]$',date_extent):
+                        
+                        start_date=date_extent.split('/')[0]
+                        end_date=date_extent.split('/')[1]
+                    
+                    # 2.c De type 1999 / 2000
+                    elif re.match('^[1-2][0-9][0-9][0-9] / [1-2][0-9][0-9][0-9]$',date_extent):
+                        
+                        start_date=date_extent.split(' / ')[0]
+                        end_date=date_extent.split(' / ')[1]
+                    
+                    
                     # 3. De type 1999 - 2000
                     elif re.match('^[1-2][0-9][0-9][0-9] - [1-2][0-9][0-9][0-9]$',date_extent):
                         
@@ -173,6 +189,10 @@ class collection_end_start_date_extractor(object):
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/present$',date_extent):
                         start_date=date_extent.split(r'/')[0]
 
+                    #10.b De type 2000-01/
+                    elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]/$',date_extent):
+                        start_date=date_extent.split(r'/')[0]
+                    
                     #10.b De type 2000-01-01/
                     elif re.match('^[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]/$',date_extent):
                         start_date=date_extent.split(r'/')[0]
