@@ -387,7 +387,7 @@ class FME_utils:
         Exception 
             If the YAML is not well formed
         """
-        
+ #       web_pdb.set_trace()
         try:
             # Load the YMAL directives into python dictionnaries
             yaml_document = yaml.safe_load(yaml_str_document)
@@ -457,10 +457,12 @@ class FME_utils:
         return attribute_value 
 
     @staticmethod
-    def make_http_call(fme_self, feature, session, str_http, output_fme=True):
+    def make_http_call(fme_self, feature, session, str_http, output_fme=True, header = {}):
         """This method makes an http call and manage the request response.
+               	
+		If status_code is not 200; try to add a User-Agent header with the latest version of Chrome on 2023-10-16
         
-        If the response from the http request is not 200 (OK); an entry is made in the logger
+        If the response from the http request is still not 200 (OK); an entry is made in the logger
         and an FME feature is outputted with the status code and the description.
         
         Parameters
@@ -473,6 +475,8 @@ class FME_utils:
             Used to make the http call
         str_http : str
             Http string used for the http call
+        header : headers
+            default: ''
         output_fme : Bool
             True: output an FME feature; False: do not output an FME feature
         
@@ -486,15 +490,26 @@ class FME_utils:
         try:
             fme_self.logger.logMessageString("HTTP call: {0}".format(str_http), 
                                          fmeobjects.FME_INFORM)
-            response = session.get(str_http, verify=False, timeout=10,  allow_redirects=True)
+            response = session.get(str_http, headers = header, verify=False, timeout=10,  allow_redirects=True)
             status_code = response.status_code
             description = requests.status_codes._codes[status_code][0]
             
+            #if status_code is not 200; try to add a User-Agent header with the latest version of Chrome on 2023-10-16
+            #migth need to be updated in the future
+            if status_code != HTTP_OK:
+                user_agent = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
+                header.update(user_agent)
+
+                response = session.get(str_http, headers = header, verify=False, timeout=10,  allow_redirects=True)
+                status_code = response.status_code
+                description = requests.status_codes._codes[status_code][0]
+                    
             # Manage if an FME feature need to be outputted
             if status_code != HTTP_OK and output_fme:
                 lst_key_val_att = [(STATUS_CODE, "Status code: {0}: {1}".format(status_code, description)),
-                                   (STATUS_CODE_DESCRIPTION, description)]
-                FME_utils.pyoutput_feature(fme_self, feature, lst_key_val_att, clone=True) 
+                        (STATUS_CODE_DESCRIPTION, description)]
+                FME_utils.pyoutput_feature(fme_self, feature, lst_key_val_att, clone=True)
+                        
         except KeyError as err:
         #except Exception as err:
             # Manage the case where an error occured during the reading of the CKAN server
