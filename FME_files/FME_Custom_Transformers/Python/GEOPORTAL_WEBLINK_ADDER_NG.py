@@ -91,6 +91,9 @@ class FeatureProcessor(object):
         # Count the number of ressouces{} in the attribute list
         max_index = FME_utils.max_index_attribute_list(feature, "resources{}")
         max_index += 1  # Add one ressources
+		
+        print ('Index maxiamle')
+        print (max_index)
         
         for key, value in self.csv_features.items():
             if key == "url":
@@ -145,6 +148,15 @@ class FeatureProcessor(object):
                     response = self.session.head(test_url, verify=False, timeout=30, 
                                              allow_redirects=True)
                     status_code = str(response.status_code)
+                    
+                    if status_code !=HTTP_OK: # On refait le call avec un header à la sauce fireFox
+                        header = {}
+                        user_agent = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
+                        header.update(user_agent)
+                        response = self.session.head(test_url, verify=False, timeout=30, 
+                                             allow_redirects=True,headers = header)
+                        status_code = str(response.status_code)
+                    
                     self.logger.logMessageString("Status code: {0};  HTTP request head:   {1}"
                                              .format(status_code, test_url), fmeobjects.FME_INFORM)
                 except requests.ConnectionError:   #Including if read timeout exceeds 30 seconds
