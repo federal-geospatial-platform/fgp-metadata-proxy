@@ -46,17 +46,25 @@ REM ===========================================================================
 SET Statut=0
 
 
+REM ===========================================================================
+REM ===========================================================================
+REM ====================      TEST #1     =====================================
+REM 2 datasets par provider plus un faux fichier dans ontario
+REM ===========================================================================
 
-
-REM TEST #1 , exécution du programme pour une première fois avec 2 fichiers par province et un faux fichier pour ON.
 SET no_test=1
 SET log=%metdir%\log_%no_test%.log
 SET working_dir=%metdir%\source%no_test%
+set etalon_dir=%metdir%\etalon%no_test%
 
 REM Copie du template de db
-
 COPY /Y %metdir%\template.db  %metdir%\bd_%no_test%.db
 SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Supprimer le fichier csv de sortie
+IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+
 
 REM Exécution du programme FME
 IF EXIST %log% DEL %log%
@@ -67,63 +75,214 @@ IF EXIST %log% DEL %log%
 --FME_SHAREDRESOURCE_DATA  %working_dir%
 SET Statut=%Statut%%ERRORLEVEL%
 
-pause
-REM =============================================
-REM Copier l'arborescence de traitement
+
+REM Comparer la BD avec l'étalon
+IF EXIST %log% DEL %log%
+%fme% %ComparateurBD% ^
+--IN_SQLLITE_RES_FILE %metdir%\bd_%no_test%.db ^
+--IN_SQLLITE_ETALON_FILE %etalon_dir%\*.db ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer le CSV avec l'étalon
+IF EXIST %LOG% DEL %log% 
+%fme% %ComparateurCsv% ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--IN_CSV_ETALON_FILE %etalon_dir%\*.csv ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+
+REM ===========================================================================
+REM ===========================================================================
+REM ====================      TEST #2    =====================================
+REM On utilise l'output du test 1 en relancant pour QC uniquement
+REM ===========================================================================
+
+SET no_test=2
+SET log=%metdir%\log_%no_test%.log
+REM Même working dir que test 1
+SET working_dir=%metdir%\source1
+set etalon_dir=%metdir%\etalon%no_test%
+
+
+REM Supprimer le fichier csv de sortie
+IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+
+REM Exécution du programme FME
+IF EXIST %log% DEL %log%
+%fme% %fmw% ^
+--PROVIDER QC ^
+--IN_OUT_SQLLITE %metdir%\bd_1.db ^
+--LOG_FILE %log% ^
+--FME_SHAREDRESOURCE_DATA  %working_dir%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer la BD avec l'étalon
+IF EXIST %log% DEL %log%
+%fme% %ComparateurBD% ^
+--IN_SQLLITE_RES_FILE %metdir%\bd_1.db ^
+--IN_SQLLITE_ETALON_FILE %etalon_dir%\*.db ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer le CSV avec l'étalon
+IF EXIST %LOG% DEL %log% 
+%fme% %ComparateurCsv% ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--IN_CSV_ETALON_FILE %etalon_dir%\*.csv ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM ===========================================================================
+REM ===========================================================================
+REM ====================      TEST #3     =====================================
+REM 1 fichier par provider, doit créer 12 updates et 12 delete
+REM On continue avec des tests 1 et 2
+REM ===========================================================================
+
+SET no_test=3
+SET log=%metdir%\log_%no_test%.log
+SET working_dir=%metdir%\source%no_test%
+set etalon_dir=%metdir%\etalon%no_test%
+
+
+REM Supprimer le fichier csv de sortie
+IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+
+REM Exécution du programme FME
+IF EXIST %log% DEL %log%
+%fme% %fmw% ^
+--PROVIDER ALL ^
+--IN_OUT_SQLLITE %metdir%\bd_1.db ^
+--LOG_FILE %log% ^
+--FME_SHAREDRESOURCE_DATA  %working_dir%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer la BD avec l'étalon
+IF EXIST %log% DEL %log%
+%fme% %ComparateurBD% ^
+--IN_SQLLITE_RES_FILE %metdir%\bd_1.db ^
+--IN_SQLLITE_ETALON_FILE %etalon_dir%\*.db ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer le CSV avec l'étalon pour les update
+IF EXIST %LOG% DEL %log% 
+%fme% %ComparateurCsv% ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\osdo_geodcat_0.csv ^
+--IN_CSV_ETALON_FILE %etalon_dir%\geodcat.csv ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM Comparer le CSV avec l'étalon pour les delete
+IF EXIST %LOG% DEL %log% 
+%fme% %ComparateurCsv% ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\osdp_delete.csv ^
+--IN_CSV_ETALON_FILE %etalon_dir%\osdp_delete.csv ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+REM ===========================================================================
+REM ===========================================================================
+REM ====================      TEST #4     =====================================
+REM Aucun fichier par province, on doit avoir 24 deletes
+REM ===========================================================================
+
+
+
+SET no_test=4
+SET log=%metdir%\log_%no_test%.log
+SET working_dir=%metdir%\source%no_test%
+set etalon_dir=%metdir%\etalon%no_test%
+
+
+REM Supprimer le fichier csv de sortie
+IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+
+REM Exécution du programme FME
+IF EXIST %log% DEL %log%
+%fme% %fmw% ^
+--PROVIDER ALL ^
+--IN_OUT_SQLLITE %metdir%\bd_1.db ^
+--LOG_FILE %log% ^
+--FME_SHAREDRESOURCE_DATA  %working_dir%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer la BD avec l'étalon
+IF EXIST %log% DEL %log%
+%fme% %ComparateurBD% ^
+--IN_SQLLITE_RES_FILE %metdir%\bd_1.db ^
+--IN_SQLLITE_ETALON_FILE %etalon_dir%\*.db ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
 
 
 
 
+REM Comparer le CSV avec l'étalon pour les delete
+IF EXIST %LOG% DEL %log% 
+%fme% %ComparateurCsv% ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\osdp_delete.csv ^
+--IN_CSV_ETALON_FILE %etalon_dir%\osdp_delete.csv ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
 
-pause
 
-REM REM Define sources
+REM ===========================================================================
+REM ===========================================================================
+REM ====================      TEST #5     =====================================
+REM Un fichier plein d'erreur de corrélation pour AB
+REM ===========================================================================
 
 
-REM REM First FME call,creating FFS File with fifteen compliant data records, ten of which require wms formatting
-REM set test_number=1
-REM SET source=met\source%test_number%.ffs
-REM set etalon=met\etalon%test_number%.ffs
-REM set resultat=met\resultat.ffs
-REM set log=met\log_%test_number%.log
-REM set log_comp=met\log_comp_%test_number%.log
 
-REM IF EXIST %log% del %log%
-REM IF EXIST met\resultat.ffs DEL met\resultat.ffs
-REM %fme% met\metrique_bc_wms_formatter.fmw ^
-REM --IN_FFS_FILE %source% ^
-REM --OUT_FFS_FILE %resultat% ^
-REM --LOG_FILE %log% 
-REM SET Statut=%Statut%%ERRORLEVEL%
+SET no_test=5
+SET log=%metdir%\log_%no_test%.log
+SET working_dir=%metdir%\source%no_test%
+set etalon_dir=%metdir%\etalon%no_test%
 
-REM REM Comparison with the standard
-REM IF EXIST %log_comp% del %log_comp%
-REM %fme% met\Comparateur.fmw ^
-REM --IN_ETALON_FILE %etalon% ^
-REM --IN_RESULTAT_FILE %resultat% ^
-REM --LOG_FILE %log_comp% 
-REM SET Statut=%Statut%%ERRORLEVEL%
 
-REM @IF [%Statut%] EQU [0000] (
- REM @ECHO INFORMATION : Metric test passed
- REM @COLOR A0
- REM @SET CodeSortie=999999
-REM ) ELSE (
- REM @ECHO ERROR: Metric test failed
- REM @COLOR CF
- REM @SET CodeSortie=-1
-REM )
+REM Supprimer le fichier csv de sortie
+IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
 
-REM REM ===========================================================================
-REM REM We return the window to the starting directory
-REM REM ===========================================================================
-REM POPD
+REM Exécution du programme FME
+IF EXIST %log% DEL %log%
+%fme% %fmw% ^
+--PROVIDER AB ^
+--IN_OUT_SQLLITE %metdir%\bd_1.db ^
+--LOG_FILE %log% ^
+--FME_SHAREDRESOURCE_DATA  %working_dir%
+SET Statut=%Statut%%ERRORLEVEL%
+
+@IF %Statut% EQU 0 (
+ @ECHO INFORMATION : Metric test passed
+ @COLOR A0
+ @SET CodeSortie=999999
+) ELSE (
+ @ECHO ERROR: Metric test failed
+ @COLOR CF
+ @SET CodeSortie=-1
+)
+
+REM ===========================================================================
+REM We return the window to the starting directory
+REM ===========================================================================
+POPD
  
-REM REM ===========================================================================
-REM REM We pause so that the window does not close 
-REM REM in case we have to double-click on the.bat to execute it.
-REM REM ===========================================================================
-REM PAUSE
-REM COLOR
-REM EXIT /B %CodeSortie%
+REM ===========================================================================
+REM We pause so that the window does not close 
+REM in case we have to double-click on the.bat to execute it.
+REM ===========================================================================
+PAUSE
+COLOR
+EXIT /B %CodeSortie%
 
