@@ -29,6 +29,7 @@ SET fme=%FME2020%
 SET fmw=FME_Workspaces\%NomApp%.fmw
 Set ComparateurBD=UNIT_TESTS\OSDP_non_geo\met\comparateur_sqllite.fmw
 SET ComparateurCsv=UNIT_TESTS\OSDP_non_geo\met\comparateur_csv.fmw
+SET ComparateurXlsx=UNIT_TESTS\OSDP_non_geo\met\comparateur_xlsx.fmw
 set metdir=UNIT_TESTS\OSDP_non_geo\met
 
 
@@ -95,6 +96,7 @@ SET Statut=%Statut%%ERRORLEVEL%
 
 
 
+
 REM ===========================================================================
 REM ===========================================================================
 REM ====================      TEST #2    =====================================
@@ -137,6 +139,7 @@ IF EXIST %LOG% DEL %log%
 --IN_CSV_ETALON_FILE %etalon_dir%\*.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
+
 
 
 REM ===========================================================================
@@ -190,6 +193,7 @@ IF EXIST %LOG% DEL %log%
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
+
 REM ===========================================================================
 REM ===========================================================================
 REM ====================      TEST #4     =====================================
@@ -236,7 +240,7 @@ IF EXIST %LOG% DEL %log%
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
-
+pause
 REM ===========================================================================
 REM ===========================================================================
 REM ====================      TEST #5     =====================================
@@ -250,17 +254,27 @@ SET log=%metdir%\log_%no_test%.log
 SET working_dir=%metdir%\source%no_test%
 set etalon_dir=%metdir%\etalon%no_test%
 
+REM Copie du template de db
+COPY /Y %metdir%\template.db  %metdir%\bd_%no_test%.db
 
-REM Supprimer le fichier csv de sortie
-IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+IF EXIST %working_dir%\PT_Harvester\OSDP_geoDCAT\XLS\*.xlsx DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\XLS\*.xlsx
 
 REM Exécution du programme FME
 IF EXIST %log% DEL %log%
 %fme% %fmw% ^
 --PROVIDER AB ^
---IN_OUT_SQLLITE %metdir%\bd_1.db ^
+--IN_OUT_SQLLITE %metdir%\bd_%no_test%.db ^
 --LOG_FILE %log% ^
 --FME_SHAREDRESOURCE_DATA  %working_dir%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer le excel avec l'étalon
+IF EXIST %LOG% DEL %log% 
+%fme% %ComparateurXlsx% ^
+--IN_XLSX_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\xls\*.xlsx ^
+--IN_XLSX_ETALON_FILE %etalon_dir%\*.xlsx ^
+--LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
 @IF %Statut% EQU 0 (
