@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN METADATA_DELTA_FINDER_GEN,1,"FGP Tools",a700ad6e-8808-4d05-bbaa-278f2c8a2b3a,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
+# TRANSFORMER_BEGIN METADATA_DELTA_FINDER_GEN,1,"FGP Tools",8121efb8-cb16-460b-a59c-f8cdf97d4317,"Linked by Default",No,NO_PARALLELISM,,No,20200,YES,No,37,No,
 # <p><strong>Description</strong> </p>
 # <p>This custom transformer identify the type of transaction (insert, update, delete, no change) for each metadata records read from the province.  In order to determine the type of transaction, the metadata reference records (from the PYCSW or from a Local Source) are read and are compared using a hash function (see note) with the records from the province (new records). There are four possible types of transaction:</p>
 # <ul>
@@ -115,8 +115,8 @@
 #!   DOC_TOP_LEFT="-3371.74 -966.401"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20200"
-#!   FME_DOCUMENT_GUID="a700ad6e-8808-4d05-bbaa-278f2c8a2b3a"
-#!   FME_DOCUMENT_PRIORGUID="35e23d0c-e5a5-4d4f-b9ad-6ea490f7bca7,c03aaefe-70ec-4cc7-ad31-a0ca46e1f878"
+#!   FME_DOCUMENT_GUID="8121efb8-cb16-460b-a59c-f8cdf97d4317"
+#!   FME_DOCUMENT_PRIORGUID="a700ad6e-8808-4d05-bbaa-278f2c8a2b3a"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -128,7 +128,7 @@
 #!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,07&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation,27&lt;solidus&gt;04&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Change&lt;space&gt;the&lt;space&gt;Published&lt;space&gt;Parameter&lt;space&gt;PYCSW_CKAN_OVERWRITE&lt;space&gt;for&lt;space&gt;METADATA_OVERWRITE"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.0.0.0 (20200309 - Build 20200 - WIN32)"
-#!   LAST_SAVE_DATE="2023-12-22T11:25:22"
+#!   LAST_SAVE_DATE="2024-01-04T11:00:01"
 #!   MARKDOWN_DESCRIPTION="**Description** &#10;&#10;This custom transformer identify the type of transaction (insert, update, delete, no change) for each metadata records read from the province.  In order to determine the type of transaction, the metadata reference records (from the PYCSW or from a Local Source) are read and are compared using a hash function (see note) with the records from the province (new records). There are four possible types of transaction:&#10;&#10;- Insert: A record read from the province is not found in the reference records (PYCSW or Local Source)&#10;&#10;- Update: A record read from the province is found in the reference records (PYCSW or Local Source) but with one or more differences in the content of the metadata record&#10;&#10;- Delete: A record is present in the reference record (PYCSW or Local Source) but not in the province&#10;&#10;- No change: A record read from the province is identical (all fields are the same) to a record found in the reference records (PYCSW or Local Source).&#10;&#10;**Input Ports **&#10;&#10;- Input: The input metadata records from the province.&#10;&#10;**Output Ports** &#10;&#10;- Statistics: The number of unchanged features to pass to the _Logger Parameters_ transformers;&#10;&#10;- No Change: Features that were not modified in regards with the content of the referenced records (PYCSW or Local Source);&#10;&#10;- Update: Features that were updated (modified feature) in regards with the content of the referenced records (PYCSW or Local Source);&#10;&#10;- Insert: Features to insert (new feature) in regards to the content of the referenced records (PYCSW or Local Source);&#10;&#10;- Delete: Features to delete (feature removed) in regards to the content of the referenced records (PYCSW or Local Source).&#10;&#10;Note: If the parameter _METADATA_OVERWRITE_ is set to _YES_, all the unchanged features are flag as Insert.&#10;&#10;**Parameters **&#10;&#10;- ABSTRACT_ATT_NEW: Name of the attribute containing the description of the abstract for the new record from the province&#10;- ABSTRACT_ATT_REF: Name of the attribute containing the description of the abstract for the reference record (PYCSW or Local source)&#10;&#10;- DATESTAMP_ATT_NEW: Name of the attribute containing the date stamp for the new record from the province&#10;- DATESTAMP_ATT_REF: Name of the attribute containing the date stamp for the reference record (PYCSW or Local source)&#10;&#10;- ID_ATT_NEW: Name of the attribute containing the identification for the new record from the province&#10;- ID_ATT_REF: Name of the attribute containing the identification for the reference record (PYCSW or Local Source)&#10;&#10;- RES_NAME_ATT_NEW: Name of the attribute containing the resource name for the new record from the province&#10;- RES_NAME_ATT_REF: Name of the attribute containing the resource name for the reference record (PYCSW or Local Source)&#10;&#10;- RES_URL_ATT_NEW: Name of the attribute containing the resource URL for the new record from the province&#10;- RES_URL_ATT_REF: Name of the attribute containing the resource URL for the reference record (PYCSW or Local Source)&#10;&#10;- TITLE_ATT_NEW: Name of the attribute containing the title for the new record from the province&#10;- TITLE_ATT_REF: Name of the attribute containing the title for the reference record (PYCSW or Local Source)&#10;&#10;- CUSTOM_CSW_CKAN_URL: Name of the attribute containing the URL of the PYCSW server&#10;&#10;- CKAN_FILTER: Name of the attribute used to filter CKAN records in the PyCSW server&#10;&#10;- LOCAL_SOURCE: Flag indicating if the metadata record for identifying the action (insert, update, delete, no change) must be read from the PYCSW server or are stored on the local system. Can take 2 values: YES: read the records from the PYCSW; NO read the records from the Local source.&#10;&#10;- LOCAL_SOURCE_FORMAT: Flag indicating the type of metadata format format to process.  Can take 2 values: XML to process XML format records (geospatial data); JSON to process JSON format records (non geospatial data)&#10;&#10;- LOCAL_SOURCE_DIR: Name of the directory containing the local source of the referenced records. Used if LOCAL_SOURCE parameters is set to NO&#10;&#10;- CSW_FILTER: Name of the attribute used to filter CSW records in the PyCSW server in order to select records from one province only&#10;&#10;- RES_FORMAT_ATT_NEW: Name of the attribute containing the format of the resource for the new record from the province&#10;&#10;- RES_FORMAT_ATT_REF: Name of the attribute containing the format of the resource for the reference record (PYCSW or Local Source)&#10;&#10;- METADATA_OVERWRITE: Flag indicating to overwrite or not the metadata. Can take 2 values: _YES_: Overwrite the content of the PyCSW server; _NO_: Do not overwrite the content of the PyCSW server; &#10;&#10;**Note:**&#10;&#10; A hash function using strategic attributes is used to determine if 2 metadata records (features) are the same."
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -140,7 +140,7 @@
 #!   TITLE="METADATA_DELTA_FINDER_GEN"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="6725.07 1629.18"
+#!   VIEW_POSITION="2995.86 1520.85"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
@@ -189,7 +189,7 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI CHOICE_OR_ATTR METADATA_OVERWRITE YES%NO METADATA_OVERWRITE:"
-#!   DEFAULT_VALUE="YES"
+#!   DEFAULT_VALUE=""
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
@@ -225,7 +225,7 @@
 #! </GLOBAL_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
-#!   IDENTIFIER="131"
+#!   IDENTIFIER="127"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Using CatalogueReader transformer to readl from PYCSW&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-77.757325726017598 2152.6032260074198"
 #!   TOP_LEFT="-77.757325726017598 2152.6032260074198"
@@ -240,7 +240,7 @@
 #!   ANCHORED_NODE="8"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="132"
+#!   IDENTIFIER="128"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Only one feature needed&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-2070.7420575410829 1249.4452176633802"
 #!   TOP_LEFT="-2070.7420575410829 1249.4452176633802"
@@ -255,7 +255,7 @@
 #!   ANCHORED_NODE="13"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="133"
+#!   IDENTIFIER="129"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;HNAP or CKAN?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="2957.4990217816267 1057.8195305660438"
 #!   TOP_LEFT="2957.4990217816267 1057.8195305660438"
@@ -270,7 +270,7 @@
 #!   ANCHORED_NODE="21"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="134"
+#!   IDENTIFIER="130"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Exposes PyCSW_Transaction attribute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="8236.0738122776729 622.77513069679139"
 #!   TOP_LEFT="8236.0738122776729 622.77513069679139"
@@ -285,7 +285,7 @@
 #!   ANCHORED_NODE="23"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="135"
+#!   IDENTIFIER="131"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;evaluate differences between new and ref attributes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="7702.4158293011933 485.17167248793839"
 #!   TOP_LEFT="7702.4158293011933 485.17167248793839"
@@ -300,7 +300,7 @@
 #!   ANCHORED_NODE="32"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="137"
+#!   IDENTIFIER="132"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;get a list of all attribute names for ref&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="6487.9858230199861 1108.9102944293813"
 #!   TOP_LEFT="6487.9858230199861 1108.9102944293813"
@@ -315,7 +315,7 @@
 #!   ANCHORED_NODE="33"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="138"
+#!   IDENTIFIER="133"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;get a list of all attribute names for new&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="6471.6282375691317 -346.51690318140936"
 #!   TOP_LEFT="6471.6282375691317 -346.51690318140936"
@@ -330,7 +330,7 @@
 #!   ANCHORED_NODE="41"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="139"
+#!   IDENTIFIER="134"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ref&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="7227.6706221965014 723.83615834309194"
 #!   TOP_LEFT="7227.6706221965014 723.83615834309194"
@@ -345,7 +345,7 @@
 #!   ANCHORED_NODE="42"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="140"
+#!   IDENTIFIER="135"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;new&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="7196.469138306662 144.11302589235152"
 #!   TOP_LEFT="7196.469138306662 144.11302589235152"
@@ -360,7 +360,7 @@
 #!   ANCHORED_NODE="26"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="141"
+#!   IDENTIFIER="136"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;If digits in attribute names for ref or new, rename attribute to remove digits&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="7090.7358043572985 1549.7356099951212"
 #!   TOP_LEFT="7090.7358043572985 1549.7356099951212"
@@ -375,7 +375,7 @@
 #!   ANCHORED_NODE="0"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="142"
+#!   IDENTIFIER="137"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;rename sector and format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="4628.2597384253986 672.07592355533825"
 #!   TOP_LEFT="4628.2597384253986 672.07592355533825"
@@ -390,7 +390,7 @@
 #!   ANCHORED_NODE="31"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="143"
+#!   IDENTIFIER="138"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Filters items by PyCSW transaction type&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="9034.7887747892637 647.32484314702901"
 #!   TOP_LEFT="9034.7887747892637 647.32484314702901"
@@ -405,7 +405,7 @@
 #!   ANCHORED_NODE="47"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="145"
+#!   IDENTIFIER="139"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Calculate statistics&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="10396.131506907066 1148.7843008609152"
 #!   TOP_LEFT="10396.131506907066 1148.7843008609152"
@@ -417,10 +417,10 @@
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,0.78431372549019607"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="57"
+#!   ANCHORED_NODE="55"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="147"
+#!   IDENTIFIER="140"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;yaml file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="5567.9744662397516 336.36944376251842"
 #!   TOP_LEFT="5567.9744662397516 336.36944376251842"
@@ -435,7 +435,7 @@
 #!   ANCHORED_NODE="27"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="162"
+#!   IDENTIFIER="141"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If mode = overwrite: reset to update and change record_last_modified (timestamp)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="10333.029151833511 676.82125369451694"
 #!   TOP_LEFT="10333.029151833511 676.82125369451694"
@@ -447,10 +447,10 @@
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,0.78431372549019607"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="59"
+#!   ANCHORED_NODE="57"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="163"
+#!   IDENTIFIER="142"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If insert: change record_last_modified (timestamp)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="10315.907914671145 273.73600795188725"
 #!   TOP_LEFT="10315.907914671145 273.73600795188725"
@@ -462,10 +462,10 @@
 #!   CUSTOM_USER_COLOR="false"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,0.78431372549019607"
 #!   SIZE_POLICY="10"
-#!   ANCHORED_NODE="58"
+#!   ANCHORED_NODE="56"
 #! />
 #! <COMMENT
-#!   IDENTIFIER="136"
+#!   IDENTIFIER="143"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;enlever record_last_modified. le remplacer par le paramètre date_modified puisqu&apos;il peut s&apos;appeler différement d&apos;une province à l&apos;autre&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="8271.1705883805807 144.11302589235152"
 #!   TOP_LEFT="8271.1705883805807 144.11302589235152"
@@ -484,7 +484,7 @@
 #! </CONSTANTS>
 #! <BOOKMARKS>
 #! <BOOKMARK
-#!   IDENTIFIER="148"
+#!   IDENTIFIER="144"
 #!   NAME="Extract metadta records from PYCSW or Local Source as reference records"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="-2105.2083854171874 2286.4811981453145"
@@ -494,11 +494,11 @@
 #!   BOUNDING_RECT="-2105.2083854171874 2286.4811981453145 4756.2765627656281 2020.853541868752"
 #!   STICKY="true"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
-#!   CONTENTS="63 15 71 14 151 150 131 65 19 8 13 66 17 20 119 12 149 132 70 124 9 16 115 10 18 22 67 64 118 11 117 116 "
+#!   CONTENTS="9 14 8 10 112 65 146 114 120 113 13 64 68 19 20 12 22 16 62 145 63 69 18 61 15 128 11 17 147 111 127 115 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="149"
+#!   IDENTIFIER="145"
 #!   NAME="XML"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="1192.7202605359387 1466.7691843336713"
@@ -508,11 +508,11 @@
 #!   BOUNDING_RECT="1192.7202605359387 1466.7691843336713 1317.0624404156604 542.82727136907442"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="11 14 19 116 65 "
+#!   CONTENTS="112 19 14 63 11 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="150"
+#!   IDENTIFIER="146"
 #!   NAME="JSON"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="1192.7202605359387 891.40300973416788"
@@ -522,11 +522,11 @@
 #!   BOUNDING_RECT="1192.7202605359387 891.40300973416788 718.75718757187565 521.60764511385537"
 #!   STICKY="true"
 #!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="117 20 15 "
+#!   CONTENTS="15 20 113 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="151"
+#!   IDENTIFIER="147"
 #!   NAME="local source"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="-783.39778898683596 1576.7691843336713"
@@ -536,11 +536,11 @@
 #!   BOUNDING_RECT="-783.39778898683596 1576.7691843336713 3343.1804899384351 1253.8492884680463"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="15 14 150 65 19 66 20 12 149 70 124 10 16 115 18 11 118 117 116 "
+#!   CONTENTS="14 10 112 146 114 120 113 64 68 19 20 12 16 145 63 18 15 11 111 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="152"
+#!   IDENTIFIER="148"
 #!   NAME="new attributes"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="4601.1248605536239 28.04043659502986"
@@ -550,11 +550,11 @@
 #!   BOUNDING_RECT="4601.1248605536239 28.04043659502986 1449.8496056861266 350.36988514160566"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="25 29 84 "
+#!   CONTENTS="29 82 25 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="153"
+#!   IDENTIFIER="149"
 #!   NAME="HNAP ref"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="3583.7039720590255 1146.3988603009175"
@@ -564,11 +564,11 @@
 #!   BOUNDING_RECT="3583.7039720590255 1146.3988603009175 2525.4716832882614 783.29609055158744"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="83 82 28 76 44 24 30 85 158 45 31 43 86 157 98 142 101 "
+#!   CONTENTS="30 31 137 153 24 99 45 28 96 80 44 154 84 74 83 81 43 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="154"
+#!   IDENTIFIER="150"
 #!   NAME="Compare ref and new attributes"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="3507.3639229442488 1666.687234165403"
@@ -578,11 +578,11 @@
 #!   BOUNDING_RECT="3507.3639229442488 1666.687234165403 4674.1538843959861 2218.7721877218755"
 #!   STICKY="true"
 #!   COLOUR="0.59215686274509804,0.75294117647058822,0.90980392156862744,1"
-#!   CONTENTS="158 27 76 84 93 33 89 140 100 139 155 78 30 43 34 152 29 83 45 96 41 85 31 95 25 137 26 42 82 24 28 141 98 97 46 81 142 80 44 101 86 147 77 39 88 32 94 157 138 40 102 135 79 99 153 "
+#!   CONTENTS="46 82 96 31 78 92 43 140 41 83 45 29 134 81 93 39 100 149 131 33 136 27 44 133 98 32 30 75 135 97 79 95 74 137 153 26 91 80 25 94 132 34 148 99 40 42 86 84 87 77 154 76 24 28 151 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="155"
+#!   IDENTIFIER="151"
 #!   NAME="CKAN ref"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="4469.8735480404994 1544.6992725887053"
@@ -592,11 +592,11 @@
 #!   BOUNDING_RECT="4469.8735480404994 1544.6992725887053 1639.3021073067871 357.14642860714315"
 #!   STICKY="true"
 #!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="39 95 40 "
+#!   CONTENTS="93 39 40 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="156"
+#!   IDENTIFIER="152"
 #!   NAME="Terminate if more than 75% metadata are inserted. Validate then rerun with &apos;Validate_insert&apos; = &apos;No&apos; if ok."
 #!   DESCRIPTION=""
 #!   TOP_LEFT="8973.8561866651398 -428.89545375150863"
@@ -606,11 +606,11 @@
 #!   BOUNDING_RECT="8973.8561866651398 -428.89545375150863 2003.3375069577714 537.50537505375041"
 #!   STICKY="true"
 #!   COLOUR="0.59607843137254901,0.91764705882352937,0.72549019607843135,1"
-#!   CONTENTS="90 38 36 91 35 92 37 "
+#!   CONTENTS="89 36 90 37 38 35 88 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="157"
+#!   IDENTIFIER="153"
 #!   NAME="rename attributes"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="3604.8351357516153 1062.1795741440196"
@@ -620,11 +620,11 @@
 #!   BOUNDING_RECT="3604.8351357516153 1062.1795741440196 660.42952851664859 676.75515260674297"
 #!   STICKY="true"
 #!   COLOUR="0.84313725490196079,1,0.5490196078431373,1"
-#!   CONTENTS="28 76 24 30 85 "
+#!   CONTENTS="30 24 28 74 83 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="158"
+#!   IDENTIFIER="154"
 #!   NAME="rename keywords"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="4332.3721730267498 1062.1795741440196"
@@ -634,11 +634,11 @@
 #!   BOUNDING_RECT="4332.3721730267498 1062.1795741440196 1131.3245575785022 336"
 #!   STICKY="true"
 #!   COLOUR="0.84313725490196079,1,0.5490196078431373,0.68235294117647061"
-#!   CONTENTS="45 43 98 "
+#!   CONTENTS="45 96 43 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
-#!   IDENTIFIER="159"
+#!   IDENTIFIER="155"
 #!   NAME="Filter the features based on the type of transaction"
 #!   DESCRIPTION=""
 #!   TOP_LEFT="8973.8561866651398 1264.5239745454328"
@@ -648,7 +648,7 @@
 #!   BOUNDING_RECT="8973.8561866651398 1264.5239745454328 2755.4277728411253 1656.2665626656262"
 #!   STICKY="true"
 #!   COLOUR="0.59999999999999998,0.80000000000000004,0.80000000000000004,1"
-#!   CONTENTS="54 121 47 145 160 127 48 113 59 56 58 53 103 162 129 50 57 128 55 161 104 163 143 112 130 126 122 125 49 "
+#!   CONTENTS="101 49 102 118 47 141 50 57 142 110 125 54 123 55 103 121 117 51 56 124 53 138 108 139 109 48 126 122 52 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -1051,17 +1051,17 @@
 #! >
 #!     <OUTPUT_FEAT NAME="PASSED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="FAILED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
@@ -1104,15 +1104,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1122,9 +1113,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1135,6 +1132,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="PyCSW_Transaction,id,record_last_modified"/>
@@ -1158,10 +1158,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1230,10 +1230,10 @@
 #! >
 #!     <OUTPUT_FEAT NAME="SORTED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="SORT_GRP" PARM_VALUE=""/>
@@ -1293,10 +1293,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1341,10 +1341,10 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1392,10 +1392,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1427,15 +1427,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1445,9 +1436,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1458,6 +1455,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
@@ -1481,13 +1481,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1497,9 +1490,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1510,6 +1509,7 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
@@ -1533,13 +1533,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1549,9 +1542,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1562,6 +1561,7 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Junction_4"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
@@ -1577,15 +1577,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1595,9 +1586,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1608,6 +1605,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
@@ -1634,15 +1634,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="FAILED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1652,9 +1643,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1665,20 +1662,14 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="pourcent_insert" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="PASSED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -1688,9 +1679,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -1701,6 +1698,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="pourcent_insert" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -1729,15 +1729,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1747,9 +1738,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1760,6 +1757,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="pourcent_insert" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1797,10 +1797,10 @@
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
@@ -1827,10 +1827,10 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id"/>
@@ -1876,13 +1876,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="SORTED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1892,9 +1885,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1905,6 +1904,7 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
@@ -1939,10 +1939,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1965,10 +1965,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2013,10 +2013,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2043,10 +2043,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2070,10 +2070,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2097,10 +2097,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -2123,10 +2123,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2190,10 +2190,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2216,10 +2216,10 @@
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2252,10 +2252,10 @@
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Junction_5"/>
 #! </TRANSFORMER>
@@ -2273,15 +2273,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="No&lt;space&gt;change"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2291,9 +2282,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2304,19 +2301,13 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="Update"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2326,9 +2317,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2339,19 +2336,13 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <OUTPUT_FEAT NAME="Insert"/>
 #!     <FEAT_COLLAPSED COLLAPSED="2"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2361,9 +2352,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2374,19 +2371,13 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <OUTPUT_FEAT NAME="Delete"/>
 #!     <FEAT_COLLAPSED COLLAPSED="3"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -2396,9 +2387,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="3" />
@@ -2409,19 +2406,13 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="3" />
 #!     <OUTPUT_FEAT NAME="&lt;lt&gt;EMPTY&lt;gt&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="4"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2431,9 +2422,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="4" />
@@ -2444,19 +2441,13 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <OUTPUT_FEAT NAME="&lt;lt&gt;MISSING&lt;gt&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="5"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="5" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="5" />
@@ -2466,9 +2457,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="5" />
@@ -2479,19 +2476,13 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="5" />
 #!     <OUTPUT_FEAT NAME="&lt;lt&gt;NULL&lt;gt&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="6"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="6" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="6" />
@@ -2501,9 +2492,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="6" />
@@ -2514,19 +2511,13 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="6" />
 #!     <OUTPUT_FEAT NAME="&lt;lt&gt;UNFILTERED&lt;gt&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="7"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="7" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="7" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="7" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="7" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="7" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="7" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="7" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="7" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="7" />
@@ -2536,9 +2527,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="7" />
@@ -2549,6 +2546,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="7" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
@@ -2589,15 +2589,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2607,9 +2598,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2620,6 +2617,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Junction_6"/>
@@ -2631,22 +2631,13 @@
 #!   POSITION="9703.0316129319381 820.40868139043482"
 #!   BOUNDING_RECT="9703.0316129319381 820.40868139043482 454 71"
 #!   ORDER="500000000001644"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
 #!   OUTPUT_FT_ORDER="No&lt;space&gt;Overwrite%Overwrite"
 #! >
 #!     <OUTPUT_FEAT NAME="No&lt;space&gt;Overwrite"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2656,9 +2647,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2669,19 +2666,13 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="Overwrite"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2691,9 +2682,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2704,18 +2701,21 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="No&lt;space&gt;Overwrite"/>
 #!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
 #!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;UpperCase&lt;lt&gt;openparen&lt;gt&gt;YES&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;YES&quot;,Overwrite"/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,CASE_INSENSITIVE_TEST&lt;space&gt;$(METADATA_OVERWRITE)&lt;space&gt;=&lt;space&gt;YES&quot;,Overwrite"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_4"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="53"
+#!   IDENTIFIER="51"
 #!   TYPE="ATTRIBUTE_UNEXPOSER"
 #!   VERSION="1"
 #!   POSITION="11158.257572444501 400.74841439469537"
@@ -2731,7 +2731,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_5"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="54"
+#!   IDENTIFIER="52"
 #!   TYPE="ATTRIBUTE_UNEXPOSER"
 #!   VERSION="1"
 #!   POSITION="11158.257572444501 95.401541273887119"
@@ -2747,7 +2747,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_6"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="55"
+#!   IDENTIFIER="53"
 #!   TYPE="ATTRIBUTE_UNEXPOSER"
 #!   VERSION="1"
 #!   POSITION="11158.257572444501 -170.68219100999249"
@@ -2763,7 +2763,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_7"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="56"
+#!   IDENTIFIER="54"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
 #!   POSITION="11116.939942491423 1002.9093063966848"
@@ -2789,7 +2789,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="57"
+#!   IDENTIFIER="55"
 #!   TYPE="StatisticsCalculator"
 #!   VERSION="8"
 #!   POSITION="10402.096544057436 1002.9093063966848"
@@ -2804,15 +2804,6 @@
 #!     <XFORM_ATTR ATTR_NAME="_count" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <OUTPUT_FEAT NAME="COMPLETE"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2822,9 +2813,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="1" />
@@ -2835,20 +2832,14 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_count" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <OUTPUT_FEAT NAME="CUMULATIVE"/>
 #!     <FEAT_COLLAPSED COLLAPSED="2"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2858,9 +2849,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2871,6 +2868,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_count" IS_USER_CREATED="false" FEAT_INDEX="2" />
@@ -2897,7 +2897,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StatisticsCalculator_3"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="58"
+#!   IDENTIFIER="56"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
 #!   POSITION="10396.131506907066 95.401541273887119"
@@ -2909,15 +2909,6 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2927,9 +2918,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2940,6 +2937,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
@@ -2954,7 +2954,7 @@
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
-#!   IDENTIFIER="59"
+#!   IDENTIFIER="57"
 #!   TYPE="AttributeCreator"
 #!   VERSION="9"
 #!   POSITION="10402.096544057436 449.31962867826684"
@@ -2967,15 +2967,6 @@
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="PyCSW_Transaction" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.distributionInfo.MD_Distribution.transferOptions{0}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{0}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2985,9 +2976,15 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.contact{0}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="creation_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="publication_date_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="id_ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="MD_Metadata.fileIdentifier.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty.CI_ResponsibleParty.organisationName.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.date.Date" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{}.CI_Date.dateType.CI_DateTypeCode" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -2998,6 +2995,9 @@
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.CharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="MD_Keywords.keyword{}.PT_FreeText.textGroup.LocalisedCharacterString" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="in_yaml" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id_new" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="record_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
@@ -3076,7 +3076,7 @@
 #! </SUBDOCUMENT_IOS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="60"
+#!   IDENTIFIER="58"
 #!   SOURCE_NODE="2"
 #!   TARGET_NODE="13"
 #!   SOURCE_PORT_DESC="0"
@@ -3091,7 +3091,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="61"
+#!   IDENTIFIER="59"
 #!   SOURCE_NODE="2"
 #!   TARGET_NODE="29"
 #!   SOURCE_PORT_DESC="0"
@@ -3106,7 +3106,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="62"
+#!   IDENTIFIER="60"
 #!   SOURCE_NODE="2"
 #!   TARGET_NODE="27"
 #!   SOURCE_PORT_DESC="0"
@@ -3121,7 +3121,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="63"
+#!   IDENTIFIER="61"
 #!   SOURCE_NODE="8"
 #!   TARGET_NODE="9"
 #!   SOURCE_PORT_DESC="fo 0 R&lt;u00e9&gt;sultats"
@@ -3136,7 +3136,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="64"
+#!   IDENTIFIER="62"
 #!   SOURCE_NODE="9"
 #!   TARGET_NODE="22"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3151,7 +3151,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="65"
+#!   IDENTIFIER="63"
 #!   SOURCE_NODE="11"
 #!   TARGET_NODE="14"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3166,7 +3166,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="66"
+#!   IDENTIFIER="64"
 #!   SOURCE_NODE="12"
 #!   TARGET_NODE="16"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3181,7 +3181,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="67"
+#!   IDENTIFIER="65"
 #!   SOURCE_NODE="13"
 #!   TARGET_NODE="17"
 #!   SOURCE_PORT_DESC="fo 0 SAMPLED"
@@ -3196,7 +3196,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="68"
+#!   IDENTIFIER="66"
 #!   SOURCE_NODE="14"
 #!   TARGET_NODE="21"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3211,7 +3211,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="69"
+#!   IDENTIFIER="67"
 #!   SOURCE_NODE="15"
 #!   TARGET_NODE="21"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3226,7 +3226,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="70"
+#!   IDENTIFIER="68"
 #!   SOURCE_NODE="16"
 #!   TARGET_NODE="11"
 #!   SOURCE_PORT_DESC="fo 0 XML&lt;lt&gt;space&lt;gt&gt;FORMAT"
@@ -3241,7 +3241,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="71"
+#!   IDENTIFIER="69"
 #!   SOURCE_NODE="17"
 #!   TARGET_NODE="8"
 #!   SOURCE_PORT_DESC="fo 0 PYCSW"
@@ -3256,7 +3256,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="72"
+#!   IDENTIFIER="70"
 #!   SOURCE_NODE="21"
 #!   TARGET_NODE="46"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
@@ -3271,7 +3271,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="73"
+#!   IDENTIFIER="71"
 #!   SOURCE_NODE="22"
 #!   TARGET_NODE="21"
 #!   SOURCE_PORT_DESC="fo 0 Output"
@@ -3286,7 +3286,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="74"
+#!   IDENTIFIER="72"
 #!   SOURCE_NODE="23"
 #!   TARGET_NODE="47"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3301,7 +3301,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="75"
+#!   IDENTIFIER="73"
 #!   SOURCE_NODE="23"
 #!   TARGET_NODE="35"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3316,7 +3316,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="76"
+#!   IDENTIFIER="74"
 #!   SOURCE_NODE="24"
 #!   TARGET_NODE="28"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3331,7 +3331,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="77"
+#!   IDENTIFIER="75"
 #!   SOURCE_NODE="25"
 #!   TARGET_NODE="26"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3346,7 +3346,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="78"
+#!   IDENTIFIER="76"
 #!   SOURCE_NODE="25"
 #!   TARGET_NODE="41"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3361,7 +3361,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="79"
+#!   IDENTIFIER="77"
 #!   SOURCE_NODE="26"
 #!   TARGET_NODE="32"
 #!   SOURCE_PORT_DESC="fo 0 SORTED"
@@ -3376,7 +3376,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="80"
+#!   IDENTIFIER="78"
 #!   SOURCE_NODE="27"
 #!   TARGET_NODE="42"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3391,7 +3391,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="81"
+#!   IDENTIFIER="79"
 #!   SOURCE_NODE="27"
 #!   TARGET_NODE="26"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3406,7 +3406,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="82"
+#!   IDENTIFIER="80"
 #!   SOURCE_NODE="28"
 #!   TARGET_NODE="31"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3421,7 +3421,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="83"
+#!   IDENTIFIER="81"
 #!   SOURCE_NODE="28"
 #!   TARGET_NODE="43"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3436,7 +3436,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="84"
+#!   IDENTIFIER="82"
 #!   SOURCE_NODE="29"
 #!   TARGET_NODE="25"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3451,7 +3451,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="85"
+#!   IDENTIFIER="83"
 #!   SOURCE_NODE="30"
 #!   TARGET_NODE="24"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3466,7 +3466,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="86"
+#!   IDENTIFIER="84"
 #!   SOURCE_NODE="31"
 #!   TARGET_NODE="44"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3481,7 +3481,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="87"
+#!   IDENTIFIER="85"
 #!   SOURCE_NODE="32"
 #!   TARGET_NODE="23"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3496,7 +3496,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="88"
+#!   IDENTIFIER="86"
 #!   SOURCE_NODE="33"
 #!   TARGET_NODE="42"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3511,7 +3511,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="89"
+#!   IDENTIFIER="87"
 #!   SOURCE_NODE="34"
 #!   TARGET_NODE="42"
 #!   SOURCE_PORT_DESC="fo 0 Output"
@@ -3526,7 +3526,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="90"
+#!   IDENTIFIER="88"
 #!   SOURCE_NODE="35"
 #!   TARGET_NODE="37"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3541,7 +3541,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="91"
+#!   IDENTIFIER="89"
 #!   SOURCE_NODE="36"
 #!   TARGET_NODE="38"
 #!   SOURCE_PORT_DESC="fo 1 PASSED"
@@ -3556,7 +3556,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="92"
+#!   IDENTIFIER="90"
 #!   SOURCE_NODE="37"
 #!   TARGET_NODE="36"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3571,7 +3571,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="93"
+#!   IDENTIFIER="91"
 #!   SOURCE_NODE="39"
 #!   TARGET_NODE="34"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3586,7 +3586,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="94"
+#!   IDENTIFIER="92"
 #!   SOURCE_NODE="39"
 #!   TARGET_NODE="33"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3601,7 +3601,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="95"
+#!   IDENTIFIER="93"
 #!   SOURCE_NODE="40"
 #!   TARGET_NODE="39"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3616,7 +3616,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="96"
+#!   IDENTIFIER="94"
 #!   SOURCE_NODE="41"
 #!   TARGET_NODE="26"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
@@ -3631,7 +3631,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="97"
+#!   IDENTIFIER="95"
 #!   SOURCE_NODE="42"
 #!   TARGET_NODE="32"
 #!   SOURCE_PORT_DESC="fo 0 SORTED"
@@ -3646,7 +3646,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="98"
+#!   IDENTIFIER="96"
 #!   SOURCE_NODE="43"
 #!   TARGET_NODE="45"
 #!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
@@ -3661,7 +3661,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="99"
+#!   IDENTIFIER="97"
 #!   SOURCE_NODE="44"
 #!   TARGET_NODE="33"
 #!   SOURCE_PORT_DESC="fo 0 MERGED"
@@ -3676,7 +3676,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="100"
+#!   IDENTIFIER="98"
 #!   SOURCE_NODE="44"
 #!   TARGET_NODE="34"
 #!   SOURCE_PORT_DESC="fo 0 MERGED"
@@ -3691,7 +3691,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="101"
+#!   IDENTIFIER="99"
 #!   SOURCE_NODE="45"
 #!   TARGET_NODE="44"
 #!   SOURCE_PORT_DESC="fo 0 PASSED"
@@ -3706,7 +3706,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="102"
+#!   IDENTIFIER="100"
 #!   SOURCE_NODE="46"
 #!   TARGET_NODE="40"
 #!   SOURCE_PORT_DESC="fo 0 Output"
@@ -3721,7 +3721,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="103"
+#!   IDENTIFIER="101"
 #!   SOURCE_NODE="47"
 #!   TARGET_NODE="49"
 #!   SOURCE_PORT_DESC="fo 4 &lt;lt&gt;lt&lt;gt&gt;EMPTY&lt;lt&gt;gt&lt;gt&gt;"
@@ -3736,7 +3736,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="104"
+#!   IDENTIFIER="102"
 #!   SOURCE_NODE="49"
 #!   TARGET_NODE="48"
 #!   SOURCE_PORT_DESC="fo 0 Output"
@@ -3751,9 +3751,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="160"
+#!   IDENTIFIER="103"
 #!   SOURCE_NODE="50"
-#!   TARGET_NODE="59"
+#!   TARGET_NODE="57"
 #!   SOURCE_PORT_DESC="fo 1 Overwrite"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -3766,8 +3766,8 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="108"
-#!   SOURCE_NODE="53"
+#!   IDENTIFIER="104"
+#!   SOURCE_NODE="51"
 #!   TARGET_NODE="3"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="0"
@@ -3781,8 +3781,8 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="109"
-#!   SOURCE_NODE="54"
+#!   IDENTIFIER="105"
+#!   SOURCE_NODE="52"
 #!   TARGET_NODE="4"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="0"
@@ -3796,8 +3796,8 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="110"
-#!   SOURCE_NODE="55"
+#!   IDENTIFIER="106"
+#!   SOURCE_NODE="53"
 #!   TARGET_NODE="5"
 #!   SOURCE_PORT_DESC="fo 0 Output"
 #!   TARGET_PORT_DESC="0"
@@ -3811,8 +3811,8 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="111"
-#!   SOURCE_NODE="56"
+#!   IDENTIFIER="107"
+#!   SOURCE_NODE="54"
 #!   TARGET_NODE="6"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="0"
@@ -3826,9 +3826,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="112"
-#!   SOURCE_NODE="57"
-#!   TARGET_NODE="56"
+#!   IDENTIFIER="108"
+#!   SOURCE_NODE="55"
+#!   TARGET_NODE="54"
 #!   SOURCE_PORT_DESC="fo 0 SUMMARY"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -3841,9 +3841,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="113"
-#!   SOURCE_NODE="58"
-#!   TARGET_NODE="54"
+#!   IDENTIFIER="109"
+#!   SOURCE_NODE="56"
+#!   TARGET_NODE="52"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
@@ -3856,9 +3856,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="161"
-#!   SOURCE_NODE="59"
-#!   TARGET_NODE="53"
+#!   IDENTIFIER="110"
+#!   SOURCE_NODE="57"
+#!   TARGET_NODE="51"
 #!   SOURCE_PORT_DESC="fo 0 OUTPUT"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
@@ -3871,7 +3871,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="115"
+#!   IDENTIFIER="111"
 #!   SOURCE_NODE="10"
 #!   TARGET_NODE="12"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;OTHER&lt;gt&gt;"
@@ -3886,7 +3886,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="116"
+#!   IDENTIFIER="112"
 #!   SOURCE_NODE="11"
 #!   TARGET_NODE="19"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
@@ -3901,7 +3901,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="117"
+#!   IDENTIFIER="113"
 #!   SOURCE_NODE="15"
 #!   TARGET_NODE="20"
 #!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;REJECTED&lt;gt&gt;"
@@ -3916,7 +3916,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="118"
+#!   IDENTIFIER="114"
 #!   SOURCE_NODE="16"
 #!   TARGET_NODE="15"
 #!   SOURCE_PORT_DESC="fo 1 JSON&lt;lt&gt;space&lt;gt&gt;FORMAT"
@@ -3931,7 +3931,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="119"
+#!   IDENTIFIER="115"
 #!   SOURCE_NODE="17"
 #!   TARGET_NODE="10"
 #!   SOURCE_PORT_DESC="fo 1 Local&lt;lt&gt;space&lt;gt&gt;Source"
@@ -3946,7 +3946,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="120"
+#!   IDENTIFIER="116"
 #!   SOURCE_NODE="21"
 #!   TARGET_NODE="30"
 #!   SOURCE_PORT_DESC="fo 1 FAILED"
@@ -3961,7 +3961,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="121"
+#!   IDENTIFIER="117"
 #!   SOURCE_NODE="47"
 #!   TARGET_NODE="49"
 #!   SOURCE_PORT_DESC="fo 5 &lt;lt&gt;lt&lt;gt&gt;MISSING&lt;lt&gt;gt&lt;gt&gt;"
@@ -3976,9 +3976,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="122"
+#!   IDENTIFIER="118"
 #!   SOURCE_NODE="50"
-#!   TARGET_NODE="57"
+#!   TARGET_NODE="55"
 #!   SOURCE_PORT_DESC="fo 0 No&lt;lt&gt;space&lt;gt&gt;Overwrite"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -3991,7 +3991,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="123"
+#!   IDENTIFIER="119"
 #!   SOURCE_NODE="50"
 #!   TARGET_NODE="7"
 #!   SOURCE_PORT_DESC="fo 0 No&lt;lt&gt;space&lt;gt&gt;Overwrite"
@@ -4006,7 +4006,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="124"
+#!   IDENTIFIER="120"
 #!   SOURCE_NODE="16"
 #!   TARGET_NODE="18"
 #!   SOURCE_PORT_DESC="fo 2 &lt;lt&gt;lt&lt;gt&gt;UNFILTERED&lt;lt&gt;gt&lt;gt&gt;"
@@ -4021,7 +4021,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="125"
+#!   IDENTIFIER="121"
 #!   SOURCE_NODE="47"
 #!   TARGET_NODE="49"
 #!   SOURCE_PORT_DESC="fo 6 &lt;lt&gt;lt&lt;gt&gt;NULL&lt;lt&gt;gt&lt;gt&gt;"
@@ -4036,7 +4036,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="126"
+#!   IDENTIFIER="122"
 #!   SOURCE_NODE="47"
 #!   TARGET_NODE="49"
 #!   SOURCE_PORT_DESC="fo 7 &lt;lt&gt;lt&lt;gt&gt;UNFILTERED&lt;lt&gt;gt&lt;gt&gt;"
@@ -4051,7 +4051,7 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="127"
+#!   IDENTIFIER="123"
 #!   SOURCE_NODE="47"
 #!   TARGET_NODE="50"
 #!   SOURCE_PORT_DESC="fo 0 No&lt;lt&gt;space&lt;gt&gt;change"
@@ -4066,9 +4066,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="128"
+#!   IDENTIFIER="124"
 #!   SOURCE_NODE="47"
-#!   TARGET_NODE="59"
+#!   TARGET_NODE="57"
 #!   SOURCE_PORT_DESC="fo 1 Update"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -4081,9 +4081,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="129"
+#!   IDENTIFIER="125"
 #!   SOURCE_NODE="47"
-#!   TARGET_NODE="58"
+#!   TARGET_NODE="56"
 #!   SOURCE_PORT_DESC="fo 2 Insert"
 #!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
@@ -4096,9 +4096,9 @@
 #!   EXTRA_POINTS=""
 #! />
 #! <FEAT_LINK
-#!   IDENTIFIER="130"
+#!   IDENTIFIER="126"
 #!   SOURCE_NODE="47"
-#!   TARGET_NODE="55"
+#!   TARGET_NODE="53"
 #!   SOURCE_PORT_DESC="fo 3 Delete"
 #!   TARGET_PORT_DESC="fi 0 Input"
 #!   ENABLED="true"
@@ -4128,7 +4128,7 @@ DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_LOCAL_SOURCE
 DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_LOCAL_SOURCE_FORMAT XML
 DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_LOCAL_SOURCE_DIR 
 DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_CSW_FILTER 
-DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_METADATA_OVERWRITE YES
+DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_METADATA_OVERWRITE 
 DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_HNAP_CKAN CKAN
 DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Validate_insert Yes
 DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_date_modified record_last_modified
@@ -4141,7 +4141,7 @@ DEFAULT_MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_yaml_metadata_delta_fi
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT1703262322 Input Splitter"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT_0_/BfpfIxBrgY="   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT_1_duZgEYap3EQ="   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT_2_imyyFmVfQTc="
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT1704384001 Input Splitter"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT_0_/BfpfIxBrgY="   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT_1_duZgEYap3EQ="   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT_2_imyyFmVfQTc="
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_12    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_INPUT_2_imyyFmVfQTc="    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "in_yaml" "SET_TO" "$($(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_yaml_metadata_delta_finder)" }      ATTR_ACTION { "" "_order" "SET_TO" "1" }    OUTPUT OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_12_OUTPUT"
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_12 OUTPUT Splitter"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_12_OUTPUT"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_12_OUTPUT_0_wxC2GiWntFA="   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_12_OUTPUT_1_ub0CAgcKg1U="
@@ -4328,7 +4328,7 @@ INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_6 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_6_Output"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_6_Output"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4    INPUT  FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeFilter_2_No<space>change"    OUTPUT FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_0
-FACTORY_DEF * TestFactory FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_Condition_1 INPUT FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>UpperCase<openparen>YES<closeparen>,$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4) = YES ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_Overwrite OUTPUT FAILED FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TestFactory FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_Condition_1 INPUT FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_0 CASE_INSENSITIVE_TEST @EvaluateExpression(FDIV,STRING_ENCODED,$($(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_METADATA_OVERWRITE$encode),$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4) = YES ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_Overwrite OUTPUT FAILED FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_1
 FACTORY_DEF * TeeFactory FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite INPUT FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4 No<space>Overwrite Splitter"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite_0_Xq9HqO5UlPE="   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite_1_zcEPKe7tvQw="
 # -------------------------------------------------------------------------
@@ -4341,25 +4341,25 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Output"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Output"
 # -------------------------------------------------------------------------
-DEFAULT_MACRO __$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_7248a648_7d71_46ea_acec_3dab2aa07be62_GROUP_BY
+DEFAULT_MACRO __$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_c1c03157_c0e5_4809_befa_4086cd6b41a61_GROUP_BY
 # If the cumulative port is connected, the _PORT_SPECIFIED macro
-MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_7248a648_7d71_46ea_acec_3dab2aa07be62_PORT_SPECIFIED no
+MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_c1c03157_c0e5_4809_befa_4086cd6b41a61_PORT_SPECIFIED no
 # Force splitting of feature tables when the CUMULATIVE port is connected
-MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_7248a648_7d71_46ea_acec_3dab2aa07be62_SPLIT_FEATURE_TABLES Yes
-INCLUDE [if { {$($(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_7248a648_7d71_46ea_acec_3dab2aa07be62_PORT_SPECIFIED)} == "no" } {     puts {MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_7248a648_7d71_46ea_acec_3dab2aa07be62_SPLIT_FEATURE_TABLES No} }
+MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_c1c03157_c0e5_4809_befa_4086cd6b41a61_SPLIT_FEATURE_TABLES Yes
+INCLUDE [if { {$($(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_c1c03157_c0e5_4809_befa_4086cd6b41a61_PORT_SPECIFIED)} == "no" } {     puts {MACRO $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_c1c03157_c0e5_4809_befa_4086cd6b41a61_SPLIT_FEATURE_TABLES No} }
 DYNAMIC_FUNCTION_CONFIGURATION Python FMEOBJECTS
 DYNAMIC_FUNCTION_CONFIGURATION Python import StatisticsCalculator
-DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    '$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3',{     'GROUP_BY_MACRO':'__$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_7248a648_7d71_46ea_acec_3dab2aa07be62_GROUP_BY',     'STATS_ATTRS':'id',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$($(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_7248a648_7d71_46ea_acec_3dab2aa07be62_PORT_SPECIFIED)',     None:None})"
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_InputProcessor    INPUT  FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite_0_Xq9HqO5UlPE="    SPLIT_FEATURE_TABLES $($(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_7248a648_7d71_46ea_acec_3dab2aa07be62_SPLIT_FEATURE_TABLES)    OUTPUT FEATURE_TYPE __ORIGINAL__       @Python(StatisticsCalculator.recordFeature,$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3)
+DYNAMIC_FUNCTION_CONFIGURATION Python "StatisticsCalculator.connectTransformer(    '$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3',{     'GROUP_BY_MACRO':'__$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_c1c03157_c0e5_4809_befa_4086cd6b41a61_GROUP_BY',     'STATS_ATTRS':'id',     'COUNT_ATTR':'_count',     'COMPUTE_HISTOGRAM':'NO',     'HISTO_ATTR':'<Unused>',     'PREPEND_ATTR_NAME':'No',     'encoded_result_attrs':True,     'cumulative_mode':'$($(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_c1c03157_c0e5_4809_befa_4086cd6b41a61_PORT_SPECIFIED)',     None:None})"
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_InputProcessor    INPUT  FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite_0_Xq9HqO5UlPE="    SPLIT_FEATURE_TABLES $($(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_c1c03157_c0e5_4809_befa_4086cd6b41a61_SPLIT_FEATURE_TABLES)    OUTPUT FEATURE_TYPE __ORIGINAL__       @Python(StatisticsCalculator.recordFeature,$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3)
 FACTORY_DEF * TeeFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_UnneededInputNuker    INPUT FEATURE_TYPE __ORIGINAL__
 FACTORY_DEF * SortFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_CompleteOutputter    INPUT FEATURE_TYPE __UNUSED_INPUT_TO_GUARANTEE_FACTORY_DOESNT_CONSUME_EVERYTHING__
 FACTORY_DEF * CreationFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_SummaryCreator    CREATE_AT_END    NUMBER_TO_CREATE 1    OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_SUMMARY"
 FACTORY_DEF * ElementFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_SummaryExploder    LIST_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_stats{}    MODE LEAN_AND_MEAN    CLONE_GEOMETRY no    INPUT FEATURE_TYPE __UNUSED_INPUT_TO_GUARANTEE_FACTORY_DOESNT_CONSUME_EVERYTHING__    INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_SUMMARY"       @Python(StatisticsCalculator.summarizeStatistics,$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3,__SINGLE_GUY__)    OUTPUT ELEMENT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_SUMMARY"       @Geometry(FIX_FMETYPE_FMEGEOMETRY)
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_StatisticsCalculator_3_SUMMARY"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_real_count" "SET_TO" "<at>Evaluate<openparen><at>Value<openparen>_count<closeparen>-1<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Update1703262322 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Output"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Update"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Insert1703262322 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_6_Output"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Insert"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Delete1703262322 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_7_Output"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Delete"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Statistics1703262322 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Statistics"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_No_Change1703262322 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite_1_zcEPKe7tvQw="   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_No_Change"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Update1704384001 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Output"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Update"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Insert1704384001 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_6_Output"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Insert"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Delete1704384001 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_7_Output"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Delete"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Statistics1704384001 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_Statistics"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_No_Change1704384001 Output Collector"   INPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_TestFilter_4_No<space>Overwrite_1_zcEPKe7tvQw="   OUTPUT FEATURE_TYPE "$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME)_No_Change"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(METADATA_DELTA_FINDER_GEN_WORKSPACE_NAME))}]
