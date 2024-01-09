@@ -63,8 +63,8 @@ COPY /Y %metdir%\template.db  %metdir%\bd_%no_test%.db
 SET Statut=%Statut%%ERRORLEVEL%
 
 
-REM Supprimer le fichier csv de sortie
-IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+
+
 
 
 REM Exécution du programme FME
@@ -111,8 +111,8 @@ SET working_dir=%metdir%\source1
 set etalon_dir=%metdir%\etalon%no_test%
 
 
-REM Supprimer le fichier csv de sortie
-IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+
+
 
 REM Exécution du programme FME
 IF EXIST %log% DEL %log%
@@ -156,8 +156,7 @@ SET working_dir=%metdir%\source%no_test%
 set etalon_dir=%metdir%\etalon%no_test%
 
 
-REM Supprimer le fichier csv de sortie
-IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+
 
 REM Exécution du programme FME
 IF EXIST %log% DEL %log%
@@ -209,8 +208,7 @@ SET working_dir=%metdir%\source%no_test%
 set etalon_dir=%metdir%\etalon%no_test%
 
 
-REM Supprimer le fichier csv de sortie
-IF exist %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv DEL %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv
+
 
 REM Exécution du programme FME
 IF EXIST %log% DEL %log%
