@@ -180,7 +180,7 @@ SET Statut=%Statut%%ERRORLEVEL%
 REM Comparer le CSV avec l'étalon pour les update
 IF EXIST %LOG% DEL %log% 
 %fme% %ComparateurCsv% ^
---IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\osdo_geodcat_0.csv ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\osdo_geodcat_*.csv ^
 --IN_CSV_ETALON_FILE %etalon_dir%\geodcat.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
@@ -192,7 +192,7 @@ IF EXIST %LOG% DEL %log%
 --IN_CSV_ETALON_FILE %etalon_dir%\osdp_delete.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
-pause
+
 
 REM ===========================================================================
 REM ===========================================================================
