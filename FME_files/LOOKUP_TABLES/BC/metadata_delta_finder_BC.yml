@@ -14,7 +14,7 @@ attr_2:
     attr_new: notes
 
 attr_3:
-    attr_name: contact_name
+    attr_name: contact_email
     attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.contactInfo.CI_Contact.address.CI_Address.electronicMailAddress.CharacterString
     attr_new: contacts{}.email
 
@@ -23,39 +23,43 @@ attr_4:
     attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue
     attr_new: contacts{}.role_code
 
-attr_5:
+data_collection_start_date:
     attr_name: data_collection_start_date
-    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{0}.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition
     attr_new: data_collection_start_date
+data_collection_end_date:
+    attr_name: data_collection_end_date
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{0}.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.endPosition
+    attr_new: data_collection_end_date
 
 attr_6:
     attr_name: date_created
-    attr_ref: creation_date_ref
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{0}.CI_Date.date.Date
     attr_new: record_create_date
 
 attr_7:
     attr_name: date_published
-    attr_ref: publication_date_ref
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{1}.CI_Date.date.Date
     attr_new: record_publish_date
 
 attr_8:
     attr_name: east_bound_longitude
-    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.eastBoundLongitude.Decimal
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{1}.EX_Extent.geographicElement.EX_GeographicBoundingBox.eastBoundLongitude.Decimal
     attr_new: east_bound_longitude
 
 attr_9:
     attr_name: north_bound_latitude
-    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.northBoundLatitude.Decimal
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{1}.EX_Extent.geographicElement.EX_GeographicBoundingBox.northBoundLatitude.Decimal
     attr_new: north_bound_latitude
 
 attr_10:
-    attr_name: west_bound_latitude
-    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal
+    attr_name: west_bound_longitude
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{1}.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal
     attr_new: west_bound_longitude
 
 attr_11:
     attr_name: south_bound_latitude
-    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent.EX_Extent.geographicElement.EX_GeographicBoundingBox.southBoundLatitude.Decimal
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{1}.EX_Extent.geographicElement.EX_GeographicBoundingBox.southBoundLatitude.Decimal
     attr_new: south_bound_latitude
 
 attr_12:
@@ -65,18 +69,13 @@ attr_12:
 
 attr_13:
     attr_name: keyword
-    attr_ref: MD_Keywords.keyword{}.CharacterString
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{}.CharacterString
     attr_new: tags{}.display_name
 
 attr_14:
     attr_name: license
     attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.resourceConstraints.MD_LegalConstraints.useLimitation.CharacterString
     attr_new: p-t_license
-
-attr_15:
-    attr_name: sector
-    attr_ref: sector_ref
-    attr_new: organization.title
 
 attr_16:
     attr_name: spatial_representation_type_code
@@ -107,8 +106,3 @@ attr_21:
     attr_name: transfer_option_protocols
     attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.protocol.CharacterString
     attr_new:  resources{}.protocol
-
-attr_22:
-    attr_name: transfer_option_format
-    attr_ref: resource_format_ref{}
-    attr_new: resources{}.format
