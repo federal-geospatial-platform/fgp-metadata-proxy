@@ -821,7 +821,7 @@ class FME_utils:
 
         try:
             # Requests the head of the url
-            r = requests.head(url, timeout=TIMEOUT)
+            r = requests.head(url, timeout=TIMEOUT,verify=False)
             r.close()
             return r
 
