@@ -697,7 +697,7 @@ class FME_utils:
                     feature.removeAttribute(in_att_name)
         
     @staticmethod
-    def go_url(url):
+    def go_url(url,verbose=True):
         """
         Verifies if the provided url is valid and responds to a request, whether it's a http or ftp url.
         
@@ -708,7 +708,9 @@ class FME_utils:
         
         Returns
         -------
-        None
+        Dictionary
+            A dictionary with "found", "url" and "redirects" properties for http/s urls
+            A dictionary with "found", "url" properties. for FTP urls
         """
 
         # Depending if checking a ftp or http url
@@ -718,18 +720,19 @@ class FME_utils:
         else:
             result = FME_utils.http_check_url(url)
 
-        # If found
-        if result["found"]:
-            # If redirects happened
-            if "redirects" in result and len(result["redirects"]) > 0:
-                print("Found! | " + result["url"] + " --> " + ' --> '.join(result["redirects"]))
+        if verbose: 
+            # If found
+            if result["found"]:
+                # If redirects happened
+                if "redirects" in result and len(result["redirects"]) > 0:
+                    print("Found! | " + result["url"] + " --> " + ' --> '.join(result["redirects"]))
+
+                else:
+                    print("Found! | " + result["url"])
 
             else:
-                print("Found! | " + result["url"])
-
-        else:
-            print("Not found | " + result["url"])
-
+                print("Not found | " + result["url"])
+        return result
     @staticmethod
     def http_check_url(url):
         """
