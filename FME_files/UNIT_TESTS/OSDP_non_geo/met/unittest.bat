@@ -89,12 +89,14 @@ SET Statut=%Statut%%ERRORLEVEL%
 REM Comparer le CSV avec l'étalon
 IF EXIST %LOG% DEL %log% 
 %fme% %ComparateurCsv% ^
---IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--IN_CSV_RES_FILE  %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--VALIDATE UPDATE  ^
 --IN_CSV_ETALON_FILE %etalon_dir%\*.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
 
+pause
 
 
 
@@ -137,6 +139,7 @@ REM Comparer le CSV avec l'étalon
 IF EXIST %LOG% DEL %log% 
 %fme% %ComparateurCsv% ^
 --IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--VALIDATE UPDATE  ^
 --IN_CSV_ETALON_FILE %etalon_dir%\*.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
@@ -180,7 +183,8 @@ SET Statut=%Statut%%ERRORLEVEL%
 REM Comparer le CSV avec l'étalon pour les update
 IF EXIST %LOG% DEL %log% 
 %fme% %ComparateurCsv% ^
---IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\osdo_geodcat_*.csv ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--VALIDATE UPDATE  ^
 --IN_CSV_ETALON_FILE %etalon_dir%\geodcat.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
@@ -188,10 +192,12 @@ SET Statut=%Statut%%ERRORLEVEL%
 REM Comparer le CSV avec l'étalon pour les delete
 IF EXIST %LOG% DEL %log% 
 %fme% %ComparateurCsv% ^
---IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\osdp_delete.csv ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--VALIDATE DELETE  ^
 --IN_CSV_ETALON_FILE %etalon_dir%\osdp_delete.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
+
 
 
 REM ===========================================================================
@@ -234,7 +240,8 @@ SET Statut=%Statut%%ERRORLEVEL%
 REM Comparer le CSV avec l'étalon pour les delete
 IF EXIST %LOG% DEL %log% 
 %fme% %ComparateurCsv% ^
---IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\osdp_delete.csv ^
+--IN_CSV_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--VALIDATE DELETE  ^
 --IN_CSV_ETALON_FILE %etalon_dir%\osdp_delete.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
