@@ -96,7 +96,7 @@ IF EXIST %LOG% DEL %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
 
-pause
+
 
 
 
