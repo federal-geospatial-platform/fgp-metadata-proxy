@@ -197,7 +197,7 @@ IF EXIST %LOG% DEL %log%
 --IN_CSV_ETALON_FILE %etalon_dir%\osdp_delete.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
-
+pause
 
 
 REM ===========================================================================
