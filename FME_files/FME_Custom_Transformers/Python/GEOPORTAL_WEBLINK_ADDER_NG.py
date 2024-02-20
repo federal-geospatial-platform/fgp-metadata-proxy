@@ -92,8 +92,8 @@ class FeatureProcessor(object):
         max_index = FME_utils.max_index_attribute_list(feature, "resources{}")
         max_index += 1  # Add one ressources
 		
-        print ('Index maxiamle')
-        print (max_index)
+        #print ('Index maxiamle')
+        #print (max_index)
         
         for key, value in self.csv_features.items():
             if key == "url":
@@ -159,7 +159,7 @@ class FeatureProcessor(object):
                     
                     self.logger.logMessageString("Status code: {0};  HTTP request head:   {1}"
                                              .format(status_code, test_url), fmeobjects.FME_INFORM)
-                except requests.ConnectionError:   #Including if read timeout exceeds 30 seconds
+                except: # Peu importe l'erreur, on met un status_code = 9000
                     status_code = str(999) #random status_code so that the key-value pairs contained in the CSV in the ressources{} list is not added
             else:
                 # Do not test if the link is valid and simulate a valid request
