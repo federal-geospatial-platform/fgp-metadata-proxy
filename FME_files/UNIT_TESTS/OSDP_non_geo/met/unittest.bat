@@ -30,6 +30,8 @@ SET fmw=FME_Workspaces\%NomApp%.fmw
 Set ComparateurBD=UNIT_TESTS\OSDP_non_geo\met\comparateur_sqllite.fmw
 SET ComparateurCsv=UNIT_TESTS\OSDP_non_geo\met\comparateur_csv.fmw
 SET ComparateurXlsx=UNIT_TESTS\OSDP_non_geo\met\comparateur_xlsx.fmw
+SET CreerErreurCKAN=UNIT_TESTS\OSDP_non_geo\met\creer_erreur_ckan.fmw
+
 set metdir=UNIT_TESTS\OSDP_non_geo\met
 
 
@@ -197,7 +199,7 @@ IF EXIST %LOG% DEL %log%
 --IN_CSV_ETALON_FILE %etalon_dir%\osdp_delete.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
-pause
+
 
 
 REM ===========================================================================
@@ -280,6 +282,123 @@ IF EXIST %LOG% DEL %log%
 %fme% %ComparateurXlsx% ^
 --IN_XLSX_RES_FILE %working_dir%\PT_Harvester\OSDP_geoDCAT\xls\*.xlsx ^
 --IN_XLSX_ETALON_FILE %etalon_dir%\*.xlsx ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+
+REM ===========================================================================
+REM ===========================================================================
+REM ====================      TEST #6     =====================================
+REM Retrait de données en raison d'erreur CKAN.
+REM ===========================================================================
+
+
+
+SET no_test=6
+SET log=%metdir%\log_%no_test%.log
+SET working_dir=%metdir%\source%no_test%
+set etalon_dir=%metdir%\etalon%no_test%
+
+REM Copie du template de db
+COPY /Y %metdir%\template.db  %metdir%\bd_%no_test%.db
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Création des fichier excels avec la bonne date
+IF EXIST %log% DEL %LOG%
+%fme% %CreerErreurCKAN% ^
+--IN_WORKING_DIR %working_dir% ^
+--LOG_FILE %LOG%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+
+
+REM Exécution du programme FME
+IF EXIST %log% DEL %log%
+%fme% %fmw% ^
+--PROVIDER ALL ^
+--IN_OUT_SQLLITE %metdir%\bd_%no_test%.db ^
+--LOG_FILE %log% ^
+--FME_SHAREDRESOURCE_DATA  %working_dir%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer la BD avec l'étalon
+IF EXIST %log% DEL %log%
+%fme% %ComparateurBD% ^
+--IN_SQLLITE_RES_FILE %metdir%\bd_%no_test%.db ^
+--IN_SQLLITE_ETALON_FILE %etalon_dir%\*.db ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer le CSV avec l'étalon
+IF EXIST %LOG% DEL %log% 
+%fme% %ComparateurCsv% ^
+--IN_CSV_RES_FILE  %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--VALIDATE UPDATE  ^
+--IN_CSV_ETALON_FILE %etalon_dir%\*.csv ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+
+REM ===========================================================================
+REM ===========================================================================
+REM ====================      TEST #7     =====================================
+REM Vieux fichier d'observation, aucun retrait d'entité
+REM ===========================================================================
+
+
+
+SET no_test=7
+SET log=%metdir%\log_%no_test%.log
+SET working_dir=%metdir%\source%no_test%
+set etalon_dir=%metdir%\etalon%no_test%
+
+REM Copie du template de db
+COPY /Y %metdir%\template.db  %metdir%\bd_%no_test%.db
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Création des fichier excels avec la bonne date
+IF EXIST %log% DEL %LOG%
+%fme% %CreerErreurCKAN% ^
+--IN_WORKING_DIR %working_dir% ^
+--OLD_RECORD Yes ^
+--LOG_FILE %LOG%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+
+
+REM Exécution du programme FME
+IF EXIST %log% DEL %log%
+%fme% %fmw% ^
+--PROVIDER ALL ^
+--IN_OUT_SQLLITE %metdir%\bd_%no_test%.db ^
+--LOG_FILE %log% ^
+--FME_SHAREDRESOURCE_DATA  %working_dir%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer la BD avec l'étalon
+IF EXIST %log% DEL %log%
+%fme% %ComparateurBD% ^
+--IN_SQLLITE_RES_FILE %metdir%\bd_%no_test%.db ^
+--IN_SQLLITE_ETALON_FILE %etalon_dir%\*.db ^
+--LOG_FILE %log%
+SET Statut=%Statut%%ERRORLEVEL%
+
+
+REM Comparer le CSV avec l'étalon
+IF EXIST %LOG% DEL %log% 
+%fme% %ComparateurCsv% ^
+--IN_CSV_RES_FILE  %working_dir%\PT_Harvester\OSDP_geoDCAT\csv\*.csv ^
+--VALIDATE UPDATE  ^
+--IN_CSV_ETALON_FILE %etalon_dir%\*.csv ^
 --LOG_FILE %log%
 SET Statut=%Statut%%ERRORLEVEL%
 
