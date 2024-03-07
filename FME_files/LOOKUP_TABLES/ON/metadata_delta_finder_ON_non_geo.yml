@@ -2,78 +2,194 @@ id:
     attr_name: id
     attr_ref: id
     attr_new: id
+collection:
+    attr_name: collection
+    attr_ref: collection
+    attr_new: tbs_collection
+#--------------------------FME_CONTACT_INFO (voir metadata_contact_fr dans PythonCaller_4 du JSON_PUBLISHER_NG)-----------------------------
+contact_form_en:
+    attr_name: contact_form_en
+    attr_ref: contact_information.en.contact_form
+    attr_new : org_contact.en
+#Enlevons le contact_email_en, car il est mappé avec contacts{0}.email qui est vide, on fait référence à l'url du gouv. de l'Ontario --> Contact form
+# contact_email_en:
+    # attr_name: contact_email_en 
+    # attr_ref: contact_information.en.electronic_mail_address
+    # attr_new: contacts{0}.email
+#Voir metadata_contact_fr dans PythonCaller_4 du JSON_PUBLISHER_NG --> mappé avec sector dans JSON_CONFIG_ON
+contact_org_en: 
+    attr_name: contact_org_en
+    attr_ref: contact_information.en.organization_name
+    attr_new: sector
+contact_form_fr:
+    attr_name: contact_form_fr
+    attr_ref: contact_information.fr.contact_form
+    attr_new: org_contact.fr
+#Enlevons le contact_email_fr, car il est mappé avec contacts{0}.email qui est vide, on fait référence à l'url du gouv. de l'Ontario --> Contact form
+# contact_email_fr:
+    # attr_name: contact_email_fr 
+    # attr_ref: contact_information.fr.electronic_mail_address
+    # attr_new: email
+contact_org_fr:
+    attr_name: contact_org_fr
+    attr_ref: contact_information.fr.organization_name
+    attr_new: sector
+#--------------------------------------------------------------------------------------
 
-attr_1:
-    attr_name: title
-    attr_ref: title_translated.en
-    attr_new: title
-    
-attr_2:
-    attr_name: notes
-    attr_ref: notes_translated.en
-    attr_new: notes
-    
-attr_3:
-    attr_name: date_created
-    attr_ref: source_metadata_date_created
-    attr_new: record_create_date
-
-attr_4:
+# creator: Enlevons creator, car il n'est pas mandatory
+    # attr_name: creator
+    # attr_ref: creator
+    # attr_new: sector
+date_published:
     attr_name: date_published
     attr_ref: date_published
     attr_new: record_publish_date
+frequency:
+    attr_name: frequency
+    attr_ref: frequency
+    attr_new: update_frequency
+hierarchy_level:
+    attr_name: hierarchy_level
+    attr_ref: hierarchy_level
+    attr_new: tbs_hierarchy_level
+jurisdiction: 
+    attr_name: jurisdiction
+    attr_ref: jurisdiction
+    attr_new: jurisdiction
 
-attr_5:
-    attr_name: time_coverage_start
-    attr_ref: time_period_coverage_start
-    attr_new: data_collection_start_date
-    
-attr_6:
-    attr_name: iso_topic
-    attr_ref: topic_category{}
-    attr_new: TBS_topic
-
-attr_7:
-    attr_name: subject
-    attr_ref: subject{}
-    attr_new: TBS_subject
-
-attr_8:
-    attr_name: sector
-    attr_ref: position_name.en
-    attr_new: sector
-
-attr_9:
+# Les valeurs default_keyword_en_tag et default_keyword_fr_tag sont *en* et *fr-t-en* alors on les hardcode
+keywords:
     attr_name: keywords
+    #Français
+    attr_ref: keywords.fr-t-en{}
+    attr_new: keywords.fr{}
+keywords:
+    attr_name: keywords
+    #Anglais
     attr_ref: keywords.en{}
     attr_new: tags{}.display_name
     
-attr_10:
+license_id: 
+    attr_name: license_id
+    attr_ref: license_id
+    attr_new: tbs_license_id
+    
+maintainer_contact_form_en:
+   attr_name: maintainer_contact_form_en
+   attr_ref: maintainer_contact_form.en
+   attr_new: org_contact.en
+
+maintainer_contact_form_fr:
+   attr_name: maintainer_contact_form_fr
+   attr_ref: maintainer_contact_form.fr
+   attr_new: org_contact.fr
+#Enlevons maintainer_email, car il ne semble pas utilisé, puisque mappé avec contact{0} dans json_config et on ne veut pas modifier ce fichier.
+# maintainer_email:
+   # attr_name: maintainer_email
+   # attr_ref: maintainer_email
+   # attr_new: maintainer_email
+metadata_contact_en:
+    attr_name: metadata_contact_en
+    attr_ref: metadata_contact.en
+    attr_new: sector
+metadata_contact_fr:
+    attr_name: metadata_contact_fr
+    attr_ref: metadata_contact.fr
+    attr_new: sector
+notes:
+    attr_name: notes
+    #Anglais
+    attr_ref: notes_translated.en
+    attr_new: notes
+#Enlevons notes_fr car c'est une traduction
+# notes:
+    # attr_name: notes_fr
+    # #Français
+    # attr_ref: notes_translated.fr
+    # attr_new: notes_fr
+
+org_title_at_publication:
+    attr_name: org_title_at_publication
+    attr_ref: org_title_at_publication.en #On hardcode l'élément de la liste en
+    attr_new: p-t_entity
+org_title_at_publication:
+    attr_name: org_title_at_publication
+    attr_ref: org_title_at_publication.fr #On hardcode l'élément de la liste fr
+    attr_new: p-t_entity_fr
+
+owner_org:
+    attr_name: owner_org
+    attr_ref : owner_org
+    attr_new: tbs_owner_org_id
+
+#Enlevons position_name car il n'est pas obligatoire dans OpenCanada
+# position_name:
+    # attr_name: position_name
+    # attr_ref: position_name.en
+    # attr_new: sector
+# position_name:
+    # attr_name: position_name
+    # attr_ref: position_name.fr
+    # attr_new: sector
+    
+resource_format:
+    attr_name: resource_format
+    attr_ref: resources{}.format
+    attr_new: resources{}.format
+resource_language:
+    attr_name: resource_language
+    attr_ref: resources{}.language
+    attr_new: resources{}.language_list{}
+
+resource_name:
+    attr_name: resource_name_en
+    #Anglais
+    attr_ref: resources{}.name_translated.en #On hardcode l'élément de la liste en
+    attr_new: resources{}.name
+#On enlève resource name fr car il est traduit
+# resource_name:
+    # attr_name: resource_name
+    # #Français
+    # attr_ref: resources{}.name_translated.fr-t-en #On hardcode l'élément de la liste fr-t-en
+    # attr_new: resources{}.name_fr
+
+resource_type:
+    attr_name: resource_type
+    attr_ref: resources{}.resource_type
+    attr_new: resources{}.format_resourceType_en
+resource_url:
+    attr_name: resource_url
+    attr_ref: resources{}.url
+    attr_new: resources{}.url
+subject:
+    attr_name: subject
+    attr_ref: subject{}
+    attr_new: TBS_Subject{}.value
+time_coverage_start:
+    attr_name: time_coverage_start
+    attr_ref: time_period_coverage_start
+    attr_new: data_collection_start_date
+time_coverage_end:
+    attr_name: time_coverage_end
+    attr_ref: time_period_coverage_end
+    attr_new: data_collection_end_date
+
+title:
+    attr_name: title
+    #Anglais
+    attr_ref: title_translated.en
+    attr_new: title
+# title: On ne veut pas faire de comparaison sur la traduction du titre
+    # attr_name: title
+    # #Français
+    # attr_ref: title_translated.fr
+    # attr_new: title_fr
+    
+topic_category:
+    attr_name: topic_category
+    attr_ref: topic_category{}
+    attr_new: TBS_Topic{}.value
+update_cycle:
     attr_name: update_cycle
     attr_ref: frequency
     attr_new: update_frequency
-
-attr_11:
-    attr_name: transfer_option_url
-    attr_ref: resources{}.url
-    attr_new: resources{}.url
-
-attr_12:
-    attr_name: transfer_option_name
-    attr_ref: resources{}.name_translated.en
-    attr_new: resources{}.name
-
-attr_13:
-    attr_name: transfer_option_resource_type
-    attr_ref: resources{}.resource_type
-    attr_new: resources{}.format_resourceType_en
-
-attr_14:
-    attr_name: transfer_option_format
-    attr_ref: resources{}.format
-    attr_new: resources{}.format
-        
-attr_15:
-    attr_name: transfer_option_language
-    attr_ref: resources{}.language_ref
-    attr_new: resources{}.language_list
