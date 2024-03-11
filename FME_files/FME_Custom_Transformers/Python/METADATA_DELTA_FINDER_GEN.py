@@ -43,6 +43,7 @@ class FeatureProcessor(object):
         
         #Parcourir le yaml pour créer les hash
         for keys in self.mapping.keys():
+         try: 
             
             #Extraction du nom générique de l'attribut servant à décrire ce qu'on comparre 
             nom_eva=self.mapping[keys]['attr_name']
@@ -171,7 +172,9 @@ class FeatureProcessor(object):
             feature_dict_hash[nom_eva]=value_hash
             #Dictionnaire de valeur brute
             feature_dict_value[nom_eva]=value
-            
+         except:
+             feature.setAttribute('error',r"Erreur de création de la clé.L'attribut %s du yaml est en erreur. L'erreur est survenue sur l'entité %s" %(nom_eva,str(feature.getAttribute('id'))))
+             self.pyoutput(feature) 
         #Transfère en attribut des dictionnaires (hash et brute) sur la feature pour utilisation dans le close
         feature.setAttribute('feature_dict_hash',str(feature_dict_hash))
         feature.setAttribute('feature_dict_value',str(feature_dict_value))
