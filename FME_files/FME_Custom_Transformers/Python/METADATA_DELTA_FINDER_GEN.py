@@ -164,7 +164,7 @@ class FeatureProcessor(object):
             
             
             #Création d'une Hashing key à partir de la valeur extraite            
-            value_hash=hashlib.sha256(value.encode('utf-8')).hexdigest()
+            value_hash=hashlib.sha256(str(value).encode('utf-8')).hexdigest()
             
                 
             #Stockage de la valeur brute et de la clé de hashage pour attribut comparé dans les dictionnaires respectifs
