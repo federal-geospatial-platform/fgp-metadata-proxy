@@ -83,6 +83,7 @@ def processFeature(feature):
                 val=val.replace('\t',' ') # Tab character
                 val=val.replace('{','(')
                 val=val.replace('}',')')
+                val=val.replace('&amp;','&')
                 
                 # Strip front and trailing white spaces
                 val=val.lstrip(' ')
