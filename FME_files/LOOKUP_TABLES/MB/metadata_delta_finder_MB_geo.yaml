@@ -1,0 +1,243 @@
+# Attribut id obligatoire pour le CT
+id:
+    attr_name: id
+    attr_ref: MD_Metadata.fileIdentifier.CharacterString
+    attr_new: id
+
+# Attributs contenus directement dans la section MD_Metadata
+title:
+    attr_name: title
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.title.CharacterString
+    attr_new: title
+
+date_created: #Comme défini dans la doc du CT, le code trie les données pour avoir la liste dans le bon ordre. Toujours index 0 pour la date de création
+    attr_name: date_created
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{0}.CI_Date.date.Date
+    attr_new: record_create_date
+date_published: # Comme défini dans la doc du CT, le code trie les données pour avoir la liste dans le bon ordre. Toujours index 1 pour la date de publication
+    attr_name: date_published
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.date{1}.CI_Date.date.Date
+    attr_new: record_publish_date
+
+notes: #Cet attribut peut être français ou anglais. En fonction de la province , il faut choisir le bon. Pour NB, on va peut-être vouloir vérifier les 2
+    attr_name: notes
+    #Anglais
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.abstract.CharacterString
+    attr_new: notes
+status_progress_code: 
+    attr_name: status_progress_code
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.status.MD_ProgressCode.codeListValue
+    attr_new: progress_code_code
+status_progress_label: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: status_progress_label
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.status.MD_ProgressCode
+    attr_new: progress_code|progress_code_fr
+    separator: "; "
+    
+Thumbnail:
+    attr_name: Thumbnail
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.graphicOverview.MD_BrowseGraphic.fileName.CharacterString
+    attr_new: graphic_link
+
+licence_en:
+    attr_name: licence_en
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.resourceConstraints.MD_LegalConstraints.useLimitation.CharacterString
+    attr_new: p-t_license
+licence_fr:
+    attr_name: licence_fr
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.resourceConstraints.MD_LegalConstraints.useLimitation.PT_FreeText.textGroup.LocalisedCharacterString
+    attr_new: p-t_license_fr
+
+spatial_representation_code:
+    attr_name: spatial_representation_code
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.spatialRepresentationType.MD_SpatialRepresentationTypeCode.codeListValue
+    attr_new: spatial_representation_type_code
+spatial_representation_label: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs 
+    attr_name: spatial_representation_label
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.spatialRepresentationType.MD_SpatialRepresentationTypeCode
+    attr_new: spatial_representation_type|spatial_representation_type_fr
+    separator: "; "
+    
+data_collection_start_date:
+    attr_name: data_collection_start_date
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{0}.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.beginPosition
+    attr_new: data_collection_start_date
+data_collection_end_date: #Comme défini dans la doc du CT, le code trie les données pour avoir la liste dans le bon ordre. Toujours index 0 pour l'étendu temporel
+    attr_name: data_collection_end_date
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{0}.EX_Extent.temporalElement.EX_TemporalExtent.extent.TimePeriod.endPosition
+    attr_new: data_collection_end_date
+
+east_bound_longitude:
+    attr_name: east_bound_longitude
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{1}.EX_Extent.geographicElement.EX_GeographicBoundingBox.eastBoundLongitude.Decimal
+    attr_new: east_bound_longitude
+north_bound_latitude:
+    attr_name: north_bound_latitude
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{1}.EX_Extent.geographicElement.EX_GeographicBoundingBox.northBoundLatitude.Decimal
+    attr_new: north_bound_latitude
+west_bound_longitude:
+    attr_name: west_bound_longitude
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{1}.EX_Extent.geographicElement.EX_GeographicBoundingBox.westBoundLongitude.Decimal
+    attr_new: west_bound_longitude
+south_bound_latitude:
+    attr_name: south_bound_latitude
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.extent{1}.EX_Extent.geographicElement.EX_GeographicBoundingBox.southBoundLatitude.Decimal
+    attr_new: south_bound_latitude
+
+contact_role_code:
+    attr_name: contact_role_code
+    attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue
+    attr_new: contacts{}.role_code
+contact_role_label: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_role_label
+    attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.role.CI_RoleCode
+    attr_new: contacts{}.role|contacts{}.role_fr
+    separator: "; "
+contact_org_en: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_org_en
+    attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.organisationName.CharacterString
+    attr_new: contacts{}.p-t_entity|contacts{}.p-t_entity|contacts{}.sector
+    separator: "; "
+contact_org_fr: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_org_fr
+    attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.organisationName.PT_FreeText.textGroup.LocalisedCharacterString
+    attr_new: contacts{}.p-t_entity_fr|contacts{}.p-t_entity_fr|contacts{}.sector
+    separator: "; "
+contact_email:
+    attr_name: contact_email
+    attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.contactInfo.CI_Contact.address.CI_Address.electronicMailAddress.CharacterString
+    attr_new: contacts{}.email
+
+# Attributs contenus dans le sous-gabarit GMD_REFERENCESYSTEMINFO
+projection_name:
+    attr_name: projection_name
+    attr_ref: MD_Metadata.referenceSystemInfo{}.MD_ReferenceSystem.referenceSystemIdentifier.RS_Identifier.code.CharacterString
+    attr_new: spatialref{}.projection_name
+projection_system: 
+    attr_name: projection_system
+    attr_ref: MD_Metadata.referenceSystemInfo{}.MD_ReferenceSystem.referenceSystemIdentifier.RS_Identifier.codeSpace.CharacterString
+    attr_new: spatialref{}.projection_system
+projection_version:
+    attr_name: projection_version
+    attr_ref: MD_Metadata.referenceSystemInfo{}.MD_ReferenceSystem.referenceSystemIdentifier.RS_Identifier.version.CharacterString
+    attr_new: spatialref{}.projection_system_version
+
+# Attributs dans le sous-gabarit GMD_CITEDRESPONSIBLEPARTY
+contact_role_code_DataIdentification:
+    attr_name: contact_role_code_DataIdentification
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty{}.CI_ResponsibleParty.role.CI_RoleCode.codeListValue
+    attr_new: contacts{}.role_code
+contact_role_label_DataIdentification: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_role_label_DataIdentification
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty{}.CI_ResponsibleParty.role.CI_RoleCode
+    attr_new: contacts{}.role|contacts{}.role_fr
+    separator: "; "
+contact_org_en_DataIdentification: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_org_en_DataIdentification
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty{}.CI_ResponsibleParty.organisationName.CharacterString
+    attr_new: contacts{}.p-t_entity|contacts{}.p-t_entity|contacts{}.sector
+    separator: "; "
+contact_org_fr_DataIdentification: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_org_fr_DataIdentification
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty{}.CI_ResponsibleParty.organisationName.PT_FreeText.textGroup.LocalisedCharacterString
+    attr_new: contacts{}.p-t_entity_fr|contacts{}.p-t_entity_fr|contacts{}.sector
+    separator: "; "
+contact_email_DataIdentification:
+    attr_name: contact_email_DataIdentification
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.citation.CI_Citation.citedResponsibleParty{}.CI_ResponsibleParty.contactInfo.CI_Contact.address.CI_Address.electronicMailAddress.CharacterString
+    attr_new: contacts{}.email
+
+# Attributs contenus dans le sous-gabarit GMD_RESOURCEMAINTENANCE
+resource_maintenance_code: #update_frequency, update_frequency_fr et update_frequency_code ne sont pas des listes dans Config_NL.csv alors on laisse comme attribut simple
+    attr_name: resource_maintenance_code
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.resourceMaintenance{}.MD_MaintenanceInformation.maintenanceAndUpdateFrequency.MD_MaintenanceFrequencyCode.codeListValue
+    attr_new: update_frequency_code
+resource_maintenance_label: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: resource_maintenance_code
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.resourceMaintenance{}.MD_MaintenanceInformation.maintenanceAndUpdateFrequency.MD_MaintenanceFrequencyCode
+    attr_new: update_frequency|update_frequency_fr
+    separator: "; "
+
+# Attributs contenus dans le sous-gabarit GMD_KEYWORDS
+keyword_freetext: #Cet attribut peut français ou anglais. En fonction de la province , il faut choisir le bon. Pour NB, on va peut-être vouloir vérifier les 2
+#Comme défini dans la doc du CT, le code trie les données pour avoir la liste dans le bon ordre. Toujours index 0 pour les keywords freetext
+    attr_name: keyword_freetext
+    #Anglais
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.descriptiveKeywords{0}.MD_Keywords.keyword{}.CharacterString
+    attr_new: tags{}.value
+
+#Attributs contenus dans le sous-gabarit GMD_TOPICCATEGORY
+iso_topic:
+    attr_name: iso_topic
+    attr_ref: MD_Metadata.identificationInfo.MD_DataIdentification.topicCategory{}.MD_TopicCategoryCode
+    attr_new: iso_topic{}.topic_value
+
+#Attributs contenus dans le sous-gabarit GMD_DISTRIBUTIONFORMAT
+distribution_format:
+    attr_name: distribution_format
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.distributionFormat{}.MD_Format.name.CharacterString
+    attr_new: distributionList{}.format
+distribution_format_version:
+    attr_name: distribution_format_version
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.distributionFormat{}.MD_Format.version.CharacterString
+    attr_new: distributionList{}.format_version
+
+#Attributs contenus dans GMD_DISTRIBUTOR
+contact_role_code_distributor:
+    attr_name: contact_role_code_distributor
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.distributor{}.MD_Distributor.distributorContact.CI_ResponsibleParty.role.CI_RoleCode.codeListValue
+    attr_new: contacts{}.role_code
+
+contact_role_label_distributor: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_role_label_distributor
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.distributor{}.MD_Distributor.distributorContact.CI_ResponsibleParty.role.CI_RoleCode
+    attr_new: contacts{}.role|contacts{}.role_fr
+    separator: "; "
+contact_org_en_distributor: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_org_en_distributor
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.distributor{}.MD_Distributor.distributorContact.CI_ResponsibleParty.organisationName.CharacterString
+    attr_new: contacts{}.p-t_entity|contacts{}.p-t_entity|contacts{}.sector
+    separator: "; "
+contact_org_fr_distributor: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
+    attr_name: contact_org_fr_distributor
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.distributor{}.MD_Distributor.distributorContact.CI_ResponsibleParty.organisationName.PT_FreeText.textGroup.LocalisedCharacterString
+    attr_new: contacts{}.p-t_entity_fr|contacts{}.p-t_entity_fr|contacts{}.sector
+    separator: "; "
+contact_email_distributor:
+    attr_name: contact_email_distributor
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.distributor{}.MD_Distributor.distributorContact.CI_ResponsibleParty.contactInfo.CI_Contact.address.CI_Address.electronicMailAddress.CharacterString
+    attr_new: contacts{}.email
+
+#Attributs contenus dans le sous-gabarit GMD_TRANSFEROPTIONS
+transfer_option_url:
+    attr_name: transfer_option_url
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.linkage.URL
+    attr_new:  resources{}.url
+
+transfer_option_xlink_role:
+    attr_name : transfer_option_xlink_role
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.role
+    attr_new: resources{}.xlink_role
+
+transfer_option_name: #Cet attribut peut français ou anglais. En fonction de la province , il faut choisir le bon. Pour NB, on va peut-être vouloir vérifier les 2
+    attr_name: transfer_option_name
+    #Anglais
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.name.CharacterString
+    attr_new:  resources{}.name
+
+transfer_option_protocols:
+    attr_name: transfer_option_protocols
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.protocol.CharacterString
+    attr_new: resources{}.protocol
+
+transfer_option_description_en:
+    attr_name: transfer_option_description_en
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.description.CharacterString
+    attr_new: resources{}.format_resourceType_en|resources{}.format|resources{}.language
+    separator: ;
+
+transfer_option_description_fr:
+    attr_name: transfer_option_description_fr
+    attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.description.PT_FreeText.textGroup.LocalisedCharacterString
+    attr_new: resources{}.format_resourceType_fr|resources{}.format|resources{}.language
+    separator: ;
