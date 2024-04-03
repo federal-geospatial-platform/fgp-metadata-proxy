@@ -1,0 +1,188 @@
+id:
+    attr_name: id
+    attr_ref: id
+    attr_new: id
+collection:
+    attr_name: collection
+    attr_ref: collection
+    attr_new: tbs_collection
+#--------------------------FME_CONTACT_INFO (voir metadata_contact_fr dans PythonCaller_4 du JSON_PUBLISHER_NG)-----------------------------
+# contact_form_en: #Enlevons contact_form_en car bien que mappé dans le JSON_CONFIG_QC.json, il ne réfère à rien
+    # attr_name: contact_form_en
+    # attr_ref: contact_information.en.contact_form
+    # attr_new : org_contact.en
+contact_email_en:
+    attr_name: contact_email_en 
+    attr_ref: contact_information.en.electronic_mail_address
+    attr_new: contacts{0}.email
+#Voir metadata_contact_fr dans PythonCaller_4 du JSON_PUBLISHER_NG --> mappé avec sector dans JSON_CONFIG_ON
+contact_org_en: 
+    attr_name: contact_org_en
+    attr_ref: contact_information.en.organization_name
+    attr_new: sector
+# contact_form_fr: #Enlevons contact_form_en car bien que mappé dans le JSON_CONFIG_QC.json, il ne réfère à rien
+    # attr_name: contact_form_fr
+    # attr_ref: contact_information.fr.contact_form
+    # attr_new: org_contact.fr
+contact_email_fr:
+    attr_name: contact_email_fr 
+    attr_ref: contact_information.fr.electronic_mail_address
+    attr_new: contacts{0}.email
+contact_org_fr:
+    attr_name: contact_org_fr
+    attr_ref: contact_information.fr.organization_name
+    attr_new: sector
+#--------------------------------------------------------------------------------------
+
+# creator: Enlevons creator, car il n'est pas mandatory
+    # attr_name: creator
+    # attr_ref: creator
+    # attr_new: sector
+date_published:
+    attr_name: date_published
+    attr_ref: date_published
+    attr_new: record_publish_date
+frequency:
+    attr_name: frequency
+    attr_ref: frequency
+    attr_new: update_frequency
+hierarchy_level:
+    attr_name: hierarchy_level
+    attr_ref: hierarchy_level
+    attr_new: tbs_hierarchy_level
+jurisdiction: 
+    attr_name: jurisdiction
+    attr_ref: jurisdiction
+    attr_new: jurisdiction
+
+keywords:
+    attr_name: keywords
+    #Anglais
+    #attr_ref: keywords.en{}
+    #Français
+    attr_ref: keywords.fr{}
+    attr_new: tags{}.display_name
+    
+license_id: 
+    attr_name: license_id
+    attr_ref: license_id
+    attr_new: tbs_license_id
+
+#Enlevons maintainer_contact_form, car ne semble pas utilisé   
+# maintainer_contact_form_en:
+   # attr_name: maintainer_contact_form_en
+   # attr_ref: maintainer_contact_form.en
+   # attr_new: org_contact.en
+# maintainer_contact_form_fr:
+   # attr_name: maintainer_contact_form_fr
+   # attr_ref: maintainer_contact_form.fr
+   # attr_new: org_contact.fr
+   
+#Enlevons maintainer_email, car il ne semble pas utilisé
+# maintainer_email:
+   # attr_name: maintainer_email
+   # attr_ref: maintainer_email
+   # attr_new: maintainer_email
+metadata_contact_en:
+    attr_name: metadata_contact_en
+    attr_ref: metadata_contact.en
+    attr_new: sector
+metadata_contact_fr:
+    attr_name: metadata_contact_fr
+    attr_ref: metadata_contact.fr
+    attr_new: sector
+# notes:
+    # attr_name: notes
+    # #Anglais
+    # attr_ref: notes_translated.en
+    # attr_new: notes
+notes: #Pour Qc, on veut comparer le titre en français, langue première
+    attr_name: notes
+    #Français
+    attr_ref: notes_translated.fr
+    attr_new: notes
+
+org_title_at_publication:
+    attr_name: org_title_at_publication
+    attr_ref: org_title_at_publication.en #On hardcode l'élément de la liste en
+    attr_new: p-t_entity_en
+org_title_at_publication:
+    attr_name: org_title_at_publication
+    attr_ref: org_title_at_publication.fr #On hardcode l'élément de la liste fr
+    attr_new: p-t_entity_fr
+
+owner_org:
+    attr_name: owner_org
+    attr_ref : owner_org
+    attr_new: tbs_owner_org_id
+
+#Enlevons position_name car il n'est pas obligatoire dans OpenCanada
+# position_name:
+    # attr_name: position_name
+    # attr_ref: position_name.en
+    # attr_new: sector
+# position_name:
+    # attr_name: position_name
+    # attr_ref: position_name.fr
+    # attr_new: sector
+    
+resource_format:
+    attr_name: resource_format
+    attr_ref: resources{}.format
+    attr_new: resources{}.format
+# resource_language: enlevons cet attribut puisqu'il est hardcodé dans le RESOURCES_TEMPLATE_NG et associé à resource_language,tbs_resource_lang,RESOURCES qui est la valeur unique: ["en"]
+#non répétable pour pour le nombre de resources
+# resource_language:
+    # attr_name: resource_language
+    # attr_ref: resources{}.language
+    # attr_new: tbs_resource_lang
+
+resource_name: #Pour Qc, on veut comparer le titre en français, langue première
+    attr_name: resource_name
+    # #Anglais
+    # attr_ref: resources{}.name_translated.en #On hardcode l'élément de la liste en
+    # attr_new: resources{}.name
+    #Français
+    attr_ref: resources{}.name_translated.fr
+    attr_new: resources{}.name
+
+resource_type:
+    attr_name: resource_type
+    attr_ref: resources{}.resource_type
+    attr_new: resources{}.format_resourceType_en
+resource_url:
+    attr_name: resource_url
+    attr_ref: resources{}.url
+    attr_new: resources{}.url
+subject:
+    attr_name: subject
+    attr_ref: subject{}
+    attr_new: subjects{}.name
+time_coverage_start:
+    attr_name: time_coverage_start
+    attr_ref: time_period_coverage_start
+    attr_new: data_collection_start_date
+time_coverage_end:
+    attr_name: time_coverage_end
+    attr_ref: time_period_coverage_end
+    attr_new: data_collection_end_date
+
+# title:
+    # attr_name: title
+    #Anglais
+    # attr_ref: title_translated.en
+    # attr_new: title
+title: #Pour Qc, on veut comparer le titre en français, langue première
+    attr_name: title
+    #Français
+    attr_ref: title_translated.fr
+    attr_new: title
+    
+topic_category:
+    attr_name: topic_category
+    attr_ref: topic_category{}
+    attr_new: topics{}.name
+update_cycle:
+    attr_name: update_cycle
+    attr_ref: frequency
+    attr_new: update_frequency
