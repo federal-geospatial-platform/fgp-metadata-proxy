@@ -111,11 +111,11 @@ class collection_end_start_date_extractor(object):
                     
                     # 1.b De type 2000/01
                     elif re.match('^[1-2][0-9][0-9][0-9]/[0-1][0-9]$',date_extent):
-                        start_date=date_extent	
+                        start_date=date_extent.replace(r'/','-')	
                     
                     # 1.c De type 2000/01/06
                     elif re.match('^[1-2][0-9][0-9][0-9]/[0-1][0-9]/[0-1][0-9]$',date_extent):
-                        start_date=date_extent	
+                        start_date=date_extent.replace(r'/','-')	
                     
                     # 2. De type 1999-2000
                     elif re.match('^[1-2][0-9][0-9][0-9]-[1-2][0-9][0-9][0-9]$',date_extent):
