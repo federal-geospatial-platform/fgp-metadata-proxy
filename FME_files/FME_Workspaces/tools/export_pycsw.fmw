@@ -5,7 +5,7 @@
 #              --OUT_XML_DIR ""
 #              --PYCSW_URL ""
 #              --PROVIDER ""
-#              --IN_LOOKUPTABLE_DIR ""
+#              --IN_LOOKUPTABLE_DIR "/PT_Harvester/LOOKUP_TABLES"
 #    
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BEGIN_PYTHON=""
@@ -20,8 +20,8 @@
 #!   END_TCL=""
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20787"
-#!   FME_DOCUMENT_GUID="ec7b84ee-b093-49fe-92be-7c57afd2244e"
-#!   FME_DOCUMENT_PRIORGUID="44a2eff0-12e6-41b5-ac76-84315567d110,89ac0ec7-f5b8-45a5-8d77-e2d10d39ebac,3a61be7a-ac00-410e-85d5-7e51d27d9a52"
+#!   FME_DOCUMENT_GUID="d1ed63fb-5abd-462f-bcbf-9ffcfaedd266"
+#!   FME_DOCUMENT_PRIORGUID="44a2eff0-12e6-41b5-ac76-84315567d110,89ac0ec7-f5b8-45a5-8d77-e2d10d39ebac,3a61be7a-ac00-410e-85d5-7e51d27d9a52,ec7b84ee-b093-49fe-92be-7c57afd2244e,0a066a2d-cd08-4bc8-92bf-94069b8f51a8"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_REPROJECTION_ENGINE="FME"
@@ -30,7 +30,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
-#!   LAST_SAVE_DATE="2024-03-26T11:50:27"
+#!   LAST_SAVE_DATE="2024-04-04T13:11:15"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -49,7 +49,7 @@
 #!   TITLE=""
 #!   USAGE=""
 #!   USE_MARKDOWN=""
-#!   VIEW_POSITION="-2435.81 0"
+#!   VIEW_POSITION="-2435.81 1095.9"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   ZOOM_SCALE="73"
@@ -68,7 +68,7 @@
 #!   WRITE_DEFS="false"
 #!   DEFLINE_TEMPLATE=""
 #!   DEFLINE_ATTRS="true"
-#!   EXPOSABLE_ATTRS="fme_secondary_axis number(31,15) text_line_eol char(10) fme_basename char(50) fme_text_string char(50) fme_text_size number(31,15) fme_fill_color char(50) fme_type char(50) fme_sweep_angle number(31,15) fme_dataset char(50) fme_feature_type char(50) fme_color char(50) fme_geometry char(50) fme_start_angle number(31,15) fme_primary_axis number(31,15) fme_rotation number(31,15)"
+#!   EXPOSABLE_ATTRS="fme_start_angle number(31,15) fme_type char(50) fme_geometry char(50) fme_fill_color char(50) text_line_eol char(10) fme_text_string char(50) fme_primary_axis number(31,15) fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_feature_type char(50) fme_secondary_axis number(31,15) fme_text_size number(31,15) fme_rotation number(31,15) fme_sweep_angle number(31,15)"
 #!   DEFLINE_PARMS=""
 #!   ATTR_INDEX_TYPES=""
 #!   ATTR_NAME_INVALID_CHARS=""
@@ -383,7 +383,7 @@
 #! </FMESERVER>
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
-#!   GUI_LINE="GUI OPTIONAL DIRNAME_SRC OUT_XML_DIR OUT_XML_DIR:"
+#!   GUI_LINE="GUI DIRNAME_SRC OUT_XML_DIR OUT_XML_DIR:"
 #!   DEFAULT_VALUE=""
 #!   IS_STAND_ALONE="false"
 #! />
@@ -398,8 +398,8 @@
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
-#!   GUI_LINE="GUI OPTIONAL DIRNAME_SRC_OR_ATTR IN_LOOKUPTABLE_DIR IN_LOOKUPTABLE_DIR:"
-#!   DEFAULT_VALUE=""
+#!   GUI_LINE="GUI DIRNAME_SRC_OR_ATTR IN_LOOKUPTABLE_DIR IN_LOOKUPTABLE_DIR:"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)/PT_Harvester/LOOKUP_TABLES"
 #!   IS_STAND_ALONE="true"
 #! />
 #! </GLOBAL_PARAMETERS>
@@ -597,6 +597,7 @@
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_csw_constraint_language" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_csw_list_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_csw_output_schema" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_csw_typenames" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -604,11 +605,10 @@
 #!     <XFORM_ATTR ATTR_NAME="root_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_type_requete" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_csw_constraint" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="default_key" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_csw_constraint_language" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="default_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_status_code_description" IS_USER_CREATED="false" FEAT_INDEX="0" />
@@ -1173,15 +1173,17 @@
 FME_PYTHON_VERSION 37
 GUI IGNORE DestDataset_TEXTLINE_1,TEXTLINE_OUT_FME_GROUP_NAMED1_TEXTLINE_1,TEXTLINE_OUT_OVERWRITE_FILE_TEXTLINE_1,TEXTLINE_OUT_FME_GROUP_NAMED2_TEXTLINE_1,TEXTLINE_OUT_END_OF_LINE_TEXTLINE_1,TEXTLINE_OUT_WRITE_LAST_EOL_TEXTLINE_1,TEXTLINE_OUT_ENCODING_TEXTLINE_1,TEXTLINE_OUT_WRITE_UTF8_BOM_TEXTLINE_1,TEXTLINE_OUT_FME_GROUP_NAMED3_TEXTLINE_1,TEXTLINE_OUT_MIME_TYPE_TEXTLINE_1
 DEFAULT_MACRO OUT_XML_DIR 
-GUI OPTIONAL DIRNAME_SRC OUT_XML_DIR OUT_XML_DIR:
+GUI DIRNAME_SRC OUT_XML_DIR OUT_XML_DIR:
 DEFAULT_MACRO PYCSW_URL 
 GUI TEXT_EDIT_OR_NUM_MULTI_FEATURE PYCSW_URL MAX%MAX PYCSW_URL:
 DEFAULT_MACRO PROVIDER 
 GUI CHOICE PROVIDER ALL%BC%AB%SK%MB%ON%QC%NB%NS%PEI%NL%YT%NT PROVIDER:
-DEFAULT_MACRO IN_LOOKUPTABLE_DIR 
-GUI OPTIONAL DIRNAME_SRC IN_LOOKUPTABLE_DIR IN_LOOKUPTABLE_DIR:
+DEFAULT_MACRO IN_LOOKUPTABLE_DIR $(FME_SHAREDRESOURCE_DATA)/PT_Harvester/LOOKUP_TABLES
+GUI DIRNAME_SRC IN_LOOKUPTABLE_DIR IN_LOOKUPTABLE_DIR:
+INCLUDE [ if {{$(OUT_XML_DIR)} == {}} { puts_real {Parameter 'OUT_XML_DIR' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(PYCSW_URL)} == {}} { puts_real {Parameter 'PYCSW_URL' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(PROVIDER)} == {}} { puts_real {Parameter 'PROVIDER' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(IN_LOOKUPTABLE_DIR)} == {}} { puts_real {Parameter 'IN_LOOKUPTABLE_DIR' must be given a value.}; exit 1; }; ]
 #! START_HEADER
 #! START_WB_HEADER
 READER_TYPE MULTI_READER
@@ -1343,8 +1345,8 @@ FACTORY_DEF * TeeFactory FACTORY_NAME XMLFlattener_<Rejected> INPUT FEATURE_TYPE
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeExposer    INPUT  FEATURE_TYPE XMLFlattener_OUTPUT    OUTPUT FEATURE_TYPE AttributeExposer_OUTPUT
 # -------------------------------------------------------------------------
-Tcl2 proc AttributeSplitter_4f05aa90_21e1_4314_9b51_edcf9a759cc64_doSplit {} {    set splitDelimiter [FME_DecodeTextOrAttr {<lt>gmd:fileIdentifier<gt>}];    if { [regexp {^([1-9][0-9]*s)+$} $splitDelimiter] }    {       set splitWidths [split [regsub -all {s$} $splitDelimiter {}] s];       set source [FME_GetAttribute [FME_DecodeText {xml_fragment}]];       set attrNum 0;       set listName [FME_DecodeText {_list}];       set attrPos 0;       set keepEmptyParts [string equal {No} {No}];       foreach width $splitWidths       {          set endPos [expr $attrPos + $width - 1];          set bit [string range $source $attrPos $endPos];          set part [string trim $bit];          if { $keepEmptyParts || $part != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $part;             incr attrNum;          };          incr attrPos $width;       };    }    else    {       set delimLength [string length $splitDelimiter];       set source [FME_GetAttribute [FME_DecodeText {xml_fragment}]];       set keepEmptyParts [string equal {No} {No}];       set bits {};       set startIndex 0;       set nextIndex [string first $splitDelimiter $source $startIndex];       while {$nextIndex >= 0} {          lappend bits [string range $source $startIndex [expr $nextIndex-1]];          set startIndex [expr $nextIndex + $delimLength];          set nextIndex [string first $splitDelimiter $source $startIndex];       };       lappend bits [string range $source $startIndex end];       set listName [FME_DecodeText {_list}];       set attrNum 0;       foreach bit $bits       {          set trimmedPart [string trim $bit];          if { $keepEmptyParts || $trimmedPart != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $trimmedPart;             incr attrNum;          };       }    } }
-FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeSplitter    INPUT  FEATURE_TYPE AttributeExposer_OUTPUT    OUTPUT FEATURE_TYPE AttributeSplitter_OUTPUT         @Tcl2(AttributeSplitter_4f05aa90_21e1_4314_9b51_edcf9a759cc64_doSplit)
+Tcl2 proc AttributeSplitter_dccd96ed_573f_4a3e_8288_832c9752a65f0_doSplit {} {    set splitDelimiter [FME_DecodeTextOrAttr {<lt>gmd:fileIdentifier<gt>}];    if { [regexp {^([1-9][0-9]*s)+$} $splitDelimiter] }    {       set splitWidths [split [regsub -all {s$} $splitDelimiter {}] s];       set source [FME_GetAttribute [FME_DecodeText {xml_fragment}]];       set attrNum 0;       set listName [FME_DecodeText {_list}];       set attrPos 0;       set keepEmptyParts [string equal {No} {No}];       foreach width $splitWidths       {          set endPos [expr $attrPos + $width - 1];          set bit [string range $source $attrPos $endPos];          set part [string trim $bit];          if { $keepEmptyParts || $part != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $part;             incr attrNum;          };          incr attrPos $width;       };    }    else    {       set delimLength [string length $splitDelimiter];       set source [FME_GetAttribute [FME_DecodeText {xml_fragment}]];       set keepEmptyParts [string equal {No} {No}];       set bits {};       set startIndex 0;       set nextIndex [string first $splitDelimiter $source $startIndex];       while {$nextIndex >= 0} {          lappend bits [string range $source $startIndex [expr $nextIndex-1]];          set startIndex [expr $nextIndex + $delimLength];          set nextIndex [string first $splitDelimiter $source $startIndex];       };       lappend bits [string range $source $startIndex end];       set listName [FME_DecodeText {_list}];       set attrNum 0;       foreach bit $bits       {          set trimmedPart [string trim $bit];          if { $keepEmptyParts || $trimmedPart != \"\" } {             FME_SetAttribute "$listName{$attrNum}" $trimmedPart;             incr attrNum;          };       }    } }
+FACTORY_DEF * TeeFactory    FACTORY_NAME AttributeSplitter    INPUT  FEATURE_TYPE AttributeExposer_OUTPUT    OUTPUT FEATURE_TYPE AttributeSplitter_OUTPUT         @Tcl2(AttributeSplitter_dccd96ed_573f_4a3e_8288_832c9752a65f0_doSplit)
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE AttributeSplitter_OUTPUT    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "text_line_data" "SET_TO" "<lt>?xml<space>version=<quote>1.0<quote><space>encoding=<quote>UTF-8<quote>?<gt><lf><lt>gmd:MD_Metadata<space>xmlns:xsi=<quote>http:<solidus><solidus>www.w3.org<solidus>2001<solidus>XMLSchema-instance<quote><space>xmlns:gml=<quote>http:<solidus><solidus>www.opengis.net<solidus>gml<solidus>3.2<quote><space>xmlns:gfc=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gfc<quote><space>xmlns:gts=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gts<quote><space>xmlns:gss=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gss<quote><space>xmlns:xlink=<quote>http:<solidus><solidus>www.w3.org<solidus>1999<solidus>xlink<quote><space>xmlns:gmx=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gmx<quote><space>xmlns:gsr=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gsr<quote><space>xmlns:gco=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gco<quote><space>xmlns:gmi=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gmi<quote><space>xmlns:srv=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>srv<quote><space>xmlns:geonet=<quote>http:<solidus><solidus>www.fao.org<solidus>geonetwork<quote><space>xmlns:gmd=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gmd<quote><space>xmlns=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gmd<quote><space>xsi:schemaLocation=<quote>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>gmd<space>http:<solidus><solidus>nap.geogratis.gc.ca<solidus>metadata<solidus>tools<solidus>schemas<solidus>metadata<solidus>can-cgsb-171.100-2009-a<solidus>gmd<solidus>gmd.xsd<space>http:<solidus><solidus>www.isotc211.org<solidus>2005<solidus>srv<space>http:<solidus><solidus>nap.geogratis.gc.ca<solidus>metadata<solidus>tools<solidus>schemas<solidus>metadata<solidus>can-cgsb-171.100-2009-a<solidus>srv<solidus>srv.xsd<space>http:<solidus><solidus>www.geconnections.org<solidus>nap<solidus>napMetadataTools<solidus>napXsd<solidus>napm<space>http:<solidus><solidus>nap.geogratis.gc.ca<solidus>metadata<solidus>tools<solidus>schemas<solidus>metadata<solidus>can-cgsb-171.100-2009-a<solidus>napm<solidus>napm.xsd<quote><gt><lf><tab><tab><tab><lt>gmd:fileIdentifier<gt><lf><tab><tab><tab><tab><at>Value<openparen>_list<opencurly>1<closecurly><closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE AttributeCreator_2_OUTPUT
 # -------------------------------------------------------------------------
