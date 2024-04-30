@@ -140,7 +140,6 @@ class FeatureProcessor(object):
                 value=feature.getAttribute(nom_att)
             
             
-            
 
             #Définition de la variable id si l'attribut validé à l'ID
             if nom_eva=='id':
@@ -154,15 +153,21 @@ class FeatureProcessor(object):
 
             #Si c'est une liste, on concatène le tout sans espaceur.
             if isinstance(value, list):
-
+                #Classement des éléments de la liste pour éviter une mauvaise comparaison
+                #des listes d'attributs qui ne seraient plus dans le même ordre lors de la comparaison
+                value.sort()
                 
                 listToStr = ''.join([str(elem) for i,elem in enumerate(value)])
                 
                 value=listToStr
-            
-                      
-            
-            
+
+            try:
+               #On essaie de mettre en float si possible, sinon on a des problèmes à comparer les coordonnées entières
+               value=float(value)
+            except:
+               pass
+
+
             #Création d'une Hashing key à partir de la valeur extraite            
             value_hash=hashlib.sha256(str(value).encode('utf-8')).hexdigest()
             
