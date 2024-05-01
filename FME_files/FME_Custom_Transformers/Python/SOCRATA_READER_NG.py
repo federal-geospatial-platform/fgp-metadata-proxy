@@ -82,7 +82,7 @@ class ManageHttpCall(object):
         url_socrata_views = self.url_socrata + "/api/views"
     
         # Get the header of the web service
-        response = FME_utils.make_http_call(self, feature, session, url_socrata_views)
+        response = FME_utils.make_http_call(self, feature, session, url_socrata_views,timeout=30)
    
         # Extarct information
         json_response = response.json()
