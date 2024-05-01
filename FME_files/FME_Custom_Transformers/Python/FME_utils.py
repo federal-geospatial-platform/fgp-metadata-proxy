@@ -457,7 +457,7 @@ class FME_utils:
         return attribute_value 
 
     @staticmethod
-    def make_http_call(fme_self, feature, session, str_http, output_fme=True, header = {}):
+    def make_http_call(fme_self, feature, session, str_http, output_fme=True, header = {},timeout=10):
         """This method makes an http call and manage the request response.
                	
 		If status_code is not 200; try to add a User-Agent header with the latest version of Chrome on 2023-10-16
@@ -490,7 +490,7 @@ class FME_utils:
         try:
             fme_self.logger.logMessageString("HTTP call: {0}".format(str_http), 
                                          fmeobjects.FME_INFORM)
-            response = session.get(str_http, headers = header, verify=False, timeout=10,  allow_redirects=True)
+            response = session.get(str_http, headers = header, verify=False, timeout=timeout,  allow_redirects=True)
             status_code = response.status_code
             description = requests.status_codes._codes[status_code][0]
             
@@ -500,7 +500,7 @@ class FME_utils:
                 user_agent = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
                 header.update(user_agent)
 
-                response = session.get(str_http, headers = header, verify=False, timeout=10,  allow_redirects=True)
+                response = session.get(str_http, headers = header, verify=False, timeout=timeout,  allow_redirects=True)
                 status_code = response.status_code
                 description = requests.status_codes._codes[status_code][0]
                     
