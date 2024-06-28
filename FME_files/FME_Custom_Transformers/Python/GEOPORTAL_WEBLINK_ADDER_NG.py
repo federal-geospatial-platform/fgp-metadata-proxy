@@ -18,10 +18,14 @@ HTTP_STATUS_CODE = "_http_status_code"
 ORDER = "_order"
 URL_VALIDATION = "_url_validation"
 WEBLINK_WILDCARD = "_weblink_wildcard"
+#FME Private Parameters as attributes
+PT_ABBR = "_p-t_abbr"
 
 # FME attribute value
 HTTP_OK = "200"
 YES = "yes"
+YT = "YT"
+#ON = "ON"
 
 try:
     import web_pdb
@@ -145,9 +149,24 @@ class FeatureProcessor(object):
             if bool_url_validation:
                 # Test if the url link is responding with a http head call (faster than get request)
                 try:
-                    response = self.session.head(test_url, verify=False, timeout=30, 
-                                             allow_redirects=True)
-                    status_code = str(response.status_code)
+                    #Check if Yukon territory is specified
+                    bool_yt_validation = FME_utils.test_attribute_value(feature, PT_ABBR, YT, False)
+                    #Check if Ontario province is specified
+                    #bool_on_validation = FME_utils.test_attribute_value(feature, PT_ABBR, ON, False)
+                    
+                    if bool_yt_validation:
+                        #Using a specified user-agent for territory of Yukon
+                        EMILE = 'user-agent Yukon'
+                        response = self.session.head(test_url, verify=False, timeout=30, allow_redirects=True, headers = {'User-Agent': "NRCan federated search"})
+                        status_code = str(response.status_code)
+                    #elif bool_on_validation:
+                        #EMILE = 'user-agent Mozilla'
+                        #Using a specified user-agent for territory of Yukon
+                        #response = self.session.head(test_url, verify=False, timeout=30, allow_redirects=True, headers = {'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"})                    
+                    else:
+                        EMILE = 'user-agent Default'
+                        response = self.session.head(test_url, verify=False, timeout=30, allow_redirects=True)
+                        status_code = str(response.status_code)
                     
                     if status_code !=HTTP_OK: # On refait le call avec un header à la sauce fireFox
                         header = {}
@@ -155,10 +174,12 @@ class FeatureProcessor(object):
                         header.update(user_agent)
                         response = self.session.head(test_url, verify=False, timeout=30, 
                                              allow_redirects=True,headers = header)
-                        status_code = str(response.status_code)
+                        status_code = str(response.status_code)                    
                     
-                    self.logger.logMessageString("Status code: {0};  HTTP request head:   {1}"
+                    self.logger.logMessageString("Status code: {0};  HTTP request head: {1}"
                                              .format(status_code, test_url), fmeobjects.FME_INFORM)
+                                             
+                                             
                 except: # Peu importe l'erreur, on met un status_code = 9000
                     status_code = str(999) #random status_code so that the key-value pairs contained in the CSV in the ressources{} list is not added
             else:

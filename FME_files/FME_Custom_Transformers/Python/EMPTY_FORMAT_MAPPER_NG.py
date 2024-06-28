@@ -16,9 +16,12 @@ ORDER = "_order"
 ORIGINAL_VALUE = "original_value"
 URL_VALIDATION = "_url_validation"
 UNKNOWN_MIME_TYPE = "_unknown_mime_type"
+#FME Private Parameters as attributes
+PT_ABBR = "_p-t_abbr"
 
 # Attribute content
 OTHER = "other"
+YT = "YT"
 
 # Template Function interface:
 # When using this function, make sure its name is set as the value of
@@ -196,8 +199,15 @@ class FeatureProcessor(object):
                     else:
                         # Extract the format using the MIME-type of the url request
                         if url_validation.lower() == "yes":
+                            #Check if Yukon territory is specified
+                            bool_yt_validation = FME_utils.test_attribute_value(feature, PT_ABBR, YT, False)                            
+                            # If Yukon territory, set the user-agent dictionary with User-Agent
+                            user_agent = 'NRCan federated search' if bool_yt_validation else None
+
+                                
                             # Try to guess the format using the MIME-type of the url address
-                            mime_type = FME_utils.http_get_url_mime_type(url_original)
+                            mime_type = FME_utils.http_get_url_mime_type(url_original, user_agent=user_agent)
+                            
                             if mime_type != None:
                                 try:
                                     new_format = self.csv_mime_types[mime_type]

@@ -493,13 +493,11 @@ class FME_utils:
             response = session.get(str_http, headers = header, verify=False, timeout=timeout,  allow_redirects=True)
             status_code = response.status_code
             description = requests.status_codes._codes[status_code][0]
-            
             #if status_code is not 200; try to add a User-Agent header with the latest version of Chrome on 2023-10-16
             #migth need to be updated in the future
             if status_code != HTTP_OK:
                 user_agent = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
                 header.update(user_agent)
-
                 response = session.get(str_http, headers = header, verify=False, timeout=timeout,  allow_redirects=True)
                 status_code = response.status_code
                 description = requests.status_codes._codes[status_code][0]
@@ -697,7 +695,7 @@ class FME_utils:
                     feature.removeAttribute(in_att_name)
         
     @staticmethod
-    def go_url(url,verbose=True):
+    def go_url(url,verbose=True, user_agent=None):
         """
         Verifies if the provided url is valid and responds to a request, whether it's a http or ftp url.
         
@@ -705,7 +703,10 @@ class FME_utils:
         ----------
         url: String
             The current url to check.
-        
+            
+        user_agent: String, optional
+            The User-Agent string to use for the request. If not specified, a default will be used.
+     
         Returns
         -------
         Dictionary
@@ -718,7 +719,7 @@ class FME_utils:
             result = FME_utils.ftp_check_url(url)
 
         else:
-            result = FME_utils.http_check_url(url)
+            result = FME_utils.http_check_url(url, user_agent=None)
 
         if verbose: 
             # If found
@@ -734,7 +735,7 @@ class FME_utils:
                 print("Not found | " + result["url"])
         return result
     @staticmethod
-    def http_check_url(url):
+    def http_check_url(url, user_agent=None):
         """
         Checks if the http url responds to a request.
         
@@ -742,6 +743,10 @@ class FME_utils:
         ----------
         url : String
             The current url to check
+            
+        user_agent: String, optional
+            The User-Agent string to use for the request. If not specified, a default will be used.
+
         
         Returns
         -------
@@ -751,7 +756,7 @@ class FME_utils:
 
         redirects = []
         url_redir = None
-        found_flag = FME_utils._http_check_url_rec(url, redirects)
+        found_flag = FME_utils._http_check_url_rec(url, redirects, user_agent=user_agent)
 
         # Return information
         return {
@@ -761,7 +766,7 @@ class FME_utils:
         }
 
     @staticmethod
-    def _http_check_url_rec(url, redirects):
+    def _http_check_url_rec(url, redirects, user_agent=None):
         """
         Checks if the url responds to a request and recursively follows redirections when any. The redirects used are added to the redirects parameter to be provided back to the caller.
         
@@ -771,6 +776,9 @@ class FME_utils:
             The current url to check
         redirects : List
             The total redirect urls processed
+        user_agent: String, optional
+            The User-Agent string to use for the request. If not specified, a default will be used.
+
             
         Returns
         -------
@@ -779,7 +787,7 @@ class FME_utils:
         """
 
         # Do the request using HEAD method
-        r = FME_utils.http_check_url_request_head(url)
+        r = FME_utils.http_check_url_request_head(url, user_agent=user_agent)
 
         # If a 200
         if r is not None and r.status_code == 200:
@@ -787,24 +795,24 @@ class FME_utils:
 
         elif r is not None and (r.status_code == 301 or r.status_code == 302 or r.status_code == 303 or r.status_code == 307 or r.status_code == 308):
             # Handle the redirects
-            return FME_utils._http_check_url_rec_handle_redir(r, redirects)
+            return FME_utils._http_check_url_rec_handle_redir(r, redirects, user_agent)
 
         elif r is not None and (r.status_code == 400 or r.status_code == 405):
             # Do the request using OPTIONS method
-            r = FME_utils.http_check_url_request_options(url)
+            r = FME_utils.http_check_url_request_options(url, user_agent)
 
             if r is not None and r.status_code == 200:
                 return True
 
             elif r is not None and (r.status_code == 301 or r.status_code == 302 or r.status_code == 303 or r.status_code == 307 or r.status_code == 308):
                 # Handle the redirects
-                return FME_utils._http_check_url_rec_handle_redir(r, redirects)
+                return FME_utils._http_check_url_rec_handle_redir(r, redirects, user_agent)
 
         # Couldn't
         return False
 
     @staticmethod
-    def http_check_url_request_head(url):
+    def http_check_url_request_head(url, user_agent=None):
         """
         Makes a call on the provided url using the HEAD method.
         
@@ -812,16 +820,21 @@ class FME_utils:
         ----------
         url : String
             The current url to check
-        
+        user_agent: String, optional
+            The User-Agent string to use for the request. If not specified, the default User-Agent provided by requests will be used.
+            
         Returns
         -------
         Request object
             The request object when successfully got a response of any kind or None when the request failed.
         """
 
+        # If user_agent is provided, set the headers dictionary with User-Agent
+        headers = {'User-Agent': user_agent} if user_agent else None
+ 
         try:
             # Requests the head of the url
-            r = requests.head(url, timeout=TIMEOUT,verify=False)
+            r = requests.head(url, headers=headers, timeout=TIMEOUT,verify=False)
             r.close()
             return r
 
@@ -829,7 +842,7 @@ class FME_utils:
             return None
 
     @staticmethod
-    def http_get_url_mime_type(url):
+    def http_get_url_mime_type(url, user_agent=None):
         """
         Makes a requests on the header of the url address to extract the MIME-type.
         
@@ -843,7 +856,9 @@ class FME_utils:
         ----------
         url : String
             The current url to check
-        
+        user_agent: String, optional
+            The User-Agent string to use for the request. If not specified, the default User-Agent provided by requests will be used.
+            
         Returns
         -------
         mime_type String
@@ -853,12 +868,15 @@ class FME_utils:
         content_type = None  # Set default value
         logger = fmeobjects.FMELogFile()  # Create a logger
         
+        # If user_agent is provided, set the headers dictionary with User-Agent
+        headers = {'User-Agent': user_agent} if user_agent else None
+        
         try:
             # Suppress warning
             requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
             
             # Make a head request to get only the header (not the content)
-            response = requests.head(url, timeout=TIMEOUT, verify=False)
+            response = requests.head(url, headers=headers, timeout=TIMEOUT, verify=False)
             status_code = response.status_code
             text = "HTTP call -- Status code: {0}; URL {1}".format(status_code, url)
             logger.logMessageString(text, fmeobjects.FME_INFORM)
@@ -884,7 +902,7 @@ class FME_utils:
         
     
     @staticmethod
-    def http_check_url_request_options(url):
+    def http_check_url_request_options(url, user_agent=None):
         """
         Makes a call on the provided url using the OPTIONS method.
         
@@ -892,16 +910,23 @@ class FME_utils:
         ----------
         url : String
             The current url to check
+        user_agent: String, optional
+            The User-Agent string to use for the request. If not specified, a default will be used.
+
             
         Returns
         -------
         Request object or None
             The request object when successfully got a response of any kind or None when the request failed.
         """
+        
+        # If user_agent is provided, set the headers dictionary with User-Agent
+        headers = {'User-Agent': user_agent} if user_agent else None
+        
         #web_pdb.set_trace()
         try:
             # Requests the head of the url
-            r = requests.options(url, timeout=TIMEOUT, verify=False, allow_redirects=True)
+            r = requests.options(url, headers=headers, timeout=TIMEOUT, verify=False, allow_redirects=True)
             r.close()
             return r
 
@@ -909,7 +934,7 @@ class FME_utils:
             return None
 
     @staticmethod
-    def _http_check_url_rec_handle_redir(r, redirects):
+    def _http_check_url_rec_handle_redir(r, redirects, user_agent=None):
         """
         Handles the request being redirected in order to loop back in the recursion with the redirected url.
         
@@ -919,6 +944,9 @@ class FME_utils:
             The current request that got a redirected status.
         redirects : List
             The total redirect urls processed.
+        user_agent: String, optional
+            The User-Agent string to use for the request. If not specified, a default will be used.
+
             
         Returns
         -------
@@ -932,7 +960,7 @@ class FME_utils:
             redirects.append(url_redir)
 
             # Loop back in the recursion
-            return FME_utils._http_check_url_rec(url_redir, redirects)
+            return FME_utils._http_check_url_rec(url_redir, redirects, user_agent)
 
         return False
 
