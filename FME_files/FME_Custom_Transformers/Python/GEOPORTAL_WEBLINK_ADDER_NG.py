@@ -156,15 +156,10 @@ class FeatureProcessor(object):
                     
                     if bool_yt_validation:
                         #Using a specified user-agent for territory of Yukon
-                        EMILE = 'user-agent Yukon'
                         response = self.session.head(test_url, verify=False, timeout=30, allow_redirects=True, headers = {'User-Agent': "NRCan federated search"})
                         status_code = str(response.status_code)
-                    #elif bool_on_validation:
-                        #EMILE = 'user-agent Mozilla'
-                        #Using a specified user-agent for territory of Yukon
-                        #response = self.session.head(test_url, verify=False, timeout=30, allow_redirects=True, headers = {'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"})                    
+               
                     else:
-                        EMILE = 'user-agent Default'
                         response = self.session.head(test_url, verify=False, timeout=30, allow_redirects=True)
                         status_code = str(response.status_code)
                     
