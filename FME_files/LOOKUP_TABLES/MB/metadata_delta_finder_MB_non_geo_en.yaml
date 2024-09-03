@@ -1,0 +1,192 @@
+id:
+    attr_name: id
+    attr_ref: id
+    attr_new: id
+collection:
+    attr_name: collection
+    attr_ref: collection
+    attr_new: tbs_collection
+#--------------------------FME_CONTACT_INFO (voir metadata_contact_fr dans PythonCaller_4 du JSON_PUBLISHER_NG)-----------------------------
+contact_form_en:
+    attr_name: contact_form_en
+    attr_ref: contact_information.en.contact_form
+    attr_new : contact_form_en
+contact_email_en:
+    attr_name: contact_email_en 
+    attr_ref: contact_information.en.electronic_mail_address
+    attr_new: contact_email
+#Voir metadata_contact_fr dans PythonCaller_4 du JSON_PUBLISHER_NG --> mappé avec sector dans JSON_CONFIG_ON
+contact_org_en: 
+    attr_name: contact_org_en
+    attr_ref: contact_information.en.organization_name
+    attr_new: sector
+contact_form_fr:
+    attr_name: contact_form_fr
+    attr_ref: contact_information.fr.contact_form
+    attr_new: contact_form_fr
+contact_email_fr:
+    attr_name: contact_email_fr 
+    attr_ref: contact_information.fr.electronic_mail_address
+    attr_new: contact_email
+contact_org_fr:
+    attr_name: contact_org_fr
+    attr_ref: contact_information.fr.organization_name
+    attr_new: sector
+#--------------------------------------------------------------------------------------
+#Enlevons creator, car pas mandatory et on veut s'en débarassé
+# creator:
+    # attr_name: creator
+    # attr_ref: creator
+    # attr_new: sector
+date_published:
+    attr_name: date_published
+    attr_ref: date_published
+    attr_new: record_publish_date #il existe aussi record_create_date, record_last_modified et record_published_date qu'on n'a pas choisit car on veut faire référence au JSON_CONFIG.csv
+frequency:
+    attr_name: frequency
+    attr_ref: frequency
+    attr_new: update_frequency
+hierarchy_level:
+    attr_name: hierarchy_level
+    attr_ref: hierarchy_level
+    attr_new: tbs_hierarchy_level
+jurisdiction: 
+    attr_name: jurisdiction
+    attr_ref: jurisdiction
+    attr_new: jurisdiction
+
+# Les valeurs default_keyword_en_tag et default_keyword_fr_tag sont *en* et *fr-t-en* alors on les hardcode
+# keywords: On ne veut pas détecter le changement sur la traduction des keywords
+    # attr_name: keywords
+    # #Français
+    # attr_ref: keywords.fr-t-en{}
+    # attr_new: tags{}.display_name_fr
+#keywords:#Enlevons les keywords pour Manitoba en français et en anglais étant donné le problème dans l'ordre des keywords lors de la traduction
+#    attr_name: keywords
+    #Anglais
+#    attr_ref: keywords.en{}
+#    attr_new: tags{}.value
+    
+license_id: 
+    attr_name: license_id
+    attr_ref: license_id
+    attr_new: tbs_license_id
+#Ne semble pas avoir de contact_form_en ni contact_form_fr comme attribut, mais présent dans JSON_CONFIG alors laissons-les 
+maintainer_contact_form_en:
+   attr_name: maintainer_contact_form_en
+   attr_ref: maintainer_contact_form.en
+   attr_new: contact_form_en
+maintainer_contact_form_fr:
+   attr_name: maintainer_contact_form_fr
+   attr_ref: maintainer_contact_form.fr
+   attr_new: contact_form_fr
+maintainer_email:
+   attr_name: maintainer_email
+   attr_ref: maintainer_email
+   attr_new: contact_email
+metadata_contact_en:
+    attr_name: metadata_contact_en
+    attr_ref: metadata_contact.en
+    attr_new: sector
+metadata_contact_fr:
+    attr_name: metadata_contact_fr
+    attr_ref: metadata_contact.fr
+    attr_new: sector
+notes:
+    attr_name: notes
+    #Anglais
+    attr_ref: notes_translated.en
+    attr_new: notes
+#Enlevons notes_fr car c'est une traduction
+# notes:
+    # attr_name: notes_fr
+    # #Français
+    # attr_ref: notes_translated.fr
+    # attr_new: notes_fr
+
+org_title_at_publication:
+    attr_name: org_title_at_publication
+    attr_ref: org_title_at_publication.en #On hardcode l'élément de la liste en
+    attr_new: p-t_entity
+org_title_at_publication:
+    attr_name: org_title_at_publication
+    attr_ref: org_title_at_publication.fr #On hardcode l'élément de la liste fr
+    attr_new: p-t_entity_fr
+
+owner_org:
+    attr_name: owner_org
+    attr_ref : owner_org
+    attr_new: tbs_owner_org_id
+
+#Enlevons position_name car il n'est pas obligatoire et on veut s'en débarassé
+# position_name:
+    # attr_name: position_name
+    # attr_ref: position_name.en
+    # attr_new: sector
+# position_name:
+    # attr_name: position_name
+    # attr_ref: position_name.fr
+    # attr_new: sector
+    
+resource_format:
+    attr_name: resource_format
+    attr_ref: resources{}.format
+    attr_new: resources{}.format
+# resource_language: enlevons cet attribut puisqu'il est hardcodé dans le RESOURCES_TEMPLATE_NG et associé à resource_language,tbs_resource_lang,RESOURCES qui est la valeur unique: ["en"]
+#non répétable pour pour le nombre de resources
+    # attr_name: resource_language
+    # attr_ref: resources{}.language
+    # attr_new: resources{}.language
+
+resource_name:
+    attr_name: resource_name_en
+    #Anglais
+    attr_ref: resources{}.name_translated.en #On hardcode l'élément de la liste en
+    attr_new: resources{}.name
+#On enlève resource name fr car il est traduit
+# resource_name:
+    # attr_name: resource_name
+    # #Français
+    # attr_ref: resources{}.name_translated.fr-t-en #On hardcode l'élément de la liste fr-t-en
+    # attr_new: resources{}.name_fr
+
+resource_type:
+    attr_name: resource_type
+    attr_ref: resources{}.resource_type
+    attr_new: resources{}.format_resourceType_en
+resource_url:
+    attr_name: resource_url
+    attr_ref: resources{}.url
+    attr_new: resources{}.url
+subject:
+    attr_name: subject
+    attr_ref: subject{}
+    attr_new: subjects{}.topic_value
+time_coverage_start:
+    attr_name: time_coverage_start
+    attr_ref: time_period_coverage_start
+    attr_new: data_collection_start_date
+time_coverage_end:
+    attr_name: time_coverage_end
+    attr_ref: time_period_coverage_end
+    attr_new: data_collection_end_date
+
+title:
+    attr_name: title
+    #Anglais
+    attr_ref: title_translated.en
+    attr_new: title
+# title: On ne veut pas de détection de changement sur la traduction du titre
+    # attr_name: title
+    # #Français
+    # attr_ref: title_translated.fr
+    # attr_new: title_fr
+    
+topic_category:
+    attr_name: topic_category
+    attr_ref: topic_category{}
+    attr_new: topics{}.topic_value
+update_cycle:
+    attr_name: update_cycle
+    attr_ref: frequency
+    attr_new: update_frequency

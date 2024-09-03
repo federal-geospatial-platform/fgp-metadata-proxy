@@ -1,0 +1,1808 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING,1,"FGP Tools",8e23d869-e760-4aa8-9127-5fb6186ed288,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# <p><strong>Description </strong></p>
+# <p>This custom transformer edits (maps) values specified in an input file to a specified attribute and then detect the language for that specified attribute on other features that haven't been mapped. More precisely, if mapping of the attribute is done, the custom transformer adds  an underscore ( _en or _fr) according to language it is mapped to. Otherwise, the language detection is made. The custom transformer outputs the attributes language_detected, translation_mode and attr_to_translate which are usefull as input into the AWS_TRANSLATE transformer. When langage detection is made, it also output _sum_lang and _sum_lang_stats which are attributes related to FRENCH_ENGLISH_LANGUAGE_DETECT cutom transformer.</p>
+# <p>It uses the METADATA_VALUE_MAPPER_NG and FRENCH_ENGLISH_LANGUAGE_DETECT customs transformers for which the description is available inside both transformers.</p>
+# <p><strong>Input Ports </strong></p>
+# <ul>
+# <li>DATA_INPUT: The input metadata records to process.</li>
+# </ul>
+# <p><strong> CSV file description </strong></p>
+# <p>It is important to consider quote (" ") and end of the line character (ex: \r\n) in the csv file in order to obtain a successfull mapping.</p>
+# <ul>
+# <li>original_value: The original value to map.</li>
+# <li>real_value_english : The English value to set.</li>
+# <li>real_value_french: The French value to set.</li>
+# <li>code_value: The language of the textmapped (Bilingual, French, English)</li>
+# </ul>
+# <p><strong>Output Ports </strong></p>
+# <ul>
+# <li>
+# <p>No_Detection: Features for wich no language detection was made on the specified attribute. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.</p>
+# </li>
+# <li>
+# <p>Check_Lang: Features for wich a language other than French or English was detected. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.</p>
+# </li>
+# <li>
+# <p>Bilingual: Features for wich French or English was detected. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.</p>
+# </li>
+# <li>
+# <p>Processed: Feature for wich language detection was done correctly. The 2 attributes _sum_lang and _sum_lang_stats can be usefull to validate the detection.</p>
+# </li>
+# </ul>
+# <p><strong>Parameters </strong></p>
+# <ul>
+# <li>
+# <p>ATTR_2_TRANSLATE: Name of the FME attribute to map and translate in plain text (ex.: 'notes').  Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map.</p>
+# </li>
+# <li>
+# <p>ATTR_2_TRANSLATE_CODE: Name of the FME attribute to map and translate with '_code' (ex.: 'notes_code'). This attribute is needed to store the 'code_value' mapped from the csv file. Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map.</p>
+# </li>
+# <li>
+# <p>ATT_TO_MAP: Name of the FME attribute to map in plain text (ex.: 'notes').  Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map.</p>
+# </li>
+# <li>
+# <p>ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found; Hardcoded to YES for the purpose of this transformer.</p>
+# </li>
+# <li>
+# <p>ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;  Hardcoded to YES for the purpose of this transformer.</p>
+# </li>
+# <li>
+# <p>FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;  Hardcoded to YES for the purpose of this transformer.</p>
+# </li>
+# <li>
+# <p>CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;  Hardcoded to YES for the purpose of this transformer.</p>
+# </li>
+# <li>
+# <p>FEATURE_TYPE: Name of the CSV file to read (without .csv extension);</p>
+# </li>
+# <li>
+# <p>IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;</p>
+# </li>
+# <li>
+# <p>P-T_ABBR: Two letters abbreviation of the province or the territory.</p>
+# </li>
+# </ul>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer edits (maps) values specified in an input file to a specified attribute and then detect the language for that specified attribute on other features that haven&apos;t been mapped. More precisely, if mapping of the attribute is done, the custom transformer adds  an underscore ( _en or _fr) according to language it is mapped to. Otherwise, the language detection is made. The custom transformer outputs the attributes language_detected, translation_mode and attr_to_translate which are usefull as input into the AWS_TRANSLATE transformer. When langage detection is made, it also output _sum_lang and _sum_lang_stats which are attributes related to FRENCH_ENGLISH_LANGUAGE_DETECT cutom transformer.&lt;/p&gt;&#10;&lt;p&gt;It uses the METADATA_VALUE_MAPPER_NG and FRENCH_ENGLISH_LANGUAGE_DETECT customs transformers for which the description is available inside both transformers.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt; CSV file description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;It is important to consider quote (&quot; &quot;) and end of the line character (ex: \r\n) in the csv file in order to obtain a successfull mapping.&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;original_value: The original value to map.&lt;/li&gt;&#10;&lt;li&gt;real_value_english : The English value to set.&lt;/li&gt;&#10;&lt;li&gt;real_value_french: The French value to set.&lt;/li&gt;&#10;&lt;li&gt;code_value: The language of the textmapped (Bilingual, French, English)&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;No_Detection: Features for wich no language detection was made on the specified attribute. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;Check_Lang: Features for wich a language other than French or English was detected. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;Bilingual: Features for wich French or English was detected. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;Processed: Feature for wich language detection was done correctly. The 2 attributes _sum_lang and _sum_lang_stats can be usefull to validate the detection.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ATTR_2_TRANSLATE: Name of the FME attribute to map and translate in plain text (ex.: &apos;notes&apos;).  Do not use the Open Text Editor &amp;gt; FME Feature Attribute option to select the attribute to map.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ATTR_2_TRANSLATE_CODE: Name of the FME attribute to map and translate with &apos;_code&apos; (ex.: &apos;notes_code&apos;). This attribute is needed to store the &apos;code_value&apos; mapped from the csv file. Do not use the Open Text Editor &amp;gt; FME Feature Attribute option to select the attribute to map.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ATT_TO_MAP: Name of the FME attribute to map in plain text (ex.: &apos;notes&apos;).  Do not use the Open Text Editor &amp;gt; FME Feature Attribute option to select the attribute to map.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found; Hardcoded to YES for the purpose of this transformer.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;  Hardcoded to YES for the purpose of this transformer.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;  Hardcoded to YES for the purpose of this transformer.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;  Hardcoded to YES for the purpose of this transformer.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
+#!   DOC_EXTENTS="6531.78 2528.37"
+#!   DOC_TOP_LEFT="-1452.49 -1038.07"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20787"
+#!   FME_DOCUMENT_GUID="8e23d869-e760-4aa8-9127-5fb6186ed288"
+#!   FME_DOCUMENT_PRIORGUID="8d804ac7-8d5f-41b4-9c70-5e0a2ed5ebd8,6965f00d-1e07-4100-b636-398fedfb0b34,bd64c1ef-8937-44c7-b33d-cd0ffcbbc00d,7f388d7d-6fbc-4d7a-9826-f43bd3363f23,9fbc573c-9ad6-4f02-9456-c92d778c2d51,016505a9-e1e7-40c5-bd69-1520281e46ad,35e23420-c182-4e2c-a4f5-2f5157fb65b0,3d01b40a-9d7f-4200-a751-3485da4aed39,1386d415-5e36-41cd-9ca2-90356047c951,8a11cf81-f6fe-4ffd-a9e8-f7d57de670ca,768c0435-ab0b-4df4-8a31-fef6f11e2ce4,415473d8-c292-4754-bc87-c6059b13f4d4,8bccbdfd-7147-4d7b-82d2-1a5f38b0f202"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY=""
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
+#!   LAST_SAVE_DATE="2024-05-21T16:07:43"
+#!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer edits (maps) values specified in an input file to a specified attribute and then detect the language for that specified attribute on other features that haven&apos;t been mapped. More precisely, if mapping of the attribute is done, the custom transformer adds  an underscore ( _en or _fr) according to language it is mapped to. Otherwise, the language detection is made. The custom transformer outputs the attributes language_detected, translation_mode and attr_to_translate which are usefull as input into the AWS_TRANSLATE transformer. When langage detection is made, it also output _sum_lang and _sum_lang_stats which are attributes related to FRENCH_ENGLISH_LANGUAGE_DETECT cutom transformer.&#10;&#10;It uses the METADATA_VALUE_MAPPER_NG and FRENCH_ENGLISH_LANGUAGE_DETECT customs transformers for which the description is available inside both transformers.&#10;&#10;**Input Ports **&#10;&#10; - DATA_INPUT: The input metadata records to process.&#10;&#10;** CSV file description **&#10;&#10;It is important to consider quote (&quot; &quot;) and end of the line character (ex: \r\n) in the csv file in order to obtain a successfull mapping.&#10;&#10; - original_value: The original value to map.&#10; - real_value_english : The English value to set.&#10; - real_value_french: The French value to set.&#10; - code_value: The language of the textmapped (Bilingual, French, English)&#10;&#10;**Output Ports **&#10;&#10; - No_Detection: Features for wich no language detection was made on the specified attribute. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.&#10;&#10; - Check_Lang: Features for wich a language other than French or English was detected. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.&#10;&#10; - Bilingual: Features for wich French or English was detected. The 2 attributes _sum_lang and _sum_lang_stats can be usefull in order to map the specified attribute correctly.&#10;&#10; - Processed: Feature for wich language detection was done correctly. The 2 attributes _sum_lang and _sum_lang_stats can be usefull to validate the detection.&#10;&#10;**Parameters **&#10;&#10; - ATTR_2_TRANSLATE: Name of the FME attribute to map and translate in plain text (ex.: &apos;notes&apos;).  Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map.&#10; &#10; - ATTR_2_TRANSLATE_CODE: Name of the FME attribute to map and translate with &apos;_code&apos; (ex.: &apos;notes_code&apos;). This attribute is needed to store the &apos;code_value&apos; mapped from the csv file. Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map.&#10;&#10; - ATT_TO_MAP: Name of the FME attribute to map in plain text (ex.: &apos;notes&apos;).  Do not use the Open Text Editor &gt; FME Feature Attribute option to select the attribute to map.&#10;&#10; - ERROR_NOT_MAPPED: Flag use to map data values that cannot be found in the loopup tables. Can take 2 values: Yes: map data values not found; No: Do not map data values not found; Hardcoded to YES for the purpose of this transformer.&#10;&#10; - ENGLISH_REFRESH: Flag use for updating English attribute value. Can take two value: Yes: update English attribute value; No do not update English attribute value;  Hardcoded to YES for the purpose of this transformer.&#10;&#10; - FRENCH_REFRESH: Flag use for creating or updating French attribute value. Can take two value: Yes: update French attribute value; No do not update French atribute value;  Hardcoded to YES for the purpose of this transformer.&#10;&#10; - CODE_REFRESH: Flag use for creating updating the RI_CODES. Can take two value: Yes: update the code; No do not update the code;  Hardcoded to YES for the purpose of this transformer.&#10;&#10; - FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10; - IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10; &#10; - P-T_ABBR: Two letters abbreviation of the province or the territory."
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-1354.18 1751.56"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="81"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT ATTR_2_TRANSLATE ATTR_2_TRANSLATE:"
+#!   DEFAULT_VALUE="notes"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ATTR_2_TRANSLATE_CODE ATTR_2_TRANSLATE_CODE:"
+#!   DEFAULT_VALUE="notes_code"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#!   DEFAULT_VALUE="MB"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#!   DEFAULT_VALUE="$(FME_SHAREDRESOURCE_DATA)\PT_Harvester\LOOKUP_TABLES"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#!   DEFAULT_VALUE="Notes_language_detection"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="87"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If no mapping done, check language&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="630.57042093949281 675.50599558546878"
+#!   TOP_LEFT="630.57042093949281 675.50599558546878"
+#!   BOTTOM_RIGHT="1429.6704209394929 674.50599558546878"
+#!   BOUNDING_RECT="630.57042093949281 675.50599558546878 799.10000000000002 1"
+#!   ORDER="500000000001827"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="14"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="84"
+#!   NAME="Action needed"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="1876.3817599578267 1490.3006688503094"
+#!   ORDER="500000000001809"
+#!   PALETTE_COLOR="Color3"
+#!   BOTTOM_RIGHT="4529.4503283304421 463.64169625070349"
+#!   BOUNDING_RECT="1876.3817599578267 1490.3006688503094 2653.0685683726151 1026.6589725996059"
+#!   STICKY="true"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,1"
+#!   CONTENTS="97 72 65 63 55 100 69 98 101 68 56 71 62 95 57 75 76 66 67 74 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="85"
+#!   NAME="Detection and mapping done"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="1722.1366386259383 254.63217595138917"
+#!   ORDER="500000000001825"
+#!   PALETTE_COLOR="Color4"
+#!   BOTTOM_RIGHT="4085.6890050381971 -1038.0710619593588"
+#!   BOUNDING_RECT="1722.1366386259383 254.63217595138917 2363.5523664122588 1292.7032379107479"
+#!   STICKY="true"
+#!   COLOUR="0.45882352941176469,0.53725490196078429,0.21176470588235294,1"
+#!   CONTENTS="81 46 43 91 78 39 41 94 42 47 80 89 44 92 45 40 38 48 79 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="86"
+#!   NAME="Managing manual traduction and mapping"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-582.30324510341836 871.85838969739825"
+#!   ORDER="500000000001826"
+#!   PALETTE_COLOR="Color6"
+#!   BOTTOM_RIGHT="594.14174388657455 -647.41685699780487"
+#!   BOUNDING_RECT="-582.30324510341836 871.85838969739825 1176.4449889899929 1519.2752466952031"
+#!   STICKY="true"
+#!   COLOUR="0.20000000000000001,0.49803921568627452,0.51764705882352946,1"
+#!   CONTENTS="13 12 26 25 29 15 18 "
+#! >
+#! </BOOKMARK>
+#! <BOOKMARK
+#!   IDENTIFIER="88"
+#!   NAME="Renaming _fr or_en function of the mapped language"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="650.59619255523376 -111.88383488773158"
+#!   ORDER="500000000001829"
+#!   PALETTE_COLOR="Color6"
+#!   BOTTOM_RIGHT="1450.6317902685198 -848.9261361777094"
+#!   BOUNDING_RECT="650.59619255523376 -111.88383488773158 800.03559771328605 737.04230128997779"
+#!   STICKY="true"
+#!   COLOUR="0.20000000000000001,0.49803921568627452,0.51764705882352946,1"
+#!   CONTENTS="24 19 23 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="METADATA_VALUE_MAPPER_NG"
+#!   VERSION="1"
+#!   POSITION="-494.30324510341836 761.85838969739825"
+#!   BOUNDING_RECT="-494.30324510341836 761.85838969739825 666.10000000000002 71"
+#!   ORDER="500000000000983"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="ATT_TO_MAP" PARM_VALUE="@Value(_attr2translate)"/>
+#!     <XFORM_PARM PARM_NAME="CODE_REFRESH" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="ENGLISH_REFRESH" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="ERROR_NOT_MAPPED" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE="$(FEATURE_TYPE)"/>
+#!     <XFORM_PARM PARM_NAME="FRENCH_REFRESH" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="IN_CSV_LOOKUP_TABLES_DIR" PARM_VALUE="$(IN_CSV_LOOKUP_TABLES_DIR)"/>
+#!     <XFORM_PARM PARM_NAME="P-T_ABBR" PARM_VALUE="$(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="METADATA_VALUE_MAPPER_NG"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-404.50811710892117 161.06441796460791"
+#!   BOUNDING_RECT="-404.50811710892117 161.06441796460791 454 71"
+#!   ORDER="500000000000984"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_attr2translate,_code_value"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="FRENCH_ENGLISH_LANGUAGE_DETECT"
+#!   VERSION="1"
+#!   POSITION="630.57042093949281 541.75530807859366"
+#!   BOUNDING_RECT="630.57042093949281 541.75530807859366 799.10000000000002 71"
+#!   ORDER="500000000000991"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#!   OUTPUT_FT_ORDER="No_Detection%Check_Lang%Bilingual%English%French"
+#! >
+#!     <OUTPUT_FEAT NAME="No_Detection"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="Check_Lang"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <OUTPUT_FEAT NAME="Bilingual"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <OUTPUT_FEAT NAME="English"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <OUTPUT_FEAT NAME="French"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_2_TRANSLATE" PARM_VALUE="@Value(_attr2translate)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FRENCH_ENGLISH_LANGUAGE_DETECT"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="AttributeFilter"
+#!   VERSION="5"
+#!   POSITION="-494.30324510341836 -121.41685699780487"
+#!   BOUNDING_RECT="-494.30324510341836 -121.41685699780487 454 71"
+#!   ORDER="500000000000992"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#!   OUTPUT_FT_ORDER="&lt;lt&gt;EMPTY&lt;gt&gt;%&lt;lt&gt;MISSING&lt;gt&gt;%&lt;lt&gt;NULL&lt;gt&gt;%&lt;lt&gt;UNFILTERED&lt;gt&gt;%French%English%Bilingual"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;EMPTY&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;MISSING&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;NULL&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;UNFILTERED&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="French"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <OUTPUT_FEAT NAME="English"/>
+#!     <FEAT_COLLAPSED COLLAPSED="5"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <OUTPUT_FEAT NAME="Bilingual"/>
+#!     <FEAT_COLLAPSED COLLAPSED="6"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_NAME" PARM_VALUE="_code_value"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUES" PARM_VALUE="&lt;lt&gt;Empty&lt;gt&gt;,&lt;lt&gt;Missing&lt;gt&gt;,&lt;lt&gt;Null&lt;gt&gt;,&lt;lt&gt;Unfiltered&lt;gt&gt;,Bilingual,English,French"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-1262.9670976436389 365.19103835539084"
+#!   BOUNDING_RECT="-1262.9670976436389 365.19103835539084 454 71"
+#!   ORDER="500000000000955"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _attr2translate SET_TO $(ATTR_2_TRANSLATE)"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="-433.25395932355582 388.33941798733548"
+#!   BOUNDING_RECT="-433.25395932355582 388.33941798733548 454 71"
+#!   ORDER="500000000001791"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _code_value SET_TO &lt;at&gt;Value&lt;openparen&gt;$(ATTR_2_TRANSLATE_CODE)&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="19"
+#!   TYPE="BulkAttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="738.59619255523376 -435.19539197489553"
+#!   BOUNDING_RECT="738.59619255523376 -435.19539197489553 472.09999999999997 71"
+#!   ORDER="500000000001799"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRCHOICE" PARM_VALUE="Selected Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTRLIST" PARM_VALUE="$(ATTR_2_TRANSLATE)"/>
+#!     <XFORM_PARM PARM_NAME="ATTRS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CASE_CHANGE_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CASE_DISP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MODE_CHOICE" PARM_VALUE="COPY"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PATTERN_ACTION_DISP" PARM_VALUE="ADDSUFFIX"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_PATTERN" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_STR" PARM_VALUE="_en"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="BulkAttributeRenamer"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="23"
+#!   TYPE="BulkAttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="738.59619255523376 -682.92613617770883"
+#!   BOUNDING_RECT="738.59619255523376 -682.92613617770883 472.09999999999997 71"
+#!   ORDER="500000000001799"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRCHOICE" PARM_VALUE="Selected Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTRLIST" PARM_VALUE="$(ATTR_2_TRANSLATE)"/>
+#!     <XFORM_PARM PARM_NAME="ATTRS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CASE_CHANGE_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CASE_DISP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MODE_CHOICE" PARM_VALUE="COPY"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PATTERN_ACTION_DISP" PARM_VALUE="ADDSUFFIX"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_PATTERN" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_STR" PARM_VALUE="_en"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="BulkAttributeRenamer_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="24"
+#!   TYPE="BulkAttributeRenamer"
+#!   VERSION="4"
+#!   POSITION="738.59619255523376 -248.54679238427127"
+#!   BOUNDING_RECT="738.59619255523376 -248.54679238427127 472.09999999999997 71"
+#!   ORDER="500000000001799"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRCHOICE" PARM_VALUE="Selected Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTRLIST" PARM_VALUE="$(ATTR_2_TRANSLATE)"/>
+#!     <XFORM_PARM PARM_NAME="ATTRS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CASE_CHANGE_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CASE_DISP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MODE_CHOICE" PARM_VALUE="COPY"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PATTERN_ACTION_DISP" PARM_VALUE="ADDSUFFIX"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_PATTERN" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REPLACE_STR" PARM_VALUE="_fr"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="BulkAttributeRenamer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="38"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="2550.8847868481603 -147.68228620834523"
+#!   BOUNDING_RECT="2550.8847868481603 -147.68228620834523 454 71"
+#!   ORDER="500000000001777"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; attr_to_translate SET_TO &lt;at&gt;Value&lt;openparen&gt;_attr2translate&lt;closeparen&gt;  translation_mode SET_TO French--&lt;gt&gt;English  language_detected SET_TO French"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_7"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="39"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="2577.8912297520951 59.080759504410423"
+#!   BOUNDING_RECT="2577.8912297520951 59.080759504410423 454 71"
+#!   ORDER="500000000001777"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; attr_to_translate SET_TO &lt;at&gt;Value&lt;openparen&gt;_attr2translate&lt;closeparen&gt;  translation_mode SET_TO English--&lt;gt&gt;French  language_detected SET_TO English"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_8"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="40"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1810.1366386259383 -702.21645253766224"
+#!   BOUNDING_RECT="1810.1366386259383 -702.21645253766224 454 71"
+#!   ORDER="500000000001777"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_mapped" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; attr_to_translate SET_TO FME_NULL_VALUE  translation_mode SET_TO English--&lt;gt&gt;French  language_mapped SET_TO English"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="41"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1837.1430815298731 -496.92440432674732"
+#!   BOUNDING_RECT="1837.1430815298731 -496.92440432674732 454 71"
+#!   ORDER="500000000001777"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_mapped" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; attr_to_translate SET_TO FME_NULL_VALUE  translation_mode SET_TO French--&lt;gt&gt;English  language_mapped SET_TO French"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="42"
+#!   TYPE="Junction"
+#!   VERSION="0"
+#!   POSITION="3246.7354499925141 -383.57900690394695"
+#!   BOUNDING_RECT="3246.7354499925141 -383.57900690394695 61 61"
+#!   ORDER="500000000001802"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_mapped" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Junction"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="43"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1810.1366386259383 -872.07106195935876"
+#!   BOUNDING_RECT="1810.1366386259383 -872.07106195935876 454 71"
+#!   ORDER="500000000001777"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_mapped" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_code_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; attr_to_translate SET_TO FME_NULL_VALUE  translation_mode SET_TO English--&lt;gt&gt;French  language_mapped SET_TO Bilingual"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="55"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="2648.7356428339494 749.24165768241664"
+#!   BOUNDING_RECT="2648.7356428339494 749.24165768241664 454 71"
+#!   ORDER="500000000001777"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; attr_to_translate SET_TO &lt;at&gt;Value&lt;openparen&gt;_attr2translate&lt;closeparen&gt;  translation_mode SET_TO FME_NULL_VALUE  language_detected SET_TO Bilingual"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_6"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="56"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="2679.6001490098761 957.57707436991655"
+#!   BOUNDING_RECT="2679.6001490098761 957.57707436991655 454 71"
+#!   ORDER="500000000001777"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; attr_to_translate SET_TO &lt;at&gt;Value&lt;openparen&gt;_attr2translate&lt;closeparen&gt;  translation_mode SET_TO FME_NULL_VALUE  language_detected SET_TO Check_Lang"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_9"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="57"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="2679.6001490098761 1181.34474414538"
+#!   BOUNDING_RECT="2679.6001490098761 1181.34474414538 454 71"
+#!   ORDER="500000000001777"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; attr_to_translate SET_TO &lt;at&gt;Value&lt;openparen&gt;_attr2translate&lt;closeparen&gt;  translation_mode SET_TO FME_NULL_VALUE  language_detected SET_TO No_Detection"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_10"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="66"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3260.2313677375632 1143.6614410580298"
+#!   BOUNDING_RECT="3260.2313677375632 1143.6614410580298 454 71"
+#!   ORDER="500000000001806"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_attr2translate,_code_value,mapping_errors&lt;opencurly&gt;0&lt;closecurly&gt;.error"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="62"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="3809.6565538185637 1341.7200361304021"
+#!   BOUNDING_RECT="3809.6565538185637 1341.7200361304021 533.10000000000002 71"
+#!   ORDER="500000000001807"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="68"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3291.1934331169055 873.14858522303132"
+#!   BOUNDING_RECT="3291.1934331169055 873.14858522303132 454 71"
+#!   ORDER="500000000001806"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_attr2translate,_code_value,mapping_errors&lt;opencurly&gt;0&lt;closecurly&gt;.error"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="71"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="3848.3347457418881 1083.1641499937596"
+#!   BOUNDING_RECT="3848.3347457418881 1083.1641499937596 533.10000000000002 71"
+#!   ORDER="500000000001807"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="65"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3291.1934331169055 646.86860860378147"
+#!   BOUNDING_RECT="3291.1934331169055 646.86860860378147 454 71"
+#!   ORDER="500000000001806"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_attr2translate,_code_value,mapping_errors&lt;opencurly&gt;0&lt;closecurly&gt;.error"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="74"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="3840.6186191979068 805.83249724733685"
+#!   BOUNDING_RECT="3840.6186191979068 805.83249724733685 533.10000000000002 71"
+#!   ORDER="500000000001807"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="78"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="3486.5553858024136 -168.52849821446952"
+#!   BOUNDING_RECT="3486.5553858024136 -168.52849821446952 454 71"
+#!   ORDER="500000000001806"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="attr_to_translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="translation_mode" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_detected" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="language_mapped" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="_attr2translate,_code_value,mapping_errors&lt;opencurly&gt;0&lt;closecurly&gt;.error"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="79"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="3445.6968912688289 -443.1789683356601"
+#!   BOUNDING_RECT="3445.6968912688289 -443.1789683356601 533.10000000000002 71"
+#!   ORDER="500000000001807"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="89"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="1925.7984758371133 98.903687710538179"
+#!   BOUNDING_RECT="1925.7984758371133 98.903687710538179 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_attr2translate"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="92"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="1898.792032933178 -147.68228620834523"
+#!   BOUNDING_RECT="1898.792032933178 -147.68228620834523 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_attr2translate"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="95"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="2037.7623716733926 1181.34474414538"
+#!   BOUNDING_RECT="2037.7623716733926 1181.34474414538 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_attr2translate"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="98"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="2037.7623716733926 957.57707436991655"
+#!   BOUNDING_RECT="2037.7623716733926 957.57707436991655 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_attr2translate"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_5"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="101"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="2064.7688145773272 707.75530807859377"
+#!   BOUNDING_RECT="2064.7688145773272 707.75530807859377 454 71"
+#!   ORDER="500000000001830"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_attr2translate"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_6"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="9"
+#!   NAME="Input"
+#!   POSITION="-1452.4915591506506 -0.43761793117198522"
+#!   BOUNDING_RECT="-1452.4915591506506 -0.43761793117198522 600.00106825772946 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="54"
+#!   NAME="No_Detection"
+#!   POSITION="4625.2881056669257 1221.7200361304021"
+#!   BOUNDING_RECT="4625.2881056669257 1221.7200361304021 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="61"
+#!   NAME="Check_Lang"
+#!   POSITION="4625.2881056669257 992.29964381783361"
+#!   BOUNDING_RECT="4625.2881056669257 992.29964381783361 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="64"
+#!   NAME="Bilingual"
+#!   POSITION="4625.2881056669257 739.39648021829623"
+#!   BOUNDING_RECT="4625.2881056669257 739.39648021829623 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="82"
+#!   NAME="Processed"
+#!   POSITION="4160.9212388420183 -501.4499559838082"
+#!   BOUNDING_RECT="4160.9212388420183 -501.4499559838082 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="37"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="96"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="95"
+#!   SOURCE_PORT_DESC="fo 0 No_Detection"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 &lt;lt&gt;lt&lt;gt&gt;EMPTY&lt;lt&gt;gt&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 DATA_INPUT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="52"
+#!   SOURCE_NODE="19"
+#!   TARGET_NODE="40"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="53"
+#!   SOURCE_NODE="23"
+#!   TARGET_NODE="43"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="51"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="41"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="46"
+#!   SOURCE_NODE="38"
+#!   TARGET_NODE="42"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="47"
+#!   SOURCE_NODE="39"
+#!   TARGET_NODE="42"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="44"
+#!   SOURCE_NODE="40"
+#!   TARGET_NODE="42"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="45"
+#!   SOURCE_NODE="41"
+#!   TARGET_NODE="42"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="81"
+#!   SOURCE_NODE="42"
+#!   TARGET_NODE="78"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="48"
+#!   SOURCE_NODE="43"
+#!   TARGET_NODE="42"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="76"
+#!   SOURCE_NODE="55"
+#!   TARGET_NODE="65"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="63"
+#!   SOURCE_NODE="56"
+#!   TARGET_NODE="68"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="67"
+#!   SOURCE_NODE="57"
+#!   TARGET_NODE="66"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="70"
+#!   SOURCE_NODE="62"
+#!   TARGET_NODE="54"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="75"
+#!   SOURCE_NODE="65"
+#!   TARGET_NODE="74"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="69"
+#!   SOURCE_NODE="66"
+#!   TARGET_NODE="62"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="72"
+#!   SOURCE_NODE="68"
+#!   TARGET_NODE="71"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="73"
+#!   SOURCE_NODE="71"
+#!   TARGET_NODE="61"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="77"
+#!   SOURCE_NODE="74"
+#!   TARGET_NODE="64"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="80"
+#!   SOURCE_NODE="78"
+#!   TARGET_NODE="79"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="83"
+#!   SOURCE_NODE="79"
+#!   TARGET_NODE="82"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="91"
+#!   SOURCE_NODE="89"
+#!   TARGET_NODE="39"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="94"
+#!   SOURCE_NODE="92"
+#!   TARGET_NODE="38"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="97"
+#!   SOURCE_NODE="95"
+#!   TARGET_NODE="57"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="100"
+#!   SOURCE_NODE="98"
+#!   TARGET_NODE="56"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="103"
+#!   SOURCE_NODE="101"
+#!   TARGET_NODE="55"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="102"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="101"
+#!   SOURCE_PORT_DESC="fo 2 Bilingual"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;lt&lt;gt&gt;MISSING&lt;lt&gt;gt&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="99"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="98"
+#!   SOURCE_PORT_DESC="fo 1 Check_Lang"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 2 &lt;lt&gt;lt&lt;gt&gt;NULL&lt;lt&gt;gt&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="90"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="89"
+#!   SOURCE_PORT_DESC="fo 3 English"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="32"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 3 &lt;lt&gt;lt&lt;gt&gt;UNFILTERED&lt;lt&gt;gt&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="93"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="92"
+#!   SOURCE_PORT_DESC="fo 4 French"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="23"
+#!   SOURCE_PORT_DESC="fo 6 Bilingual"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="19"
+#!   SOURCE_PORT_DESC="fo 5 English"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="35"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 4 French"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTR_2_TRANSLATE notes
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTR_2_TRANSLATE_CODE notes_code
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_P-T_ABBR MB
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR $(FME_SHAREDRESOURCE_DATA)\PT_Harvester\LOOKUP_TABLES
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FEATURE_TYPE Notes_language_detection
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Input1716322063 Input Splitter"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_attr2translate" "SET_TO" "$($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTR_2_TRANSLATE$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG DATA_INPUT Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_OUTPUT"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_DATA_INPUT"
+MACRO METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ATT_TO_MAP @Value(_attr2translate)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ERROR_NOT_MAPPED YES
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_ENGLISH_REFRESH YES
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_FRENCH_REFRESH YES
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_CODE_REFRESH YES
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FEATURE_TYPE)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR $($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR)
+MACRO $(METADATA_VALUE_MAPPER_NG_WORKSPACE_NAME)_P-T_ABBR $($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_P-T_ABBR)
+INCLUDE_CUSTOM_TRANSFORMER_VER METADATA_VALUE_MAPPER_NG:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG OUTPUT Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_METADATA_VALUE_MAPPER_NG_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_code_value" "SET_TO" "<at>Value<openparen>$($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTR_2_TRANSLATE_CODE$encode)<closeparen>" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_FILTER
+FACTORY_DEF * AttributeFilterFactory FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_Filter COMMAND_PARM_EVALUATION SINGLE_PASS INPUT FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_FILTER FILTER_ATTRIBUTE _code_value FILTER_VALUES <lt>EMPTY<gt> <lt>MISSING<gt> <lt>NULL<gt> <lt>UNFILTERED<gt> Bilingual English French PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT <lt>EMPTY<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_<lt>EMPTY<gt> OUTPUT <lt>MISSING<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_<lt>MISSING<gt> OUTPUT <lt>NULL<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_<lt>NULL<gt> OUTPUT <lt>UNFILTERED<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_<lt>UNFILTERED<gt> OUTPUT Bilingual FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_Bilingual OUTPUT English FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_English OUTPUT French FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_French
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer_4    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_Bilingual"    OUTPUT { FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer_4_OUTPUT"        @RenameAttributes(PATTERN_REPLACE, ADDSUFFIX, <Unused>, "<Unused>", "_en", "<Unused>", "$($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTR_2_TRANSLATE$encode)", "-_", "COPY", "SELECTED")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_5    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer_4_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "attr_to_translate" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "translation_mode" "SET_TO" "English--<gt>French" }      ATTR_ACTION { "" "language_mapped" "SET_TO" "Bilingual" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_5_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_English"    OUTPUT { FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer_OUTPUT"        @RenameAttributes(PATTERN_REPLACE, ADDSUFFIX, <Unused>, "<Unused>", "_en", "<Unused>", "$($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTR_2_TRANSLATE$encode)", "-_", "COPY", "SELECTED")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "attr_to_translate" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "translation_mode" "SET_TO" "English--<gt>French" }      ATTR_ACTION { "" "language_mapped" "SET_TO" "English" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer_2    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_French"    OUTPUT { FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer_2_OUTPUT"        @RenameAttributes(PATTERN_REPLACE, ADDSUFFIX, <Unused>, "<Unused>", "_fr", "<Unused>", "$($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTR_2_TRANSLATE$encode)", "-_", "COPY", "SELECTED")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_3    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_BulkAttributeRenamer_2_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "attr_to_translate" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "translation_mode" "SET_TO" "French--<gt>English" }      ATTR_ACTION { "" "language_mapped" "SET_TO" "French" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_<lt>EMPTY<gt>"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_<lt>MISSING<gt>"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_<lt>NULL<gt>"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeFilter_<lt>UNFILTERED<gt>"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_Input"
+MACRO FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT
+MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT
+MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTR_2_TRANSLATE @Value(_attr2translate)
+INCLUDE_CUSTOM_TRANSFORMER_VER FRENCH_ENGLISH_LANGUAGE_DETECT:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT No_Detection Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_No_Detection"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_No_Detection"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT Bilingual Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_Bilingual"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_Bilingual"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT Check_Lang Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_Check_Lang"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_Check_Lang"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT English Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_English"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_English"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT French Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_French"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_French"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_3    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_French"    OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_3_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_7    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_3_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "attr_to_translate" "SET_TO" "<at>Value<openparen>_attr2translate<closeparen>" }      ATTR_ACTION { "" "translation_mode" "SET_TO" "French--<gt>English" }      ATTR_ACTION { "" "language_detected" "SET_TO" "French" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_7_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_2    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_English"    OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_8    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_2_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "attr_to_translate" "SET_TO" "<at>Value<openparen>_attr2translate<closeparen>" }      ATTR_ACTION { "" "translation_mode" "SET_TO" "English--<gt>French" }      ATTR_ACTION { "" "language_detected" "SET_TO" "English" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Junction    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_7_OUTPUT"    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT"    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_5_OUTPUT"    OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Junction_Output"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_4_LIST_FUNC }    } else {        puts "MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_4_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_4    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Junction_Output"    OUTPUT { FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_4_OUTPUT"        @RemoveAttributes(fme_encoded,_attr2translate,_code_value,mapping_errors<opencurly>0<closecurly>.error)        $($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_4_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_4_OUTPUT"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_6    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_Bilingual"    OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_6_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_6    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_6_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "attr_to_translate" "SET_TO" "<at>Value<openparen>_attr2translate<closeparen>" }      ATTR_ACTION { "" "translation_mode" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "language_detected" "SET_TO" "Bilingual" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_6_OUTPUT"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC }    } else {        puts "MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_3    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_6_OUTPUT"    OUTPUT { FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,_attr2translate,_code_value,mapping_errors<opencurly>0<closecurly>.error)        $($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_5    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_Check_Lang"    OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_5_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_9    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_5_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "attr_to_translate" "SET_TO" "<at>Value<openparen>_attr2translate<closeparen>" }      ATTR_ACTION { "" "translation_mode" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "language_detected" "SET_TO" "Check_Lang" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_9_OUTPUT"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC }    } else {        puts "MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_9_OUTPUT"    OUTPUT { FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,_attr2translate,_code_value,mapping_errors<opencurly>0<closecurly>.error)        $($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_4    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_FRENCH_ENGLISH_LANGUAGE_DETECT_No_Detection"    OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_4_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_10    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeExposer_4_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "attr_to_translate" "SET_TO" "<at>Value<openparen>_attr2translate<closeparen>" }      ATTR_ACTION { "" "translation_mode" "SET_TO" "FME_NULL_VALUE" }      ATTR_ACTION { "" "language_detected" "SET_TO" "No_Detection" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_10_OUTPUT"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC }    } else {        puts "MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeCreator_10_OUTPUT"    OUTPUT { FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_OUTPUT"        @RemoveAttributes(fme_encoded,_attr2translate,_code_value,mapping_errors<opencurly>0<closecurly>.error)        $($(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_AttributeRemover_OUTPUT"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_No_Detection1716322063 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_No_Detection"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Check_Lang1716322063 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Check_Lang"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Bilingual1716322063 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Bilingual"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Processed1716322063 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME)_Processed"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(FRENCH_ENGLISH_LANGUAGE_DETECT_AND_MAPPING_WORKSPACE_NAME))}]
