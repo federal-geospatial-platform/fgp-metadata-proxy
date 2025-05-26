@@ -302,7 +302,7 @@ class collection_end_start_date_extractor(object):
                    if re.match('01|03|05|07|08|10|12$',end_date):
                        
                        end_date='%s-31'%(end_date)
-                   elif re.match('02$',end_date):
+                   elif re.match('^02$',end_date):
                        end_date='%s-28'%(end_date)
                    else:
                        
