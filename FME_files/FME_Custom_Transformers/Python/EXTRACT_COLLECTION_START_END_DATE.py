@@ -300,12 +300,13 @@ class collection_end_start_date_extractor(object):
                   end_date='%s-12-31'%(end_date)
                if re.match(r'^[1-2][0-9]{3}-[0-1][0-9]$', end_date):
                    month = end_date[-2:]
-                   if month in ['01','03','05','07','08','10','12']:
-                       end_date = f'{end_date}-31'
-                   elif month == '02':
-                       end_date = f'{end_date}-28'  # Leap year logic can be added here
-                   else:
-                       end_date = f'{end_date}-30'
+                   if month in ['01', '03', '05', '07', '08', '10', '12']:
+                       end_date = f'{end_date}-31'
+                   elif month == '02':
+                       end_date = f'{end_date}-28'  # Leap year logic can be added here
+                   else:
+                       end_date = f'{end_date}-30'
+
 
             feature.setAttribute('data_collection_start_date',start_date)
             feature.setAttribute('data_collection_end_date',end_date)
