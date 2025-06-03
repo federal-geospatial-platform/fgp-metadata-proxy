@@ -298,8 +298,8 @@ class collection_end_start_date_extractor(object):
                end_date=end_date.rstrip(' ').lstrip(' ')
                if re.match('^[1-2][0-9][0-9][0-9]$',end_date):
                   end_date='%s-12-31'%(end_date)
-               if re.match(r'^[1-2][0-9]{3}-[0-1][0-9]$',end_date):
-                   month = end_date[-2:]
+               if re.match(r'^[1-2][0-9]{3}-[0-1][0-9]$', end_date):
+                   month = end_date[-2:]
                    if month in ['01','03','05','07','08','10','12']:
                        end_date = f'{end_date}-31'
                    elif month == '02':
