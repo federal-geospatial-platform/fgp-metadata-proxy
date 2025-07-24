@@ -1,0 +1,923 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN "Catalogue Reader_YT_CKAN",1,"FGP Tools",00f77b1e-fe75-4abf-87b6-9c53243217b9,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# <p><strong>Description</strong></p>
+# <p>This Custom Transformer enables to read a CKAN or a CSW server and extract the requested metadata records.  Once the metadata records are extracted, they are transformed from their hierarchcal structure (JSON for CKAN and XML for CSW) into a flattened FME attribute and list features.  The parameters allow great flexibility on how the CKAN or CSW server are requested.</p>
+# <p>Note: No modification other then the JSON/XML flattening is performed on the metadata records read from the CKAN/CSW server.</p>
+# <p><strong>Input Ports</strong></p>
+# <ul>
+# <li>Input: One feature to signal the start of the metadata server extraction.    </li>
+# </ul>
+# <p><strong>Output Ports</strong></p>
+# <ul>
+# <li>Résultats: The features resulting from the CKAN or the CSW server extraction.  One output feature for each metadata record read.</li>
+# <li>Métadonnées invalides: Used to output ID not found in the CKAN or CSW server. On ly used when the parameter <em>IDENTIFIANT</em> is used.</li>
+# <li>UUID_invalide: Used when the ID is not a valid UUID. On ly used when the parameter <em>IDENTIFIANT</em> is used.</li>
+# </ul>
+# <p><strong>Parameters</strong></p>
+# <ul>
+# <li>SOURCE_URL: The source URL (web address) of the target CKAN or CSW server. There are 6 pre-defined source url and one user defined address (drop down bix):<ul>
+# <li>FGP-STAGING_INTERNE: Address of the external internal FGP staging server;</li>
+# <li>FGP-STAGING-EXTERNE:Address of the internal internal FGP staging server;</li>
+# <li>FGP-PROD_INTERNE: Address of the internal FGP production server ;</li>
+# <li>FGP-PROD-EXTERNE: Address of the externall FGP production server;</li>
+# <li>OPENDATA-STAGING: Address of the Open Data staging server;</li>
+# <li>OPENDATA-PROD: Address of the Open Data production server;</li>
+# <li>PYCSW-INTERNAL: Address of the internal PYCSW server;</li>
+# <li>CUSTOM-CSW/CKAN: Custom URL address of a CKAN or CSW server to be supplied by the user in the <em>CUSTOM_URL</em> parameter.</li>
+# </ul>
+# </li>
+# <li>CUSTOM_URL: The address of the server to be used when <em>CUSTOM-CSW/CKAN</em> option is choosen with <em>SOURCE_URL</em> parameter. </li>
+# <li>CKAN_FILER: String to be used with CKAN server to filter the result. Ex.: fq=collection:fgp where <em>fq</em> is the CKAN reserved word for filtering, <em>collection</em> is a the name of a key in the JSON document and <em>fgp</em> is the requested value for the filtering;</li>
+# <li>CUSTOM_CSW_SCHEMA: Drop down box specifying the output schema to use to generate the metadata records (default: http://www.iso tc211.org/2005/ gmd). Used with CSW server.</li>
+# <li>CUSTOM_CSW_VERSION: Drop down box specifying the version of the CSW server to use (default: 2.0.2)</li>
+# <li>CUSTOM_URL_CSW_TYPENAMES: Dropdown box specifying which entities must be queried from the information model (default: gmd:MD_Met adata). Used with CSW server.</li>
+# <li>CUSTOM_CSW_LIST_NAME: Dropdown box specifying the name of the FME list attribute used to explode the list attribute . (fefault MD_Metadata{}) Used with CSW server.</li>
+# <li>IDENTIFIANT:  UUID identifying the ID of the metadata record to extract from the server. Used with CSW and CKAN server.</li>
+# <li>CUSTOM_URL_BY_ID_ATT_NAME:<em> Not used any more</em>.</li>
+# <li>CSW_ANY_TEXT_FILTER: A string to be used to filter the metadata records.  Any string canbe used.  can filter any field of the metadata record.  Used with CSW server. </li>
+# </ul>
+# <p><strong>Note</strong>:  For more information on the use of the parameters of the CSW server, refer to the official OGC documentation <a href="https://portal.opengeospatial.org/files/?artifact_id=77949"> OGC PDF documentation</a>.</p>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="FGP Tools"
+#!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This Custom Transformer enables to read a CKAN or a CSW server and extract the requested metadata records.  Once the metadata records are extracted, they are transformed from their hierarchcal structure (JSON for CKAN and XML for CSW) into a flattened FME attribute and list features.  The parameters allow great flexibility on how the CKAN or CSW server are requested.&lt;/p&gt;&#10;&lt;p&gt;Note: No modification other then the JSON/XML flattening is performed on the metadata records read from the CKAN/CSW server.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Input: One feature to signal the start of the metadata server extraction.    &lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Résultats: The features resulting from the CKAN or the CSW server extraction.  One output feature for each metadata record read.&lt;/li&gt;&#10;&lt;li&gt;Métadonnées invalides: Used to output ID not found in the CKAN or CSW server. On ly used when the parameter &lt;em&gt;IDENTIFIANT&lt;/em&gt; is used.&lt;/li&gt;&#10;&lt;li&gt;UUID_invalide: Used when the ID is not a valid UUID. On ly used when the parameter &lt;em&gt;IDENTIFIANT&lt;/em&gt; is used.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;SOURCE_URL: The source URL (web address) of the target CKAN or CSW server. There are 6 pre-defined source url and one user defined address (drop down bix):&lt;ul&gt;&#10;&lt;li&gt;FGP-STAGING_INTERNE: Address of the external internal FGP staging server;&lt;/li&gt;&#10;&lt;li&gt;FGP-STAGING-EXTERNE:Address of the internal internal FGP staging server;&lt;/li&gt;&#10;&lt;li&gt;FGP-PROD_INTERNE: Address of the internal FGP production server ;&lt;/li&gt;&#10;&lt;li&gt;FGP-PROD-EXTERNE: Address of the externall FGP production server;&lt;/li&gt;&#10;&lt;li&gt;OPENDATA-STAGING: Address of the Open Data staging server;&lt;/li&gt;&#10;&lt;li&gt;OPENDATA-PROD: Address of the Open Data production server;&lt;/li&gt;&#10;&lt;li&gt;PYCSW-INTERNAL: Address of the internal PYCSW server;&lt;/li&gt;&#10;&lt;li&gt;CUSTOM-CSW/CKAN: Custom URL address of a CKAN or CSW server to be supplied by the user in the &lt;em&gt;CUSTOM_URL&lt;/em&gt; parameter.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;CUSTOM_URL: The address of the server to be used when &lt;em&gt;CUSTOM-CSW/CKAN&lt;/em&gt; option is choosen with &lt;em&gt;SOURCE_URL&lt;/em&gt; parameter. &lt;/li&gt;&#10;&lt;li&gt;CKAN_FILER: String to be used with CKAN server to filter the result. Ex.: fq=collection:fgp where &lt;em&gt;fq&lt;/em&gt; is the CKAN reserved word for filtering, &lt;em&gt;collection&lt;/em&gt; is a the name of a key in the JSON document and &lt;em&gt;fgp&lt;/em&gt; is the requested value for the filtering;&lt;/li&gt;&#10;&lt;li&gt;CUSTOM_CSW_SCHEMA: Drop down box specifying the output schema to use to generate the metadata records (default: http://www.iso tc211.org/2005/ gmd). Used with CSW server.&lt;/li&gt;&#10;&lt;li&gt;CUSTOM_CSW_VERSION: Drop down box specifying the version of the CSW server to use (default: 2.0.2)&lt;/li&gt;&#10;&lt;li&gt;CUSTOM_URL_CSW_TYPENAMES: Dropdown box specifying which entities must be queried from the information model (default: gmd:MD_Met adata). Used with CSW server.&lt;/li&gt;&#10;&lt;li&gt;CUSTOM_CSW_LIST_NAME: Dropdown box specifying the name of the FME list attribute used to explode the list attribute . (fefault MD_Metadata{}) Used with CSW server.&lt;/li&gt;&#10;&lt;li&gt;IDENTIFIANT:  UUID identifying the ID of the metadata record to extract from the server. Used with CSW and CKAN server.&lt;/li&gt;&#10;&lt;li&gt;CUSTOM_URL_BY_ID_ATT_NAME:&lt;em&gt; Not used any more&lt;/em&gt;.&lt;/li&gt;&#10;&lt;li&gt;CSW_ANY_TEXT_FILTER: A string to be used to filter the metadata records.  Any string canbe used.  can filter any field of the metadata record.  Used with CSW server. &lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;:  For more information on the use of the parameters of the CSW server, refer to the official OGC documentation &lt;a href=&quot;https://portal.opengeospatial.org/files/?artifact_id=77949&quot;&gt; OGC PDF documentation&lt;/a&gt;.&lt;/p&gt;"
+#!   DOC_EXTENTS="6271.45 1892.97"
+#!   DOC_TOP_LEFT="-19904.9 496.628"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="20787"
+#!   FME_DOCUMENT_GUID="00f77b1e-fe75-4abf-87b6-9c53243217b9"
+#!   FME_DOCUMENT_PRIORGUID="2b1175b5-b71b-472a-a962-155e36f8cbd1,c463d541-0b50-4f0e-8457-6fb5be326ae7,c63f7c5e-5d7e-4fd4-bc6f-97a1a54536cd,38c4dcae-9c3f-4fa9-8229-f81f06db4f1d,5a361a5a-7434-45ba-99ae-fedb42d32ced,38275f28-58e3-4052-ac66-57ed2d74fb90"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="17&lt;solidus&gt;01&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Version&lt;space&gt;originale"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
+#!   LAST_SAVE_DATE="2025-07-22T12:00:32"
+#!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This Custom Transformer enables to read a CKAN or a CSW server and extract the requested metadata records.  Once the metadata records are extracted, they are transformed from their hierarchcal structure (JSON for CKAN and XML for CSW) into a flattened FME attribute and list features.  The parameters allow great flexibility on how the CKAN or CSW server are requested.&#10;&#10;Note: No modification other then the JSON/XML flattening is performed on the metadata records read from the CKAN/CSW server.&#10;&#10;**Input Ports**&#10;&#10;  - Input: One feature to signal the start of the metadata server extraction.    &#10;&#10;**Output Ports**&#10;&#10;  - Résultats: The features resulting from the CKAN or the CSW server extraction.  One output feature for each metadata record read.&#10;  - Métadonnées invalides: Used to output ID not found in the CKAN or CSW server. On ly used when the parameter _IDENTIFIANT_ is used.&#10;  - UUID_invalide: Used when the ID is not a valid UUID. On ly used when the parameter _IDENTIFIANT_ is used.&#10;&#10;**Parameters**&#10; &#10;  - SOURCE_URL: The source URL (web address) of the target CKAN or CSW server. There are 6 pre-defined source url and one user defined address (drop down bix):&#10;    - FGP-STAGING_INTERNE: Address of the external internal FGP staging server;&#10;    -  FGP-STAGING-EXTERNE:Address of the internal internal FGP staging server;&#10;    -  FGP-PROD_INTERNE: Address of the internal FGP production server ;&#10;    -  FGP-PROD-EXTERNE: Address of the externall FGP production server;&#10;    - OPENDATA-STAGING: Address of the Open Data staging server;&#10;    - OPENDATA-PROD: Address of the Open Data production server;&#10;    - PYCSW-INTERNAL: Address of the internal PYCSW server;&#10;    - CUSTOM-CSW/CKAN: Custom URL address of a CKAN or CSW server to be supplied by the user in the _CUSTOM_URL_ parameter.&#10;  - CUSTOM_URL: The address of the server to be used when _CUSTOM-CSW/CKAN_ option is choosen with _SOURCE_URL_ parameter. &#10;  - CKAN_FILER: String to be used with CKAN server to filter the result. Ex.: fq=collection:fgp where _fq_ is the CKAN reserved word for filtering, _collection_ is a the name of a key in the JSON document and _fgp_ is the requested value for the filtering;&#10;  - CUSTOM_CSW_SCHEMA: Drop down box specifying the output schema to use to generate the metadata records (default: http://www.iso tc211.org/2005/ gmd). Used with CSW server.&#10;  - CUSTOM_CSW_VERSION: Drop down box specifying the version of the CSW server to use (default: 2.0.2)&#10;  - CUSTOM_URL_CSW_TYPENAMES: Dropdown box specifying which entities must be queried from the information model (default: gmd:MD_Met adata). Used with CSW server.&#10;  - CUSTOM_CSW_LIST_NAME: Dropdown box specifying the name of the FME list attribute used to explode the list attribute . (fefault MD_Metadata{}) Used with CSW server.&#10;  - IDENTIFIANT:  UUID identifying the ID of the metadata record to extract from the server. Used with CSW and CKAN server.&#10; - CUSTOM_URL_BY_ID_ATT_NAME:_ Not used any more_.&#10; - CSW_ANY_TEXT_FILTER: A string to be used to filter the metadata records.  Any string canbe used.  can filter any field of the metadata record.  Used with CSW server. &#10;&#10;**Note**:  For more information on the use of the parameters of the CSW server, refer to the official OGC documentation [ OGC PDF documentation](https://portal.opengeospatial.org/files/?artifact_id=77949).&#10;    "
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="37"
+#!   REPLACED_BY=""
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="Catalogue Reader_YT_CKAN"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-18466.8 2590.87"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="86"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI LOOKUP_CHOICE_OR_ATTR SOURCE_URL FGP-STAGING-INTERNE,https:&lt;solidus&gt;&lt;solidus&gt;staging.gcgeo.gc.ca&lt;solidus&gt;geonetwork&lt;solidus&gt;srv&lt;solidus&gt;eng&lt;solidus&gt;csw?%FGP-STAGING-EXTERNE,https:&lt;solidus&gt;&lt;solidus&gt;maps-staging.canada.ca&lt;solidus&gt;geonetwork&lt;solidus&gt;srv&lt;solidus&gt;eng&lt;solidus&gt;csw?%FGP_PROD_INTERNE,https:&lt;solidus&gt;&lt;solidus&gt;gcgeo.gc.ca&lt;solidus&gt;geonetwork&lt;solidus&gt;srv&lt;solidus&gt;eng&lt;solidus&gt;csw?%FGP_PROD_EXTERNE,https:&lt;solidus&gt;&lt;solidus&gt;maps.canada.ca&lt;solidus&gt;geonetwork&lt;solidus&gt;srv&lt;solidus&gt;eng&lt;solidus&gt;csw?%OPENDATA-STAGING,https:&lt;solidus&gt;&lt;solidus&gt;staging.open.canada.ca&lt;solidus&gt;data&lt;solidus&gt;api&lt;solidus&gt;action%OPENDATA-PROD,https:&lt;solidus&gt;&lt;solidus&gt;open.canada.ca&lt;solidus&gt;data&lt;solidus&gt;api&lt;solidus&gt;action%PYCSW-INTERNAL,https:&lt;solidus&gt;&lt;solidus&gt;pycsw.ddr-stage.services.geo.ca&lt;solidus&gt;pycsw?%CUSTOM-CSW&lt;solidus&gt;CKAN,Manuel SOURCE_URL:"
+#!   DEFAULT_VALUE="Manuel"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CUSTOM_URL CUSTOM_URL:"
+#!   DEFAULT_VALUE="https://open.service-uat.yukon.ca/api/3/action"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL STRING_OR_CHOICE_OR_ATTR CKAN_FILTER q=collection:fgp%q=collection:federated CKAN_FILTER:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL STRING_OR_CHOICE_OR_ATTR CUSTOM_CSW_SCHEMA http://www.isotc211.org/2005/gmd%http://www.opengis.net/cat/csw/2.0.2 CUSTOM_CSW_SCHEMA:"
+#!   DEFAULT_VALUE="http://www.isotc211.org/2005/gmd"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL STRING_OR_CHOICE_OR_ATTR CUSTOM_CSW_VERSION 2.0.2 CUSTOM_CSW_VERSION:"
+#!   DEFAULT_VALUE="2.11"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL STRING_OR_CHOICE_OR_ATTR CUSTOM_URL_CSW_TYPENAMES gmd:MD_Metadata%csw:Record CUSTOM_URL_CSW_TYPENAMES:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL STRING_OR_CHOICE_OR_ATTR CUSTOM_CSW_LIST_NAME MD_Metadata{}%Record{} CUSTOM_CSW_LIST_NAME:"
+#!   DEFAULT_VALUE="MD_Metadata{}"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CUSTOM_URL_BY_ID_ATT_NAME CUSTOM_URL_BY_ID_ATT_NAME:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR CSW_ANYTEXT_FILTER CSW_ANYTEXT_FILTER:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="121"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Remove unneeded attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-16225.318526735786 1613.9941085393816"
+#!   TOP_LEFT="-16225.318526735786 1613.9941085393816"
+#!   BOTTOM_RIGHT="-15613.230478837762 1446.4927335256316"
+#!   BOUNDING_RECT="-16225.318526735786 1613.9941085393816 612.08804789802343 167.50137501375013"
+#!   ORDER="500000000000405.13"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="33"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="143"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Renaming attributes to match the old DKAN names.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-15469.912805103108 2279.5969882672771"
+#!   TOP_LEFT="-15469.912805103108 2279.5969882672771"
+#!   BOTTOM_RIGHT="-15015.912805103108 2278.5969882672771"
+#!   BOUNDING_RECT="-15469.912805103108 2279.5969882672771 454 1"
+#!   ORDER="500000000003745.63"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="141"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="147"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;copie names&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-15469.912805103108 2042.0946132435267"
+#!   TOP_LEFT="-15469.912805103108 2042.0946132435267"
+#!   BOTTOM_RIGHT="-15015.912805103108 2041.0946132435267"
+#!   BOUNDING_RECT="-15469.912805103108 2042.0946132435267 454 1"
+#!   ORDER="500000000003746.63"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="144"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="137"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Expose some attributes in order to remove them, rename or copie them&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-17686.888612872102 2279.5969882672771"
+#!   TOP_LEFT="-17686.888612872102 2279.5969882672771"
+#!   BOTTOM_RIGHT="-17232.888612872102 2278.5969882672771"
+#!   BOUNDING_RECT="-17686.888612872102 2279.5969882672771 454 1"
+#!   ORDER="500000000003734.63"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="135"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="139"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;iso_topic&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-17718.708788066277 1404.0369591373792"
+#!   TOP_LEFT="-17718.708788066277 1404.0369591373792"
+#!   BOTTOM_RIGHT="-17475.072939547899 1305.2862716305042"
+#!   BOUNDING_RECT="-17718.708788066277 1404.0369591373792 243.63584851837913 98.750687506875067"
+#!   ORDER="500000000003744.63"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="138"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Only datasets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-16893.706377625687 2062.2955484033296"
+#!   TOP_LEFT="-16893.706377625687 2062.2955484033296"
+#!   BOTTOM_RIGHT="-16439.706377625687 2061.2955484033296"
+#!   BOUNDING_RECT="-16893.706377625687 2062.2955484033296 454 1"
+#!   ORDER="500000000003750.63"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="28"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="148"
+#!   NAME="Managing attributes to match the old DKAN portal"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="-17774.929495155924 2389.5969882672771"
+#!   ORDER="500000000003747.63"
+#!   PALETTE_COLOR="Color1"
+#!   BOTTOM_RIGHT="-14709.198816126096 1160.2427483139145"
+#!   BOUNDING_RECT="-17774.929495155924 2389.5969882672771 3065.730679029828 1229.3542399533626"
+#!   STICKY="true"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,1"
+#!   CONTENTS="121 30 146 29 143 140 44 28 138 31 145 147 135 144 137 141 33 139 75 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="33"
+#!   TYPE="AttributeRemover"
+#!   VERSION="1"
+#!   POSITION="-16100.524142379272 1840.1275753594136"
+#!   BOUNDING_RECT="-16100.524142379272 1840.1275753594136 454 71"
+#!   ORDER="500000000000384.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20200"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="orig_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="author" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="author_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_method" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="publisher" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="date_created" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="date_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.revision_timestamp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_group_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.description" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.image_display_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_ATTRS" PARM_VALUE="ErreurUUID,_csw_constraint,_csw_constraint_language,_csw_list_name,_csw_output_schema,_csw_search_criteria,_csw_typenames,_csw_version,_element_index,_id,_response_body,_status_code,_status_code_description,_type_requete,root_url,_creation_instance,_toto,_OpenMapsFilter,help,success"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRemover_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="44"
+#!   TYPE="ATTRIBUTE_UNEXPOSER"
+#!   VERSION="1"
+#!   POSITION="-15373.404227112322 1697.1176706840952"
+#!   BOUNDING_RECT="-15373.404227112322 1697.1176706840952 533.00106825772946 71"
+#!   ORDER="500000000000415.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ATTRIBUTE_UNEXPOSER"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="141"
+#!   TYPE="AttributeManager"
+#!   VERSION="2"
+#!   POSITION="-16100.524142379272 2279.5969882672771"
+#!   BOUNDING_RECT="-16100.524142379272 2279.5969882672771 454 71"
+#!   ORDER="500000000003738.63"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="author" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="author_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_method" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="publisher" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="date_created" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="date_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.revision_timestamp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_group_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.description" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.image_display_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id id  NO_OP title title  NO_OP custodian author  RENAME_SET_VALUE custodian_email author_email  RENAME_SET_VALUE groups&lt;opencurly&gt;&lt;closecurly&gt;.display_name groups&lt;opencurly&gt;&lt;closecurly&gt;.display_name  NO_OP license_id license_id  NO_OP license_title license_title  NO_OP license_url license_url  NO_OP maintainer maintainer  NO_OP maintainer_email maintainer_email  NO_OP name name  NO_OP notes notes  NO_OP update_frequency resource_update_cycle  RENAME_SET_VALUE update_method update_method  NO_OP organization.title publisher  RENAME_SET_VALUE url url  NO_OP temporal_coverage_end_date data_collection_end_date  RENAME_SET_VALUE temporal_coverage_start_date data_collection_start_date  RENAME_SET_VALUE metadata_created date_created  RENAME_SET_VALUE metadata_modified date_last_modified  RENAME_SET_VALUE resources&lt;opencurly&gt;&lt;closecurly&gt;.metadata_modified resources&lt;opencurly&gt;&lt;closecurly&gt;.revision_timestamp  RENAME_SET_VALUE resources&lt;opencurly&gt;&lt;closecurly&gt;.package_id resources&lt;opencurly&gt;&lt;closecurly&gt;.resource_group_id  RENAME_SET_VALUE iso_topic&lt;opencurly&gt;&lt;closecurly&gt;.topic_value iso_topic&lt;opencurly&gt;&lt;closecurly&gt;.topic_value  NO_OP groups&lt;opencurly&gt;&lt;closecurly&gt;.description json_atts_groups&lt;opencurly&gt;&lt;closecurly&gt;.description  RENAME_SET_VALUE groups&lt;opencurly&gt;&lt;closecurly&gt;.id json_atts_groups&lt;opencurly&gt;&lt;closecurly&gt;.id  RENAME_SET_VALUE groups&lt;opencurly&gt;&lt;closecurly&gt;.image_display_url json_atts_groups&lt;opencurly&gt;&lt;closecurly&gt;.image_display_url  RENAME_SET_VALUE groups&lt;opencurly&gt;&lt;closecurly&gt;.name json_atts_groups&lt;opencurly&gt;&lt;closecurly&gt;.name  RENAME_SET_VALUE groups&lt;opencurly&gt;&lt;closecurly&gt;.title json_atts_groups&lt;opencurly&gt;&lt;closecurly&gt;.title  RENAME_SET_VALUE"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="144"
+#!   TYPE="AttributeCopier"
+#!   VERSION="6"
+#!   POSITION="-16100.524142379272 2074.3439257366517"
+#!   BOUNDING_RECT="-16100.524142379272 2074.3439257366517 454 71"
+#!   ORDER="500000000003741.63"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="orig_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="author" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="author_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resource_update_cycle" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_method" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="publisher" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_collection_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="date_created" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="date_last_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.revision_timestamp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.resource_group_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.description" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.image_display_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="json_atts_groups{}.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="name orig_name COPY "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCopier"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="149"
+#!   TYPE="Catalogue Reader"
+#!   VERSION="1"
+#!   POSITION="-18852.422858514292 1149.5188843514047"
+#!   BOUNDING_RECT="-18852.422858514292 1149.5188843514047 601 71"
+#!   ORDER="500000000003748.63"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="Résultats"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <OUTPUT_FEAT NAME="Métadonnées_non_trouvées"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_csw_search_criteria" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_type_requete" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="root_url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_csw_constraint" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_csw_constraint_language" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_csw_list_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_csw_output_schema" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_csw_typenames" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_csw_version" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="ErreurUUID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code_description" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_OpenMapsFilter" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="UUID_invalide"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_PARM PARM_NAME="CKAN_FILTER" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CSW_ANYTEXT_FILTER" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_CSW_LIST_NAME" PARM_VALUE="MD_Metadata{}"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_CSW_SCHEMA" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_CSW_VERSION" PARM_VALUE="2.11"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_URL" PARM_VALUE="https://open.service-uat.yukon.ca/api/3/action"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_URL_BY_ID_ATT_NAME" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_URL_CSW_TYPENAMES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="IDENTIFIANT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SOURCE_URL" PARM_VALUE="Manuel"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Catalogue_Reader"/>
+#!     <XFORM_PARM PARM_NAME="__COMPOUND_PARAMETERS" PARM_VALUE=""/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="135"
+#!   TYPE="AttributeExposer"
+#!   VERSION="1"
+#!   POSITION="-17686.929495155924 1840.1275753594136"
+#!   BOUNDING_RECT="-17686.929495155924 1840.1275753594136 454 71"
+#!   ORDER="500000000003733.63"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="custodian" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="custodian_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_frequency" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_method" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="organization.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="temporal_coverage_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="temporal_coverage_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="metadata_created" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="metadata_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.metadata_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.package_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.description" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.image_display_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="id,title,custodian,custodian_email,license_id,license_title,license_url,maintainer,maintainer_email,name,notes,update_frequency,update_method,organization.title,url,temporal_coverage_end_date,temporal_coverage_start_date,metadata_created,metadata_modified,resources{}.metadata_modified,resources{}.package_id,groups{}.display_name,groups{}.description,groups{}.id,groups{}.image_display_url,groups{}.name,groups{}.title,type"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_8"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="138"
+#!   TYPE="AttributeCopier"
+#!   VERSION="6"
+#!   POSITION="-17686.888612872102 1577.4927335256316"
+#!   BOUNDING_RECT="-17686.888612872102 1577.4927335256316 454 71"
+#!   ORDER="500000000003742.63"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="groups{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="custodian" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="custodian_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_frequency" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_method" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="organization.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="temporal_coverage_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="temporal_coverage_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="metadata_created" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="metadata_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.metadata_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.package_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.description" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.image_display_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="groups&lt;opencurly&gt;&lt;closecurly&gt;.display_name iso_topic&lt;opencurly&gt;&lt;closecurly&gt;.topic_value COPY "/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCopier_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="28"
+#!   TYPE="Tester"
+#!   VERSION="3"
+#!   POSITION="-16855.706377625687 1928.5448608964543"
+#!   BOUNDING_RECT="-16855.706377625687 1928.5448608964543 454 71"
+#!   ORDER="500000000003749.63"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="20787"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="groups{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="custodian" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="custodian_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="license_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer_email" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_frequency" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="update_method" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="organization.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="temporal_coverage_end_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="temporal_coverage_start_date" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="metadata_created" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="metadata_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.metadata_modified" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.package_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.description" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.image_display_url" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="groups{}.display_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="iso_topic{}.topic_value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="custodian" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="custodian_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="license_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="license_title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="license_url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="maintainer_email" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="notes" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="update_frequency" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="update_method" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="organization.title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="temporal_coverage_end_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="temporal_coverage_start_date" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="metadata_created" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="metadata_modified" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.metadata_modified" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="resources{}.package_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.description" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.image_display_url" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="groups{}.title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;type&lt;closeparen&gt; = data"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="Input"
+#!   POSITION="-19904.853921384049 1120.221716379725"
+#!   BOUNDING_RECT="-19904.853921384049 1120.221716379725 431 71"
+#!   COLLAPSED="false"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="UUID_invalide"
+#!   POSITION="-14336.520712098172 567.62831270768004"
+#!   BOUNDING_RECT="-14336.520712098172 567.62831270768004 430 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="1"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="Résultats"
+#!   POSITION="-14373.653775195171 1577.1176706840952"
+#!   BOUNDING_RECT="-14373.653775195171 1577.1176706840952 430 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="5"
+#!   NAME="Métadonnées_non_trouvées"
+#!   POSITION="-14308.404222429135 971.43531492849468"
+#!   BOUNDING_RECT="-14308.404222429135 971.43531492849468 675.00106825772946 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="150"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="149"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="28"
+#!   TARGET_NODE="141"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="75"
+#!   SOURCE_NODE="33"
+#!   TARGET_NODE="44"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 Input"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="84"
+#!   SOURCE_NODE="44"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="140"
+#!   SOURCE_NODE="135"
+#!   TARGET_NODE="138"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="138"
+#!   TARGET_NODE="28"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="145"
+#!   SOURCE_NODE="141"
+#!   TARGET_NODE="144"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="146"
+#!   SOURCE_NODE="144"
+#!   TARGET_NODE="33"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="149"
+#!   TARGET_NODE="135"
+#!   SOURCE_PORT_DESC="fo 0 R&lt;u00e9&gt;sultats"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="152"
+#!   SOURCE_NODE="149"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 1 M&lt;u00e9&gt;tadonn&lt;u00e9&gt;es_non_trouv&lt;u00e9&gt;es"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="151"
+#!   SOURCE_NODE="149"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 2 UUID_invalide"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+FME_PYTHON_VERSION 37
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_SOURCE_URL Manuel
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CUSTOM_URL https://open.service-uat.yukon.ca/api/3/action
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CKAN_FILTER 
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CUSTOM_CSW_SCHEMA http://www.isotc211.org/2005/gmd
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CUSTOM_CSW_VERSION 2.11
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CUSTOM_URL_CSW_TYPENAMES 
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CUSTOM_CSW_LIST_NAME MD_Metadata{}
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CUSTOM_URL_BY_ID_ATT_NAME 
+DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CSW_ANYTEXT_FILTER 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO Catalogue_Reader_YT_CKAN_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input1753200032 Input Splitter"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader Input Input Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Input"
+MACRO Catalogue_Reader_WORKSPACE_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_XFORMER_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_SOURCE_URL Manuel
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_CUSTOM_URL https://open.service-uat.yukon.ca/api/3/action
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_CKAN_FILTER 
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_CUSTOM_CSW_SCHEMA 
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_CUSTOM_CSW_VERSION 2.11
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_CUSTOM_URL_CSW_TYPENAMES 
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_CUSTOM_CSW_LIST_NAME MD_Metadata{}
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_IDENTIFIANT 
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_CUSTOM_URL_BY_ID_ATT_NAME 
+MACRO $(Catalogue_Reader_WORKSPACE_NAME)_CSW_ANYTEXT_FILTER 
+INCLUDE_CUSTOM_TRANSFORMER_VER Catalogue Reader:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader Résultats Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Résultats"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Résultats"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader Métadonnées_non_trouvées Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Métadonnées_non_trouvées"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Métadonnées_non_trouvées"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader UUID_invalide Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_UUID_invalide"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_UUID_invalide"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeExposer_8    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Résultats"    OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeExposer_8_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_2    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeExposer_8_OUTPUT" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "groups<opencurly><closecurly>.display_name" "iso_topic<opencurly><closecurly>.topic_value" "COPY" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_2_OUTPUT"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>type<closeparen>,$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester)" = data ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester_PASSED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeManager    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester_PASSED"    MULTI_FEATURE_MODE NO     NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    ATTR_ACTION { "custodian" "author" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "custodian_email" "author_email" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "update_frequency" "resource_update_cycle" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "organization.title" "publisher" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "temporal_coverage_end_date" "data_collection_end_date" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "temporal_coverage_start_date" "data_collection_start_date" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "metadata_created" "date_created" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "metadata_modified" "date_last_modified" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "resources<opencurly><closecurly>.metadata_modified" "resources<opencurly><closecurly>.revision_timestamp" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "resources<opencurly><closecurly>.package_id" "resources<opencurly><closecurly>.resource_group_id" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.description" "json_atts_groups<opencurly><closecurly>.description" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.id" "json_atts_groups<opencurly><closecurly>.id" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.image_display_url" "json_atts_groups<opencurly><closecurly>.image_display_url" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.name" "json_atts_groups<opencurly><closecurly>.name" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.title" "json_atts_groups<opencurly><closecurly>.title" "" "RENAME_SET_VALUE" }    OUTPUT OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeManager_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeManager_OUTPUT" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "name" "orig_name" "COPY" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_OUTPUT"
+# -------------------------------------------------------------------------
+# Build the List removal function and regular expression if there was any list attributes to be removed.
+# If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
+# normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
+# once during mapping file parse time.
+INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC }    } else {        puts "MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeRemover_2    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_OUTPUT"    OUTPUT { FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"        @RemoveAttributes(fme_encoded,ErreurUUID,_csw_constraint,_csw_constraint_language,_csw_list_name,_csw_output_schema,_csw_search_criteria,_csw_typenames,_csw_version,_element_index,_id,_response_body,_status_code,_status_code_description,_type_requete,root_url,_creation_instance,_toto,_OpenMapsFilter,help,success)        $($(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeRemover_2_LIST_FUNC)         }
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeRemover_2_OUTPUT"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_UUID_invalide1753200032 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_UUID_invalide"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_UUID_invalide"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Résultats1753200032 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Résultats"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Métadonnées_non_trouvées1753200032 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Métadonnées_non_trouvées"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Métadonnées_non_trouvées"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME))}]
