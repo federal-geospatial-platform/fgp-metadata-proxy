@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN "Catalogue Reader_YT_CKAN",1,"FGP Tools",00f77b1e-fe75-4abf-87b6-9c53243217b9,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# TRANSFORMER_BEGIN "Catalogue Reader_YT_CKAN",1,"FGP Tools",e12dec16-ecc7-42bf-9291-5f738075a360,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
 # <p><strong>Description</strong></p>
 # <p>This Custom Transformer enables to read a CKAN or a CSW server and extract the requested metadata records.  Once the metadata records are extracted, they are transformed from their hierarchcal structure (JSON for CKAN and XML for CSW) into a flattened FME attribute and list features.  The parameters allow great flexibility on how the CKAN or CSW server are requested.</p>
 # <p>Note: No modification other then the JSON/XML flattening is performed on the metadata records read from the CKAN/CSW server.</p>
@@ -47,8 +47,8 @@
 #!   DOC_TOP_LEFT="-19904.9 496.628"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="20787"
-#!   FME_DOCUMENT_GUID="00f77b1e-fe75-4abf-87b6-9c53243217b9"
-#!   FME_DOCUMENT_PRIORGUID="2b1175b5-b71b-472a-a962-155e36f8cbd1,c463d541-0b50-4f0e-8457-6fb5be326ae7,c63f7c5e-5d7e-4fd4-bc6f-97a1a54536cd,38c4dcae-9c3f-4fa9-8229-f81f06db4f1d,5a361a5a-7434-45ba-99ae-fedb42d32ced,38275f28-58e3-4052-ac66-57ed2d74fb90"
+#!   FME_DOCUMENT_GUID="e12dec16-ecc7-42bf-9291-5f738075a360"
+#!   FME_DOCUMENT_PRIORGUID="2b1175b5-b71b-472a-a962-155e36f8cbd1,c463d541-0b50-4f0e-8457-6fb5be326ae7,c63f7c5e-5d7e-4fd4-bc6f-97a1a54536cd,38c4dcae-9c3f-4fa9-8229-f81f06db4f1d,5a361a5a-7434-45ba-99ae-fedb42d32ced,38275f28-58e3-4052-ac66-57ed2d74fb90,00f77b1e-fe75-4abf-87b6-9c53243217b9,48ac2cb6-d0ab-4528-9b93-d560e9ed537a"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
@@ -60,7 +60,7 @@
 #!   HISTORY="17&lt;solidus&gt;01&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Version&lt;space&gt;originale"
 #!   ITERATION_COUNT_ATTR=""
 #!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
-#!   LAST_SAVE_DATE="2025-07-22T12:00:32"
+#!   LAST_SAVE_DATE="2025-08-14T12:56:27"
 #!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This Custom Transformer enables to read a CKAN or a CSW server and extract the requested metadata records.  Once the metadata records are extracted, they are transformed from their hierarchcal structure (JSON for CKAN and XML for CSW) into a flattened FME attribute and list features.  The parameters allow great flexibility on how the CKAN or CSW server are requested.&#10;&#10;Note: No modification other then the JSON/XML flattening is performed on the metadata records read from the CKAN/CSW server.&#10;&#10;**Input Ports**&#10;&#10;  - Input: One feature to signal the start of the metadata server extraction.    &#10;&#10;**Output Ports**&#10;&#10;  - Résultats: The features resulting from the CKAN or the CSW server extraction.  One output feature for each metadata record read.&#10;  - Métadonnées invalides: Used to output ID not found in the CKAN or CSW server. On ly used when the parameter _IDENTIFIANT_ is used.&#10;  - UUID_invalide: Used when the ID is not a valid UUID. On ly used when the parameter _IDENTIFIANT_ is used.&#10;&#10;**Parameters**&#10; &#10;  - SOURCE_URL: The source URL (web address) of the target CKAN or CSW server. There are 6 pre-defined source url and one user defined address (drop down bix):&#10;    - FGP-STAGING_INTERNE: Address of the external internal FGP staging server;&#10;    -  FGP-STAGING-EXTERNE:Address of the internal internal FGP staging server;&#10;    -  FGP-PROD_INTERNE: Address of the internal FGP production server ;&#10;    -  FGP-PROD-EXTERNE: Address of the externall FGP production server;&#10;    - OPENDATA-STAGING: Address of the Open Data staging server;&#10;    - OPENDATA-PROD: Address of the Open Data production server;&#10;    - PYCSW-INTERNAL: Address of the internal PYCSW server;&#10;    - CUSTOM-CSW/CKAN: Custom URL address of a CKAN or CSW server to be supplied by the user in the _CUSTOM_URL_ parameter.&#10;  - CUSTOM_URL: The address of the server to be used when _CUSTOM-CSW/CKAN_ option is choosen with _SOURCE_URL_ parameter. &#10;  - CKAN_FILER: String to be used with CKAN server to filter the result. Ex.: fq=collection:fgp where _fq_ is the CKAN reserved word for filtering, _collection_ is a the name of a key in the JSON document and _fgp_ is the requested value for the filtering;&#10;  - CUSTOM_CSW_SCHEMA: Drop down box specifying the output schema to use to generate the metadata records (default: http://www.iso tc211.org/2005/ gmd). Used with CSW server.&#10;  - CUSTOM_CSW_VERSION: Drop down box specifying the version of the CSW server to use (default: 2.0.2)&#10;  - CUSTOM_URL_CSW_TYPENAMES: Dropdown box specifying which entities must be queried from the information model (default: gmd:MD_Met adata). Used with CSW server.&#10;  - CUSTOM_CSW_LIST_NAME: Dropdown box specifying the name of the FME list attribute used to explode the list attribute . (fefault MD_Metadata{}) Used with CSW server.&#10;  - IDENTIFIANT:  UUID identifying the ID of the metadata record to extract from the server. Used with CSW and CKAN server.&#10; - CUSTOM_URL_BY_ID_ATT_NAME:_ Not used any more_.&#10; - CSW_ANY_TEXT_FILTER: A string to be used to filter the metadata records.  Any string canbe used.  can filter any field of the metadata record.  Used with CSW server. &#10;&#10;**Note**:  For more information on the use of the parameters of the CSW server, refer to the official OGC documentation [ OGC PDF documentation](https://portal.opengeospatial.org/files/?artifact_id=77949).&#10;    "
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
@@ -72,11 +72,11 @@
 #!   TITLE="Catalogue Reader_YT_CKAN"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="-18466.8 2590.87"
+#!   VIEW_POSITION="-19857.5 2588.76"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="86"
+#!   ZOOM_SCALE="81"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -213,11 +213,11 @@
 #! />
 #! <COMMENT
 #!   IDENTIFIER="31"
-#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Only datasets&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
-#!   POSITION="-16893.706377625687 2062.2955484033296"
-#!   TOP_LEFT="-16893.706377625687 2062.2955484033296"
-#!   BOTTOM_RIGHT="-16439.706377625687 2061.2955484033296"
-#!   BOUNDING_RECT="-16893.706377625687 2062.2955484033296 454 1"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;On test les portails information et data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-16893.706377625687 2106.0459859077046"
+#!   TOP_LEFT="-16893.706377625687 2106.0459859077046"
+#!   BOTTOM_RIGHT="-16439.706377625687 2105.0459859077046"
+#!   BOUNDING_RECT="-16893.706377625687 2106.0459859077046 454 1"
 #!   ORDER="500000000003750.63"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
@@ -241,7 +241,7 @@
 #!   BOUNDING_RECT="-17774.929495155924 2389.5969882672771 3065.730679029828 1229.3542399533626"
 #!   STICKY="true"
 #!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,1"
-#!   CONTENTS="121 30 146 29 143 140 44 28 138 31 145 147 135 144 137 141 33 139 75 "
+#!   CONTENTS="44 138 146 31 137 121 28 30 144 145 75 140 143 147 139 135 29 33 141 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -626,12 +626,12 @@
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
 #!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1 OR 2"/>
 #!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
-#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;type&lt;closeparen&gt; = data"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;type&lt;closeparen&gt; = data&#10;TEST &lt;at&gt;Value&lt;openparen&gt;type&lt;closeparen&gt; = information"/>
 #!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
-#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
 #! </TRANSFORMER>
@@ -872,7 +872,7 @@ DEFAULT_MACRO $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_CSW_ANYTEXT_FILTER
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO Catalogue_Reader_YT_CKAN_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input1753200032 Input Splitter"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input1755190587 Input Splitter"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input"
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader Input Input Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Input"
 MACRO Catalogue_Reader_WORKSPACE_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader
@@ -898,7 +898,7 @@ FACTORY_DEF * TeeFactory    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NA
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_2    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeExposer_8_OUTPUT" 	 ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV 	 ATTR_ACTION { "groups<opencurly><closecurly>.display_name" "iso_topic<opencurly><closecurly>.topic_value" "COPY" "" }    OUTPUT OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_2_OUTPUT"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TestFactory    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_2_OUTPUT"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>type<closeparen>,$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester)" = data ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester_PASSED"
+FACTORY_DEF * TestFactory    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeCopier_2_OUTPUT"    TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>type<closeparen>,$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester)" = data ENCODED TEST "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>type<closeparen>,$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester)" = information ENCODED    BOOLEAN_OPERATOR OR    COMPOSITE_TEST_EXPR "1 OR 2"    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT PASSED FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester_PASSED"
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME $(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeManager    INPUT  FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Tester_PASSED"    MULTI_FEATURE_MODE NO     NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    ATTR_ACTION { "custodian" "author" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "custodian_email" "author_email" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "update_frequency" "resource_update_cycle" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "organization.title" "publisher" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "temporal_coverage_end_date" "data_collection_end_date" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "temporal_coverage_start_date" "data_collection_start_date" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "metadata_created" "date_created" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "metadata_modified" "date_last_modified" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "resources<opencurly><closecurly>.metadata_modified" "resources<opencurly><closecurly>.revision_timestamp" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "resources<opencurly><closecurly>.package_id" "resources<opencurly><closecurly>.resource_group_id" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.description" "json_atts_groups<opencurly><closecurly>.description" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.id" "json_atts_groups<opencurly><closecurly>.id" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.image_display_url" "json_atts_groups<opencurly><closecurly>.image_display_url" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.name" "json_atts_groups<opencurly><closecurly>.name" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "groups<opencurly><closecurly>.title" "json_atts_groups<opencurly><closecurly>.title" "" "RENAME_SET_VALUE" }    OUTPUT OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_AttributeManager_OUTPUT"
 # -------------------------------------------------------------------------
@@ -917,7 +917,7 @@ MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(Catalogue_Reader_YT_C
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_UUID_invalide1753200032 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_UUID_invalide"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_UUID_invalide"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Résultats1753200032 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Résultats"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Métadonnées_non_trouvées1753200032 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Métadonnées_non_trouvées"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Métadonnées_non_trouvées"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_UUID_invalide1755190587 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_UUID_invalide"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_UUID_invalide"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Résultats1755190587 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Résultats"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Métadonnées_non_trouvées1755190587 Output Collector"   INPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Catalogue_Reader_Métadonnées_non_trouvées"   OUTPUT FEATURE_TYPE "$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME)_Métadonnées_non_trouvées"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(Catalogue_Reader_YT_CKAN_WORKSPACE_NAME))}]
