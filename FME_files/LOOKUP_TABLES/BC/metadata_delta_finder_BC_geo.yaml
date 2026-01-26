@@ -93,16 +93,20 @@ contact_role_label: # Ce champ est une concaténation de 2 attributs dans le XML
     attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.role.CI_RoleCode
     attr_new: contacts{}.role|contacts{}.role_fr
     separator: "; "
-contact_org_en: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
-    attr_name: contact_org_en
+contact_org_en:
+    attr_name: contact_org_en # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
     attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.organisationName.CharacterString
     attr_new: contacts{}.p-t_entity|contacts{}.p-t_entity|contacts{}.org
     separator: "; "
-contact_org_fr: # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
-    attr_name: contact_org_fr
+contact_org_fr:
+    attr_name: contact_org_fr # Ce champ est une concaténation de 2 attributs dans le XML. On utilise l'option séparateur pour concaténer les valeurs
     attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.organisationName.PT_FreeText.textGroup.LocalisedCharacterString
     attr_new: contacts{}.p-t_entity_fr|contacts{}.p-t_entity_fr|contacts{}.org
     separator: "; "
+contact_name: 
+    attr_name: contact_name
+    attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.individualName.CharacterString
+    attr_new: contacts{}.name
 contact_email:
     attr_name: contact_email
     attr_ref: MD_Metadata.contact{}.CI_ResponsibleParty.contactInfo.CI_Contact.address.CI_Address.electronicMailAddress.CharacterString
@@ -215,7 +219,7 @@ transfer_option_url:
     attr_new:  resources{}.url
 
 transfer_option_xlink_role:
-    attr_name : transfer_option_xlink_role
+    attr_name: transfer_option_xlink_role
     attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.role
     attr_new: resources{}.xlink_role
 
@@ -223,7 +227,7 @@ transfer_option_name: #Cet attribut peut français ou anglais. En fonction de la
     attr_name: transfer_option_name
     #Anglais
     attr_ref: MD_Metadata.distributionInfo.MD_Distribution.transferOptions{}.MD_DigitalTransferOptions.onLine.CI_OnlineResource.name.CharacterString
-    attr_new:  resources{}.name
+    attr_new: resources{}.name
 
 transfer_option_protocols:
     attr_name: transfer_option_protocols
