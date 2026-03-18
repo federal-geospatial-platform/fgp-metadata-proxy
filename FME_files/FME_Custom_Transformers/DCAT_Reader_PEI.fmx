@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN DCAT_Reader_PEI,1,"FGP Tools",4c67f30f-57dc-48e1-974a-1b56722f8ae6,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# TRANSFORMER_BEGIN DCAT_Reader_PEI,1,"""FGP Tools""",13565fbb-7d55-460a-bed7-5db76eac964f,"Linked by Default",No,NO_PARALLELISM,,No,25241,YES,No,313,No,
 # <p><strong>Description</strong></p>
 # <p>This Custom Transformer is used to read ESRI GeoHub DCAT server.  GeoHub DCAT reader is using two server extractions (a primary and a secondary) to extract a complete set of DCAT metadata for each record.  Metadata extracted from the primary server extracttion are prefixed wirh <em>DCAT_P</em> whereas the the metadata extracted from the secondary server extraction are prefixed with <em>DCAT_S</em>.  In order to join the metadata from the primary and the secondary extraction both extraction must share a common identifier when no common identifier are found the is no secondary metadata with the prfix <em>DCAT_S</em>.</p>
 # <p>Note: There is no option to read only one record with a specific identifier.</p>
@@ -24,17 +24,20 @@
 # <li>CUSTOM_SECONDARY: Definition of the seconary Geo Hub service. Used when the option <em>Custom GeoHub</em> is selected.  It is possible to leave this field empty, in that case no secondary service will be read and less metadata will be extracted.</li>
 # </ul>
 # TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAA8CAIAAADHdHu6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAHwUlEQVR4nO3czW8bxxkG8OednZkladKSP6TG/UALqEUboCiQXnvrqf9wzwV6c9EULQrkEMdxmthubEWWRIrc3ZmdeXsgJVNftOyKctZ5fgdBHO7HLO199M7sLmVnZwdERF1gV7zXH7ic0411hT4ATZ3fdxfoQ7YqsKzXwpob6wp1nzCwaK2YR0TUGasqrGtReJdzu+69vFlW5d9+oo5bb2CJGDVJCnnDYqUxVgAoJE8X6SZWjFusmOoMBQBR88vpJzm/zp7aHj0bPDLG5uWdZIWemn3TZBA4H0fUbWuvsC5QHP+SBaoA7KYtRg4Q1dw8XgRWsencfT//vXo0RVIARuV5+UULCwiAQnLWBgB8D9a/3kVqUY1v6HCI6KbcWGDN6x+FQf9Xw3lT3AvtbgAQXkr8r8Ao1HgRQAGko5RiFBFV1SwCFRHnvCt6Y/eTJgQAW25q6u8AZM3pd3+EdfMtF4//hWefLe/eGBT9s4VeqHVeuBFRJ6w9sMSYKm/Ox3DWzLzWYTdABKq5SiLinEvF9mTWh2JQWo/HIlBVSWYaflM3DYANd2DlFYBYhaHHluw3CACKtj2ZHise/SOmQgEBJOyfuZpwe6P45A/DM33765/HbfNuiXWcv4tXx1GozD+iNVpvYHnnjTXF4Oez0AIYmgMJu0fTX4cYARnhq9KnOjTOTDb7EUC/tIh+OpsAEClcObV9ABi6opppCKFAUVVNWw6iGQiw0TdSBYOiLHs5Y3zoAXjnRr1xI6JL8XFdQeKca4uNWZMBWGk9Jn4wKvxiNBpn01hX17QrIjprjYElIhA0oUb85/yEDlBACpecV0BLlHW9f2sw2qu2p1UFwBqMnArgrLPl9vO9Zj5mm4gOXZ7XMc5ZL1NAoFqPY86hHLrQxsJm0VaAGFJ0rZ4udqbj9PAvdas9GEUWEXWYpnhp57NxUQfz4yhxuFw6OcRekQD0nJVcbmzdN71y/lY7vTV+8e3+6KgOtc329myAzJqL6NrIqUdzBNrTrNk5Zxs72rTFUqCJSIxx+QrdGWpc0sUsktWZ975tE7zi7NzRyeuTk3l5AKfH7YJTa2YARS6GxZ2qfDANAmDDBte+mJpJW3g3uDdLtwGUvrTxG1SH8z7Pk0u0KPsPXoR7i/1ptgd/P9nvfKLs5GXpimLwowPzYwDOucH405xSiGFxaNY656tqdvKxLHcdqhcc3w+FHHx3+R8Bov/b6QpLoY0KpA2tqoaQi9Pp5J1fUZNJ/8Fe3QfQ65W30pepjYpQGpsvrTIuO7MvbF9MG9VxLO1kPh2VAlqTIMnmVo/2+ngFABVUk8ZTZ44r9OBwjPLO/GXpjOv3ar9TRQAo9cDEMUY7VROMmLL9vJ6+8DIG4L1XbY2xw+Ho6GiSxLXJhiy+3MxxnHPW8/NWP7icIrohZ+PH5EWVceH1s5Mq42Lx66EKAIlSQb13FrJRaDbXeAYrcLYPAy+QFmhT0qY93tfpI8vGHLWvbx4NMaWqlvBFHwDQ93YSKpuDL/Jo0JOJhUagAoBYKUSRROzdu3drs7U7EQBaFsOiqWacsSK6Odc6h6WL0Zxm6PEVs4sqkDf4+CP/0zuLm7XGjT78sgbw+5/17gwEwFHQh0/q5eX/9NvBfFz2ZDd8+vVJnC1GlAoVKACJB2U7PemqQJHqedlWV3AGGH9mgWqCC2ukEAIAyP4tNQAQUCnvRCW6UWucdA8hDEoPRD2ZKno9P7XKi3GaNOqsxFbbtKiJnh20r2awxlTx7CTav58nJ5ohh1UGIGKcs1Xe+Gbcm+91Z/htSBm5Fax8SOgq0aoKJIDjPqL3YI2BNS+tyv7oP80vsiqALXli86LGETHWWrnooZ2jZB4fbE9nqsDIzTbtnvflk+m9Vy+NAN7G++6lQK21pihU8bf9j6umAbBtn/bLxkDqppZi8mCUAXjvJUpcPZgloi5Y731YIYSmilvF4/mM2C1vc17csqSKtm0vfCJZIVr0UEKAwS3r8zSGmI2TXg/A5m2/IXVdV22b2rZRiOs1RU/EyPZoa7L/tA41AJPqEjUAVKvLKiLqjJt4NMekxR0Adb16wQWB3kmP7hoBoJWmwgyGt9vqsG8PAMgMh2k6H9z1yl5jN5vxQUbWlD8/1A0n7+PxSCK6CWs/u9/tYZWT2S4BUpuOJuNgP5qXaQWy06PFZHldZ9ndtBYALFQhetnQ7w3fGEFE33/rDayY9dX1XPdvgaeXv/XmMR+/DYvoA7D2Cuvyu0aJiN4OvyKZiDqDgUVEncHAIqLOYGARUWcwsIioMxhYRNQZDCwi6gwGFhF1BgOLiDqDgUVEnbHq0ZwYs2YmGl2Vgg9s0nqtCqx6msH/gkT0vcECiog6g4FFRJ3BwCKizmBgEVFnMLCIqDMYWETUGQwsIuoMBhYRdQYDi4g6g4FFRJ3BwCKizmBgEVFnMLCIqDMYWETUGQwsIuoMBhYRdQYDi4g6g4FFRJ3BwCKizmBgEVFnMLCIqDMYWETUGQwsIuoMBhYRdQYDi4g6w0AAYPFzmSw1nV9Gzi4jb7HW6u3IuWWu0HLBWuf2dX4ZnFvmLT6N1S2X9WfpSK+wzOUtV1nr7bZ8/pM/brnKv85Vjv36+3y1tc738CrbOfdpLC9/5ZZz2xE515932/IPs+V/vcQ/pA/ND5YAAAAASUVORK5CYII="
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
-#!   CATEGORY="FGP Tools"
+#!   CATEGORY="&quot;FGP Tools&quot;"
 #!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This Custom Transformer is used to read ESRI GeoHub DCAT server.  GeoHub DCAT reader is using two server extractions (a primary and a secondary) to extract a complete set of DCAT metadata for each record.  Metadata extracted from the primary server extracttion are prefixed wirh &lt;em&gt;DCAT_P&lt;/em&gt; whereas the the metadata extracted from the secondary server extraction are prefixed with &lt;em&gt;DCAT_S&lt;/em&gt;.  In order to join the metadata from the primary and the secondary extraction both extraction must share a common identifier when no common identifier are found the is no secondary metadata with the prfix &lt;em&gt;DCAT_S&lt;/em&gt;.&lt;/p&gt;&#10;&lt;p&gt;Note: There is no option to read only one record with a specific identifier.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Input: One feature to start the extraction of all the records from the GeoHub DCAT server.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;Résultats: All the records read from the GeoHub DCAT server.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;GEO_HUB_SERVICE: Name of the DCAT servers to use. Choices are:&lt;ul&gt;&#10;&lt;li&gt;Manitoba GeoHub: To read Manitoba GeoHub;&lt;/li&gt;&#10;&lt;li&gt;Saskatchewan GeoHub: To read Sakatchewan GeoHub;&lt;/li&gt;&#10;&lt;li&gt;Custom GeoHub: To enter specific values of primary and secondary url;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;CUSTOM_PRIMARY: Definition of the primary Geo Hub service. Used when the option &lt;em&gt;Custom GeoHub&lt;/em&gt; is selected;&lt;/li&gt;&#10;&lt;li&gt;CUSTOM_SECONDARY: Definition of the seconary Geo Hub service. Used when the option &lt;em&gt;Custom GeoHub&lt;/em&gt; is selected.  It is possible to leave this field empty, in that case no secondary service will be read and less metadata will be extracted.&lt;/li&gt;&#10;&lt;/ul&gt;"
 #!   DOC_EXTENTS="24307.9 3937.54"
 #!   DOC_TOP_LEFT="-47801.9 2109.4"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   FME_BUILD_NUM="20787"
-#!   FME_DOCUMENT_GUID="4c67f30f-57dc-48e1-974a-1b56722f8ae6"
-#!   FME_DOCUMENT_PRIORGUID="0de5cf99-e2be-42cd-bd38-d16402f42eb9"
+#!   FME_BUILD_NUM="25241"
+#!   FME_DOCUMENT_GUID="13565fbb-7d55-460a-bed7-5db76eac964f"
+#!   FME_DOCUMENT_PRIORGUID="0de5cf99-e2be-42cd-bd38-d16402f42eb9,4c67f30f-57dc-48e1-974a-1b56722f8ae6"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_NAMES_ENCODING="windows-1252"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
 #!   FME_PROCESS_GROUP_BY=""
@@ -44,24 +47,24 @@
 #!   FMX_INSERT_MODE="Linked by Default"
 #!   HISTORY=",17&lt;solidus&gt;01&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Version&lt;space&gt;originale,,"
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
-#!   LAST_SAVE_DATE="2024-04-19T15:42:09"
+#!   LAST_SAVE_BUILD="FME(R) 2025.0.3.0 (20250602 - Build 25241 - WIN64)"
+#!   LAST_SAVE_DATE="2025-11-04T12:16:59"
 #!   MARKDOWN_DESCRIPTION="**Description**&#10;&#10;This Custom Transformer is used to read ESRI GeoHub DCAT server.  GeoHub DCAT reader is using two server extractions (a primary and a secondary) to extract a complete set of DCAT metadata for each record.  Metadata extracted from the primary server extracttion are prefixed wirh _DCAT_P_ whereas the the metadata extracted from the secondary server extraction are prefixed with _DCAT_S_.  In order to join the metadata from the primary and the secondary extraction both extraction must share a common identifier when no common identifier are found the is no secondary metadata with the prfix _DCAT_S_.&#10;&#10;Note: There is no option to read only one record with a specific identifier.&#10;&#10;**Input Ports**&#10;&#10;  - Input: One feature to start the extraction of all the records from the GeoHub DCAT server.&#10;&#10;**Output Ports**&#10;&#10;  - Résultats: All the records read from the GeoHub DCAT server.&#10;&#10;**Parameters**&#10; &#10;  -  GEO_HUB_SERVICE: Name of the DCAT servers to use. Choices are:&#10;    - Manitoba GeoHub: To read Manitoba GeoHub;&#10;    - Saskatchewan GeoHub: To read Sakatchewan GeoHub;&#10;    - Custom GeoHub: To enter specific values of primary and secondary url;&#10;  - CUSTOM_PRIMARY: Definition of the primary Geo Hub service. Used when the option _Custom GeoHub_ is selected;&#10;  - CUSTOM_SECONDARY: Definition of the seconary Geo Hub service. Used when the option _Custom GeoHub_ is selected.  It is possible to leave this field empty, in that case no secondary service will be read and less metadata will be extracted."
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
-#!   PYTHON_COMPATIBILITY="37"
+#!   PYTHON_COMPATIBILITY="313"
 #!   REPLACED_BY=""
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="DCAT_Reader_PEI"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="-46516.5 5587.05"
+#!   VIEW_POSITION="-9.37509 6.25006"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="74"
+#!   ZOOM_SCALE="100"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -75,24 +78,48 @@
 #! </FMESERVER>
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE NO_EDIT NAMEDGROUP FME_USER_PARAM_PRIVATE_GRP IN_CSV_LOOKUPTABLES_DIR Private Parameters"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI IGNORE OPTIONAL DIRNAME_SRC_OR_ATTR IN_CSV_LOOKUPTABLES_DIR Lookup Tables Directory:"
 #!   DEFAULT_VALUE="\LOOKUP_TABLES"
 #!   IS_STAND_ALONE="true"
 #! />
 #! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiRk1FX1VTRVJfUEFSQU1fUFJJVkFURV9HUlAiLCJwcm9tcHQiOiJQcml2YXRlIFBhcmFtZXRlcnMiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJkZWZhdWx0VmFsdWUiOiIiLCJ2aXNpYmlsaXR5IjoiaGlkZGVuRW5hYmxlZCIsInR5cGUiOiJncm91cCIsInBhcmFtZXRlcnMiOlt7Im5hbWUiOiJJTl9DU1ZfTE9PS1VQVEFCTEVTX0RJUiIsInByb21wdCI6Ikxvb2t1cCBUYWJsZXMgRGlyZWN0b3J5OiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiXFxMT09LVVBfVEFCTEVTIiwidmlzaWJpbGl0eSI6ImhpZGRlbkVuYWJsZWQiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwidHlwZSI6ImZpbGUiLCJzZWxlY3RNdWx0aXBsZSI6ZmFsc2UsIml0ZW1zVG9TZWxlY3QiOiJmb2xkZXJzIiwiYWNjZXNzTW9kZSI6InJlYWQiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6dHJ1ZX1dfV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="FME_USER_PARAM_PRIVATE_GRP" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI IGNORE NO_EDIT NAMEDGROUP FME_USER_PARAM_PRIVATE_GRP IN_CSV_LOOKUPTABLES_DIR Private Parameters"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUPTABLES_DIR" 
+#!   DEFAULT_VALUE="\LOOKUP_TABLES"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI IGNORE OPTIONAL DIRNAME_SRC_OR_ATTR IN_CSV_LOOKUPTABLES_DIR Lookup Tables Directory:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
 #!   IDENTIFIER="52"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;HTTP call for reading the Secondary DCAT server&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-42153.923672155986 4454.9208052264321"
 #!   TOP_LEFT="-42153.923672155986 4454.9208052264321"
-#!   BOTTOM_RIGHT="-41595.269133229645 4268.6692427108073"
-#!   BOUNDING_RECT="-42153.923672155986 4454.9208052264321 558.6545389263415 186.25156251562515"
+#!   BOTTOM_RIGHT="-41595.276007554341 4268.6692427108073"
+#!   BOUNDING_RECT="-42153.923672155986 4454.9208052264321 558.64766460164606 186.25156251562515"
 #!   ORDER="500000000000355.13"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   UUID="{40bfd4dc-b915-4d68-b484-8719c8556840}"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="6"
 #! />
@@ -101,13 +128,14 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;HTTP call for reading the Primary DCAT server&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-43601.261125270714 5369.2734373135836"
 #!   TOP_LEFT="-43601.261125270714 5369.2734373135836"
-#!   BOTTOM_RIGHT="-43147.261125270714 5368.2734373135836"
-#!   BOUNDING_RECT="-43601.261125270714 5369.2734373135836 454 1"
+#!   BOTTOM_RIGHT="-43147.302007554536 5368.2734373135836"
+#!   BOUNDING_RECT="-43601.261125270714 5369.2734373135836 453.95911771617716 1"
 #!   ORDER="500000000000355.13"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,0.78431372549019607"
+#!   UUID="{1ad20fe8-81cc-4f25-b11b-7f78ea15102b}"
+#!   COLOUR="0.24313725490196078,0.40784313725490196,0.20784313725490197,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="7"
 #! />
@@ -116,13 +144,14 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test if error duing the DCAT server extraction&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-42788.820506427008 5520.8249998306464"
 #!   TOP_LEFT="-42788.820506427008 5520.8249998306464"
-#!   BOTTOM_RIGHT="-42334.820506427008 5519.8249998306464"
-#!   BOUNDING_RECT="-42788.820506427008 5520.8249998306464 454 1"
+#!   BOTTOM_RIGHT="-42334.861388710829 5519.8249998306464"
+#!   BOUNDING_RECT="-42788.820506427008 5520.8249998306464 453.95911771617716 1"
 #!   ORDER="500000000000360.13"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,0.78431372549019607"
+#!   UUID="{e9aacb4d-8910-4a29-8ac2-ec79b45635d4}"
+#!   COLOUR="0.24313725490196078,0.40784313725490196,0.20784313725490197,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="11"
 #! />
@@ -131,13 +160,14 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Test if error duing the DCAT server extraction&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-41286.550261971599 4451.4454001270124"
 #!   TOP_LEFT="-41286.550261971599 4451.4454001270124"
-#!   BOTTOM_RIGHT="-40832.550261971599 4450.4454001270124"
-#!   BOUNDING_RECT="-41286.550261971599 4451.4454001270124 454 1"
+#!   BOTTOM_RIGHT="-40832.591144255421 4450.4454001270124"
+#!   BOUNDING_RECT="-41286.550261971599 4451.4454001270124 453.95911771617716 1"
 #!   ORDER="500000000000360.13"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   UUID="{db8ac463-5bd9-4246-81ba-b0802eaf4ab1}"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="12"
 #! />
@@ -146,13 +176,14 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Flatten the JSON from the Primary extraction&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-41889.544766462175 5516.9416706625843"
 #!   TOP_LEFT="-41889.544766462175 5516.9416706625843"
-#!   BOTTOM_RIGHT="-41435.544766462175 5515.9416706625843"
-#!   BOUNDING_RECT="-41889.544766462175 5516.9416706625843 454 1"
+#!   BOTTOM_RIGHT="-41435.585648745997 5515.9416706625843"
+#!   BOUNDING_RECT="-41889.544766462175 5516.9416706625843 453.95911771617716 1"
 #!   ORDER="500000000002430"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,0.78431372549019607"
+#!   UUID="{01b9f43c-5e35-4b46-8525-f9868b2942a4}"
+#!   COLOUR="0.24313725490196078,0.40784313725490196,0.20784313725490197,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="9"
 #! />
@@ -161,13 +192,14 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Flatten the JSON from the Primary extraction&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-40177.432647245747 4492.132158757945"
 #!   TOP_LEFT="-40177.432647245747 4492.132158757945"
-#!   BOTTOM_RIGHT="-39723.432647245747 4491.132158757945"
-#!   BOUNDING_RECT="-40177.432647245747 4492.132158757945 454 1"
+#!   BOTTOM_RIGHT="-39723.473529529569 4491.132158757945"
+#!   BOUNDING_RECT="-40177.432647245747 4492.132158757945 453.95911771617716 1"
 #!   ORDER="500000000002432"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,0.78431372549019607"
+#!   UUID="{8ed007df-5556-4bcd-8077-95748221a79e}"
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="10"
 #! />
@@ -176,13 +208,14 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;generate DCAT_P_id_layer (id_&apos;#layer from esri rest&apos;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-39921.070773835345 5359.3166329736259"
 #!   TOP_LEFT="-39921.070773835345 5359.3166329736259"
-#!   BOTTOM_RIGHT="-39374.598230653508 5216.8155079623757"
-#!   BOUNDING_RECT="-39921.070773835345 5359.3166329736259 546.47254318183695 142.50112501125011"
+#!   BOTTOM_RIGHT="-39374.630262555234 5216.8155079623757"
+#!   BOUNDING_RECT="-39921.070773835345 5359.3166329736259 546.44051128011279 142.50112501125011"
 #!   ORDER="500000000003234.38"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,0.78431372549019607"
+#!   UUID="{e648598e-1680-42c1-a1dd-3a2442cfaefe}"
+#!   COLOUR="0.20000000000000001,0.49803921568627452,0.51764705882352946,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="21"
 #! />
@@ -191,13 +224,14 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Merge primary and secondary extraction from id and title (only letters in title because special characters may differ between primary/secondary extraction; and sometimes numbers and added)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-38563.170015429518 5243.202613186575"
 #!   TOP_LEFT="-38563.170015429518 5243.202613186575"
-#!   BOTTOM_RIGHT="-37768.902262577532 5013.2006131665748"
-#!   BOUNDING_RECT="-38563.170015429518 5243.202613186575 794.26775285198573 230.00200002000017"
+#!   BOTTOM_RIGHT="-37768.92429172228 5013.2006131665748"
+#!   BOUNDING_RECT="-38563.170015429518 5243.202613186575 794.24572370723706 230.00200002000017"
 #!   ORDER="500000000002985.38"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,0.78431372549019607"
+#!   UUID="{52c648b1-0b75-4b13-8e4f-4aed2dd897b0}"
+#!   COLOUR="0.45882352941176469,0.53725490196078429,0.21176470588235294,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="25"
 #! />
@@ -215,8 +249,8 @@
 #!   BOTTOM_RIGHT="-38578.691971382585 4660.2490325457275"
 #!   BOUNDING_RECT="-44363.12711599411 5663.2647219989312 5784.4351446115252 1003.0156894532033"
 #!   STICKY="true"
-#!   COLOUR="0.63529411764705879,0.80000000000000004,0.59999999999999998,1"
-#!   CONTENTS="31 18 21 8 7 32 58 22 56 64 16 20 41 48 37 14 35 53 39 50 9 54 33 11 63 17 42 "
+#!   COLOUR="0.24313725490196078,0.40784313725490196,0.20784313725490197,1"
+#!   CONTENTS="32 50 14 63 20 8 7 11 64 48 56 17 42 35 37 21 53 54 16 33 9 58 31 39 41 22 18 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -229,8 +263,8 @@
 #!   BOTTOM_RIGHT="-38589.742363676254 3706.5784884699297"
 #!   BOUNDING_RECT="-44384.982032955988 4634.0877635626803 5795.2396692797365 927.50927509275084"
 #!   STICKY="true"
-#!   COLOUR="1,0.85490196078431369,0.59999999999999998,1"
-#!   CONTENTS="13 29 26 52 51 34 36 30 49 12 5 10 55 6 15 57 "
+#!   COLOUR="0.60784313725490191,0.46274509803921571,0.20784313725490197,1"
+#!   CONTENTS="12 55 13 30 26 57 34 36 29 49 51 6 10 5 52 15 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -243,8 +277,8 @@
 #!   BOTTOM_RIGHT="-23493.984939849397 2109.3952408062469"
 #!   BOUNDING_RECT="-47234.847348473479 6046.9346162000002 23740.862408624082 3937.5393753937533"
 #!   STICKY="true"
-#!   COLOUR="0.85098039215686272,0.92941176470588238,0.60392156862745094,1"
-#!   CONTENTS="38 72 39 71 69 7 55 44 56 42 70 50 53 33 29 74 60 63 4 15 32 5 11 26 8 20 52 28 19 9 61 10 12 36 23 24 31 49 68 59 37 54 46 6 73 48 64 75 41 16 25 40 2 51 58 43 34 57 35 18 17 13 21 30 65 45 14 22 "
+#!   COLOUR="0.45882352941176469,0.53725490196078429,0.21176470588235294,1"
+#!   CONTENTS="32 28 50 71 63 55 20 46 26 57 65 48 43 17 75 37 59 21 53 40 36 9 58 31 5 61 15 39 4 73 60 22 18 19 23 38 12 44 14 70 74 13 8 7 11 30 69 64 68 72 25 56 42 35 24 54 34 2 16 33 29 49 51 6 10 52 45 41 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -257,8 +291,8 @@
 #!   BOTTOM_RIGHT="-40212.2585888385 4692.4216802351784"
 #!   BOUNDING_RECT="-40966.432797247253 5561.9410206560833 754.17420840875059 869.51934042090477"
 #!   STICKY="true"
-#!   COLOUR="0.81568627450980391,0.5607843137254902,0.85882352941176465,1"
-#!   CONTENTS="17 20 18 39 41 "
+#!   COLOUR="0.42352941176470588,0.16862745098039217,0.46666666666666667,1"
+#!   CONTENTS="20 17 39 41 18 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -271,8 +305,8 @@
 #!   BOTTOM_RIGHT="-39324.357245813109 4666.933170577584"
 #!   BOUNDING_RECT="-39997.737707171349 5516.9416706625843 673.3804613582397 850.00850008500083"
 #!   STICKY="true"
-#!   COLOUR="0.59215686274509804,0.8901960784313725,0.90980392156862744,1"
-#!   CONTENTS="22 21 58 42 "
+#!   COLOUR="0.20000000000000001,0.49803921568627452,0.51764705882352946,1"
+#!   CONTENTS="42 21 58 22 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -287,6 +321,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -320,13 +355,13 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="5"
 #!   TYPE="AttributeCreator"
-#!   VERSION="9"
+#!   VERSION="10"
 #!   POSITION="-44255.314949618478 4246.5883885689318"
 #!   BOUNDING_RECT="-44255.314949618478 4246.5883885689318 454 71"
 #!   ORDER="500000000002420"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -335,25 +370,27 @@
 #!     <XFORM_ATTR ATTR_NAME="_url_dcat_secondary" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _type_requete SET_TO DCAT-SECONDARY"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _type_requete SET_TO DCAT-SECONDARY varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="6"
 #!   TYPE="PythonCaller"
-#!   VERSION="4"
+#!   VERSION="6"
 #!   POSITION="-42062.745500114455 4218.7973420764429"
 #!   BOUNDING_RECT="-42062.745500114455 4218.7973420764429 454 71"
 #!   ORDER="500000000000345.13"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -364,10 +401,20 @@
 #!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_status_code_description" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_slug_id_" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_type_requete" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_dcat_primary" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_dcat_secondary" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_response_body_S _status_code _status_code_description DCAT_S_slug_id_"/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_response_body_S buffer _status_code buffer _status_code_description buffer DCAT_S_slug_id_ buffer"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.DCAT_Reader&lt;space&gt;import&lt;space&gt;ManageHttpCall&lt;lf&gt;"/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="ManageHttpCall"/>
@@ -377,13 +424,13 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="7"
 #!   TYPE="PythonCaller"
-#!   VERSION="4"
+#!   VERSION="6"
 #!   POSITION="-43601.261125270714 5132.9051039650212"
 #!   BOUNDING_RECT="-43601.261125270714 5132.9051039650212 430 71"
 #!   ORDER="500000000000345.13"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -394,10 +441,20 @@
 #!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_status_code_description" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_identifier" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_type_requete" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_dcat_primary" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_dcat_secondary" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_response_body_P _status_code _status_code_description DCAT_P_identifier"/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_response_body_P buffer _status_code buffer _status_code_description buffer DCAT_P_identifier buffer"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.DCAT_Reader&lt;space&gt;import&lt;space&gt;ManageHttpCall&lt;lf&gt;"/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="ManageHttpCall"/>
@@ -407,13 +464,13 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="8"
 #!   TYPE="AttributeCreator"
-#!   VERSION="9"
+#!   VERSION="10"
 #!   POSITION="-44222.481907954731 5194.2746873260821"
 #!   BOUNDING_RECT="-44222.481907954731 5194.2746873260821 454 71"
 #!   ORDER="500000000002420"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -422,25 +479,27 @@
 #!     <XFORM_ATTR ATTR_NAME="_url_dcat_secondary" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _type_requete SET_TO DCAT-PRIMARY"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _type_requete SET_TO DCAT-PRIMARY varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_8"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="9"
 #!   TYPE="JSONFlattener"
-#!   VERSION="5"
+#!   VERSION="7"
 #!   POSITION="-41830.615605742001 5274.439895644834"
 #!   BOUNDING_RECT="-41830.615605742001 5274.439895644834 454 71"
 #!   ORDER="500000000002425"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -474,20 +533,20 @@
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PREFIX_STRING" PARM_VALUE="DCAT_P_"/>
 #!     <XFORM_PARM PARM_NAME="READ_FROM_FILE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="RECURSIVE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="RECURSIVE" PARM_VALUE="YES"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="JSONFlattener_2"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="10"
 #!   TYPE="JSONFlattener"
-#!   VERSION="5"
+#!   VERSION="7"
 #!   POSITION="-40177.432647245747 4249.630383740192"
 #!   BOUNDING_RECT="-40177.432647245747 4249.630383740192 430 71"
 #!   ORDER="500000000002425"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -521,20 +580,20 @@
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PREFIX_STRING" PARM_VALUE="DCAT_S_"/>
 #!     <XFORM_PARM PARM_NAME="READ_FROM_FILE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="RECURSIVE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="RECURSIVE" PARM_VALUE="YES"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="JSONFlattener_4"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="11"
 #!   TYPE="TestFilter"
-#!   VERSION="2"
+#!   VERSION="3"
 #!   POSITION="-42788.820506427008 5299.5734373150217"
 #!   BOUNDING_RECT="-42788.820506427008 5299.5734373150217 454 71"
 #!   ORDER="500000000000359.13"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="200&lt;space&gt;OK"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -556,7 +615,8 @@
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_identifier" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="Other&lt;space&gt;Error"/>
-#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="PASSED_TEST_GROUP_OUTPUT" PARM_VALUE="FIRST"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
 #!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_status_code&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;200&quot;,200&lt;space&gt;OK"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
@@ -565,13 +625,13 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="12"
 #!   TYPE="TestFilter"
-#!   VERSION="2"
+#!   VERSION="3"
 #!   POSITION="-41286.550261971599 4215.0770667784527"
 #!   BOUNDING_RECT="-41286.550261971599 4215.0770667784527 454 71"
 #!   ORDER="500000000000359.13"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="200&lt;space&gt;OK"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -593,7 +653,8 @@
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_slug_id_" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="Other&lt;space&gt;Error"/>
-#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="PASSED_TEST_GROUP_OUTPUT" PARM_VALUE="FIRST"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
 #!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;_status_code&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;200&quot;,200&lt;space&gt;OK"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
@@ -609,6 +670,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="LOGGED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -640,6 +702,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="LOGGED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -671,6 +734,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="LOGGED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -707,6 +771,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="LOGGED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -743,6 +808,7 @@
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -762,19 +828,20 @@
 #!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="YES"/>
 #!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="DCAT_P_identifier"/>
+#!     <XFORM_PARM PARM_NAME="TEST_STRING" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringReplacer_9"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="18"
 #!   TYPE="AttributeExposer"
-#!   VERSION="1"
+#!   VERSION="2"
 #!   POSITION="-40820.598005566004 5406.3697122019776"
 #!   BOUNDING_RECT="-40820.598005566004 5406.3697122019776 454 71"
 #!   ORDER="500000000002479"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -786,8 +853,9 @@
 #!     <XFORM_ATTR ATTR_NAME="_status_code_description" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_identifier" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="DCAT_P_identifier,DCAT_P_title"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="DCAT_P_identifier,,DCAT_P_title,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_18"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
@@ -800,6 +868,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -816,6 +885,7 @@
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20200"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -835,19 +905,20 @@
 #!     <XFORM_PARM PARM_NAME="REGEXP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="REPLACE_TEXT" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="SRC_ATTRS" PARM_VALUE="DCAT_P_identifier"/>
+#!     <XFORM_PARM PARM_NAME="TEST_STRING" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="StringReplacer_13"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="21"
 #!   TYPE="PythonCaller"
-#!   VERSION="4"
+#!   VERSION="6"
 #!   POSITION="-39855.297195891231 5170.1119976365508"
 #!   BOUNDING_RECT="-39855.297195891231 5170.1119976365508 454 71"
 #!   ORDER="500000000003233.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -859,7 +930,22 @@
 #!     <XFORM_ATTR ATTR_NAME="_status_code_description" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_identifier" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_type_requete" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_dcat_primary" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_dcat_secondary" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body_P" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_status_code_description" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="DCAT_P_identifier" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="DCAT_P_title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
@@ -872,13 +958,13 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="22"
 #!   TYPE="AttributeExposer"
-#!   VERSION="1"
+#!   VERSION="2"
 #!   POSITION="-39855.297195891231 4957.4742704330274"
 #!   BOUNDING_RECT="-39855.297195891231 4957.4742704330274 454 71"
 #!   ORDER="500000000003235.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -891,20 +977,21 @@
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_identifier" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_title" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_id_layer" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="DCAT_P_id_layer"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="DCAT_P_id_layer,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_19"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="23"
 #!   TYPE="AttributeExposer"
-#!   VERSION="1"
+#!   VERSION="2"
 #!   POSITION="-35581.54036171081 4655.1117580026566"
 #!   BOUNDING_RECT="-35581.54036171081 4655.1117580026566 454 71"
 #!   ORDER="500000000003276.38"
-#!   PARMS_EDITED="false"
+#!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -935,20 +1022,21 @@
 #!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_P_distribution{0}.accessURL" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="DCAT_P_id_layer,DCAT_P_distribution{0}.accessURL,DCAT_P_title,DCAT_P_identifier"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="DCAT_P_id_layer,,DCAT_P_distribution{0}.accessURL,,DCAT_P_title,,DCAT_P_identifier,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_21"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="24"
 #!   TYPE="AttributeCreator"
-#!   VERSION="9"
+#!   VERSION="10"
 #!   POSITION="-45187.379455911854 4785.2880641599777"
 #!   BOUNDING_RECT="-45187.379455911854 4785.2880641599777 454 71"
 #!   ORDER="500000000002450"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -956,25 +1044,27 @@
 #!     <XFORM_ATTR ATTR_NAME="_url_dcat_secondary" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _url_dcat_primary SET_TO https:&lt;solidus&gt;&lt;solidus&gt;data.princeedwardisland.ca&lt;solidus&gt;data.json  _url_dcat_secondary SET_TO https:&lt;solidus&gt;&lt;solidus&gt;data.princeedwardisland.ca&lt;solidus&gt;api&lt;solidus&gt;v3&lt;solidus&gt;datasets?filter&lt;openbracket&gt;owner&lt;closebracket&gt;=pei_enterprise_admin&lt;amp&gt;page&lt;openbracket&gt;number&lt;closebracket&gt;=1&lt;amp&gt;page&lt;openbracket&gt;size&lt;closebracket&gt;=25"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _url_dcat_primary SET_TO https:&lt;solidus&gt;&lt;solidus&gt;data.princeedwardisland.ca&lt;solidus&gt;data.json varchar&lt;openparen&gt;200&lt;closeparen&gt;  _url_dcat_secondary SET_TO https:&lt;solidus&gt;&lt;solidus&gt;data.princeedwardisland.ca&lt;solidus&gt;api&lt;solidus&gt;v3&lt;solidus&gt;datasets?filter&lt;openbracket&gt;owner&lt;closebracket&gt;=pei_enterprise_admin&lt;amp&gt;page&lt;openbracket&gt;number&lt;closebracket&gt;=1&lt;amp&gt;page&lt;openbracket&gt;size&lt;closebracket&gt;=25 varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_3"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="25"
 #!   TYPE="FeatureMerger"
-#!   VERSION="18"
+#!   VERSION="21"
 #!   POSITION="-38471.153783751266 4927.6232526636668"
 #!   BOUNDING_RECT="-38471.153783751266 4927.6232526636668 561.06029257225532 71"
 #!   ORDER="500000000002423"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="MERGED"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -1077,41 +1167,51 @@
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_attributes.categories{}" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_id" IS_USER_CREATED="false" FEAT_INDEX="4" />
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
-#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
-#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="Automatic"/>
-#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="First Wins"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="AUTO"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="FIRST_WINS"/>
 #!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="Build Polygons"/>
-#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="POLYGONS"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;DCAT_P_id_layer&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;DCAT_S_id&lt;closeparen&gt; AUTO"/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE_VAL" PARM_VALUE="ATTRIBUTES"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="ACROSS_OUTPUT_PORTS"/>
 #!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="YES"/>
 #!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger_9"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="Automatic"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="First Wins"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Build Polygons"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="Attributes Only"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="26"
 #!   TYPE="AttributeExposer"
-#!   VERSION="1"
+#!   VERSION="2"
 #!   POSITION="-39233.082130407245 4352.296417067193"
 #!   BOUNDING_RECT="-39233.082130407245 4352.296417067193 454 71"
 #!   ORDER="500000000002478"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -1133,20 +1233,21 @@
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_attributes.metadata.metadata.mdDateSt" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_attributes.categories{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="DCAT_S_attributes.itemId,DCAT_S_attributes.metadata.metadata.dataIdInfo.idCitation.resTitle,DCAT_S_attributes.metadata.metadata.dataIdInfo.dataExt{0}.tempEle.TempExtent.exTemp.TM_Period.tmBegin,DCAT_S_attributes.metadata.metadata.dataIdInfo.dataExt{0}.tempEle.TempExtent.exTemp.TM_Period.tmEnd,DCAT_S_attributes.metadata.metadata.Esri.DataProperties.coordRef.geogcsn.#value,DCAT_S_attributes.snippet,DCAT_S_attributes.searchDescription,DCAT_S_attributes.metadata.metadata.dataIdInfo.idPoC.rpOrgName,DCAT_S_attributes.metadata.metadata.mdDateSt,DCAT_S_attributes.categories{},DCAT_S_id"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="DCAT_S_attributes.itemId,,DCAT_S_attributes.metadata.metadata.dataIdInfo.idCitation.resTitle,,DCAT_S_attributes.metadata.metadata.dataIdInfo.dataExt{0}.tempEle.TempExtent.exTemp.TM_Period.tmBegin,,DCAT_S_attributes.metadata.metadata.dataIdInfo.dataExt{0}.tempEle.TempExtent.exTemp.TM_Period.tmEnd,,DCAT_S_attributes.metadata.metadata.Esri.DataProperties.coordRef.geogcsn.#value,,DCAT_S_attributes.snippet,,DCAT_S_attributes.searchDescription,,DCAT_S_attributes.metadata.metadata.dataIdInfo.idPoC.rpOrgName,,DCAT_S_attributes.metadata.metadata.mdDateSt,,DCAT_S_attributes.categories{},,DCAT_S_id,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer_17"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="65"
 #!   TYPE="HTTPCaller"
-#!   VERSION="2"
+#!   VERSION="7"
 #!   POSITION="-37218.488738941451 4755.1151187187534"
 #!   BOUNDING_RECT="-37218.488738941451 4755.1151187187534 454 71"
 #!   ORDER="500000000003277.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -1199,62 +1300,97 @@
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_attributes.categories{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
-#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADDITIONAL_PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ADDITIONAL_URL_PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
 #!     <XFORM_PARM PARM_NAME="ADVANCED_REQUEST_PARAMETERS" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
-#!     <XFORM_PARM PARM_NAME="ADVANCED_RESPONSE_PARAMETERS" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="AUTH_METHOD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_METHOD_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="AUTH_NAMED_CONNECTION" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="AUTH_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="AUTH_USERNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_FROM_OS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_PRIVATE_KEY_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_TYPE" PARM_VALUE="NONE"/>
+#!     <XFORM_PARM PARM_NAME="CONCURRENCY_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="CONNECTION_TIMEOUT_LENGTH" PARM_VALUE="60"/>
+#!     <XFORM_PARM PARM_NAME="CONTENT_TYPE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
 #!     <XFORM_PARM PARM_NAME="ERROR_ATTR" PARM_VALUE="_error"/>
 #!     <XFORM_PARM PARM_NAME="FILE_PATH_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="FILE_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_PATH_ATTR2" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_TYPE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="FOLLOW_REDIRECTS" PARM_VALUE="FOLLOW_WITH_GET"/>
 #!     <XFORM_PARM PARM_NAME="HTTPURL_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="HTTP_AUTH_GROUP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="HTTP_METHOD" PARM_VALUE="GET"/>
 #!     <XFORM_PARM PARM_NAME="HTTP_RESPONSE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOOP_MESSAGE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MAX_HTTP_VERSION" PARM_VALUE="HTTP_2"/>
+#!     <XFORM_PARM PARM_NAME="MAX_TRANSFERS_IN_PROGRESS" PARM_VALUE="25"/>
+#!     <XFORM_PARM PARM_NAME="MINIMUM_ENCRYPTION_LEVEL" PARM_VALUE="OS_DEFAULT"/>
 #!     <XFORM_PARM PARM_NAME="MULTIPARTS" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="MULTIPART_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_CONTENT_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_RESPONSE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_RESPONSE_HEADER_LIST_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="OUTPUT_DIRNAME" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="OUTPUT_FILENAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_INTERVAL_IN_SECONDS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_MAX_REQUESTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_REQUEST_TIMING" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="REDIRECT_AUTH" PARM_VALUE="ORIGINAL_DOMAIN_ONLY"/>
-#!     <XFORM_PARM PARM_NAME="RESPONSE_FILE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_ATTRS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_ATTR_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_DIR_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_FILE_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="RESPONSE_HEADER_LIST_ATTR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="SAVE_FILE" PARM_VALUE="Attribute"/>
-#!     <XFORM_PARM PARM_NAME="SAVE_MULTI" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_TYPE" PARM_VALUE="Attribute"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_FAILED_TRANSFERS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_INITIAL_BACKOFF" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_MAX_RETRIES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SPLIT_MULTIPART_DOWNLOADS" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="STATUS_CODE_ATTR" PARM_VALUE="_http_status_code"/>
 #!     <XFORM_PARM PARM_NAME="TARGET_ATTR" PARM_VALUE="_response_body"/>
 #!     <XFORM_PARM PARM_NAME="TARGET_ATTR_ENCODING" PARM_VALUE="auto-detect"/>
 #!     <XFORM_PARM PARM_NAME="TARGET_URL" PARM_VALUE="https:&lt;solidus&gt;&lt;solidus&gt;www.arcgis.com&lt;solidus&gt;sharing&lt;solidus&gt;rest&lt;solidus&gt;content&lt;solidus&gt;items&lt;solidus&gt;&lt;at&gt;Value&lt;openparen&gt;DCAT_P_identifier&lt;closeparen&gt;&lt;solidus&gt;info&lt;solidus&gt;metadata&lt;solidus&gt;metadata.xml?format=default"/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_ATTRIBUTE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_PARAMETERS_FOR_RESPONSE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_RESPONSE_PREVIEW" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_RESPONSE_STATUS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_USER_PARAMETER" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TLS_CLIENT_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TLS_PARAMETERS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFER_TIMEOUT_LENGTH" PARM_VALUE="90"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="UPLOAD_BODY" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="UPLOAD_CONTENT_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="UPLOAD_FILE" PARM_VALUE="&lt;Unused&gt;"/>
-#!     <XFORM_PARM PARM_NAME="UPLOAD_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="UPLOAD_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="USE_COOKIES" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="VERIFY_SSL_CERTIFICATES" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTTPCaller"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_METHOD" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_CONTENT_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="68"
 #!   TYPE="AttributeExposer"
-#!   VERSION="1"
+#!   VERSION="2"
 #!   POSITION="-37762.20194634379 4755.1151187187534"
 #!   BOUNDING_RECT="-37762.20194634379 4755.1151187187534 454 71"
 #!   ORDER="500000000003278.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -1280,20 +1416,21 @@
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_attributes.metadata.metadata.mdDateSt" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_attributes.categories{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="DCAT_S_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="DCAT_P_identifier"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="DCAT_P_identifier,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="71"
 #!   TYPE="XMLFlattener"
-#!   VERSION="3"
+#!   VERSION="4"
 #!   POSITION="-36575.534674265655 4927.6232526636668"
 #!   BOUNDING_RECT="-36575.534674265655 4927.6232526636668 454 71"
 #!   ORDER="500000000003279.38"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -1350,18 +1487,21 @@
 #!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_XML" PARM_VALUE="_response_body"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_EXPOSE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DISABLE_EXTERNAL_ENTITY_PROCESSING" PARM_VALUE="Yes"/>
 #!     <XFORM_PARM PARM_NAME="EMBEDDED_EXPRESSIONS" PARM_VALUE="MD_Metadata"/>
+#!     <XFORM_PARM PARM_NAME="ENTITY_RESOLVER" PARM_VALUE="Yes"/>
 #!     <XFORM_PARM PARM_NAME="FEATURE_PATHS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="FEATURE_PATHS_STRUCTURE_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="FEATURE_TYPES_FORMAT_NAME" PARM_VALUE="XML"/>
 #!     <XFORM_PARM PARM_NAME="FILE_XML" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="FLATTEN_OPTIONS" PARM_VALUE="&lt;lt&gt;structure&lt;space&gt;&lt;space&gt;&lt;lf&gt;separator=&lt;quote&gt;.&lt;quote&gt;&lt;space&gt;&lt;lf&gt;map-empty-elements=&lt;quote&gt;yes&lt;quote&gt;&lt;space&gt;&lt;lf&gt;matched-prefix=&lt;quote&gt;attributes&lt;quote&gt;&lt;space&gt;&lt;lf&gt;matched-attributes=&lt;quote&gt;yes&lt;quote&gt;&lt;space&gt;&lt;lf&gt;cardinality=&lt;quote&gt;+&lt;opencurly&gt;?&lt;closecurly&gt;&lt;quote&gt;&lt;lf&gt;except-expression=&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;structure-prefix=&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;child-position-attribute=&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;attribute-identifier=&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;ui-mode=&lt;quote&gt;basic&lt;quote&gt;&lt;solidus&gt;&lt;gt&gt;"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_DATASET_EXTERNAL_DTD" PARM_VALUE="No"/>
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="SUB_FRAGMENT_OPTIONS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="XMLFlattener"/>
 #!     <XFORM_PARM PARM_NAME="XML_SOURCE_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="XML_SOURCE_TYPE" PARM_VALUE="Attribute with XML document"/>
+#!     <XFORM_PARM PARM_NAME="XML_SOURCE_TYPE" PARM_VALUE="xml_attr"/>
 #! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <SUBDOCUMENT_IOS>
@@ -1397,7 +1537,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1412,7 +1552,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1427,7 +1567,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1442,7 +1582,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1457,7 +1597,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1472,7 +1612,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1487,7 +1627,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1502,7 +1642,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1517,7 +1657,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1532,7 +1672,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1547,7 +1687,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1562,7 +1702,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1577,7 +1717,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1592,7 +1732,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1607,7 +1747,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1622,7 +1762,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1637,7 +1777,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1652,7 +1792,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1667,7 +1807,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="1"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1682,7 +1822,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1697,7 +1837,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1712,7 +1852,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1727,7 +1867,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1742,7 +1882,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1757,7 +1897,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1772,7 +1912,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1787,7 +1927,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1802,7 +1942,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1817,7 +1957,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1832,7 +1972,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0,0,0,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -1849,89 +1989,178 @@
 #! </LOOKUP_TABLES>
 #! </TRANSFORMER>
 
-FME_PYTHON_VERSION 37
+FME_PYTHON_VERSION 313
+# ============================================================================
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_USER_PARAM_PRIVATE_GRP 
+
 DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_IN_CSV_LOOKUPTABLES_DIR \LOOKUP_TABLES
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
 #! START_HEADER
 #! END_HEADER
 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO DCAT_Reader_PEI_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(DCAT_Reader_PEI_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(DCAT_Reader_PEI_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Input1713555729 Input Splitter"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Input"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Input1762276619 Input Splitter"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Input"
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_url_dcat_primary" "SET_TO" "https:<solidus><solidus>data.princeedwardisland.ca<solidus>data.json" }      ATTR_ACTION { "" "_url_dcat_secondary" "SET_TO" "https:<solidus><solidus>data.princeedwardisland.ca<solidus>api<solidus>v3<solidus>datasets?filter<openbracket>owner<closebracket>=pei_enterprise_admin<amp>page<openbracket>number<closebracket>=1<amp>page<openbracket>size<closebracket>=25" }    OUTPUT OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3 OUTPUT Splitter"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT_0_FCnR+GZpEpk="   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT_1_DkjjLQQ8tPc="
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_url_dcat_primary" "SET_TO" "https:<solidus><solidus>data.princeedwardisland.ca<solidus>data.json" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_url_dcat_secondary" "SET_TO" "https:<solidus><solidus>data.princeedwardisland.ca<solidus>api<solidus>v3<solidus>datasets?filter<openbracket>owner<closebracket>=pei_enterprise_admin<amp>page<openbracket>number<closebracket>=1<amp>page<openbracket>size<closebracket>=25" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"        }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3 OUTPUT Splitter"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT_0_RbV6ITxM35A="   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT_1_hcsL403r6Q0="
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT_1_DkjjLQQ8tPc="    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_type_requete" "SET_TO" "DCAT-SECONDARY" }    OUTPUT OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
-# -------------------------------------------------------------------------
-FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    SYMBOL_NAME ManageHttpCall    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.DCAT_Reader<space>import<space>ManageHttpCall<lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8_OUTPUT"
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8_OUTPUT"    OUTPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_TESTFILTERINPUTLINE_0
-FACTORY_DEF * TestFactory FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_Condition_1 INPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_status_code<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7) = 200 ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_200<space>OK OUTPUT FAILED FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_TESTFILTERINPUTLINE_1
-FACTORY_DEF * TeeFactory FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_Other<space>Error INPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_Other<space>Error
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2_Logger    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_Other<space>Error"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2_LOGGED"                  @Log(ENCODED, "<dollar><openparen>DCAT_Reader_PEI_WORKSPACE_NAME<closeparen>_TestFilter_2_Other_Error_2:<space>Feature is:","20","20","",INFO,LOG_ONLY,$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2_d0530de5_d363_49ba_a753_38d6450ef4ae1)
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2_LOGGED"
-# -------------------------------------------------------------------------
-FACTORY_DEF * JSONQueryFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_200<space>OK"    MODE FLATTEN    PREF_STRING "DCAT_S_"    JSON_DOCUMENT "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body_S<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4)"    READ_FROM_FILE NO    FILEPATH_OR_URL "<Unused>"    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN YES    ERROR_LIST_ATTR "_json_error"    OUTPUT EXPLODED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4_OUTPUT"    OUTPUT REJECTED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4_<REJECTED>"
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2_Logger    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4_<REJECTED>"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2_LOGGED"                  @Log(ENCODED, "<dollar><openparen>DCAT_Reader_PEI_WORKSPACE_NAME<closeparen>_JSONFlattener_3__Rejected__2:<space>Feature is:","20","20","",INFO,LOG_ONLY,$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2_309b991d_a2d0_4310_99c2_dc77d9c87ae31)
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2_LOGGED"
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_17    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4_OUTPUT"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_17_OUTPUT"
-# -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_8    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT_0_FCnR+GZpEpk="    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_type_requete" "SET_TO" "DCAT-PRIMARY" }    OUTPUT OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT"
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_8 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT_0_RbV6ITxM35A="    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_type_requete" "SET_TO" "DCAT-PRIMARY" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT"        }
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT"    SYMBOL_NAME ManageHttpCall    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.DCAT_Reader<space>import<space>ManageHttpCall<lf>    OUTPUT PYOUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9_OUTPUT"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_8_OUTPUT"    SYMBOL_NAME { ManageHttpCall }    SOURCE_CODE { from<space>Python.DCAT_Reader<space>import<space>ManageHttpCall<lf> }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9 <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9_<Rejected>"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9_OUTPUT"    OUTPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_TESTFILTERINPUTLINE_0
-FACTORY_DEF * TestFactory FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_Condition_1 INPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_TESTFILTERINPUTLINE_0 TEST @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_status_code<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6) = 200 ENCODED BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_200<space>OK OUTPUT FAILED FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_TESTFILTERINPUTLINE_1
-FACTORY_DEF * TeeFactory FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_Other<space>Error INPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_Other<space>Error
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_INPUT }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_9_OUTPUT"    OUTPUT { FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_INPUTLINE }
+FACTORY_DEF {*} TestFactory FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6 } INPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_INPUTLINE FEATURE_TABLE_SHIM_SUPPORT Yes PASSED_TEST_GROUP_OUTPUT FIRST TEST_GROUP TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_status_code<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6) = 200 ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" OUTPUT PASSED_0 FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_200<space>OK OUTPUT FAILED FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_Other<space>Error
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2_Logger    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_Other<space>Error"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2_LOGGED"                  @Log(ENCODED, "<dollar><openparen>DCAT_Reader_PEI_WORKSPACE_NAME<closeparen>_TestFilter_3_Other_Error_2:<space>Feature is:","20","20","",INFO,LOG_ONLY,$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2_aec31732_8911_4e4b_b587_dd71e1e5e5561)
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2_LOGGED"
+FACTORY_DEF {*} JSONQueryFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_200<space>OK"    MODE FLATTEN    PREF_STRING { "DCAT_P_" }    JSON_DOCUMENT { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body_P<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2)" }    READ_FROM_FILE { NO }    FILEPATH_OR_URL { "<Unused>" }    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN { YES }    ERROR_LIST_ATTR { "_json_error" }    OUTPUT { EXPLODED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"        }    OUTPUT { REJECTED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"        }
 # -------------------------------------------------------------------------
-FACTORY_DEF * JSONQueryFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_200<space>OK"    MODE FLATTEN    PREF_STRING "DCAT_P_"    JSON_DOCUMENT "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body_P<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2)"    READ_FROM_FILE NO    FILEPATH_OR_URL "<Unused>"    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN YES    ERROR_LIST_ATTR "_json_error"    OUTPUT EXPLODED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"    OUTPUT REJECTED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_18 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_18_OUTPUT"          }
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2_Logger    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2_LOGGED"                  @Log(ENCODED, "<dollar><openparen>DCAT_Reader_PEI_WORKSPACE_NAME<closeparen>_JSONFlattener__Rejected__2:<space>Feature is:","20","20","",INFO,LOG_ONLY,$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2_f5edd4ba_6066_4a52_8a90_227e5e6e7df61)
+FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_13 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_18_OUTPUT"    USE_REGEX { NO }    CASE_SENSITIVE { NO }    SOURCE_ATTRIBUTES { DCAT_P_identifier }    FIND_TEXT { "https:<solidus><solidus>www.arcgis.com<solidus>home<solidus>item.html?id=" }    REPLACE_TEXT { "" }    REPLACE_NO_MATCH { "_FME_NO_OP_" }    OUTPUT { OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_13_OUTPUT"          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_9 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_13_OUTPUT"    USE_REGEX { YES }    CASE_SENSITIVE { NO }    SOURCE_ATTRIBUTES { DCAT_P_identifier }    FIND_TEXT { "<backslash><amp>.*<dollar>" }    REPLACE_TEXT { "" }    REPLACE_NO_MATCH { "_FME_NO_OP_" }    OUTPUT { OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_9_OUTPUT"          }
+# -------------------------------------------------------------------------
+FME_PYTHON_PATH "$(FME_MF_DIR)"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_9_OUTPUT"    SYMBOL_NAME { FeatureProcessor }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf>from<space>Python.FME_utils<space>import<space>FME_utils<lf><lf><lf>def<space>FeatureProcessor<openparen>feature<closeparen>:<lf><lf><space><space><space><space>id=feature.getAttribute<openparen><apos>DCAT_P_identifier<apos><closeparen><lf><space><space><space><space>feature.setAttribute<openparen><apos>DCAT_P_id_layer<apos><comma>id<closeparen><lf><space><space><space><space>max_index=FME_utils.max_index_attribute_list<openparen>feature<comma><apos>DCAT_P_distribution<opencurly><closecurly>.accessURL<apos><closeparen><lf><space><space><space><space>for<space>j<space>in<space>range<openparen>max_index+1<closeparen>:<lf><space><space><space><space><space><space><space><space>url<space>=<space>feature.getAttribute<openparen><apos>DCAT_P_distribution<opencurly>%i<closecurly>.accessURL<apos>%<openparen>j<closeparen><closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>if<space>url:<lf><space><space><space><space><space><space><space><space><space>if<space><apos>SERVER<solidus><apos><space>in<space>url.upper<openparen><closeparen>:<lf><space><space><space><space><space><space><space><space><space><space>layer<space>=<space>url.rsplit<openparen><apos><solidus><apos><comma>1<closeparen><openbracket>-1<closebracket><lf><space><space><space><space><space><space><space><space><space><space>if<space>layer:<lf><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>DCAT_P_id_layer<apos><comma>id+<apos>_<apos>+layer<closeparen> }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13 <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13_<Rejected>"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_19 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13_OUTPUT"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_19_OUTPUT"          }
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2_9c592002_79bb_45a7_a32c_6a772f8f45940} ]
+# If the Logger was in a custom transformer, the custom transformer's name was not being
+# properly logged -- instead we saw "$(<customXformerName_WORKSPACE_NAME)" being logged as the prefix of the
+# message. By deferencing and expanding out the XFORMER_NAME below, and then "WWJD" encoding it when it is
+# used in the @Log call via the $encode macro name suffix trick, we get the right result, and the right result
+# safely.
+MACRO LOGGABLE_XFORMER_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2_Logger }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2_<REJECTED>"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2_LOGGED"                  @Log(ENCODED, "$(LOGGABLE_XFORMER_NAME$encode):<space>Feature is:","20","20","",INFO,LOG_ONLY,$(FME_UUID_SAFE))                   }
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener__Rejected__2_LOGGED"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_18    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_2_OUTPUT"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_18_OUTPUT"
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2_9c0ce2da_3dd3_40b3_8141_26b591145f610} ]
+# If the Logger was in a custom transformer, the custom transformer's name was not being
+# properly logged -- instead we saw "$(<customXformerName_WORKSPACE_NAME)" being logged as the prefix of the
+# message. By deferencing and expanding out the XFORMER_NAME below, and then "WWJD" encoding it when it is
+# used in the @Log call via the $encode macro name suffix trick, we get the right result, and the right result
+# safely.
+MACRO LOGGABLE_XFORMER_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2_Logger }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_6_Other<space>Error"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2_LOGGED"                  @Log(ENCODED, "$(LOGGABLE_XFORMER_NAME$encode):<space>Feature is:","20","20","",INFO,LOG_ONLY,$(FME_UUID_SAFE))                   }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_3_Other_Error_2_LOGGED"
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_13    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_18_OUTPUT"    USE_REGEX NO    CASE_SENSITIVE NO    SOURCE_ATTRIBUTES { DCAT_P_identifier }    FIND_TEXT { "https:<solidus><solidus>www.arcgis.com<solidus>home<solidus>item.html?id=" }    REPLACE_TEXT { "" }    REPLACE_NO_MATCH { "_FME_NO_OP_" }    OUTPUT OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_13_OUTPUT"
-# -------------------------------------------------------------------------
-FACTORY_DEF {*} StringReplacerFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_9    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_13_OUTPUT"    USE_REGEX YES    CASE_SENSITIVE NO    SOURCE_ATTRIBUTES { DCAT_P_identifier }    FIND_TEXT { "<backslash><amp>.*<dollar>" }    REPLACE_TEXT { "" }    REPLACE_NO_MATCH { "_FME_NO_OP_" }    OUTPUT OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_9_OUTPUT"
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_2 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT_1_hcsL403r6Q0="    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_type_requete" "SET_TO" "DCAT-SECONDARY" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"        }
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_StringReplacer_9_OUTPUT"    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>from<space>Python.FME_utils<space>import<space>FME_utils<lf><lf><lf>def<space>FeatureProcessor<openparen>feature<closeparen>:<lf><lf><space><space><space><space>id=feature.getAttribute<openparen><apos>DCAT_P_identifier<apos><closeparen><lf><space><space><space><space>feature.setAttribute<openparen><apos>DCAT_P_id_layer<apos><comma>id<closeparen><lf><space><space><space><space>max_index=FME_utils.max_index_attribute_list<openparen>feature<comma><apos>DCAT_P_distribution<opencurly><closecurly>.accessURL<apos><closeparen><lf><space><space><space><space>for<space>j<space>in<space>range<openparen>max_index+1<closeparen>:<lf><space><space><space><space><space><space><space><space>url<space>=<space>feature.getAttribute<openparen><apos>DCAT_P_distribution<opencurly>%i<closecurly>.accessURL<apos>%<openparen>j<closeparen><closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>if<space>url:<lf><space><space><space><space><space><space><space><space><space>if<space><apos>SERVER<solidus><apos><space>in<space>url.upper<openparen><closeparen>:<lf><space><space><space><space><space><space><space><space><space><space>layer<space>=<space>url.rsplit<openparen><apos><solidus><apos><comma>1<closeparen><openbracket>-1<closebracket><lf><space><space><space><space><space><space><space><space><space><space>if<space>layer:<lf><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen><apos>DCAT_P_id_layer<apos><comma>id+<apos>_<apos>+layer<closeparen>    OUTPUT PYOUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13_OUTPUT"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    SYMBOL_NAME { ManageHttpCall }    SOURCE_CODE { from<space>Python.DCAT_Reader<space>import<space>ManageHttpCall<lf> }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8 <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8_<Rejected>"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_19    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_13_OUTPUT"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_19_OUTPUT"
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_INPUT }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_PythonCaller_8_OUTPUT"    OUTPUT { FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_INPUTLINE }
+FACTORY_DEF {*} TestFactory FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7 } INPUT FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_INPUTLINE FEATURE_TABLE_SHIM_SUPPORT Yes PASSED_TEST_GROUP_OUTPUT FIRST TEST_GROUP TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_status_code<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7) = 200 ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" OUTPUT PASSED_0 FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_200<space>OK OUTPUT FAILED FEATURE_TYPE $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_Other<space>Error
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} JSONQueryFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_200<space>OK"    MODE FLATTEN    PREF_STRING { "DCAT_S_" }    JSON_DOCUMENT { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body_S<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4)" }    READ_FROM_FILE { NO }    FILEPATH_OR_URL { "<Unused>" }    EXPLODE_QUERY "json"    RECURSIVE_FLATTEN { YES }    ERROR_LIST_ATTR { "_json_error" }    OUTPUT { EXPLODED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4_OUTPUT"        }    OUTPUT { REJECTED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4_<REJECTED>"        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_17 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4_OUTPUT"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_17_OUTPUT"          }
 # -------------------------------------------------------------------------
 INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {POLYGONS}} {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {AGGREGATES}} {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {POLYGONS} == {LINESFROMPOINTS}} {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
-FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9    FLUSH_WHEN_GROUPS_CHANGE No    INPUT REFERENCER FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_19_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_17_OUTPUT"    CONNECT_Z_MODE FIRST_WINS    REFERENCE_INFO $($(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO)    REFERENCE_TABLE @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>DCAT_P_id_layer<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>DCAT_S_id<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9) AUTO    ATTR_ACCUM_MODE "HANDLE_CONFLICT"    ATTR_CONFLICT_RES "REQUESTOR_IF_CONFLICT"    IGNORE_NULLS "No"    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 No    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE <Unused>    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES YES    REFERENCEES_FIRST No    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE AUTO    OUTPUT COMPLETE FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_MERGED"
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_19_OUTPUT"    INPUT REFERENCEE FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_17_OUTPUT"    CONNECT_Z_MODE { FIRST_WINS }    REFERENCE_INFO { $($(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>DCAT_P_id_layer<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>DCAT_S_id<closeparen>,$(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { YES }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { AUTO }    PRESERVE_FEATURE_ORDER { ACROSS_OUTPUT_PORTS }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_MERGED"         }
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_MERGED"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_FeatureMerger_9_MERGED"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
 # -------------------------------------------------------------------------
-FACTORY_DEF * HTTPFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller       INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    TARGET_URL "@EvaluateExpression(FDIV,STRING_ENCODED,https:<solidus><solidus>www.arcgis.com<solidus>sharing<solidus>rest<solidus>content<solidus>items<solidus><at>Value<openparen>DCAT_P_identifier<closeparen><solidus>info<solidus>metadata<solidus>metadata.xml?format=default,$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller)"    HTTP_METHOD GET    SAVE_FILE NO    OUTPUT_FILENAME "<Unused>"    OUTPUT_DIRECTORY "<Unused>"    FILE_EXTENSION "<Unused>"    TARGET_ATTR "_response_body"    FILE_PATH_ATTR "<Unused>"    UPLOAD_FILE "<Unused>"    UPLOAD_BODY "<Unused>"    MULTIPART_UPLOAD <Unused>    UPLOAD_CONTENT_TYPE "<Unused>"    COMBINED_MULTIPART_TABLE    REQUEST_HEADER_TABLE    ADDITIONAL_URL_PARAMETERS    AUTH_USERNAME "<Unused>"    AUTH_PASSWORD "<Unused>"    AUTH_METHOD "<Unused>"    TARGET_ATTRIBUTE_ENCODING auto-detect    RESPONSE_HEADER_LIST_ATTR ""    STATUS_CODE_ATTR "_http_status_code"    ERROR_ATTR "_error"    CONNECTION_TIMEOUT_LENGTH 60    TRANSFER_TIMEOUT_LENGTH 90    FOLLOW_REDIRECTS FOLLOW_WITH_GET    REDIRECT_AUTH ORIGINAL_DOMAIN_ONLY    VERIFY_SSL_CERTIFICATES No    NAMED_CONNECTION "<Unused>"    USE_COOKIES No    OUTPUT OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_Output"    OUTPUT REJECTED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"
+# Combine the two "file path attribute" parameters into one value.
+DEFAULT_MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_FILE_PATH_ATTR
+INCLUDE [ 	if { {<Unused>} == {<Unused>} } { 		puts {MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_FILE_PATH_ATTR "<Unused>"}; 	} else { 		puts {MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_FILE_PATH_ATTR "<Unused>"}; 	} ]
+FACTORY_DEF {*} HTTPFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller }       INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    TARGET_URL { "@EvaluateExpression(FDIV,STRING_ENCODED,https:<solidus><solidus>www.arcgis.com<solidus>sharing<solidus>rest<solidus>content<solidus>items<solidus><at>Value<openparen>DCAT_P_identifier<closeparen><solidus>info<solidus>metadata<solidus>metadata.xml?format=default,$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller)" }    HTTP_METHOD { GET }    SAVE_FILE { NO }    OUTPUT_FILENAME { "<Unused>" }    OUTPUT_DIRECTORY { "<Unused>" }    FILE_EXTENSION { "<Unused>" }    TARGET_ATTR { "_response_body" }    FILE_PATH_ATTR { $($(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_FILE_PATH_ATTR) }    UPLOAD_FILE { "<Unused>" }    UPLOAD_BODY { "<Unused>" }    UPLOAD_TYPE { <Unused> }    UPLOAD_CONTENT_TYPE { "<Unused>" }    COMBINED_MULTIPART_TABLE {  }    MULTIPART_CONTENT_TYPE { <Unused> }    REQUEST_HEADER_TABLE {  }    ADDITIONAL_URL_PARAMETERS {  }    AUTH_USERNAME { "<Unused>" }    AUTH_PASSWORD { "<Unused>" }    AUTH_METHOD { "<Unused>" }    TARGET_ATTRIBUTE_ENCODING { auto-detect }    RESPONSE_HEADER_LIST_ATTR { "" }    STATUS_CODE_ATTR { "_http_status_code" }    ERROR_ATTR { "_error" }    CONNECTION_TIMEOUT_LENGTH { 60 }    TRANSFER_TIMEOUT_LENGTH { 90 }    FOLLOW_REDIRECTS { FOLLOW_WITH_GET }    REDIRECT_AUTH { ORIGINAL_DOMAIN_ONLY }    VERIFY_SSL_CERTIFICATES { No }    NAMED_CONNECTION { "<Unused>" }    USE_COOKIES { No }    MAX_TRANSFERS_IN_PROGRESS { 25 }    MAX_HTTP_VERSION { HTTP_2 }    RATE_LIMIT_MAX_REQUESTS { <Unused> }    RATE_LIMIT_INTERVAL_IN_SECONDS { <Unused> }    RATE_LIMIT_REQUEST_TIMING { <Unused> }    RETRY_FAILED_TRANSFERS { <Unused> }    RETRY_MAX_RETRIES { <Unused> }    RETRY_INITIAL_BACKOFF { <Unused> }    SPLIT_MULTIPART_RESPONSE { NO }    MULTIPART_RESPONSE_HEADER_LIST_ATTR { "<Unused>" }    MINIMUM_ENCRYPTION_LEVEL { "OS_DEFAULT" }    CLIENT_CERTIFICATE_TYPE { "NONE" }    CLIENT_CERTIFICATE_FROM_OS { "<Unused>" }    CLIENT_CERTIFICATE_FILE { "<Unused>" }    CLIENT_CERTIFICATE_PRIVATE_KEY_FILE { "<Unused>" }    CLIENT_CERTIFICATE_PASSWORD { "<Unused>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_Output"          }    OUTPUT { REJECTED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"          }
 # -------------------------------------------------------------------------
-FACTORY_DEF * XFMapFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_Output"    XML_STREAM "_response_body"    XFMAP_FEATURE_PATHS_EXPRESSION "MD_Metadata"    XFMAP_FEATURE_PATHS_STRUCTURE "<lt>structure<space><space><lf>separator=<quote>.<quote><space><lf>map-empty-elements=<quote>yes<quote><space><lf>matched-prefix=<quote>attributes<quote><space><lf>matched-attributes=<quote>yes<quote><space><lf>cardinality=<quote>+<opencurly>?<closecurly><quote><lf>except-expression=<quote><quote><lf>structure-prefix=<quote><quote><lf>child-position-attribute=<quote><quote><lf>attribute-identifier=<quote><quote><lf>ui-mode=<quote>basic<quote><solidus><gt>"    OUTPUT_ONE_FEATURE_PER_INPUT yes    OUTPUT MAPPED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener_OUTPUT"    OUTPUT INVALID FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener_<REJECTED>"
+FACTORY_DEF {*} XFMapFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_Output"    XML_STREAM { "_response_body"    }    XFMAP_FEATURE_PATHS_EXPRESSION { "MD_Metadata" }    XFMAP_FEATURE_PATHS_STRUCTURE { "<lt>structure<space><space><lf>separator=<quote>.<quote><space><lf>map-empty-elements=<quote>yes<quote><space><lf>matched-prefix=<quote>attributes<quote><space><lf>matched-attributes=<quote>yes<quote><space><lf>cardinality=<quote>+<opencurly>?<closecurly><quote><lf>except-expression=<quote><quote><lf>structure-prefix=<quote><quote><lf>child-position-attribute=<quote><quote><lf>attribute-identifier=<quote><quote><lf>ui-mode=<quote>basic<quote><solidus><gt>" }    IGNORE_DATASET_EXTERNAL_DTD { No }    DISABLE_EXTERNAL_ENTITY_PROCESSING { Yes }    ENTITY_RESOLVER { Yes }    OUTPUT_ONE_FEATURE_PER_INPUT yes    OUTPUT { MAPPED FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener_OUTPUT"       }    OUTPUT { INVALID FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener_<REJECTED>"        }
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_21    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener_OUTPUT"    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener_<REJECTED>"    OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_21_OUTPUT"
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_21 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener_OUTPUT"    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_HTTPCaller_<REJECTED>"    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_XMLFlattener_<REJECTED>"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_21_OUTPUT"          }
 # -------------------------------------------------------------------------
 # Build the List removal function and regular expression if there was any list attributes to be removed.
 # If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
 # normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
 # once during mapping file parse time.
 INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC }    } else {        puts "MACRO $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_21_OUTPUT"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,_status_code,_status_code_description,_response_body_P,_response_body_S,_url_dcat_primary,_url_dcat_secondary,DCAT_P_title_copy,DCAT_S_slug_id_copy)        $($(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC)         }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3 }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeExposer_21_OUTPUT"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,_status_code,_status_code_description,_response_body_P,_response_body_S,_url_dcat_primary,_url_dcat_secondary,DCAT_P_title_copy,DCAT_S_slug_id_copy)        $($(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC)         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3 Input Input Collector"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Input"
 MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Output1713555729 Output Collector"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Output"
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2_2f8e26f4_4a9e_4b2b_887f_f4ea4e9269770} ]
+# If the Logger was in a custom transformer, the custom transformer's name was not being
+# properly logged -- instead we saw "$(<customXformerName_WORKSPACE_NAME)" being logged as the prefix of the
+# message. By deferencing and expanding out the XFORMER_NAME below, and then "WWJD" encoding it when it is
+# used in the @Log call via the $encode macro name suffix trick, we get the right result, and the right result
+# safely.
+MACRO LOGGABLE_XFORMER_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2_Logger }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_4_<REJECTED>"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2_LOGGED"                  @Log(ENCODED, "$(LOGGABLE_XFORMER_NAME$encode):<space>Feature is:","20","20","",INFO,LOG_ONLY,$(FME_UUID_SAFE))                   }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_JSONFlattener_3__Rejected__2_LOGGED"
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2_38e50624_cdaf_4ef1_a716_65aa2d4433070} ]
+# If the Logger was in a custom transformer, the custom transformer's name was not being
+# properly logged -- instead we saw "$(<customXformerName_WORKSPACE_NAME)" being logged as the prefix of the
+# message. By deferencing and expanding out the XFORMER_NAME below, and then "WWJD" encoding it when it is
+# used in the @Log call via the $encode macro name suffix trick, we get the right result, and the right result
+# safely.
+MACRO LOGGABLE_XFORMER_NAME $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2_Logger }    INPUT  FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_7_Other<space>Error"    OUTPUT { FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2_LOGGED"                  @Log(ENCODED, "$(LOGGABLE_XFORMER_NAME$encode):<space>Feature is:","20","20","",INFO,LOG_ONLY,$(FME_UUID_SAFE))                   }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2 LOGGED Transformer Output Nuker"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_TestFilter_2_Other_Error_2_LOGGED"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Output1762276619 Output Collector"   INPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(DCAT_Reader_PEI_WORKSPACE_NAME)_Output"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(DCAT_Reader_PEI_WORKSPACE_NAME))}]
