@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN FRENCH_ENGLISH_LANGUAGE_DETECT,1,"FGP Tools",f04c129e-f11d-44d1-aa68-0d2e9a749575,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# TRANSFORMER_BEGIN FRENCH_ENGLISH_LANGUAGE_DETECT,1,"""FGP Tools""",ade8f217-fd20-43b0-83f9-e4f8252a7797,"Linked by Default",No,NO_PARALLELISM,,No,25241,YES,No,313,No,
 # <p><strong>Description </strong></p>
 # <p>This custom transformer detects if the language of a specified text attribute (or many attributes separated by coma) is either French, English or Bilingual (composed of French and English text). It may also detect that the text is in another language or it may not be able to detect anything. Following the detection, the FME feature follow the according output ports. It is important to specify that this custom transformer uses the Python library langdetect. Furthermore, the more text there is as the attribute value, the better the language detection works. Indeed, the language detection of a single word is harder and less accurate than the language detection of a long text composed of many phrases. Therefore, tests of this custom transformer have shown that it is more efficient when only 1 attribute with many phrases as text is specified.</p>
 # <p><strong>Input Ports </strong></p>
@@ -42,17 +42,20 @@
 # <li>ATTR_2_TRANSLATE: Name of the FME attribute for which the contained text language should be detected. This FME attribute can be a 1 or many attributes separated by a coma (ex: notes,abstract,title). It should not be a list attribute. It should not be the attribute value, but the attribute name as a text (Ex: we want "notes", not @value("notes") )</li>
 # </ul>
 # TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAACMCAIAAADdvmjPAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAgAElEQVR4nO29Z3hk2Xnf+Z4b61aOKKCQc+gcp6fj9PT0jGaYRFPDWWolmhRNUbIpS7K83meDtbuWV2v7eSgtaXLXlG1SWpqkKJIz5AyHEzrnns4BQCOnQgGoXIUKt248+6HQ3Wg0MqoawOD8PuB5CnXr3lMXqH+d8573ff+ovr4eCAQCYT1ArfYACAQCYbEQwSIQCOsGIlgEAmHdQASLQCCsG4hgEQiEdQMRLAKBsG4ggkUgENYNRLAIBMK6gQgWgUBYNxDBIhAI6wYiWAQCYd1ABItAIKwbiGARCIR1A7PaA1jHOM1SmVMs0skRQDjJB5NCkc5PIKxHiGAtE47RX9kdcpi14l1ClNCbl8qSWa54lyAQ1hdkSbhMTAbZZiqiWgGAwGObUS7qJQiE9QURrBWAPwZXIBDWE2RJuGJK/+KNr38t/sF3HZXpAc8/gpMf1n2hvvtcfTO8GT+ybeB//e2+rT/62tH+q+GvVcKgKXsDjPJNf3rXK/U3/+E9APBu/obJ/13HTrjW+fJe+Gc/OXFjtd8P4TEUQ6HV+FJHFKiy+uyvu/YhglUYHK70zdNjdV+HuLPeDpAO9sdtZgcAADi99QD9k+GTwRw44OrAVYDGJoB6h+3Vna/AR+dOylBfC/3JYL99cysAEay1AsXQ9ooSNE2vrA7bs7k0xjDRO5JLZZ/N5dYRiPR0Xx4Oc+6NwxNUkb9937nq9kfMxb0GYQ5sXidl4rA+tS7Hmu6tKX/iCE4w0YxREDgWy4qiajSSsypHA/CMnM1oItA2k8DQciqcloHmeADGZDTq2bhmdND5n6rE8YwsAcdIyURGA0awO+hsOC2nw8mxrsFVeNtrGzLDIhBmR9cxDQjPHUisafnMdvrtGF17fhwOM2N0bSmnZEWt0ljO+9JcX/KnAC0jAHDjozAAQNn+32zhQ1JWsDeJ3T+WfV92CNeupRqOqz33sc/AydmzZ7qgYtvh5okzH6RlrOvP7J2uI4hgrZjSv3jj6/U3v92/6w04cab+9c3v/TT89dc93z4F36hrfy1+9NeOMyUfhv7ijTec47BbPPlh3baen/wIXv63r2Y6X6oIv3YCvnOchK7WJZWNVUm7viMdehRsMohy1GCiKdB0RnO59srpNEhmwVW1xWjMGG20TNuMEDh/aeBAS5sR9XYFyne0CDBiMnDAi1KQBtDE4W5DQzMMkf+H2SGCtXJ6bv5DDzS+aod+m7ceAJyeWgCfwwMArQ4PAABM9Nw8A3Wff93g7Ll5+gcAu+OdTXL7ezeh1bm5FsKrOnzCMvGf+JX/0YPzABDIPxyY5dgoAMBA98OHJx/+yYduPzrE4K7f1gLBwe5fXij8WD82kBjWMiExrI89Fo/jxZeOxpPJYDjUVN84ODSYFNOPn+asLiYbzT6cXjE8D5JUuJ09OSMF+0YKdrqPC2SGRSDMCctNlRmUl5aFoxFng++5tu03u9tlRQbwlre5GpCV5jKJXCLBbt6bu/j3PalCXdrf0V+oU32cIIJFIAAAUBT1u7/zhWMvvkhRlKwqsiwxHOt0ORVVlWXJYXMcfG4PZzLUlVU8v3X7//33f6tTBpONzSacjSijejwexE3251b7TXz8IYK1Yrb+6Gu7UEK6M+D5M8et7zpemQrAd51Jc0f/zHHru46dDV1nfu39/KsD/wDHjvb/9Jv/OrbaQyZMByH01a9++fChg+0dnV/56h8oimIwGADA4nEcefEFWZYDY2ObWttGRkdol/HYnufP37mh6zrowz1XhgFiUZ9/YAwAbq3uu9AYrSgprjrQKl2E8y4TIlgrJtQ/GE8PXB2r+zpMBeAB4p5XzRA0eQCSPfGwOWNrckC9w/btU2fACUAEa+3AMMy/+ld/6na7f+8rfyDLU5WbuVwOANhc7tzlC/U1talM6u33f0VRqKym8of+nz95gsjNiaIMTFeWUKkar4rHa+IYF6aUyzvqpejH4kcnaD7CF+TMK4cE3ZcJCbp/PPjyl/9xW1vLn//5/yGKMxd0Fo+DtRj0h/lQNEW17ts+7XnWbGXlyawMLMcoU4U0DMupykoK1k0GISvlMMb+jv7huz2LeQmmcLghvP/Fff3h/r7QAIUolmYpColyzmYuBzkNcjKZP5QrbzbDRCyQBAAQbBwPICXlmS2SfEO+TQ2bPA5P91B3KBbSFM0wbkA6WsHbKhhkhrVMFJXWMKKKWZ6MARSNVKcXkebmpra25u9//++eVqu5qK+oxhgPBEagsaV1JGPZzw0FKrbXRsNx0JKRWFVr7f1z78WlZQ/pN/Yfddtsp29exXGRmpRZljXwvEEwcByHMUYIAQBCCOV/AAACRVMSvsTrz33u5U3Hjv/VJzvHO7+w5/PDsZEz3ec+d+A/KMKH1nuW+obAX3/4ln/rSwfuZe37bv/V1T6AfX/4asvAfT/TstsaHWsq4979xbdPPRxGibPk/M3zx/cdb6pu+s6Pv7Pst1NwiGAtk3SO/ajLWuXJwVK+eCwGjaJxMrOI244hFOeCCeOyR0hYkBdeOBKcCHZ2ds36LDXb/DkxmRQMAgBATqcdRsFgaywRsjJDqZSrrMZoyCWzK0pt0LGWymayOVHTVFmWFUWemAjmcjlFUWZd8dE0rSM90hgxlgv/8dR37gfuA8Cbt3+ZklIAANHTyaY9NeUjYbm0EcAPFc/tNfmlkQNNHpvo1ZK0w73FoifVCqp9OFU9/b0j6sD2AyMTI/d776u6ygK7kjdVQMiS8JnS5EtWenKn7npXeyAEMBqN/9uf/08/+9kvrt+4OesBnGCwVXvgYS0hRVGNOzfNfi6zrxrGhtOzP7kkWIZVVAUAeq+2Bwf8Cx6fJ1YbS1Qk5qkiAq7pQFUlxG5ciiUXPJvX76XpqUA7wggyYAgaFjmSYkNmWM+UQNRYXUJK8NcEu3btAEC3bt+Z6wBZzE0Oh4F6OIXGcGP0/FwHF7iUBkEulVn84c5Bp2XCMm98Iue/1Atgq4KFG06g6asGBIy4hlRiDQ1lI5CR2IxIwlJrgoa6ulAwomnzbcZJi45trTqsuFZWbUWFfHieNcm19H21kSkv9w2PkNqXdcaa+PBoBk1lH4cqMcJLimSvEASIzbCUugLtphhgbYsccyhLg8G+pNMjrGJp4dDDfHA2oIr5t1bSoC16a4yigVvaHVgSGADlovMfgxDyeDy/ePud4g2DUAxWX7AwjXPlOQY/HkmGzyTciYePBI/VIU2OTU57iZWzTsrTf7FMEEIYY8DAZ/ny2+UIL0smEYXtzapgtSJVAQBVFlVOcFk9cmQkBQC0YAAxpwHQVrdNyCXH0hWQz6xiOAFkcTF7ShhYfQCU5dap0bxqbbKYQVSBBVBysmLgGp3W3rHI9GGwZluJSYsF08twLkOIZiJ3AS8m1xGBtU4xu6yqpjAAIIs5WnC5PXJwJAUAIBg4MScDI3hdAoia2QxjseSSVmYYgAWMcvPl55b7fDRD9/T0LeG8hDXA6guWTusIIRNraqltMRvNoVjoxviNWldNMBV0mpyj8UBd0+8fsZUz4iC4LUP+68Gk8GrT7h+c/Td3VxxeONJw8DM7Pv2t09/OJSS720apVDI5qS+xcRpCtAqwac+nDtak7JiG0eH+Mkcyxu5vo3ru9PVFyg8eUNsnymvUeG7i3Hvswa85VINX7Rz17a2g1cH2e7WNlmDUMdb+n+4k5r4GBTS/bMFCtAHTTZ/9A6M8UukwQiIczYoT1RWHueS1i/2Tau2WF+XBQG0pjlmcE3fuVe6RvbkjPq63z1ohRBNVfGbEXK6GA87oxR93j899DUQxeN540MO3QqkYbdr96YPGCF9pYJXguKyHYxX723I9d/r6ItyunQ3946ithDbQw9ce8FWeEpt7aISqpsYinmDHfHfpiYtw8yfI1dfXiZnco9R2wnph9QULAMrcZXub9uqa/t6l9w7tPATjEEwFv7T/i39z/r8CCEaDXUh2+B2N3kzU6dm8s9bKh1NppQDX5TnDb+367GgicPHe5RJfCYOZHdtdqqrmt4cRIFVT7969n8ksuF/j29Y86TZ5o/1DkmhWI6LJg8bGaU9jc10Vm4nEy8zxvkFoKq1rdUFw0FCrB5vdDGUxhGRnqZ5V66jgrxf8HK4oQ5V93lsx7pJs0dEI0Hq2l7JuywRHkKtlW5OFy4VCTkskMM60OM1WX1WJAlE5preV4dGsMcY7n/fmbt22qfrlOdVqyfi2NU+6NW8wMaqCWUr2mjxVY+Oap7G5rkoMTYpOuykQE9Wem6Ha11pkMZ6xuK2RDqemf7AYtVoUNps1IxYiDYHwbFn9PCyN1aQqidGYrY1b7VZ730hfT6on7onPPM5x9BicOfXUr1dCqa2UQmgsMc5m2Yo7FdRTaeUMwzz33J7J5OT99o65ToIoVrE36aiY2xeI4tKjsFBcZs5XczbZWosXtV4DAIAtDXvv911b0iUolot14EWEsRBFq5Z6jSlqbRrixRDOzlfj99Wv/p7RYPzmf/x2MYdBKDyrP8OiFZpKUxqn3e6a6r6IeSwknrJoT1y9DEJhjduTiSQACCAY48an1QoAVFW9dOnKtq1bKisr/P7Ruc6DdA2hQkz55rzASkuAkC4tLsAEAAB3O67D0rY90FLGh0BH+vKLVxbBAl8eNE1bzJZYrKDffoUFEU/K2Vl9wQIAQ9CgU48jRzw809JwRCGkzvfxvHvv/pHDhxiGGRwcmvUAwVVhdLhykgIAwPBeox6cfKRflMCDKK3UUEDuv7TsUyAKmX2tRoHL5mQAYI1mi5aOPVIMhhVAWVTsf26wDnKid5EH8xa3qbRaklWMMQDrdFCpuPTwfhXidmFQ/Dfnkedt27ZmMplweOHW1Davi3qUOIqAZbkVDWzR6IDjgZCmFtdafD2yJgQLACh99TLCFvHpOHf+QlNT45HDhygK6ToWc2Imk8lmRV3XMVBsmeuPv/yp0WD8uz+/KMlWe7V5XynH5kyiII4Nccd35f7ux93B4r+PGdA0XVpaSlGI4q3Was9f/8vX/8Pfnjh/q1dxCy32miq3QYeEGhEH3a2H01e/ea24AR2apq1Wq91u03RMl7i/+sWXNQ1/6+9PpzI5j2XTrt2ohOESCXEsyh0/kPu77xf3dtmsFkEQJoILXMTitNNmTp9m82WverKmihNMNG0UBJbFypTNl6hyNADHyGJGE4G2mgSGltPTbL4Eoy7GNcFB539qEscxsgwcLSWTGQ0AaJ4DSVYZjp3oJWliM1krgrX26enp7enpBQCEkIHnTWaT1WqlaVrHFE1RFE0JPMcylKSzdodZzWgtXnSf924x6Gg8WoAUjEXjdDp27NiuqaqiqrFYXBRFRFEURdE0ZTRwAMBygtuhp0zO6kSKqim388g/VqwFGsdxhw7u1zRN1bRkIpmTcljVaYpCFBI4hmMYANZssRkyiYoWFFc9tR5KSPQV9XaV+3zBUMhiMY+PL7CLgGgKMMCjkmOMZ6zTalo+vRSbr9JF2HzRNS0vbLd1/+Ij/1QzBsKTEMFaMhhjMZcTc7lIJAoAiGJZqvZ//3/fSWfzH/uxj86PAcBYU/ntntmraotHY2OD11ty+vTZ6ZX9lMHOccE3/sf/MpnOAYDSN/J2H4AruQMCt5cZx18sx44dPXHilKo+XnAiimYU7zf+vxMZUc4P8mbH5ZsAo5Hy2z0BAHizmONhWXbb9q2Dg4O5XC4YDM1/8Hy1xADFsfmC8Pi44mbJx3IuyJ0pAFiTUrFHARHa6jTB5OStexmBB1HSAJYfJ5pKbV0cLpfT7XZdvHh55vAAcC6VlB5OXBiD1wqxwINb00bF8ixIyrI3DjCeZUXf1NTY2flgulpNHayr027X1JAC4wGLOjn5sA3eym7X7O6nFovlyJGDH3xwcv/z+7KZ7PxVhIugSDZfHe9eXNm4PtYQwSoAiOYdnlJJVnSMJU/9YW6MeW3vyD3p+C5jfyTJZpLdhuXEiSiK+uIn9564+iAUSwPL6Cyrado8ea07d+44efL0LMMDQAaL3WoEgEQqW/9cm6GX+q1/FL+Saz1sDgUjzGQkaNzXmHzn7Ikl7puVl9hf3Nv685M3ZVkDlsWUrqoqxpim6W3btgqC4dKlK7OMh2IcntJUNmc0cKmMbKkoP1hX1eQMD0XNqoYFKwDtbKSHT3Rhh51ODQ5eDS9KSCmEXj+++0bn4Mh4HLGsxrK6rudVqaTEs6mtVdW0d999HwAYhl7kt8C2TVsA0Hhw3O10DftHxMkldFBYKuLkvavTtA7rZJtwFohgFQaPw7y9ueLnJ29DDoPbbLIYt7QY0LhO89hbVW7UlhMnohA6sqv5lX2t3/6H81nrJJbiDMPkBQtjTFGUxWK5dOlKKpUCgJISz8T4xBzTMQQAezbVJNPZa+1DWR3KHLzdWr7DhPw6bQBrYyOnQmxw6W1vzAL/9TeOVHptJ650KaZtoCsGg0FVVYTQvXvtyeSc9Y9GA/fawc0/O3kLAEwWgQN1fGCMtlV1jcKBF12RcS0SwJsrpI/SdsfiIzkI7W6r+sJv7P7Wj88kXKKecTE0AwgQQvF4/Oy5C/mbs2vXzkg0ZgsuqhO7URDudtyXZHlL6yaWYVQb67LZI4k4AABjtNFSUno4TaNYDhS5cPbyxOZrVlY/cXS9gyiarT1KGa0URT01/Snf0RS4vajG3LNAIXR8X9v5271ZUZYHLuLsEzEXt9u1d++ezs4HQ0PDAPDCkUPnzl+cVbAQb+Ebj1M0hTGeeUBT+Y6ewO2nX7M4PA5LY5X3yr1+XcPSg7dBX3gVhyia8e2hHb7ZbhcAQFlTOfQExoWSFmuoaymbhQihF3Y33nwwMpnKKf6bWnL46WMEg+H5559TVQ0QnD8/c+llMPBer9dmtTIsk05nTA7r4aNHTIKxb7B/c+umMxfPlTVW/5NP/Vb7UN/PTr2n655i+xIusqf7hoLMsFYK1jVl/DZlKp1tKtB9fWWWKu++1QUAGKtYDEO+6WVjQ6nXS9NUNBp7//0PH33mMYa5ol1YSilj7YierV/SRPf1FQxvfALGHwAA6LnkYtQqjyqmVG22QA8AAAxF8k8N3F36eN5/Lz8rQTBbfIrnuVdeOf7Or359+NABTXuslSzL7n9+HwBIsjQ2Nj484kcIcRyr0jgSjQxnxVAkSNOMzWLNiNlIKtk52KfrOjBry5dQp3RUhCYnGPBqphw9BRGsAoCzUU2MQYFMlmZA03RLS5Nn00EAwBh6+/q6u2d+8S4Ym9dia+i7mhEstMP35K94Cy2pnIkRMykVgGcFSVlG04jacvfweEzXdCUbm6FYzc1NdXW17/zq1waDgecNvX1TfRoqKio2bWo9d+58LjdzzS5i9dqdWxVeXyyewBj5R/0125u/89MfTEXr1TXkSyib5aw7u3K9ym9WcBL3SPsQRlyCo8W1Yk1IBKtAFFStBEFobW2x26wYY13HXd3dHR0P5jm+tNQ7PlEce7zi0FZXZjby/f5wNCnmg+67HepIKadcn4iwTBxlq3WXYlRVVlJDvBjtvjIqLRh4pyjqD18/bDYJ33vrYsIY19OCyWQ2CgLGmGWZ7u7e9977AAB279qZy+Xy62i321VXW/PBByfmOmc0Gs0nxE+EgjRFqYqqKo8mkqzFykmTgz3DLMcqcn58LMspK7L5erxSXvQ/FEY4UZ7wbHL7Y6OK9sR9spmbSiE+IZeVO4cDE0/HFFvbXA86n0pt8Q35TIKpuaa5va9d0zXJLQmjwjKbLxUaIlhrApqmGxrqy31leSsnMZfr7OyaJ2g9g5qa6ps3lx2JWgUeDE601pZGkxkAymQROJBv+Xuz+p5WinJVOHNOt7Mj2l5S7qaSmj87Kizu6x3jUCx96U7/YCAih2J6KizLo6nUEzuzVqtVVmQDz+dnSTt37vjww5OLHzbDMm6bE2M9OpmAxs2bRzKWIwW2+Xpp78GsJN7rfZC2mG02q6bp6XQaACiK4nmO5w1Go8DzvCAYDAbBYOAzmawoi97Kki++8jutpU1f/cE/HYoMH2h4HmN8rufC5/b/cQM73PlA4prvmaKv1nIX3oXdz0ntH0UjRuue19zm9sSfPy1YAHB0z9ELty/s27qPY7nTV06vndpGIlgFAlGIMS7hr4qQx+Opqa6iaSo/jRoe9vdcujl9poZYU/5IrMqgz/e1zTLs+mrthDHuHMgnmusTD3p+mZ8+3jpxBgBuPMxWKk39ZpV+oSuwyORWHeO//uFJTdMBgxJPaMmZr6Np+ugLh99+590jhw8CQGVlRX6etSQsZpPRIEQnE0Wy+bKZLQe27hQlSY+JaFIWBEPeVQxjnJNyUk4SczlRFMPhSC4niaJot9sQjaK2aCwTPdN1IT/JSuVSneNTU/IcY2twpkfMVa3hjhu51oYSsxVvPlipWRSjipyOORr25IMMCCGqqG1Ilg7ZJSwEiFbdWwtlFD4LFMXEe9HcDfwOHTpw4cKlYl29oEztEtrLnvgtw1toVQUQJUqwAKSWE8ACAJqm8tF0xX9rxi6hYDC8dPzFEydOeb1ejPHIiP/Fo0dOnzk3z9nMbhtnMz36s9IU1bJ36xyHVtTA6FAhyjGrSn3BWERSleE7vf72xdWTUxCuD2d9WXXhfY+qTx34bePgN38yNt8NLhsusxgtTTVN7X3tqqrqkm6YMJAl4ccHRHOYFkpdkJxIZYE2GowlLm0o8DiviTPbvYIcDGflcs/zAFcCT+R5Gw1TfRTmRMeI5mDuKE4xtoeKSmWpM54SOZaKJXOWivKDdb7tDhig0j0d9r374tm7zPDi4lbToRD6oy+82DscunJvQElbNdohywoAVFaW+3w+WZbfe+9DVVXr62rn16lHZKKTWMMMx+anvTpA9+W5ti7vds/xxFLphrsAgHWIBRYdlNTBNegyJAyLKD+UrnV/H8DqBes8ByEVZVPZO8E7AIARFpLCGlkPAhGsglGx6aVGF3use+Re+e4DBpEvzXXdz9aV5Ya1BpuayI393Vnpc1/dI2WGtoadjpdZ4WHDX8+Wbb/fIPyfb11d9pURmr0SZS0TT4kvP9/21unbAMhkETjQ741qW/dYec1uh3hG0qlFxq2mg1C5x95aVxaKpxKqRzdpRqOgabrf7+/q6slPlNxuVyyeAADBYBBzC2QhYIwz8WdZt758KJWyhC2rPYpnARGslYIQ8vnKhgAgeua/Xdn0r39b74rISrJb8dR44im3J9U1Zqp0u3e0uUtZpHsAwpZSNNr1sOFvZnR0rHmTEWDZ9qpeb8mCdbxrjXQ29+apfB4AfhTDendlpeK6rn/3zYsDo2Fd0xV//9OJowihffv25qtztm3fevfu/RVdj7AaEMFaDgihmprqqsrK/MNB/wQM3fjBoAqm+Dun+q7NYcVyaSrK9HAy5aw8Um+N9nd8/2dz+gkvhtramlu31tMWoZJJSGLBurNP595YJwAAULQ6y2ry2LGjZ86cz0+1jIKQzRIL7vUHEayl4fWWbGprBYC+/oHzF6ZKYRAjWJpeoVlK0/SuTL21xuilpWD2UeoiK/CKONtO9+3RHPD11rJZnpqBPDAxV5kax3KStJ62CFmTnXNX6DqmKDSVcc6wAmhAgyiBxSEYJD2tidPv2GKaSSCEjuxquNE5ks5IMzqOVldXtbQ037hx85GfCOk2tU4hgrUEKIr64u/+9z/60U9i8ZgkyRhjhmEsFjNiDILT8ie/8+Kbp+7c7vKDbLEfrD5KMRqwKpUcilS90Hj/P78VK0ZPT4TQ4x6+64eGypLWmtKzN3sSqXzQvZQaGrLua8AB1lERptPVsmlwJCK4UNofN9usssthz8aDt68N9mbnLC9GCH3i4NY//u2XvvWjM4kSWc94OY61220A0NPTNz07tLW1uatrDaX+ExYPEawloOv6N7/1nerqKm+p12DgaZqmaToSiQLNC257a63vc8eoe70BjeHtbiYVsmwzpoc9ZTtMQiqeKVJPz61bt9y9t/5iMd1DE8HoZCKVnUoczengtjEoG8MlQhaVUIpfwlxUY9ygC0ms8REZKB2Z5v9vxfhOj/8/v3VxKBBRRh9oyRFN059ueoUQqqqqmie7nbCWIXlYBQAxgqHltebakp7hkP44G8u6owlu9xRmm0nuv6RnZ/YuoGn62LGjS8rVXnUQRVOerchYlC0tCiEdYwCkR/r11OwuRy+99OK1azcmJ9fH9h9hBmSGVRiyEz23xmd6F14aK9DZEUXjmUshhNCrr7586tSZAl3j2UGxPG12P3zEOt08zioqjdWU/EQ649L7jk5ltGFQYkNPP+t0Op57bu/160St1jFEsAqD4G2kWQoANE0HYJ1uVoxkxenh9qV3IKAQOrKn6fLtfklR5f7o9FSrqqrK7du3nj17QRRXs6XJsmmuKc1JSjqbiyarX9ivcxKPjKoS4BWjqrKUMBwOOC3lVqfYdfndRRvHUBT1v/yT1xKp7Fun76RxqW7TGYYxGgWbzcZzHMY4OZl6//0Pl1CQgMDqtOGHIUIMwDLPqGmBjmEyGCti7cS6hQhWwTi0vZ7nuQ+vdOLdjc93ZJyf5dt7y17YGh+dwFokNt7WtOXcpb8ZX8J2HkVRX/zEvq985sB3fnIma09hKc7zfL62ayIYfPvtd4v2VopOnz90aEfD2Rs9AACS6vKVZbVsFZNqLyl3U0qpYqhpFhIjyyzQQYDy6Lo+Njbe1dXzdF/5xWCyWzm76dEaH2u4pPrJDV1OMFKMUTBwLMhTNl9ZlaMBeEbOZnURKJtRYGg5FclM2XzRRqNRzyY0o53O/1QljmdkCThGmkxkNeBNLqOWiOV0g0kI9s/p3bthIYJVMC7eGTAJHMYYMhpTZjSbrDuqhZQ4SSu0r67SbMpFkkv72OgYX77bf+Lqg/FwUh7s0rMhVVVXbJ2wJtA0fUqtoPPNDwDgYepaaeo3q/RfXU8OxaQAABKNSURBVAtEzy75nLqu/+V/fS8jSoBB8Y9ryZWa+tEMo2P8uEWirs+Y8tQ0L2jz1fzY5guXPv+kzdeXZrH5AsyUf+KA7wcf3KMZ8tmcBXJTCoMmxjVRnzKmuX75TQC4BwAA9rIWGO9aVpqkBvDd//Z23gZGy8m6VFR792cH1lUsPS7kZk3WEk4OxXMKAAx3/mqCBUnBQD/2HFo0WTk9j2vOkse5CjZfml3IxdJGgDn7x25wiGAVBlpwwIw+HLzRZ9TCcamXLzWbFBGmh7HmTCWdgd1iTKSyAKCtv1yrOUEU4/R4UxnJaOAmM5Wv7B0M2w+/Fgn1MbST01mrXet68LMe5th+ODdo+I2mEoWTqAyjpwd+eW++YDmF0H/3G7tvdA4Pj0XpOKfxnKbpy1sMLo4i2Xx1v7uAweuGhghWwdhc7wOAjoFxTHONjXXWGnZTnKVZLelAeBSrVlkoK7N3DgVsJk51et3jfQMTl9qT84RpjAauwuvweey9I8H1lMm+CASOfe3g5p+euAWQY4zuUlYcZ1wVhoCCDUHZ0OpgWADGaN7Z5rFz3HiSbiunY1F+gZMitKO56vWXdn3zR2cSNlHPOHiepdATYXKMsY71kRH/yIh/rtNMp6WxiaGZYDhkt9mHh4fkbBG3OOSRjuvTVrHE5mtWiGAVjNhk1mU1YowBOJuZxhgYhQZTbETz7RfGBmjLcDiuIsaQxDljTsRgWlx1yNRRH69SkrFI8sfvXdcxBhj55UkAmD6peHDW5nl+i6nr+mB3cvA8AIBpcEe1I7pAIz+M8a8u3r/ZOZzOSIr//qyuOfCwDvSVV44PD490dS3QFcYoGG/cuQUADbX1RoNBsTImQciIIgCx+VodSOJoQaD41k8ielb15yp3lPK3R+YoiF4Ap80US2YwILn3AywVo7bnWYMoGhwtUFwzdgTpME4H5j+opqa6uqpK06cUR5IkRVEVRVYUFWNdVTWjw/rC0SMUTQ+PDG9t23L28nlfc81XPv361fa7J69dxLiE2Hw9e8gMqyDoUs/7QBtmfa53Bf91+cxThDFWPg5qledJ1xzW6RYgNRmTAAAEowCyKNLLdM1prPb2+8O6pitifMFw/dDQ8KMWyXlfL4ZhWZZlWUYQjLquqaqak3KajnOSFI1HS0u8mq7pmqYoMsZ4rdl8bRCIYBUITQatWIGmj18wo7Wu1G429gwHo8nqz36KDvRhO1BJVm+w2jpHQpOl7v3piffPDy6pjSdFUb//2YM2q/Bffn4xYUrqGbPRKNA0HQ5HAoHA/Bm2GGNJkmc0vbBI2as3bzjtzlAkpCjqkH+4fFPdN370vZwsAawtm688GOGMNzNz82e5IIyQ/jgQwUgMl+AKc+oVQASLsAo8GJhorsm75kB8bDhKVdAmbx2TtZmNLoqqK2f6OoQGgKX1HcY4EI6fvtHdOxJSJkLaZECWFUVR3G7X9u3bjEbjyIi/t3dpS/Px4ERgfAwAguEQTVHOyYwImYdPshY7JyW6OiYLafP1yGJyGUH3jCuTaE0ghHLKDHW2VTi9dp4Ojz94WI9a0uaCzmgIAGycLSnP4s/kCDvMOXOZuywcD6uaqlpUJs1Q6ip7UpAYFuGZMrsJBQDYvYfahNC1oe4V5CHMY0IBAK2tzW63e/FuHRaPg7UYHiWO0hTVum+71WTGgFOZDDRu2TOSsewqsM3Xga27opPJwcCwv7N/5H6fruNZ/ZBomuan4PI/FUXNODJ1R2v/9Pg//+Of/Omlvqt7a3YjRH00eA12/NGf9L3VfeB/+Jxy55TUWpM6n63ebp2MXe74f06F4fd2/+PvtQf+50/v9g/pOyzh61JNbfQHf/mgzxF2HG8+HolH3A53IBiYSE9oPRotr7KjKplhEVaDx5ueD2NYydCFKwCAAFECD6K0nP02hKh5kkYfPOguKYnt2bPr+vVFNWOe1drD5ykxcIY7PZ1FsvkqdZd8+vCxN89+KEiUDQSeZ2lqlg+pqqmSJEk5SVYUSZJkWVHzYE1UshlJBIBQKmw32gAARM5WvbNauXU56d3snLiRaamP9aqurdWcACCCc+8f7A45NYPV1tUe97aUmHnszF+FY7l+f7/X5d3ZuvOjno9CsPqduMkMi/BMyc+wats2J1MiTaNYsuYrX6YzI3g0pru8RiErSypTVsX33rp9omdpMWwKoX/xu8f7RoKX7vRLo3f11KgkyanUzG27nTt3DA8PR6OxBU9odtlYmwAPlZOmqJZ922Daqu0xlso68A8UYoewrbZhNDwxmcmM3usdur84m6+HpD3paFsUITTD/3kunO4j+90wOHiu4/GMsPozh3/H2P9XPw6IjrDDgz07WncMBgbHw+MKqwgDAqWRJSFhI5EXLKuv9uV9rb84exfj1k/s7wRoCyqswcfYwqYmCIzzfEoKv3s5vPDppkFR1L/7579pMhq+99alxOBdPT1mMplMRiNNU5Op1M2bt6f6WSN09IXDi3T6spW6HzV0RYgy2sxLfb/LRMfBAf/DwNhiwQhP+iZ1VJhkMFqjWYV99JCVWCa1+gsyIliEZwziKvZQjopi7H3WlruHx2Ma1pXBq3r6cTcyl8u5d++ea9eu5ydWBw/uv3Llo7VcRj7LJI4AAESwCKsAzVAGD6BifSCxjnE29HQ2yMsvv3TmzDlFUex2e3V11d2794o0AELxWP05HmHDoal6ZhUKfM+cOXfs2NH33/8wkUhs27rl2Q+AsHJWOYRGIDwzFEUZGhr2+crg41aauYEggkXYQHR1dTc1Nqz2KAjLhwgWYWMhyTLDMJOptM1mW+2xEJYMESzCxqK9vXPTprbu7p6mJjLVWn8QwSJsLFKplN1my2QyJqNxtcdCWDJEsAgbDhJxX7+QtAbChkPXMUVRi0nMZA0cWg15QwhJxWzHvH4hgkXYcIwGAr6yskQy6XQ6YrH4XIexBs5W4UUPFyFY092Vpc9oiADjD4aSwQW6Qm9AaKfTudpjIBCeKZOTqU2bWm/fvrNn967h4TntCy0uO2KRpqq6pumapqmqyWbG02ENRpa3ma12i8CzDMcaBdAZgeM4sxF0DWSatVrNRhOlZCQVUywHFG8y2xhNosxOLv+Tpk1mI4UMJgFJoqxhzuS0UrmsrCEdUpFl2cN9rCEzLMKGQ9M0mqY1TWM5dp6qPV3X52/+VNPymYWMVFseG6lC2f4njVS/PJuRKsjMzl2bTl6596gPF2E6JOhO2LjcvXtv27aty311ZWNV0l62Y1rbYIMoiwbDYyNVC58GAMFVtaWypa6hNG+kGr9waYB3t9nzRqo+AWDKSDVFA0DZ/k/UScSYcE7IDIuwEck35wuHI60tLQ6HIx6fPZJlNhltFnsylZx8qq9WsYxUr3zvbz4mDt9FgQgWYUNz4eKlY8eO9vb2zRrM2rF5W0dPt6pqL7/w0kjArxkpiqKmFmusyU7nErmHPWpolgNFXknHGj06FAIw2W0mAIBcPLPQCzYiRLAIGxqM8cmTp7ds3vTi0SOhcPjBg25N03ieo2nGKAgmk7mhpn4iNOH1lAyODNldrk8dOnb+1kcT0QiAx9nm2ls0X0JEk2yxWSCCRdiIYMD5uHv+4f32DgDwekuee24Py7CarmWzWaPd4nY5rBazyWRwuxyNtbVCiW1bfbPb5vxPb/5Qp4gv4SpABIuwEYlEIk6nIxyOTP9lMBgKBh/7LFg8DpPdVlddGwpH7txvH/IPm3OuH594t3OwV9d10NecLyEAyKaCmmNO2z5lFIZSVn+PjnQcJWxEnE5Huc+Xn1jNRd7mK/+h1bFOIeTwuJ7R+AByk9lA1+CSXiLaxLGtYwsftzjsUbspZ3r0UKd0YUCYbq26KpAZFmEjkkgkN2/atJgjdTyVD4UQKmuomvYMa7ay8mRWBpZjFDlv7sWwnLoiI9XqsopgNJyTJX9H/+JfxfM8wzDYiQ82Hjje+tL/9d6/zyk5n70MAQokxoArbzZz8eRgKL8CNrZuY8d6kknR1doWfdA5xzmRjhp8DT6PT1Kkjr6OSXVSZ3TiS0ggrAK6ri+vSHBbQwsGfK+vGxpbWkcylv0FNlLd3bple2PLL86dNEmUHQyCYOA5fsFXqZoqimLWnq0qr/qjF/9wMDLwt5d/UOuudRrtgcQYbP3Sv2Buntf/cBd34V3Y/RzEJHn8kHt7Qsx9yhb7m198+9Qcp/V5fBdvX9zcsPnzL3/+fMf54ZGZ3rTPHiJYBMIcoFlS4LtGBgTeAABFMlJNpJLvXjrTNdznHxsNDA2pqprJZBf52rQ7fdd870LvhfZAJwBc6rs87UlbPdPRnmttKDFbIZdRPLGUd7Pn/AcjUD33CUeDo4d2HsqK2R/++ociiDxeWDqLDYlhETYohw8dPH/h4jwH0DzrrvJqDyPPFEVXtdTNfqilvBoCw4VIaciXCiEMPdfuJyeWVvysCMr4pnE8nx1R6Yv7Pm0Y/ttfjy+8bDVOGs3SNB9GDQS/sKTxFAMiWIQNyoKCBQAUTdH0KqxCNE3Tl2WbiCmM6aL4p62FLUIgS0ICYR50Tde1giYKFBmko1XfyCsqa0I1CYRnj6qpNL3Ke16EpUL6YRE2KBiDw2FPJJKrPRDCEiAzLMIGZWxsrKKifLVHQVgaRLAIG5Rlp2IRVhEiWISNS74rFmEdQXYJCRuXTDYrGAxibs4uCya75VGOAAKgih6kR6lYAhbj57NRIYJF2Lh0dHRs2bL5+vWbsz5rsBoF92PBwpruqfIVeUQ4NhQMDxesgPnjBxEswsYll5Pm8X/mDIKu40dmEFjT8QxjCE4w0YxREDgWy4qiajSSsypHA/CMnM1oIgAnyTIA8GaXlZayoqjSZpOgZ5Kqycbkf6oyx9OqRjNqOjopA2vgnh4J4RFEsAgbmtHAWGVlhd8/+vRTGC/gW7MI15wd5298BADP7X+VGTo57PjkFm5CzAmuWrH9Hbnyc07jvSvJqlfVoQmqLAkZ9eSN5FwWPoQ8JOhO2ND09fVv3rxpWduFi3HNUbyVLXVNVW4WQLD7KIm2mCB59vQIX1Jvp4Y6R7y7qgQAgeV4RU4TX6+FIbWEhI2O3W7fvLnt4sXLM35v8That7aajJbx4LiqabFo1O4tegO/bCw10TuntyuBLAkJG51EIjE+PvHCkUPnL1yaYV9qtdhu3LkFAMcOH43FooqVYRlWURUAAMZoo6Wk9LBEmWI5UOQVT5L8uSX07duAEMEiEKC/f2BsbPzYsaNSThoeGZElCVGU2WWrqaryuj3jwYm6qurAeMDnrP7Sa587e/ujax13QbWYm2q2F801hzArRLAIBAAAURRPnDjFMEx5uc/pcopijud5nuNsFpuYEzHg6vJKYFiBN5Q63RRFEdecVYHEsAiE2bF4HPUtDQ6bYzw0UeErHxkdLWmqsJmtyfTktKMq66ZccwqDv6N/+G7PMl+MIOvKztvAbyknwwjhx3sRjMSwabYgZ14JRLAIhNnJu+Y8impRCHmfSBzlrA5eiqck4HhOlvJdsziOl+VldHTPNxoFgMlwItA5m9n9Iki706G2EI1oVX+yTTNX3mRmE8mh0BM9AUtaXfAgGoI5cEQc5pzZwBtyUg4AFFoRBgVKW+W8ArIkJBAWBULIVe4VeAMGyEk5aNyyZyRjeakwJhS7WjYHo5FAJCgmMxRFYYwXk5BFURTLMizLWSwmhKisO3tk56GvHPzSn/zkXz6Y6NpasYVC6I7/Hmz90p8xN8/rb1hooUIdGS5vMY7d9Bg8undTrucbf3m3b/azY9jVsouiKIZhBkcHQ5kQpjEspw1qISGCRSAsgYaKao5lb3a1F9aEosZX+YVXPvmLsye6KWO5ycmyzEJZqwAAGGNZkWVZkWUpmxV1TudZ3mcrLbOXPpjoklTJLtgBAGD0o6vv87u9SWO9FvFouCNVXeK6HQhmUyI7Xzs8o2C8cOvC81ufP7L7yOUHl8cKuPRdLmRJSCDMjtXjpM38o3x3mqJa921HCNEUpc5ouG6prAP/wAp2CLc1tYyHQ6F4zN8+MHyve3knSXvS6W0pBFRaSi9/KA9xhB0VbMWWxi2jwdHBwKDKqIYhA6Wu8pKQCBaBMDsIIXt5CaKmAs8UhawuR/GuhTEGXR/tGpTFZdoaYgrHqmOYKkzQnZVZVnkcZWckhouvfp0jESwCYW7Qs+2ZhdDM+urlnKQQI3matVHjSGJYBMLcYMDP8pNakMrntaEsRYIUPxMIhHUDESwCgbBuIIJFIBDWDUSwCATCuoEIFoFAWDcQwSIQCOsGIlgEAmHdQASLQCCsG4hgEQiEdQMRLAKBsG4ggkUgENYNRLAIBMK64f8HcKAbmy95WWEAAAAASUVORK5CYII="
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
-#!   CATEGORY="FGP Tools"
+#!   CATEGORY="&quot;FGP Tools&quot;"
 #!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer detects if the language of a specified text attribute (or many attributes separated by coma) is either French, English or Bilingual (composed of French and English text). It may also detect that the text is in another language or it may not be able to detect anything. Following the detection, the FME feature follow the according output ports. It is important to specify that this custom transformer uses the Python library langdetect. Furthermore, the more text there is as the attribute value, the better the language detection works. Indeed, the language detection of a single word is harder and less accurate than the language detection of a long text composed of many phrases. Therefore, tests of this custom transformer have shown that it is more efficient when only 1 attribute with many phrases as text is specified.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;INPUT: The FME feature to process&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;French: French language was detected on the specified attribute.&lt;/li&gt;&#10;&lt;li&gt;English: English language was detected on the specified attribute.&lt;/li&gt;&#10;&lt;li&gt;Bilingual:  French and English text were detected on the specified attribute.&lt;/li&gt;&#10;&lt;li&gt;Check_Lang: Another language than French or English was detected on the specified attribute.&lt;/li&gt;&#10;&lt;li&gt;No_Detection: No language detection was made on the specified attribute.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Attributes &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;_sum_lang: Attribute containing the result of the language detection which is filtered and outputted to the according output port.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;_attr2translate: Attribute usefull for further workspace process, especially for AWS_TRANSLATE.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;_sum_lang_stats: Attribute containing the statistics of the language detection. This is a list of tuple for each attribute for wich the language was specified to be detected. For example:&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;&lt;strong&gt;(&apos;notes&apos;, (&apos;French&apos;, [(&apos;fr&apos;, 0.99)]))&lt;/strong&gt; &#10;Indicates that the attribute &quot;notes&quot; was detected as french with 99% confidence (&apos;fr&apos;, 0.99), thus the algorithm has filter the attribute as &quot;French&quot;.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;&lt;strong&gt; (&apos;name2&apos;, (&apos;Check_Lang&apos;, [(&apos;pl&apos;, 0.53), (&apos;lt&apos;, 0.32), (&apos;no&apos;, 0.14)]))&lt;/strong&gt;&#10;Indicates that the attribute &quot;name2&quot; was detected as polish with 53% confidence, lithuanian with 32% and norwegian with 14% confidence, thus the algorithm has filter the attribute as &quot;Check_Lang&quot;. Abbreviations are iso 639-1 language code compliant.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;ATTR_2_TRANSLATE: Name of the FME attribute for which the contained text language should be detected. This FME attribute can be a 1 or many attributes separated by a coma (ex: notes,abstract,title). It should not be a list attribute. It should not be the attribute value, but the attribute name as a text (Ex: we want &quot;notes&quot;, not @value(&quot;notes&quot;) )&lt;/li&gt;&#10;&lt;/ul&gt;"
 #!   DOC_EXTENTS="4260.53 1515.57"
 #!   DOC_TOP_LEFT="-1834.26 -1156.63"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   FME_BUILD_NUM="20787"
-#!   FME_DOCUMENT_GUID="f04c129e-f11d-44d1-aa68-0d2e9a749575"
-#!   FME_DOCUMENT_PRIORGUID="8d804ac7-8d5f-41b4-9c70-5e0a2ed5ebd8,6965f00d-1e07-4100-b636-398fedfb0b34,bd64c1ef-8937-44c7-b33d-cd0ffcbbc00d,7f388d7d-6fbc-4d7a-9826-f43bd3363f23,9fbc573c-9ad6-4f02-9456-c92d778c2d51,04511fb3-074d-4b8d-a205-a40a79b133f5,f3b6bc6b-5339-40f5-9490-6bf28e2e18ce,8374bb3d-85f2-4bfa-9961-b56fa3f30c56,978f1250-c938-4178-9e9c-e7f2f9552f3e,0064f9fe-b75b-4656-93c1-99ab3bff2dc3"
+#!   FME_BUILD_NUM="25241"
+#!   FME_DOCUMENT_GUID="ade8f217-fd20-43b0-83f9-e4f8252a7797"
+#!   FME_DOCUMENT_PRIORGUID="8d804ac7-8d5f-41b4-9c70-5e0a2ed5ebd8,6965f00d-1e07-4100-b636-398fedfb0b34,bd64c1ef-8937-44c7-b33d-cd0ffcbbc00d,7f388d7d-6fbc-4d7a-9826-f43bd3363f23,9fbc573c-9ad6-4f02-9456-c92d778c2d51,04511fb3-074d-4b8d-a205-a40a79b133f5,f3b6bc6b-5339-40f5-9490-6bf28e2e18ce,8374bb3d-85f2-4bfa-9961-b56fa3f30c56,978f1250-c938-4178-9e9c-e7f2f9552f3e,0064f9fe-b75b-4656-93c1-99ab3bff2dc3,f04c129e-f11d-44d1-aa68-0d2e9a749575"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_NAMES_ENCODING="windows-1252"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
 #!   FME_PROCESS_GROUP_BY=""
@@ -62,13 +65,13 @@
 #!   FMX_INSERT_MODE="Linked by Default"
 #!   HISTORY=""
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
-#!   LAST_SAVE_DATE="2024-05-21T15:49:11"
+#!   LAST_SAVE_BUILD="FME(R) 2025.0.3.0 (20250602 - Build 25241 - WIN64)"
+#!   LAST_SAVE_DATE="2025-11-04T12:34:29"
 #!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer detects if the language of a specified text attribute (or many attributes separated by coma) is either French, English or Bilingual (composed of French and English text). It may also detect that the text is in another language or it may not be able to detect anything. Following the detection, the FME feature follow the according output ports. It is important to specify that this custom transformer uses the Python library langdetect. Furthermore, the more text there is as the attribute value, the better the language detection works. Indeed, the language detection of a single word is harder and less accurate than the language detection of a long text composed of many phrases. Therefore, tests of this custom transformer have shown that it is more efficient when only 1 attribute with many phrases as text is specified.&#10;&#10;**Input Ports **&#10;&#10; - INPUT: The FME feature to process&#10;&#10;**Output Ports **&#10;&#10; - French: French language was detected on the specified attribute.&#10; - English: English language was detected on the specified attribute.&#10; - Bilingual:  French and English text were detected on the specified attribute.&#10; - Check_Lang: Another language than French or English was detected on the specified attribute.&#10; - No_Detection: No language detection was made on the specified attribute.&#10;&#10;**Output Attributes **&#10;&#10; - _sum_lang: Attribute containing the result of the language detection which is filtered and outputted to the according output port.&#10;&#10; - _attr2translate: Attribute usefull for further workspace process, especially for AWS_TRANSLATE.&#10;&#10; - _sum_lang_stats: Attribute containing the statistics of the language detection. This is a list of tuple for each attribute for wich the language was specified to be detected. For example:&#10;&#9;- **(&apos;notes&apos;, (&apos;French&apos;, [(&apos;fr&apos;, 0.99)]))** &#10;Indicates that the attribute &quot;notes&quot; was detected as french with 99% confidence (&apos;fr&apos;, 0.99), thus the algorithm has filter the attribute as &quot;French&quot;.&#10;&#10;&#10;&#9;- ** (&apos;name2&apos;, (&apos;Check_Lang&apos;, [(&apos;pl&apos;, 0.53), (&apos;lt&apos;, 0.32), (&apos;no&apos;, 0.14)]))**&#10;Indicates that the attribute &quot;name2&quot; was detected as polish with 53% confidence, lithuanian with 32% and norwegian with 14% confidence, thus the algorithm has filter the attribute as &quot;Check_Lang&quot;. Abbreviations are iso 639-1 language code compliant.&#10;&#10;**Parameters **&#10;&#10; - ATTR_2_TRANSLATE: Name of the FME attribute for which the contained text language should be detected. This FME attribute can be a 1 or many attributes separated by a coma (ex: notes,abstract,title). It should not be a list attribute. It should not be the attribute value, but the attribute name as a text (Ex: we want &quot;notes&quot;, not @value(&quot;notes&quot;) )"
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
-#!   PYTHON_COMPATIBILITY="37"
+#!   PYTHON_COMPATIBILITY="313"
 #!   REPLACED_BY=""
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
@@ -98,19 +101,32 @@
 #!   IS_STAND_ALONE="true"
 #! />
 #! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiQVRUUl8yX1RSQU5TTEFURSIsInByb21wdCI6IkFUVFJfMl9UUkFOU0xBVEU6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiIiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQifV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="ATTR_2_TRANSLATE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR ATTR_2_TRANSLATE ATTR_2_TRANSLATE:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
 #!   IDENTIFIER="8"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Create attributes needed for the translation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-1001.8268545378349 358.93797582476554"
 #!   TOP_LEFT="-1001.8268545378349 358.93797582476554"
-#!   BOTTOM_RIGHT="-547.82685453783495 357.93797582476554"
-#!   BOUNDING_RECT="-1001.8268545378349 358.93797582476554 454 1"
+#!   BOTTOM_RIGHT="-547.86773682165779 357.93797582476554"
+#!   BOUNDING_RECT="-1001.8268545378349 358.93797582476554 453.95911771617716 1"
 #!   ORDER="500000000000999"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   UUID="{f8db66ff-ba97-47d4-8ea6-ba5212414494}"
+#!   COLOUR="0.59999999999999998,0.47058823529411764,0,0.90196078431372551"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="7"
 #! />
@@ -123,43 +139,53 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="7"
 #!   TYPE="AttributeCreator"
-#!   VERSION="9"
+#!   VERSION="10"
 #!   POSITION="-958.34434357237558 58.937975824765545"
 #!   BOUNDING_RECT="-958.34434357237558 58.937975824765545 454 71"
 #!   ORDER="500000000000955"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _attr2translate SET_TO $(ATTR_2_TRANSLATE)"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _attr2translate SET_TO $(ATTR_2_TRANSLATE) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="13"
 #!   TYPE="PythonCaller"
-#!   VERSION="4"
+#!   VERSION="6"
 #!   POSITION="-947.05612669362461 -189.50187949328213"
 #!   BOUNDING_RECT="-947.05612669362461 -189.50187949328213 442.71178312124903 71"
 #!   ORDER="500000000000004"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE=""/>
@@ -172,13 +198,13 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="15"
 #!   TYPE="AttributeFilter"
-#!   VERSION="5"
+#!   VERSION="6"
 #!   POSITION="421.87921879218788 58.937975824765545"
 #!   BOUNDING_RECT="421.87921879218788 58.937975824765545 454 71"
 #!   ORDER="500000000001000"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #!   OUTPUT_FT_ORDER="&lt;lt&gt;EMPTY&lt;gt&gt;%&lt;lt&gt;MISSING&lt;gt&gt;%&lt;lt&gt;NULL&lt;gt&gt;%&lt;lt&gt;UNFILTERED&lt;gt&gt;%Bilingual%Check_Lang%English%French"
 #! >
 #!     <OUTPUT_FEAT NAME="&lt;lt&gt;EMPTY&lt;gt&gt;"/>
@@ -218,27 +244,29 @@
 #!     <XFORM_PARM PARM_NAME="ATTR_NAME" PARM_VALUE="_sum_lang"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_VALUES" PARM_VALUE="&lt;lt&gt;Empty&lt;gt&gt;,&lt;lt&gt;Missing&lt;gt&gt;,&lt;lt&gt;Null&lt;gt&gt;,&lt;lt&gt;Unfiltered&lt;gt&gt;,Bilingual,English,French,Check_Lang"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_VALUES_GROUP" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeFilter"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="14"
 #!   TYPE="AttributeExposer"
-#!   VERSION="1"
+#!   VERSION="2"
 #!   POSITION="-226.15096957587465 58.937975824765545"
 #!   BOUNDING_RECT="-226.15096957587465 58.937975824765545 454 71"
 #!   ORDER="500000000001001"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="_attr2translate" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_sum_lang" IS_USER_CREATED="false" FEAT_INDEX="0" />
-#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="_sum_lang"/>
 #!     <XFORM_PARM PARM_NAME="ATTR_LIST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="_sum_lang,"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeExposer"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
@@ -251,6 +279,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -267,6 +296,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -283,6 +313,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -299,6 +330,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -315,6 +347,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -395,7 +428,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -410,7 +443,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -425,7 +458,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -440,7 +473,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -455,7 +488,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -470,7 +503,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -485,7 +518,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -500,7 +533,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -515,7 +548,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -530,7 +563,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -545,7 +578,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -560,7 +593,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -575,7 +608,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -590,7 +623,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -605,7 +638,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -620,7 +653,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -635,7 +668,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -652,63 +685,115 @@
 #! </LOOKUP_TABLES>
 #! </TRANSFORMER>
 
-FME_PYTHON_VERSION 37
+FME_PYTHON_VERSION 313
+# ============================================================================
 DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTR_2_TRANSLATE 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
 #! START_HEADER
 #! END_HEADER
 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Input1716320951 Input Splitter"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Input"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Input1762277669 Input Splitter"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Input"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Input"
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_attr2translate" "SET_TO" "$($(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTR_2_TRANSLATE$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Input"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_attr2translate" "SET_TO" "$($(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTR_2_TRANSLATE$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeCreator_OUTPUT"        }
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE import<space>fme<lf>import<space>fmeobjects<lf>from<space>langdetect<space>import<space>detect_langs<lf>from<space>Python.FME_utils<space>import<space>FME_utils<lf><lf><lf>def<space>extract_language<openparen>list_tuples<closeparen>:<lf><space><space><space><space>#<space>Initialize<space>lists<space>for<space>English<comma><space>French<space>and<space>others<space>items<lf><space><space><space><space>english_items<space>=<space><openbracket><closebracket><lf><space><space><space><space>french_items<space>=<space><openbracket><closebracket><lf><space><space><space><space>otherLang_items<space>=<space><openbracket><closebracket><lf><space><space><space><space><lf><space><space><space><space>#<space>Iterate<space>through<space>the<space>list<space>of<space>tuples<lf><space><space><space><space>for<space>tuple_item<space>in<space>list_tuples:<lf><space><space><space><space><space><space><space><space>#<space>Check<space>the<space>first<space>element<space>of<space>the<space>tuple<lf><space><space><space><space><space><space><space><space>if<space>tuple_item<openbracket>0<closebracket><space>==<space><apos>en<apos>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>english_items.append<openparen>tuple_item<closeparen><lf><space><space><space><space><space><space><space><space>elif<space>tuple_item<openbracket>0<closebracket><space>==<space><apos>fr<apos>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>french_items.append<openparen>tuple_item<closeparen><lf><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space>otherLang_items.append<openparen>tuple_item<closeparen><lf><space><space><space><space><lf><space><space><space><space>#returning<space>wether<space>it<space>is<space>French<comma><space>English<comma><space>Bilingual<space>or<space>other<lf><space><space><space><space>if<space>english_items<space>and<space>french_items<space>and<space>not<space>otherLang_items:<lf><space><space><space><space><space><space><space><space>return<space><openparen><apos>Bilingual<apos><comma><space>list_tuples<closeparen><lf><space><space><space><space>elif<space>english_items<space>and<space>not<space>french_items<space>and<space>not<space>otherLang_items:<lf><space><space><space><space><space><space><space><space>return<space><openparen><apos>English<apos><comma><space>list_tuples<closeparen><lf><space><space><space><space>elif<space>french_items<space>and<space>not<space>english_items<space>and<space>not<space>otherLang_items:<lf><space><space><space><space><space><space><space><space>return<space><openparen><apos>French<apos><comma><space>list_tuples<closeparen><lf><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space>return<space><openparen><apos>Check_Lang<apos><comma><space>list_tuples<closeparen><lf><lf>#<space>Template<space>Class<space>Interface:<lf>#<space>When<space>using<space>this<space>class<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass<lf><space><space><space><space>def<space>input<openparen>self<comma>feature<closeparen>:<space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#<space>Extract<space>FME<space>attributes<lf><space><space><space><space><space><space><space><space>att_names<space>=<space>FME_utils.feature_get_attribute<openparen>feature<comma><space><apos>_attr2translate<apos><comma><space>True<closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#<space>Trasform<space>CSV<space>string<space>into<space>list<lf><space><space><space><space><space><space><space><space>att_names<space>=<space>att_names.replace<openparen><quote><space><quote><comma><space><quote><quote><closeparen><space><space>#<space>Remove<space>any<space>whitespace<space>in<space>the<space>string<lf><space><space><space><space><space><space><space><space>att_2_translate<space>=<space>att_names<lf><space><space><space><space><space><space><space><space>lst_att_2_translate<space>=<space>att_2_translate.split<openparen><quote><comma><quote><closeparen><space><space>#<space>Split<space>names<space>into<space>a<space>list<space>of<space>names<lf><lf><space><space><space><space><space><space><space><space>#Empty<space>list<space>to<space>add<space>the<space>language<space>detected<space>for<space>all<space>attributes<lf><space><space><space><space><space><space><space><space>list_lang_detect<space>=<space><openbracket><closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#Loop<space>over<space>each<space>element<space>to<space>check<space>language<lf><space><space><space><space><space><space><space><space>for<space>elem<space>in<space>lst_att_2_translate:<space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>attr<space>=<space>FME_utils.feature_get_attribute<openparen>feature<comma><space>elem<comma><space>True<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space>lang_attr<space>=<space>detect_langs<openparen>attr<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>#Creating<space>a<space>list<space>of<space>tuple<space>with<space>language<space>and<space>probability<lf><space><space><space><space><space><space><space><space><space><space><space><space>results_lang<space>=<space><openbracket><closebracket><lf><space><space><space><space><space><space><space><space><space><space><space><space>for<space>result<space>in<space>lang_attr:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>results_lang.append<openparen><openparen>result.lang<comma><space>result.prob<closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>rep<space>=<space>extract_language<openparen>results_lang<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>list_lang_detect.append<openparen><openparen>elem<comma><space>rep<closeparen><closeparen><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>if<space>all<openparen>language<openbracket>1<closebracket><openbracket>0<closebracket><space>==<space><apos>French<apos><space>for<space>language<space>in<space>list_lang_detect<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang<apos><comma><space><apos>French<apos><closeparen><lf><space><space><space><space><space><space><space><space>elif<space>all<openparen>language<openbracket>1<closebracket><openbracket>0<closebracket><space><space>==<space><apos>English<apos><space>for<space>language<space>in<space>list_lang_detect<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang<apos><comma><space><apos>English<apos><closeparen><lf><space><space><space><space><space><space><space><space>elif<space>all<openparen>language<openbracket>1<closebracket><openbracket>0<closebracket><space><space>==<space><apos>Bilingual<apos><space>for<space>language<space>in<space>list_lang_detect<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang<apos><comma><space><apos>Bilingual<apos><closeparen><lf><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang<apos><comma><space><apos>Check_Lang<apos><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang_stats<apos><comma><space>f<apos><opencurly>list_lang_detect<closecurly><apos><closeparen><lf><lf><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf><space><space><space><space>def<space>close<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass    OUTPUT PYOUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4_OUTPUT"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    SYMBOL_NAME { FeatureProcessor }    SOURCE_CODE { import<space>fme<lf>import<space>fmeobjects<lf>from<space>langdetect<space>import<space>detect_langs<lf>from<space>Python.FME_utils<space>import<space>FME_utils<lf><lf><lf>def<space>extract_language<openparen>list_tuples<closeparen>:<lf><space><space><space><space>#<space>Initialize<space>lists<space>for<space>English<comma><space>French<space>and<space>others<space>items<lf><space><space><space><space>english_items<space>=<space><openbracket><closebracket><lf><space><space><space><space>french_items<space>=<space><openbracket><closebracket><lf><space><space><space><space>otherLang_items<space>=<space><openbracket><closebracket><lf><space><space><space><space><lf><space><space><space><space>#<space>Iterate<space>through<space>the<space>list<space>of<space>tuples<lf><space><space><space><space>for<space>tuple_item<space>in<space>list_tuples:<lf><space><space><space><space><space><space><space><space>#<space>Check<space>the<space>first<space>element<space>of<space>the<space>tuple<lf><space><space><space><space><space><space><space><space>if<space>tuple_item<openbracket>0<closebracket><space>==<space><apos>en<apos>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>english_items.append<openparen>tuple_item<closeparen><lf><space><space><space><space><space><space><space><space>elif<space>tuple_item<openbracket>0<closebracket><space>==<space><apos>fr<apos>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>french_items.append<openparen>tuple_item<closeparen><lf><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space>otherLang_items.append<openparen>tuple_item<closeparen><lf><space><space><space><space><lf><space><space><space><space>#returning<space>wether<space>it<space>is<space>French<comma><space>English<comma><space>Bilingual<space>or<space>other<lf><space><space><space><space>if<space>english_items<space>and<space>french_items<space>and<space>not<space>otherLang_items:<lf><space><space><space><space><space><space><space><space>return<space><openparen><apos>Bilingual<apos><comma><space>list_tuples<closeparen><lf><space><space><space><space>elif<space>english_items<space>and<space>not<space>french_items<space>and<space>not<space>otherLang_items:<lf><space><space><space><space><space><space><space><space>return<space><openparen><apos>English<apos><comma><space>list_tuples<closeparen><lf><space><space><space><space>elif<space>french_items<space>and<space>not<space>english_items<space>and<space>not<space>otherLang_items:<lf><space><space><space><space><space><space><space><space>return<space><openparen><apos>French<apos><comma><space>list_tuples<closeparen><lf><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space>return<space><openparen><apos>Check_Lang<apos><comma><space>list_tuples<closeparen><lf><lf>#<space>Template<space>Class<space>Interface:<lf>#<space>When<space>using<space>this<space>class<comma><space>make<space>sure<space>its<space>name<space>is<space>set<space>as<space>the<space>value<space>of<lf>#<space>the<space><apos>Class<space>or<space>Function<space>to<space>Process<space>Features<apos><space>transformer<space>parameter<lf>class<space>FeatureProcessor<openparen>object<closeparen>:<lf><space><space><space><space>def<space>__init__<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass<lf><space><space><space><space>def<space>input<openparen>self<comma>feature<closeparen>:<space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#<space>Extract<space>FME<space>attributes<lf><space><space><space><space><space><space><space><space>att_names<space>=<space>FME_utils.feature_get_attribute<openparen>feature<comma><space><apos>_attr2translate<apos><comma><space>True<closeparen><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#<space>Trasform<space>CSV<space>string<space>into<space>list<lf><space><space><space><space><space><space><space><space>att_names<space>=<space>att_names.replace<openparen><quote><space><quote><comma><space><quote><quote><closeparen><space><space>#<space>Remove<space>any<space>whitespace<space>in<space>the<space>string<lf><space><space><space><space><space><space><space><space>att_2_translate<space>=<space>att_names<lf><space><space><space><space><space><space><space><space>lst_att_2_translate<space>=<space>att_2_translate.split<openparen><quote><comma><quote><closeparen><space><space>#<space>Split<space>names<space>into<space>a<space>list<space>of<space>names<lf><lf><space><space><space><space><space><space><space><space>#Empty<space>list<space>to<space>add<space>the<space>language<space>detected<space>for<space>all<space>attributes<lf><space><space><space><space><space><space><space><space>list_lang_detect<space>=<space><openbracket><closebracket><lf><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>#Loop<space>over<space>each<space>element<space>to<space>check<space>language<lf><space><space><space><space><space><space><space><space>for<space>elem<space>in<space>lst_att_2_translate:<space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>attr<space>=<space>FME_utils.feature_get_attribute<openparen>feature<comma><space>elem<comma><space>True<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space>lang_attr<space>=<space>detect_langs<openparen>attr<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>#Creating<space>a<space>list<space>of<space>tuple<space>with<space>language<space>and<space>probability<lf><space><space><space><space><space><space><space><space><space><space><space><space>results_lang<space>=<space><openbracket><closebracket><lf><space><space><space><space><space><space><space><space><space><space><space><space>for<space>result<space>in<space>lang_attr:<lf><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space><space>results_lang.append<openparen><openparen>result.lang<comma><space>result.prob<closeparen><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>rep<space>=<space>extract_language<openparen>results_lang<closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space>list_lang_detect.append<openparen><openparen>elem<comma><space>rep<closeparen><closeparen><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>if<space>all<openparen>language<openbracket>1<closebracket><openbracket>0<closebracket><space>==<space><apos>French<apos><space>for<space>language<space>in<space>list_lang_detect<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang<apos><comma><space><apos>French<apos><closeparen><lf><space><space><space><space><space><space><space><space>elif<space>all<openparen>language<openbracket>1<closebracket><openbracket>0<closebracket><space><space>==<space><apos>English<apos><space>for<space>language<space>in<space>list_lang_detect<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang<apos><comma><space><apos>English<apos><closeparen><lf><space><space><space><space><space><space><space><space>elif<space>all<openparen>language<openbracket>1<closebracket><openbracket>0<closebracket><space><space>==<space><apos>Bilingual<apos><space>for<space>language<space>in<space>list_lang_detect<closeparen>:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang<apos><comma><space><apos>Bilingual<apos><closeparen><lf><space><space><space><space><space><space><space><space>else:<lf><space><space><space><space><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang<apos><comma><space><apos>Check_Lang<apos><closeparen><lf><space><space><space><space><space><space><space><space><space><space><space><space><lf><space><space><space><space><space><space><space><space>feature.setAttribute<openparen>f<apos>_sum_lang_stats<apos><comma><space>f<apos><opencurly>list_lang_detect<closecurly><apos><closeparen><lf><lf><space><space><space><space><space><space><space><space>self.pyoutput<openparen>feature<closeparen><lf><space><space><space><space>def<space>close<openparen>self<closeparen>:<lf><space><space><space><space><space><space><space><space>pass }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4 <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4_<Rejected>"
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeExposer    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4_OUTPUT"    OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeExposer_OUTPUT"
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeExposer }    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_PythonCaller_4_OUTPUT"    OUTPUT { FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeExposer_OUTPUT"          }
 # -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory    FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_FILTER
-FACTORY_DEF * AttributeFilterFactory FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Filter COMMAND_PARM_EVALUATION SINGLE_PASS INPUT FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_FILTER FILTER_ATTRIBUTE _sum_lang FILTER_VALUES <lt>EMPTY<gt> <lt>MISSING<gt> <lt>NULL<gt> <lt>UNFILTERED<gt> Bilingual English French Check_Lang PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT <lt>EMPTY<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>EMPTY<gt> OUTPUT <lt>MISSING<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>MISSING<gt> OUTPUT <lt>NULL<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>NULL<gt> OUTPUT <lt>UNFILTERED<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>UNFILTERED<gt> OUTPUT Bilingual FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Bilingual OUTPUT English FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_English OUTPUT French FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_French OUTPUT Check_Lang FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Check_Lang
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_French"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
-MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
-INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_English"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Input"
-MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
-INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Check_Lang"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Input"
-MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
-INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"
-# -------------------------------------------------------------------------
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Bilingual"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Input"
-MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
-INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter }    INPUT  FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeExposer_OUTPUT"    OUTPUT { FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_FILTER }
+FACTORY_DEF {*} AttributeFilterFactory FACTORY_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Filter COMMAND_PARM_EVALUATION SINGLE_PASS INPUT FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_FILTER FILTER_ATTRIBUTE { _sum_lang } FILTER_VALUES { <lt>EMPTY<gt> <lt>MISSING<gt> <lt>NULL<gt> <lt>UNFILTERED<gt> Bilingual English French Check_Lang } PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT <lt>EMPTY<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>EMPTY<gt> OUTPUT <lt>MISSING<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>MISSING<gt> OUTPUT <lt>NULL<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>NULL<gt> OUTPUT <lt>UNFILTERED<gt> FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>UNFILTERED<gt> OUTPUT Bilingual FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Bilingual OUTPUT English FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_English OUTPUT French FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_French OUTPUT Check_Lang FEATURE_TYPE $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Check_Lang
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>EMPTY<gt>"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>MISSING<gt>"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>NULL<gt>"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_<lt>UNFILTERED<gt>"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Input"
 MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_No_Detection1716320951 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_No_Detection"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Bilingual1716320951 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Bilingual"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_English1716320951 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_English"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Check_Lang1716320951 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Check_Lang"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_French1716320951 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_French"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Bilingual"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_Check_Lang"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_English"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Input Input Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_AttributeFilter_French"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Input"
+MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER
+INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_No_Detection1762277669 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_5_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_No_Detection"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Bilingual1762277669 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_4_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Bilingual"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_English1762277669 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_English"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Check_Lang1762277669 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_3_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_Check_Lang"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_French1762277669 Output Collector"   INPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_Output"   OUTPUT FEATURE_TYPE "$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME)_French"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(FRENCH_ENGLISH_LANGUAGE_DETECT_WORKSPACE_NAME))}]

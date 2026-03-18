@@ -1,6 +1,6 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <TRANSFORMER
-# TRANSFORMER_BEGIN GEOPORTAL_WEBLINK_ADDER_NG,1,"FGP Tools",adf3b0f1-53e8-4fbf-af27-283c41215a2e,"Linked by Default",No,NO_PARALLELISM,,No,20787,YES,No,37,No,
+# TRANSFORMER_BEGIN GEOPORTAL_WEBLINK_ADDER_NG,1,"""FGP Tools""",b1c69fb1-ee21-4f8d-9f79-2d5819c5b76f,"Linked by Default",No,NO_PARALLELISM,,No,25241,YES,No,313,No,
 # <p><strong>Description </strong></p>
 # <p>This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding a new ressources{} attribute list containing the web link and the other information contained in the CSV file.  Unvalid web links are log in the FME logger.</p>
 # <p>Note: The web link to test is build from the <em>default key</em> <strong>url</strong> contained in the CSV and the attribute value from the <em>WEBLINK_WILDCARD</em> parameter.</p>
@@ -31,17 +31,20 @@
 # </li>
 # </ul>
 # TRANSFORMER_END
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BLOCKED_LOOPING="No"
-#!   CATEGORY="FGP Tools"
+#!   CATEGORY="&quot;FGP Tools&quot;"
 #!   DESCRIPTION="&lt;p&gt;&lt;strong&gt;Description &lt;/strong&gt;&lt;/p&gt;&#10;&lt;p&gt;This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding a new ressources{} attribute list containing the web link and the other information contained in the CSV file.  Unvalid web links are log in the FME logger.&lt;/p&gt;&#10;&lt;p&gt;Note: The web link to test is build from the &lt;em&gt;default key&lt;/em&gt; &lt;strong&gt;url&lt;/strong&gt; contained in the CSV and the attribute value from the &lt;em&gt;WEBLINK_WILDCARD&lt;/em&gt; parameter.&lt;/p&gt;&#10;&lt;p&gt;&lt;strong&gt;Input Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;DATA_INPUT: The input metadata records to process.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Output Ports &lt;/strong&gt;&lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;OUTPUT: The process output metdata records with the added web link resource.&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt; &lt;/p&gt;&#10;&lt;ul&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;WEBLINK_WILDCARD: Name of the attribute containing the information to add to the web link in order to retreive the metadata record from the P-T portal&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;URL_VALIDATION: Flag use to validate if the web link is well formed, online and responding. Can take 2 values: YES: validate the web link; NO: Do not validate th web link. Note: During testing, it is interesting to use NO as the validation is very slow;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;li&gt;&#10;&lt;p&gt;P-T_ABBR: Two letters abbreviation of the province or the territory.&lt;/p&gt;&#10;&lt;/li&gt;&#10;&lt;/ul&gt;"
 #!   DOC_EXTENTS="6388.77 2378.37"
 #!   DOC_TOP_LEFT="-4439.29 -3109.41"
 #!   EXPLICIT_BOOKMARK_ORDER="false"
-#!   FME_BUILD_NUM="20787"
-#!   FME_DOCUMENT_GUID="adf3b0f1-53e8-4fbf-af27-283c41215a2e"
-#!   FME_DOCUMENT_PRIORGUID="1f080052-07d2-4bff-aec9-610c84d03ad3,9e212373-9efc-4f9d-af59-184fb7afc565,4877143c-fb06-4e06-b990-9cb0f4aef0b3"
+#!   FME_BUILD_NUM="25241"
+#!   FME_DOCUMENT_GUID="b1c69fb1-ee21-4f8d-9f79-2d5819c5b76f"
+#!   FME_DOCUMENT_PRIORGUID="1f080052-07d2-4bff-aec9-610c84d03ad3,9e212373-9efc-4f9d-af59-184fb7afc565,4877143c-fb06-4e06-b990-9cb0f4aef0b3,adf3b0f1-53e8-4fbf-af27-283c41215a2e"
 #!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_NAMES_ENCODING="windows-1252"
 #!   FME_PROCESS_COUNT="NO_PARALLELISM"
 #!   FME_PROCESS_GROUPS_ORDERED="No"
 #!   FME_PROCESS_GROUP_BY=""
@@ -51,24 +54,24 @@
 #!   FMX_INSERT_MODE="Linked by Default"
 #!   HISTORY="Unknown,Unknown,Original&lt;space&gt;version,15&lt;solidus&gt;09&lt;solidus&gt;2021,Daniel&lt;space&gt;Pilon,Documentation&lt;space&gt;added,15&lt;solidus&gt;02&lt;solidus&gt;2022,Daniel&lt;space&gt;Pilon,Python&lt;space&gt;code&lt;space&gt;refactoring"
 #!   ITERATION_COUNT_ATTR=""
-#!   LAST_SAVE_BUILD="FME(R) 2020.2.0.0 (20201027 - Build 20787 - WIN32)"
-#!   LAST_SAVE_DATE="2024-06-27T14:48:13"
+#!   LAST_SAVE_BUILD="FME(R) 2025.0.3.0 (20250602 - Build 25241 - WIN64)"
+#!   LAST_SAVE_DATE="2025-11-04T12:35:55"
 #!   MARKDOWN_DESCRIPTION="**Description **&#10;&#10;This custom transformer is doing 2 tasks. Firstly, it creates and validates that the web link is well formed, online and responding; Secondly it is adding a new ressources{} attribute list containing the web link and the other information contained in the CSV file.  Unvalid web links are log in the FME logger.&#10;&#10;Note: The web link to test is build from the _default key_ **url** contained in the CSV and the attribute value from the _WEBLINK_WILDCARD_ parameter.&#10;&#10;&#10;**Input Ports **&#10;&#10;- DATA_INPUT: The input metadata records to process.&#10;&#10;&#10;**Output Ports **&#10;&#10;- OUTPUT: The process output metdata records with the added web link resource.&#10;&#10;&#10;**Parameters** &#10;&#10;- WEBLINK_WILDCARD: Name of the attribute containing the information to add to the web link in order to retreive the metadata record from the P-T portal&#10;&#10;- URL_VALIDATION: Flag use to validate if the web link is well formed, online and responding. Can take 2 values: YES: validate the web link; NO: Do not validate th web link. Note: During testing, it is interesting to use NO as the validation is very slow;&#10;&#10;- FEATURE_TYPE: Name of the CSV file to read (without .csv extension);&#10;&#10;- IN_CSV_LOOKUP_TABLES_DIR: Name of the directory path containing the CSV file to read;&#10;&#10;- P-T_ABBR: Two letters abbreviation of the province or the territory.&#10;"
 #!   MARKDOWN_USAGE=""
 #!   MAX_LOOP_ITERATIONS=""
 #!   PASSWORD=""
-#!   PYTHON_COMPATIBILITY="37"
+#!   PYTHON_COMPATIBILITY="313"
 #!   REPLACED_BY=""
 #!   SHOW_ANNOTATIONS="true"
 #!   SHOW_INFO_NODES="true"
 #!   TITLE="GEOPORTAL_WEBLINK_ADDER_NG"
 #!   USAGE=""
 #!   USE_MARKDOWN="YES"
-#!   VIEW_POSITION="-3680.28 -878.915"
+#!   VIEW_POSITION="-221.877 3.12503"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   XFORM_DEPRECATED="No"
-#!   ZOOM_SCALE="112"
+#!   ZOOM_SCALE="100"
 #! >
 #! <DATASETS>
 #! </DATASETS>
@@ -107,18 +110,55 @@
 #!   IS_STAND_ALONE="true"
 #! />
 #! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiV0VCTElOS19XSUxEQ0FSRCIsInByb21wdCI6IldFQkxJTktfV0lMRENBUkQ6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In0seyJuYW1lIjoiVVJMX1ZBTElEQVRJT04iLCJwcm9tcHQiOiJVUkxfVkFMSURBVElPTjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJkZWZhdWx0VmFsdWUiOiJZZXMiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwiY2hvaWNlU2V0dGluZ3MiOnsic29ydCI6Im5vU29ydCIsImNob2ljZXMiOlt7ICJkaXNwbGF5IiA6ICJZZXMiLCAidmFsdWUiIDogIlllcyIgfSx7ICJkaXNwbGF5IiA6ICJObyIsICJ2YWx1ZSIgOiAiTm8iIH1dLCJjaG9pY2VTZXQiOiJ1c2VyRGVmaW5lZCJ9LCJ0eXBlIjoiZHJvcGRvd24ifSx7Im5hbWUiOiJGRUFUVVJFX1RZUEUiLCJwcm9tcHQiOiJGRUFUVVJFX1RZUEU6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiIiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQifSx7Im5hbWUiOiJJTl9DU1ZfTE9PS1VQX1RBQkxFU19ESVIiLCJwcm9tcHQiOiJJTl9DU1ZfTE9PS1VQX1RBQkxFU19ESVI6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiIiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwiZGVwcmVjYXRlZEZsYWdzIjpbIm5vbmUiXSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJwbGFpbnRleHQifSx7Im5hbWUiOiJQLVRfQUJCUiIsInByb21wdCI6IlAtVF9BQkJSOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sImRlcHJlY2F0ZWRGbGFncyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0In1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="WEBLINK_WILDCARD" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI TEXT_OR_ATTR WEBLINK_WILDCARD WEBLINK_WILDCARD:"
+#! />
+#!     <INFO NAME="URL_VALIDATION" 
+#!   DEFAULT_VALUE="Yes"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI CHOICE_OR_ATTR URL_VALIDATION Yes%No URL_VALIDATION:"
+#! />
+#!     <INFO NAME="FEATURE_TYPE" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR FEATURE_TYPE FEATURE_TYPE:"
+#! />
+#!     <INFO NAME="IN_CSV_LOOKUP_TABLES_DIR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR IN_CSV_LOOKUP_TABLES_DIR IN_CSV_LOOKUP_TABLES_DIR:"
+#! />
+#!     <INFO NAME="P-T_ABBR" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL TEXT_OR_ATTR P-T_ABBR P-T_ABBR:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
 #! <COMMENTS>
 #! <COMMENT
 #!   IDENTIFIER="36"
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;This custom transformer creates common attributes to each FME features.  Information on the common attributes comes from the CSV file.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-3536.9055951727787 -900"
 #!   TOP_LEFT="-3536.9055951727787 -900"
-#!   BOTTOM_RIGHT="-2318.7731877318774 -1242.5031250312504"
-#!   BOUNDING_RECT="-3536.9055951727787 -900 1218.1324074409013 342.50312503125031"
+#!   BOTTOM_RIGHT="-2318.778679528622 -1242.5031250312504"
+#!   BOUNDING_RECT="-3536.9055951727787 -900 1218.1269156441565 342.50312503125031"
 #!   ORDER="500000000000918"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
+#!   UUID="{d7b39684-43ee-4ed5-94b4-b02802cde247}"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="0"
@@ -128,13 +168,14 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;order = 1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-2155.1329799012278 -1485.8768659115158"
 #!   TOP_LEFT="-2155.1329799012278 -1485.8768659115158"
-#!   BOTTOM_RIGHT="-1701.1329799012278 -1486.8768659115158"
-#!   BOUNDING_RECT="-2155.1329799012278 -1485.8768659115158 454 1"
+#!   BOTTOM_RIGHT="-1701.1738621850507 -1486.8768659115158"
+#!   BOUNDING_RECT="-2155.1329799012278 -1485.8768659115158 453.95911771617716 1"
 #!   ORDER="500000000001320"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
-#!   COLOUR="0.24313725490196078,0.40784313725490196,0.20784313725490197,0.78431372549019607"
+#!   UUID="{ebfe8517-8a3c-4e23-9d0f-d420cbd5cd4d}"
+#!   COLOUR="0.24313725490196078,0.40784313725490196,0.20784313725490197,1"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="8"
 #! />
@@ -143,12 +184,13 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;order = 2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-2199.9994999950004 -2153.7936807939514"
 #!   TOP_LEFT="-2199.9994999950004 -2153.7936807939514"
-#!   BOTTOM_RIGHT="-1745.9994999950004 -2154.7936807939514"
-#!   BOUNDING_RECT="-2199.9994999950004 -2153.7936807939514 454 1"
+#!   BOTTOM_RIGHT="-1746.0403822788232 -2154.7936807939514"
+#!   BOUNDING_RECT="-2199.9994999950004 -2153.7936807939514 453.95911771617716 1"
 #!   ORDER="500000000001321"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6f31376e-bf41-4f33-b3fa-8eaaa55dc381}"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="9"
@@ -158,12 +200,13 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Create attribute with Published Parameters&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-3222.5453683108262 -2150.2237165228803"
 #!   TOP_LEFT="-3222.5453683108262 -2150.2237165228803"
-#!   BOTTOM_RIGHT="-2639.5353239246674 -2317.7250915366303"
-#!   BOUNDING_RECT="-3222.5453683108262 -2150.2237165228803 583.01004438615882 167.50137501375013"
+#!   BOTTOM_RIGHT="-2639.5810542926861 -2317.7250915366303"
+#!   BOUNDING_RECT="-3222.5453683108262 -2150.2237165228803 582.96431401814016 167.50137501375013"
 #!   ORDER="500000000001322"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
+#!   UUID="{6cab1acf-c247-4a4e-84d3-3e5bfc079c96}"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="16"
@@ -173,12 +216,13 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:13pt;&quot;&gt;Python code to  test the web link and add CSV content in attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-989.95625670542427 -1606.0278459927454"
 #!   TOP_LEFT="-989.95625670542427 -1606.0278459927454"
-#!   BOTTOM_RIGHT="-329.91401342584857 -1857.9050647649331"
-#!   BOUNDING_RECT="-989.95625670542427 -1606.0278459927454 660.0422432795757 251.87721877218772"
+#!   BOTTOM_RIGHT="-329.94039092176649 -1857.9050647649331"
+#!   BOUNDING_RECT="-989.95625670542427 -1606.0278459927454 660.01586578365777 251.87721877218772"
 #!   ORDER="500000000001323"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
+#!   UUID="{33bd6a2a-5488-4e66-8f59-a79cf5d0594b}"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="10"
@@ -188,12 +232,13 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Remove unnecessary attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="-198.87758136840586 -1699.7592489152403"
 #!   TOP_LEFT="-198.87758136840586 -1699.7592489152403"
-#!   BOTTOM_RIGHT="337.96634262638935 -1867.2606239289903"
-#!   BOUNDING_RECT="-198.87758136840586 -1699.7592489152403 536.8439239947952 167.50137501375013"
+#!   BOTTOM_RIGHT="337.94369309433881 -1867.2606239289903"
+#!   BOUNDING_RECT="-198.87758136840586 -1699.7592489152403 536.82127446274467 167.50137501375013"
 #!   ORDER="500000000001324"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
+#!   UUID="{76ebea71-c900-4d35-87e9-d8bd128f0f5c}"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="12"
@@ -203,12 +248,13 @@
 #!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Unexpose all attributes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
 #!   POSITION="575.92425395153532 -1757.8565714228573"
 #!   TOP_LEFT="575.92425395153532 -1757.8565714228573"
-#!   BOTTOM_RIGHT="1140.9242539515353 -1758.8565714228573"
-#!   BOUNDING_RECT="575.92425395153532 -1757.8565714228573 565 1"
+#!   BOTTOM_RIGHT="1140.9196382803786 -1758.8565714228573"
+#!   BOUNDING_RECT="575.92425395153532 -1757.8565714228573 564.99538432884333 1"
 #!   ORDER="500000000001325"
 #!   FOLLOW_ANCHOR="true"
 #!   INFO_NODE="false"
 #!   CUSTOM_USER_COLOR="false"
+#!   UUID="{c2035937-1bdc-4fe7-b332-d8fddf41342f}"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
 #!   SIZE_POLICY="10"
 #!   ANCHORED_NODE="17"
@@ -228,7 +274,7 @@
 #!   BOUNDING_RECT="-3632.8488284882842 -731.0340960552461 5026.381282331341 2378.3719980056944"
 #!   STICKY="true"
 #!   COLOUR="0.42352941176470588,0.094117647058823528,0.16078431372549021,0.39215686274509803"
-#!   CONTENTS="23 31 24 26 50 42 29 10 17 45 43 47 9 44 6 19 46 8 36 12 16 "
+#!   CONTENTS="17 24 45 36 31 50 46 47 43 6 44 12 19 10 23 29 42 8 26 16 9 "
 #! >
 #! </BOOKMARK>
 #! <BOOKMARK
@@ -242,7 +288,7 @@
 #!   BOUNDING_RECT="-3505.1329799012278 -1294.1958705301338 2079.2549668353827 731.03409605524575"
 #!   STICKY="true"
 #!   COLOUR="0.24313725490196078,0.40784313725490196,0.20784313725490197,1"
-#!   CONTENTS="19 8 6 42 "
+#!   CONTENTS="6 19 42 8 "
 #! >
 #! </BOOKMARK>
 #! </BOOKMARKS>
@@ -257,6 +303,7 @@
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -271,38 +318,40 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="8"
 #!   TYPE="AttributeCreator"
-#!   VERSION="9"
+#!   VERSION="10"
 #!   POSITION="-2145.9481023381672 -1671.1905690485473"
 #!   BOUNDING_RECT="-2145.9481023381672 -1671.1905690485473 454 71"
 #!   ORDER="500000000001312"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 1"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 1 varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="9"
 #!   TYPE="AttributeCreator"
-#!   VERSION="9"
+#!   VERSION="10"
 #!   POSITION="-2202.4611888069221 -2400"
 #!   BOUNDING_RECT="-2202.4611888069221 -2400 454 71"
 #!   ORDER="500000000001312"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -312,25 +361,27 @@
 #!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 2  _url_validation SET_TO $(URL_VALIDATION)  _weblink_wildcard SET_TO $(WEBLINK_WILDCARD)"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _order SET_TO 2 varchar&lt;openparen&gt;200&lt;closeparen&gt;  _url_validation SET_TO $(URL_VALIDATION) varchar&lt;openparen&gt;200&lt;closeparen&gt;  _weblink_wildcard SET_TO $(WEBLINK_WILDCARD) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_3"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="10"
 #!   TYPE="PythonCaller"
-#!   VERSION="4"
+#!   VERSION="6"
 #!   POSITION="-900 -2044.8670200987724"
 #!   BOUNDING_RECT="-900 -2044.8670200987724 454 71"
 #!   ORDER="500000000001313"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20200"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -339,10 +390,21 @@
 #!     <XFORM_ATTR ATTR_NAME="_weblink_wildcard" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;Rejected&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_order" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_url_validation" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_weblink_wildcard" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
 #!     <XFORM_PARM PARM_NAME="HIDE_ATTRIBUTES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="LIST_ATTRS" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_http_status_code"/>
+#!     <XFORM_PARM PARM_NAME="NEW_ATTRIBUTES" PARM_VALUE="_http_status_code buffer"/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSOURCE" PARM_VALUE="from&lt;space&gt;Python.GEOPORTAL_WEBLINK_ADDER_NG&lt;space&gt;import&lt;space&gt;FeatureProcessor"/>
 #!     <XFORM_PARM PARM_NAME="PYTHONSYMBOL" PARM_VALUE="FeatureProcessor"/>
@@ -359,6 +421,7 @@
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -371,13 +434,13 @@
 #! <TRANSFORMER
 #!   IDENTIFIER="16"
 #!   TYPE="AttributeCreator"
-#!   VERSION="9"
+#!   VERSION="10"
 #!   POSITION="-3150 -2400"
 #!   BOUNDING_RECT="-3150 -2400 454 71"
 #!   ORDER="500000000001312"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="20787"
+#!   LAST_PARM_EDIT="25241"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -386,14 +449,16 @@
 #!     <XFORM_ATTR ATTR_NAME="_p-t_abbr" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _url_validation SET_TO $(URL_VALIDATION)  _weblink_wildcard SET_TO $(WEBLINK_WILDCARD)  _p-t_abbr SET_TO $(P-T_ABBR)"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; _url_validation SET_TO $(URL_VALIDATION) varchar&lt;openparen&gt;200&lt;closeparen&gt;  _weblink_wildcard SET_TO $(WEBLINK_WILDCARD) varchar&lt;openparen&gt;200&lt;closeparen&gt;  _p-t_abbr SET_TO $(P-T_ABBR) varchar&lt;openparen&gt;200&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
-#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
 #!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
 #! </TRANSFORMER>
 #! <TRANSFORMER
 #!   IDENTIFIER="17"
@@ -405,6 +470,7 @@
 #!   PARMS_EDITED="false"
 #!   ENABLED="true"
 #!   LAST_PARM_EDIT="20787"
+#!   SHOW_BLANK_INPUT_FT="false"
 #! >
 #!     <OUTPUT_FEAT NAME="Output"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -445,7 +511,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -460,7 +526,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -475,7 +541,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -490,7 +556,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -505,7 +571,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -520,7 +586,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -535,7 +601,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -550,7 +616,7 @@
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
-#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   COLOUR="0.95686274509803926,0.95294117647058818,0.92941176470588238,1"
 #!   PEN_WIDTH="4"
 #!   PEN_STYLE="1"
 #!   LINK_STYLE_NAME="&lt;Default&gt;"
@@ -567,23 +633,78 @@
 #! </LOOKUP_TABLES>
 #! </TRANSFORMER>
 
-FME_PYTHON_VERSION 37
+FME_PYTHON_VERSION 313
+# ============================================================================
 DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_WEBLINK_WILDCARD 
+
 DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_URL_VALIDATION Yes
+
 DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FEATURE_TYPE 
+
 DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR 
+
 DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_P-T_ABBR 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_ENGINE 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_JOB_ID 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SECURITY_ROLES 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SECURITY_USER 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_HOST 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_PORT 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_TOPIC 
+
+DEFAULT_MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FME_TOPIC_MESSAGE 
+
+# ============================================================================
 #! START_HEADER
 #! END_HEADER
 
 DEFAULT_MACRO WB_CURRENT_CONTEXT
 DEFAULT_MACRO GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME ""
 INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)}]
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT1719514093 Input Splitter"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT1762277755 Input Splitter"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"
 # -------------------------------------------------------------------------
 MACRO LOOKUP_TABLES_READER_NG_WORKSPACE_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
-MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_XFORMER_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)___COMPOUND_PARAMETERS 
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_FEATURE_TYPE $($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_FEATURE_TYPE)
 MACRO $(LOOKUP_TABLES_READER_NG_WORKSPACE_NAME)_CSV_PATH $($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_IN_CSV_LOOKUP_TABLES_DIR$encode)
@@ -595,27 +716,28 @@ FACTORY_DEF * BranchingFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORK
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_order" "SET_TO" "1" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_2 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_LOOKUP_TABLES_READER_NG_Output"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_order" "SET_TO" "1" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"        }
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_url_validation" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_URL_VALIDATION$encode)" }      ATTR_ACTION { "" "_weblink_wildcard" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_WEBLINK_WILDCARD$encode)" }      ATTR_ACTION { "" "_p-t_abbr" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_4 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_INPUT"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_url_validation" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_URL_VALIDATION$encode)" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_weblink_wildcard" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_WEBLINK_WILDCARD$encode)" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_p-t_abbr" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_P-T_ABBR$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"        }
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_3    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "_order" "SET_TO" "2" }      ATTR_ACTION { "" "_url_validation" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_URL_VALIDATION$encode)" }      ATTR_ACTION { "" "_weblink_wildcard" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_WEBLINK_WILDCARD$encode)" }    OUTPUT OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_3 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    NUM_OF_COLUMNS 5    ATTR_ACTION { "" "_order" "SET_TO" "2" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_url_validation" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_URL_VALIDATION$encode)" "varchar<openparen>200<closeparen>" }      ATTR_ACTION { "" "_weblink_wildcard" "SET_TO" "$($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_WEBLINK_WILDCARD$encode)" "varchar<openparen>200<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"        }
 # -------------------------------------------------------------------------
 FME_PYTHON_PATH "$(FME_MF_DIR)"
-FACTORY_DEF * PythonFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    SYMBOL_NAME FeatureProcessor    PYTHON_NAMESPACE FMEOBJECTS    SOURCE_CODE from<space>Python.GEOPORTAL_WEBLINK_ADDER_NG<space>import<space>FeatureProcessor    OUTPUT PYOUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2 }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    SYMBOL_NAME { FeatureProcessor }    SOURCE_CODE { from<space>Python.GEOPORTAL_WEBLINK_ADDER_NG<space>import<space>FeatureProcessor }    PY_OUTPUT_TAGS { PYOUTPUT <Rejected> }    OUTPUT { PYOUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"         }    OUTPUT { <Rejected> FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2_<Rejected>"         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2 <Rejected> Transformer Output Nuker"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2_<Rejected>"
 # -------------------------------------------------------------------------
 # Build the List removal function and regular expression if there was any list attributes to be removed.
 # If not, then we will not have any extra list removal call to @RemoveAttributes, which speeds the
 # normal, non-list removal especially when in Bulk Mode.  Note that this computation of the regular expressions is done
 # once during mapping file parse time.
 INCLUDE [    set listAttributeRemoveRegexps {};    set anyList {no};    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append listAttributeRemoveRegexps ",^$attr$";       set anyList {yes};    };    if { ${anyList} == {no} } {        puts {MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC }    } else {        puts "MACRO $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC @RemoveAttributes(fme_pcre_match\"$listAttributeRemoveRegexps\")"    }; ]
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,_order,_url_validation,_weblink_wildcard,_http_status_code,_p-t_abbr)        $($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC)         }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3 }    INPUT  FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_PythonCaller_2_OUTPUT"    OUTPUT { FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"        @RemoveAttributes(fme_encoded,_order,_url_validation,_weblink_wildcard,_http_status_code,_p-t_abbr)        $($(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3_LIST_FUNC)         }
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Input Input Collector"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_AttributeRemover_3_OUTPUT"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Input"
 MACRO ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
-MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
 MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_TRANSFORMER_GROUP 
+MACRO $(ATTRIBUTE_UNEXPOSER_WORKSPACE_NAME)_XFORMER_NAME $(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2
 INCLUDE_CUSTOM_TRANSFORMER_VER ATTRIBUTE_UNEXPOSER:1
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2 Output Output Renamer/Nuker"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"
-FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_OUTPUT1719514093 Output Collector"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_OUTPUT1762277755 Output Collector"   INPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_ATTRIBUTE_UNEXPOSER_2_Output"   OUTPUT FEATURE_TYPE "$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME)_OUTPUT"
 INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(GEOPORTAL_WEBLINK_ADDER_NG_WORKSPACE_NAME))}]
